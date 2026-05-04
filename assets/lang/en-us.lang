@@ -225,11 +225,10 @@ option.enableFullscreen.name = Fullscreen
 option.enableFullscreen.description = Self-explanatory, but are you that deprived?
 option.hideHUD.name = Hide HUD
 option.hideHUD.description = Hides the game's HUD during gameplay. Useful for capturing game footage.
-option.screenSafeZone.name = Screen Safe Zone
-option.screenSafeZone.description = Adjust the slider until the white area covers all visible areas of your screen.\n(UI changes will be updated after exiting)
 option.hideTooltip.name = Hide Tooltip
 option.hideTooltip.description = Hides button tooltips on hover.
-option.controls.description = Configure keybinds.
+option.screenSafeZone.name = Screen Safe Zone
+option.screenSafeZone.description = Adjust the slider until the white area covers all unobstructed areas of your screen.\n(UI changes will be updated after exiting)
 // Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 option.enableForcedAliasing.name = Forced Aliasing
 option.enableForcedAliasing.description = Disables antialiasing from all sprites even when enabled. May make some graphics look jagged.

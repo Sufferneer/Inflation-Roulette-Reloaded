@@ -114,6 +114,14 @@ option.controls.debug = 調試
 option.controls.keybind.debug1 = 調試鍵 #1
 option.controls.keybind.debug2 = 調試鍵 #2
 
+// 1: Keybind Name, 2: Key Orientation (Primary/Secondary)
+option.controls.bindingKey.title = 配置%1\n%2鍵
+option.controls.bindingKey.bindType.0 = 主用
+option.controls.bindingKey.bindType.1 = 輔助
+option.controls.bindingKey.subtitle = 按任意鍵
+option.controls.bindingKey.bind = 綁定
+option.controls.bindingKey.remove = 移除
+
 option.enablePopping.name = 爆裂
 option.enablePopping.description = 玩家被擊敗之後會非致命地爆裂。\n如果被關閉，玩家會被過度膨脹。\n將在下一場遊戲中生效。
 option.enableBellyGurgles.name = 腹鳴
@@ -124,6 +132,10 @@ option.enableFullscreen.name = 全螢幕
 option.enableFullscreen.description = 無需贅述，但你真的那麼匱乏嗎？
 option.hideHUD.name = 隱藏遊戲介面
 option.hideHUD.description = 遊戲中隱藏介面，方便錄製遊戲畫面。
+option.hideTooltip.name = 隱藏工具提示
+option.hideTooltip.description = 隱藏按鈕工具提示。
+option.screenSafeZone.name = 螢幕安全區
+option.screenSafeZone.description = 調整滑桿，直到白色區域覆蓋螢幕上所有無遮蔽區域。\n（退出後介面將更新）
 option.enableForcedAliasing.name = 強迫鋸齒
 option.enableForcedAliasing.description = 即使人物啟用抗鋸齒功能，也會停用它所有圖案的抗鋸齒效果。會導致某些圖形出現鋸齒狀邊緣。
 option.enableGLSL.name = 著色器
@@ -142,7 +154,9 @@ option.uiSoundVolume.name = 介面聲音音量
 option.uiSoundVolume.description = 使用者介面音效的音量百分比。
 option.enablePhotosensitiveMode.name = 光敏模式
 option.enablePhotosensitiveMode.description = 抑制螢幕閃爍和其他閃爍效果。\n強烈建議給光敏性癲癇患者。
-option.cameraEffectIntensity.name = 相機強度
+option.cameraSpeed.name = 相機速度
+option.cameraSpeed.description = 相機移動速度應該要多快。
+option.cameraEffectIntensity.name = 相機效果強度
 option.cameraEffectIntensity.description = 螢幕震動和其他令人迷失方向的效果應該有多強。
 option.useBuiltInCursor.name = 內建遊標
 option.useBuiltInCursor.description = 使用自訂遊戲內滑鼠遊標，而不是預設系統滑鼠遊標。

@@ -183,7 +183,7 @@ class OptionsSubState extends SuffSubState {
 
 		createSliderOption('cameraSpeed', function(value:Float) {
 			Preferences.data.cameraSpeed = value;
-			PauseSubState.usedFollowLerp = 60 / FlxG.updateFramerate * 0.1 * Preferences.data.cameraSpeed;
+			PauseSubState.usedFollowLerp = 0.1 * Preferences.data.cameraSpeed;
 		}, 0.25, 2, 0.05, function(value:Float) {
 			return Math.round(value * 100) + '%';
 		}, Preferences.data.cameraSpeed);
@@ -214,8 +214,8 @@ class OptionsSubState extends SuffSubState {
 
 		createSliderOption('maxFramerate', function(value:Float) {
 			Preferences.data.maxFramerate = Math.round(value);
-			PauseSubState.usedFollowLerp = 60 / FlxG.updateFramerate * 0.1 * Preferences.data.cameraSpeed;
-		}, 30, #if !mobile 300 #else 90 #end, 10, function(value:Float) {
+			PauseSubState.usedFollowLerp = 0.1 * Preferences.data.cameraSpeed;
+		}, 30, #if !mobile 500 #else 90 #end, 10, function(value:Float) {
 			return '' + Math.round(value);
 		}, Preferences.data.maxFramerate);
 		// Mobile framerate is capped at 90 to avoid device heating up

@@ -39,7 +39,6 @@
 	<!-- __________________________ Game Assets & Etc. __________________________ -->
 	
 	<define name="_ALLOW_CRASH_HANDLER"/>
-
 	<section if="_OFFICIAL_BUILD">
 		<define name="_CHECK_FOR_UPDATES"/>
 		<define name="_ALLOW_ADDONS" unless="web" />
@@ -136,7 +135,7 @@
 	<assets path='dev/iconLinux.png' if="linux" unless="mobile" id="iconLinux" preload="true" embed="true"/>
 
 	<section if="android">
-		<certificate path="dev/key.keystore" alias="com.nicklysuffer.inflation-roulette-reloaded"/>
+		<android target-sdk-version="35" />
 		<template path="dev/templates"/>
 		<config:android>
 			<application android:icon="@mipmap/ic_launcher"/>

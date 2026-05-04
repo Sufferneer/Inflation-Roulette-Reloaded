@@ -3,7 +3,9 @@
 		"Made by NicklySuffer!",
 		"Courtesy of NicklySuffer!",
 		"Endorsed by Snowyboi!",
-		"Eighteen-plus!"
+		"Eighteen-plus!",
+		"Minors DNI!",
+		"No kids allowed!"
 	],
 	"unique": [
 		{
@@ -228,7 +230,7 @@
 	"fallback": [
 		"Nicholas you waste of life stop playing my game",
 		"Adrian ya blender monkey lookin' ass stop playing my game",
-		"John you lardius maximus stop playing my game",
+		"John you fatso stop playing my game",
 		"Do not play this in public!",
 		"Lock your doors before playing!",
 		"Repent your sins after playing!",
@@ -268,7 +270,7 @@
 		"Approved by nobody!",
 		"FDA disapproved!",
 		"Unsafe for consumption!",
-		"Runs effectively without GPU!",
+		"Runs effectively with a dedicated GPU!",
 		"Spaghetti code guaranteed!",
 		"Console port coming never!",
 		"All proceeds go to CCP!",
@@ -276,6 +278,7 @@
 		"May cause nausea!",
 		"May cause feelings of rage!",
 		"May cause bouts of cringe!",
+		"Do your homework!",
 		"Not fun for the whole family!",
 		"Happiness not guaranteed!",
 		"Reportedly won't run in Belarus"

@@ -160,10 +160,11 @@ class Main extends Sprite {
 		errMsg += "\n\nPlease report this error to the GitHub page: https://github.com/Sufferneer/Inflation-Roulette";
 		#end
 
+		#if desktop
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");
-
 		File.saveContent(path, errMsg + "\n");
+		#end
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));

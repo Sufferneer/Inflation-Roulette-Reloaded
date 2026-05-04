@@ -15,7 +15,7 @@ class SaveVariables {
 	public var alwaysPlayMainMenuAnims:Bool = false;
 	public var cameraSpeed:Float = 0.75;
 	public var cameraEffectIntensity:Float = 1;
-	public var screenSafeZone:Float = 0;
+	public var screenSafeZone:Float = 0.2;
 	public var enableLetterbox:Bool = true;
 	public var showMusicToast:Bool = false;
 	public var useBuiltInCursor:Bool = true;

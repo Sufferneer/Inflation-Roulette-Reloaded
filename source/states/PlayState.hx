@@ -134,7 +134,7 @@ class PlayState extends SuffState {
 
 		camFollow = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
 		FlxG.camera.follow(camFollow, LOCKON);
-		FlxG.camera.followLerp = 60 / FlxG.updateFramerate * 0.1 * Preferences.data.cameraSpeed;
+		FlxG.camera.followLerp = 0.1 * Preferences.data.cameraSpeed;
 		FlxG.camera.setScrollBoundsRect(stage.data.cameraBounds[0], stage.data.cameraBounds[1], stage.data.cameraBounds[2], stage.data.cameraBounds[3]);
 
 		reloadCylinder(GameplayManager.currentGamemode.cylinderLiveCount);
