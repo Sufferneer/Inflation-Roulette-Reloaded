@@ -1,459 +1,597 @@
 // Translation File
-// Language: Russian (Russia)
+// Language: English (US)
 
-// Comments are prefixed with two slashes (//), and will not be recognized by the game.
+// Comments are prefixed with two slashes (//) before each LINE, and will not be recognized by the game.
 // Comments are reserved for translation notes, either to clarify context or give instructions.
+// There's no need to translate comments.
 
-game.title = Рулетка Надувательств: Перезапуск
-game.titleShort = Рулетка Надувательств
-game.acronym = РНП
+// Empty lines will also be ignored as well.
+
+// For the majority of the text in the game UI, a technical tone is used.
+// Unless specified otherwise, most lengthy prompts uses a witty/humorous tone.
+// Some jokes may be regional and lose its punchline. In this case, try come up with a similar joke
+// that works in your country's region. If all else fails, just make an entirely different joke.
+
+// In all cases, try your best to capture the original tone of the locale strings.
+// But if the language you're translating is inherently unserious (e.g. LOLCAT, Pirate Speak), ehh just get the message across.
+// Ultimately, the message that came across should remain unchanged to avoid any confusion.
+
+// For names of people and places, they should remain untranslated.
+// If your language uses another script other than Latin, make sure they phonetically
+// sound similar to its English counterpart.
+// In a nutshell, transliterate names.
+
+// Valid Escape Sequences:
+// \n: New line
+// \s: Whitespace
+// The positions of escape sequences in-between sentences should be left AS IS.
+
+game.title = Раздутая Рулетка: Перезапуск
+game.titleShort = Раздутая Рулетка
+game.acronym = РРП
+
+// Version Formatting
+// For example, if the version is 2.3.1 in an Linux environment,
+// it will be formatted in the following way in the bottom info text of the Main Menu:
+
+// Inflation Roulette: Reloaded
+// Patch of Creativity (Pitstop 3 Amendment 1)
+// Version 2.3.1
+// Linux Build
 
 game.version.numeral.format = Версия %1
-game.version.numeralModded.format = Модифицированная Версия %1
+game.version.numeralModded.format =  Мод Версии %1
 game.version.name.minor.format = Дроп %1
-game.version.name.hotfix.format = Патч %1
+game.version.name.hotfix.format = Хотфикс %1
+// %1 is the platform in which the executable is dedicated.
+// For example, if the game is on Windows, "Windows Build" will be displayed.
+// Note that platform names will remain untranslated.
+game.build.format = Билд Для %1
 
 game.version.name.major.0 = В Разработке
 // Version 1: Initial Release
-game.version.name.major.1 = Первый Релиз
+game.version.name.major.1 = Релиз Игры
 // Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
-game.version.name.major.2 = Патч Креативности
+// The Version Name has two interpretations. One being it being a update that introduces creative-related content (e.g. Modding Tools, Extras).
+// Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
+// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
+// ^My uncreative, unpatched ass could NEVER :fire:
+game.version.name.major.2 = Патч Творчества
+// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
 game.version.name.state.a = Публичная Альфа %1
 game.version.name.state.b = Публичная Бета %1
-game.version.name.state.c = Предварительная Дата Релиза %1
+game.version.name.state.c = Предрелиз %1
 
-game.build.format = %1 Сборка
-
+// These are the button texts in the Main Menu.
 mainMenu.play = Играть
 mainMenu.achievements = Достижения
 mainMenu.options = Настройки
 mainMenu.language = Язык
-mainMenu.addons = Доп.\nКонтент
+mainMenu.addons = Аддоны
+// Utilities means Modding Utilities
 mainMenu.utilities = Инструменты
-mainMenu.gallery = Галерея
+mainMenu.extras = Плюшки
 mainMenu.donate = Донат
 
-mainMenu.donate.tooltip = Ваши щедрые пожертвования помогают в разработке игры!
-mainMenu.donate.tooltip.disabled = На данный момент, функция доната отключена из-за проблем с разработчиками.\nЕсли вы хотите помочь в разработке, расскажите об этой игре другим!
-mainMenu.utilities.tooltip.disabled = Инструменты Моддинга будут доступны в следующем обновлении.
-mainMenu.gallery.tooltip.disabled = Галерея будет доступна в следующем обновлении.
-mainMenu.achievements.tooltip.disabled = Достижения будут доступны в следующем обновлении.
+// Tooltips for buttons in the Main Menu.
+mainMenu.donate.tooltip = Ваши донаты помогают нам работать над этой игрой!
+mainMenu.donate.tooltip.disabled = По некоторым обстоятельствам, донаты отключены.\nЕсли хотите поддержать разработку, расскажите об игре другим!
 
-warningMenu.title = ВНИМАНИЕ
-warningMenu.content = Игра создана для лиц СТАРШЕ 18 ЛЕТ!\nЭто игра про фетиши, в основном о НАДУВАНИИ ФУРЕЙ, и может быть неприемлима для некоторых лиц. Доп. Контент созданный третьими лицами не модерируется, и может вызвать сильнейший дискомфорт у некоторых игроков. Публикация видео и стримминг этой игры на платформах где преобладают дети крайне не рекомендуется.\nЭта игра также содержит мигающие изображения и тряску экрана, что может вызвать приступ эпилепсии у некоторых игроков. Эти эффекты могут быть убраны в меню Настроек.\nНажимая 'Принять', вы были уведомлены о всех правилах и нежелательных эффектах. Мы не несём за это ответственность.
+// When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
+mainMenu.dongs = Ваши набранные Донги:\n%1
+mainMenu.dongs.comment.10 = окей всё хватит
+mainMenu.dongs.comment.20 = у тя другие дела ведь есть
+mainMenu.dongs.comment.50 = ну нажми ты уже кнопочку "играть"
+mainMenu.dongs.comment.100 = чувак, всё норм? к мозгоправу путевка не нужна?
+mainMenu.dongs.comment.200 = двести донгов. самое время травку потрогать
+mainMenu.dongs.comment.300 = знаешь, это всё живой человек делал
+mainMenu.dongs.comment.320 = код печатал, башкой бился лишь бы он работал
+mainMenu.dongs.comment.340 = вырисовывал каждый спрайтик
+mainMenu.dongs.comment.360 = вычерчивал место для каждой кнопочки
+mainMenu.dongs.comment.380 = ау чел я с кем разговариваю
+mainMenu.dongs.comment.400 = у тя время не резиновое
+mainMenu.dongs.comment.500 = ну харош, ну всё, хватит
+mainMenu.dongs.comment.600 = пацан тут слева кнопочка "Играть" тыкни по ней ок
+mainMenu.dongs.comment.700 = вот по ней так же яро кликай как ты щас делаешь
+mainMenu.dongs.comment.800 = уж больно интересно выдалбливать эти донги, да
+mainMenu.dongs.comment.900 = знаешь че, я с тобой больше не разговариваю
+mainMenu.dongs.comment.1000 = ...даже так не убедил?
+mainMenu.dongs.comment.1100 = надеюсь ты хоть знаешь что за это ничего не даётся
+mainMenu.dongs.comment.1200 = вот бы ты так же оценки в шкилке выдрачивал как эти донги
+mainMenu.dongs.comment.1300 = а я говорил, что твои географические широта и долгота записываются?
+mainMenu.dongs.comment.1400 = да, если ты не прекратишь эта инфа попадёт на наши сервера
+mainMenu.dongs.comment.1500 = на данный момент твоё точное местоположение просматривает команда разработчиков.
+mainMenu.dongs.comment.2000 = срань святая, всё ещё тычет
+mainMenu.dongs.comment.3000 = ну ты настолько отчаянный или что
+mainMenu.dongs.comment.5000 = на десять тыщ твоё сохранение сотрётся с компа вместе с игрой
+mainMenu.dongs.comment.10000 = ладно, забирай уже свою ачивку. а теперь с глаз моих долой.
+
+extrasMenu.title = ДОП. ПЛЮШКИ
+extrasMenu.gallery = Галерея
+extrasMenu.jukebox = Пластинки
+
+debugText.framerate = FPS
+debugText.memory = RAM
+debugText.memoryPeak = RAM Peak
+debugText.state = State
+// %1: Debug Text
+debugText.format = %1: %2
+
+// Please make sure that this is written in a formal tone.
+warningMenu.title = ОБРАТИТЬ ВНИМАНИЕ
+warningMenu.content = Эта игра предназначена СТРОГО для лиц СТАРШЕ 18 ЛЕТ.\nИгра содержит фетиши, преимущественно НАДУВАНИЕ ФУРРИ, и для некоторых может оказаться неприемлемой. Аддоны, созданные третьими лицами, НЕ МОДЕРИРУЮТСЯ и могут содержать контент, который может вызвать дискомфорт у некоторых людей. Запись и публикация этой игры на видеохостинги и стриминги, на которых преобладают дети, не приветствуется.\nТакже игра содержит мигающие изображения и тряску экрана, что может вызвать приступ у фоточувствительных людей. Такие эффекты могут быть приглушены в меню Настроек.\nНажимая 'Принять', Вы соглашаетесь с прочитанным и берёте на себя ответственность за нежелательные эффекты, вызванные этой игрой.
 warningMenu.accept = Принять
 
-optionsMenu.heading.gameplay = Игра
-optionsMenu.heading.preferences = Настройки
+optionsMenu.heading.gameplay = Игровой процесс
+optionsMenu.heading.preferences = Предпочтения
 optionsMenu.heading.visuals = Графика
 optionsMenu.heading.audio = Звук
-optionsMenu.heading.accessibility = Совместимость
+optionsMenu.heading.accessibility = Спец. Возможности
 optionsMenu.heading.cursor = Курсор
 optionsMenu.heading.technical = Техническое
-optionsMenu.heading.debugText = Доп Штучки
+optionsMenu.heading.debugText = Информация для Отладки
 
 option.ignoreEliminatedPlayers.name = Пропуск Выбывших
-option.ignoreEliminatedPlayers.description = Выбывшие игроки не будут проигрывать анимацию на свой ход.
-
+option.ignoreEliminatedPlayers.description = Выбывшие игроки не будут проигрывать анимацию во время своего хода.
 // This option is a button.
 option.controls.name = Управление
 option.controls.description = Настройка клавиш.
 
-option.controls.gameplay = Геймплей
-option.controls.keybind.shoot = Выстрел
-option.controls.keybind.exit = Отмена Действия
-option.controls.keybind.camera = Вклуючить Кинематографичную Камеру
-option.controls.keybind.skill1 = Использовать Скилл 1
-option.controls.keybind.skill2 = Использовать Скилл 2
-option.controls.keybind.skill3 = Использовать Скилл 3
-option.controls.keybind.skill4 = Использовать Скилл 4
-option.controls.keybind.pause = Пауза
+option.controls.gameplay = Игровой Процесс
+option.controls.keybind.shoot = Выстрелить
+option.controls.keybind.exit = Отменить
+option.controls.keybind.camera = Переключить Режим Камеры
+option.controls.keybind.skill1 = Использовать 1 Навык
+option.controls.keybind.skill2 = Использовать 2 Навык
+option.controls.keybind.skill3 = Использовать 3 Навык
+option.controls.keybind.pause = Поставить На Паузу
 option.controls.ui = Интерфейс
 option.controls.keybind.up = Вверх
 option.controls.keybind.left = Влево
 option.controls.keybind.down = Вниз
 option.controls.keybind.right = Вправо
-option.controls.debug = Дебаг
-option.controls.keybind.debug1 = Дебаг Клавиша #1
-option.controls.keybind.debug2 = Дебаг Клавиша #2
-option.controls.keybind.debug3 = Дебаг Клавиша #3
-option.controls.keybind.debug4 = Дебаг Клавиша #4
-option.controls.keybind.debug5 = Дебаг Клавиша #5
+option.controls.debug = Отладка
+option.controls.keybind.debug1 = Клавиша Отладки 1
+option.controls.keybind.debug2 = Клавиша Отладки 2
 
 // 1: Keybind Name, 2: Key Orientation (Primary/Secondary)
-option.controls.bindingKey.title = Настройка %1\n%2 Клавиши
+option.controls.bindingKey.title = Настройка "%1"\n%2 Клавиша
 option.controls.bindingKey.bindType.0 = Первичная
 option.controls.bindingKey.bindType.1 = Вторичная
-option.controls.bindingKey.subtitle = Нвжмите Любую Кнопку
-option.controls.bindingKey.bind = Установить
+option.controls.bindingKey.subtitle = Нажмите Любую Клавишу
+option.controls.bindingKey.bind = Привязать
 option.controls.bindingKey.remove = Убрать
 
-option.enablePopping.name = Лопанье
-option.enablePopping.description = При поражении игроки нелетально лопаются.\nЕсли выключено, персонажи будут становится переполненными.\nНачинает работать в следующей игре.
-option.enableBellyGurgles.name = Звуки Живота
-option.enableBellyGurgles.description = Игроки проигрывают звук урчания живота пока стоят или надуваются.
-option.enableBellyCreaks.name = Скрипы
-option.enableBellyCreaks.description = Игроки начинают проигрывать звук скрипа шарика пока стоят или надуваются.
-option.enableFullscreen.name = Полный Экран
-option.enableFullscreen.description = Говорит само за себя, неужто ты настолько туп?
-option.enableForcedAliasing.name = Насильное Сглаживание
-option.enableForcedAliasing.description = Насильно включает сглаживание всем спрайтам. Улучшает производительность, но графика может выглядеть хуже.
-option.alwaysPlayMainMenuAnims.name = Увлекающее Меню
-option.alwaysPlayMainMenuAnims.description = Всегда проигрывать анимацию запуска главного меню.
+// These are not necessary to translate, but they may be helpful for regional keyboards.
+keybind.ALT = Alt
+keybind.BACKSLASH = \
+keybind.BACKSPACE = Back Space
+keybind.BREAK = Pause Break
+keybind.CAPSLOCK = Caps Lock
+keybind.COMMA = ,
+keybind.CONTROL = Control
+keybind.DELETE = Delete
+keybind.EIGHT = 8
+keybind.END = End
+keybind.FIVE = 5
+keybind.FOUR = 4
+keybind.GRAVEACCENT = `
+keybind.HOME = Home
+keybind.INSERT = Insert
+keybind.LBRACKET = [
+keybind.NINE = 9
+keybind.NONE = [---]
+keybind.NUMLOCK = Num Lock
+keybind.NUMPADEIGHT = Numpad 8
+keybind.NUMPADFIVE = Numpad 5
+keybind.NUMPADFOUR = Numpad 4
+keybind.NUMPADMINUS = Numpad -
+keybind.NUMPADMULTIPLY = Numpad *
+keybind.NUMPADNINE = Numpad 9
+keybind.NUMPADONE = Numpad 1
+keybind.NUMPADPERIOD = Numpad .
+keybind.NUMPADPLUS = Numpad +
+keybind.NUMPADSEVEN = Numpad 7
+keybind.NUMPADSIX = Numpad 6
+keybind.NUMPADSLASH = Numpad /
+keybind.NUMPADTHREE = Numpad 3
+keybind.NUMPADTWO = Numpad 2
+keybind.NUMPADZERO = Numpad 0
+keybind.ONE = 1
+keybind.PAGEDOWN = Page Down
+keybind.PAGEUP = Page Up
+keybind.PERIOD = .
+keybind.PRINTSCREEN = Print Screen
+keybind.QUOTE = '
+keybind.RBRACKET = ]
+keybind.SCROLL_LOCK = Scroll Lock
+keybind.SEMICOLON = ;
+keybind.SEVEN = 7
+keybind.SIX = 6
+keybind.SLASH = /
+keybind.SPACE = Space
+keybind.THREE = 3
+keybind.TWO = 2
+keybind.ZERO = 0
+
+option.enablePopping.name = Лопание
+option.enablePopping.description = Игроки несмертельно взрываются от переизбытка давления.\nКогда отключено, игроки просто надуваются сильнее.\nНачинает действовать со следующей игры.
+option.enableBellyGurgles.name = Урчание
+option.enableBellyGurgles.description = Игроки проигрывают звуки урчащего живота, когда надуты.
+option.enableBellyCreaks.name = Трещание
+option.enableBellyCreaks.description = Игроки проигрывают звуки трещащего воздушного шара, когда надуты.
+option.enableFullscreen.name = Полноэкранный Режим
+option.enableFullscreen.description = Надеюсь, мозгов хватит, чтобы догадаться?
+option.hideHUD.name = Спрятать Интерфейс
+option.hideHUD.description = Прячет интерфейс во время игры. Полезно для захвата экрана.
+// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
+option.enableForcedAliasing.name = Отключить сглаживание
+option.enableForcedAliasing.description = Спрайты не сглаживаются, если активно. Некоторая графика может выглядеть обрезанно.
+option.enableGLSL.name = Шейдеры
+option.enableGLSL.description = Включает GLSL шейдеры для некоторых элементов меню. Отключение может сбавить нагрузку на слабые видеокарты.
+option.alwaysPlayMainMenuAnims.name = Увлекательное Меню
+option.alwaysPlayMainMenuAnims.description = В Главном Меню всегда проигрываются анимации при заходе.
 option.showMusicToast.name = Музыкальные Плашки
-option.showMusicToast.description = Каждый раз когда музыка начинает играть, появляется плашка с ей названием и её автором.
+option.showMusicToast.description = Когда фоновая музыка меняется, будет появляться уведомление с названием трека и его автором.
 option.enableLetterbox.name = Барьеры
-option.enableLetterbox.description = Включает и выключает чёрные полосы сверху и снизу экрана во время катсцен.
+option.enableLetterbox.description = Показывает чёрные полосы сверху и снизу экрана во время анимаций и катсцен.
 option.musicVolume.name = Громкость Музыки
-option.musicVolume.description = Громкость фоновой музыки.
-option.gameSoundVolume.name = Громкость Звуков Игры
-option.gameSoundVolume.description = Громкость внутреигровых звуков.
-option.uiSoundVolume.name = Звук ПИ
-option.uiSoundVolume.description = Громкость пользовательского интерфейса.
-option.enablePhotosensitiveMode.name = Режим Эпилепсии
-option.enablePhotosensitiveMode.description = Уменьшает количество/смягчает световые эффекты.\nКрайне рекомендуется для людей с эпилепсией.
+option.musicVolume.description = Громкость фоновой музыки в процентах.
+option.gameSoundVolume.name = Громкость Игровых Звуков
+option.gameSoundVolume.description = Громкость звуковых эффектов во время геймплея в процентах.
+option.uiSoundVolume.name = Громкость Интерфейса
+option.uiSoundVolume.description = Громкость звуковых эффектов интерфейса в процентах.
+option.enablePhotosensitiveMode.name = Режим Фоточувствительности
+option.enablePhotosensitiveMode.description = Уменьшает количество вспышек и других мигающих эффектов.\nКрайне рекомендуется для людей с фоточувствительной эпилепсией.
 option.cameraSpeed.name = Скорость Камеры
-option.cameraSpeed.description = Влияет на скорость движения камеры.
+option.cameraSpeed.description = Насколько быстро камера перемещается по сцене.
 option.cameraEffectIntensity.name = Интенсивность Камеры
-option.cameraEffectIntensity.description = Сила тряски экрана и прочих дезориентирующих штук.
+option.cameraEffectIntensity.description = Насколько сильной будет тряска камеры и прочие дизориентирующие эффекты.
 option.useBuiltInCursor.name = Встроенный Курсор
-option.useBuiltInCursor.description = Использовать внутриигровой курсор или ваш системный курсор.
-option.playCursorSounds.name = Звук Курсора
-option.playCursorSounds.description = Проигрывать звук каждый раз когда вы кликаете.
-option.maxFramerate.name = Максимальное ФПС
-option.maxFramerate.description = Верхний порог ФПС выгре. ФПС в игре будет держатся этого числа.
-option.pauseOnUnfocus.name = Пауза В Расфокусе
-option.pauseOnUnfocus.description = Автоматически останавливать игру при свёртывании или расфокусе.
-option.cacheOnGPU.name = Использование Видеопамяти
-option.cacheOnGPU.description = Позволяет использовать видеопамять для уменьшения расхода памяти.\nМожет не работать корректно на старых устройствах.
-option.enableDebugKeybinds.name = ДеБаг Сочетания Клавиш
-option.enableDebugKeybinds.description = Включить DEBUG клавиши на ПК.\n(Отключает внутреигровые достижения)
-option.showDebugText.name = ДеБаг Текст
-option.showDebugText.description = Показывает Дебаг информацию в левой верхней части экрана.
+option.useBuiltInCursor.description = Показывает внутриигровой курсор вместо системного.
+option.playCursorSounds.name = Звуки Курсора
+option.playCursorSounds.description = Проигрывает звук щелчка, когда игрок кликает.
+option.maxFramerate.name = Максимум Частоты Кадров
+option.maxFramerate.description = Сколько раз экран должен обновляться за секунду.
+option.pauseOnUnfocus.name = Пауза в Расфокусе
+option.pauseOnUnfocus.description = Ставит игру на паузу в свёрнутом состоянии и расфокусе.
+option.cacheOnGPU.name = Кеширование в Видеопамяти
+option.cacheOnGPU.description = Позволяет использовать видеопамять для уменьшения расхода оперативной памяти.\nМожет работать некорректно на слабых видеокартах.
+option.enableDebugKeybinds.name = Клавиши Отладки
+option.enableDebugKeybinds.description = Включает клавиши для отладки на ПК.\n(Не позволяет получать достижения после нажатия)
+option.showDebugText.name = Информация для Отладки
+option.showDebugText.description = Отображает Информацию для Отладки в левом верхнем краю экрана.
 option.showFramerateOnDebugText.name = Частота Кадров
-option.showFramerateOnDebugText.description = Показывает частоту кадров в ДеБаг информации.
-option.showMemoryUsageOnDebugText.name = Импользование Памяти
-option.showMemoryUsageOnDebugText.description = Показывает текущее использование памяти в ДеБаг информации.
+option.showFramerateOnDebugText.description = Отображает текущую частоту кадров в Информации для Отладки.
+option.showMemoryUsageOnDebugText.name = Использование Памяти
+option.showMemoryUsageOnDebugText.description = Отображает текущее использование памяти в Информации для Отладки.
 option.showCurrentStateOnDebugText.name = Текущее Состояние
-option.showCurrentStateOnDebugText.description = Показывает текущее состояние навигации меню игры в ДеБаг информации.
+option.showCurrentStateOnDebugText.description = Отображает текущее открытое меню в Информации для Отладки.
 
 addonsMenu.authors = Авторы:
-addonsMenu.noAddonsDetected.title = Доп. Контент не найден.
-addonsMenu.noAddonsDetected.content = Доп контент в соответствующей папке не найден. Пожалуйста, проверьте содержание вашего metadata.json файла в папке metadata в папке addons.\nЕсли вы думаете что это ошибка игры, свяжитесь с нами на GitHub.(Пишите на английском. Данный переф=вод сделан фанатом.)
+addonsMenu.noAddonsDetected.title = Аддоны не Обнаружены
+addonsMenu.noAddonsDetected.content = Аддоны не были обнаружены в соответствующей папке. Проверьте наличие файла metadata.json в папке metadata Ваших аддонов.\nЕсли Вы думаете, что произошла ошибка, пожалуйтесь на проблему в нашем репозитории GitHub.
 
 languageMenu.title = ВЫБОР ЯЗЫКА
-languageMenu.description = Заметка: Перевод может быть неточным, и может содержать ошибки и непереведённые слова. Если вы хотите помочь нам с переводом, свяжитесь с нами на GitHub.(Пишите на английском. Данный перевод сделан фанатом. )
+languageMenu.description = Учтите: Перевод может быть неточным и содержать ошибки/непереведённый текст. Если Вы желаете улучшить перевод, Вы можете сделать вклад в наш репозиторий на GitHub.
 languageMenu.contributors = Авторы
 
-gamemodeSelect.title = ВЫБОР РЕЖИМА ИГРЫ
-gamemode.quickPlay.name =  Быстрая \nИгра
-gamemode.quickPlay.description = Рандомные персонажи.\nСразу в игру; без замарочек.
+gamemodeSelect.title = ВЫБОР РЕЖИМА
+gamemode.quickPlay.name = Быстрая Игра
+gamemode.quickPlay.description = Случайные персонажи.\nСразу в бой. Без заморочек.
 gamemode.reloaded.name = Перезапуск
-gamemode.reloaded.description = Новенький способ играть в Рулетку Надувательств.\nСбалансированно как только можно.
-gamemode.inequality.name = Не Равны
-gamemode.inequality.description = Игрокам даются случайные способности за каждую живую пулю.\nВсе игроки равны, но некоторые всё же равнее.
-gamemode.classic.name = Классик
-gamemode.classic.description = Настоящий рандом и бесконечный саботаж.\nОригинальный геймплей.
-gamemode.charge.name = Перегруз
-gamemode.charge.description = Урон увеличивается с каждым холостым патроном.\nРиски и зрелища!
+gamemode.reloaded.description = Совершенно новый способ игры в Раздутую Рулетку.\nСбалансировано по задумке разработчика.
+gamemode.inequality.name = Неравенство
+gamemode.inequality.description = С каждым боевым патроном игроки получают по случайному навыку.\n"О, вы думали, что все равны, но есть равнее!" — Медведь-капиталист
+gamemode.classic.name = Классика
+gamemode.classic.description = Истинный рандом и бесконечная подстава.\nКлассический способ игры.
+gamemode.charge.name = Нарастание
+gamemode.charge.description = Урон увеличивается с каждым холостым патроном.\nРисково, но зрелищно.
 gamemode.1v1.name = Дуэль
-gamemode.1v1.description = Деньги, ствол, два игрока.\nПвП режим предложен ничего не подозревющим одноклассником.
-gamemode.sixPlayers.name = Потасовка
-gamemode.sixPlayers.description = Шесть игроков.\nХорошо смеётся тот, кто смеётся последний на фоне пяти жалких воздушных шаров!
+// Context: A classmate of mine suggested this.
+gamemode.1v1.description = Деньги, ствол, два игрока.\nРежим предложен одним жирдяем.
+gamemode.sixPlayers.name = Беспредел
+gamemode.sixPlayers.description = Шестикратный кавардак!\nСразись сразу с пятью другими игроками!
 
-characterSelect.selectCharacter = ВЫБЕРИТЕ ПЕРСОНАЖЕЙ
-characterSelect.holdCardsToSeeInfo = Наведите курсор на карточку для большей информации
+// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
+characterSelect.selectCharacter = ВЫБОР ЛИКА
+characterSelect.holdCardsToSeeInfo = Наведите На Профиль Для Дополнительной Информации
+// Select Stage: This however, does not need to be in the same tone as Select Character.
+characterSelect.selectStage = ВЫБОР ЛОКАЦИИ
 
 // Player Settings
-characterSelect.option.cpuControlled = CPU
-characterSelect.option.skillLevel = Безобидный
+characterSelect.option.cpuControlled = ПК
+characterSelect.option.skillLevel = Интеллект ПК:
 // Easy mode. Only shoots and does nothing else.
-characterSelect.option.skillLevel.1 = Неприцельный Огонь
+characterSelect.option.skillLevel.1 = Бесцельный
 // Normal mode. Same as Easy mode. Can use Skills periodically... at random.
-characterSelect.option.skillLevel.2 = Рассчитанный
+characterSelect.option.skillLevel.2 = Способный
 // Hard mode. Estimate chances and acts accordingly.
-characterSelect.option.skillLevel.3 = Стратегический
+characterSelect.option.skillLevel.3 = Хитроумный
 // This text appears when more than 1 player-controlled characters are present.
 // Prevents player from cheating
 characterSelect.cantEarnAchievements = Вы не сможете получать достижения с данными настройками.
 
+// Goober: A character species present in the original Inflation Roulette.
+// Looks like a feline, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
+// Skills: Reload, Sabotage
 character.goober.name = Губер
 character.goober.name.short = Губер
-character.goober.description = Самый распространённый вид, живущий в промышленной зоне. Довольно хорошо владеет пушками.
+character.goober.description = Преобладающий вид, живущий в промышленных зонах. Достаточно хорошо владеют пушками.
+// Shib: Character created by NicklySuffer. Non-binary, and designed to look like one of those simplistic white cat anons.
+// Screams "city boy" vibes.
+// Skills: Sabotage, Amnesia
+character.shibanou.name = Шибаноу
+character.shibanou.name.short = Шиб
+character.shibanou.description = Внеземной хитрец, обожает чай с лимоном. Способен наколдовать помутнение памяти.
+// Chester: Character created by NicklySuffer. Works in a coffee shop, and also looks like one of those simplistic white cat anons,
+// but wears a cap too I guess. Screams "overworked minimum wagie" vibes.
+// Designed with no offensive skills, but has one more pressure point lmao.
+// Skills: Reveal, Reload
+character.chester.name = Честер
+character.chester.name.short = Честер
+character.chester.description = Несчастный бариста, вынужденный играть своей компанией. Его работа воспитала в нём устойчивость.
+// Option to choose a random character.
 character.random.name = ???
 character.random.name.short = ???
-character.random.description = Не уверен кого хочешь выбрать? Дай игре сделать это за тебя.
+character.random.description = Не уверены, кого выбрать? Позвольте игре решить.
 
-gameOn.text = СТАРТ!
+// Classic Room: The original stage from the original game redrawn.
+stage.classic = Классическая Комната
+stage.classic.description = Та самая комната, которая Вам так хорошо знакома.
+// Manager's Lounge: The context is that four people, either motivated by a better life or forced by their higher-ups, are
+// offered a place as a game participant to satisfy the manager's desires.
+stage.reloaded = Гостиная Менеджера
+stage.reloaded.description = Эта сцена выглядит, как что-то из порнушки. На деле так и есть, и вас записывают.
+// Shitfucks Café: Named Shitfucks. The exact coffee shop that Chester works at.
+// Sells coffee that inflates people, and agreed to host horrible shit like this. Disgusting.
+// Again, transliterate Shitfucks.
+stage.shitfucks = Кофейня Щитфакс
+stage.shitfucks.description = Здесь продаются всякие ничуть не сомнительные напитки. Все слухи о том, что они надувают людей, надуманы.
+// White Void: Literally just a white void with a glass table.
+stage.void = Пустота
+stage.void.description = Имя нарицательное месту для разного рода занятий, что встречается в многочисленных артах и анимациях.
+stage.random = ?????
+stage.random.description = Не уверены, что выбрать? Позвольте игре решить.
+
+// Splash text that is displayed
+gameOn.text = В БОЙ!
 
 skill.reload.name = Перезарядка
-skill.reload.description = Перезарядите пушку, обновляя свои шансы выстрелить живым патроном.
-skill.sabotage.name = Саботаж
-skill.sabotage.description = Следующий игрок получает гарантированный живой патрон.
-skill.pressurize.name = Перегруз
-skill.pressurize.description = Следующий живой патрон нанесёт 2x урона.
-skill.polarize.name = Поляризация
-skill.polarize.description = Инвертируйте состояние патрона.
-skill.deflate.name = Сдутся
-skill.deflate.description = Сдуйтесь, убрав 1 очко давления.
+skill.reload.description = Перезаряжает пушку, а с ней и шанс на боевой патрон.
+skill.sabotage.name = Подстава
+skill.sabotage.description = Опустошает Ваш патрон и заряжает следующий.
+skill.pressurize.name = Наддув
+skill.pressurize.description = Наделяет следующий боевой патрон двойным уроном.
+skill.polarize.name = Инвертировать
+skill.polarize.description = Меняет холостой патрон на боевой и наоборот.
+skill.deflate.name = Выдох
+skill.deflate.description = Уменьшает Давление на одну единицу.
+skill.reveal.name = Подсмотреть
+skill.reveal.description = Показывает положение следующего боевого патрона.
+skill.amnesia.name = Амнезия
+skill.amnesia.description = Запрещает сопернику по выбору использовать свои способности.
+skill.assault.name = Напасть
+skill.assault.description = Выстрелите в соперника по выбору. Жертва получит две единицы Смелости, если патрон окажется холостым.
 
-pauseMenu.title = ПАУЗА
+pauseMenu.title = ИГРА НА ПАУЗЕ
 pauseMenu.resume = Продолжить
-pauseMenu.restart = Рестарт
+pauseMenu.restart = Заново
 pauseMenu.options = Настройки
+pauseMenu.exit = Выход
 
 stats.pressure = Давление
-stats.confidence = Уверенность
-stats.skill = Скил
-stats.skills = Скилы
+stats.confidence = Смелость
+stats.skill = Навык
+stats.skills = Навыки
 stats.modifier = Модификатор
 stats.modifiers = Модификаторы
 
-mainMenu.extras = Экстра
-
-mainMenu.dongs = Ваши Донги:\n%1 Донг/а/ов
-mainMenu.dongs.comment.10 = Ок, ты можешь перестать это делать?
-mainMenu.dongs.comment.20 = У тебя нет дел получше?
-mainMenu.dongs.comment.50 = Отстань. иди и играё в чёртову игру.
-mainMenu.dongs.comment.100 = Чел, всё хорошо? ты псих?
-mainMenu.dongs.comment.200 = Двести раз бро. иди найди работу или чё?
-mainMenu.dongs.comment.300 = Ты знаешь, есть человек который это сделал
-mainMenu.dongs.comment.320 = Чреначу этот код, дебагаю как могу
-mainMenu.dongs.comment.340 = До боли вырисовываю каждого персонажа
-mainMenu.dongs.comment.360 = Дезайню тупой интерфейс
-mainMenu.dongs.comment.380 = ... Ты вообще меня слушаешь?
-mainMenu.dongs.comment.400 = Хватит тратить своё время
-mainMenu.dongs.comment.500 = Ок, хватит, типа, серьёзно
-mainMenu.dongs.comment.600 = Батанчик кликнуть "играть" не так уж и сложно
-mainMenu.dongs.comment.700 = Подвинь курсор на кнопочку, играй в тупую игру
-mainMenu.dongs.comment.800 = Не ужто так сложно поиграть в эту тупую игру
-mainMenu.dongs.comment.900 = Знаешь что? я больше не буду с тобой разговаривать
-mainMenu.dongs.comment.1000 = ... До сих пор кликаешь на эту штуку?
-mainMenu.dongs.comment.1100 = Ты знаешь что ты нихера не получишь, верно
-mainMenu.dongs.comment.1200 = Хватит тратить своё время так, как будто ты сможешь его вернуть
-mainMenu.dongs.comment.1300 = Ты знаешь что эта игра записывает твои координаты широты и долготы?
-mainMenu.dongs.comment.1400 = Если не перестанешь, твоя точная позиция будет слита на наши сервера
-mainMenu.dongs.comment.1500 = Твоя текущая локация просматривается создателями...
-mainMenu.dongs.comment.2000 = О боже мой ты не остонавливаешься
-mainMenu.dongs.comment.3000 = Тебе просто скучно, так?
-mainMenu.dongs.comment.5000 = При 10000 донгов твояя дата будет удалена вместе с этой игрой.
-mainMenu.dongs.comment.10000 = Ладно, забирай ты уже свою тупую ачивку и ВАЛИ НАХУЙ.
-
-extrasMenu.title = ЭКСТРА КОНТЕНТ
-extrasMenu.gallery = Галерея
-extrasMenu.jukebox = Проигрыватель
-
-debugText.framerate = ФПС
-debugText.memory = RAM
-debugText.memoryPeak = RAM Peak
-debugText.state = Состояние
-debugText.format = %1: %2
-
-option.enableForcedAliasing.name = Принудительное Сглаживание
-option.enableGLSL.name = Шейдеры
-option.enableGLSL.description = Включает GLSL шейдеры для некоторых элементов меню. Отключение этой функции может снизить нагрузку на видеокарты с низкой производительностью.
-
-characterSelect.selectCharacter = ВЫБЕРИТЕ ПЕРСОНАЖЕЙ
-characterSelect.holdCardsToSeeInfo = Наведите курсор на карточку для большей информации
-characterSelect.selectStage = ВЫБЕРИТЕ ЭТАП
-
-character.goober.name.short = Губер
-character.shibanou.name = Шибаноу
-character.shibanou.name.short = Шиб
-character.shibanou.description = Инопланетянин, хитёр и любит лемонный чай. Оно может вызвать временную потерю воспоминаний.
-character.chester.name = Честер
-character.chester.name.short = Честер
-character.chester.description = Несчастный бариста которого вынудили играть за компанию. Его работа натренировала его "выносливость".
-character.random.name.short = ???
-
-skill.reveal.name = Подсмотреть
-skill.reveal.description = Посмотреть в барабан пушки.
-skill.amnesia.name = Амнезия
-skill.amnesia.description = Блокирует скилы опонента до следующего хода.
-skill.assault.name = Облава
-skill.assault.description = Выстрел в опонента. Даёт жертве 2 очка уверенности если патром окажется холостым.
-
-stage.classic = Классическая комната
-stage.classic.description = Старая добрая и всем знакомая комната.
-stage.reloaded = Зал Менеджера
-stage.reloaded.description = Эта сцена выглядит как съемочная площадка порнофильма. Потому что она отчасти таковой и является, и всё это записывается.
-stage.shitfucks = Кафе "Харчёвня"
-stage.shitfucks.description = Специалезируется на продаже напитков. Здесь абсолютно нет ничего необычного.
-stage.void = Белая Пустота
-stage.void.description = Это место стало широко известно благодаря множеству мероприятий, и его изображения встречаются в бесчисленных произведениях искусства и анимации.
-stage.random = ?????
-stage.random.description = Не уверен что выбрать? Дай игре выбрать за тебя!
-
+// Be the last player standing in a match.
 achievement.firstWin.name = Первая Победа
-achievement.firstWin.description = Твоя жизнь теперь связанна цепями навечно.
-achievement.noPressureWin.name = Бесподобно
-achievement.noPressureWin.description = Госпожа Удача на твоей стороне. Ты выбрался из передряги без единой царапины.
-achievement.fullPressureWin.name = Триумфальная Победа (почти)
-achievement.fullPressureWin.description = Не смотря на максимум давления, ты сражался до конца.
-achievement.sabotages.name = Импостер
-achievement.sabotages.description = Тебе ТАК нравится Губер, да? Используй его способность 50 раз.
-achievement.doublePressurize.name = Квадратное Уравнение
-achievement.doublePressurize.description = Следующему игроку остаётся только принять свою судьбу, так как ты перегрузил пушку дважды.
-achievement.pressurizeYourself.name = Рикошет
-achievement.pressurizeYourself.description = "Бумеранг огнём летел". Совпадение или случайность?
-achievement.maximumScore.name = Цена Перфекционизма
-achievement.maximumScore.description = Отлично. Ты сыграл идеально, но какой ценой...
+achievement.firstWin.description = С этого момента твоя жизнь навеки окутана цепями.
+// Be the last player standing, and with your Pressure value = 0.
+achievement.noPressureWin.name = Недотрога
+achievement.noPressureWin.description = Грамотно распоряжаясь удачей и навыком, ты умудрился избежать всякий урон.
+// Be the last player standing, and with your Pressure value at its max.
+achievement.fullPressureWin.name = Пузатые Рулят
+achievement.fullPressureWin.description = Даже на своём пределе, ты боролся до последнего.
+// Sabotage ten times in your lifetime.
+//           ^ ???
+achievement.sabotages.name = Крыса со Стажем
+achievement.sabotages.description = Ты так любишь Губера, да? Ты маленький Губеролюб. Используй его способность 50 раз.
+// Pressurize twice in a row without shooting a live round.
+achievement.doublePressurize.name = Дважды Два
+achievement.doublePressurize.description = Используй Наддув дважды за патрон под звуки молитв своих соперников.
+// Pressurize, then shoot yourself with the live round afterwards.
+achievement.pressurizeYourself.name = Я Твой Живот Наоборот
+achievement.pressurizeYourself.description = Используй Наддув и на себе убедись, что он работает, специально ИЛИ случайно.
+// Get a P Rank, AKA the maximum score.
+achievement.maximumScore.name = Пытка Ради Превосходства
+achievement.maximumScore.description = Отлично, ты сыграл безупречно. Теперь посмотри, чего это тебе стоило.
+// Get the lowest score possible.
 achievement.minimumScore.name = Стратегическое Поражение
-achievement.minimumScore.description = Ты даже не старался. Но если присмотрется, то ты сделал это намеренно. НАМЕРЕННО ПРОИГРАЛ?
+achievement.minimumScore.description = Пацан к успеху шёл, только направление попутал. Так дебильно играть можно только намеренно.
+// Win in all game modes at least once.
 achievement.allGameModeWins.name = Кругосветка
-achievement.allGameModeWins.description = Знак преданности делу и неэффективности.
-achievement.allCharacterWins.name = Мои Браточки
-achievement.allCharacterWins.description = Видимо, у тебя нету любимчиков среди этих персонажей.
-achievement.allEasterEggs.name = Дефецит Внимания
-achievement.allEasterEggs.description = Архаичные иероглифы скрыты под покровом тайны, и их можно обнаружить только при поиске в архивах или анализе кода.
+achievement.allGameModeWins.description = И конечно, вместо занятия делом ты попёрся играть на всех локациях.
+// Win as all vanilla characters at least once.
+achievement.allCharacterWins.name = Не Имей Сто Рублей
+// ^А имей сто друзей. Каждый даст по два рубля, будет двести у тебя.
+achievement.allCharacterWins.description = Похоже, среди этих ликов у тебя нет любимого.
+// Find all Easter Egg Startups.
+achievement.allEasterEggs.name = Бездельник Года
+achievement.allEasterEggs.description = Глифы античности сокрыты завесой загадки. Отыскать их можно прошерстив файлы или код.
+// Accumulate 10000 Dongs in the Main Menu.
 achievement.noLife.name = Финальный Босс Безработицы
-achievement.noLife.description = Потрать своё время без причины. Теперь ты клеймлён. Навсегда.
+achievement.noLife.description = Ради ЭТОГО драгоценное время твоей жизни было потрачено впустую. Это не достижение, это клеймо, и тебе придётся жить с ним.
 
-achievementsMenu.title = Выши Достижения
-achievementsMenu.description = Выберите достижение чтобы посмотреть подробности и процент выполнения.
+achievementsMenu.title = Ваши достижения
+achievementsMenu.description = Выберите достижение для просмотра деталей и статуса выполнения.
 achievementsMenu.resetProgress = Сбросить Прогресс
 
-achievementToast.title = Достижение Открыто!
+achievementToast.title = Открыто Достижение!
 
 resetAchievementMenu.prompt = Вы подтверждаете сброс\n%1?\nЭто действие нельзя отменить.
 
+// If the language's script can be written vertically, set this string to false
 galleryMainMenu.envelope.rotateText = true
-galleryMainMenu.envelope.goober.description = Впервые показанные в оригинальной игре, Губеры вступают в дело с новым внешним видом! Они стали популярными персонажеми, что появляются в бесчисленных ремейках и фанарт-работах.\n\nЧто касается того, почему и как они присоединились к игре, никто не знает! Актеры? Заложники? Предатели? Кто знает? О их биологии известно немного, но подтверждено, что они классифицируются на несколько рас, от Губеров, полностью состоящих из слизи, до R»EDA©±ED§²½\n\nГуберы — это вид, созданный Snowyboi.
-galleryMainMenu.envelope.asimo.description = Используя свои электрические способности, Асимо врывается в «Рулетку Надувательств», заявляя, что «хочет немного повеселиться».\n\nМы не знаем, как он здесь оказался, и у нас нет с ним никаких связей, кроме того, что он волк, он тестировщик мода «Friday Night Funkin'» у менеджера, и он победитель художественной лотереи, в результате которой его персонаж был добавлен в игру в качестве персонажа для тестового дополнения «Example Addon».\n\nАсимо — персонаж-гость, принадлежащий WolfKylis.
-galleryMainMenu.envelope.shibanou.description = Фамилия Нобу; Имя Шиба. Это кошкоподобное существо, прибывшее с таинственной планеты, готово взорвать кого угодно. Его китайское имя можно перевести как «Ноль десять восемь», что происходит от названия ядерного объекта в Пекине, на который оно приземлилось.\n\nПервые 20 лет своей жизни оно провело, перебираясь с места на место, чтобы найти себе пристанище, и в конце концов нашло себя в гараже Менеджера. Мужчина взял его в качестве своего второго помощника и вскоре влюбился в главного помощника (выращенного в лаборатории, кста, фу). Без видимой причины, кроме желания похвастаться перед своим парнем, оно присоединилось к игре, чтобы продемонстрировать свои скрытые способности.\n\nШибаноу — персонаж, принадлежащий NicklySuffer, созданный до разработки Рулетки Надувательств Прерзапуск (Inflation Roulette Reloaded).
-galleryMainMenu.envelope.chester.description = Будучи главным бариста кофейни, он был вынужден играть в эту игру в качестве представителя компании. Из-за плохих академических результатов и обычно нехаризматичного поведения его мечта о процветании и богатстве пока недостижима.\n\nЕго ежедневная работа заключается в приготовлении чрезмерно сладких напитков для похотливых клиентов. Некоторые говорят, что эти напитки обладают «расширяющим» эффектом, что привлекло внимание нескольких инспекторов по безопасности пищевых продуктов. Однако из-за их монополистического влияния в обществе предупреждения со стороны пищевого ведомства ни к чему не привели.\n\nЧестер — персонаж, принадлежащий NicklySuffer, созданный до разработки Рулетка Надуваетльств Перезапуск (Inflation Roulette Reloaded).
-galleryMainMenu.envelope.dev = Арты Создателей
-galleryMainMenu.envelope.dev.description = Коллекция концепт-артов, скетчей и неиспользованных ассетов, что создали разработчики.\n\nзлая           птичка
+// Context: According to Snowyboi, there are different versions of Goobers, one being Slime Goobers, and one labelled "???".
+// The way I interpret this is like, them having races or something
+galleryMainMenu.envelope.goober.description = Впервые показанные в классической версии, Губеры вступают в бой в новом обличии! Они стали главными персонажами многочисленных ремейков и фанартов по этой игре.\n\nНикто не знает, почему они вообще решили играть! Актёры? Заложники? Продажные? Фанаты продолжают теоризировать! О их биологии известно мало, но подтверждена информация о наличии у них нескольких рас, варьирующихся от Губеров, сделанных целиком из слизи, до R»EDA©±ED§²½\n\nГуберы — это вид, созданный Snowyboi.
+// Context: Literally no lore implication. He's just here for the sake of being here lol
+galleryMainMenu.envelope.asimo.description = Обладающий силой тока Асимо врывается в Раздутую Рулетку, чтобы, по его словам, "повеселиться".\n\nМы понятия не имеем, как он сюда попал, и вообще у нас с ним никаких связей нет, разве что у Менеджера, Асимо работает тестером для его тупого мода на Friday Night Funkin', а ещё он победил в лотерее и попал в игру как персонаж для Аддона "Example Addon".\n\nАсимо — персонаж-гость, принадлежащий WolfKylis.
+// Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
+// that agrees to join that's it.
+galleryMainMenu.envelope.shibanou.description = Фамилия — Ноу; имя — Шиба. У этого кошкоподобного пришельца так и чешутся руки кого-то подорвать. Его имя с китайского можно перевести как "Ноль Десять Восемь", происходящее от названия ядерного объекта в Пекине, куда он и приземлился.\n\nПервые годы своей жизни Шиба потратил на поиск жилища, и в определённый момент обосновался у Менеджера в гараже. Чел решил его приютить, дабы тот был его вторым ассистентом, а он взял и втюрился в первого ассистента (фу, он же из пробирки). Без особых причин, кроме как выпендриться перед своим парнем, он вступил в игру, чтобы показать своё волшебство.\n\nШибаноу — это персонаж, принадлежащий NicklySuffer, созданный до начала разработки Раздутой Рулетки: Перезапуск.
+// Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
+galleryMainMenu.envelope.chester.description = Будучи главным бариста кофейни, Честер был вынужден играть в эту игру в качестве представителя компании. Из-за своего низкого среднего балла и нехаризматичного характера, его мечта об успехе и богатстве остаётся недостижимой.\n\nЕго ежедневная работа состоит из приготовления приторных напитков для похотливых клиентов. Ходят слухи, что эти напитки обладают неким "расширяющим" эффектом, что привлекло внимание нескольких инспекторов безопасности. Однако, стоит компании предложить монеточку — и все предупреждения сразу же снимаются с кофейни.\n\nЧестер — это персонаж, принадлежащий NicklySuffer, созданный до начала разработки Раздутой Рулетки: Перезапуск.
+galleryMainMenu.envelope.dev = Арты Разработчиков
+galleryMainMenu.envelope.dev.description = Коллекция концептов, скетчей и вырезанного контента, нарисованного разработчиками и прочими художниками.\n\nэнгре           бёрд
 galleryMainMenu.envelope.community = Арты Сообщества
-galleryMainMenu.envelope.community.description = Коллекция фанартов от друзей разработчиков и сообщества игры.
-galleryEntryMenu.viewFullImage = Посмотреть Полное Изображение
+galleryMainMenu.envelope.community.description = Коллекция фанартов, нарисованных друзьями и фанатами разработчиков.
+galleryEntryMenu.viewFullImage = Показать Целиком
 
-gameUI.selectTarget = ВЫБЕРИТЕ ЦЕЛЬ
-
-utilitiesMenu.characterCreator = Создатель Спрайтов
-utilitiesMenu.stageEditor = Просмотр Сцены
-utilitiesMenu.loadFile = Загрузить Файл
+// These will be button text that will be in the Utilities Main Menu.
+utilitiesMenu.characterCreator = Редактор Персонажей
+utilitiesMenu.stageEditor = Просмотр Локаций
+utilitiesMenu.loadFile = Импорт Файла
 utilitiesMenu.newFile = Новый Файл
-utilitiesMenu.loadDirectory = Загрузить Папку
+utilitiesMenu.loadDirectory = Импорт Папки
 utilitiesMenu.newDirectory = Новая Папка
-utilitiesMenu.browseImage = Загрузить Изображение
-utilitiesMenu.browseImage.downloadTemplate = Загрузить Шаблон
-utilitiesMenu.browseImage.recommendedSize = Рекомендованный Размер: %1px × %2px
-utilitiesMenu.browseImage.adjustOffsets.title = Регулеровка Смещения
-utilitiesMenu.browseImage.adjustOffsets.description = Используй стрелки для перемещения Изображения.\nЗажми SHIFT/CTRL для увеличения скорости\nУбедитесь, что изображение выровнено по нижнему центру силуэта
-utilitiesMenu.error.prompt = Произошла Ошибка.
-utilitiesMenu.firstStartup.prompt = Внимание: Функция Нестабильна\n\nДанные инструменты не являются теми, что используют разработчики, и предназначены для художников и лёгенького создание персонажей. Везде и в любое время эта штука может вылететь и сломатся. Тут нету функции автосохронения; СОХРОНЯТСЯ ВРУЧНУЮ крайне рекомендуется.\n\nЕсли вы хотите поспорить о функционале, для началя изучите JSON и Flash тебя дери.
+// ^Новая Папка? Не, мне больше нравятся старые мамки
+utilitiesMenu.browseImage = Просмотр Изображения
+utilitiesMenu.browseImage.downloadTemplate = Загрузка Шаблона
+// %1: Width, %2: Height
+
+// Subtext for the button
+utilitiesMenu.browseImage.recommendedSize = Рекомендованный размер: %1px × %2px
+
+// A screen which tells the user to adjust the image's offset if it doesn't make the recommended size.
+utilitiesMenu.browseImage.adjustOffsets.title = Регулировка Смещения
+utilitiesMenu.browseImage.adjustOffsets.description = Стрелочки — Передвижение\nЗажмите SHIFT/CTRL, чтобы Увеличить Скорость\nУбедитесь, что Изображение Выровнено по Центру Низа Силуэта
+utilitiesMenu.error.prompt = Произошла ошибка.
+utilitiesMenu.firstStartup.prompt = Внимание: Функция Нестабильна\n\nЭти инструменты не предназначены для серьёзной разработки, и были созданы лишь как способ создания собственных персонажей для простых художников. Помните, что инструменты в любой момент могут вылететь или помереть. Функция авто-сохранений отсутствует; крайне рекомендуется сохраняться ВРУЧНУЮ.\n\nЕсли хотите жаловаться на функционал, сами бы попробовали JSON да Flash учить чёрт бы вас побрал
+// Dummy text. Used as the default name for newly created Sprite Projects.
 utilitiesMenu.placeholder = Заглушка
 
-characterCreator.dataType.metadata = Метадата
-characterCreator.dataType.spriteData = Дата Спрайтов
-characterCreator.parameter.name = Име Персонажа
-characterCreator.parameter.description = Описание персонажа
+characterCreator.dataType.metadata = Метаданные
+characterCreator.dataType.spriteData = Данные Спрайта
+characterCreator.parameter.name = Имя Персонажа
+characterCreator.parameter.description = Описание Персонажа
 characterCreator.parameter.author = Автор
 characterCreator.parameter.framerate = Частота Кадров
-characterCreator.parameter.defaultFramerate = Базовая Частота Кадров
-characterCreator.parameter.defaultDimensions = Размер Рамки
-characterCreator.parameter.maxPressure = Максимальное Давление
-characterCreator.parameter.maxConfidence = Максимальная Уверенность
-characterCreator.parameter.skills = Скилы
-characterCreator.parameter.skills.description = (Разделяй с помощью запятой: ,)
+characterCreator.parameter.defaultFramerate = Стандартная Частота Кадров
+characterCreator.parameter.defaultDimensions = Размер Кадра
+characterCreator.parameter.maxPressure = Максимум Давления
+characterCreator.parameter.maxConfidence = Максимум Смелости
+characterCreator.parameter.skills = Навыки
+characterCreator.parameter.skills.description = (Разделяйте Запятыми: ,)
 characterCreator.explorer.description.root = Корневая папка проекта.
 characterCreator.explorer.description.idle = Анимация бездействия.
-characterCreator.explorer.description.prepareShoot = Зациклить анимацию во время хода.
-characterCreator.explorer.description.preShoot = Анимация подготовки к выстрелу в себя.
-characterCreator.explorer.description.shootBlank = Анимация для холостого патрона.
-characterCreator.explorer.description.shootLive = Анимация для живого патрона.
-characterCreator.explorer.description.pass = Анимация пердачи пушки другому игроку.
-characterCreator.explorer.description.skill = Базовая анимация скила.
-characterCreator.explorer.description.shocked = Анимация реакции на кофети при победе.
-characterCreator.explorer.description.win = Анимация позы при победе.
-characterCreator.explorer.description.helpless = Анимация для невозможности сделать ход после поражения.
-characterCreator.explorer.description.popped = Зацикливание анимации при запускинии в воздух лопаньем.
-characterCreator.explorer.description.introPartOne = Анимация для действий с другими игроками.
-characterCreator.explorer.description.introPartTwo = Анимация когда пушка падает на стол.
-characterCreator.explorer.description.scraps = Анимации ошмётков про лопаньи.
-characterCreator.explorer.description.cardBG = Задний фон персонажа при выборе.
-characterCreator.explorer.description.cardCharIdle = Анимация бездействия персонажа в Выборе Персонажей.
-characterCreator.explorer.description.cardCharSelected = Анимация, проигрываемае при выборе в Выборе Персонажей.
-characterCreator.explorer.description.bannerAppear = появление персонажа после выбора.
-characterCreator.explorer.description.bannerBlink = Моргание персонажа после выбора.
-characterCreator.saveSuccessful.prompt = Спрайт Проект успешно сохранён.
+characterCreator.explorer.description.prepareShoot = Анимация во время хода.
+characterCreator.explorer.description.preShoot = Анимация перед выстрелом.
+characterCreator.explorer.description.shootBlank = Анимация выстрела холостым патроном.
+characterCreator.explorer.description.shootLive = Анимация выстрела боевым патроном.
+characterCreator.explorer.description.pass = Анимация передачи пушки.
+characterCreator.explorer.description.skill = Стандартная анимация использования Навыка.
+characterCreator.explorer.description.shocked = Анимация реакции на конфетти или Нападение.
+characterCreator.explorer.description.win = Анимация при победе.
+characterCreator.explorer.description.helpless = Анимация невозможности хода после выбывания.
+characterCreator.explorer.description.popped = Анимация подлёта после лопания.
+characterCreator.explorer.description.introPartOne = Анимация перед появлением пушки.
+characterCreator.explorer.description.introPartTwo = Анимация после появления пушки.
+characterCreator.explorer.description.scraps = Обрывки, появляющиеся после лопания.
+characterCreator.explorer.description.cardBG = Задний фон Профиля Персонажа.
+characterCreator.explorer.description.cardCharIdle = Бездействующий Персонаж в своём Профиле.
+characterCreator.explorer.description.cardCharSelected = Персонаж в своём Профиле, когда выбран.
+characterCreator.explorer.description.bannerAppear = Персонаж появляется, когда выбран.
+characterCreator.explorer.description.bannerBlink = Персонаж моргает, когда выбран.
+characterCreator.saveSuccessful.prompt = Проект Спрайта успешно сохранён.
 characterCreator.save = Сохранить Проект
-characterCreator.exit = Выйти из редактора
-characterCreator.reloadSkills = Перезагрузить Скилы
-characterCreator.exit.prompt = Вы уверены что хотите выйти из Редактора Персонажей?\nВесь несохранённый прогресс будет ПОТЕРЯН.
+characterCreator.exit = Покинуть Редактор
+characterCreator.reloadSkills = Перезагрузить Навыки
+characterCreator.exit.prompt = Вы ДЕЙСТВИТЕЛЬНО хотите покинуть Редактор Персонажей?\nНесохранённый прогресс будет утерян.
 characterCreator.newCharacter.title = НОВЫЙ ПЕРСОНАЖ
-characterCreator.newCharacter.unchangeableParameter = Этот параметр нельзя и лучше не трогать во время и после создания персонажа.
+characterCreator.newCharacter.unchangeableParameter = Этот параметр нельзя изменить и он не должен изменяться после создания.
 characterCreator.newCharacter.create = Создать Персонажа!
-characterCreator.newCharacter.alreadyExists.prompt = Файл с таким названием уже существует.
+characterCreator.newCharacter.alreadyExists.prompt = Проект Спрайта с таким названием уже существует.
 characterCreator.export = Экспортировать Проект!
-characterCreator.confirmExport.prompt = Игра экспортирует метадату Спрайт Проекта, спрайты, и всю анимационную дату в используемый игрой формат. В зависимости от характеристик вашего оборудования, экспорт может занять от нескольких секунд до ОЧЕНЬ ДОЛГОГО ВРЕМЕНИ. Закрытие фоновых программ может помочь ускорить процесс экспорта.\n\nПосле завершения все экспортированные файлы будут сохранены в папке exports в корневой папке игры. Пожалуйста, держите это приложение открытым постоянно во время экспорта, чтобы предотвратить повреждение данных.\n\nВы уверены, что хотите экспортировать проект?
-characterCreator.exporting = Экспорт Анимации:\n%1
-characterCreator.exporting.generatingCharacterData = Создание JSON Файлов...
-characterCreator.exporting.finalizing = Заканчиваем...
-characterCreator.exporting.missingAnimations = В проекте отсутствуют анимации:\n%1
-characterCreator.exporting.missingAnimations.extend = и не только...
-characterCreator.exporting.description = Пожалуйста, остовляйте программу открытой.
-characterCreator.exportSuccessful.prompt = Проэкт экспортирован успешно. Это на случай если вы хотите изменить параметры JSON файлов.\n\nЭкспортированно как:\n%1
+characterCreator.confirmExport.prompt = Игра экспортирует метаданные, спрайты и данные анимаций вашего Проекта Спрайта в формат, используемый игрой. В зависимости от характеристик устройства, экспорт может занять от пары секунд до ОЧЕНЬ ДОЛГОГО ВРЕМЕНИ. Вы можете закрыть фоновые программы для ускорения процесса.\n\nПосле завершения все экспортированные спрайты будут храниться в папке "export" внутри корневой папки игры. Пожалуйста, не закрывайте это окно во время экспорта, чтобы избежать возможного повреждения данных.\n\nВы действительно хотите экспортировать проект?
+characterCreator.exporting = Экспорт Анимаций:\n%1
+characterCreator.exporting.generatingCharacterData = Генерация файлов JSON...
+characterCreator.exporting.finalizing = Завершение...
+characterCreator.exporting.missingAnimations = В Проекте отсутствуют анимации:\n%1
+characterCreator.exporting.missingAnimations.extend = и некоторые другие...
+characterCreator.exporting.description = Держите это окно открытым.
+characterCreator.exportSuccessful.prompt = Проект успешно экспортирован. Возможно, Вам придётся подправить пару значений в файлах JSON.\n\nЭкспортировано как:\n%1
 
 animationCreator.save = Сохранить Анимацию
-animationCreator.exit = Выйти Из редактора
-animationCreator.exit.prompt = Вы уверенны что хотите выйти из редактора анимации?\nВесь несохранённый прогресс будет ПОТЕРЯН.
+animationCreator.exit = Покинуть Редактор
+animationCreator.exit.prompt = Вы ДЕЙСТВИТЕЛЬНО хотите покинуть Редактор Анимаций?\nНесохранённый прогресс будет утерян.
 animationCreator.saveSuccessful.prompt = Анимация успешно сохранена.
 
-stageEditor.stage = Сцена
-stageEditor.stage.description = Это меню преднозначено ТОЛЬКО ДЛЯ ПРЕДПРОСМОТРА Сцены. Используйте с редактором JSON файлов для удобства.
+stageEditor.stage = Локация
+stageEditor.stage.description = Это меню используется лишь для предпросмотра локаций и НЕ содержит функций для редактирования. Для наибольшего удобства, используйте также редактор файлов JSON.
 stageEditor.objectList = Список Объектов
-stageEditor.reload = Перезагрузить Сцену
-stageEditor.screenshot = Режим Скриншотов
-stageEditor.exit = Выйти из Просмотра Сцены
-stageEditor.exit.prompt = Вы уверены что хотите выйти из Просмотра Сцены?
+stageEditor.reload = Перезагрузить Локацию
+stageEditor.screenshot = Режим Снимков
+stageEditor.exit = Покинуть Просмотр
+stageEditor.exit.prompt = Вы ДЕЙСТВИТЕЛЬНО хотите покинуть просмотр локаций?
 
-resultsMenu.title = ИТОГИ ИГРЫ!
-resultsMenu.instructions = Press Any Key To Exit
-resultsMenu.winBonus = Победый Бонус
-resultsMenu.edgingBonus = Бонус за Эджинг
+resultsMenu.title = ПЕРЕЙДЁМ К ИТОГАМ!
+resultsMenu.instructions = Нажмите Любую Клавишу Для Выхода
+// Score bonus for last standing players
+resultsMenu.winBonus = Бонус за Победу
+// Score bonus for Pressure percentage.
+resultsMenu.edgingBonus = Бонус за Пузо
+// Replaces Edging Bonus when player somehow hasn't inflated once.
 resultsMenu.edgingBonus.alt = Бонус за Удачу
-resultsMenu.skillBonus = Использованные Скилы
-resultsMenu.bestPlayer = ПОБЕДИТЕЛЬ
-resultsMenu.bestPlayers = ПОБЕДИТЕЛИ
-resultsMenu.badPlayer = ЛУЗЕР
-resultsMenu.badPlayers = ЛУЗЕРЫ
+// Score bonus for using Skills.
+resultsMenu.skillBonus = Бонус за Навыки
+resultsMenu.bestPlayer = ПОБЕДИЛ
+resultsMenu.bestPlayers = ПОБЕДИЛИ
+resultsMenu.badPlayer = ПРОДУЛ
+resultsMenu.badPlayers = ПРОДУЛИ
 // $1: Player Type, %2: Character Name, %3: Player No. (If applicable)
 resultsMenu.leaderboard.playerFormat = %1%2
 resultsMenu.leaderboard.playerDuplicateFormat = %1%2 #%3
 // Unless you want to be really specific, it is recommended to leave this string empty
-resultsMenu.leaderboard.playerType.human =
+resultsMenu.leaderboard.playerType.human = 
 // If the string is not empty, it is recommended to put a whitespace after it.
-resultsMenu.leaderboard.playerType.cpu = CPU\s
+resultsMenu.leaderboard.playerType.cpu = ПК\s 
 // %1: Rank, %2: Player Format, %3: Score, %4: Grade
 // Left Alignment
 resultsMenu.leaderboard.format = %1 | %2 · %3 (%4)
 // Right Alignment
 resultsMenu.leaderboard.format.reversed = %2 · %3 (%4) | %1
 
+// Menu Options. Used in button text.
 menu.yes = Да
 menu.no = Нет
 menu.ok = Ок
 menu.confirm = Подтвердить
-menu.cancel = Отмена
-menu.exit = Выход
+menu.cancel = Отменить
+menu.exit = Выйти
+
+// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
+gameUI.selectTarget = ВЫБЕРИТЕ ЦЕЛЬ
 
 preloadMenu.progress.characters = Загружаем Персонажей...
-preloadMenu.progress.gameplay = Загрузжаем Режимов Игры...
-preloadMenu.progress.language = Получаем Локального Текста...
-preloadMenu.progress.achievements = Отслеживаем Достижения...
-preloadMenu.progress.toasts = Создаём Уведомления...
-preloadMenu.progress.tooltip = Строим Подсказки Инструментам...
-preloadMenu.progress.cursor = Украшаем Курсор Мыши...
+preloadMenu.progress.gameplay = Загрузжаем Режимы...
+preloadMenu.progress.language = Получаем Файлов Локали...
+preloadMenu.progress.achievements = Задаём Прогресс Достижений...
+preloadMenu.progress.toasts = Сооружаем Уведомления...
+preloadMenu.progress.tooltip = Строим Подсказки...
+preloadMenu.progress.cursor = Укарашаем Курсор...
 preloadMenu.progress.splashes = Пишем Сплеши...
-preloadMenu.progress.music = Находим Музыкальные Диски...
+preloadMenu.progress.music = Ищем Пластинки...
 preloadMenu.finished = Готово!
 
 // Fallback for HTML build
-gamemode.fiftyFifty.name = 50 на 50
-gamemode.fiftyFifty.description = Живой или Холостой? Полный рандом!\nХлеба и Зрелища!
+gamemode.fiftyFifty.name = 50/50
+gamemode.fiftyFifty.description = Подброс монетки вершит твою судьбу.\nНедолгий, но рисковый геймплей.
 
 character.asimo.name = Асимо
 character.asimo.name.short = Асимо
-character.asimo.description = Этот волчара здесь просто по фану. Его познания в оккультном электричестве позволяют ему перегрузить пушку.
+character.asimo.description = Этот волк ищет развлечений. Его опыт в электрическом оккультизме позволяет перегружать пушки.
