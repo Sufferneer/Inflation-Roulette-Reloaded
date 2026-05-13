@@ -20,7 +20,7 @@ class GaussianBlurShader extends FlxShader {
 		// Blur calculations
 		for (float d = 0.0; d < PI * 2.0; d += PI * 2.0 / Directions) {
 			for (float i = 1.0 / Quality; i <= 1.0; i += 1.0 / Quality) {
-				Color += texture(bitmap, uv + vec2(cos(d), sin(d)) * Radius * i);
+				Color += texture2D(bitmap, uv + vec2(cos(d), sin(d)) * Radius * i);
 			}
 		}
 
