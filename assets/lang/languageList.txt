@@ -1,3 +1,4 @@
 ru-ru
 zh-hk
 ca-ad
+es-mx
