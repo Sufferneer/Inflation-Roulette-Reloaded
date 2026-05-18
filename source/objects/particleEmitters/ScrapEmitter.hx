@@ -11,7 +11,7 @@ class ScrapEmitter extends FlxTypedEmitter<Scrap> {
 		particleClass = Scrap;
 		Scrap.floorY = floorY;
 
-		var leImage:FlxGraphic = Paths.image('game/particles/scrap/$characterID');
+		var leImage:FlxGraphic = Paths.image('game/particles/scraps/$characterID');
 		loadParticles(leImage, FlxG.random.int(6, 10), 0, true);
 
 		start(true, 0.2, 0);

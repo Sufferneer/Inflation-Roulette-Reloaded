@@ -121,9 +121,9 @@ class PreloadState extends SuffState {
 		ya know what whatever
 		 */
 		#if _ALLOW_EASTER_EGGS
-		if ((Date.now().getHours() == 21 && Date.now().getMinutes() == 21)) {
+		if ((Date.now().getHours() == 21 && Date.now().getMinutes() == 21) || FlxG.random.bool(1 / 512 * 100)) {
 			var originalDimensions:Array<Float> = [bg.width, bg.height];
-			bg.loadGraphic(Paths.image('ui/menus/preload/nextUpdateLeakBroTrustMeBroImNotCappingBro'));
+			bg.loadGraphic(Paths.image('ui/menus/preload/areWeFuckingForRealBro'));
 			bg.setGraphicSize(Std.int(originalDimensions[0]), Std.int(originalDimensions[1]));
 			bg.updateHitbox();
 			preloadTxt.visible = false;

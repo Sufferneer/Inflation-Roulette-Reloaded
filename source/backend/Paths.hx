@@ -31,6 +31,10 @@ class Paths {
 	 * Preload belly sounds to memory to prevent crashes and lag spikes.
 	 */
 	public static function precacheBellySounds() {
+		var creakType:String = 'air';
+		var gurgleType:String = 'air';
+		var belchType:String = 'air';
+		var burstType:String = 'air';
 		for (i in 1...Constants.CREAKS_SAMPLE_COUNT + 1) {
 			var key:String = 'game/belly/creaks/creak_' + i;
 			precacheSound(key);
@@ -50,7 +54,6 @@ class Paths {
 			precacheSound(key);
 		}
 		precacheSound('game/belly/burst');
-		trace('All belly sounds precached!');
 	}
 
 	public static function precacheSound(key:String) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
-	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="3.0.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
+	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="2.2.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="b.1" />
+	<set name="versionState" value="." />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<!--The HaxeFlixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
@@ -139,7 +139,7 @@
 		<template path="dev/templates"/>
 		<config:android>
 			<application android:icon="@mipmap/ic_launcher"/>
-			<activity android:label="IRR"/>
+			<activity android:label="IR: Reloaded"/>
 		</config:android>
 	</section>
 </project>

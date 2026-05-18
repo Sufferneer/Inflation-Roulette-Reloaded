@@ -22,7 +22,7 @@ import flixel.addons.ui.FlxUINumericStepper;
 import ui.addons.SuffUITabMenu;
 
 class CharacterCreatorState extends UtilitiesBaseMenuState {
-	public static final version:String = '1.1.0';
+	public static final version:String = '0.0.2';
 
 	public static var metadata:SpriteProjectMetadata;
 	public static var spriteData:SpriteProjectSpritedata;
@@ -204,9 +204,29 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		for (anim in defaultFiles) {
 			var name = anim.name;
 			if (optionalAnims.contains(name)) {
-				for (i in 0...spriteData.maxPressure + 1) {
-					if (FileSystem.exists(getPath() + '/anims/${name}${i}.json'))
-						leAnims.push('$name$i');
+				switch (animsType.get(anim.name)) {
+					case ONLY_DEFEATED_STATES:
+						if (FileSystem.exists(getPath() + '/anims/${name}Null.json'))
+							leAnims.push(name + 'Null');
+						if (FileSystem.exists(getPath() + '/anims/${name}Overinflated.json'))
+							leAnims.push(name + 'Overinflated');
+					case ONLY_INFLATED_STATES:
+						for (i in 0...spriteData.maxPressure + 1) {
+							if (FileSystem.exists(getPath() + '/anims/${name}${i}.json'))
+								leAnims.push('$name$i');
+						}
+					case ALL_STATES:
+						for (i in 0...spriteData.maxPressure + 1) {
+							if (FileSystem.exists(getPath() + '/anims/${name}${i}.json'))
+								leAnims.push('$name$i');
+						}
+						if (FileSystem.exists(getPath() + '/anims/${name}Null.json'))
+							leAnims.push(name + 'Null');
+						if (FileSystem.exists(getPath() + '/anims/${name}Overinflated.json'))
+							leAnims.push(name + 'Overinflated');
+					default:
+						if (FileSystem.exists(getPath() + '/anims/$name.json'))
+							leAnims.push(name);
 				}
 			} else {
 				switch (animsType.get(anim.name)) {

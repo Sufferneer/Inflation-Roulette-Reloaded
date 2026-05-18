@@ -12,6 +12,7 @@ class JukeboxState extends SuffState {
 	var maxPage:Int = 0;
 
 	var bg:FlxSprite;
+	var bgScale:FlxPoint;
 	var albumText:FlxTypedContainer<FlxBackdrop> = new FlxTypedContainer<FlxBackdrop>();
 	var barGroup:FlxTypedContainer<JukeboxBar> = new FlxTypedContainer<JukeboxBar>();
 	var record:JukeboxRecord;
@@ -25,6 +26,8 @@ class JukeboxState extends SuffState {
 		bg = new FlxSprite().loadGraphic(Paths.image('ui/menus/extras/jukebox/bg'));
 		bg.origin.x = 0;
 		bg.origin.y = bg.height / 2;
+		bg.screenCenter();
+		bgScale.set(FlxG.width / Constants.ORIGINAL_FLXG_WIDTH, FlxG.height / Constants.ORIGINAL_FLXG_HEIGHT);
 		add(bg);
 
 		add(albumText);
@@ -155,7 +158,7 @@ class JukeboxState extends SuffState {
 		}
 
 		var leScale = Math.pow(Math.sin(SuffState.timePassedOnState * 0.25), 2);
-		bg.scale.set(1 + 0.5 * leScale, 1 + 0.5 * leScale);
+		bg.scale.set(bgScale.x + 0.5 * leScale, bgScale.y + 0.5 * leScale);
 		bg.alpha = 0.75 + leScale * 0.25;
 
 		record.angle = (FlxG.sound.music.time - FlxG.sound.music.loopTime) / 1000 / (60 / SuffState.currentMusicBPM) * 45;

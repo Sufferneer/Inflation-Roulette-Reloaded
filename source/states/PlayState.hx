@@ -176,7 +176,7 @@ class PlayState extends SuffState {
 		pumpGun.scrollFactor.set(stage.data.gunScrollFactor[0], stage.data.gunScrollFactor[1]);
 		add(pumpGun);
 
-		if (!hasSeenStartCutscene && FlxG.random.bool(12.5)) {
+		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 8 * 100)) {
 			var cobalt:FlxSprite = new FlxSprite();
 			cobalt.frames = Paths.sparrowAtlas('game/cobalt');
 			cobalt.animation.addByPrefix('appear', 'appear', 24, false);
@@ -204,6 +204,7 @@ class PlayState extends SuffState {
 			} else
 				cobalt.color = 0xFF808080;
 			cobalt.camera = camOther;
+			cobalt.x = FlxG.width - cobalt.width;
 			add(cobalt);
 		}
 

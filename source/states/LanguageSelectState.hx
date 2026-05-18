@@ -38,6 +38,8 @@ class LanguageSelectState extends SuffState {
 	var curSelected:Int = 0;
 	var exiting:Bool = false;
 
+	var bgOverlayScale:FlxPoint;
+
 	override function create() {
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 		add(bg);
@@ -47,6 +49,7 @@ class LanguageSelectState extends SuffState {
 		bgOverlay.visible = false;
 		bgOverlay.antialiasing = !Preferences.data.enableForcedAliasing;
 		bgOverlay.setGraphicSize(FlxG.width, FlxG.height);
+		bgOverlayScale = FlxPoint.get(FlxG.width / bgOverlay.width, FlxG.height / bgOverlay.height);
 		bgOverlay.updateHitbox();
 		bgOverlay.screenCenter();
 		add(bgOverlay);
@@ -196,7 +199,6 @@ class LanguageSelectState extends SuffState {
 		contributorText.clear();
 		if (contributors == null || contributors.length <= 0)
 			contributors = ['Unknown'];
-		var titleTextY:Float = 0;
 		for (num => contributor in contributors) {
 			var text:FlxText = new FlxText(0, 0, 0, contributor, 32);
 			text.color = textColor;
@@ -206,9 +208,8 @@ class LanguageSelectState extends SuffState {
 			else
 				text.font = Paths.font('default');
 			text.x = -text.width;
-			text.y = FlxG.height - 32 - text.height * (num + 1) - ScreenSafeZone.Y;
-			titleTextY = text.y;
-			FlxTween.tween(text, {x: 32}, 0.75, {
+			text.y = FlxG.height - 32 - 32 * (contributors.length - num) - ScreenSafeZone.Y;
+			FlxTween.tween(text, {x: 32 + ScreenSafeZone.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0.25 + 0.125 * num
 			});
@@ -217,7 +218,7 @@ class LanguageSelectState extends SuffState {
 		var titleText:FlxText = new FlxText(0, 0, 0, Language.getPhrase('languageMenu.contributors'), 48);
 		titleText.color = textColor;
 		titleText.x = -titleText.width;
-		titleText.y = titleTextY - titleText.height;
+		titleText.y = FlxG.height - titleText.height - 32 - 32 * contributors.length - ScreenSafeZone.Y;
 		FlxTween.tween(titleText, {x: 32 + ScreenSafeZone.X}, 0.75, {
 			ease: FlxEase.quintOut
 		});
@@ -236,8 +237,8 @@ class LanguageSelectState extends SuffState {
 			ajuniga.angle = Math.sin(SuffState.timePassedOnState) * 2;
 		}
 
-		bgOverlay.scale.x = 1 + Math.pow(Math.sin(SuffState.timePassedOnState / Math.PI), 2) * 2;
-		bgOverlay.scale.y = 1 + Math.pow(Math.sin(SuffState.timePassedOnState / Math.PI * 0.75), 2) * 1.5;
+		bgOverlay.scale.x = bgOverlayScale.x + Math.pow(Math.sin(SuffState.timePassedOnState / Math.PI), 2) * 2;
+		bgOverlay.scale.y = bgOverlayScale.y + Math.pow(Math.sin(SuffState.timePassedOnState / Math.PI * 0.75), 2) * 1.5;
 
 		var btn = languageButtons.members[curSelecting];
 		var btnSelected = languageButtons.members[curSelected];

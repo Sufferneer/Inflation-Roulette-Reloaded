@@ -70,7 +70,7 @@ class CharacterSimple extends FlxSprite {
 				} else {
 					animation.addByPrefix(animName, animPrefix, animFps, animLoop);
 				}
-				if (anim.soundPaths != null)
+				if (anim.soundPaths != null && anim.soundPaths.length > 0)
 					addSoundPath(animName, anim.soundPaths);
 			}
 		} else {
@@ -112,8 +112,8 @@ class CharacterSimple extends FlxSprite {
 	}
 
 	public function addSoundPath(name:String, pathArray:Array<String>) {
-		if (!animSoundPaths.exists(name))
-			animSoundPaths[name] = [];
+		if (!animSoundPaths.exists(name) || pathArray == null || pathArray.length <= 0)
+			return;
 		for (path in pathArray) {
 			animSoundPaths[name].push(path);
 		}

@@ -14,7 +14,7 @@ class VersionMetadata {
 				addAppendix(Language.getPhrase('game.version.name.hotfix.format', [arr[2]]));
 			}
 		}
-		if (state != null) {
+		if (state != null && state[0] != '') {
 			addAppendix(Language.getPhrase('game.version.name.state.' + state[0], [state[1]]));
 		}
 		if (appendices.length > 0) {

@@ -1,10 +1,8 @@
 {
 	"shared": [
-		"Made by NicklySuffer!",
 		"Courtesy of NicklySuffer!",
-		"Endorsed by Snowyboi!",
+		"Approved by Snowyboi!",
 		"Eighteen-plus!",
-		"Minors DNI!",
 		"No kids allowed!"
 	],
 	"unique": [
@@ -12,8 +10,8 @@
 			"useLunarCalender": false,
 			"start": "12-01",
 			"end": "12-27",
-			"id": "christmas",
-			"name": "Christmas",
+			"id": "holidaySeason",
+			"name": "Holiday Season",
 			"colors": ["#00C000", "#FF2030"],
 			"splashes": [
 				"Happy Holidays!",
@@ -26,7 +24,6 @@
 				"he sees you when you're sleeping",
 				"he knows when you're awake",
 				"Indulge yourself!",
-				"Slient night, holy night",
 				"You're getting coal this year"
 			]
 		},
@@ -44,9 +41,7 @@
 				"OOGA BOOGA",
 				"It is Spooky Month!",
 				"Spooktober time",
-				"Spooky scary skeletons",
-				"Shit your pants!",
-				":gold_sad:"
+				"Spooky scary skeletons"
 			]
 		},
 		{
@@ -116,8 +111,8 @@
 				"2 + 2 = 5!",
 				"SWINE SWINE SWINE",
 				"[Removed by Minitrue]",
-				"Doubleplusgood day, Doubleplusungood game",
-				"DOWN WITH BIG BROTHER",
+				"Doubleplusungood game",
+				"DOWN WITH BIG BROTHER\nDOWN WITH BIG BROTHER\nDOWN WITH BIG BROTHER",
 				"Orwell was right.",
 				"GO TO ROOM 101",
 				"Down with Goldstein!",
@@ -130,7 +125,7 @@
 			"end": "06-30",
 			"id": "pride",
 			"name": "Pride Month",
-			"colors": ["#FF0000", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF", "#FF00FF"],
+			"colors": ["#E60000", "#FF8E00", "#FFEF00", "#00821B", "#004BFF", "#780089"],
 			"splashes": [
 				"Happy Pride Month!",
 				"Love is love!",
@@ -165,8 +160,8 @@
 			"start": "07-01",
 			"end": "07-01",
 			"id": "hk",
-			"name": "HK Establishment Day",
-			"colors": ["#FF0000", "#FFFFFF"],
+			"name": "Hong Kong Establishment Day",
+			"colors": ["#EE1C25", "#FFFFFF"],
 			"splashes": [
 				"Happy Hong Kong Establishment Day!",
 				"Celebrate HK!",
@@ -179,7 +174,7 @@
 			"end": "07-04",
 			"id": "independence",
 			"name": "USA Independence Day",
-			"colors": ["#FF0020", "#FFFFFF", "#0020FF"],
+			"colors": ["#BF0A30", "#FFFFFF", "#00205B"],
 			"splashes": [
 				"Happy Independence Day!",
 				"Celebrate freedom!",
@@ -215,14 +210,11 @@
 			"colors": ["#F9FCFF", "#79797F", "#3D3C3F", "#79797F"],
 			"splashes": [
 				"mom it's my birthday today",
-				"it's my birthday today",
 				"plz give me money",
-				"-1 year for my lifetime",
-				"this is so :gold_sad:",
-				"<3 the ajuniga corporation",
+				"this is so :sad_gold:",
+				"<3 the ajuniga council",
 				"don't goon; play tf2 instead",
 				"im in your walls",
-				".",
 				"<:("
 			]
 		}
@@ -255,32 +247,37 @@
 		"Gallery stickers drawn by EchoBloom!",
 		"Linux port by changedinflation.de!",
 		"Macintosh port coming soon, I think",
-		"Android port coming soon, I think",
+		"90% Playable in Android!",
 		"Also try Inflation Roulette Expanded!",
 		"Also try The Dealer's Choice!",
-		"Also try the Original!",
+		"Also try the original game!",
 		"Absolutely zaza-free!",
 		"Cancer-inducing!",
 		"Don't play at 9:21 PM!",
 		"Consumes more memory than Chrome!",
 		"Structured horrendously!",
 		"No optimizations whatsoever!",
-		"Pretty valid!",
-		"Want to be in the game? MAKE A MOD STUPID",
+		"Quite valid!",
 		"Approved by nobody!",
 		"FDA disapproved!",
 		"Unsafe for consumption!",
 		"Runs effectively with a dedicated GPU!",
 		"Spaghetti code guaranteed!",
 		"Console port coming never!",
-		"All proceeds go to CCP!",
+		"All proceeds go to the Ajuñiga Council!",
 		"Gamble your soul away!",
 		"May cause nausea!",
 		"May cause feelings of rage!",
-		"May cause bouts of cringe!",
 		"Do your homework!",
 		"Not fun for the whole family!",
 		"Happiness not guaranteed!",
-		"Reportedly won't run in Belarus"
+		"Reportedly won't run in Belarus",
+		"Those AI content farms go crazy",
+		"That Mr Waifu XP guy made me have cholera",
+		"Waiter! More IRR videos please!",
+		"Those South-East Asians be eatin' good",
+		"Hola catalans!",
+		"¡Hola México!",
+		"Привет Россия!"
 	]
 }

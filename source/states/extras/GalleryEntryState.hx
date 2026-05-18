@@ -98,7 +98,7 @@ class GalleryEntryState extends SuffState {
 		});
 
 		var titleText = Language.getPhrase(envelopeData.titleTranslationKey, [], Language.getPhrase('galleryMainMenu.envelope.${envelopeData.id}'));
-		title = new FlxText(60, 60, 0, titleText, 64);
+		title = new FlxText(60, 60, FlxG.width / 2 - 120, titleText, 64);
 		title.color = overlay.color;
 		add(title);
 

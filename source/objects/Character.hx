@@ -147,7 +147,7 @@ class Character extends FlxSprite {
 				} else {
 					animation.addByPrefix(animName, animPrefix, animFps, animLoop);
 				}
-				if (anim.soundPaths != null)
+				if (anim.soundPaths != null && anim.soundPaths.length > 0)
 					addSoundPath(animName, anim.soundPaths);
 			}
 		} else {
@@ -223,8 +223,8 @@ class Character extends FlxSprite {
 	}
 
 	public function addSoundPath(name:String, pathArray:Array<String>) {
-		if (!animSoundPaths.exists(name))
-			animSoundPaths[name] = [];
+		if (!animSoundPaths.exists(name) || pathArray == null || pathArray.length <= 0)
+			return;
 		for (path in pathArray) {
 			animSoundPaths[name].push(path);
 		}
@@ -250,12 +250,14 @@ class Character extends FlxSprite {
 		offset.set(originPosition[0], originPosition[1]);
 
 		if (playSound) {
-			var daSoundList:Array<String> = animSoundPaths.get(usedAnimName);
 			if (animSoundPaths.exists(usedAnimName)) {
+				var daSoundList:Array<String> = animSoundPaths.get(usedAnimName);
 				var daSound = daSoundList[FlxG.random.int(0, daSoundList.length - 1)];
 				SuffState.playSound(Paths.sound(daSound));
 			}
 		}
+		
+		trace(id, usedAnimName);
 	}
 
 	public function parseAnimationSuffix() {

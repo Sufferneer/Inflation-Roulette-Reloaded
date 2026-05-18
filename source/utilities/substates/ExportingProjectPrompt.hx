@@ -14,6 +14,7 @@ import backend.typedefs.SkillMetadata;
 import backend.Skill;
 import backend.typedefs.CharacterCosmeticData;
 import backend.typedefs.AnimationData;
+import backend.typedefs.AddonMetadata;
 
 class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	var exportingText:FlxText;
@@ -124,6 +125,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	}
 
 	function generateJsonData() {
+		exportingText.text = Language.getPhrase('characterCreator.exporting.generatingCharacterData');
 		var stats:CharacterData = {
 			id: characterID,
 			maxPressure: CharacterCreatorState.spriteData.maxPressure,
@@ -156,12 +158,42 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 		File.saveContent('exports/$projectName/data/characters/$characterID/cosmetic.json', haxe.Json.stringify(cosmetic, '\t'));
 
 		new FlxTimer().start(0.02, function(_) {
-			finalizeExport();
+			generateLangFile();
 		});
 	}
 
-	function finalizeExport() {
-		exportingText.text = Language.getPhrase('characterCreator.exporting.finalizing');
+	function generateLangFile() {
+		exportingText.text = Language.getPhrase('characterCreator.exporting.generatingLangFile');
+		var langFile:String = '';
+		langFile += 'character.$characterID.name = $characterName\n';
+		langFile += 'character.$characterID.name.short = ${characterName.split(' ')[0]}\n';
+		langFile += 'character.$characterID.description = $characterDescription\n';
+
+		if (!FileSystem.isDirectory('exports/$projectName/lang') || !FileSystem.exists('exports/$projectName/lang'))
+			FileSystem.createDirectory('exports/$projectName/lang');
+		File.saveContent('exports/$projectName/lang/${Preferences.data.language}.lang', langFile);
+		File.saveContent('exports/$projectName/lang/en-us.lang', langFile);
+
+		new FlxTimer().start(0.02, function(_) {
+			generateAddonMetadata();
+		});
+	}
+
+	function generateAddonMetadata() {
+		exportingText.text = Language.getPhrase('characterCreator.exporting.generatingAddonMetadata');
+		var metadata:AddonMetadata = {
+			name: characterName,
+			description: characterDescription + '\nCreated by IRR Character Creator',
+			authors: [
+				[characterAuthor, 'Author']
+			],
+			color: '#808080'
+		};
+
+		if (!FileSystem.isDirectory('exports/$projectName/metadata') || !FileSystem.exists('exports/$projectName/metadata'))
+			FileSystem.createDirectory('exports/$projectName/metadata');
+		File.saveContent('exports/$projectName/metadata/metadata.json', haxe.Json.stringify(metadata, '\t'));
+
 		new FlxTimer().start(0.02, function(_) {
 			sucessfulExport();
 		});
@@ -169,7 +201,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 
 	function insertLineInXML(xml:String, name:String, frame:Int, x:Float, y:Float, width:Int, height:Int) {
 		var frame:String = '$frame'.lpad('0', 4);
-		xml += '\t<SubTexture name="$name $frame" x="${Std.int(x)}" y="${Std.int(y)}" width="${width}" height="${height}"/>\n';
+		xml += '\t<SubTexture name="${name}${frame}" x="${Std.int(x)}" y="${Std.int(y)}" width="${width}" height="${height}"/>\n';
 		return xml;
 	}
 
@@ -190,7 +222,6 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 
 	function export() {
 		if (curAnim == allAnims.length) {
-			exportingText.text = Language.getPhrase('characterCreator.exporting.generatingCharacterData');
 			new FlxTimer().start(0.02, function(_) {
 				exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
 				curSpriteSheet++;
@@ -201,6 +232,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 		var exportingAnim = allAnims[curAnim];
 		exportingText.text = Language.getPhrase('characterCreator.exporting', [exportingAnim]);
 		var animData:SpriteProjectAnimData = cast Json.parse(File.getContent(UtilitiesBaseMenuState.loadedPath + '/anims/$exportingAnim.json'));
+		
 		switch (exportingAnim) {
 			case 'scraps':
 				var pointer:Point = new Point(0, 0);
@@ -217,7 +249,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				var base:BitmapData = what[0];
 				var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/0.png');
 				base.copyPixels(sprite, sprite.rect, new Point(5, 5));
-				exportSpriteSheet(base, null, 'exports/$projectName/images/ui/characterSelect/cards/$characterID', 'bg');
+				exportSpriteSheet(base, null, 'exports/$projectName/images/ui/menus/characterSelect/cards/$characterID', 'bg');
 			case 'cardCharIdle':
 				secPointer.x = 5;
 				secPointer.y = 5;
@@ -243,7 +275,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 						secPointer.x += 150;
 					}
 				}
-				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/characterSelect/cards/$characterID', 'character');
+				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/cards/$characterID', 'character');
 			case 'bannerAppear':
 				secPointer.x = 0;
 				secPointer.y = 0;
@@ -269,12 +301,11 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 						secPointer.x += 320;
 					}
 				}
-				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/characterSelect/banner', '$characterID');
+				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/banners', '$characterID');
 			default:
 				var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/0.png');
+				var prevKeyframe:Int = -1;
 				for (i in 0...animData.numFrames) {
-					var oldBasePointerX = basePointer.x;
-					var oldBasePointerY = basePointer.y;
 					trace(exportingAnim, i);
 					if (baseBitmapSpritesLeft - animData.keyframes.length < 0) {
 						exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
@@ -288,26 +319,30 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 					}
 					if (animData.keyframes.contains(i)) {
 						trace(exportingAnim, 'export keyframe');
-						sprite = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
-						baseBitmap.copyPixels(sprite, sprite.rect, basePointer);
-						baseBitmapSpritesLeft--;
-						basePointer.x += sprite.width;
-						if (basePointer.x > baseBitmap.width - sprite.width) {
-							basePointer.x = 0;
-							basePointer.y += sprite.height;
-						}
-						if (basePointer.y > baseBitmap.height - sprite.height) {
-							exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
-							trace(exportingAnim, 'new spritesheet!!!');
-							curSpriteSheet++;
-							var what = newSpriteSheet(4096, 4096, CharacterCreatorState.spriteData.defaultDimensions[0], CharacterCreatorState.spriteData.defaultDimensions[1]);
-							baseBitmap = what[0];
-							baseXML = what[1];
-							basePointer.x = 0;
-							basePointer.y = 0;
+						if (prevKeyframe != i) {
+							prevKeyframe = i;
+							basePointer.x += sprite.width;
+							if (basePointer.x > baseBitmap.width - sprite.width) {
+								basePointer.x = 0;
+								basePointer.y += sprite.height;
+							}
+							if (basePointer.y > baseBitmap.height - sprite.height) {
+								exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
+								trace(exportingAnim, 'new spritesheet!!!');
+								curSpriteSheet++;
+								var what = newSpriteSheet(4096, 4096, CharacterCreatorState.spriteData.defaultDimensions[0], CharacterCreatorState.spriteData.defaultDimensions[1]);
+								baseBitmap = what[0];
+								baseXML = what[1];
+								basePointer.x = 0;
+								basePointer.y = 0;
+							}
+							sprite = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
+							baseBitmapSpritesLeft--;
 						}
 					}
-					baseXML = insertLineInXML(baseXML, exportingAnim, i, oldBasePointerX, oldBasePointerY, sprite.width, sprite.height);
+					baseBitmap.copyPixels(sprite, sprite.rect, basePointer);
+					// Yeah it copies every frame but it works
+					baseXML = insertLineInXML(baseXML, exportingAnim, i, basePointer.x, basePointer.y, sprite.width, sprite.height);
 				}
 				var exportedAnimData:AnimationData = {
 					name: exportingAnim,
