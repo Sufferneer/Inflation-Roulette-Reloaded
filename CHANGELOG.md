@@ -11,7 +11,9 @@ Minor updates will be referred to as _Pitstops_.
 - A bunch of visual effects.
 #### Technical
 - Android build (beta version, does not support modding yet).
-- Version checking to alert you on the latest version of IRR. (This can be disabled in the Options menu, only supports versions >=2.2.0)
+- Version checking to alert you on the latest version of IRR. 
+  - This can be disabled in the Options menu
+  - Only supports versions >=2.2.0
 #### Localization
 - Added Catalan and Spanish (Mexico) translations.
 ### Changes
