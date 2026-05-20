@@ -28,7 +28,11 @@ class Scoring {
 		// If character did not win, give them some pity points.
 		// If character did not inflate at all, give them full edging bonus.
 		// Else give them a fraction of the edging bonus based on how much they inflated.
-		return Math.round((char.currentPressure > 1) ? getMinEdgingBonus() : (char.currentPressure == 0) ? EDGING_BONUS : FlxMath.lerp(GameplayManager.currentGamemode.scoreEdgingBonusMultiplierRange[0], GameplayManager.currentGamemode.scoreEdgingBonusMultiplierRange[1], char.currentPressure / char.maxPressure) * EDGING_BONUS);
+		if (char.getPressurePercentage() > 1)
+			return getMinEdgingBonus();
+		if (char.currentPressure == 0)
+			return Math.round(EDGING_BONUS);
+		return Math.round(FlxMath.lerp(GameplayManager.currentGamemode.scoreEdgingBonusMultiplierRange[0], GameplayManager.currentGamemode.scoreEdgingBonusMultiplierRange[1], char.getPressurePercentage()) * EDGING_BONUS);
 	}
 
 	public static function getMinEdgingBonus() {

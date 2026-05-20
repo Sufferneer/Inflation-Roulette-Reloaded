@@ -135,9 +135,9 @@ class MainMenuState extends SuffState {
 			Language.getPhrase('game.title'),
 			#if _OFFICIAL_BUILD
 			VersionMetadata.getVersionName(FlxG.stage.application.meta.get('version')), Language.getPhrase('game.version.numeral.format',
-				[FlxG.stage.application.meta.get('version')]),
+				[FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
 			#else
-			Language.getPhrase('game.version.numeralModded.format', [FlxG.stage.application.meta.get('version')]),
+			Language.getPhrase('game.version.numeralModded.format', [FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
 			#end
 			Language.getPhrase('game.build.format', [PlatformMetadata.getBuildName()])
 		];

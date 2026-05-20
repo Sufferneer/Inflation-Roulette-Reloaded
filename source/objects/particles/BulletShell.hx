@@ -6,7 +6,7 @@ class BulletShell extends FlxSprite {
 	public function new(x:Float = 0, y:Float = 0, ?floorY:Float = 690, spawnPuff:Bool = false) {
 		super(x, y);
 		loadGraphic(Paths.image('game/particles/shell'), true, 20, 30);
-		animation.add('idle', spawnPuff ? [1] : [0]);
+		animation.add('idle', spawnPuff ? [0] : [1]);
 		animation.play('idle');
 		offset.x += width / 2;
 		offset.y += height / 2;

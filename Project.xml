@@ -3,7 +3,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="2.2.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="." />
+	<set name="versionState" value="c.1" />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<!--The HaxeFlixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
@@ -58,7 +58,7 @@
 		<assets path='conditionalAssets/ALLOW_UTILITIES' rename='assets' preload="true"/>
 	</section>
 	<section if="_BUILD_IN_ADDONS">
-		<assets path='addons/Example Mod' rename='assets' preload="true"/>
+		<assets path='addons/Example Addon' rename='assets' preload="true"/>
 		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' preload="true"/>
 	</section>
 	<assets path='conditionalAssets/NOT_BUILD_IN_ADDONS' unless="_BUILD_IN_ADDONS" rename='assets' preload="true"/>
@@ -133,7 +133,7 @@
 	<assets path='dev/iconLinux.png' if="linux" unless="mobile" id="iconLinux" preload="true" embed="true"/>
 
 	<section if="android">
-		<android target-sdk-version="35" />
+		<android target-sdk-version="32" />
 		<template path="dev/templates"/>
 		<config:android>
 			<application android:icon="@mipmap/ic_launcher"/>
