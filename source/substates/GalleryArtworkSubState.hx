@@ -43,14 +43,14 @@ class GalleryArtworkSubState extends SuffSubState {
 			ease: FlxEase.quintOut
 		});
 
-		title = new FlxText(0, 0, FlxG.width * 0.5, '', 32);
-		title.font = Paths.font('small', false);
+		title = new FlxText(0, 0, FlxG.width * 0.625, '', 16);
+		title.font = Paths.font('default', false);
 		title.alignment = CENTER;
 		title.screenCenter(X);
 		add(title);
 
-		description = new FlxText(0, 0, FlxG.width * 0.5, '', 32);
-		description.font = Paths.font('small', false);
+		description = new FlxText(0, 0, FlxG.width * 0.625, '', 16);
+		description.font = Paths.font('default', false);
 		description.alignment = JUSTIFY;
 		description.screenCenter(X);
 		add(description);
