@@ -1,0 +1,6 @@
+gamemode.fiftyFifty.name = 50/50
+gamemode.fiftyFifty.description = Подброс монетки вершит твою судьбу.\nНедолгий, но рисковый геймплей.
+
+character.asimo.name = Асимо
+character.asimo.name.short = Асимо
+character.asimo.description = Этот волк ищет развлечений. Его опыт в электрическом оккультизме позволяет перегружать пушки.

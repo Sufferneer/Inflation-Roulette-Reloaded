@@ -14,6 +14,7 @@ class Tooltip extends FlxSpriteGroup {
 
 	static final padding:FlxPoint = new FlxPoint(12, 8);
 	static final position:FlxPoint = new FlxPoint(40, -8);
+	static final altPosition:FlxPoint = new FlxPoint(-12, 50);
 
 	public static var enabled:Bool = false;
 
@@ -74,16 +75,25 @@ class Tooltip extends FlxSpriteGroup {
 		if (instance == null) {
 			return;
 		}
+		super.update(elapsed);
+		
 		instance.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
 		#if !mobile
-		var leMousePos = FlxG.mouse.getScreenPosition(this.camera);
-		instance.x = FlxMath.bound(leMousePos.x + position.x, 0, FlxG.width - instance.bg.width);
-		instance.y = FlxMath.bound(leMousePos.y + position.y, 0, FlxG.height - instance.bg.height);
+		var leMousePos:FlxPoint = FlxG.mouse.getScreenPosition(this.camera);
+		if (leMousePos.x + position.x > FlxG.width - instance.bg.width) {
+			instance.x = leMousePos.x - instance.bg.width + altPosition.x;
+		} else {
+			instance.x = leMousePos.x + position.x;
+		}
+		if (leMousePos.y + position.y > FlxG.height - instance.bg.height) {
+			instance.y = leMousePos.y - instance.bg.height + altPosition.y;
+		} else {
+			instance.y = leMousePos.y + position.y;
+		}
+		instance.y = FlxMath.bound(instance.y, 0, FlxG.height - instance.bg.height);
 		#else
-		instance.x = FlxG.width - instance.bg.width - ScreenSafeZone.X;
-		instance.y = FlxG.height - instance.bg.height - ScreenSafeZone.Y;
+		instance.x = ScreenSafeZone.X;
+		instance.y = (Preferences.data.showDebugText ? Main.debugText.height : 0) + ScreenSafeZone.Y;
 		#end
-
-		super.update(elapsed);
 	}
 }

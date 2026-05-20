@@ -21,11 +21,16 @@
 // sound similar to its English counterpart.
 // In a nutshell, transliterate names.
 
+// For terms like "Inflation Roulette" and "Reloaded" used in a naming context,
+// unless your language does not use the Latin script, it should be remain
+// untranslated.
+
 // Valid Escape Sequences:
 // \n: New line
 // \s: Whitespace
 // The positions of escape sequences in-between sentences should be left AS IS.
 
+// Remember the "Transliterate Names" rule
 game.title = Inflation Roulette: Reloaded
 game.titleShort = Inflation Roulette
 game.acronym = IRR
@@ -56,7 +61,6 @@ game.version.name.major.1 = Initial Release
 // Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 // If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 game.version.name.major.2 = Patch of Creativity
-game.version.name.major.3 = Lightweight Paints
 // Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
 game.version.name.state.a = Public Alphα %1
 game.version.name.state.b = Public βeta %1
@@ -232,9 +236,9 @@ option.screenSafeZone.description = Adjust the slider until the white area cover
 // Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 option.enableForcedAliasing.name = Forced Aliasing
 option.enableForcedAliasing.description = Disables antialiasing from all sprites even when enabled. May make some graphics look jagged.
-option.enableGLSL.name = Shaders
+option.enableGLSL.name = GLSL Shaders
 option.enableGLSL.description = Enables GLSL shaders for some menu elements. Disabling this can reduce load on low-end GPUs.
-option.alwaysPlayMainMenuAnims.name = Entertaining Main Menu
+option.alwaysPlayMainMenuAnims.name = Main Menu Animations
 option.alwaysPlayMainMenuAnims.description = Always play startup animations in the Main Menu.
 option.showMusicToast.name = Music Toast
 option.showMusicToast.description = A notification containing the current background music name and its author will be shown whenever a music track is played.
@@ -258,10 +262,12 @@ option.playCursorSounds.name = Cursor Sounds
 option.playCursorSounds.description = Plays a click sound whenever the mouse cursor clicks something.
 option.maxFramerate.name = Maximum Framerate
 option.maxFramerate.description = How many screen refreshes and game updates should the game do in one second.
-option.pauseOnUnfocus.name = Unfocus Pausing
+option.pauseOnUnfocus.name = Pause On Unfocus
 option.pauseOnUnfocus.description = Automatically pauses the game when out of focus.
 option.cacheOnGPU.name = VRAM Caching
 option.cacheOnGPU.description = Allows the GPU to be used for storing textures using VRAM for lower RAM usage.\nMay not work correctly with lower-end graphics cards.
+option.checkForUpdates.name = Check for Updates
+option.checkForUpdates.description = Automatically check for latest updates of the game on startup.
 option.enableDebugKeybinds.name = Debug Keybinds
 option.enableDebugKeybinds.description = Enable debug keybinds on PC.\n(Disables in-game achievements on press)
 option.showDebugText.name = Debug Text
@@ -280,10 +286,13 @@ addonsMenu.noAddonsDetected.content = No addons are detected within the addons f
 languageMenu.title = SELECT LANGUAGE
 languageMenu.description = Note: Translations may not be 100% accurate, and may contain mistranslations or untranslated text. If you want to help improve the translations, please consider contributing to our GitHub repository.
 languageMenu.contributors = Contributors
+languageMenu.completion = %1 Complete
+languageMenu.logMissingKeys = Log Missing Translation Keys
 
 gamemodeSelect.title = SELECT GAMEMODE
 gamemode.quickPlay.name = Quick Play
 gamemode.quickPlay.description = Random characters.\nStraight ahead. No fuzz.
+// Reloaded should remain untranslated (transliterate if not Latin script)
 gamemode.reloaded.name = Reloaded
 gamemode.reloaded.description = A brand new way to play Inflation Roulette.\nBalanced as the developer intended.
 gamemode.inequality.name = Inequality
@@ -363,13 +372,13 @@ stage.random.description = Not sure where to choose? Let the game decide!
 gameOn.text = GAME ON!
 
 skill.reload.name = Reload
-skill.reload.description = Reload the cylinder to reset your chance of being shot with a live round.
+skill.reload.description = Reload the cylinder to reset your chance of being shot with a live bullet.
 skill.sabotage.name = Sabotage
-skill.sabotage.description = The next player will have a guaranteed chance of being shot with a live round.
+skill.sabotage.description = The next player will have a guaranteed chance of being shot with a live bullet.
 skill.pressurize.name = Pressurize
-skill.pressurize.description = The live round will deal 2x the Pressure.
+skill.pressurize.description = The live bullet will deal 2x the Pressure.
 skill.polarize.name = Polarize
-skill.polarize.description = Invert the state of the current round.
+skill.polarize.description = Invert the state of the current bullet.
 skill.deflate.name = Deflate
 skill.deflate.description = Deplete one bar of Pressure.
 skill.reveal.name = Reveal
@@ -383,7 +392,6 @@ pauseMenu.title = GAME PAUSED
 pauseMenu.resume = Resume
 pauseMenu.restart = Restart
 pauseMenu.options = Options
-pauseMenu.exit = Exit
 
 stats.pressure = Pressure
 stats.confidence = Confidence
@@ -404,10 +412,10 @@ achievement.fullPressureWin.description = Even at your highest peaks of pressure
 // Sabotage ten times in your lifetime.
 achievement.sabotages.name = Experienced Saboteur
 achievement.sabotages.description = You must really like Goober, huh. Use its ability fifty times.
-// Pressurize twice in a row without shooting a live round.
+// Pressurize twice in a row without shooting a live bullet.
 achievement.doublePressurize.name = Quadratic Equation
 achievement.doublePressurize.description = As you overload the device twice, the next player accepts its fate.
-// Pressurize, then shoot yourself with the live round afterwards.
+// Pressurize, then shoot yourself with the live bullet afterwards.
 achievement.pressurizeYourself.name = Backfire
 achievement.pressurizeYourself.description = Get a taste of your own Pressurized medicine. Intentional or mere misfortune?
 // Get a P Rank, AKA the maximum score.
@@ -526,7 +534,7 @@ characterCreator.exporting.generatingLangFile = Generating Localization Files...
 characterCreator.exporting.generatingAddonMetadata = Generating Addon Metadata...
 characterCreator.exporting.finalizing = Finalizing...
 characterCreator.exporting.missingAnimations = Project is missing these animations:\n%1
-characterCreator.exporting.missingAnimations.extend = and many more...
+prompt.andManyMore = and many more...
 characterCreator.exporting.description = Please keep this program open.
 characterCreator.exportSuccessful.prompt = Project exported successfully. You might want to tweak the variables in the JSON files.\n\nExported as:\n%1
 
@@ -591,6 +599,11 @@ preloadMenu.progress.cursor = Decorating Mouse Cursor...
 preloadMenu.progress.splashes = Writing Splashes...
 preloadMenu.progress.music = Finding Music Discs...
 preloadMenu.finished = All Set!
+
+outdatedVersionMenu.heading = Version Outdated
+outdatedVersionMenu.text = Hey! You are currently using an older version of Inflation Roulette: Reloaded. Please download the latest version to enjoy the newest features and bug fixes!\n\nYour Version: %1\nLatest Version: %2
+outdatedVersionMenu.update = Update
+outdatedVersionMenu.dismiss = Later
 
 // Fallback for HTML build
 gamemode.fiftyFifty.name = Fifty-Fifty

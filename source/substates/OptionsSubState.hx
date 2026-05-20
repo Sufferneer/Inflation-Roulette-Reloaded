@@ -215,10 +215,16 @@ class OptionsSubState extends SuffSubState {
 		createSliderOption('maxFramerate', function(value:Float) {
 			Preferences.data.maxFramerate = Math.round(value);
 			PauseSubState.usedFollowLerp = 0.1 * Preferences.data.cameraSpeed;
-		}, 30, #if !mobile 500 #else 90 #end, 10, function(value:Float) {
+		}, 30, #if !mobile 500 #else 120 #end, 10, function(value:Float) {
 			return '' + Math.round(value);
 		}, Preferences.data.maxFramerate);
-		// Mobile framerate is capped at 90 to avoid device heating up
+		// Mobile framerate is capped at 120 to avoid device heating up
+
+		#if !html5
+		createBooleanOption('checkForUpdates', function(value:Bool) {
+			Preferences.data.checkForUpdates = value;
+		}, Preferences.data.checkForUpdates);
+		#end
 
 		#if (!html5 && !mobile)
 		createBooleanOption('pauseOnUnfocus', function(value:Bool) {
@@ -277,7 +283,7 @@ class OptionsSubState extends SuffSubState {
 		if (optionsGroup.members.length > 0)
 			optionsY += 32;
 		var text:FlxText = new FlxText(optionsXPadding, optionsY, 0, Language.getPhrase('optionsMenu.heading.$name'));
-		text.setFormat(Paths.font('default'), 32, FlxColor.WHITE, CENTER);
+		text.setFormat(Paths.font('small'), 32, FlxColor.WHITE, CENTER);
 		optionsGroup.add(text);
 		optionsY += 48;
 

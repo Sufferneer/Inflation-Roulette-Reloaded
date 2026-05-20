@@ -1,0 +1,6 @@
+gamemode.fiftyFifty.name = A mitges
+gamemode.fiftyFifty.description = Purament una casualitat de llançament de moneda amb reemplaçament.\nJoc ràpid i arriscat.
+
+character.asimo.name = Asimo
+character.asimo.name.short = Asimo
+character.asimo.description = Aquest llop només vol divertir-se una mica. Seva experiència en ocultisme elèctric li permet sobrecarregar armes.

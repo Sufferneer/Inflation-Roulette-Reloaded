@@ -7,6 +7,7 @@ import ui.objects.GitHubButton;
 import ui.objects.SuffIconButton;
 import ui.objects.SuffTextButton;
 import tjson.TJSON as Json;
+import substates.GenericPrompt;
 
 class LanguageSelectState extends SuffState {
 	public static var initialized:Bool = false;
@@ -21,6 +22,7 @@ class LanguageSelectState extends SuffState {
 	var ajuniga:FlxSprite;
 	var originalAjunigaPosition:FlxPoint;
 	var exitButton:SuffIconButton;
+	// var logButton:SuffIconButton;
 	var githubButton:GitHubButton;
 
 	var leBGColor:FlxColor = 0xFFFDE871;
@@ -29,8 +31,9 @@ class LanguageSelectState extends SuffState {
 	final textColorAlt:FlxColor = 0xFFFFFFFF;
 	var title:FlxText;
 	var description:FlxText;
+	var progress:SuffTextButton;
 	var languageButtons:FlxTypedContainer<SuffTextButton> = new FlxTypedContainer<SuffTextButton>();
-	var contributorText:FlxTypedContainer<FlxText> = new FlxTypedContainer<FlxText>();
+	var contributorText:FlxSpriteGroup = new FlxSpriteGroup();
 	var languages:Array<String> = [];
 	var languageMetadataList:Array<LanguageMetadata> = [];
 
@@ -148,15 +151,23 @@ class LanguageSelectState extends SuffState {
 		title.x = -title.width;
 		add(title);
 
-		description = new FlxText(0, title.y + title.height + 16, (FlxG.width - languageOverlay.width) / 2 - 64,
-			Language.getPhrase('languageMenu.description'));
-		description.setFormat(Paths.font('small'), 16, textColor);
+		var leProgress = (Language.getCompletionProgress(Preferences.data.language) * 100) + '%';
+		progress = new SuffTextButton(0, title.y + title.height + 16, Language.getPhrase('languageMenu.completion', [leProgress]), 32, FlxPoint.get(0, 0));
+		progress.btnTextFontPath = Paths.font('small');
+		var missingKeys = Language.logMissingKeys();
+		progress.disabled = (missingKeys.length <= 0);
+		progress.onClick = function() {
+			openSubState(new GenericPrompt(missingKeys.join('\n'), 1080));
+		};
+		progress.btnTextColor = progress.btnTextColorHovered = progress.btnTextColorClicked = progress.btnTextColorDisabled = textColor;
+		progress.x = -progress.width;
+		progress.color = textColor;
+		add(progress);
+
+		description = new FlxText(0, progress.y + progress.height + 16, title.width, Language.getPhrase('languageMenu.description'));
+		description.setFormat(Paths.font('small'), 32, textColor);
 		description.x = -description.width;
 		add(description);
-
-		githubButton = new GitHubButton(0, description.y + description.height + 16, 'issues');
-		githubButton.x = -githubButton.width;
-		add(githubButton);
 
 		exitButton = new SuffIconButton(20, 20 + ScreenSafeZone.Y, 'buttons/exit', null, 2);
 		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
@@ -168,6 +179,25 @@ class LanguageSelectState extends SuffState {
 			exitMenu();
 		};
 		add(exitButton);
+
+		/*
+		logButton = new SuffIconButton(exitButton.x - exitButton.width - 20, exitButton.y, 'buttons/log', null, 2);
+		logButton.btnTextColor = logButton.btnTextColorHovered = logButton.btnTextColorClicked = textColor;
+		logButton.btnOutlineColor = logButton.btnOutlineColorHovered = logButton.btnOutlineColorClicked = textColor;
+		logButton.btnBGColor = logButton.btnBGColorHovered = logButton.btnBGColorClicked = leBGColor;
+		logButton.visible = false;
+		logButton.tooltipText = Language.getPhrase('languageMenu.logMissingKeys');
+		logButton.onClick = function() {
+			var keys = Language.logMissingKeys();
+			if (keys.length <= 0) return;
+			openSubState(new GenericPrompt(keys.join('\n'), 1080));
+		};
+		add(logButton);
+		 */
+
+		githubButton = new GitHubButton(exitButton.x, exitButton.y + exitButton.height + 20, 'issues');
+		githubButton.visible = false;
+		add(githubButton);
 
 		if (!initialized && !atWarningState) {
 			initialized = true;
@@ -202,11 +232,11 @@ class LanguageSelectState extends SuffState {
 		for (num => contributor in contributors) {
 			var text:FlxText = new FlxText(0, 0, 0, contributor, 32);
 			text.color = textColor;
-			var langFont = Paths.getPath('lang/$id/fonts/default_$id.ttf');
+			var langFont = Paths.getPath('lang/$id/fonts/small_$id.ttf');
 			if (Paths.fileExists(langFont))
 				text.font = langFont;
 			else
-				text.font = Paths.font('default');
+				text.font = Paths.font('small');
 			text.x = -text.width;
 			text.y = FlxG.height - 32 - 32 * (contributors.length - num) - ScreenSafeZone.Y;
 			FlxTween.tween(text, {x: 32 + ScreenSafeZone.X}, 0.75, {
@@ -215,7 +245,7 @@ class LanguageSelectState extends SuffState {
 			});
 			contributorText.add(text);
 		}
-		var titleText:FlxText = new FlxText(0, 0, 0, Language.getPhrase('languageMenu.contributors'), 48);
+		var titleText:FlxText = new FlxText(0, 0, Language.getPhrase('languageMenu.contributors'), 48);
 		titleText.color = textColor;
 		titleText.x = -titleText.width;
 		titleText.y = FlxG.height - titleText.height - 32 - 32 * contributors.length - ScreenSafeZone.Y;
@@ -286,7 +316,7 @@ class LanguageSelectState extends SuffState {
 		bgOverlay.visible = true;
 		ajuniga.loadGraphic(Paths.image('ui/menus/language/ajunigaBlended'));
 		ajuniga.angle = 0;
-		exitButton.visible = true;
+		exitButton.visible = githubButton.visible = true;
 
 		regenerateContributorsList(languages[curSelected], languageMetadataList[curSelected].contributors);
 
@@ -316,11 +346,11 @@ class LanguageSelectState extends SuffState {
 				ease: FlxEase.quintOut,
 				startDelay: 0
 			});
-			FlxTween.tween(description, {x: 32 + ScreenSafeZone.X}, 0.75, {
+			FlxTween.tween(progress, {x: 32 + ScreenSafeZone.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0.25
 			});
-			FlxTween.tween(githubButton, {x: 32 + ScreenSafeZone.X}, 0.75, {
+			FlxTween.tween(description, {x: 32 + ScreenSafeZone.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0.5
 			});
@@ -335,7 +365,7 @@ class LanguageSelectState extends SuffState {
 			}
 			ajuniga.setPosition(FlxG.width * 0.6, FlxG.height * 0.4);
 			ajuniga.scale.set(1.5, 1.5);
-			title.x = description.x = githubButton.x = 32 + ScreenSafeZone.X;
+			title.x = description.x = progress.x = 32 + ScreenSafeZone.X;
 		}
 		if (!atWarningState)
 			SuffState.playMusic('language');

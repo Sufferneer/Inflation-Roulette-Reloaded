@@ -42,9 +42,14 @@ class CharacterManager {
 	}
 
 	public static function parseRandomCharacters() {
+		var list = globalCharacterList.copy();
 		for (i in 0...selectedCharacterList.length) {
 			if (selectedCharacterList[i] == 'random') {
-				selectedCharacterList[i] = globalCharacterList[FlxG.random.int(0, globalCharacterList.length - 1)];
+				var picked = FlxG.random.getObject(list);
+				selectedCharacterList[i] = picked;
+				list.remove(picked);
+				if (list.length <= 0)
+					list = globalCharacterList.copy();
 			}
 		}
 	}

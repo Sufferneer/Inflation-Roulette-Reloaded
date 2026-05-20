@@ -10,9 +10,7 @@ class GameOnSubState extends SuffSubState {
 
 	public function new(nextState) {
 		super();
-
-		PlayState.hasSeenStartCutscene = false;
-		CharacterManager.parseRandomCharacters();
+		
 		SuffState.playMusic('characterSelectEnd', 1, true);
 
 		slashBGDim = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
@@ -29,6 +27,9 @@ class GameOnSubState extends SuffSubState {
 
 		gameOn = new FlxText(0, 0, 0, Language.getPhrase('gameOn.text'));
 		gameOn.setFormat(Paths.font('default'), 256, FlxColor.WHITE);
+		while (gameOn.width > FlxG.width - 200) {
+			gameOn.size -= 16;
+		}
 		gameOn.alpha = 0;
 		gameOn.screenCenter();
 		gameOn.scale.set(0, 0);

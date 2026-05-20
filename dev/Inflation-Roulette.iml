@@ -20,7 +20,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Inflation-Roulette-Libraries" level="project" />
-    <orderEntry type="library" exported="" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
@@ -40,6 +40,83 @@
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: flixel:6.1.2">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel/6,1,2" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel/6,1,2" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: flixel-ui:2.6.4">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel-ui/2,6,4" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel-ui/2,6,4" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: flixel-addons:4.0.1">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel-addons/4,0,1" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel-addons/4,0,1" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: flixel-tools:1.5.1">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel-tools/1,5,1" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/flixel-tools/1,5,1" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: tjson:1.4.0">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/tjson/1,4,0" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/tjson/1,4,0" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: openfl:9.5.0">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: hxcpp-debug-server:1.2.4">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/hxcpp-debug-server/1,2,4" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/hxcpp-debug-server/1,2,4" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
       <library name="Haxelib: lime:8.3.1">
         <CLASSES>
           <root url="file://$MODULE_DIR$/../.haxelib/lime/8,3,1/src" />
@@ -47,6 +124,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/../.haxelib/lime/8,3,1/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: openfl:9.5.0">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
         </SOURCES>
       </library>
     </orderEntry>

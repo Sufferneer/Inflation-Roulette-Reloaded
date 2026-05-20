@@ -21,6 +21,10 @@
 // sound similar to its English counterpart.
 // In a nutshell, transliterate names.
 
+// For terms like "Inflation Roulette" and "Reloaded" used in a naming context,
+// unless your language does not use the Latin script, it should be remain
+// untranslated.
+
 // Valid Escape Sequences:
 // \n: New line
 // \s: Whitespace
@@ -56,7 +60,6 @@ game.version.name.major.1 = Initial Release
 // Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 // If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 game.version.name.major.2 = Patch of Creativity
-game.version.name.major.3 = Lightweight Paints
 // Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
 game.version.name.state.a = Public Alphα %1
 game.version.name.state.b = Public βeta %1
@@ -282,11 +285,13 @@ addonsMenu.noAddonsDetected.content = No se detectan complementos dentro de la c
 languageMenu.title = SELECCIONAR LENGUAJE
 languageMenu.description = Note: Es posible que las traducciones no sean 100% precisas y puedan contener traducciones erróneas o texto no traducido. Si desea ayudar a mejorar las traducciones, considere contribuir a nuestro repositorio de GitHub.
 languageMenu.contributors = Contribuir
+languageMenu.completion = %1 Completado
 
 gamemodeSelect.title = SELECCIONA MODO DE JUEGO
 gamemode.quickPlay.name = Juego Rápido
 gamemode.quickPlay.description = Personajes aleatorios.\nA lo que vienes, sin relleno.
-gamemode.reloaded.name = Recargado
+// Reloaded should remain untranslated (transliterate if not Latin script)
+gamemode.reloaded.name = Reloaded
 gamemode.reloaded.description = Una nueva forma de jugar a Inflation Roulette.\nNivelado por el desarrollador.
 gamemode.inequality.name = Injusto
 gamemode.inequality.description = A los jugadores se les otorgan habilidades aleatorias en cada turno.\n"El juego es totalmente justo, pero es más justo con algunos jugadores".
@@ -385,7 +390,6 @@ pauseMenu.title = Pausa
 pauseMenu.resume = Continuar
 pauseMenu.restart = Reiniciar
 pauseMenu.options = Opciones
-pauseMenu.exit = Salir
 
 stats.pressure = Presión
 stats.confidence = Confianza
@@ -530,7 +534,7 @@ characterCreator.exporting = Exportando Animación:\n%1
 characterCreator.exporting.generatingCharacterData = Generando Archivos JSON...
 characterCreator.exporting.finalizing = Finalizando...
 characterCreator.exporting.missingAnimations = El proyecto no tiene estas animaciones:\n%1
-characterCreator.exporting.missingAnimations.extend = y muchas más...
+prompt.andManyMore = y muchas más...
 characterCreator.exporting.description = Por favor, mantén este programa abierto.
 characterCreator.exportSuccessful.prompt = Proyecto exportado correctamente. Quizá quieras ajustar las variables en los archivos JSON.\n\nExportado como:\n%1
 

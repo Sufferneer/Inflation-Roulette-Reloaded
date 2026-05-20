@@ -15,7 +15,7 @@ import ui.addons.SuffUIButton;
 import utilities.substates.SpriteBrowseImagePrompt;
 import utilities.states.AnimationEditorState;
 import utilities.substates.ChoicePrompt;
-import utilities.substates.GenericPrompt;
+import substates.GenericPrompt;
 import utilities.substates.ExportingProjectPrompt;
 import utilities.substates.ErrorPrompt;
 import flixel.addons.ui.FlxUINumericStepper;
@@ -271,7 +271,7 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		}
 		if (missingAnims.length > 10) {
 			missingAnims.resize(10);
-			missingAnims.push(Language.getPhrase('characterCreator.exporting.missingAnimations.extend'));
+			missingAnims.push(Language.getPhrase('prompt.andManyMore'));
 		}
 		if (missingAnims.length == 0) {
 			ExportingProjectPrompt.allAnims = leAnims;

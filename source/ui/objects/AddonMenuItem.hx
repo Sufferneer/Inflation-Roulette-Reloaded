@@ -34,7 +34,7 @@ class AddonMenuItem extends SuffButton {
 
 		var textOffset:Float = iconOffset + icon.width + 16;
 		modName = new FlxText(textOffset, iconOffset, 0, addon.name);
-		modName.setFormat(Paths.font('default'), 48);
+		modName.setFormat(Paths.font('default', false), 48);
 		
 		var leScale:Float = (bg.width - iconOffset - textOffset) / (modName.width);
 		if (leScale < 1) {
@@ -45,7 +45,7 @@ class AddonMenuItem extends SuffButton {
 		var modDescY = iconOffset + modName.height;
 		modDesc = new FlxText(textOffset, modDescY, defaultWidth - textOffset - iconOffset, addon.description);
 		modDesc.alpha = 0.5;
-		modDesc.setFormat(Paths.font('default'), 16);
+		modDesc.setFormat(Paths.font('default', false), 16);
 
 		var leScale:Float = (defaultHeight - modDescY - iconOffset) / modDesc.height;
 		if (leScale < 1) {

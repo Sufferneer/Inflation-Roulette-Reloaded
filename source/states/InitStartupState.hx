@@ -7,7 +7,7 @@ import states.WarningState;
 
 class InitStartupState extends SuffState {
 	override function create() {
-		CursorHandler.cursorVisible = false;
+		// CursorHandler.cursorVisible = false;
 
 		super.create();
 
@@ -45,6 +45,6 @@ class InitStartupState extends SuffState {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		CursorHandler.cursorVisible = false;
+		// CursorHandler.cursorVisible = false;
 	}
 }

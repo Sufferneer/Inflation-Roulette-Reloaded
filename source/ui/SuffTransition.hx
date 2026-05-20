@@ -228,7 +228,7 @@ class SuffTransition extends SuffSubState {
 	}
 
 	function startLoading(showText:Bool = true) {
-		CursorHandler.cursorVisible = false;
+		// CursorHandler.cursorVisible = false;
 		Paths.clearUnusedMemory();
 		if (finishCallback != null) {
 			loadingTxt.visible = showText;
@@ -237,7 +237,7 @@ class SuffTransition extends SuffSubState {
 	}
 
 	function endLoading() {
-		CursorHandler.cursorVisible = true;
+		// CursorHandler.cursorVisible = true;
 		loadingTxt.visible = false;
 	}
 

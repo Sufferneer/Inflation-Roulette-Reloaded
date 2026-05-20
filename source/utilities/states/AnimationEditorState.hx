@@ -13,7 +13,7 @@ import ui.addons.SuffUINumericStepper;
 import utilities.substates.ChoicePrompt;
 import utilities.states.CharacterCreatorState;
 import flixel.addons.ui.FlxUIInputText;
-import utilities.substates.GenericPrompt;
+import substates.GenericPrompt;
 import haxe.Exception;
 import utilities.substates.ErrorPrompt;
 import flixel.addons.ui.FlxUINumericStepper;

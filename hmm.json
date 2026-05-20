@@ -1,58 +1,56 @@
 {
-	"dependencies": [
-		{
-			"name": "flixel",
-			"type": "haxelib",
-			"version": "6.1.2",
-			"dir": null
-		},
-		{
-			"name": "flixel-addons",
-			"type": "haxelib",
-			"version": "4.0.1",
-			"dir": null
-		},
-		{
-			"name": "flixel-tools",
-			"type": "haxelib",
-			"version": "1.5.1",
-			"dir": null
-		},
-		{
-			"name": "flixel-ui",
-			"type": "haxelib",
-			"version": "2.6.4",
-			"dir": null
-		},
-		{
-			"name": "hxcpp",
-			"type": "haxelib",
-			"version": "git",
-			"dir": "https://github.com/HaxeFoundation/hxcpp"
-		},
-		{
-			"name": "hxcpp-debug-server",
-			"type": "haxelib",
-			"version": "1.2.4",
-			"dir": null
-		},
-		{
-			"name": "lime",
-			"type": "haxelib",
-			"version": "8.3.1",
-			"dir": null
-		},
-		{
-			"name": "openfl",
-			"type": "haxelib",
-			"version": "9.5.0",
-			"dir": null
-		},
-		{
-			"name": "tjson",
-			"type": "haxelib",
-			"version": "1.4.0",
-			"dir": null
-		}
-	]
+  "dependencies": [
+    {
+      "name": "flixel",
+      "type": "haxelib",
+      "version": "6.1.2"
+    },
+    {
+      "name": "flixel-addons",
+      "type": "haxelib",
+      "version": "4.0.1"
+    },
+    {
+      "name": "flixel-tools",
+      "type": "haxelib",
+      "version": "1.5.1"
+    },
+    {
+      "name": "flixel-ui",
+      "type": "haxelib",
+      "version": "2.6.4"
+    },
+    {
+      "name": "hre",
+      "type": "haxelib",
+      "version": "0.2.1"
+    },
+    {
+      "name": "hxcpp",
+      "type": "git",
+      "dir": null,
+      "ref": "master",
+      "url": "https://github.com/HaxeFoundation/hxcpp"
+    },
+    {
+      "name": "hxcpp-debug-server",
+      "type": "haxelib",
+      "version": "1.2.4"
+    },
+    {
+      "name": "lime",
+      "type": "haxelib",
+      "version": "8.3.1"
+    },
+    {
+      "name": "openfl",
+      "type": "haxelib",
+      "version": "9.5.0"
+    },
+    {
+      "name": "tjson",
+      "type": "haxelib",
+      "version": "1.4.0"
+    }
+  ]
 }

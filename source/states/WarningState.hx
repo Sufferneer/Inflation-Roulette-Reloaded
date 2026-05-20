@@ -71,7 +71,7 @@ class WarningState extends SuffState {
 			ease: FlxEase.backOut,
 			startDelay: 0.5,
 			onComplete: function(_) {
-				CursorHandler.cursorVisible = true;
+				// CursorHandler.cursorVisible = true;
 			}
 		});
 

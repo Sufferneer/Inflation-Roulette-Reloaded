@@ -4,7 +4,7 @@ import utilities.substates.LoadFilePrompt;
 import utilities.substates.LoadDirectoryPrompt;
 import utilities.substates.ErrorPrompt;
 import utilities.substates.NewSpriteProjectPrompt;
-import utilities.substates.GenericPrompt;
+import substates.GenericPrompt;
 import ui.objects.SuffIconButton;
 
 class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
@@ -34,20 +34,20 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 			initialized = true;
 			if (FlxG.save.data.hasOpenedUtilitiesMenu == null) {
 				FlxG.save.data.hasOpenedUtilitiesMenu = true;
-				openQuestionPrompt();
+				openWarningPrompt();
 			}
 			playRandomMusic();
 		}
 
-		var questionButton:SuffIconButton = new SuffIconButton(10, 10, 'buttons/question', 2);
-		questionButton.y = FlxG.height - questionButton.height - 10;
-		questionButton.onClick = function() {
-			openQuestionPrompt();
+		var warningButton:SuffIconButton = new SuffIconButton(10, 10, 'buttons/warning', 2);
+		warningButton.y = FlxG.height - warningButton.height - 10;
+		warningButton.onClick = function() {
+			openWarningPrompt();
 		}
-		add(questionButton);
+		add(warningButton);
 	}
 
-	function openQuestionPrompt() {
+	function openWarningPrompt() {
 		openSubState(new GenericPrompt('utilitiesMenu.firstStartup.prompt', 960));
 	}
 

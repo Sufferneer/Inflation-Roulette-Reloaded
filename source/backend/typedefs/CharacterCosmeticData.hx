@@ -7,11 +7,12 @@ typedef CharacterCosmeticData = {
 	gurgleThreshold:Int,
 	creakThreshold:Int,
 	antialiasing:Bool,
-	disablePopping:Bool,
-	originPosition:Array<Int>,
-	poppedCameraOffset:Array<Int>,
-	cameraOffset:Array<Int>,
-	headParticlePosition:Array<Int>,
-	poppingVelocityMultiplier:Array<Float>,
-	poppingGravityMultiplier:Float
+	?disablePopping:Bool,
+	?originPosition:Array<Int>,
+	?poppedCameraOffset:Array<Int>,
+	?cameraOffset:Array<Int>,
+	?particleOffsets:CharacterParticleOffsetsData,
+	// ?headParticlePosition:Map<String, Array<Array<Int>>>,
+	?poppingVelocityMultiplier:Array<Float>,
+	?poppingGravityMultiplier:Float
 }

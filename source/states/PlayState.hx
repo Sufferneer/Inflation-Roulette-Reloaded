@@ -18,6 +18,9 @@ import backend.Scoring;
 import objects.particles.SkillIndicator;
 import ui.objects.RevealBullet;
 import shaders.GaussianBlurShader;
+import objects.particles.Bloosh;
+import objects.particleEmitters.PuffEmitter;
+import objects.particles.BulletShell;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
@@ -58,11 +61,10 @@ class PlayState extends SuffState {
 	var pauseButton:SuffIconButton;
 	var cameraFocusButton:SuffIconButton;
 	var skillCancelButton:SuffIconButton;
+	
+	var dangerVignette:FlxSprite;
 
 	var gaussianBlurShader:GaussianBlurShader = new GaussianBlurShader(20);
-
-	// Sounds
-	public var ambientSound:FlxSound;
 
 	// Game Logic
 	var currentTurnIndex:Int = 0;
@@ -96,7 +98,7 @@ class PlayState extends SuffState {
 	// backend shit
 	public static var instance:PlayState;
 
-	public static var currentSessionenablePopping:Bool = true;
+	public static var currentSessionEnablePopping:Bool = true;
 
 	// Achievement shit
 	var pressurizeStreak:Array<Int> = [];
@@ -128,7 +130,7 @@ class PlayState extends SuffState {
 
 		stage = new Stage(GameplayManager.currentStage);
 
-		currentSessionenablePopping = Preferences.data.enablePopping;
+		currentSessionEnablePopping = Preferences.data.enablePopping;
 
 		currentTurnIndex = 0;
 
@@ -214,12 +216,16 @@ class PlayState extends SuffState {
 		selectLight.visible = false;
 		members.insert(members.indexOf(characterGroup), selectLight);
 
-		ambientSound = new FlxSound().loadEmbedded(Paths.sound('ambient'));
-		ambientSound.volume = 0.25 * Preferences.data.gameSoundVolume;
-		ambientSound.looped = true;
-		ambientSound.play();
-
 		// UI Stuff//
+		dangerVignette = new FlxSprite().loadGraphic(Paths.image('ui/vignette'));
+		dangerVignette.setGraphicSize(FlxG.width + 20, FlxG.height + 20);
+		dangerVignette.updateHitbox();
+		dangerVignette.screenCenter();
+		dangerVignette.color = 0xC00060;
+		dangerVignette.alpha = 0;
+		dangerVignette.camera = camHUD;
+		add(dangerVignette);
+		
 		letterboxTop = new FlxSprite().makeGraphic(FlxG.width + 50, Std.int((FlxG.height - FlxG.width * Constants.LETTERBOX_RATIO) / 2), FlxColor.BLACK);
 		letterboxTop.camera = camOther;
 		letterboxTop.y = -letterboxTop.height;
@@ -231,6 +237,7 @@ class PlayState extends SuffState {
 		add(letterboxBottom);
 
 		selectTargetText = new FlxText(Language.getPhrase('gameUI.selectTarget'), 48);
+		selectTargetText.setBorderStyle(OUTLINE, 0xFF000000, 3.25);
 		selectTargetText.x = Std.int((FlxG.width - selectTargetText.width) / 2);
 		selectTargetText.y = -selectTargetText.height;
 		selectTargetText.camera = camHUD;
@@ -360,8 +367,11 @@ class PlayState extends SuffState {
 		togglePlayerUI(false);
 		toggleCameraFocusButton(false);
 		toggleLetterbox(true);
-		getPlayer(playerIndex).playAnim('preShoot', false);
-		doTimer('playerShoot', new FlxTimer().start(getPlayer(playerIndex).getAnimLength('preShoot') + usedDelay(), function(_:FlxTimer) {
+		var character = getPlayer(playerIndex);
+		character.playAnim('preShoot', false);
+		doTimer('playerShoot', new FlxTimer().start(character.getAnimLength('preShoot') + usedDelay(), function(_:FlxTimer) {
+			var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot')[0], character.y + character.getParticleOffset('gunShoot')[1], stage.data.characterY, cylinderContent[0]);
+			members.insert(members.indexOf(characterGroup) + 1, bulletShell);
 			shoot(playerIndex);
 		}));
 	}
@@ -579,10 +589,15 @@ class PlayState extends SuffState {
 			actualAnimName = 'skill';
 		}
 		getPlayer(playerIndex).playAnim(actualAnimName);
-		members.insert(members.indexOf(getPlayer(playerIndex)), new SkillIndicator(getPlayer(playerIndex).x + getPlayer(playerIndex).headParticlePosition[0], getPlayer(playerIndex).y + getPlayer(playerIndex).headParticlePosition[1], skill.id));
+		var offsets = getPlayer(playerIndex).getParticleOffset('over');
+		members.insert(members.indexOf(getPlayer(playerIndex)), new SkillIndicator(getPlayer(playerIndex).x + offsets[0], getPlayer(playerIndex).y + offsets[1], skill.id));
 
 		switch (skill.id) {
 			case 'reload':
+				for (i in 0...cylinderContent.length) {
+					var bulletShell = new BulletShell(getPlayer(playerIndex).x + getPlayer(playerIndex).getParticleOffset('gunSkill')[0], getPlayer(playerIndex).y + getPlayer(playerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[i]);
+					members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+				}
 				reloadCylinder(GameplayManager.currentGamemode.cylinderLiveCount);
 			case 'sabotage':
 				cylinderContent[0] = false;
@@ -678,6 +693,8 @@ class PlayState extends SuffState {
 						if (getPlayer(victimIndex).currentConfidence > getPlayer(victimIndex).maxConfidence)
 							getPlayer(victimIndex).currentConfidence = getPlayer(victimIndex).maxConfidence;
 					}
+					var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill')[0], getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[0]);
+					members.insert(members.indexOf(characterGroup) + 1, bulletShell);
 					shoot(victimIndex, false);
 					pumpGun.visible = true;
 					var flipX:Bool = (attackerIndex - victimIndex) < 0;
@@ -707,7 +724,8 @@ class PlayState extends SuffState {
 		var flipX:Bool = (attackerIndex - victimIndex) > 0;
 		if (getPlayer(attackerIndex).flipX) flipX = !flipX;
 		getPlayer(attackerIndex).playAnim(actualAnimName, false, true, flipX);
-		members.insert(members.indexOf(getPlayer(attackerIndex)), new SkillIndicator(getPlayer(attackerIndex).x + getPlayer(attackerIndex).headParticlePosition[0], getPlayer(attackerIndex).y + getPlayer(attackerIndex).headParticlePosition[1], skill.id));
+		var offsets = getPlayer(attackerIndex).getParticleOffset('over');
+		members.insert(members.indexOf(getPlayer(attackerIndex)), new SkillIndicator(getPlayer(attackerIndex).x + offsets[0], getPlayer(attackerIndex).y + offsets[1], skill.id));
 
 		toggleLetterbox(true);
 		if (getPlayer(attackerIndex).animSoundPaths[soundName] == null || getPlayer(attackerIndex).animSoundPaths[soundName].length <= 0) {
@@ -882,10 +900,12 @@ class PlayState extends SuffState {
 		isEnding = evaluateEnding(); // Check if remaining players are eliminated
 		playGunContactSound();
 		pumpGun.visible = true;
-		if (currentSessionenablePopping && !getPlayer(playerIndex).disablePopping) { // Pop player instead
+		if (currentSessionEnablePopping && !getPlayer(playerIndex).disablePopping) { // Pop player instead
 			getPlayer(playerIndex).playAnim('popped', false);
 			var character = getPlayer(playerIndex);
-			members.insert(members.indexOf(characterGroup), new ScrapEmitter(character.x, character.y - character.width / 2.5, character.id, stage.data.characterY));
+			members.insert(members.indexOf(characterGroup), new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY));
+			members.insert(members.indexOf(characterGroup) + 1, new Bloosh(character.x, character.y - character.height / 2));
+			members.insert(members.indexOf(characterGroup) + 1, new PuffEmitter(character.x, character.y - character.height / 2));
 			SuffState.playSound(Paths.sound('game/belly/burst'));
 			getPlayer(playerIndex).disableBellySounds = true;
 			screenShake(0.03, 0.5);
@@ -900,7 +920,7 @@ class PlayState extends SuffState {
 
 		if (!isEnding) {
 			FlxG.sound.music.resume();
-			doTween('aTweenButItsATimerLol', FlxTween.tween(camGame, {alpha: 1}, ((currentSessionenablePopping && !getPlayer(playerIndex).disablePopping) ? 2.5 : 1), {
+			doTween('aTweenButItsATimerLol', FlxTween.tween(camGame, {alpha: 1}, ((currentSessionEnablePopping && !getPlayer(playerIndex).disablePopping) ? 2.5 : 1), {
 				onUpdate: function(_:FlxTween) {
 					focusCameraOnPlayer(playerIndex);
 				}, onComplete: function(_:FlxTween) {
@@ -951,7 +971,6 @@ class PlayState extends SuffState {
 	}
 
 	function finishEndCutscene() {
-		ambientSound.stop();
 		SuffState.playMusic('null');
 		ResultsState.data = Scoring.judgeGame(characterGroup.members);
 		FlxTransitionableState.skipNextTransOut = true;
@@ -1130,18 +1149,28 @@ class PlayState extends SuffState {
 
 	function focusCameraOnPlayer(playerIndex:Int) {
 		var characterCameraOffset:Array<Int> = getPlayer(playerIndex).cameraOffset;
-		if (getPlayer(playerIndex).isEliminated() && (currentSessionenablePopping && !getPlayer(playerIndex).disablePopping))
+		if (getPlayer(playerIndex).isEliminated() && (currentSessionEnablePopping && !getPlayer(playerIndex).disablePopping))
 			characterCameraOffset = getPlayer(playerIndex).poppedCameraOffset;
 
 		camFollow.x = getPlayer(playerIndex).x + characterCameraOffset[0];
 		camFollow.y = getPlayer(playerIndex).y + characterCameraOffset[1];
 		camFollowZoom = stage.data.characterCameraZoom;
+
+		FlxTween.cancelTweensOf(dangerVignette);
+		if (getPlayer(playerIndex).getPressurePercentage() == 1) {
+			FlxTween.tween(dangerVignette, {alpha: 0.625}, 4);
+		} else {
+			FlxTween.tween(dangerVignette, {alpha: 0}, 0.75);
+		}
 	}
 
 	function focusCameraOnStage() {
 		camFollow.x = FlxG.width / 2;
 		camFollow.y = FlxG.height / 2;
 		camFollowZoom = stage.data.stageCameraZoom;
+
+		FlxTween.cancelTweensOf(dangerVignette);
+		FlxTween.tween(dangerVignette, {alpha: 0}, 0.75);
 	}
 
 	function doTween(tag:String, tween:FlxTween) {
@@ -1266,7 +1295,6 @@ class PlayState extends SuffState {
 			tmr.active = false);
 		FlxTween.globalManager.forEach(function(twn:FlxTween) if (!twn.finished)
 			twn.active = false);
-		ambientSound.pause();
 
 		openSubState(new PauseSubState());
 	}
@@ -1281,7 +1309,6 @@ class PlayState extends SuffState {
 			twn.active = true);
 
 		super.closeSubState();
-		ambientSound.resume();
 	}
 
 	override function update(elapsed:Float) {

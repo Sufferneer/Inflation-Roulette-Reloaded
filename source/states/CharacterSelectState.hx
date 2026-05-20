@@ -773,6 +773,8 @@ class CharacterSelectState extends SuffState {
 		FlxG.save.bind('game', Utilities.getSavePath());
 		isExiting = true;
 		readySign.moveSign(true);
+		PlayState.hasSeenStartCutscene = false;
+		CharacterManager.parseRandomCharacters();
 		openSubState(new GameOnSubState(new PlayState()));
 	}
 }

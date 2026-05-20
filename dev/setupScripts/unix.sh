@@ -12,5 +12,6 @@ haxelib install flixel-ui 2.6.4
 haxelib install tjson 1.4.0
 haxelib git systools https://github.com/waneck/systools/
 haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp/
-haxelib set hxcpp-debug-server 1.2.4
+haxelib install hxcpp-debug-server 1.2.4
+haxelib install hre 0.2.1
 echo Finished!

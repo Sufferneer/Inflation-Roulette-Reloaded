@@ -273,6 +273,10 @@ class MainMenuState extends SuffState {
 		while (leText == splashText.text) {
 			leText = getRandomSplashText();
 		}
+		if (Utilities.supportedBySuffirat(leText))
+			splashText.font = Paths.font('default', false);
+		else
+			splashText.font = Paths.font('unicode');
 		splashText.text = leText;
 	}
 

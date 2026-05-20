@@ -155,9 +155,11 @@ class AddonsMenuState extends SuffState {
 		var modMetadataY:Float = 0;
 
 		var modMetadataTitle = new FlxText(modBannerBG.x + 16, modMetadataY, modBannerBG.width - 32, addon.name, 48);
+		modMetadataTitle.font = Paths.font('default', false);
 		modMetadataItems.add(modMetadataTitle);
 		modMetadataY += modMetadataTitle.height;
 		var modMetadataDesc = new FlxText(modMetadataTitle.x, modMetadataY, modMetadataTitle.width, addon.description, 32);
+		modMetadataDesc.font = Paths.font('default', false);
 		modMetadataY += modMetadataDesc.height + 32;
 		modMetadataItems.add(modMetadataDesc);
 		var authorStr:String = '';
@@ -170,6 +172,7 @@ class AddonsMenuState extends SuffState {
 			authorStr += '$name - $role';
 		}
 		var modAuthorsText = new FlxText(modMetadataTitle.x, modMetadataY, modMetadataDesc.width, authorStr, 32);
+		modAuthorsText.font = Paths.font('default', false);
 		modMetadataItems.add(modAuthorsText);
 
 		modMetadataItems.y = modBanner.y + modBanner.height;

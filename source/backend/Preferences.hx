@@ -32,6 +32,7 @@ class SaveVariables {
 	public var showFramerateOnDebugText:Bool = true;
 	public var showMemoryUsageOnDebugText:Bool = true;
 	public var showCurrentStateOnDebugText:Bool = false;
+	public var checkForUpdates:Bool = true;
 	public var enableGLSL:Bool = true;
 	public var language:String = 'en-us';
 

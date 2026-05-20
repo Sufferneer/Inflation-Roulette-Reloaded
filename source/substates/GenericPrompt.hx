@@ -1,4 +1,4 @@
-package utilities.substates;
+package substates;
 
 import ui.objects.SuffBox;
 
@@ -11,7 +11,7 @@ class GenericPrompt extends SuffSubState {
 		add(bg);
 
 		var messageTxt:FlxText = new FlxText(0, 0, boxWidth - 64, Language.getPhrase(message), 32);
-		messageTxt.alignment = JUSTIFY;
+		messageTxt.alignment = LEFT;
 
 		var box:SuffBox = new SuffBox(0, 0, boxWidth, messageTxt.height + 196);
 		box.screenCenter();

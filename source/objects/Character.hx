@@ -26,6 +26,7 @@ class Character extends FlxSprite {
 	public var poppedCameraOffset:Array<Int> = [0, 0];
 	public var cameraOffset:Array<Int> = [0, 0];
 	public var headParticlePosition:Array<Int> = [0, 0];
+	public var particleOffsets:Map<String, Array<Array<Float>>> = [];
 	public var poppingGravityMultiplier:Float = 1.0;
 	public var poppingVelocityMultiplier:Array<Float> = [1, 1];
 	public var disablePopping:Bool = false;
@@ -89,8 +90,60 @@ class Character extends FlxSprite {
 			poppedCameraOffset = spriteJson.poppedCameraOffset;
 		if (spriteJson.cameraOffset != null)
 			cameraOffset = spriteJson.cameraOffset;
-		if (spriteJson.headParticlePosition != null)
-			headParticlePosition = spriteJson.headParticlePosition;
+		if (spriteJson.particleOffsets == null) {
+			spriteJson.particleOffsets = {
+				over: [
+					[0, -480],
+					[0, -480],
+					[0, -480],
+					[0, -480],
+					[0, -480],
+					[-160, -180],
+					[-100, -460]
+				],
+				mouth: [
+					[0, -410],
+					[0, -410],
+					[0, -410],
+					[0, -420],
+					[0, -440],
+					[-100, -140],
+					[-80, -420]
+				],
+				navel: [
+					[10, -290],
+					[40, -285],
+					[70, -280],
+					[100, -275],
+					[130, -270],
+					[40, -160],
+					[150, -220]
+				],
+				gunShoot: [
+					[0, -380],
+					[0, -380],
+					[0, -380],
+					[0, -420],
+					[0, -420],
+					[0, 0],
+					[0, 0]
+				],
+				gunSkill: [
+					[0, -320],
+					[0, -320],
+					[0, -360],
+					[0, -400],
+					[0, -400],
+					[0, 0],
+					[0, 0]
+				]
+			};
+		}
+		particleOffsets.set('over', spriteJson.particleOffsets.over);
+		particleOffsets.set('mouth', spriteJson.particleOffsets.mouth);
+		particleOffsets.set('navel', spriteJson.particleOffsets.navel);
+		particleOffsets.set('gunShoot', spriteJson.particleOffsets.gunShoot);
+		particleOffsets.set('gunSkill', spriteJson.particleOffsets.gunSkill);
 		if (spriteJson.poppingVelocityMultiplier != null)
 			poppingVelocityMultiplier = spriteJson.poppingVelocityMultiplier;
 		disablePopping = !(!spriteJson.disablePopping);
@@ -195,7 +248,8 @@ class Character extends FlxSprite {
 		if (!canUseSkills) {
 			swirlSpawnTimer -= elapsed;
 			if (swirlSpawnTimer <= 0) {
-				FlxG.state.add(new Swirl(this.x + this.headParticlePosition[0] + FlxG.random.float(-1, 1) * this.width / 5, this.y + this.headParticlePosition[1] + FlxG.random.float() * this.height / 5, 0xFFC040FF));
+				var offsets = getParticleOffset('over');
+				FlxG.state.add(new Swirl(this.x + offsets[0] + FlxG.random.float(-1, 1) * this.width / 5, this.y + offsets[1] + FlxG.random.float() * this.height / 5, 0xFFC040FF));
 				swirlSpawnTimer = FlxG.random.float();
 			}
 		}
@@ -259,11 +313,24 @@ class Character extends FlxSprite {
 		
 		trace(id, usedAnimName);
 	}
+	
+	public function getParticleOffset(position:String = 'over'):Array<Float> {
+		if (!particleOffsets.exists(position))
+			return [0, 0];
+		var offsetArray = particleOffsets.get(position);
+		if (currentPressure > maxPressure) {
+			var index = (PlayState.currentSessionEnablePopping && !disablePopping) ? (offsetArray.length - 1) : (offsetArray.length - 2);
+			return [offsetArray[index][0] * (this.flipX ? -1 : 1), offsetArray[index][1]];
+		} else {
+			return [offsetArray[currentPressure][0] * (this.flipX ? -1 : 1), offsetArray[currentPressure][1]];
+		}
+		return [0, 0];
+	}
 
 	public function parseAnimationSuffix() {
 		return switch (currentPressure) {
 			case(_ > maxPressure) => true:
-				if (PlayState.currentSessionenablePopping && !disablePopping) 'Null'; else 'Overinflated';
+				if (PlayState.currentSessionEnablePopping && !disablePopping) 'Null'; else 'Overinflated';
 			default:
 				'' + currentPressure;
 		}

@@ -21,13 +21,17 @@
 // sound similar to its English counterpart.
 // In a nutshell, transliterate names.
 
+// For terms like "Inflation Roulette" and "Reloaded" used in a naming context,
+// unless your language does not use the Latin script, it should be remain
+// untranslated.
+
 // Valid Escape Sequences:
 // \n: New line
 // \s: Whitespace
 // The positions of escape sequences in-between sentences should be left AS IS.
 
-game.title = Ruleta d'Inflament: Recarregant
-game.titleShort = Ruleta d'Inflament
+game.title = Inflation Roulette: Reloaded
+game.titleShort = Inflation Roulette
 game.acronym = RIR
 
 // Version Formatting
@@ -57,7 +61,6 @@ game.version.name.major.1 = Llançament inicial
 // Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 // If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 game.version.name.major.2 = Pegat de Creativitat
-game.version.name.major.3 = Pintures Lleugeres
 // Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
 game.version.name.state.a = Alfα pública %1
 game.version.name.state.b = βeta pública %1
@@ -283,12 +286,14 @@ addonsMenu.noAddonsDetected.content = No s'ha detectat complements a la carpeta 
 languageMenu.title = SELECCIONA IDIOMA
 languageMenu.description = Nota: És possible que traduccions no siguin 100% precises i que continguin traduccions incorrectes o text sense traduir. Si vols ajudar a millorar les traduccions, considera possibilitat de contribuir a nostre repositori de GitHub.
 languageMenu.contributors = Coŀlaboradors
+languageMenu.completion = %1 Completat
 
 gamemodeSelect.title = SELECCIONA MODE DE JOC
 gamemode.quickPlay.name = Joc ràpid
 gamemode.quickPlay.description = Personatges aleatoris.\nDirecte al joc. Sense tèrbols.
-gamemode.reloaded.name = Recarregant
-gamemode.reloaded.description = Una nova manera de jugar a Ruleta d'Inflament.\nEquilibrat tal com ho pretenia el desenvolupador.
+// Reloaded should remain untranslated (transliterate if not Latin script)
+gamemode.reloaded.name = Reloaded
+gamemode.reloaded.description = Una nova manera de jugar a Inflation Roulette.\nEquilibrat tal com ho pretenia el desenvolupador.
 gamemode.inequality.name = Desigualtat
 gamemode.inequality.description = Jugadors reben habilitats aleatòries a cada tret amb bala.\n"Tots els jugadors són iguals, però alguns jugadors són més iguals que altres." - La Rebeŀlió dels Animals, probablement
 gamemode.classic.name = Clàssic
@@ -387,7 +392,6 @@ pauseMenu.title = JOC EN PAUSA
 pauseMenu.resume = Reprèn
 pauseMenu.restart = Reinicia
 pauseMenu.options = Opcions
-pauseMenu.exit = Surt
 
 stats.pressure = Pressió
 stats.confidence = Confiança
@@ -447,12 +451,12 @@ galleryMainMenu.envelope.rotateText = true
 // The way I interpret this is like, them having races or something
 galleryMainMenu.envelope.goober.description = Vistos per primera vegada al joc original, els Goobers entren en acció amb una nova capa de pintura! S'han convertit en el personatge de referència que apareix en innombrables remakes i fanarts.\n\nQuant a per què i com es van unir al joc, ningú ho sap! Actors? Ostatges? Venuts? Hi ha moltes teories! No se sap gaire sobre seva biologia, però s'ha confirmat que s'han classificat en diverses races, que van des dels Goobers compostos completament de llim fins a R»EDA©±AT§²½\n\nGoober és una espècie creada per Snowyboi.
 // Context: Literally no lore implication. He's just here for the sake of being here lol
-galleryMainMenu.envelope.asimo.description = Aprofitant seus poders elèctrics, Asimo es espanta per Ruleta d'Inflament dient que "s'ho està passant bé".\n\nNo sabem com ha arribat aquí, i no tenim cap connexió amb ell, a part que és un llop, és el tester del Gerent per a seu estúpid mod Friday Night Funkin', i és el guanyador d'un sorteig d'art per afegir-lo al joc com a personatge per al complement d'exemple.\n\nAsimo és un personatge convidat propietat de WolfKylis.
+galleryMainMenu.envelope.asimo.description = Aprofitant seus poders elèctrics, Asimo es espanta per Inflation Roulette dient que "s'ho està passant bé".\n\nNo sabem com ha arribat aquí, i no tenim cap connexió amb ell, a part que és un llop, és el tester del Gerent per a seu estúpid mod Friday Night Funkin', i és el guanyador d'un sorteig d'art per afegir-lo al joc com a personatge per al complement d'exemple.\n\nAsimo és un personatge convidat propietat de WolfKylis.
 // Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
 // that agrees to join that's it.
-galleryMainMenu.envelope.shibanou.description = Cognom Nou; prenom Shiba. Procedent d'un planeta misteriós, aquesta criatura felina està a punt de fer explotar algú. El seu nom xinès es pot interpretar com a "Zero Deu Vuit", derivat del lloc nuclear on van aterrar a Pequín.\n\nVan passar els primers anys de la seva vida buscant per diferents llocs on viure, i finalment es van establir a garatge del Gerent. L'home els va adoptar com a ajudants secundaris i aviat es va enamorar de l'ajudant principal (crescuda a laboratori per cert, ecs). Sense raó aparent més enllà de presumir davant de seu xicot, es van unir al joc per mostrar seves habilitats ocultes.\n\nShibanou és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Ruleta d'Inflament.
+galleryMainMenu.envelope.shibanou.description = Cognom Nou; prenom Shiba. Procedent d'un planeta misteriós, aquesta criatura felina està a punt de fer explotar algú. El seu nom xinès es pot interpretar com a "Zero Deu Vuit", derivat del lloc nuclear on van aterrar a Pequín.\n\nVan passar els primers anys de la seva vida buscant per diferents llocs on viure, i finalment es van establir a garatge del Gerent. L'home els va adoptar com a ajudants secundaris i aviat es va enamorar de l'ajudant principal (crescuda a laboratori per cert, ecs). Sense raó aparent més enllà de presumir davant de seu xicot, es van unir al joc per mostrar seves habilitats ocultes.\n\nShibanou és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.
 // Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
-galleryMainMenu.envelope.chester.description = Com a barista principal d'una cafeteria, es va veure obligat a jugar a aquest joc com a ambaixador de l'empresa. Amb seus mals resultats acadèmics i seva personalitat poc carismàtica, seu somni de prosperitat i riquesa encara no ha estat a l'abast.\n\nSeva feina diària consisteix a preparar begudes massa ensucrades per a clients calentes. Alguns diuen que les begudes tenen un efecte "expansiu", que ha cridat l'atenció de diversos agents de seguretat alimentària. Tanmateix, a causa d'algunes collonades capitalistes, avisos del departament d'alimentació no van servir de res.\n\nChester és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Ruleta d'Inflament.
+galleryMainMenu.envelope.chester.description = Com a barista principal d'una cafeteria, es va veure obligat a jugar a aquest joc com a ambaixador de l'empresa. Amb seus mals resultats acadèmics i seva personalitat poc carismàtica, seu somni de prosperitat i riquesa encara no ha estat a l'abast.\n\nSeva feina diària consisteix a preparar begudes massa ensucrades per a clients calentes. Alguns diuen que les begudes tenen un efecte "expansiu", que ha cridat l'atenció de diversos agents de seguretat alimentària. Tanmateix, a causa d'algunes collonades capitalistes, avisos del departament d'alimentació no van servir de res.\n\nChester és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.
 galleryMainMenu.envelope.dev = Art del desenvolupador
 galleryMainMenu.envelope.dev.description = Una coŀlecció d'art conceptual, esbossos i recursos no utilitzats fets pels desenvolupadors i altres artistes.\n\nocell           enfadat
 galleryMainMenu.envelope.community = Art comunitari
@@ -528,7 +532,7 @@ characterCreator.exporting = Exportant d'animació:\n%1
 characterCreator.exporting.generatingCharacterData = Generant fitxers JSON...
 characterCreator.exporting.finalizing = Finalitzant...
 characterCreator.exporting.missingAnimations = A projecte li falten aquestes animacions:\n%1
-characterCreator.exporting.missingAnimations.extend = i molts més...
+prompt.andManyMore = i molts més...
 characterCreator.exporting.description = Mantén aquest programa obert.
 characterCreator.exportSuccessful.prompt = Projecte s'ha exportat correctament. És possible que vulgues modificar les variables dels fitxers JSON.\n\nExportat com a:\n%1
 

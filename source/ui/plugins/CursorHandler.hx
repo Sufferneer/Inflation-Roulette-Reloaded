@@ -1,5 +1,8 @@
 package ui.plugins;
 
+import objects.particles.*;
+import objects.particleEmitters.*;
+
 class CursorHandler extends FlxBasic {
 	public static var instance:Null<CursorHandler> = null;
 	public static var cursorVisible(default, set):Bool = false;

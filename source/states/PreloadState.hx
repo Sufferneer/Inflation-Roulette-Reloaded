@@ -131,7 +131,7 @@ class PreloadState extends SuffState {
 			new FlxTimer().start(1, function(_) {
 				FlxG.camera.fade(0xFF000000, 0, false);
 				new FlxTimer().start(4.0, function(_) {
-					SuffState.switchState(new InitStartupState());
+					goToStartupState();
 				});
 			});
 		} else
@@ -139,8 +139,41 @@ class PreloadState extends SuffState {
 		{
 			preloadTxt.text = Language.getPhrase('preloadMenu.finished');
 			FlxG.camera.fade(0xFF000000, 1, false, function() {
-				SuffState.switchState(new InitStartupState());
+				goToStartupState();
 			});
+		}
+		#else
+		goToStartupState();
+		#end
+	}
+	
+	function goToStartupState() {
+		#if _CHECK_FOR_UPDATES
+		if (Preferences.data.checkForUpdates) {
+			var http = new haxe.Http("https://raw.githubusercontent.com/Sufferneer/Inflation-Roulette/main/curVersion.txt");
+
+			http.onData = function (data:String) {
+				OutdatedVersionState.latestVersion = data.split('\n')[0].trim();
+				var curVersion:String = FlxG.stage.application.meta.get('version');
+				trace('Current Version: ' + OutdatedVersionState.latestVersion + ', Your Version: ' + curVersion);
+				if (OutdatedVersionState.latestVersion != curVersion) {
+					trace('Versions not matching');
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
+					SuffState.switchState(new OutdatedVersionState());
+				} else {
+					SuffState.switchState(new InitStartupState());
+				}
+			}
+
+			http.onError = function (error) {
+				trace('Error: $error');
+				SuffState.switchState(new InitStartupState());
+			}
+
+			http.request();
+		} else {
+			SuffState.switchState(new InitStartupState());
 		}
 		#else
 		SuffState.switchState(new InitStartupState());

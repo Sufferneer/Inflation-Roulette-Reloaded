@@ -95,6 +95,7 @@ class GamemodeSelectSubState extends SuffSubState {
 				CharacterManager.selectedCharacterList = leRandom;
 				CharacterManager.cpuControlled = leCPUControl;
 				PlayState.hasSeenStartCutscene = false;
+				CharacterManager.parseRandomCharacters();
 				openSubState(new GameOnSubState(new PlayState()));
 			default:
 				GameplayManager.currentGamemode = gamemode;

@@ -5,6 +5,7 @@ import flixel.util.FlxSpriteUtil;
 import openfl.Lib;
 import lime.utils.Assets;
 import openfl.utils.Assets as OpenFlAssets;
+import hre.RegExp;
 
 /**
  * Utilities for various functions.
@@ -244,5 +245,11 @@ class Utilities {
 			ret += leChar;
 		}
 		return ret;
+	}
+	
+	inline static public function supportedBySuffirat(str:String):Bool {
+		var regex = new RegExp('[\u0000-\u017F]|[\u0370-\u04FF]');
+		// Supported Characters: NUL to ſ, Ͱ to ӿ
+		return regex.test(str);
 	}
 }

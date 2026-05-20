@@ -7,6 +7,8 @@ class Language {
 	public static var phrases:Map<String, String> = [];
 	public static var fallbackPhrases:Map<String, String> = [];
 
+	public static var phrasesCount:Map<String, Int> = [];
+
 	public static function initialize() {
 		phrases = fetchPhrases(Preferences.data.language);
 		fallbackPhrases = fetchPhrases(defaultLanguage);
@@ -14,7 +16,27 @@ class Language {
 		FlxAssets.FONT_DEFAULT = Paths.font('default');
 	}
 
+	public static function getCompletionProgress(languageKey:String) {
+		return FlxMath.roundDecimal(phrasesCount.get(languageKey) / phrasesCount.get(defaultLanguage), 3);
+	}
+
+	public static function logMissingKeys() {
+		var keyList:Array<String> = [];
+		for (key in fallbackPhrases.keys()) {
+			if (!phrases.exists(key)) {
+				keyList.push(key);
+				trace(key);
+			}
+			if (keyList.length >= 14) {
+				keyList.push(Language.getPhrase('prompt.andManyMore'));
+				break;
+			}
+		}
+		return keyList;
+	}
+
 	public static function fetchPhrases(langID:String = 'en-us'):Map<String, String> {
+		phrasesCount.set(langID, 0);
 		var lePhrases:Map<String, String> = [];
 		var loadedText:Array<String> = Utilities.textFileToArray('lang/$langID.lang');
 		for (text in loadedText) {
@@ -24,9 +46,11 @@ class Language {
 			var splitText:Array<String> = text.split(' = ');
 			if (splitText[1] == null) splitText[1] = '';
 			lePhrases.set(splitText[0], splitText[1].replace('\\n', '\n').replace('\\s', ' '));
+			phrasesCount[langID] += 1;
 			// For some reason, Haxe does not recognize \n as a newline character when reading from a text file
 			// Also replace \s with whitespace
 		}
+		trace(phrasesCount);
 		return lePhrases;
 	}
 

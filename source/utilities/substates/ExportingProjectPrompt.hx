@@ -15,6 +15,7 @@ import backend.Skill;
 import backend.typedefs.CharacterCosmeticData;
 import backend.typedefs.AnimationData;
 import backend.typedefs.AddonMetadata;
+import substates.GenericPrompt;
 
 class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	var exportingText:FlxText;
@@ -147,7 +148,53 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 			],
 			cameraOffset: [0, Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] / -2)],
 			poppedCameraOffset: [0, Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] * -0.2)],
-			headParticlePosition: [0, 0],
+			particleOffsets: {
+				over: [
+					[0, -480],
+					[0, -480],
+					[0, -480],
+					[0, -480],
+					[0, -480],
+					[-160, -180],
+					[-100, -460]
+				],
+				mouth: [
+					[0, -410],
+					[0, -410],
+					[0, -410],
+					[0, -420],
+					[0, -440],
+					[-100, -140],
+					[-80, -420]
+				],
+				navel: [
+					[10, -290],
+					[40, -285],
+					[70, -280],
+					[100, -275],
+					[130, -270],
+					[40, -160],
+					[150, -220]
+				],
+				gunShoot: [
+					[0, -380],
+					[0, -380],
+					[0, -380],
+					[0, -420],
+					[0, -420],
+					[0, 0],
+					[0, 0]
+				],
+				gunSkill: [
+					[0, -320],
+					[0, -320],
+					[0, -360],
+					[0, -400],
+					[0, -400],
+					[0, 0],
+					[0, 0]
+				]
+			},
 			poppingVelocityMultiplier: [1.0, 1.0],
 			poppingGravityMultiplier: 1.0
 		};

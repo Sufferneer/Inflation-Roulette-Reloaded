@@ -24,7 +24,7 @@ class DissolveShader extends FlxShader {
 
 	float perlin_noise(vec2 uv, float cells_count) {
 		vec2 pos_in_grid = uv * cells_count;
-		vec2 cell_pos_in_grid =  floor(pos_in_grid);
+		vec2 cell_pos_in_grid = floor(pos_in_grid);
 		vec2 local_pos_in_cell = (pos_in_grid - cell_pos_in_grid);
 		vec2 blend = local_pos_in_cell * local_pos_in_cell * (3.0 - 2.0 * local_pos_in_cell);
 

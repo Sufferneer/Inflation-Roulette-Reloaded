@@ -1,19 +1,22 @@
 package objects.particles;
 
 class Sparkle extends FlxSprite {
-	static final variants:Array<Int> = [1, 7];
 	static final framerates:Array<Int> = [18, 30];
 	public var finishCallback:Sparkle->Void = null;
 
 	public function new(x:Float = 0, y:Float = 0, finishCallback:Sparkle->Void = null) {
 		super(x, y);
-		frames = Paths.sparrowAtlas('game/particles/sparkle');
-		animation.addByPrefix('idle', 'sparkle ${FlxG.random.int(variants[0], variants[1])}0', FlxG.random.int(framerates[0], framerates[1]), false);
+		var graphic = Paths.image('game/particles/sparkle');
+		loadGraphic(graphic, true, Std.int(graphic.height), Std.int(graphic.height));
+		animation.add('idle', [0, 1, 2, 3, 2, 1, 0], FlxG.random.int(framerates[0], framerates[1]), false);
 		animation.play('idle', true);
-		scale.set(3, 3);
 		updateHitbox();
 		offset.x += width / 2;
 		offset.y += height / 2;
+		// alpha = 0.75;
+		antialiasing = !Preferences.data.enableForcedAliasing;
+		angle = FlxG.random.int(1, 7) * 45;
+		angularVelocity = FlxG.random.int(-6, 6, [0]) * 15;
 		this.finishCallback = finishCallback;
 		animation.onFinish.add(function(_) {
 			if (finishCallback != null)

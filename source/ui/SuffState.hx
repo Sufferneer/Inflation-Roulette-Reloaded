@@ -60,6 +60,7 @@ class SuffState extends FlxUIState {
 
 	public static function playSound(tag:Sound, volume:Float = 1, pitch:Float = 1) {
 		var sound = new FlxSound().loadEmbedded(tag, false, true);
+		sound.autoDestroy = true;
 		sound.volume = volume * Preferences.data.gameSoundVolume;
 		sound.pitch = pitch;
 		sound.play();
@@ -67,6 +68,7 @@ class SuffState extends FlxUIState {
 
 	public static function playUISound(tag:Sound, volume:Float = 1, pitch:Float = 1) {
 		var sound = new FlxSound().loadEmbedded(tag, false, true);
+		sound.autoDestroy = true;
 		sound.volume = volume * Preferences.data.uiSoundVolume;
 		sound.pitch = pitch;
 		sound.play();
