@@ -13,6 +13,10 @@ class GamemodeSelectSubState extends SuffSubState {
 	final buttonMargin:FlxPoint = new FlxPoint(30, 30);
 	final buttonPadding:FlxPoint = new FlxPoint(15, 15);
 
+	var gameModeArt:FlxSprite;
+	var light:FlxSprite;
+	var lightColorTween:FlxTween;
+
 	var grpButtons:FlxTypedContainer<SuffButton> = new FlxTypedContainer<SuffButton>();
 
 	var leaving:Bool = false;
@@ -27,8 +31,20 @@ class GamemodeSelectSubState extends SuffSubState {
 		FlxTween.tween(bg, {alpha: 0.5}, 0.5);
 		add(bg);
 
-		var box:SuffBox = new SuffBox(0, 0, 720, 560);
-		box.screenCenter();
+		if (!Preferences.data.decreaseDetail) {
+			light = new FlxSprite().loadGraphic(Paths.image('game/selectLight'));
+			light.scale.set(FlxG.width, 1);
+			light.alpha = 0;
+			light.updateHitbox();
+			light.y = FlxG.height - light.height;
+			add(light);
+		}
+
+		gameModeArt = new FlxSprite();
+		gameModeArt.visible = false;
+		add(gameModeArt);
+
+		var box:SuffBox = new SuffBox(40 + ScreenSafeZone.X, 80 + ScreenSafeZone.Y, FlxG.width / 2 - 40 - ScreenSafeZone.X, FlxG.height - 120 - ScreenSafeZone.Y * 2);
 		add(box);
 
 		var boxRect:FlxRect = new FlxRect(box.x, box.y, box.width, box.height);
@@ -37,8 +53,9 @@ class GamemodeSelectSubState extends SuffSubState {
 
 		var fileList = Paths.readDirectories('data/gamemodes', 'data/gamemodes/gamemodeList.txt', 'json');
 
-		var buttonCount:FlxPoint = new FlxPoint(2, 3);
-		buttonCount.x = Std.int(Math.sqrt(fileList.length));
+		var buttonCount:FlxPoint = new FlxPoint(1, 3);
+		if (fileList.length > 4)
+			buttonCount.x = 2;
 		buttonCount.y = Math.ceil(fileList.length / buttonCount.x);
 		var buttonSize:FlxPoint = new FlxPoint((boxRect.width - buttonMargin.x * 2 - buttonPadding.x * (buttonCount.x - 1)) / buttonCount.x,
 			(boxRect.height - buttonMargin.y * 2 - buttonPadding.y * (buttonCount.y - 1)) / buttonCount.y);
@@ -53,16 +70,19 @@ class GamemodeSelectSubState extends SuffSubState {
 			leButton.y = boxRect.y + buttonMargin.y + (buttonPadding.y + buttonSize.y) * Std.int(i / buttonCount.x);
 			leButton.btnBGColorHovered = leButton.btnBGColorClicked = leGamemode.color;
 			leButton.tooltipText = Language.getPhrase('gamemode.$ID.description');
+			leButton.onHover = function() {
+				switchGameModeArt(leGamemode);
+			};
 			leButton.onClick = function() {
 				goGoGadgetGamemode(leGamemode);
 			}
 			add(leButton);
 		}
 
-		var headingText:FlxText = new FlxText(0, 0, 0, Language.getPhrase('gamemodeSelect.title'), 48);
+		var headingText:FlxText = new FlxText(ScreenSafeZone.X, ScreenSafeZone.Y, 0, Language.getPhrase('gamemodeSelect.title'), 48);
 		var headingTextTargetY:Float = 4;
 		headingText.alpha = 0;
-		headingText.x = (FlxG.width - headingText.width) / 2;
+		headingText.x = box.x + (box.width - headingText.width) / 2;
 		headingText.y = -headingText.height;
 		FlxTween.tween(headingText, {alpha: 1, y: headingTextTargetY}, 0.75, {
 			ease: FlxEase.cubeOut
@@ -75,6 +95,28 @@ class GamemodeSelectSubState extends SuffSubState {
 			exitMenu();
 		};
 		add(exitButton);
+	}
+
+	function switchGameModeArt(gamemode:Gamemode) {
+		FlxTween.cancelTweensOf(gameModeArt);
+		gameModeArt.loadGraphic(Paths.image('ui/menus/mainMenu/gameModes/${gamemode.id}'));
+		gameModeArt.visible = true;
+		gameModeArt.x = FlxG.width - gameModeArt.width / 2;
+		gameModeArt.y = FlxG.height - gameModeArt.height;
+		FlxTween.tween(gameModeArt, {x: FlxG.width - gameModeArt.width}, 1, {ease: FlxEase.expoOut});
+
+		if (light != null) {
+			var fuckingColor = gamemode.color;
+			fuckingColor.alphaFloat = 0.5;
+			FlxTween.cancelTweensOf(light);
+			if (lightColorTween != null)
+				lightColorTween.cancel();
+			if (light.alpha <= 0)
+				light.color = fuckingColor;
+			else
+				lightColorTween = FlxTween.color(light, 1, light.color, fuckingColor);
+			FlxTween.tween(light, {alpha: 0.25}, 1);
+		}
 	}
 
 	function goGoGadgetGamemode(gamemode:Gamemode) {

@@ -42,7 +42,10 @@ class CharacterManager {
 	}
 
 	public static function parseRandomCharacters() {
-		var list = globalCharacterList.copy();
+		// Make a copy of the list excluding "random"
+		var list = [for (i in globalCharacterList) if (!selectedCharacterList.contains(i) && i != 'random') i];
+		// If list is empty (full of randoms)
+		if (list.length <= 0) list = globalCharacterList.copy();
 		for (i in 0...selectedCharacterList.length) {
 			if (selectedCharacterList[i] == 'random') {
 				var picked = FlxG.random.getObject(list);

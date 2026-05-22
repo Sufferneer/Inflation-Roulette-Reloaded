@@ -237,7 +237,7 @@ option.controls.description = Configura las asignaciones de teclas.
 // Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 option.enableForcedAliasing.name = Aliasing forzado
 option.enableForcedAliasing.description = Desactiva el antialiasing de todos los sprites incluso cuando está activado. Puede hacer que algunos gráficos se vean dentados.
-option.enableGLSL.name = Shaders
+option.enableGLSL.name = Shaders GLSL
 option.enableGLSL.description = Activa shaders GLSL para algunos elementos del menú. Desactivarlo puede reducir la carga en GPUs de gama baja.
 option.alwaysPlayMainMenuAnims.name = Menú principal animado
 option.alwaysPlayMainMenuAnims.description = Reproduce siempre las animaciones de inicio en el menú principal.
@@ -601,7 +601,7 @@ preloadMenu.progress.music = Buscando discos de música...
 preloadMenu.finished = ¡Todo listo!
 
 // Respaldo para compilación HTML
-gamemode.fiftyFifty.name = Cincuenta-Cincuenta
+gamemode.fiftyFifty.name = 50/50
 gamemode.fiftyFifty.description = Pura probabilidad de cara o cruz con reemplazo.\nJugabilidad rápida y arriesgada.
 
 character.asimo.name = Asimo

@@ -149,7 +149,7 @@ class CreditsState extends SuffState {
 		};
 		add(exitButton);
 
-		imageList = Paths.readDirectories('images/ui/menus/credits/sketches', 'images/ui/menus/credits/sketchesList.txt', 'png');
+		imageList = Paths.readDirectories('images/ui/menus/credits/sketches', 'images/ui/menus/credits/sketches/sketchesList.txt', 'png');
 	}
 
 	function exitMenu() {

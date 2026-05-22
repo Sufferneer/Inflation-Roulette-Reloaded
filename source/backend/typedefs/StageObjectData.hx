@@ -4,6 +4,7 @@ typedef StageObjectData = {
 	id:String,
 	graphic:String,
 	position:Array<String>,
+	?hideInDecreaseDetail:Bool,
 	?angle:Float,
 	?alpha:Float,
 	?flipX:Bool,

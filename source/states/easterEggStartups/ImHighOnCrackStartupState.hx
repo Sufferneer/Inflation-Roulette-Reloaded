@@ -78,8 +78,15 @@ class ImHighOnCrackStartupState extends SuffState {
 		shadows.kill();
 		bg.kill();
 
-		for (i in 0...shardCount) {
-			var shard = new FlxSprite(logo.x, logo.y).loadGraphic(Paths.image('ui/menus/easterEggStartups/imhighoncrack/shards/' + i));
+		if (!Preferences.data.decreaseDetail) {
+			for (i in 0...shardCount) {
+				var shard = new FlxSprite(logo.x, logo.y).loadGraphic(Paths.image('ui/menus/easterEggStartups/imhighoncrack/shards/' + i));
+				shard.setGraphicSize(Std.int(logo.width), Std.int(logo.height));
+				shard.updateHitbox();
+				shards.add(shard);
+			}
+		} else {
+			var shard = new FlxSprite(logo.x, logo.y).loadGraphic(Paths.image('ui/menus/easterEggStartups/imhighoncrack/shardsCombined'));
 			shard.setGraphicSize(Std.int(logo.width), Std.int(logo.height));
 			shard.updateHitbox();
 			shards.add(shard);
@@ -92,13 +99,20 @@ class ImHighOnCrackStartupState extends SuffState {
 		SuffState.playUISound(Paths.sound('ui/startup/imhighoncrack/crack'));
 		new FlxTimer().start(1.25, function(tmr:FlxTimer) {
 			SuffState.playUISound(Paths.sound('ui/startup/imhighoncrack/break'));
-			if (!Preferences.data.enablePhotosensitiveMode) {
-				FlxG.camera.flash(0xFFFFFFFF, 0.25);
-			}
-			FlxG.camera.shake(0.02 * Preferences.data.cameraEffectIntensity, 0.125);
-			for (shard in shards) {
-				shard.velocity.set(FlxG.random.int(-320, 320), FlxG.random.int(-360, 180));
-				shard.acceleration.y = FlxG.height;
+			if (!Preferences.data.decreaseDetail) {
+				if (!Preferences.data.enablePhotosensitiveMode) {
+					FlxG.camera.flash(0xFFFFFFFF, 0.25);
+				}
+				FlxG.camera.shake(0.02 * Preferences.data.cameraEffectIntensity, 0.125);
+				for (shard in shards) {
+					shard.velocity.set(FlxG.random.int(-320, 320), FlxG.random.int(-360, 180));
+					shard.acceleration.y = FlxG.height;
+				}
+			} else {
+				shards.visible = false;
+				if (!Preferences.data.enablePhotosensitiveMode) {
+					FlxG.camera.flash(0xFFFFFFFF, 2);
+				}
 			}
 			new FlxTimer().start(4, function(tmr:FlxTimer) {
 				FlxTransitionableState.skipNextTransIn = true;

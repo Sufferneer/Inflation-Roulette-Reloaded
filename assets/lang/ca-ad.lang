@@ -238,7 +238,7 @@ option.controls.description = Configura assignacions.
 // Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 option.enableForcedAliasing.name = Aliàsing forçat
 option.enableForcedAliasing.description = Desactiva antialiàsing de tots sprites fins i tot quan està habilitat. Pot fer que alguns gràfics semblin oscats.
-option.enableGLSL.name = Ombradors
+option.enableGLSL.name = Ombradors GLSL
 option.enableGLSL.description = Activa ombradors GLSL per a alguns elements de menú. Desactivar-ho pot reduir càrrega a GPU de gamma baixa.
 option.alwaysPlayMainMenuAnims.name = Menú principal entretingut
 option.alwaysPlayMainMenuAnims.description = Reprodueix sempre animacions d'inici al menú principal.
@@ -599,7 +599,7 @@ preloadMenu.progress.music = Cercant discos de música...
 preloadMenu.finished = Tot a punt!
 
 // Fallback for HTML build
-gamemode.fiftyFifty.name = A mitges
+gamemode.fiftyFifty.name = 50/50
 gamemode.fiftyFifty.description = Purament una casualitat de llançament de moneda amb reemplaçament.\nJoc ràpid i arriscat.
 
 character.asimo.name = Asimo

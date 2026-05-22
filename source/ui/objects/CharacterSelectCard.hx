@@ -20,7 +20,7 @@ class CharacterSelectCard extends SuffButton {
 		bg = new FlxSprite().loadGraphic(Paths.image('ui/menus/characterSelect/cards/${characterData.id}/bg'));
 		add(bg);
 
-		outline = new FlxSprite().loadGraphic(Paths.image('ui/menus/characterSelect/cards/outline'));
+		outline = new FlxSprite().loadGraphic(Utilities.makeBorder(bg.width, bg.height));
 		add(outline);
 
 		charSprite = new FlxSprite();

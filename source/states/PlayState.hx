@@ -217,14 +217,16 @@ class PlayState extends SuffState {
 		members.insert(members.indexOf(characterGroup), selectLight);
 
 		// UI Stuff//
-		dangerVignette = new FlxSprite().loadGraphic(Paths.image('ui/vignette'));
-		dangerVignette.setGraphicSize(FlxG.width + 20, FlxG.height + 20);
-		dangerVignette.updateHitbox();
-		dangerVignette.screenCenter();
-		dangerVignette.color = 0xC00060;
-		dangerVignette.alpha = 0;
-		dangerVignette.camera = camHUD;
-		add(dangerVignette);
+		if (!Preferences.data.decreaseDetail) {
+			dangerVignette = new FlxSprite().loadGraphic(Paths.image('ui/vignette'));
+			dangerVignette.setGraphicSize(FlxG.width + 20, FlxG.height + 20);
+			dangerVignette.updateHitbox();
+			dangerVignette.screenCenter();
+			dangerVignette.color = 0xC00060;
+			dangerVignette.alpha = 0;
+			dangerVignette.camera = camHUD;
+			add(dangerVignette);
+		}
 		
 		letterboxTop = new FlxSprite().makeGraphic(FlxG.width + 50, Std.int((FlxG.height - FlxG.width * Constants.LETTERBOX_RATIO) / 2), FlxColor.BLACK);
 		letterboxTop.camera = camOther;
@@ -370,8 +372,10 @@ class PlayState extends SuffState {
 		var character = getPlayer(playerIndex);
 		character.playAnim('preShoot', false);
 		doTimer('playerShoot', new FlxTimer().start(character.getAnimLength('preShoot') + usedDelay(), function(_:FlxTimer) {
-			var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot')[0], character.y + character.getParticleOffset('gunShoot')[1], stage.data.characterY, cylinderContent[0]);
-			members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+			if (!Preferences.data.decreaseDetail) {
+				var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot')[0], character.y + character.getParticleOffset('gunShoot')[1], stage.data.characterY, cylinderContent[0]);
+				members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+			}
 			shoot(playerIndex);
 		}));
 	}
@@ -594,9 +598,11 @@ class PlayState extends SuffState {
 
 		switch (skill.id) {
 			case 'reload':
-				for (i in 0...cylinderContent.length) {
-					var bulletShell = new BulletShell(getPlayer(playerIndex).x + getPlayer(playerIndex).getParticleOffset('gunSkill')[0], getPlayer(playerIndex).y + getPlayer(playerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[i]);
-					members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+				if (!Preferences.data.decreaseDetail) {
+					for (i in 0...cylinderContent.length) {
+						var bulletShell = new BulletShell(getPlayer(playerIndex).x + getPlayer(playerIndex).getParticleOffset('gunSkill')[0], getPlayer(playerIndex).y + getPlayer(playerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[i]);
+						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+					}
 				}
 				reloadCylinder(GameplayManager.currentGamemode.cylinderLiveCount);
 			case 'sabotage':
@@ -693,8 +699,10 @@ class PlayState extends SuffState {
 						if (getPlayer(victimIndex).currentConfidence > getPlayer(victimIndex).maxConfidence)
 							getPlayer(victimIndex).currentConfidence = getPlayer(victimIndex).maxConfidence;
 					}
-					var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill')[0], getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[0]);
-					members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+					if (!Preferences.data.decreaseDetail) {
+						var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill')[0], getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[0]);
+						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+					}
 					shoot(victimIndex, false);
 					pumpGun.visible = true;
 					var flipX:Bool = (attackerIndex - victimIndex) < 0;
@@ -903,9 +911,11 @@ class PlayState extends SuffState {
 		if (currentSessionEnablePopping && !getPlayer(playerIndex).disablePopping) { // Pop player instead
 			getPlayer(playerIndex).playAnim('popped', false);
 			var character = getPlayer(playerIndex);
-			members.insert(members.indexOf(characterGroup), new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY));
 			members.insert(members.indexOf(characterGroup) + 1, new Bloosh(character.x, character.y - character.height / 2));
-			members.insert(members.indexOf(characterGroup) + 1, new PuffEmitter(character.x, character.y - character.height / 2));
+			if (!Preferences.data.decreaseDetail) {
+				members.insert(members.indexOf(characterGroup) + 1, new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY));
+				members.insert(members.indexOf(characterGroup) + 1, new PuffEmitter(character.x, character.y - character.height / 2));
+			}
 			SuffState.playSound(Paths.sound('game/belly/burst'));
 			getPlayer(playerIndex).disableBellySounds = true;
 			screenShake(0.03, 0.5);
@@ -936,6 +946,11 @@ class PlayState extends SuffState {
 					playEndCutscene();
 				}
 			}));
+		}
+
+		if (dangerVignette != null) {
+			FlxTween.cancelTweensOf(dangerVignette);
+			dangerVignette.alpha = 0;
 		}
 	}
 
@@ -1156,11 +1171,13 @@ class PlayState extends SuffState {
 		camFollow.y = getPlayer(playerIndex).y + characterCameraOffset[1];
 		camFollowZoom = stage.data.characterCameraZoom;
 
-		FlxTween.cancelTweensOf(dangerVignette);
-		if (getPlayer(playerIndex).getPressurePercentage() == 1) {
-			FlxTween.tween(dangerVignette, {alpha: 0.625}, 4);
-		} else {
-			FlxTween.tween(dangerVignette, {alpha: 0}, 0.75);
+		if (dangerVignette != null) {
+			FlxTween.cancelTweensOf(dangerVignette);
+			if (getPlayer(playerIndex).getPressurePercentage() == 1) {
+				FlxTween.tween(dangerVignette, {alpha: 1}, 4);
+			} else {
+				FlxTween.tween(dangerVignette, {alpha: 0}, 1);
+			}
 		}
 	}
 
@@ -1169,8 +1186,10 @@ class PlayState extends SuffState {
 		camFollow.y = FlxG.height / 2;
 		camFollowZoom = stage.data.stageCameraZoom;
 
-		FlxTween.cancelTweensOf(dangerVignette);
-		FlxTween.tween(dangerVignette, {alpha: 0}, 0.75);
+		if (dangerVignette != null) {
+			FlxTween.cancelTweensOf(dangerVignette);
+			FlxTween.tween(dangerVignette, {alpha: 0}, 0.5);
+		}
 	}
 
 	function doTween(tag:String, tween:FlxTween) {

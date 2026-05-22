@@ -40,11 +40,10 @@ class SuffTransition extends SuffSubState {
 		'Please wait',
 		'Please be patient',
 		'Setting things up',
-		'Tidying furniture',
-		'Scavenging weapons',
-		'Recasing bullets',
+		'Placing furniture',
+		'Refilling bullets',
 		'Patching abdomens',
-		'Interviewing participants',
+		'Recruiting participants',
 		'Deflating participants',
 		'Preparing refreshments',
 		'Spiking refreshments'
@@ -52,16 +51,17 @@ class SuffTransition extends SuffSubState {
 
 	static final randomLoadingLinesRare:Array<String> = [
 		'Unloading then reloading everything',
-		'Collecting tears',
 		'Calling the police',
 		'Running the hell machine',
-		'Preparing for the DSE',
 		'Wasting time',
 		'Creating more bugs',
-		'Fixing addon support',
-		'Dark was the night',
-		'Cold was the ground',
-		'This game is 10 days overdue'
+		'Copyright claiming AI videos',
+		'Running out of ideas',
+		'Fixing the Character Creator',
+		'Rubbing bellies',
+		'Curing cholera',
+		'Praying for mercy',
+		'Uhh'
 	];
 
 	public function new(duration:Float, isTransIn:Bool) {
@@ -116,7 +116,7 @@ class SuffTransition extends SuffSubState {
 		}
 
 		var leText = '';
-		if (FlxG.random.bool(25)) {
+		if (FlxG.random.bool(1 / 10 * 100)) {
 			leText = randomLoadingLinesRare[FlxG.random.int(0, randomLoadingLinesRare.length - 1)];
 		} else {
 			leText = randomLoadingLines[FlxG.random.int(0, randomLoadingLines.length - 1)];

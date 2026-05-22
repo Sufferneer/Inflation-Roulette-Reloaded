@@ -22,7 +22,6 @@ class LanguageSelectState extends SuffState {
 	var ajuniga:FlxSprite;
 	var originalAjunigaPosition:FlxPoint;
 	var exitButton:SuffIconButton;
-	// var logButton:SuffIconButton;
 	var githubButton:GitHubButton;
 
 	var leBGColor:FlxColor = 0xFFFDE871;
@@ -179,21 +178,6 @@ class LanguageSelectState extends SuffState {
 			exitMenu();
 		};
 		add(exitButton);
-
-		/*
-		logButton = new SuffIconButton(exitButton.x - exitButton.width - 20, exitButton.y, 'buttons/log', null, 2);
-		logButton.btnTextColor = logButton.btnTextColorHovered = logButton.btnTextColorClicked = textColor;
-		logButton.btnOutlineColor = logButton.btnOutlineColorHovered = logButton.btnOutlineColorClicked = textColor;
-		logButton.btnBGColor = logButton.btnBGColorHovered = logButton.btnBGColorClicked = leBGColor;
-		logButton.visible = false;
-		logButton.tooltipText = Language.getPhrase('languageMenu.logMissingKeys');
-		logButton.onClick = function() {
-			var keys = Language.logMissingKeys();
-			if (keys.length <= 0) return;
-			openSubState(new GenericPrompt(keys.join('\n'), 1080));
-		};
-		add(logButton);
-		 */
 
 		githubButton = new GitHubButton(exitButton.x, exitButton.y + exitButton.height + 20, 'issues');
 		githubButton.visible = false;

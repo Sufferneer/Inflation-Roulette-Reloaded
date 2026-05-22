@@ -59,8 +59,9 @@ class AchievementsState extends SuffState {
 		add(plaques);
 
 		spotlight = new FlxSprite().loadGraphic(Paths.image('ui/menus/achievements/spotlight'));
-		spotlight.alpha = 0.5;
-		spotlight.blend = ADD;
+		spotlight.alpha = 0.375;
+		if (!Preferences.data.decreaseDetail)
+			spotlight.blend = ADD;
 		spotlight.visible = false;
 		add(spotlight);
 
@@ -99,7 +100,7 @@ class AchievementsState extends SuffState {
 			plaques.add(plaque);
 			if (data.hideFromMenu == true && locked)
 				plaque.visible = false;
-			if (!locked && (data.tier == GOOD || data.tier == EPIC)) {
+			if (!Preferences.data.decreaseDetail && !locked && (data.tier == GOOD || data.tier == EPIC)) {
 				var sparkleEmitter:SparkleEmitter = new SparkleEmitter(data.tier == EPIC ? 1 : 0.5, plaque.x, plaque.y, plaque.width, plaque.height, plaque);
 				add(sparkleEmitter);
 			}

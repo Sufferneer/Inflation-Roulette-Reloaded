@@ -24,10 +24,8 @@ class JukeboxState extends SuffState {
 		super.create();
 
 		bg = new FlxSprite().loadGraphic(Paths.image('ui/menus/extras/jukebox/bg'));
-		bg.origin.x = 0;
-		bg.origin.y = bg.height / 2;
 		bg.screenCenter();
-		bgScale.set(FlxG.width / Constants.ORIGINAL_FLXG_WIDTH, FlxG.height / Constants.ORIGINAL_FLXG_HEIGHT);
+		bgScale = FlxPoint.get(FlxG.width / Constants.ORIGINAL_FLXG_WIDTH, FlxG.height / Constants.ORIGINAL_FLXG_HEIGHT);
 		add(bg);
 
 		add(albumText);
@@ -139,8 +137,7 @@ class JukeboxState extends SuffState {
 		if (bgShadowTick >= bgShadowSpawnTick) {
 			bgShadowTick = 0;
 			var bgShadow = new FlxSprite(bg.x, bg.y).loadGraphic(Paths.image('ui/menus/extras/jukebox/bg'));
-			bgShadow.origin.x = bg.origin.x;
-			bgShadow.origin.y = bg.origin.y;
+			bgShadow.screenCenter();
 			bgShadow.scale.x = bg.scale.x;
 			bgShadow.scale.y = bg.scale.y;
 			bgShadow.color = bg.color;

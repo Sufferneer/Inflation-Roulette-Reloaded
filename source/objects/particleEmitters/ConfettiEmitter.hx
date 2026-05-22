@@ -6,6 +6,7 @@ import flixel.effects.particles.FlxEmitter.FlxEmitterMode;
 import flixel.effects.particles.FlxParticle;
 import objects.particles.Confetti;
 import states.PlayState;
+import backend.Preferences;
 
 class ConfettiEmitter extends FlxTypedEmitter<Confetti> {
 	public function new(x:Float, y:Float, angle:Float, floorY:Float = 690) {
@@ -21,7 +22,7 @@ class ConfettiEmitter extends FlxTypedEmitter<Confetti> {
 		speed.set(250, 500);
 		lifespan.set(30, 30);
 
-		start(true, 0.1, 0);
+		start(true, !Preferences.data.decreaseDetail ? 0.1 : 0.05, 0);
 	}
 
 	override function update(elapsed:Float) {

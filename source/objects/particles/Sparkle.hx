@@ -10,10 +10,13 @@ class Sparkle extends FlxSprite {
 		loadGraphic(graphic, true, Std.int(graphic.height), Std.int(graphic.height));
 		animation.add('idle', [0, 1, 2, 3, 2, 1, 0], FlxG.random.int(framerates[0], framerates[1]), false);
 		animation.play('idle', true);
+		var scale = FlxG.random.float(0.5, 1);
+		this.scale.set(scale, scale);
+		if (!Preferences.data.decreaseDetail)
+			this.blend = ADD;
 		updateHitbox();
 		offset.x += width / 2;
 		offset.y += height / 2;
-		// alpha = 0.75;
 		antialiasing = !Preferences.data.enableForcedAliasing;
 		angle = FlxG.random.int(1, 7) * 45;
 		angularVelocity = FlxG.random.int(-6, 6, [0]) * 15;

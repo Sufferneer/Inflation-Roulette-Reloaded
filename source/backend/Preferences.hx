@@ -34,6 +34,7 @@ class SaveVariables {
 	public var showCurrentStateOnDebugText:Bool = false;
 	public var checkForUpdates:Bool = true;
 	public var enableGLSL:Bool = true;
+	public var decreaseDetail:Bool = false;
 	public var language:String = 'en-us';
 
 	public var keybinds:Map<String, Array<FlxKey>> = [

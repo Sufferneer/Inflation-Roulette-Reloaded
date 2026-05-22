@@ -144,7 +144,7 @@ class ResultsState extends SuffState {
 			}
 			if (leData.cpuControlled) {
 				text.color.saturation *= 0.5;
-				text.alpha = 0.4;
+				text.alpha = 0.75;
 			}
 			// Target X
 			text.mass = isWinner ? 16 : FlxG.width - text.width - 16;

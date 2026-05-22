@@ -24,14 +24,17 @@ class Stage extends FlxBasic {
 		var tableObjects:Array<StageObjectData> = data.tableObjects;
 		var foregroundObjects:Array<StageObjectData> = data.foregroundObjects;
 		for (object in backgroundObjects) {
+			if (object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addBehindCharacters(object.id, obj);
 		}
 		for (object in tableObjects) {
+			if (object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addBehindGun(object.id, obj);
 		}
 		for (object in foregroundObjects) {
+			if (object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addObject(object.id, obj);
 		}
@@ -113,8 +116,10 @@ class Stage extends FlxBasic {
 			object.color = FlxColor.fromString(objectData.color);
 		if (objectData.alpha != null)
 			object.alpha = objectData.alpha;
-		if (objectData.blend != null)
-			object.blend = objectData.blend.toLowerCase();
+		if (!Preferences.data.decreaseDetail) {
+			if (objectData.blend != null)
+				object.blend = objectData.blend.toLowerCase();
+		}
 		if (objectData.flipX != null)
 			object.flipX = objectData.flipX;
 		if (objectData.flipY != null)

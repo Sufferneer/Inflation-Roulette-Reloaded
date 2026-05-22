@@ -311,7 +311,7 @@ class Character extends FlxSprite {
 			}
 		}
 		
-		trace(id, usedAnimName);
+		// trace(id, usedAnimName);
 	}
 	
 	public function getParticleOffset(position:String = 'over'):Array<Float> {

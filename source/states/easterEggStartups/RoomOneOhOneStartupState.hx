@@ -95,10 +95,16 @@ class RoomOneOhOneStartupState extends SuffState {
 			onComplete: function(_) {
 				souls.kill();
 				soulCenter.kill();
-				for (i in 0...16) {
-					var explode:Explosion = new Explosion(0, 0, FlxG.random.int(2, 6), 0);
-					explode.x = FlxG.random.float(0, FlxG.width - explode.width);
-					explode.y = FlxG.random.float(0, FlxG.height - explode.height);
+				if (!Preferences.data.decreaseDetail) {
+					for (i in 0...16) {
+						var explode:Explosion = new Explosion(0, 0, FlxG.random.int(2, 6), 0);
+						explode.x = FlxG.random.float(0, FlxG.width - explode.width);
+						explode.y = FlxG.random.float(0, FlxG.height - explode.height);
+						add(explode);
+					}
+				} else {
+					var explode:Explosion = new Explosion(0, 0, 10, 0);
+					explode.screenCenter();
 					add(explode);
 				}
 				explodeSound.play();

@@ -29,6 +29,7 @@ class GameOnSubState extends SuffSubState {
 		gameOn.setFormat(Paths.font('default'), 256, FlxColor.WHITE);
 		while (gameOn.width > FlxG.width - 200) {
 			gameOn.size -= 16;
+			slashBG.scale.y = gameOn.size / 256 * 0.75;
 		}
 		gameOn.alpha = 0;
 		gameOn.screenCenter();

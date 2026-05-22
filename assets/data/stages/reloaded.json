@@ -55,6 +55,7 @@
 	"foregroundObjects": [
 		{
 			"id": "lightLeft",
+			"hideInDecreaseDetail": true,
 			"graphic": "light",
 			"position": ["c-800", "-500"],
 			"scale": [3, 3],
@@ -65,6 +66,7 @@
 		},
 		{
 			"id": "lightRight",
+			"hideInDecreaseDetail": true,
 			"graphic": "light",
 			"position": ["c+800", "-500"],
 			"scale": [3, 3],
@@ -75,12 +77,14 @@
 		},
 		{
 			"id": "lampLeft",
+			"hideInDecreaseDetail": true,
 			"graphic": "lamp",
 			"position": ["c-800", "-400"],
 			"scrollFactor": [1.4, 1.4]
 		},
 		{
 			"id": "lampRight",
+			"hideInDecreaseDetail": true,
 			"graphic": "lamp",
 			"position": ["c+800", "-400"],
 			"flipX": true,

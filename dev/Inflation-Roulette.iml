@@ -27,6 +27,7 @@
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
     <orderEntry type="module-library" scope="PROVIDED">
       <library name="Haxelib: lime:8.3.1">
         <CLASSES>
@@ -38,7 +39,17 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: openfl:9.5.0">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
       <library name="Haxelib: flixel:6.1.2">
         <CLASSES>
@@ -95,13 +106,13 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: openfl:9.5.0">
+      <library name="Haxelib: hre:0.2.1">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+          <root url="file://$MODULE_DIR$/../.haxelib/hre/0,2,1/src" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/../.haxelib/openfl/9,5,0/src" />
+          <root url="file://$MODULE_DIR$/../.haxelib/hre/0,2,1/src" />
         </SOURCES>
       </library>
     </orderEntry>

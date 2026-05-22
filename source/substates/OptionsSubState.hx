@@ -106,6 +106,10 @@ class OptionsSubState extends SuffSubState {
 		// GRAPHICS SETTINGS
 		createHeading('visuals');
 
+		createBooleanOption('decreaseDetail', function(value:Bool) {
+			Preferences.data.decreaseDetail = value;
+		}, Preferences.data.decreaseDetail);
+
 		createBooleanOption('hideHUD', function(value:Bool) {
 			Preferences.data.hideHUD = value;
 		}, Preferences.data.hideHUD);
