@@ -183,6 +183,8 @@ class PlayState extends SuffState {
 			cobalt.frames = Paths.sparrowAtlas('game/cobalt');
 			cobalt.animation.addByPrefix('appear', 'appear', 24, false);
 			cobalt.animation.play('appear');
+			cobalt.x = FlxG.width - cobalt.width;
+			cobalt.y = FlxG.height - cobalt.height;
 			cobalt.animation.onFrameChange.add(function(animName, frameNumber, frameIndex) {
 				if (frameNumber == 1) SuffState.playSound(Paths.sound('game/glassTap'));
 			});
@@ -206,7 +208,6 @@ class PlayState extends SuffState {
 			} else
 				cobalt.color = 0xFF808080;
 			cobalt.camera = camOther;
-			cobalt.x = FlxG.width - cobalt.width;
 			add(cobalt);
 		}
 
