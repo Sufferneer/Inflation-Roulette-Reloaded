@@ -37,7 +37,7 @@ class BulletShell extends FlxSprite {
 		if (y >= floorY) {
 			velocity.y *= -0.55;
 			velocity.x *= 0.75;
-			angularVelocity = FlxG.random.float(-720, 720);
+			angularVelocity = FlxG.random.float(-960, 960);
 			if (!droppedOnFloor) {
 				SuffState.playSound(Paths.soundRandom('game/shell', 1, 3), 0.5);
 				droppedOnFloor = true;
@@ -45,7 +45,7 @@ class BulletShell extends FlxSprite {
 			if (Math.abs(velocity.y) <= 16) {
 				velocity.x = velocity.y = acceleration.y = angularVelocity = 0;
 				if (!despawning) {
-					FlxTween.tween(this, {alpha: 0}, 5, {startDelay: 60 + FlxG.random.float() * 30, onComplete: function(_) {
+					FlxTween.tween(this, {alpha: 0}, 5, {startDelay: 30 + FlxG.random.float() * 30, onComplete: function(_) {
 						this.destroy();
 					}});
 					despawning = true;

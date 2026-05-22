@@ -49,7 +49,8 @@
 
 	<!-- Preload Assets -->
 
-	<assets path="assets" preload="true"/>
+	<assets path="assets" exclude="*.ogg" if="web" preload="true"/>
+	<assets path="assets" exclude="*.mp3" unless="web" preload="true"/>
     <section if="_ALLOW_ADDONS">
 		<assets path='addons' unless="_BUILD_IN_ADDONS"/>
     </section>
@@ -59,7 +60,8 @@
 	</section>
 	<section if="_BUILD_IN_ADDONS">
 		<assets path='addons/Example Addon' rename='assets' preload="true"/>
-		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' preload="true"/>
+		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' exclude="*.ogg" if="web" preload="true"/>
+		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' exclude="*.mp3" unless="web" preload="true"/>
 	</section>
 	<assets path='conditionalAssets/NOT_BUILD_IN_ADDONS' unless="_BUILD_IN_ADDONS" rename='assets' preload="true"/>
 	<section if="_ALLOW_EASTER_EGGS">

@@ -8,6 +8,8 @@ class SkillCard extends SuffButton {
 	var skillDescription:FlxText;
 	var skillCost:FlxText;
 	var skillIcon:GameIcon;
+	
+	var skillBorder:FlxSprite;
 
 	var costIcon:GameIcon;
 
@@ -16,8 +18,10 @@ class SkillCard extends SuffButton {
 	public function new(x:Float, y:Float, skill:Skill) {
 		this.skill = skill;
 		var usedImage = Paths.image('ui/skillCard');
-		var usedImageHovered = Paths.image('ui/skillCardHighlighted');
-		super(x, y, null, usedImage, usedImageHovered, usedImage.width, usedImage.height, false);
+		super(x, y, null, usedImage, null, usedImage.width, usedImage.height, false);
+
+		skillBorder = new FlxSprite().loadGraphic(Utilities.makeBorder(usedImage.width, usedImage.height, 4));
+		add(skillBorder);
 
 		skillIcon = new GameIcon(5, 5, 'skills/${skill.id}', 90);
 		skillIcon.alpha = 0.75;
@@ -44,6 +48,12 @@ class SkillCard extends SuffButton {
 		add(skillCost);
 
 		// skillCost.visible = costIcon.visible = (skill.cost > 0);
+	}
+	
+	public override function update(elapsed:Float) {
+		super.update(elapsed);
+
+		skillBorder.visible = hovered;
 	}
 
 	private function set_notEnoughConfidence(value:Bool):Bool{

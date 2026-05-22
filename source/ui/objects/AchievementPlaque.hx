@@ -33,7 +33,6 @@ class AchievementPlaque extends SuffButton {
 
 	private function set_locked(value:Bool):Bool {
 		this.locked = value;
-		icon.alpha = value ? 0.325 : 1;
 		var frameType = '${achievementData.tier}'.toLowerCase();
 		if (locked)
 			frameType = 'locked';
@@ -43,6 +42,7 @@ class AchievementPlaque extends SuffButton {
 		plaqueFrame.animation.play('$hovered');
 		
 		icon.loadIconGraphic(achievementData.id, value);
+		icon.locked = value;
 
 		return value; 
 	}

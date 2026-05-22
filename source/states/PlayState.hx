@@ -354,11 +354,6 @@ class PlayState extends SuffState {
 		doTween('selectTargetText', FlxTween.tween(selectTargetText, {y: value ? 0 : -selectTargetText.height}, 0.75, {
 			ease: FlxEase.backOut
 		}));
-		if (!isSelectingPlayer) {
-			for (char in characterGroup) {
-				char.stopFlashing();
-			}
-		}
 		return value;
 	}
 
@@ -1370,7 +1365,6 @@ class PlayState extends SuffState {
 				for (num => player in characterGroup) {
 					if (num != offensiveSkillAttacker && !player.isEliminated() && player.mouseOverlapsBoundingBox()) {
 						if (!player.hovered) {
-							player.startFlashing();
 							player.hovered = true;
 							selectLight.scale.x = 1;
 							selectLight.scale.y = player.height / 256;
@@ -1385,7 +1379,6 @@ class PlayState extends SuffState {
 							activateOffensiveSkill(offensiveSkillAttacker, offensiveSkillIndex, num);
 						}
 					} else if (player.hovered) {
-						player.stopFlashing();
 						player.hovered = false;
 					}
 				}

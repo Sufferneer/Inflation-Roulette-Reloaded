@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="HAXE_MODULE" version="4">
+  <component name="HaxeModuleSettingsStorage">
+    <option name="buildConfig" value="3" />
+    <option name="haxeTarget" value="Interpretation" />
+    <option name="hxmlPath" value="$MODULE_DIR$/dev/build.hxml" />
+    <option name="openFLFlags" value="-D_OFFICIAL_BUILD" />
+    <option name="openFLPath" value="$MODULE_DIR$/../project.xml" />
+    <option name="openFLTarget" value="Windows" />
+    <option name="outputFolder" value="$MODULE_DIR$/../export/production/Inflation-Roulette" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/source" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.haxelib" />
+      <excludeFolder url="file://$MODULE_DIR$/.haxelib/lime/7,7,0" />
+      <excludeFolder url="file://$MODULE_DIR$/dev/changelogs" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Inflation-Roulette-Libraries" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="openfl" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: lime:8.3.1">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/.haxelib/lime/8,3,1/src" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/.haxelib/lime/8,3,1/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: lime:8.3.1">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/.haxelib/lime/8,3,1/src" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/.haxelib/lime/8,3,1/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

@@ -64,8 +64,6 @@ class Character extends FlxSprite {
 	var creakTimer:Float = 0;
 	var swirlSpawnTimer:Float = 0;
 
-	var flashingShader:FlashingShader;
-
 	public function new(character:String, x:Float = 0, y:Float = 0) {
 		this.id = character;
 		var rawJson = Paths.getTextFromFile('data/characters/' + id + '/stats.json');
@@ -181,8 +179,7 @@ class Character extends FlxSprite {
 		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!spriteJson.antialiasing) : false;
 
 		if (Preferences.data.enableGLSL) {
-			flashingShader = new FlashingShader();
-			this.shader = flashingShader;
+			
 		}
 
 		animSoundPaths = new Map<String, Array<String>>();
@@ -219,8 +216,6 @@ class Character extends FlxSprite {
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
-		if (flashingShader != null)
-			flashingShader.update(elapsed);
 		if (currentPressure <= maxPressure || !disableBellySounds) {
 			if (Preferences.data.enableBellyGurgles) {
 				if (gurgleThreshold > -1 && currentPressure >= gurgleThreshold) {
@@ -363,18 +358,6 @@ class Character extends FlxSprite {
 
 	public function isEliminated() {
 		return currentPressure > maxPressure;
-	}
-
-	public function startFlashing() {
-		if (flashingShader == null) return;
-		flashingShader.time = 0.5;
-		flashingShader.flashSpeed = 2.0;
-	}
-
-	public function stopFlashing() {
-		if (flashingShader == null) return;
-		flashingShader.time = 0.0;
-		flashingShader.flashSpeed = 0.0;
 	}
 
 	override function toString():String {

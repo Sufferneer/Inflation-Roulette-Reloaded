@@ -31,14 +31,12 @@ class GamemodeSelectSubState extends SuffSubState {
 		FlxTween.tween(bg, {alpha: 0.5}, 0.5);
 		add(bg);
 
-		if (!Preferences.data.decreaseDetail) {
-			light = new FlxSprite().loadGraphic(Paths.image('game/selectLight'));
-			light.scale.set(FlxG.width, 1);
-			light.alpha = 0;
-			light.updateHitbox();
-			light.y = FlxG.height - light.height;
-			add(light);
-		}
+		light = new FlxSprite().loadGraphic(Paths.image('game/selectLight'));
+		light.scale.set(FlxG.width, 1);
+		light.alpha = 0;
+		light.updateHitbox();
+		light.y = FlxG.height - light.height;
+		add(light);
 
 		gameModeArt = new FlxSprite();
 		gameModeArt.visible = false;
@@ -101,22 +99,21 @@ class GamemodeSelectSubState extends SuffSubState {
 		FlxTween.cancelTweensOf(gameModeArt);
 		gameModeArt.loadGraphic(Paths.image('ui/menus/mainMenu/gameModes/${gamemode.id}'));
 		gameModeArt.visible = true;
-		gameModeArt.x = FlxG.width - gameModeArt.width / 2;
+		gameModeArt.x = FlxG.width - gameModeArt.width * 0.75;
 		gameModeArt.y = FlxG.height - gameModeArt.height;
 		FlxTween.tween(gameModeArt, {x: FlxG.width - gameModeArt.width}, 1, {ease: FlxEase.expoOut});
 
-		if (light != null) {
-			var fuckingColor = gamemode.color;
-			fuckingColor.alphaFloat = 0.5;
-			FlxTween.cancelTweensOf(light);
-			if (lightColorTween != null)
-				lightColorTween.cancel();
-			if (light.alpha <= 0)
-				light.color = fuckingColor;
-			else
-				lightColorTween = FlxTween.color(light, 1, light.color, fuckingColor);
-			FlxTween.tween(light, {alpha: 0.25}, 1);
-		}
+		var fuckingColor = gamemode.color;
+		fuckingColor.alphaFloat = 0.5;
+		FlxTween.cancelTweensOf(light, ['color']);
+		if (lightColorTween != null)
+			lightColorTween.cancel();
+		if (light.alpha <= 0) {
+			light.color = fuckingColor;
+			light.alpha = 0;
+		} else
+			lightColorTween = FlxTween.color(light, 1, light.color, fuckingColor);
+		FlxTween.tween(light, {alpha: 0.25}, 1);
 	}
 
 	function goGoGadgetGamemode(gamemode:Gamemode) {
