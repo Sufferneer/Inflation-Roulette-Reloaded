@@ -66,6 +66,7 @@ class PreloadState extends SuffState {
 					#if (!html && !mobile)
 					var musicList = Utilities.textFileToArray('data/extras/jukebox/musicList.txt', true);
 					for (music in musicList) {
+						trace('Cached music: $music');
 						Paths.music(music);
 					}
 					#end
@@ -74,13 +75,16 @@ class PreloadState extends SuffState {
 				case 'toasts':
 					MusicToast.initialize();
 					AchievementToast.initialize();
+					trace('Setup Music Toasts and Achievement Toasts');
 				case 'tooltip':
 					Tooltip.initialize();
 					// shhhhh
 					ScreenSafeZone.recalculateConstants();
+					trace('Setup Tooltip and Recalculated Screen Safe Zone');
 				case 'cursor':
 					CursorHandler.initialize();
 					CursorHandler.cursorVisible = true;
+					trace('Setup Custom Cursor');
 				case 'splashes':
 					SplashManager.parseSplashes();
 			}

@@ -77,6 +77,7 @@ class SplashManager {
 						usesLunarCalendar = true;
 					for (splash in group.splashes) {
 						activeSplashes.push(splash);
+						trace('Splash added: $splash');
 					}
 					for (color in group.colors) {
 						activeColors.push(FlxColor.fromString(color));
@@ -91,8 +92,6 @@ class SplashManager {
 			}
 			activeColors = Constants.DEFAULT_SPLASH_TEXT_COLORS;
 		}
-
-		trace(activeSplashes);
 		trace(activeColors);
 	}
 }

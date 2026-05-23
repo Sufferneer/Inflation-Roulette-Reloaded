@@ -37,7 +37,9 @@ class CharacterManager {
 	public static function precacheSpriteSheets(char:String) {
 		var rawJson:CharacterCosmeticData = cast TJSON.parse(Paths.getTextFromFile('data/characters/$char/cosmetic.json'));
 		for (i in rawJson.spriteSheets) {
-			Paths.sparrowAtlas('game/characters/$char/$i');
+			var sheet = 'game/characters/$char/$i';
+			Paths.sparrowAtlas(sheet);
+			trace('Cached sprite sheet: $sheet');
 		}
 	}
 

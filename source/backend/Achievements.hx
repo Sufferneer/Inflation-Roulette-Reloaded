@@ -17,6 +17,8 @@ class Achievements {
 		importedData.id = id;
 		achievementIDs.push(id);
 		achievementsList.set(id, importedData);
+
+		trace('Created achievement: $id');
 	}
 
 	public static function initialize() {
@@ -84,9 +86,6 @@ class Achievements {
 				}
 			}
 		}
-
-		trace(achievementsList);
-		trace(curProgress);
 	}
 
 	public static function isLocked(id:String) {

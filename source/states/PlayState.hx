@@ -178,7 +178,7 @@ class PlayState extends SuffState {
 		pumpGun.scrollFactor.set(stage.data.gunScrollFactor[0], stage.data.gunScrollFactor[1]);
 		add(pumpGun);
 
-		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 8 * 100)) {
+		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 128 * 100)) {
 			var cobalt:FlxSprite = new FlxSprite();
 			cobalt.frames = Paths.sparrowAtlas('game/cobalt');
 			cobalt.animation.addByPrefix('appear', 'appear', 24, false);
@@ -797,7 +797,7 @@ class PlayState extends SuffState {
 					doTimer('morePressure', new FlxTimer().start(0.75, function(_) {
 						for (i in 0...pressurizeStreak.length)
 							pressurizeStreak[i] = 0;
-						if (lastPressurizeUserIndex == playerIndex)
+						if (lastPressurizeUserIndex == playerIndex && !getPlayer(playerIndex).cpuControlled)
 							Achievements.advanceProgress('pressurizeYourself', [true]);
 						shoot(playerIndex, passToPlayer);
 					}));

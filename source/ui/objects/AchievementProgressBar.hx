@@ -82,7 +82,7 @@ class AchievementProgressBar extends FlxSpriteGroup {
 			startDelay: 0.1,
 			onComplete: function(_) {
 				if (progressBar.clipRect.width == progressBar.width) {
-					SuffState.playUISound(Paths.sound('ui/achievements/ominous'), 0.625, 10.5);
+					SuffState.playUISound(Paths.sound('ui/achievements/sparkle'), 0.625);
 					completion.animation.play('true');
 				}
 			}
