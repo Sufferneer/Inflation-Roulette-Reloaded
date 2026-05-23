@@ -179,7 +179,7 @@ class PlayState extends SuffState {
 		pumpGun.scrollFactor.set(stage.data.gunScrollFactor[0], stage.data.gunScrollFactor[1]);
 		add(pumpGun);
 
-		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 128 * 100)) {
+		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 64 * 100)) {
 			var cobalt:FlxSprite = new FlxSprite();
 			cobalt.frames = Paths.sparrowAtlas('game/cobalt');
 			cobalt.animation.addByPrefix('appear', 'appear', 24, false);

@@ -14,17 +14,19 @@ Minor updates will be referred to as _Pitstops_.
 - Version checking to alert you on the latest version of IRR. 
   - This can be disabled in the Options menu
   - Only supports versions >=2.2.0
+- Operations are now output on console on the Preload menu.
 #### Localization
 - Added Catalan and Spanish (Mexico) translations.
 ### Changes
 #### Audio
 - Replaced some gameplay sounds.
 #### Cosmetic
-- Increase chance of Cobalt's appearance.
+- Increased chance of Cobalt's appearance.
 - Splash text now supports Unicode characters.
 - Tooltips now switches over to the mouse's left position if it is out-of-bounds
 - Language Select Menu now includes translation progress for each language
     - Tap the progress text to see which translation keys are missing.
+- Recolored Goober's blush to match existing characters
 #### Technical
 - All changelogs are now kept in one file.
 #### Utilities
