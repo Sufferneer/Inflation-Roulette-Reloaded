@@ -125,17 +125,20 @@ class GamemodeSelectSubState extends SuffSubState {
 					leCPUControl.push(true);
 					CharacterManager.cpuLevel[num] = FlxG.random.int(1, 3);
 				}
-				leCPUControl[0] = false;
+				leCPUControl[FlxG.random.int(0, leCPUControl.length - 1)] = false;
 				CharacterManager.selectedCharacterList = leRandom;
 				CharacterManager.cpuControlled = leCPUControl;
 				PlayState.hasSeenStartCutscene = false;
 				CharacterManager.parseRandomCharacters();
+				trace('Current characters: ', CharacterManager.selectedCharacterList);
+				trace('Current CPU level: ', CharacterManager.cpuLevel);
 				openSubState(new GameOnSubState(new PlayState()));
 			default:
 				GameplayManager.currentGamemode = gamemode;
 				CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
 				SuffState.switchState(new CharacterSelectState());
 		}
+		trace('Current gamemode: ', GameplayManager.currentGamemode);
 	}
 
 	function exitMenu() {

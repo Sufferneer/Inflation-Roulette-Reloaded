@@ -21,6 +21,7 @@ import shaders.GaussianBlurShader;
 import objects.particles.Bloosh;
 import objects.particleEmitters.PuffEmitter;
 import objects.particles.BulletShell;
+import objects.particles.PlayerIndicator;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
@@ -229,7 +230,7 @@ class PlayState extends SuffState {
 			add(dangerVignette);
 		}
 		
-		letterboxTop = new FlxSprite().makeGraphic(FlxG.width + 50, Std.int((FlxG.height - FlxG.width * Constants.LETTERBOX_RATIO) / 2), FlxColor.BLACK);
+		letterboxTop = new FlxSprite().makeGraphic(FlxG.width + 50, Constants.LETTERBOX_HEIGHT, FlxColor.BLACK);
 		letterboxTop.camera = camOther;
 		letterboxTop.y = -letterboxTop.height;
 		add(letterboxTop);
@@ -334,6 +335,17 @@ class PlayState extends SuffState {
 			cancelOffensiveSkill();
 		};
 		add(skillCancelButton);
+		
+		var humanPlayer:Int = 0;
+		var humanPlayerCount = [for (i in CharacterManager.cpuControlled) if (!i) i].length;
+		for (num => i in CharacterManager.cpuControlled) {
+			if (i) continue;
+			var player = getPlayer(num);
+			var offset = player.getParticleOffset('over');
+			members.insert(members.indexOf(characterGroup) + 1, new PlayerIndicator(player.x + offset.x, player.y + offset.y, humanPlayer, humanPlayerCount == 1));
+			humanPlayer ++;
+		}
+		toggleCameraFocusButton(!getPlayer(currentTurnIndex).cpuControlled);
 
 		reloadRevealUI();
 
@@ -369,7 +381,7 @@ class PlayState extends SuffState {
 		character.playAnim('preShoot', false);
 		doTimer('playerShoot', new FlxTimer().start(character.getAnimLength('preShoot') + usedDelay(), function(_:FlxTimer) {
 			if (!Preferences.data.decreaseDetail) {
-				var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot')[0], character.y + character.getParticleOffset('gunShoot')[1], stage.data.characterY, cylinderContent[0]);
+				var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot').x, character.y + character.getParticleOffset('gunShoot').y, stage.data.characterY, cylinderContent[0]);
 				members.insert(members.indexOf(characterGroup) + 1, bulletShell);
 			}
 			shoot(playerIndex);
@@ -590,13 +602,13 @@ class PlayState extends SuffState {
 		}
 		getPlayer(playerIndex).playAnim(actualAnimName);
 		var offsets = getPlayer(playerIndex).getParticleOffset('over');
-		members.insert(members.indexOf(getPlayer(playerIndex)), new SkillIndicator(getPlayer(playerIndex).x + offsets[0], getPlayer(playerIndex).y + offsets[1], skill.id));
+		members.insert(members.indexOf(getPlayer(playerIndex)), new SkillIndicator(getPlayer(playerIndex).x + offsets.x, getPlayer(playerIndex).y + offsets.y, skill.id));
 
 		switch (skill.id) {
 			case 'reload':
 				if (!Preferences.data.decreaseDetail) {
 					for (i in 0...cylinderContent.length) {
-						var bulletShell = new BulletShell(getPlayer(playerIndex).x + getPlayer(playerIndex).getParticleOffset('gunSkill')[0], getPlayer(playerIndex).y + getPlayer(playerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[i]);
+						var bulletShell = new BulletShell(getPlayer(playerIndex).x + getPlayer(playerIndex).getParticleOffset('gunSkill').x, getPlayer(playerIndex).y + getPlayer(playerIndex).getParticleOffset('gunSkill').y, stage.data.characterY, cylinderContent[i]);
 						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
 					}
 				}
@@ -696,7 +708,7 @@ class PlayState extends SuffState {
 							getPlayer(victimIndex).currentConfidence = getPlayer(victimIndex).maxConfidence;
 					}
 					if (!Preferences.data.decreaseDetail) {
-						var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill')[0], getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill')[1], stage.data.characterY, cylinderContent[0]);
+						var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill').x, getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill').y, stage.data.characterY, cylinderContent[0]);
 						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
 					}
 					shoot(victimIndex, false);
@@ -729,7 +741,7 @@ class PlayState extends SuffState {
 		if (getPlayer(attackerIndex).flipX) flipX = !flipX;
 		getPlayer(attackerIndex).playAnim(actualAnimName, false, true, flipX);
 		var offsets = getPlayer(attackerIndex).getParticleOffset('over');
-		members.insert(members.indexOf(getPlayer(attackerIndex)), new SkillIndicator(getPlayer(attackerIndex).x + offsets[0], getPlayer(attackerIndex).y + offsets[1], skill.id));
+		members.insert(members.indexOf(getPlayer(attackerIndex)), new SkillIndicator(getPlayer(attackerIndex).x + offsets.x, getPlayer(attackerIndex).y + offsets.y, skill.id));
 
 		toggleLetterbox(true);
 		if (getPlayer(attackerIndex).animSoundPaths[soundName] == null || getPlayer(attackerIndex).animSoundPaths[soundName].length <= 0) {
@@ -909,7 +921,7 @@ class PlayState extends SuffState {
 			var character = getPlayer(playerIndex);
 			members.insert(members.indexOf(characterGroup) + 1, new Bloosh(character.x, character.y - character.height / 2));
 			if (!Preferences.data.decreaseDetail) {
-				members.insert(members.indexOf(characterGroup) + 1, new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY));
+				members.insert(members.indexOf(characterGroup) + 1, new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY, character.maxPressure));
 				members.insert(members.indexOf(characterGroup) + 1, new PuffEmitter(character.x, character.y - character.height / 2));
 			}
 			SuffState.playSound(Paths.sound('game/belly/burst'));

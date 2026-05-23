@@ -244,7 +244,7 @@ class Character extends FlxSprite {
 			swirlSpawnTimer -= elapsed;
 			if (swirlSpawnTimer <= 0) {
 				var offsets = getParticleOffset('over');
-				FlxG.state.add(new Swirl(this.x + offsets[0] + FlxG.random.float(-1, 1) * this.width / 5, this.y + offsets[1] + FlxG.random.float() * this.height / 5, 0xFFC040FF));
+				FlxG.state.add(new Swirl(this.x + offsets.x + FlxG.random.float(-1, 1) * this.width / 5, this.y + offsets.y + FlxG.random.float() * this.height / 5, 0xFFC040FF));
 				swirlSpawnTimer = FlxG.random.float();
 			}
 		}
@@ -309,17 +309,17 @@ class Character extends FlxSprite {
 		// trace(id, usedAnimName);
 	}
 	
-	public function getParticleOffset(position:String = 'over'):Array<Float> {
+	public function getParticleOffset(position:String = 'over'):FlxPoint {
 		if (!particleOffsets.exists(position))
-			return [0, 0];
+			return FlxPoint.get(0, 0);
 		var offsetArray = particleOffsets.get(position);
 		if (currentPressure > maxPressure) {
 			var index = (PlayState.currentSessionEnablePopping && !disablePopping) ? (offsetArray.length - 1) : (offsetArray.length - 2);
-			return [offsetArray[index][0] * (this.flipX ? -1 : 1), offsetArray[index][1]];
+			return FlxPoint.get(offsetArray[index][0] * (this.flipX ? -1 : 1), offsetArray[index][1]);
 		} else {
-			return [offsetArray[currentPressure][0] * (this.flipX ? -1 : 1), offsetArray[currentPressure][1]];
+			return FlxPoint.get(offsetArray[currentPressure][0] * (this.flipX ? -1 : 1), offsetArray[currentPressure][1]);
 		}
-		return [0, 0];
+		return FlxPoint.get(0, 0);
 	}
 
 	public function parseAnimationSuffix() {

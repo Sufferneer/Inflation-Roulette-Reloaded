@@ -29,6 +29,7 @@ class SplashManager {
 
 		for (splash in collection.shared) {
 			activeSplashes.push(splash);
+			trace('Shared splash added: $splash');
 		}
 
 		isSpecialDay = false;
@@ -77,7 +78,7 @@ class SplashManager {
 						usesLunarCalendar = true;
 					for (splash in group.splashes) {
 						activeSplashes.push(splash);
-						trace('Splash added: $splash');
+						trace('Time-based splash added: $splash');
 					}
 					for (color in group.colors) {
 						activeColors.push(FlxColor.fromString(color));
@@ -89,9 +90,10 @@ class SplashManager {
 		if (!isSpecialDay) {
 			for (splash in collection.fallback) {
 				activeSplashes.push(splash);
+				trace('Fallback splash added: $splash');
 			}
 			activeColors = Constants.DEFAULT_SPLASH_TEXT_COLORS;
 		}
-		trace(activeColors);
+		trace('Colors: ', activeColors);
 	}
 }

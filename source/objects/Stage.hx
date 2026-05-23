@@ -28,16 +28,19 @@ class Stage extends FlxBasic {
 			var obj:StageObject = loadObject(object, data.id);
 			addBehindCharacters(object.id, obj);
 		}
+		trace('Loaded background objects');
 		for (object in tableObjects) {
 			if (object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addBehindGun(object.id, obj);
 		}
+		trace('Loaded table objects');
 		for (object in foregroundObjects) {
 			if (object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addObject(object.id, obj);
 		}
+		trace('Loaded foreground objects');
 	}
 
 	public static function parsePosition(object:FlxSprite, pos:Array<String>):Array<Float> {
@@ -77,7 +80,6 @@ class Stage extends FlxBasic {
 	}
 
 	public static function loadObject(objectData:StageObjectData, stageID:String = 'classic'):StageObject {
-		trace(objectData);
 		var object:StageObject = new StageObject();
 		if (objectData.walkStep != null)
 			object.walkStep = objectData.walkStep;
@@ -135,6 +137,8 @@ class Stage extends FlxBasic {
 		object.x = pos[0];
 		object.y = pos[1];
 		object.originalPosition.set(pos[0], pos[1]);
+
+		trace('Stage object loaded: $objectData');
 		return object;
 	}
 

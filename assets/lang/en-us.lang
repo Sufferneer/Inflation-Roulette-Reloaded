@@ -589,6 +589,8 @@ menu.exit = Exit
 
 // Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 gameUI.selectTarget = SELECT TARGET
+gameUI.playerIndicator.you = YOU
+gameUI.playerIndicator.player = P%1
 
 preloadMenu.progress.characters = Loading Characters...
 preloadMenu.progress.gameplay = Loading Game Modes...

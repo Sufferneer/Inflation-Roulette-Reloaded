@@ -67,7 +67,7 @@ class Constants {
 	public static final ORIGINAL_FLXG_WIDTH:Float = 1280;
 	public static final ORIGINAL_FLXG_HEIGHT:Float = 720;
 
-	public static final LETTERBOX_RATIO:Float = #if desktop 9 / 20 #else 1 / 2.75 #end;
+	public static final LETTERBOX_HEIGHT:Int = 72;
 
 	/**
 	 * The size of CharacterSelectCards.
