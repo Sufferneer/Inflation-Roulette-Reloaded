@@ -45,7 +45,7 @@ class BulletShell extends FlxSprite {
 			if (Math.abs(velocity.y) <= 16) {
 				velocity.x = velocity.y = acceleration.y = angularVelocity = 0;
 				if (!despawning) {
-					FlxTween.tween(this, {alpha: 0}, 5, {startDelay: 30 + FlxG.random.float() * 30, onComplete: function(_) {
+					FlxTween.tween(this, {alpha: 0}, 2, {startDelay: 5 + FlxG.random.float() * 5, onComplete: function(_) {
 						this.destroy();
 					}});
 					despawning = true;
