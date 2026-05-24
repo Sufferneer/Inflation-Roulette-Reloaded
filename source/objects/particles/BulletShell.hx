@@ -18,13 +18,12 @@ class BulletShell extends FlxSprite {
 		angularVelocity = FlxG.random.float(-180, 180);
 		acceleration.y = 4000;
 	}
-	
+
 	var despawning:Bool = false;
-	var droppedOnFloor:Bool = false;
+	var bouncesLeft:Int = 6;
 	var puffSpawnTimer:Float = 0.1;
 
 	override function update(elapsed:Float) {
-		super.update(elapsed);
 		if (spawnPuff) {
 			puffSpawnTimer -= elapsed;
 			if (puffSpawnTimer <= 0) {
@@ -34,16 +33,16 @@ class BulletShell extends FlxSprite {
 				puffSpawnTimer = 0.1;
 			}
 		}
-		if (y >= floorY) {
-			velocity.y *= -0.55;
+		if (y >= floorY && bouncesLeft > 0) {
+			bouncesLeft --;
+			velocity.y *= -0.5 + FlxG.random.float(-0.2, 0.2);
+			this.y += velocity.y * elapsed;
 			velocity.x *= 0.75;
-			angularVelocity = FlxG.random.float(-960, 960);
-			if (!droppedOnFloor) {
-				SuffState.playSound(Paths.soundRandom('game/shell', 1, 3), 0.5);
-				droppedOnFloor = true;
-			}
-			if (Math.abs(velocity.y) <= 16) {
+			angularVelocity = FlxG.random.float(-1080, 1080);
+			SuffState.playSound(Paths.sound('game/shell'), Math.pow(bouncesLeft / 6, 2) * 0.5, 1 + FlxG.random.float(-0.02, 0.02));
+			if (bouncesLeft <= 0) {
 				velocity.x = velocity.y = acceleration.y = angularVelocity = 0;
+				angle = 90 * FlxG.random.int(-1, 1, [0]);
 				if (!despawning) {
 					FlxTween.tween(this, {alpha: 0}, 2, {startDelay: 5 + FlxG.random.float() * 5, onComplete: function(_) {
 						this.destroy();
@@ -53,5 +52,6 @@ class BulletShell extends FlxSprite {
 				}
 			}
 		}
+		super.update(elapsed);
 	}
 }

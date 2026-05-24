@@ -20,7 +20,7 @@ class Paths {
 	/**
 	 * The current used extension for sounds.
 	 */
-	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
+	inline public static var SOUND_EXT = #if _USE_MP3 "mp3" #else "ogg" #end;
 
 	/**
 	 * List of directories to be ignored during memory clearing.

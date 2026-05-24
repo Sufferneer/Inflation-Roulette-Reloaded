@@ -460,7 +460,7 @@
 	],
 
 	"belchThreshold": 3,
-	"gurgleThreshold": 1,
+	"gurgleThreshold": 2,
 	"creakThreshold": 3,
 	"poppingVelocityMultiplier": [1.0, 1.0],
 	"poppingGravityMultiplier": 1.0,

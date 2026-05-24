@@ -3,7 +3,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="2.2.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="c.2" />
+	<set name="versionState" value="c.3" />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<!--The HaxeFlixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
@@ -45,7 +45,7 @@
 		<define name="_ALLOW_UTILITIES" if="desktop" />
 		<define name="_ALLOW_EASTER_EGGS"/>
 	</section>
-	<define name="_USE_MP3" if="web" unless="android" />
+	<define name="_USE_MP3" if="web"/>
 	<define name="_BUILD_IN_ADDONS" unless="desktop" />
 
 	<!-- Preload Assets -->
