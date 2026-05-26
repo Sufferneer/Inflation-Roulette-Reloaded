@@ -76,8 +76,13 @@ class SuffScrollBar extends FlxSpriteGroup {
                     FlxTween.tween(bar, {'y': this.y + FlxMath.bound(bar.y - FlxG.mouse.wheel * 48, this.y, this.y + bg.height - bar.height)}, 0.5, {
                         ease: FlxEase.quintOut,
                         onUpdate: function(_) {
-                            if (scrollCallback != null)
-                                scrollCallback(Utilities.invLerp(this.y, this.y + bg.height - bar.height, bar.y));
+                            if (bg != null && bar != null && scrollCallback != null) {
+                                try {
+                                    scrollCallback(Utilities.invLerp(this.y, this.y + bg.height - bar.height, bar.y));
+                                } catch(e:Dynamic) {
+                                    
+                                }
+                            }
                         }
                     });
                 }

@@ -46,7 +46,8 @@ Minor updates will be referred to as _Pitstops_.
 - ~~Character Editor exporting every sprite sheet incorrectly~~
 - Character Editor exporting everything incorrectly
 - Characters always score the minimum edging bonus even when inflated just once
-- _Backfire_ achievement now only works for non-CPU characters
+- _Backfire_ achievement working for CPU characters
+- Scroll bars crashes the game mid-scroll
 
 ## v2.1.1 - Patch of Creativity, Pitstop 1 Hotfix 1 - 2026-04-19
 ### Changes
