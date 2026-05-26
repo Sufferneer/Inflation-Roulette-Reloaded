@@ -77,6 +77,8 @@ class CharacterSimple extends FlxSprite {
 			trace('Character $id has no animations');
 			animation.addByPrefix('idle0', 'idle0', 24);
 		}
+		
+		trace(animSoundPaths);
 	}
 
 	override function update(elapsed:Float) {
@@ -112,8 +114,10 @@ class CharacterSimple extends FlxSprite {
 	}
 
 	public function addSoundPath(name:String, pathArray:Array<String>) {
-		if (!animSoundPaths.exists(name) || pathArray == null || pathArray.length <= 0)
+		if (pathArray == null || pathArray.length <= 0)
 			return;
+		if (!animSoundPaths.exists(name))
+			animSoundPaths.set(name, []);
 		for (path in pathArray) {
 			animSoundPaths[name].push(path);
 		}

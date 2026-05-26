@@ -9,14 +9,16 @@ Minor updates will be referred to as _Pitstops_.
 ### Additions
 #### Cosmetic
 - A bunch of visual effects.
+#### Localization
+- Added Catalan and Spanish (Mexico) translations.
+#### Quality of Life
+- Exit button in Character Select
 #### Technical
 - Android build (beta version, does not support modding yet).
 - Version checking to alert you on the latest version of IRR. 
   - This can be disabled in the Options menu
   - Only supports versions >=2.2.0
 - Operations are now output on console on the Preload menu.
-#### Localization
-- Added Catalan and Spanish (Mexico) translations.
 ### Changes
 #### Audio
 - Replaced some gameplay sounds.
@@ -26,9 +28,14 @@ Minor updates will be referred to as _Pitstops_.
 - Tooltips now switches over to the mouse's left position if it is out-of-bounds
 - Language Select Menu now includes translation progress for each language
     - Tap the progress text to see which translation keys are missing.
-- Recolored Goober's blush to match existing characters
+- Recolored Goober's blush to match other characters'
+- Decreased Asimo's gurgle threshold
+- Increased visibility of Skill icons on white backgrounds
+#### Gameplay
+- Quick Play now randomizes player position.
 #### Technical
 - All changelogs are now kept in one file.
+- Skill Cards now only uses one file
 #### Utilities
 - Character Editor now generates addon metadata and localization files for you.
 ### Fixes
@@ -39,6 +46,7 @@ Minor updates will be referred to as _Pitstops_.
 - ~~Character Editor exporting every sprite sheet incorrectly~~
 - Character Editor exporting everything incorrectly
 - Characters always score the minimum edging bonus even when inflated just once
+- _Backfire_ achievement now only works for non-CPU characters
 
 ## v2.1.1 - Patch of Creativity, Pitstop 1 Hotfix 1 - 2026-04-19
 ### Changes

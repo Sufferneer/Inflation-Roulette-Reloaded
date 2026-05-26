@@ -212,6 +212,8 @@ class Character extends FlxSprite {
 			else if (animExists(animName + '-loop') && !idleAfterAnimation)
 				playAnim(animName + '-loop', false, false);
 		});
+		
+		trace(animSoundPaths);
 	}
 
 	override function update(elapsed:Float) {
@@ -272,8 +274,10 @@ class Character extends FlxSprite {
 	}
 
 	public function addSoundPath(name:String, pathArray:Array<String>) {
-		if (!animSoundPaths.exists(name) || pathArray == null || pathArray.length <= 0)
+		if (pathArray == null || pathArray.length <= 0)
 			return;
+		if (!animSoundPaths.exists(name))
+			animSoundPaths.set(name, []);
 		for (path in pathArray) {
 			animSoundPaths[name].push(path);
 		}

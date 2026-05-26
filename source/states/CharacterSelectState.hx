@@ -315,7 +315,6 @@ class CharacterSelectState extends SuffState {
 		rightButton.visible = lastPage > 0;
 		add(rightButton);
 
-		#if mobile
 		var exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);
 		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
 		exitButton.y = FlxG.height - exitButton.height - 20 - ScreenSafeZone.Y;
@@ -324,7 +323,6 @@ class CharacterSelectState extends SuffState {
 			exitFunction();
 		};
 		add(exitButton);
-		#end
 
 		readySign = new ReadySign();
 		readySign.onClick = function() {

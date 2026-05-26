@@ -53,7 +53,7 @@ class SkillCard extends SuffButton {
 	public override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		skillBorder.visible = hovered;
+		skillBorder.visible = hovered && !notEnoughConfidence;
 	}
 
 	private function set_notEnoughConfidence(value:Bool):Bool{

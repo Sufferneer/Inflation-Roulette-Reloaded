@@ -383,6 +383,12 @@ class PlayState extends SuffState {
 			if (!Preferences.data.decreaseDetail) {
 				var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot').x, character.y + character.getParticleOffset('gunShoot').y, stage.data.characterY, cylinderContent[0]);
 				members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+				if (cylinderContent[0]) {
+					for (i in 0...cylinderContent.length - 1) {
+						var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot').x, character.y + character.getParticleOffset('gunShoot').y, stage.data.characterY, false);
+						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+					}
+				}
 			}
 			shoot(playerIndex);
 		}));
@@ -1250,6 +1256,7 @@ class PlayState extends SuffState {
 
 	function togglePlayerUI(moveIn:Bool = false) {
 		shootButton.disabled = !moveIn;
+		canUseSkillKeybinds = moveIn;
 		if (!moveIn) {
 			for (skillCard in skillCardsGroup) {
 				skillCard.disabled = false;
