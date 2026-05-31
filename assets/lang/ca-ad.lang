@@ -590,6 +590,8 @@ menu.exit = Surt
 
 // Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 gameUI.selectTarget = SELECCIONA OBJECTIU
+gameUI.playerIndicator.you = TU
+gameUI.playerIndicator.player = J%1
 
 preloadMenu.progress.characters = Carregant caràcters...
 preloadMenu.progress.gameplay = Carregant modes de joc...
