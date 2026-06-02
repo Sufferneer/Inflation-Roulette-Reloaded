@@ -5,7 +5,7 @@
 "preserve_hierarchy": true
 "files": [
   {
-    "source": "/assets/lang/en-us.lang",
-    "translation": "/assets/lang/%locale%.lang"
+    "source": "/assets/lang/en-us.json5",
+    "translation": "/assets/lang/%locale%.json5"
   }
 ]

@@ -54,7 +54,7 @@ class Language {
 				lePhrases.set(key, string);
 			}
 		}
-		trace('Imported $phrasesCount vanilla phrases from $langID');
+		trace(phrasesCount);
 		return lePhrases;
 	}
 

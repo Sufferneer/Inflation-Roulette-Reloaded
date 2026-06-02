@@ -5,7 +5,7 @@
 	// Comments are prefixed with two slashes (//), and will not be recognized by the game.
 	// Comments are reserved for translation notes, either to clarify context or give instructions.
 	
-	"game.title": "膨脹輪盤：重裝版",
+	"game.title": "膨脹輪盤：重裝上陣",
 	"game.titleShort": "膨脹輪盤",
 	"game.acronym": "膨脹輪盤",
 	
@@ -384,8 +384,8 @@
 	"galleryMainMenu.envelope.rotateText": "false",
 	"galleryMainMenu.envelope.goober.description": "古伯最初出現在原版遊戲中，現在以全新的面貌登場！他們已成為無數重製版和同人作品中不可或缺的人物。\n\n至於他們為何以及如何加入遊戲，無人知道！演員？人質？叛徒？很多可能性的！關於他們的生物學知之甚少，但已證實他們被分為幾個種族，從完全由史萊姆組成的古伯到R»EDA©±ED§²½\n\n古伯是由Snowyboi創造的物種。",
 	"galleryMainMenu.envelope.asimo.description": "阿西莫衝進了膨脹輪盤，聲稱要「找點樂子」。\n\n我們不知道他是怎麼來到這裡的，我們也完全與他沒有任何關係，除了他是一隻狼，他是為經理的死人《週五放克夜》模組造遊玩測試，而且他是抽出來添加到遊戲中，作為範例附件包的人物。\n\n阿西莫是 WolfKylis 擁有的客串人物。",
-	"galleryMainMenu.envelope.shibanou.description": "姓歐名拾巴，這隻生物來自一個神秘的外星球。他的名字可以解釋為「〇十八」，源自他在北京降落的核彈機地。\n\n他生命中的前幾年都在不同的地方尋找住所，最終經理在車庫裡找到了他。經理便收養了他作為第二助理，很快就發現自己愛上了第一助理（實驗室培養的，真噁心）。沒有其他明顯的原因，只是為了在男朋友面前炫耀，他加入了遊戲，展示他隱藏的能力。\n\n歐拾巴是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝版》開發之前製作。",
-	"galleryMainMenu.envelope.chester.description": "作為咖啡店的首席咖啡師，切斯特被迫作為公司的代表來玩這個遊戲。由於他糟糕的學業成績和內向的性格，他對繁榮和財富的夢想尚未實現。\n\n他日常的工作包括為心理變態的顧客製作飲料。有人說這些飲料有「膨脹」的效果，這引起了幾位食品安全官員的注意。然而，由於資本主義的力量，食品部門警告了它後無所作為。\n\n切斯特是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝版》開發之前製作。",
+	"galleryMainMenu.envelope.shibanou.description": "姓歐名拾巴，這隻生物來自一個神秘的外星球。他的名字可以解釋為「〇十八」，源自他在北京降落的核彈機地。\n\n他生命中的前幾年都在不同的地方尋找住所，最終經理在車庫裡找到了他。經理便收養了他作為第二助理，很快就發現自己愛上了第一助理（實驗室培養的，真噁心）。沒有其他明顯的原因，只是為了在男朋友面前炫耀，他加入了遊戲，展示他隱藏的能力。\n\n歐拾巴是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝上陣》開發之前製作。",
+	"galleryMainMenu.envelope.chester.description": "作為咖啡店的首席咖啡師，切斯特被迫作為公司的代表來玩這個遊戲。由於他糟糕的學業成績和內向的性格，他對繁榮和財富的夢想尚未實現。\n\n他日常的工作包括為心理變態的顧客製作飲料。有人說這些飲料有「膨脹」的效果，這引起了幾位食品安全官員的注意。然而，由於資本主義的力量，食品部門警告了它後無所作為。\n\n切斯特是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝上陣》開發之前製作。",
 	"galleryMainMenu.envelope.dev": "開發者畫作",
 	"galleryMainMenu.envelope.dev.description": "開發者及其他畫家製作的概念畫、草圖和未使用的畫作集合。\n\nangry           bird",
 	"galleryMainMenu.envelope.community": "粉絲作品",
@@ -525,7 +525,7 @@
 	"preloadMenu.finished": "完成！",
 	
 	"outdatedVersionMenu.heading": "版本過期",
-	"outdatedVersionMenu.text": "喂！你目前使用的《膨脹輪盤：重裝版》的版本已過期。請下載最新版本，以體驗最新功能和修復錯誤！\n\n你的版本：%1\n最新版本：%2",
+	"outdatedVersionMenu.text": "喂！你目前使用的《膨脹輪盤：重裝上陣》的版本已過期。請下載最新版本，以體驗最新功能和修復錯誤！\n\n你的版本：%1\n最新版本：%2",
 	"outdatedVersionMenu.update": "更新",
 	"outdatedVersionMenu.dismiss": "下次先啦",
 	
