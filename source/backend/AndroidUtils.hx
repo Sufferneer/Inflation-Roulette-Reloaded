@@ -29,10 +29,16 @@ class AndroidUtils {
 	}
 
 	inline public static function checkAllFilesPermission():Bool {
+		#if android
 		return Environment.isExternalStorageManager();
+		#else
+		return true;
+		#end
 	}
 
 	inline public static function requestAllFilesPermission() {
+		#if android
 		Settings.requestSetting('android.settings.MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
+		#end
 	}
 }

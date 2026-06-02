@@ -236,7 +236,7 @@ option.screenSafeZone.description = Adjust the slider until the white area cover
 // Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 option.decreaseDetail.name = Low Detail
 option.decreaseDetail.description = Decrease non-essential particle effects. May help with low-end devices.
-option.enableForcedAliasing.name = Forced Aliasing
+option.enableForcedAliasing.name = Forced Pixelation
 option.enableForcedAliasing.description = Disables antialiasing from all sprites even when enabled. May make some graphics look jagged.
 option.enableGLSL.name = GLSL Shaders
 option.enableGLSL.description = Enables GLSL shaders for some menu elements. Disabling this can reduce load on low-end GPUs.
@@ -328,7 +328,7 @@ characterSelect.option.skillLevel.3 = Strategic
 characterSelect.cantEarnAchievements = You cannot earn achievements with these settings.
 
 // Goober: A character species present in the original Inflation Roulette.
-// Looks like a feline, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
+// Looks like a feline, or a canine, or something, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
 // Skills: Reload, Sabotage
 character.goober.name = Goober
 character.goober.name.short = Goober

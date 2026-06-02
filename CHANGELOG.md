@@ -33,8 +33,10 @@ Minor updates will be referred to as _Pitstops_.
 - Decreased Asimo's gurgle threshold
 - Increased visibility of Skill icons on white backgrounds
 - Updated some splashes
+#### Localization
+- Forced Aliasing now renamed to _Forced Pixelation_ to avoid confusion.
 #### Gameplay
-- Quick Play now randomizes player position.
+- Quick Play now randomizes the human player's position.
 #### Technical
 - All changelogs are now kept in one file.
 - Skill Cards now only uses one file

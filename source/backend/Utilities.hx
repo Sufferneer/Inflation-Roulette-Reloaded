@@ -141,7 +141,7 @@ class Utilities {
 	 */
 	inline public static function getSavePath():String {
 		@:privateAccess
-		return FlxG.stage.application.meta.get('company') + '/' + FlxG.stage.application.meta.get('file');
+		return FlxG.stage.application.meta.get('company') + '/' + FlxSave.validate(FlxG.stage.application.meta.get('file'));
 	}
 
 	inline public static function getActualGameTitle():String {

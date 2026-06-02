@@ -18,10 +18,10 @@ class PreloadState extends SuffState {
 	var loadingTexts:Array<String> = ['characters', 'gameplay', 'music', 'achievements', 'toasts', 'tooltip', 'cursor', 'splashes'];
 
 	override function create() {
-		Preferences.loadPrefs();
-
 		super.create();
 
+		FlxG.save.bind('game', Utilities.getSavePath());
+		Preferences.loadPrefs();
 		if (AndroidUtils.checkAllFilesPermission())
 			Addons.pushGlobalAddons();
 		Language.initialize();

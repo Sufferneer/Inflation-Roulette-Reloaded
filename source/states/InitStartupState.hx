@@ -24,7 +24,7 @@ class InitStartupState extends SuffState {
 			SuffState.switchState(new WarningState());
 		new FlxTimer().start(1.5, function(tmr:FlxTimer) {
 			var startupState = '';
-			#if _ALLOW_ADDONS
+			#if (_ALLOW_ADDONS && android)
 			if (!AndroidUtils.checkAllFilesPermission() && !AndroidPermissionsState.deniedPermissions) {
 				SuffState.switchState(new AndroidPermissionsState());
 				return;
