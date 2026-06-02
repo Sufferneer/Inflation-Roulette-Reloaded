@@ -230,7 +230,6 @@
 	
 	"option.hideTooltip.name": "Ocultar información emergente",
 	"option.hideTooltip.description": "Oculta las descripciones de los botones al pasar el cursor.",
-	"option.controls.description": "Configura las asignaciones de teclas.",
 	// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 	"option.enableForcedAliasing.name": "Aliasing forzado",
 	"option.enableForcedAliasing.description": "Desactiva el antialiasing de todos los sprites incluso cuando está activado. Puede hacer que algunos gráficos se vean dentados.",
@@ -588,7 +587,6 @@
 	
 	"preloadMenu.progress.characters": "Cargando personajes...",
 	"preloadMenu.progress.gameplay": "Cargando modos de juego...",
-	"preloadMenu.progress.language": "Obteniendo textos del idioma...",
 	"preloadMenu.progress.achievements": "Registrando logros...",
 	"preloadMenu.progress.toasts": "Construyendo notificaciones...",
 	"preloadMenu.progress.tooltip": "Creando descripciones emergentes...",
@@ -603,5 +601,5 @@
 	
 	"character.asimo.name": "Asimo",
 	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "Este lobo solo quiere divertirse. Su experiencia en lo oculto eléctrico le permite sobrecargar armas.",
-	}
+	"character.asimo.description": "Este lobo solo quiere divertirse. Su experiencia en lo oculto eléctrico le permite sobrecargar armas."
+}

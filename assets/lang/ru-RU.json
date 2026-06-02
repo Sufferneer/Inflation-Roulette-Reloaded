@@ -584,7 +584,6 @@
 	
 	"preloadMenu.progress.characters": "Загружаем Персонажей...",
 	"preloadMenu.progress.gameplay": "Загрузжаем Режимы...",
-	"preloadMenu.progress.language": "Получаем Файлов Локали...",
 	"preloadMenu.progress.achievements": "Задаём Прогресс Достижений...",
 	"preloadMenu.progress.toasts": "Сооружаем Уведомления...",
 	"preloadMenu.progress.tooltip": "Строим Подсказки...",
@@ -604,5 +603,5 @@
 	
 	"character.asimo.name": "Асимо",
 	"character.asimo.name.short": "Асимо",
-	"character.asimo.description": "Этот волк ищет развлечений. Его опыт в электрическом оккультизме позволяет перегружать пушки.",
-	}
+	"character.asimo.description": "Этот волк ищет развлечений. Его опыт в электрическом оккультизме позволяет перегружать пушки."
+}

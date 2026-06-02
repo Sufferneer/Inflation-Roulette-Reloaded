@@ -515,7 +515,6 @@
 	
 	"preloadMenu.progress.characters": "正在載入人物⋯⋯",
 	"preloadMenu.progress.gameplay": "正在載入遊戲模式⋯⋯",
-	"preloadMenu.progress.language": "正在讀取語言設定文字⋯⋯",
 	"preloadMenu.progress.achievements": "正在載入成就⋯⋯",
 	"preloadMenu.progress.toasts": "正在建置通知⋯⋯",
 	"preloadMenu.progress.tooltip": "正在建置工具提示⋯⋯",
@@ -541,4 +540,5 @@
 	
 	"character.asimo.name": "阿西莫",
 	"character.asimo.name.short": "阿西莫",
-	"character.asimo.description": "這隻狼只想找點樂。他精通電力武技，能讓武器過載。"}
+	"character.asimo.description": "這隻狼只想找點樂。他精通電力武技，能讓武器過載。"
+}

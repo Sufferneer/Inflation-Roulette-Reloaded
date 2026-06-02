@@ -1,7 +1,6 @@
 package backend;
 
 import flixel.system.FlxAssets;
-import hxjson5.Json5;
 import tjson.TJSON as Json;
 import haxe.DynamicAccess;
 import haxe.iterators.DynamicAccessKeyValueIterator;
@@ -42,14 +41,14 @@ class Language {
 	public static function fetchPhrases(langID:String = 'en-US'):Map<String, String> {
 		phrasesCount.set(langID, 0);
 		trace('Fetching phrases from $langID');
-		var vanillaPhrases:DynamicAccess<String> = Json5.parse(Paths.getTextFromFile('lang/$langID.json5', false));
+		var vanillaPhrases:DynamicAccess<String> = Json.parse(Paths.getTextFromFile('lang/$langID.json', false));
 		var lePhrases:Map<String, String> = [];
 		for (key => string in vanillaPhrases) {
 			lePhrases.set(key, string);
 			phrasesCount[langID] += 1;
 		}
 		for (addon in Addons.globalAddons) {
-			var moddedPhrases:DynamicAccess<String> = Json5.parse(File.getContent(Paths.addons('$addon/lang/$langID.json5')));
+			var moddedPhrases:DynamicAccess<String> = Json.parse(File.getContent(Paths.addons('$addon/lang/$langID.json')));
 			for (key => string in moddedPhrases) {
 				lePhrases.set(key, string);
 			}

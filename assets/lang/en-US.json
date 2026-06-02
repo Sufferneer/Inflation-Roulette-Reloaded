@@ -616,7 +616,6 @@
 	
 	"preloadMenu.progress.characters": "Loading Characters...",
 	"preloadMenu.progress.gameplay": "Loading Game Modes...",
-	"preloadMenu.progress.language": "Fetching Locale Texts...",
 	"preloadMenu.progress.achievements": "Tracking Achievements...",
 	"preloadMenu.progress.toasts": "Constructing Notifs...",
 	"preloadMenu.progress.tooltip": "Building Tooltips...",

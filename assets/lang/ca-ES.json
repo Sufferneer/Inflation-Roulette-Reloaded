@@ -167,7 +167,7 @@
 	// These are not necessary to translate, but they may be helpful for regional keyboards.
 	// English names, Castilian ones in brackets
 	"keybind.ALT": "Alt",
-	"keybind.BACKSLASH": "\ (Ç)",
+	"keybind.BACKSLASH": "\\ (Ç)",
 	"keybind.BACKSPACE": "Backspace",
 	"keybind.BREAK": "Pause/Break (Pausa/Inter)",
 	"keybind.CAPSLOCK": "CapsLk (BloqMayús)",
@@ -590,7 +590,6 @@
 	
 	"preloadMenu.progress.characters": "Carregant caràcters...",
 	"preloadMenu.progress.gameplay": "Carregant modes de joc...",
-	"preloadMenu.progress.language": "Obtenint textos de idiomes...",
 	"preloadMenu.progress.achievements": "Seguint d'assoliments...",
 	"preloadMenu.progress.toasts": "Creant notificacions...",
 	"preloadMenu.progress.tooltip": "Creant descripcions emergent...",
@@ -600,7 +599,7 @@
 	"preloadMenu.finished": "Tot a punt!",
 	
 	"outdatedVersionMenu.heading": "Versió obsoleta",
-	"outdatedVersionMenu.text": "Ei! Actualment estàs utilitzant una versió obsoleta d'Inflation Roulette: Reloaded. Baixa la darrera versió per gaudir de les funcions i correccions d'errors més noves.\n\Teva versió: %1\Darrera versió: %2",
+	"outdatedVersionMenu.text": "Ei! Actualment estàs utilitzant una versió obsoleta d'Inflation Roulette: Reloaded. Baixa la darrera versió per gaudir de les funcions i correccions d'errors més noves.\nTeva versió: %1\nDarrera versió: %2",
 	"outdatedVersionMenu.update": "Actualitza",
 	"outdatedVersionMenu.dismiss": "Més tard",
 	
@@ -610,5 +609,5 @@
 	
 	"character.asimo.name": "Asimo",
 	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "Aquest llop només vol divertir-se una mica. Seva experiència en ocultisme elèctric li permet sobrecarregar armes.",
-	}
+	"character.asimo.description": "Aquest llop només vol divertir-se una mica. Seva experiència en ocultisme elèctric li permet sobrecarregar armes."
+}
