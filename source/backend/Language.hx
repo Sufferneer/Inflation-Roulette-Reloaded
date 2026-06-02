@@ -3,7 +3,7 @@ package backend;
 import flixel.system.FlxAssets;
 
 class Language {
-	public static final defaultLanguage:String = 'en-us';
+	public static final defaultLanguage:String = 'en-US';
 	public static var phrases:Map<String, String> = [];
 	public static var fallbackPhrases:Map<String, String> = [];
 
@@ -35,7 +35,7 @@ class Language {
 		return keyList;
 	}
 
-	public static function fetchPhrases(langID:String = 'en-us'):Map<String, String> {
+	public static function fetchPhrases(langID:String = 'en-US'):Map<String, String> {
 		phrasesCount.set(langID, 0);
 		var lePhrases:Map<String, String> = [];
 		var loadedText:Array<String> = Utilities.textFileToArray('lang/$langID.lang', false);

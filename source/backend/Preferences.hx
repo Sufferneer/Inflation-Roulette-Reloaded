@@ -35,7 +35,7 @@ class SaveVariables {
 	public var checkForUpdates:Bool = true;
 	public var enableGLSL:Bool = true;
 	public var decreaseDetail:Bool = false;
-	public var language:String = 'en-us';
+	public var language:String = 'en-US';
 
 	public var keybinds:Map<String, Array<FlxKey>> = [
 		'shoot' => [ENTER, Z],

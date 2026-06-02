@@ -7,7 +7,7 @@
 
 "files": [
     {
-        "source": "/assets/lang/en-us.lang",
+        "source": "/assets/lang/en-US.lang",
         "translation": "/assets/lang/%locale%.lang"
     },
 ]

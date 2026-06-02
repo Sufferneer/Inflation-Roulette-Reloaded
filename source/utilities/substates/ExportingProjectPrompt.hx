@@ -219,7 +219,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 		if (!FileSystem.isDirectory('exports/$projectName/lang') || !FileSystem.exists('exports/$projectName/lang'))
 			FileSystem.createDirectory('exports/$projectName/lang');
 		File.saveContent('exports/$projectName/lang/${Preferences.data.language}.lang', langFile);
-		File.saveContent('exports/$projectName/lang/en-us.lang', langFile);
+		File.saveContent('exports/$projectName/lang/en-US.lang', langFile);
 
 		new FlxTimer().start(0.02, function(_) {
 			generateAddonMetadata();
