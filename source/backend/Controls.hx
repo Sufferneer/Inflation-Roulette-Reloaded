@@ -20,6 +20,6 @@ class Controls {
 	}
 
 	public static function reloadKeybinds() {
-		keybinds = Preferences.data.keybinds;
+		keybinds = Preferences.keybinds;
 	}
 }

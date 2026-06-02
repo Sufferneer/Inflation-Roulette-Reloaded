@@ -211,15 +211,15 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 
 	function generateLangFile() {
 		exportingText.text = Language.getPhrase('characterCreator.exporting.generatingLangFile');
-		var langFile:String = '';
-		langFile += 'character.$characterID.name = $characterName\n';
-		langFile += 'character.$characterID.name.short = ${characterName.split(' ')[0]}\n';
-		langFile += 'character.$characterID.description = $characterDescription\n';
+		var langFile:String = '{\n';
+		langFile += '\tcharacter.$characterID.name: $characterName\n';
+		langFile += '\tcharacter.$characterID.name.short = ${characterName.split(' ')[0]}\n';
+		langFile += '\tcharacter.$characterID.description = $characterDescription\n}';
 
 		if (!FileSystem.isDirectory('exports/$projectName/lang') || !FileSystem.exists('exports/$projectName/lang'))
 			FileSystem.createDirectory('exports/$projectName/lang');
-		File.saveContent('exports/$projectName/lang/${Preferences.data.language}.lang', langFile);
-		File.saveContent('exports/$projectName/lang/en-US.lang', langFile);
+		File.saveContent('exports/$projectName/lang/${Preferences.data.language}.json5', langFile);
+		File.saveContent('exports/$projectName/lang/en-US.json5', langFile);
 
 		new FlxTimer().start(0.02, function(_) {
 			generateAddonMetadata();

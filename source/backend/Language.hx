@@ -1,6 +1,10 @@
 package backend;
 
 import flixel.system.FlxAssets;
+import hxjson5.Json5;
+import tjson.TJSON as Json;
+import haxe.DynamicAccess;
+import haxe.iterators.DynamicAccessKeyValueIterator;
 
 class Language {
 	public static final defaultLanguage:String = 'en-US';
@@ -37,29 +41,20 @@ class Language {
 
 	public static function fetchPhrases(langID:String = 'en-US'):Map<String, String> {
 		phrasesCount.set(langID, 0);
+		trace('Fetching phrases from $langID');
+		var vanillaPhrases:DynamicAccess<String> = Json5.parse(Paths.getTextFromFile('lang/$langID.json5', false));
 		var lePhrases:Map<String, String> = [];
-		var loadedText:Array<String> = Utilities.textFileToArray('lang/$langID.lang', false);
-		for (text in loadedText) {
-			// Ignore comments and empty lines
-			if (text.startsWith('//') || text == '\n' && text.length <= 0)
-				continue;
-			var splitText:Array<String> = text.split(' = ');
-			if (splitText[1] == null) splitText[1] = '';
-			lePhrases.set(splitText[0], splitText[1].replace('\\n', '\n').replace('\\s', ' '));
+		for (key => string in vanillaPhrases) {
+			lePhrases.set(key, string);
 			phrasesCount[langID] += 1;
-			// For some reason, Haxe does not recognize \n as a newline character when reading from a text file
-			// Also replace \s with whitespace
 		}
-		var loadedAddonText:Array<String> = Utilities.textFileToArray('lang/$langID.lang', true);
-		for (text in loadedAddonText) {
-			// Ignore comments and empty lines
-			if (text.startsWith('//') || text == '\n' && text.length <= 0)
-				continue;
-			var splitText:Array<String> = text.split(' = ');
-			if (splitText[1] == null) splitText[1] = '';
-			lePhrases.set(splitText[0], splitText[1].replace('\\n', '\n').replace('\\s', ' '));
+		for (addon in Addons.globalAddons) {
+			var moddedPhrases:DynamicAccess<String> = Json5.parse(File.getContent(Paths.addons('$addon/lang/$langID.json5')));
+			for (key => string in moddedPhrases) {
+				lePhrases.set(key, string);
+			}
 		}
-		trace(phrasesCount);
+		trace('Imported $phrasesCount vanilla phrases from $langID');
 		return lePhrases;
 	}
 

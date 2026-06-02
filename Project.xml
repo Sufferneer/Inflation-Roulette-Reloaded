@@ -81,6 +81,7 @@
 	<haxelib name="flixel-tools" />
 
 	<haxelib name="tjson" />
+	<haxelib name="hxjson5" />
 	<haxelib name="hre" />
 
 	<!-- Enables a terminal log prompt on debug builds -->

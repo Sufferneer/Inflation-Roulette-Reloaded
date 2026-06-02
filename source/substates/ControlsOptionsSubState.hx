@@ -98,7 +98,7 @@ class ControlsOptionsSubState extends SuffSubState {
 		var keyX = keybindHeading.x + keybindHeading.width;
 		for (i in 0...2) {
 			var what = '';
-			var key:Null<FlxKey> = Preferences.data.keybinds.get(keybind)[i];
+			var key:Null<FlxKey> = Preferences.keybinds.get(keybind)[i];
 			if (key == null) key = FlxKey.NONE;
 			if (key != null) what = Utilities.formatKey(key);
 			var keybindButton:SuffButton = new SuffButton(keyX, 0, what, 320 - 64, 64, true);

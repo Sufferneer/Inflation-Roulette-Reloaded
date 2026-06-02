@@ -39,7 +39,7 @@ class BindingKeyPrompt extends SuffSubState {
 		subtitle.screenCenter(X);
 		subtitle.scrollFactor.set();
 
-		keyName = new FlxText(0, 0, subtitle.width, Utilities.formatKey(Preferences.data.keybinds.get(keybind)[keybindIndex]), 64);
+		keyName = new FlxText(0, 0, subtitle.width, Utilities.formatKey(Preferences.keybinds.get(keybind)[keybindIndex]), 64);
 		keyName.alignment = CENTER;
 		keyName.scrollFactor.set();
 		keyName.screenCenter();
@@ -92,7 +92,7 @@ class BindingKeyPrompt extends SuffSubState {
 	}
 
 	function bindKey(inputKeybind:FlxKey){
-		var array = Preferences.data.keybinds.get(keybind);
+		var array = Preferences.keybinds.get(keybind);
 		array[keybindIndex] = inputKeybind;
 
 		keyName.text = Utilities.formatKey(inputKeybind);
@@ -104,7 +104,7 @@ class BindingKeyPrompt extends SuffSubState {
 	}
 
 	function removeKey(){
-		var array = Preferences.data.keybinds.get(keybind);
+		var array = Preferences.keybinds.get(keybind);
 		array[keybindIndex] = FlxKey.NONE;
 
 		keyName.text = Utilities.formatKey(FlxKey.NONE);

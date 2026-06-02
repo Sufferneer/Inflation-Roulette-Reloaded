@@ -1,0 +1,614 @@
+{
+	// Translation File
+	// Language: Catalan
+	
+	// Comments are prefixed with two slashes (//) before each LINE, and will not be recognized by the game.
+	// Comments are reserved for translation notes, either to clarify context or give instructions.
+	// There's no need to translate comments.
+	
+	// Empty lines will also be ignored as well.
+	
+	// For the majority of the text in the game UI, a technical tone is used.
+	// Unless specified otherwise, most lengthy prompts uses a witty/humorous tone.
+	// Some jokes may be regional and lose its punchline. In this case, try come up with a similar joke
+	// that works in your country's region. If all else fails, just make an entirely different joke.
+	
+	// In all cases, try your best to capture the original tone of the locale strings.
+	// But if the language you're translating is inherently unserious (e.g. LOLCAT, Pirate Speak), ehh just get the message across.
+	// Ultimately, the message that came across should remain unchanged to avoid any confusion.
+	
+	// For names of people and places, they should remain untranslated.
+	// If your language uses another script other than Latin, make sure they phonetically
+	// sound similar to its English counterpart.
+	// In a nutshell, transliterate names.
+	
+	// For terms like "Inflation Roulette" and "Reloaded" used in a naming context,
+	// unless your language does not use the Latin script, it should be remain
+	// untranslated.
+	
+	// Valid Escape Sequences:
+	// \n: New line
+	// \s: Whitespace
+	// The positions of escape sequences in-between sentences should be left AS IS.
+	
+	"game.title": "Inflation Roulette: Reloaded",
+	"game.titleShort": "Inflation Roulette",
+	"game.acronym": "RIR",
+	
+	// Version Formatting
+	// For example, if the version is 2.3.1 in an Linux environment,
+	// it will be formatted in the following way in the bottom info text of the Main Menu:
+	
+	// Inflation Roulette: Reloaded
+	// Patch of Creativity (Pitstop 3 Amendment 1)
+	// Version 2.3.1
+	// Linux Build
+	
+	"game.version.numeral.format": "Versió %1",
+	"game.version.numeralModded.format": "Versió modificada %1",
+	// yeah we dont have a pitstop metaphor, hopefully this works
+	"game.version.name.minor.format": "Taverna %1",
+	"game.version.name.hotfix.format": "Correcció %1",
+	// %1 is the platform in which the executable is dedicated.
+	// For example, if the game is on Windows, "Windows Build" will be displayed.
+	// Note that platform names will remain untranslated.
+	"game.build.format": "Compilació de %1",
+	
+	"game.version.name.major.0": "En desenvolupament",
+	// Version 1: Initial Release
+	"game.version.name.major.1": "Llançament inicial",
+	// Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
+	// The Version Name has two interpretations. One being it being a update that introduces creative-related content (e.g. Modding Tools, Extras).
+	// Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
+	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
+	"game.version.name.major.2": "Pegat de Creativitat",
+	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
+	"game.version.name.state.a": "Alfα pública %1",
+	"game.version.name.state.b": "βeta pública %1",
+	"game.version.name.state.c": "Candidat a publicació %1",
+	
+	// These are the button texts in the Main Menu.
+	"mainMenu.play": "Juga",
+	"mainMenu.achievements": "Assoliments",
+	"mainMenu.options": "Opcions",
+	"mainMenu.language": "Idioma",
+	"mainMenu.addons": "Complements",
+	// Utilities means Modding Utilities
+	"mainMenu.utilities": "Utilitats",
+	"mainMenu.extras": "Extres",
+	"mainMenu.donate": "Dona",
+	
+	// Tooltips for buttons in the Main Menu.
+	
+	// When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
+	"mainMenu.dongs": "Has acumulat:\n%1 dongs",
+	"mainMenu.dongs.comment.10": "d'acord pots deixar de far aixo",
+	"mainMenu.dongs.comment.20": "no tens res millor a fer",
+	"mainMenu.dongs.comment.50": "ves-te'n ara, juga al joc estupid",
+	"mainMenu.dongs.comment.100": "tio estas be? estas boig?",
+	"mainMenu.dongs.comment.200": "dos-cents tio. trobar feina o alguna cosa",
+	"mainMenu.dongs.comment.300": "saps, hi ha una persona que va fer aixo",
+	"mainMenu.dongs.comment.320": "escrivint el codi, depurant com un dimoni",
+	"mainMenu.dongs.comment.340": "acuradament dibuixant tots els personatges",
+	"mainMenu.dongs.comment.360": "dissenyant la iu estupida",
+	"mainMenu.dongs.comment.380": "... m'estas escoltant",
+	"mainMenu.dongs.comment.400": "deixa de perdent teua energia",
+	"mainMenu.dongs.comment.500": "d'acord, prou, com, seriosament",
+	"mainMenu.dongs.comment.600": "soci només clica “juga” no es tan dificil",
+	"mainMenu.dongs.comment.700": "posa teu ratoli alla, juca al joc estupid",
+	"mainMenu.dongs.comment.800": "es tan dificil jugar al joc estupid",
+	"mainMenu.dongs.comment.900": "saps que ja no et parlare mes",
+	"mainMenu.dongs.comment.1000": "...encara clicant sobre aixo?",
+	"mainMenu.dongs.comment.1100": "saps que aixo no et porta, oi",
+	"mainMenu.dongs.comment.1200": "deixa de perdent teu temps, no ho recuperaras",
+	"mainMenu.dongs.comment.1300": "saps que aquest joc registra teva latitud i longitud exactes oi",
+	"mainMenu.dongs.comment.1400": "si no t'atures, teva ubicacio exacts s'enviara a nostres servidos",
+	"mainMenu.dongs.comment.1500": "els devs estan vigilant teva ubicacio actualment",
+	"mainMenu.dongs.comment.2000": "oh deu meu no et atures",
+	"mainMenu.dongs.comment.3000": "nomes estas avorrit oi",
+	"mainMenu.dongs.comment.5000": "als 10.000 dongs, dades desades s'esborraran i el joc s'esborrara sol",
+	"mainMenu.dongs.comment.10000": "d'acord doncs aqui tens teu assoliment. ara ves-te'n a fer punyetes.",
+	
+	"extrasMenu.title": "CONTINGUT EXTRA",
+	"extrasMenu.gallery": "Galeria",
+	"extrasMenu.jukebox": "Tocadiscs",
+	
+	"debugText.framerate": "FPS",
+	"debugText.memory": "RAM",
+	"debugText.memoryPeak": "Pic de RAM",
+	"debugText.state": "Estat",
+	// %1: Debug Text
+	"debugText.format": "%1: %2",
+	
+	// Please make sure that this is written in a formal tone.
+	"warningMenu.title": "ADVERTÈNCIA",
+	"menu.accept": "Accepta",
+	
+	"optionsMenu.heading.gameplay": "Joc",
+	"optionsMenu.heading.preferences": "Preferències",
+	"optionsMenu.heading.visuals": "Visuals",
+	"optionsMenu.heading.audio": "Àudio",
+	"optionsMenu.heading.accessibility": "Accessibilitat",
+	"optionsMenu.heading.cursor": "Cursor",
+	"optionsMenu.heading.technical": "Tècniques",
+	"optionsMenu.heading.debugText": "Text de depuració",
+	
+	"option.ignoreEliminatedPlayers.name": "Omet eliminats",
+	"option.ignoreEliminatedPlayers.description": "Jugadors derrotats no reproduiran animació quan sigui seu torn.",
+	// This option is a button.
+	"option.controls.name": "Controls",
+	"option.controls.description": "Configura assignacions de tecles.",
+	
+	"option.controls.gameplay": "Joc",
+	"option.controls.keybind.shoot": "Dispara pistola",
+	"option.controls.keybind.exit": "Canceŀla acció",
+	"option.controls.keybind.camera": "Commuta cinematogràfic",
+	"option.controls.keybind.skill1": "Utilitza habilitat 1",
+	"option.controls.keybind.skill2": "Utilitza habilitat 2",
+	"option.controls.keybind.skill3": "Utilitza habilitat 3",
+	"option.controls.keybind.pause": "Pausa joc",
+	"option.controls.ui": "IU",
+	"option.controls.keybind.up": "Amunt",
+	"option.controls.keybind.left": "Esquerra",
+	"option.controls.keybind.down": "Avall",
+	"option.controls.keybind.right": "Dreta",
+	"option.controls.debug": "Depuració",
+	"option.controls.keybind.debug1": "Tecla de depuració 1",
+	"option.controls.keybind.debug2": "Tecla de depuració 2",
+	
+	// 1: Keybind Name, 2: Key Orientation (Primary/Secondary)
+	"option.controls.bindingKey.title": "Configurant %1\nTecla %2",
+	"option.controls.bindingKey.bindType.0": "primària",
+	"option.controls.bindingKey.bindType.1": "secundària",
+	"option.controls.bindingKey.subtitle": "Prema qualsevol tecla",
+	"option.controls.bindingKey.bind": "Assigna",
+	"option.controls.bindingKey.remove": "Elimina",
+	
+	// These are not necessary to translate, but they may be helpful for regional keyboards.
+	// English names, Castilian ones in brackets
+	"keybind.ALT": "Alt",
+	"keybind.BACKSLASH": "\ (Ç)",
+	"keybind.BACKSPACE": "Backspace",
+	"keybind.BREAK": "Pause/Break (Pausa/Inter)",
+	"keybind.CAPSLOCK": "CapsLk (BloqMayús)",
+	"keybind.COMMA": ",",
+	"keybind.CONTROL": "Ctrl",
+	"keybind.DELETE": "Del (Supr)",
+	"keybind.EIGHT": "8",
+	"keybind.END": "End (Fin)",
+	"keybind.FIVE": "5",
+	"keybind.FOUR": "4",
+	"keybind.GRAVEACCENT": "` (º)",
+	"keybind.HOME": "Home (Inicio)",
+	"keybind.INSERT": "Insert",
+	"keybind.LBRACKET": "[ (`)",
+	"keybind.NINE": "9",
+	"keybind.NONE": "[---]",
+	"keybind.NUMLOCK": "NumLk (BloqNum)",
+	"keybind.NUMPADEIGHT": "Num 8",
+	"keybind.NUMPADFIVE": "Num 5",
+	"keybind.NUMPADFOUR": "Num 4",
+	"keybind.NUMPADMINUS": "Num -",
+	"keybind.NUMPADMULTIPLY": "Num *",
+	"keybind.NUMPADNINE": "Num 9",
+	"keybind.NUMPADONE": "Num 1",
+	"keybind.NUMPADPERIOD": "Num .",
+	"keybind.NUMPADPLUS": "Num +",
+	"keybind.NUMPADSEVEN": "Num 7",
+	"keybind.NUMPADSIX": "Num 6",
+	"keybind.NUMPADSLASH": "Num /",
+	"keybind.NUMPADTHREE": "Num 3",
+	"keybind.NUMPADTWO": "Num 2",
+	"keybind.NUMPADZERO": "Num 0",
+	"keybind.ONE": "1",
+	"keybind.PAGEDOWN": "PgDn (AvPág)",
+	"keybind.PAGEUP": "PgUp (RePág)",
+	"keybind.PERIOD": ".",
+	"keybind.PRINTSCREEN": "PrtSc (ImprPant)",
+	"keybind.QUOTE": "' (´)",
+	"keybind.RBRACKET": "] (+)",
+	"keybind.SCROLL_LOCK": "ScrLk (BloqDespl)",
+	"keybind.SEMICOLON": "; (Ñ)",
+	"keybind.SEVEN": "7",
+	"keybind.SIX": "6",
+	"keybind.SLASH": "/ (-)",
+	"keybind.SPACE": "Espai",
+	"keybind.THREE": "3",
+	"keybind.TWO": "2",
+	"keybind.ZERO": "0",
+	
+	"option.enablePopping.name": "Explosió",
+	"option.enablePopping.description": "Jugadors exploten de manera no fatal quan són derrotats.\nSi està desactivat, personatges apareixeran sobreinflats.\nTé efecte a la següent partida.",
+	"option.enableBellyGurgles.name": "Borborigmes",
+	"option.enableBellyGurgles.description": "Jugadors reprodueixen sons de gorgoteig de panxa en ralentí quan estan inflats.",
+	"option.enableBellyCreaks.name": "Cruiximent",
+	"option.enableBellyCreaks.description": "Jugadors reprodueixen sons d'sobrestirament de globus en repòs quan estan inflats.",
+	"option.enableFullscreen.name": "Pantalla completa",
+	"option.enableFullscreen.description": "S'explica per si mateix, però estàs tan boig?",
+	"option.hideHUD.name": "Amaga indicador en pantalla",
+	"option.hideHUD.description": "Amaga pantalla en pantalla del joc durant partida. Útil per enregistrar de joc.",
+	"option.hideTooltip.name": "Amaga descripció emergent",
+	"option.hideTooltip.description": "Amaga descripcions emergents de botons en passar cursor.",
+	"option.screenSafeZone.name": "Zona segura de pantalla",
+	"option.screenSafeZone.description": "Ajusta el control lliscant fins que l'àrea sense obstacles cobreixi totes àrees visibles de pantalla.\n(Canvis a IU s'actualitzaran després de sortir)",
+	// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
+	"option.enableForcedAliasing.name": "Aliàsing forçat",
+	"option.enableForcedAliasing.description": "Desactiva antialiàsing de tots sprites fins i tot quan està habilitat. Pot fer que alguns gràfics semblin oscats.",
+	"option.enableGLSL.name": "Ombradors GLSL",
+	"option.enableGLSL.description": "Activa ombradors GLSL per a alguns elements de menú. Desactivar-ho pot reduir càrrega a GPU de gamma baixa.",
+	"option.alwaysPlayMainMenuAnims.name": "Animacions de menú principal",
+	"option.alwaysPlayMainMenuAnims.description": "Reprodueix sempre animacions d'inici al menú principal.",
+	"option.showMusicToast.name": "Notificació de música",
+	"option.showMusicToast.description": "Es mostrarà una notificació que conté el nom de música de fons actual i seu autor cada vegada que es reprodueixi una pista de música.",
+	"option.enableLetterbox.name": "Letterboxing",
+	"option.enableLetterbox.description": "Mostra barres negres a part superior i inferior de la pantalla durant animacions de jugador i escenes cinemàtiques.",
+	"option.musicVolume.name": "Volum de música",
+	"option.musicVolume.description": "El percentatge de volum de música de fons.",
+	"option.gameSoundVolume.name": "Volum de joc",
+	"option.gameSoundVolume.description": "El percentatge de volum de efectes de so de joc.",
+	"option.uiSoundVolume.name": "Volum de IU",
+	"option.uiSoundVolume.description": "El percentatge de volum de efectes de so de IU.",
+	"option.enablePhotosensitiveMode.name": "Mode fotosensible",
+	"option.enablePhotosensitiveMode.description": "Amortigua els flaixos de la pantalla i altres efectes de flaixos.\nMolt recomanable per a persones amb epilèpsia fotosensible.",
+	"option.cameraSpeed.name": "Velocitat de càmera",
+	"option.cameraSpeed.description": "Quina ha de ser la velocitat de panoràmica de càmera.",
+	"option.cameraEffectIntensity.name": "Intensitat de càmera",
+	"option.cameraEffectIntensity.description": "Quina força haurien de tenir vibracions de pantalla i altres efectes desorientadors.",
+	"option.useBuiltInCursor.name": "Cursor integrat",
+	"option.useBuiltInCursor.description": "Utilitza el cursor personalitzat de joc en lloc del cursor de ratolí predeterminat de sistema.",
+	"option.playCursorSounds.name": "Sons de cursor",
+	"option.playCursorSounds.description": "Reprodueix un so de clic cada vegada que el cursor de ratolí fa clic en alguna cosa.",
+	"option.maxFramerate.name": "Freqüència màxima de fotogrames",
+	"option.maxFramerate.description": "Quantes actualitzacions de pantalla i de joc ha de fer el joc en un segon.",
+	"option.pauseOnUnfocus.name": "Pausa de desenfoc",
+	"option.pauseOnUnfocus.description": "Pausa automàticament el joc quan està desenfocat.",
+	"option.cacheOnGPU.name": "Memòria cau de VRAM",
+	"option.cacheOnGPU.description": "Permet que la GPU s'utilitzi per emmagatzemar textures mitjançant VRAM per a un ús menor de RAM.\nPot ser que no funcioni correctament amb targetes gràfiques de gamma baixa.",
+	"option.checkForUpdates.name": "Comprova actualitzacions",
+	"option.checkForUpdates.description": "Comprova automàticament si hi ha darreres actualitzacions del joc a inici.",
+	"option.enableDebugKeybinds.name": "Assignacions de depuració",
+	"option.enableDebugKeybinds.description": "Active assignacions de depuració a ordenador.\n(Desactiva assoliments del joc en prémer)",
+	"option.showDebugText.name": "Text de depuració",
+	"option.showDebugText.description": "Mostra informació de depuració a la cantonada superior esquerra de la pantalla.",
+	"option.showFramerateOnDebugText.name": "Freqüència de fotogrames",
+	"option.showFramerateOnDebugText.description": "Mostra la freqüència de fotogrames actual al text de depuració.",
+	"option.showMemoryUsageOnDebugText.name": "Ús de memòria",
+	"option.showMemoryUsageOnDebugText.description": "Mostra la quantitat de memòria utilitzada actual al text de depuració.",
+	"option.showCurrentStateOnDebugText.name": "Estat actual",
+	"option.showCurrentStateOnDebugText.description": "Mostra el menú actual pel qual s'està navegant al text de depuració.",
+	
+	"addonsMenu.authors": "Autors:",
+	"addonsMenu.noAddonsDetected.title": "No s'han detectat complements",
+	"addonsMenu.noAddonsDetected.content": "No s'ha detectat complements a la carpeta de addons. Comproveu si heu inclòs un fitxer metadata.json a la carpeta metadata.\nSi creu que es tracta d'un error, informa de problema a nostre repositori de GitHub.",
+	
+	"languageMenu.title": "SELECCIONA IDIOMA",
+	"languageMenu.description": "Nota: És possible que traduccions no siguin 100% precises i que continguin traduccions incorrectes o text sense traduir. Si vols ajudar a millorar les traduccions, considera possibilitat de contribuir a nostre repositori de GitHub.",
+	"languageMenu.contributors": "Coŀlaboradors",
+	"languageMenu.completion": "%1 completat",
+	"languageMenu.logMissingKeys": "Registra claus de traducció que falten",
+	
+	"gamemodeSelect.title": "SELECCIONA MODE DE JOC",
+	"gamemode.quickPlay.name": "Joc ràpid",
+	"gamemode.quickPlay.description": "Personatges aleatoris.\nDirecte al joc. Sense tèrbols.",
+	// Reloaded should remain untranslated (transliterate if not Latin script)
+	"gamemode.reloaded.name": "Reloaded",
+	"gamemode.reloaded.description": "Una nova manera de jugar a Inflation Roulette.\nEquilibrat tal com ho pretenia el desenvolupador.",
+	"gamemode.inequality.name": "Desigualtat",
+	"gamemode.inequality.description": "Jugadors reben habilitats aleatòries a cada tret amb bala.\n\"Tots els jugadors són iguals, però alguns jugadors són més iguals que altres.\" - La Rebeŀlió dels Animals, probablement",
+	"gamemode.classic.name": "Clàssic",
+	"gamemode.classic.description": "Veritable aleatorietat i sabotatge sense parar.\nLa manera original de jugar.",
+	"gamemode.charge.name": "Càrrega",
+	"gamemode.charge.description": "Dany augmenta amb cada tret sense bala.\nJoc arriscat i gratificant.",
+	"gamemode.1v1.name": "Enfrontament",
+	// Context: A classmate of mine suggested this.
+	"gamemode.1v1.description": "Dos jugadors; una pistola.\nSuggerit per un grassonàs.",
+	"gamemode.sixPlayers.name": "Caos",
+	"gamemode.sixPlayers.description": "Un hextuple estrall!\nLluita contra cinc jugadors més alhora!",
+	
+	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
+	"characterSelect.selectCharacter": "ESCOLLIR VOSTRES MÈDIUMS",
+	"characterSelect.holdCardsToSeeInfo": "Subjecta targetes per veure informació",
+	// Select Stage: This however, does not need to be in the same tone as Select Character.
+	"characterSelect.selectStage": "TRIA ESCENARI",
+	
+	// Player Settings
+	"characterSelect.option.cpuControlled": "CPU",
+	"characterSelect.option.skillLevel": "Habilitat de CPU",
+	// Easy mode. Only shoots and does nothing else.
+	"characterSelect.option.skillLevel.1": "Sense objecte",
+	// Normal mode. Same as Easy mode. Can use Skills periodically... at random.
+	"characterSelect.option.skillLevel.2": "Competent",
+	// Hard mode. Estimate chances and acts accordingly.
+	"characterSelect.option.skillLevel.3": "Estratègic",
+	// This text appears when more than 1 player-controlled characters are present.
+	// Prevents player from cheating
+	"characterSelect.cantEarnAchievements": "No pots obtenir assoliments amb aquesta configuració.",
+	
+	// Goober: A character species present in the original Inflation Roulette.
+	// Looks like a feline, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
+	// Skills: Reload, Sabotage
+	"character.goober.name": "Goober",
+	"character.goober.name.short": "Goober",
+	"character.goober.description": "Una espècie sensible i dominant que es troba a zones urbanes. Perit per feinejar amb pistoles.",
+	// Shib: Character created by NicklySuffer. Non-binary, and designed to look like one of those simplistic white cat anons.
+	// Screams "city boy" vibes.
+	// Skills: Sabotage, Amnesia
+	"character.shibanou.name": "Shibanou",
+	"character.shibanou.name.short": "Shib",
+	"character.shibanou.description": "Extraterrestre, astut i li encanta te de llimona. Pot provocar pèrdua de memòria temporal.",
+	// Chester: Character created by NicklySuffer. Works in a coffee shop, and also looks like one of those simplistic white cat anons,
+	// but wears a cap too I guess. Screams "overworked minimum wagie" vibes.
+	// Designed with no offensive skills, but has one more pressure point lmao.
+	// Skills: Reveal, Reload
+	"character.chester.name": "Chester",
+	"character.chester.name.short": "Chester",
+	"character.chester.description": "Un barista desafortunat obligat a jugar a aquest joc per a una empresa. Seva feina entrena seva resistència.",
+	// Option to choose a random character.
+	"character.random.name": "???",
+	"character.random.name.short": "???",
+	"character.random.description": "No saps qui triar? Deixa que el joc decideixi!",
+	
+	// Classic Room: The original stage from the original game redrawn.
+	"stage.classic": "Cambra clàssica",
+	"stage.classic.description": "La cambra que tots coneixem bé.",
+	// Manager's Lounge: The context is that four people, either motivated by a better life or forced by their higher-ups, are
+	// offered a place as a game participant to satisfy the manager's desires.
+	"stage.reloaded": "Saló del gerent",
+	"stage.reloaded.description": "Aquesta escena sembla un plató porno. Això és perquè en certa manera ho és, i s'està gravant.",
+	// Shitfucks Café: Named Shitfucks. The exact coffee shop that Chester works at.
+	// Sells coffee that inflates people, and agreed to host horrible shit like this. Disgusting.
+	// Again, transliterate Shitfucks.
+	// Honestly I'd translate it as Merdcarall, but I guess it's some in-universe brand name
+	"stage.shitfucks": "Cafè Shitfucks",
+	"stage.shitfucks.description": "S'especialitza en venda de begudes. Definitivament no hi ha res de dolent aquí.",
+	// White Void: Literally just a white void with a glass table.
+	"stage.void": "Buit blanc",
+	"stage.void.description": "Nom conegut com a lloc per a totes activitats, que apareix en innombrables obres d'art i animacions.",
+	"stage.random": "?????",
+	"stage.random.description": "No saps on triar? Deixa que el joc decideixi!",
+	
+	// Splash text that is displayed
+	"gameOn.text": "SOM-HI!",
+	
+	"skill.reload.name": "Recarrega",
+	"skill.reload.description": "Recarrega el cilindre per restablir tevas possibilitats de rebre un tret amb bala.",
+	"skill.sabotage.name": "Sabotatge",
+	"skill.sabotage.description": "El següent jugador tindrà una possibilitat garantida de rebre un tret amb bala.",
+	"skill.pressurize.name": "Pressuritza",
+	"skill.pressurize.description": "El tret amb bala infligirà 2x de Pressió.",
+	"skill.polarize.name": "Polaritza",
+	"skill.polarize.description": "Inverteix l'estat de tret actual.",
+	"skill.deflate.name": "Desinfla",
+	"skill.deflate.description": "Esgotar una barra de Pressió.",
+	"skill.reveal.name": "Revela",
+	"skill.reveal.description": "Fes una ullada al contingut de cilindre.",
+	"skill.amnesia.name": "Amnèsia",
+	"skill.amnesia.description": "Desactiva habilitats d'un oponent durant un torn.",
+	"skill.assault.name": "Assalt",
+	"skill.assault.description": "Dispara a un oponent. Dóna víctima 2 Confiança si sense bala.",
+	
+	"pauseMenu.title": "JOC EN PAUSA",
+	"pauseMenu.resume": "Reprèn",
+	"pauseMenu.restart": "Reinicia",
+	"pauseMenu.options": "Opcions",
+	
+	"stats.pressure": "Pressió",
+	"stats.confidence": "Confiança",
+	"stats.skill": "Habilitat",
+	"stats.skills": "Habilitats",
+	"stats.modifier": "Modificador",
+	"stats.modifiers": "Modificadors",
+	
+	// Be the last player standing in a match.
+	"achievement.firstWin.name": "Primera victòria",
+	"achievement.firstWin.description": "Teva vida estarà lligada per cadenes a partir d'ara.",
+	// Be the last player standing, and with your Pressure value at 0.
+	"achievement.noPressureWin.name": "Improbabilitat",
+	"achievement.noPressureWin.description": "Caminant amb sort a favor teu, vas aconseguir evitar danys amb teu cos iŀlès.",
+	// Be the last player standing, and with your Pressure value at its max.
+	"achievement.fullPressureWin.name": "Acostament triomfa tot",
+	"achievement.fullPressureWin.description": "Fins i tot en teus moments més àlgids, vas persistir fins al final.",
+	// Sabotage ten times in your lifetime.
+	"achievement.sabotages.name": "Sabotejador experimentat",
+	"achievement.sabotages.description": "Teu agradar-te molt Goober, oi. Fes servir seva habilitat cinquanta vegades.",
+	// Pressurize twice in a row without shooting a live round.
+	"achievement.doublePressurize.name": "Equació quadràtica",
+	"achievement.doublePressurize.description": "Si sobrecarregues el dispositiu dues vegades, el següent jugador accepta seu destí.",
+	// Pressurize, then shoot yourself with the live round afterwards.
+	"achievement.pressurizeYourself.name": "Surt el tret per la culata",
+	"achievement.pressurizeYourself.description": "Sofreix-te tevas pròpias conseqüències pressuritzadas. Intencionada o mera desgràcia?",
+	// Get a P Rank, AKA the maximum score.
+	"achievement.maximumScore.name": "Dolor de perfeccionisme",
+	"achievement.maximumScore.description": "Ben fet. Has jugat un partit perfecte, i què t'ha costat això.",
+	// Get the lowest score possible.
+	"achievement.minimumScore.name": "Pèrdua estratègica",
+	"achievement.minimumScore.description": "És com si ni tan sols ho haguessis intentat, però mirant-ho de més a prop sembla que ho has fet - PERDRE?",
+	// Win in all game modes at least once.
+	"achievement.allGameModeWins.name": "Visita completa",
+	"achievement.allGameModeWins.description": "Un símbol de dedicació i improductivitat.",
+	// Win as all vanilla characters at least once.
+	"achievement.allCharacterWins.name": "Els Amics de les Arts",
+	"achievement.allCharacterWins.description": "Sembla que no tens preferència especial per aquestes mèdiums.",
+	// Find all Easter Egg Startups.
+	"achievement.allEasterEggs.name": "Dèficit d'atenció",
+	"achievement.allEasterEggs.description": "Els glifs arcaics romanen velats, excepte per excavació d'arxius o revisió de codi.",
+	// Accumulate 10000 Dongs in the Main Menu.
+	"achievement.noLife.name": "Absolutament a l'atur",
+	"achievement.noLife.description": "Malgasta teva vida sense motiu. Has estat empremtat, marcat permanentment.",
+	
+	"achievementsMenu.title": "Teus assoliments",
+	"achievementsMenu.description": "Selecciona un assoliment per veure'n detalls i estat de finalització.",
+	"achievementsMenu.resetProgress": "Restableix progrés",
+	
+	"achievementToast.title": "Assoliment desbloquejat!",
+	
+	"resetAchievementMenu.prompt": "Confirmeu reinici de\n%1?\nAquesta acció és irreversible.",
+	
+	// If the language's script can be written vertically, set this string to false
+	"galleryMainMenu.envelope.rotateText": "true",
+	// Context: According to Snowyboi, there are different versions of Goobers, one being Slime Goobers, and one labelled "???".
+	// The way I interpret this is like, them having races or something
+	"galleryMainMenu.envelope.goober.description": "Vistos per primera vegada al joc original, els Goobers entren en acció amb una nova capa de pintura! S'han convertit en el personatge de referència que apareix en innombrables remakes i fanarts.\n\nQuant a per què i com es van unir al joc, ningú ho sap! Actors? Ostatges? Venuts? Hi ha moltes teories! No se sap gaire sobre seva biologia, però s'ha confirmat que s'han classificat en diverses races, que van des dels Goobers compostos completament de llim fins a R»EDA©±AT§²½\n\nGoober és una espècie creada per Snowyboi.",
+	// Context: Literally no lore implication. He's just here for the sake of being here lol
+	"galleryMainMenu.envelope.asimo.description": "Aprofitant seus poders elèctrics, Asimo es espanta per Inflation Roulette dient que \"s'ho està passant bé\".\n\nNo sabem com ha arribat aquí, i no tenim cap connexió amb ell, a part que és un llop, és el tester del Gerent per a seu estúpid mod Friday Night Funkin', i és el guanyador d'un sorteig d'art per afegir-lo al joc com a personatge per al complement d'exemple.\n\nAsimo és un personatge convidat propietat de WolfKylis.",
+	// Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
+	// that agrees to join that's it.
+	"galleryMainMenu.envelope.shibanou.description": "Cognom Nou; prenom Shiba. Procedent d'un planeta misteriós, aquesta criatura felina està a punt de fer explotar algú. El seu nom xinès es pot interpretar com a \"Zero Deu Vuit\", derivat del lloc nuclear on van aterrar a Pequín.\n\nVan passar els primers anys de la seva vida buscant per diferents llocs on viure, i finalment es van establir a garatge del Gerent. L'home els va adoptar com a ajudants secundaris i aviat es va enamorar de l'ajudant principal (crescuda a laboratori per cert, ecs). Sense raó aparent més enllà de presumir davant de seu xicot, es van unir al joc per mostrar seves habilitats ocultes.\n\nShibanou és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
+	// Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
+	"galleryMainMenu.envelope.chester.description": "Com a barista principal d'una cafeteria, es va veure obligat a jugar a aquest joc com a ambaixador de l'empresa. Amb seus mals resultats acadèmics i seva personalitat poc carismàtica, seu somni de prosperitat i riquesa encara no ha estat a l'abast.\n\nSeva feina diària consisteix a preparar begudes massa ensucrades per a clients calentes. Alguns diuen que les begudes tenen un efecte \"expansiu\", que ha cridat l'atenció de diversos agents de seguretat alimentària. Tanmateix, a causa d'algunes collonades capitalistes, avisos del departament d'alimentació no van servir de res.\n\nChester és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
+	"galleryMainMenu.envelope.dev": "Art del desenvolupador",
+	"galleryMainMenu.envelope.dev.description": "Una coŀlecció d'art conceptual, esbossos i recursos no utilitzats fets pels desenvolupadors i altres artistes.\n\nocell           enfadat",
+	"galleryMainMenu.envelope.community": "Art comunitari",
+	"galleryMainMenu.envelope.community.description": "Una coŀlecció de fanart dibuixats pels amics dels desenvolupadors i la comunitat.",
+	"galleryEntryMenu.viewFullImage": "Veges imatge completa",
+	
+	// These will be button text that will be in the Utilities Main Menu.
+	"utilitiesMenu.characterCreator": "Creador de personatges",
+	"utilitiesMenu.stageEditor": "Visor d'escenari",
+	"utilitiesMenu.loadFile": "Carrega fitxer",
+	"utilitiesMenu.newFile": "Nou fitxer",
+	"utilitiesMenu.loadDirectory": "Carrega carpeta",
+	"utilitiesMenu.newDirectory": "Nova carpeta",
+	"utilitiesMenu.browseImage": "Navega per imatge",
+	"utilitiesMenu.browseImage.downloadTemplate": "Baixa plantilla",
+	// %1: Width, %2: Height
+	
+	// Subtext for the button
+	"utilitiesMenu.browseImage.recommendedSize": "Mida recomanada: %1px × %2px",
+	
+	// A screen which tells the user to adjust the image's offset if it doesn't make the recommended size.
+	"utilitiesMenu.browseImage.adjustOffsets.title": "Ajusta desplaçaments",
+	"utilitiesMenu.browseImage.adjustOffsets.description": "Tecles de fletxa per moure la imatge\nMantén premut SHIFT/CTRL per augmentar velocitat\nAssegura-te que imatge s'alineï amb part inferior central de silueta",
+	"utilitiesMenu.error.prompt": "S'ha produït un error.",
+	"utilitiesMenu.firstStartup.prompt": "Avís: Molt inestable\n\nLes eines següents no estan pensades per servir com a eines de desenvolupament i només es creen com a mitjà perquè artistes casuals creïn seus propis personatges. En qualsevol moment i en qualsevol lloc, les eines es bloquejaran i moriran. Les eines no tenen una funció de desament automàtic; es recomana molt DESAMENT MANUAL.\n\nSi vols queixar-te de les funcions, aprèn JSON i Flash collons",
+	// Dummy text. Used as the default name for newly created Sprite Projects.
+	"utilitiesMenu.placeholder": "Marcador",
+	
+	"characterCreator.dataType.metadata": "Metadades",
+	"characterCreator.dataType.spriteData": "Dades de sprites",
+	"characterCreator.parameter.name": "Nom de personatge",
+	"characterCreator.parameter.description": "Descripció de personatge",
+	"characterCreator.parameter.author": "Autor",
+	"characterCreator.parameter.framerate": "FPS",
+	"characterCreator.parameter.defaultFramerate": "FPS per defecte",
+	"characterCreator.parameter.defaultDimensions": "Mida de fotograma",
+	"characterCreator.parameter.maxPressure": "Pressió màxima",
+	"characterCreator.parameter.maxConfidence": "Confiança màxima",
+	"characterCreator.parameter.skills": "Habilitats",
+	"characterCreator.parameter.skills.description": "(Separats per comes: ,)",
+	"characterCreator.explorer.description.root": "Carpeta arrel del projecte.",
+	"characterCreator.explorer.description.idle": "Animació ociosa.",
+	"characterCreator.explorer.description.prepareShoot": "Animació en bucle durant gir.",
+	"characterCreator.explorer.description.preShoot": "Animació per preparació per disparar-se a si mateixos.",
+	"characterCreator.explorer.description.shootBlank": "Animació per disparar un tret sense bala.",
+	"characterCreator.explorer.description.shootLive": "Animació per disparar un tret amb bala.",
+	"characterCreator.explorer.description.pass": "Animació per passar la pistola a un altre jugador.",
+	"characterCreator.explorer.description.skill": "Animació predeterminada per activar una habilitat.",
+	"characterCreator.explorer.description.shocked": "Animació per reaccionar a confeti o a ser objectiu d'un Assalt.",
+	"characterCreator.explorer.description.win": "Animació per a postura guanyadora.",
+	"characterCreator.explorer.description.helpless": "Animació per no poder jugar un torn després d'una derrota.",
+	"characterCreator.explorer.description.popped": "Animació en bucle quan es llança a l'aire fent un explosió.",
+	"characterCreator.explorer.description.introPartOne": "Animació per interactuar amb altres jugadors.",
+	"characterCreator.explorer.description.introPartTwo": "Animació de quan pistola cau sobre la taula.",
+	"characterCreator.explorer.description.scraps": "Partícules de ferralla generades en explotar.",
+	"characterCreator.explorer.description.cardBG": "El fons de Carta de selecció de personatge.",
+	"characterCreator.explorer.description.cardCharIdle": "El personatge de la Carta de selecció de personatge quan està ociós.",
+	"characterCreator.explorer.description.cardCharSelected": "El personatge de la Carta de selecció de personatge quan està seleccionat.",
+	"characterCreator.explorer.description.bannerAppear": "El personatge que apareix després de ser seleccionat.",
+	"characterCreator.explorer.description.bannerBlink": "El personatge parpelleja després de ser seleccionat.",
+	"characterCreator.saveSuccessful.prompt": "Projecte sprite s'ha desat correctament.",
+	"characterCreator.save": "Desa projecte",
+	"characterCreator.exit": "Surt d'editor",
+	"characterCreator.reloadSkills": "Recarregar habilitats",
+	"characterCreator.exit.prompt": "Esta segur que vols sortir del Creador de personatges?\nQualsevol progrés no desat es PERDRÀ.",
+	"characterCreator.newCharacter.title": "NOU PERSONATGE",
+	"characterCreator.newCharacter.unchangeableParameter": "Aquest paràmetre no es pot canviar i no s'ha de canviar després de seva creació.",
+	"characterCreator.newCharacter.create": "Crea un personatge!",
+	"characterCreator.newCharacter.alreadyExists.prompt": "Ja hi ha un projecte sprite amb el mateix nom.",
+	"characterCreator.export": "Exporta projecte!",
+	"characterCreator.confirmExport.prompt": "El joc exportarà metadades, sprites i dades d'animació de teu projecte sprite a un format que es pugui utilitzar amb joc. Depenent de especificacions del maquinari, exportació trigarà des de pocs segons fins a MOLT LLARG. Tancar programes en segon pla pot ajudar a accelerar la velocitat d'exportació.\n\nDesprés de la finalització, tots fitxers exportats s'emmagatzemaran a la carpeta exports de la carpeta arrel de joc. Mantén aquesta aplicació oberta en tot moment durant l'exportació per evitar que dades es corrompin.\n\nEsta segur que vols exportar el projecte?",
+	"characterCreator.exporting": "Exportant d'animació:\n%1",
+	"characterCreator.exporting.generatingCharacterData": "Generant fitxers JSON...",
+	"characterCreator.exporting.generatingLangFile": "Generant fitxers de localització...",
+	"characterCreator.exporting.generatingAddonMetadata": "Generant metadades de complement...",
+	"characterCreator.exporting.finalizing": "Finalitzant...",
+	"characterCreator.exporting.missingAnimations": "A projecte li falten aquestes animacions:\n%1",
+	"prompt.andManyMore": "i molts més...",
+	"characterCreator.exporting.description": "Mantén aquest programa obert.",
+	"characterCreator.exportSuccessful.prompt": "Projecte s'ha exportat correctament. És possible que vulgues modificar les variables dels fitxers JSON.\n\nExportat com a:\n%1",
+	
+	"animationCreator.save": "Desa animació",
+	"animationCreator.exit": "Surt editor",
+	"animationCreator.exit.prompt": "Esta segur que vols sortir de l'Editor d'animacions?\nQualsevol progrés no desat es PERDRÀ.",
+	"animationCreator.saveSuccessful.prompt": "Animació s'ha desat correctament.",
+	
+	"stageEditor.stage": "Escenari",
+	"stageEditor.stage.description": "Aquest menú només s'utilitza per previsualitzar etapes i NO ofereix funcions d'edició. Fes-lo servir amb un editor JSON per obtenir la millor experiència.",
+	"stageEditor.objectList": "Llista d'objectes",
+	"stageEditor.reload": "Recarregar escenari",
+	"stageEditor.screenshot": "Mode de captura de pantalla",
+	"stageEditor.exit": "Sortir de visor",
+	"stageEditor.exit.prompt": "Esta segur que vols sortir del Visor d'escenari?",
+	
+	"resultsMenu.title": "LES RESULTATS SÓN A!",
+	"resultsMenu.instructions": "Prema qualsevol tecla per sortir",
+	// Score bonus for last standing players
+	"resultsMenu.winBonus": "Bonus Guanyador",
+	// Score bonus for Pressure percentage.
+	"resultsMenu.edgingBonus": "Bonus de Pressió",
+	// Replaces Edging Bonus when player somehow hasn't inflated once.
+	"resultsMenu.edgingBonus.alt": "Bonus de Sort",
+	// Score bonus for using Skills.
+	"resultsMenu.skillBonus": "Bonus d'Habilitat",
+	"resultsMenu.bestPlayer": "VICTORIÓS",
+	"resultsMenu.bestPlayers": "VICTORIOSOS",
+	"resultsMenu.badPlayer": "DECEPCIÓ",
+	"resultsMenu.badPlayers": "DECEPCIONS",
+	// $1: Player Type, %2: Character Name, %3: Player No. (If applicable)
+	"resultsMenu.leaderboard.playerFormat": "%1%2",
+	"resultsMenu.leaderboard.playerDuplicateFormat": "%1%2 #%3",
+	// Unless you want to be really specific, it is recommended to leave this string empty
+	"resultsMenu.leaderboard.playerType.human": "",
+	// If the string is not empty, it is recommended to put a whitespace after it.
+	"resultsMenu.leaderboard.playerType.cpu": "CPU ",
+	// %1: Rank, %2: Player Format, %3: Score, %4: Grade
+	// Left Alignment
+	"resultsMenu.leaderboard.format": "%1 | %2 · %3 (%4)",
+	// Right Alignment
+	"resultsMenu.leaderboard.format.reversed": "%2 · %3 (%4) | %1",
+	
+	// Menu Options. Used in button text.
+	"menu.yes": "Sí",
+	"menu.no": "No",
+	"menu.ok": "D'acord",
+	"menu.confirm": "Confirma",
+	"menu.cancel": "Canceŀla",
+	"menu.exit": "Surt",
+	
+	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
+	"gameUI.selectTarget": "SELECCIONA OBJECTIU",
+	
+	"preloadMenu.progress.characters": "Carregant caràcters...",
+	"preloadMenu.progress.gameplay": "Carregant modes de joc...",
+	"preloadMenu.progress.language": "Obtenint textos de idiomes...",
+	"preloadMenu.progress.achievements": "Seguint d'assoliments...",
+	"preloadMenu.progress.toasts": "Creant notificacions...",
+	"preloadMenu.progress.tooltip": "Creant descripcions emergent...",
+	"preloadMenu.progress.cursor": "Decorant cursor de ratolí...",
+	"preloadMenu.progress.splashes": "Escrivint text d'inici...",
+	"preloadMenu.progress.music": "Cercant discos de música...",
+	"preloadMenu.finished": "Tot a punt!",
+	
+	"outdatedVersionMenu.heading": "Versió obsoleta",
+	"outdatedVersionMenu.text": "Ei! Actualment estàs utilitzant una versió obsoleta d'Inflation Roulette: Reloaded. Baixa la darrera versió per gaudir de les funcions i correccions d'errors més noves.\n\Teva versió: %1\Darrera versió: %2",
+	"outdatedVersionMenu.update": "Actualitza",
+	"outdatedVersionMenu.dismiss": "Més tard",
+	
+	// Fallback for HTML build
+	"gamemode.fiftyFifty.name": "50/50",
+	"gamemode.fiftyFifty.description": "Purament una casualitat de llançament de moneda amb reemplaçament.\nJoc ràpid i arriscat.",
+	
+	"character.asimo.name": "Asimo",
+	"character.asimo.name.short": "Asimo",
+	"character.asimo.description": "Aquest llop només vol divertir-se una mica. Seva experiència en ocultisme elèctric li permet sobrecarregar armes.",
+	}

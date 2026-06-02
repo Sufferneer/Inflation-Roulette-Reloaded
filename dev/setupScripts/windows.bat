@@ -14,6 +14,7 @@ haxelib install tjson 1.4.0
 haxelib install hxcpp 4.3.2
 haxelib install hxcpp-debug-server 1.2.4
 haxelib install hre 0.2.1
+haxelib install hxjson5 1.1.0
 haxelib install extension-androidtools 2.1.1
 haxelib set lime 8.3.1
 haxelib set openfl 9.5.0
