@@ -1,10 +1,11 @@
-project_id: "902709"
-api_token: 9f6776ba970c7276a4f9c830f7c5154f482326ad86d6fbdc3b511c21e4bdce7588b34676284f38d4
-base_path: .
-base_url: 'https://api.crowdin.com'
-preserve_hierarchy: true
-files:
-  - source: /assets/lang/en-us.lang
-    translation: /assets/lang/%locale%.lang
-bundles:
-  - 1
+"project_id": "902709"
+"api_token": "9f6776ba970c7276a4f9c830f7c5154f482326ad86d6fbdc3b511c21e4bdce7588b34676284f38d4"
+"base_path": "."
+"base_url": 'https://api.crowdin.com'
+"preserve_hierarchy": true
+"files": [
+  {
+    "source": "/assets/lang/en-us.lang",
+    "translation": "/assets/lang/%locale%.lang"
+  }
+]
