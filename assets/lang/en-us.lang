@@ -61,6 +61,8 @@ game.version.name.major.1 = Initial Release
 // Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 // If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 game.version.name.major.2 = Patch of Creativity
+// Version 3: Added Android support and quality of life features.
+game.version.name.major.3 = A Lil' Something Portable
 // Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
 game.version.name.state.a = Public Alphα %1
 game.version.name.state.b = Public βeta %1
@@ -78,9 +80,7 @@ mainMenu.extras = Extras
 mainMenu.donate = Donate
 
 // Tooltips for buttons in the Main Menu.
-mainMenu.donate.tooltip = Your generous donations help support the development of this game!
-mainMenu.donate.tooltip.disabled = Currently, donations are disabled due to developer circumstances.\nIf you want to support this game, please consider sharing it with others!
-mainMenu.addons.tooltip.disabled = Currently the Android build does not support add-ons yet. It will be implemented in the future.\nStay tuned!
+mainMenu.donate.tooltip = Your generous donations help contribute to more games!
 
 // When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
 mainMenu.dongs = You have accumulated:\n%1 Dongs
@@ -124,8 +124,8 @@ debugText.format = %1: %2
 
 // Please make sure that this is written in a formal tone.
 warningMenu.title = WARNING
-warningMenu.content = This game is only for mature demographics over 18 YEARS OF AGE.\nThis is a fetish game, primarily containing FURRY INFLATION content, and may not be suitable to some. External addons made by third-parties are unmoderated and may contain material which may cause discomfort in some players. Recording and streaming of this game to social media platforms where juveniles are widely present is highly discouraged.\nThis game also features flashing images and screen shaking that may trigger photosensitive symptoms to some people. These effects can be dampened via the Options menu.\nBy pressing 'Accept', you acknowledge these warnings and fully bear any negative consequences caused by this game.
-warningMenu.accept = Accept
+warningMenu.content = This game is only for mature demographics over 18 YEARS OF AGE.\nThis is a fetish game, primarily containing FURRY INFLATION content, and may not be suitable to some. External addons made by third-parties are unmoderated and may contain material which may cause discomfort in some players. Recording and streaming of this game to social media platforms where juveniles are widely present is highly discouraged.\nThis game also features flashing images and screen shaking that may trigger photosensitive symptoms to some people. These effects can be dampened via the Options menu.\nBy pressing 'Accept', you acknowledge these warnings and fully bear any consequences caused by this game.
+menu.accept = Accept
 
 optionsMenu.heading.gameplay = Gameplay
 optionsMenu.heading.preferences = Preferences
@@ -437,6 +437,27 @@ achievement.allEasterEggs.description = The archaic glyphs lie veiled, save by f
 // Accumulate 10000 Dongs in the Main Menu.
 achievement.noLife.name = Absolutely Jobless
 achievement.noLife.description = Waste your life away for no reason. You have been branded, marked permanently.
+achievement.rarePolarizeSuccess.name = Reverse Russian Roulette 
+achievement.rarePolarizeSuccess.description = You know this skill is risky, especially when it's a fresh batch of bullets, but miraculously you made it work.
+// Use Polarize when there are 6 bullets in the chamber, and not inflate yourself.
+achievement.eliminateByAssault.name = Quick Draw
+achievement.eliminateByAssault.description = A person on the verge of defeat must be dealt with swiftly... using a more direct method.
+// Eliminate a player via Assault.
+achievement.findCameraman.name = Lights, Camera, Action!
+achievement.findCameraman.description = Have you seen the cameraman before?
+// Meet Cobalt. (1/128 probability)
+achievement.winByYourself.name = True Singleplayer
+achievement.winByYourself.description = "If you know yourself, you need not fear the result of a hundred battles." - The Art of War, probably.
+// Win a game against yourself (All players are human and only one player uses a skill)
+achievement.winAgainstStrategicCPUs.name = Mind Games
+achievement.winAgainstStrategicCPUs.description = Not gonna lie the bots aren't very smart either, but seeing everyone raging over these freaks, nice job.
+// Win a game with every CPU set to its highest skill level.
+achievement.nineTwentyOne.name = 9 Deaths with 21 Injured
+achievement.nineTwentyOne.description = You seein' this? That's the type of image that gets worse when you see 'em.
+// Play at exactly 9:21 PM, a random stupid image will flash on-screen briefly.
+achievement.exportCharacterProject.name = Utilizer
+achievement.exportCharacterProject.description = Construct your own vessel using the Migrational Order Directive utility program.
+// Export your first character creator project.
 
 achievementsMenu.title = Your achievements
 achievementsMenu.description = Select an achievement to view its details and completion status.
@@ -607,6 +628,12 @@ outdatedVersionMenu.heading = Version Outdated
 outdatedVersionMenu.text = Hey! You are currently using an older version of Inflation Roulette: Reloaded. Please download the latest version to enjoy the newest features and bug fixes!\n\nYour Version: %1\nLatest Version: %2
 outdatedVersionMenu.update = Update
 outdatedVersionMenu.dismiss = Later
+
+androidPermissionsMenu.permissionsRequired = Permissions Required
+androidPermissionsMenu.permissionsGranted = Permissions Granted!
+androidPermissionsMenu.description = OK, funny thing: Android doesn't want us to look at the add-ons you've installed.\n\nIn order for add-ons to work correctly, please allow us the permission to read external storage of your phone.
+androidPermissionsMenu.playWithoutAddons = Play Without Addons
+menu.decline = Decline
 
 // Fallback for HTML build
 gamemode.fiftyFifty.name = 50/50

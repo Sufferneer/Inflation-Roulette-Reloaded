@@ -78,9 +78,6 @@ mainMenu.extras = Extres
 mainMenu.donate = Dona
 
 // Tooltips for buttons in the Main Menu.
-mainMenu.donate.tooltip = Teves generoses donacions ajuden a donar suport a desenvolupament d'aquest joc!
-mainMenu.donate.tooltip.disabled = Actualment, donacions estan desactivades a causa de circumstàncies de desenvolupador.\nSi vols donar suport a aquest joc, comparteix-lo amb altres!
-mainMenu.addons.tooltip.disabled = Actualment, la compilació d'Android encara no admet complements. S'implementarà en el futur.\nEstiga atents!
 
 // When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
 mainMenu.dongs = Has acumulat:\n%1 dongs
@@ -124,8 +121,7 @@ debugText.format = %1: %2
 
 // Please make sure that this is written in a formal tone.
 warningMenu.title = ADVERTÈNCIA
-warningMenu.content = Aquest joc només és per a públic adult major de 18 ANYS.\nAquest és un joc fetitxista, principalment amb contingut de INFLAMENT DE FURROS, i potser no sigui adequat per a alguns. Complements externs fets per tercers no estan moderats i poden contenir material que pot causar molèsties a alguns jugadors. Es desaconsella fermament enregistrament i transmissió d'aquest joc a plataformes de xarxes socials on hi hagi una àmplia presència de menors.\nAquest joc també presenta imatges intermitents i tremolors de pantalla que poden desencadenar símptomes de fotosensibilitat en algunes persones. Aquests efectes es poden mitigar mitjançant el menú Opcions.\nEn prémer ‘Accepta’, acceptes aquests avisos i assumeixes completament qualsevol conseqüència negativa causada per aquest joc.
-warningMenu.accept = Accepta
+menu.accept = Accepta
 
 optionsMenu.heading.gameplay = Joc
 optionsMenu.heading.preferences = Preferències

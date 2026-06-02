@@ -166,7 +166,7 @@ class Paths {
 	 * 
 	 * @param file
 	 */
-	public static function appendSoundExt(file:String):String {
+	inline public static function appendSoundExt(file:String):String {
 		return file + '.$SOUND_EXT';
 	}
 
@@ -193,7 +193,7 @@ class Paths {
 
 		#if _ALLOW_ADDONS
 		if (addons) {
-			for (addon in Addons.getGlobalAddons()) {
+			for (addon in Addons.globalAddons) {
 				if (FileSystem.exists(Paths.addons(addon + '/' + path))) {
 					for (i in FileSystem.readDirectory(Paths.addons(addon + '/' + path))) {
 						var item = i.replace('.$fileFormat', '');
@@ -219,7 +219,7 @@ class Paths {
 	 * @param fileToCheck The relative path of the file to be checked for it to be included.
 	 * @param addons Whether the function checks the addon folders as well.
 	 */
-	inline public static function readFolderDirectories(path:String, listPath:String = '', fileToCheck:String = '', addons:Bool = true) {
+	public static function readFolderDirectories(path:String, listPath:String = '', fileToCheck:String = '', addons:Bool = true) {
 		var pathsInFolder:Array<String> = Utilities.textFileToArray(listPath);
 		#if sys
 		// Main folder
@@ -234,7 +234,7 @@ class Paths {
 
 		#if _ALLOW_ADDONS
 		if (addons) {
-			for (addon in Addons.getGlobalAddons()) {
+			for (addon in Addons.globalAddons) {
 				if (FileSystem.exists(Paths.addons('$addon/$path'))) {
 					for (i in FileSystem.readDirectory(Paths.addons('$addon/$path'))) {
 						if (!pathsInFolder.contains(i) && FileSystem.isDirectory(Paths.addons('$addon/$path/$i')) && FileSystem.exists(Paths.addons('$addon/$path/$i/$fileToCheck')))
@@ -385,7 +385,7 @@ class Paths {
 
 		localTrackedAssets.push(file);
 		#if desktop
-		if (allowGPU && Preferences.data.cacheOnGPU) {
+		if (allowGPU && Preferences.data?.cacheOnGPU) {
 			var texture:RectangleTexture = FlxG.stage.context3D.createRectangleTexture(bitmap.width, bitmap.height, BGRA, true);
 			texture.uploadFromBitmapData(bitmap);
 			bitmap.image.data = null;
@@ -520,7 +520,7 @@ class Paths {
 
 	#if _ALLOW_ADDONS
 	inline static public function addons(key:String = '') {
-		return 'addons/' + key;
+		return AndroidUtils.getPath() + 'addons/' + key;
 	}
 
 	inline static public function addonsSounds(path:String, key:String) {
@@ -545,7 +545,7 @@ class Paths {
 	}
 
 	static public function addonFolders(key:String) {
-		for (addon in Addons.getGlobalAddons()) {
+		for (addon in Addons.globalAddons) {
 			var fileToCheck:String = addons(addon + '/' + key);
 			if (FileSystem.exists(fileToCheck))
 				return fileToCheck;

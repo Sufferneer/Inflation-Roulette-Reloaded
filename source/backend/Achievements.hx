@@ -22,6 +22,8 @@ class Achievements {
 	}
 
 	public static function initialize() {
+		achievementsList = [];
+		achievementIDs = [];
 		createAchievement('firstWin', {tier: COMMON, type: BOOLEAN});
 		createAchievement('sabotages', {
 			tier: COMMON,
@@ -65,6 +67,38 @@ class Achievements {
 			hideItems: true
 		});
 		#end
+		createAchievement('rarePolarizeSuccess', {
+			tier: GOOD,
+			type: BOOLEAN
+		});
+		createAchievement('eliminateByAssault', {
+			tier: COMMON,
+			type: BOOLEAN
+		});
+		createAchievement('findCameraman', {
+			tier: COMMON,
+			type: BOOLEAN,
+			hideFromMenu: true,
+			silent: true
+		});
+		createAchievement('winByYourself', {
+			tier: LAME,
+			type: BOOLEAN
+		});
+		createAchievement('winAgainstStrategicCPUs', {
+			tier: GOOD,
+			type: BOOLEAN
+		});
+		createAchievement('nineTwentyOne', {
+			tier: LAME,
+			type: BOOLEAN,
+			hideFromMenu: true,
+			silent: true
+		});
+		createAchievement('exportCharacterProject', {
+			tier: GOOD,
+			type: BOOLEAN
+		});
 
 		for (id => data in achievementsList) {
 			switch (data.type) {
@@ -121,7 +155,7 @@ class Achievements {
 				}
 		}
 		var curLocked:Bool = isLocked(id);
-		if (prevLocked != curLocked && !curLocked && prevLocked) {
+		if (prevLocked != curLocked && !curLocked && prevLocked && Achievements.achievementsList[id].silent != true) {
 			AchievementToast.enqueue(id);
 		}
 		FlxG.save.data.achievements = curProgress;

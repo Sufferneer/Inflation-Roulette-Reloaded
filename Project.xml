@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
-	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="2.2.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
+	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="3.0.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="c.3" />
+	<set name="versionState" value="b.1" />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<!--The HaxeFlixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
@@ -40,7 +40,7 @@
 	
 	<define name="_ALLOW_CRASH_HANDLER"/>
 	<section if="_OFFICIAL_BUILD">
-		<define name="_CHECK_FOR_UPDATES"/>
+		<define name="_CHECK_FOR_UPDATES" if="desktop"/>
 		<define name="_ALLOW_ADDONS" unless="web" />
 		<define name="_ALLOW_UTILITIES" if="desktop" />
 		<define name="_ALLOW_EASTER_EGGS"/>
@@ -136,8 +136,11 @@
 	<assets path='dev/iconLinux.png' if="linux" unless="mobile" id="iconLinux" preload="true" embed="true"/>
 
 	<section if="android">
-		<android target-sdk-version="32" />
+		<haxelib name="extension-androidtools"/>
 		<template path="dev/templates"/>
+		<config:android target-sdk-version="31" />
+		<config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
+		<config:android attribute="android:requestLegacyExternalStorage=&quot;true&quot;" />
 		<config:android>
 			<application android:icon="@mipmap/ic_launcher"/>
 			<activity android:label="IR: Reloaded"/>

@@ -14,14 +14,13 @@ game.version.name.minor.format = 次版 %1
 game.version.name.hotfix.format = 修訂 %1
 
 game.version.name.major.0 = 開發版本
-// Version 1: Initial Release
 game.version.name.major.1 = 初始版本
-// Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
 game.version.name.major.2 = 創意包裹
+game.version.name.major.3 = 一項輕便的小玩意
 
 game.version.name.state.a = 預覽版本 %1
 game.version.name.state.b = 公開測試 %1
-game.version.name.state.c = 最終測試 %1
+game.version.name.state.c = 發布候選 %1
 
 game.build.format = %1 版本
 
@@ -34,9 +33,7 @@ mainMenu.utilities = 製作工具
 mainMenu.extras = 額外
 mainMenu.donate = 捐款
 
-mainMenu.donate.tooltip = 您的捐款有助支持這遊戲的發展！
-mainMenu.donate.tooltip.disabled = 目前由於開發者的情勢，捐款功能已關閉。\n如果您想支持這款遊戲，請與他人分享！
-mainMenu.addons.tooltip.disabled = 目前Android版本尚不支援附加包，未來將會加入此功能。\n敬請期待！
+mainMenu.donate.tooltip = 您的捐款有助支持更多遊戲！
 
 mainMenu.dongs = 你已累計：\n%1個咚
 mainMenu.dongs.comment.10 = 好了，你可以停止了
@@ -77,8 +74,8 @@ debugText.state = 選單
 debugText.format = %1: %2
 
 warningMenu.title = 警告
-warningMenu.content = 本遊戲僅限18歲以上之成年玩家。\n\n本遊戲為戀物向作品，主要包含獸人膨脹內容，部分玩家可能感到不適。由第三方製作的附加包未經審核，可能包含令部分玩家不適的內容。強烈建議勿於未成年人常駐之社群平台錄製或直播本遊戲。\n\n本遊戲包含閃爍畫面與畫面晃動效果，能引發部分玩家光敏性癲癇症狀，可透過設定選單減緩此類特效。\n\n點擊「接受」即表示您已知悉上述警告，並願自行承擔遊戲所引發之任何負面影響。
-warningMenu.accept = 接受
+warningMenu.content = 本遊戲僅限18歲以上之成年玩家！\n\n本遊戲為戀物向作品，主要包含獸人膨脹內容，部分玩家可能感到不適。由第三方製作的附加包未經審核，可能包含令部分玩家不適的內容。強烈建議勿於未成年人常駐之社群平台錄製或直播本遊戲！\n\n本遊戲包含閃爍畫面與畫面晃動效果，能引發部分玩家光敏性癲癇症狀，可透過設定選單減緩此類特效。\n\n點擊「接受」即表示您已知悉上述警告，並願自行承擔遊戲所引發之任何影響。
+menu.accept = 接受
 
 optionsMenu.heading.gameplay = 遊戲
 optionsMenu.heading.preferences = 偏好
@@ -360,6 +357,20 @@ achievement.allEasterEggs.name = 過度活躍
 achievement.allEasterEggs.description = 古篆沉踪，唯掘檔、索碼而尋。
 achievement.noLife.name = 無就業、無進修、無輔導
 achievement.noLife.description = 白白浪費生命。你已被烙印，永久記號。
+achievement.rarePolarizeSuccess.name = 反向俄羅斯輪盤賭
+achievement.rarePolarizeSuccess.description = 你知道這技能風險很高，尤其是在子彈新鮮滾熱辣的時候，但你卻奇妙地成功了。
+achievement.eliminateByAssault.name = 神槍手
+achievement.eliminateByAssault.description = 對於瀕臨失敗者，必須迅速處置⋯⋯用更直接的方法採取。
+achievement.findCameraman.name = 好戲上場！
+achievement.findCameraman.description = 你見過攝影師嗎？
+achievement.winByYourself.name = 孫子恥法
+achievement.winByYourself.description = 「知彼知己，百戰不殆。」
+achievement.winAgainstStrategicCPUs.name = 爾虞我詐
+achievement.winAgainstStrategicCPUs.description = 說實話，這些CPU也不算很聰明，但見人輪給他們時怒髮衝冠，算吧。
+achievement.nineTwentyOne.name = 九死二十一傷
+achievement.nineTwentyOne.description = 這照片越看越糟。
+achievement.exportCharacterProject.name = 參保者
+achievement.exportCharacterProject.description = 使用移民遊樂計劃註冊程式創建你自己的肉體。
 
 achievementsMenu.title = 你的成就
 achievementsMenu.description = 選擇一項成就以查看其詳述和完成狀態。
@@ -498,6 +509,8 @@ menu.exit = 退出
 
 // Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 gameUI.selectTarget = 選擇目標
+gameUI.playerIndicator.you = YOU
+gameUI.playerIndicator.player = P%1
 
 preloadMenu.progress.characters = 正在載入人物⋯⋯
 preloadMenu.progress.gameplay = 正在載入遊戲模式⋯⋯
@@ -514,6 +527,12 @@ outdatedVersionMenu.heading = 版本過期
 outdatedVersionMenu.text = 喂！你目前使用的《膨脹輪盤：重裝版》的版本已過期。請下載最新版本，以體驗最新功能和修復錯誤！\n\n你的版本：%1\n最新版本：%2
 outdatedVersionMenu.update = 更新
 outdatedVersionMenu.dismiss = 下次先啦
+
+androidPermissionsMenu.permissionsRequired = 需要獲得權限
+androidPermissionsMenu.permissionsGranted = 權限已授予！
+androidPermissionsMenu.description = 好吧，說來也怪：安卓不想讓我們讀取你安裝的附件包。\n\n為了確保附件包正常運行，請允許我們讀取你手機的外部儲存空間的權限。
+androidPermissionsMenu.playWithoutAddons = 不用附件包遊玩
+menu.decline = 拒絕
 
 // Fallback for HTML build
 gamemode.fiftyFifty.name = 五十五十

@@ -7,7 +7,7 @@
     <option name="openFLFlags" value="-D_OFFICIAL_BUILD" />
     <option name="openFLPath" value="$MODULE_DIR$/../project.xml" />
     <option name="openFLTarget" value="Windows" />
-    <option name="outputFolder" value="$MODULE_DIR$/../export/production/Inflation-Roulette" />
+    <option name="outputFolder" value="$MODULE_DIR$/export/production/Inflation-Roulette" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -16,6 +16,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.haxelib" />
       <excludeFolder url="file://$MODULE_DIR$/.haxelib/lime/7,7,0" />
       <excludeFolder url="file://$MODULE_DIR$/dev/changelogs" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

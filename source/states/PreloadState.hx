@@ -6,6 +6,7 @@ import backend.CharacterManager;
 import backend.SplashManager;
 import openfl.utils.Assets.Assets.getBitmapData;
 import openfl.utils.Assets;
+import backend.AndroidUtils;
 
 class PreloadState extends SuffState {
 	#if !html5
@@ -17,12 +18,12 @@ class PreloadState extends SuffState {
 	var loadingTexts:Array<String> = ['characters', 'gameplay', 'music', 'achievements', 'toasts', 'tooltip', 'cursor', 'splashes'];
 
 	override function create() {
+		Preferences.loadPrefs();
+
 		super.create();
 
-		Preferences.loadPrefs();
-		#if _ALLOW_ADDONS
-		Addons.pushGlobalAddons();
-		#end
+		if (AndroidUtils.checkAllFilesPermission())
+			Addons.pushGlobalAddons();
 		Language.initialize();
 
 		#if !html5

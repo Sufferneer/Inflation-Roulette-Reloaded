@@ -63,10 +63,7 @@ class MainMenuState extends SuffState {
 		['extras', 'donate']
 	];
 
-	static final disabledMenuItems:Array<String> = [
-		#if mobile 'addons', #end
-		'donate'
-	];
+	static final disabledMenuItems:Array<String> = [];
 
 	var currentEasterEggInput:String = '';
 

@@ -24,7 +24,7 @@ class Utilities {
 			daList = File.getContent(lePath);
 		#if _ALLOW_ADDONS
 		if (addons) {
-			for (addon in Addons.getGlobalAddons()) {
+			for (addon in Addons.globalAddons) {
 				var lePath = Paths.addons(addon + '/' + path);
 				if (FileSystem.exists(lePath))
 					daList = daList + '\n' + File.getContent(lePath);

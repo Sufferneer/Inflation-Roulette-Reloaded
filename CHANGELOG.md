@@ -5,7 +5,7 @@ This project adheres to this versioning: `MAJOR.MINOR.HOTFIX`.
 
 Minor updates will be referred to as _Pitstops_.
 
-## v2.2.0 - Patch of Creativity, Pitstop 2 - 2026-05-21
+## v3.0.0 - A Lil' Something Portable - 2026-05-21
 ### Additions
 #### Cosmetic
 - A bunch of visual effects.
@@ -14,10 +14,11 @@ Minor updates will be referred to as _Pitstops_.
 #### Quality of Life
 - Exit button in Character Select
 #### Technical
-- Android build (beta version, does not support modding yet).
+- Android build.
+- Warning screen (re-added due to bug)
 - Version checking to alert you on the latest version of IRR. 
   - This can be disabled in the Options menu
-  - Only supports versions >=2.2.0
+  - Only supports versions >=3.0.0
 - Operations are now output on console on the Preload menu.
 ### Changes
 #### Audio
@@ -31,6 +32,7 @@ Minor updates will be referred to as _Pitstops_.
 - Recolored Goober's blush to match other characters'
 - Decreased Asimo's gurgle threshold
 - Increased visibility of Skill icons on white backgrounds
+- Updated some splashes
 #### Gameplay
 - Quick Play now randomizes player position.
 #### Technical

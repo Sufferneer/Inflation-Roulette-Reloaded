@@ -224,7 +224,7 @@ class OptionsSubState extends SuffSubState {
 		}, Preferences.data.maxFramerate);
 		// Mobile framerate is capped at 120 to avoid device heating up
 
-		#if !html5
+		#if _CHECK_FOR_UPDATES
 		createBooleanOption('checkForUpdates', function(value:Bool) {
 			Preferences.data.checkForUpdates = value;
 		}, Preferences.data.checkForUpdates);

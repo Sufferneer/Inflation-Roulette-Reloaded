@@ -18,14 +18,15 @@ class SplashManager {
 
 	public static function parseSplashes() {
 		activeSplashes = [];
+		activeColors = [];
 
 		var rawJson = Paths.getTextFromFile('data/splashes.json');
 		var collection:SplashCollectionData = cast Json.parse(rawJson);
 
 		var gregorianCurrentTime = Date.now();
 		var lunarCurrentTime = LunarDate.now();
-		trace(gregorianCurrentTime);
-		trace(lunarCurrentTime);
+		trace('Current time is $gregorianCurrentTime');
+		trace('Current lunar time is $lunarCurrentTime');
 
 		for (splash in collection.shared) {
 			activeSplashes.push(splash);
@@ -72,10 +73,15 @@ class SplashManager {
 				}
 
 				if (startTime.getTime() <= currentTime.getTime() && currentTime.getTime() <= endTime.getTime()) {
-					trace('${group.name} - $startTime - $currentTime - $endTime');
+					trace('${group.name} ($startTime - $endTime) - $currentTime');
 					isSpecialDay = true;
 					if (potentiallyLunar)
 						usesLunarCalendar = true;
+					if (activeSplashes.length > 0 || activeColors.length > 0) {
+						activeSplashes = [];
+						activeColors = [];
+						trace('Splashes overridden');
+					}
 					for (splash in group.splashes) {
 						activeSplashes.push(splash);
 						trace('Time-based splash added: $splash');

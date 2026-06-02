@@ -2,27 +2,27 @@ package backend;
 
 import backend.typedefs.AddonMetadata;
 import tjson.TJSON as Json;
+import tjson.TJSON.TJSON.parse;
+import openfl.utils.Assets;
+import lime.utils.Bytes;
 
 class Addons {
-	private static var globalAddons:Array<String> = [];
+	public static var globalAddons:Array<String> = [];
 
-	inline public static function getGlobalAddons()
-		return globalAddons;
-
-	inline public static function pushGlobalAddons() {
+	public static function pushGlobalAddons() {
 		globalAddons = [];
 		#if _ALLOW_ADDONS
 		for (addon in updateAddonList()) {
 			var pack:Dynamic = getAddonMetadata(addon);
 			if (pack != null)
 				globalAddons.push(addon);
-			trace('Loaded addons: ' + addon);
 		}
 		#end
+		trace('Loaded addons: ' + globalAddons);
 		return globalAddons;
 	}
 
-	inline public static function getAddonDirectories():Array<String> {
+	public static function getAddonDirectories():Array<String> {
 		var list:Array<String> = [];
 		#if _ALLOW_ADDONS
 		var addonsFolder:String = Paths.addons();
@@ -41,19 +41,12 @@ class Addons {
 		#if _ALLOW_ADDONS
 		var path = Paths.addons(folder + '/metadata/metadata.json');
 		if (FileSystem.exists(path)) {
-			try {
-				#if sys
-				var rawJson:String = File.getContent(path);
-				#else
-				var rawJson:String = Assets.getText(path);
-				#end
-				var leParsedJson:AddonMetadata = Json.parse(rawJson);
-				if (rawJson != null && rawJson.length > 0)
-					return leParsedJson;
-			}
-			catch (e:Dynamic) {
-				trace(e);
-			}
+			var rawJson:String = File.getContent(path);
+			trace(rawJson);
+			if (rawJson == null || rawJson.length <= 0)
+				return null;
+			var leParsedJson:AddonMetadata = Json.parse(rawJson);
+			return leParsedJson;
 		}
 		#end
 		return null;

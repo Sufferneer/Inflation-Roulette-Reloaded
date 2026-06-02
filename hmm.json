@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "extension-androidtools",
+      "type": "haxelib",
+      "version": "2.1.1"
+    },
+    {
       "name": "flixel",
       "type": "haxelib",
       "version": "6.1.2"
@@ -27,10 +32,8 @@
     },
     {
       "name": "hxcpp",
-      "type": "git",
-      "dir": null,
-      "ref": "master",
-      "url": "https://github.com/HaxeFoundation/hxcpp"
+      "type": "haxelib",
+      "version": "4.3.2"
     },
     {
       "name": "hxcpp-debug-server",

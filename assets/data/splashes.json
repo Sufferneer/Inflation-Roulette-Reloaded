@@ -94,6 +94,26 @@
 		},
 		{
 			"useLunarCalender": false,
+			"start": "06-01",
+			"end": "06-30",
+			"id": "pride",
+			"name": "Pride Month",
+			"colors": ["#E60000", "#FF8E00", "#FFEF00", "#00821B", "#004BFF", "#780089"],
+			"splashes": [
+				"Happy Pride Month!",
+				"Love is love!",
+				"Be yourself!",
+				"You are valid!",
+				"Love wins!",
+				"LGBTQ+ friendly!",
+				"Rights for all!",
+				"You're welcome on the rainbow!",
+				"Have I told you Shib is non-binary?",
+				"Have I told you Chester is gay?"
+			]
+		},
+		{
+			"useLunarCalender": false,
 			"start": "06-08",
 			"end": "06-08",
 			"id": "1984",
@@ -117,25 +137,6 @@
 				"GO TO ROOM 101",
 				"Down with Goldstein!",
 				"Oldthinkers unbellyful Ingsoc!"
-			]
-		},
-		{
-			"useLunarCalender": false,
-			"start": "06-01",
-			"end": "06-30",
-			"id": "pride",
-			"name": "Pride Month",
-			"colors": ["#E60000", "#FF8E00", "#FFEF00", "#00821B", "#004BFF", "#780089"],
-			"splashes": [
-				"Happy Pride Month!",
-				"Love is love!",
-				"Be yourself!",
-				"Supports LGBTQ+!",
-				"You are valid!",
-				"Lesbian rights!",
-				"Gay rights!",
-				"Bisexual rights!",
-				"Trans rights!"
 			]
 		},
 		{

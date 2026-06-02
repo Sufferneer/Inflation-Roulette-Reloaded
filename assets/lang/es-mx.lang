@@ -77,9 +77,6 @@ mainMenu.extras = Extras
 mainMenu.donate = Donar
 
 // Tooltips for buttons in the Main Menu.
-mainMenu.donate.tooltip = ¡Tus donaciones ayudan a apoyar el desarrollo de este juego!
-mainMenu.donate.tooltip.disabled = Actualmente, las donaciones están deshabilitadas debido a las circunstancias del desarrollador.\nSi quieres apoyar este juego, ¡considera compartirlo con otros!
-mainMenu.addons.tooltip.disabled = Actualmente, la versión para Android aún no admite la opción de Complementos. Se implementará en el futuro.\n¡Estén atentos!
 
 // When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
 mainMenu.dongs = Has acumulado:\n%1 Dongs
@@ -123,8 +120,7 @@ debugText.format = %1: %2
 
 // Please make sure that this is written in a formal tone.
 warningMenu.title = WARNING
-warningMenu.content = Este juego es solo para mayores de 18 AÑOS.\nEste es un juego fetichista, que contiene principalmente contenido de INFLACIÓN y puede no ser adecuado para algunos. Los complementos externos fabricados por terceros no están moderados y pueden contener material que puede causar incomodidad en algunos jugadores. Se desaconseja encarecidamente la grabación y transmisión de este juego en plataformas de redes sociales donde los jóvenes están ampliamente presentes.\nEste juego también presenta imágenes parpadeantes y Luces que pueden afectar a personas fotosensibles. Estos efectos se pueden disminuir a través del menú Opciones.\nAl presionar 'Aceptar', reconoces estas advertencias y asumes plenamente cualquier consecuencia negativa causada por este juego
-warningMenu.accept = Accept
+menu.accept = Accept
 
 optionsMenu.heading.gameplay = Modo de Juego
 optionsMenu.heading.preferences = Configuración

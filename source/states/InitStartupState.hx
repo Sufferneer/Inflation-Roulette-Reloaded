@@ -1,9 +1,15 @@
 package states;
 
+import states.WarningState;
 #if _ALLOW_EASTER_EGGS
 import states.easterEggStartups.*;
 #end
-import states.WarningState;
+#if android
+import backend.AndroidUtils;
+import states.AndroidPermissionsState;
+import backend.Addons.Addons.pushGlobalAddons;
+import backend.Addons;
+#end
 
 class InitStartupState extends SuffState {
 	override function create() {
@@ -14,17 +20,26 @@ class InitStartupState extends SuffState {
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 
+		if (FlxG.save.data.acknowledgedTermsOfService == null || FlxG.save.data.termsOfService == null)
+			SuffState.switchState(new WarningState());
 		new FlxTimer().start(1.5, function(tmr:FlxTimer) {
-			#if _ALLOW_EASTER_EGGS
 			var startupState = '';
-			if (FlxG.save.data != null && FlxG.save.data.acknowledgedTermsOfService != null && FlxG.save.data.termsOfService != null)
+			#if _ALLOW_ADDONS
+			if (!AndroidUtils.checkAllFilesPermission() && !AndroidPermissionsState.deniedPermissions) {
+				SuffState.switchState(new AndroidPermissionsState());
+				return;
+			}
+			#end
+			#if _ALLOW_EASTER_EGGS
+			if (FlxG.save.data != null && FlxG.save.data.easterEggStartup != null)
 				startupState = FlxG.save.data.easterEggStartup;
 			else {
 				FlxG.save.data.easterEggStartup = '';
-				FlxG.save.flush();
-				SuffState.switchState(new WarningState());
 			}
+			#end
+			FlxG.save.flush();
 			switch (startupState) {
+				#if _ALLOW_EASTER_EGGS
 				case 'imhighoncrack':
 					SuffState.switchState(new ImHighOnCrackStartupState());
 				case 'blueberryhelium':
@@ -33,12 +48,10 @@ class InitStartupState extends SuffState {
 					SuffState.switchState(new RoomOneOhOneStartupState());
 				case 'ibeesbees':
 					SuffState.switchState(new IBeesBeesStartupState());
+				#end
 				default:
 					SuffState.switchState(new StartupState());
 			}
-			#else
-			SuffState.switchState(new StartupState());
-			#end
 		});
 	}
 

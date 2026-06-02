@@ -38,7 +38,7 @@ class Language {
 	public static function fetchPhrases(langID:String = 'en-us'):Map<String, String> {
 		phrasesCount.set(langID, 0);
 		var lePhrases:Map<String, String> = [];
-		var loadedText:Array<String> = Utilities.textFileToArray('lang/$langID.lang');
+		var loadedText:Array<String> = Utilities.textFileToArray('lang/$langID.lang', false);
 		for (text in loadedText) {
 			// Ignore comments and empty lines
 			if (text.startsWith('//') || text == '\n' && text.length <= 0)
@@ -49,6 +49,15 @@ class Language {
 			phrasesCount[langID] += 1;
 			// For some reason, Haxe does not recognize \n as a newline character when reading from a text file
 			// Also replace \s with whitespace
+		}
+		var loadedAddonText:Array<String> = Utilities.textFileToArray('lang/$langID.lang', true);
+		for (text in loadedAddonText) {
+			// Ignore comments and empty lines
+			if (text.startsWith('//') || text == '\n' && text.length <= 0)
+				continue;
+			var splitText:Array<String> = text.split(' = ');
+			if (splitText[1] == null) splitText[1] = '';
+			lePhrases.set(splitText[0], splitText[1].replace('\\n', '\n').replace('\\s', ' '));
 		}
 		trace(phrasesCount);
 		return lePhrases;

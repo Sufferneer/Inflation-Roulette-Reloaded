@@ -30,7 +30,7 @@ class WarningState extends SuffState {
 		warningDesc.visible = false;
 		add(warningDesc);
 
-		acceptButton = new SuffButton(0, 0, Language.getPhrase('warningMenu.accept'), null, null, 220, 100);
+		acceptButton = new SuffButton(0, 0, Language.getPhrase('menu.accept'), null, null, 220, 100);
 		acceptButton.btnOutlineColor = acceptButton.btnOutlineColorHovered = acceptButton.btnOutlineColorClicked = acceptButton.btnOutlineColorDisabled = 0xFFFFFFFF;
 		acceptButton.btnTextColorDisabled = 0xFF000000;
 		acceptButton.btnBGColor = 0xFF000000;

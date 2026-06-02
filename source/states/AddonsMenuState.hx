@@ -52,7 +52,7 @@ class AddonsMenuState extends SuffState {
 
 		SuffState.playMusic('options');
 
-		var leAddons = Addons.getGlobalAddons();
+		var leAddons = Addons.globalAddons;
 
 		if (leAddons.length <= 0) {
 			noAddonsInstalled = true;
