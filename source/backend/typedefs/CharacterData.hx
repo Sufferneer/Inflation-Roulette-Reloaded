@@ -1,6 +1,5 @@
 package backend.typedefs;
 
-import backend.typedefs.ModifierData;
 import backend.typedefs.SkillData;
 
 typedef CharacterData = {
@@ -8,6 +7,5 @@ typedef CharacterData = {
 	?cardDisplayedKey:String,
 	maxPressure:Int,
 	maxConfidence:Int,
-	modifiers:Array<ModifierData>,
 	skills:Array<SkillData>
 }

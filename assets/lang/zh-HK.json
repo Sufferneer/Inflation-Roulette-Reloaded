@@ -241,6 +241,8 @@
 	"languageMenu.completion": "%1 完成",
 	
 	"gamemodeSelect.title": "選擇遊戲模式",
+	"gamemodeSelect.playerCount": "玩家數量",
+	"gamemodeSelect.setting.format": "%1：%2",
 	"gamemode.quickPlay.name": "快玩",
 	"gamemode.quickPlay.description": "隨機人物。\n直奔遊玩；毫無障礙。",
 	"gamemode.reloaded.name": "重裝",
@@ -251,10 +253,6 @@
 	"gamemode.classic.description": "真正隨機，無盡偷襲。\n經典的遊戲玩法。",
 	"gamemode.charge.name": "蓄力",
 	"gamemode.charge.description": "每次空彈都會增加傷害力。\n風險與回報並存。",
-	"gamemode.1v1.name": "1v1",
-	"gamemode.1v1.description": "兩個玩家，一把氣槍。\n由肥John提議。",
-	"gamemode.sixPlayers.name": "六六六",
-	"gamemode.sixPlayers.description": "與五名其他玩家對戰！",
 	
 	"characterSelect.selectCharacter": "擇爾之軀",
 	"characterSelect.holdCardsToSeeInfo": "持卡查看訊息",
@@ -271,7 +269,7 @@
 	"characterSelect.option.skillLevel.3": "孫子",
 	// This text appears when more than 1 player-controlled characters are present.
 	// Prevents player from cheating
-	"characterSelect.cantEarnAchievements": "這設定下無法獲得成就。",
+	"characterSelect.cantEarnAchievements": "這設定下無法獲得大多數成就。",
 	
 	"character.goober.name": "古伯",
 	"character.goober.name.short": "古伯",
@@ -320,7 +318,7 @@
 	"skill.amnesia.name": "催眠",
 	"skill.amnesia.description": "使目標的技能失效一回合。",
 	"skill.assault.name": "直射",
-	"skill.assault.description": "Shoot an opponent. Gives target 2 confidence on blank.",
+	"skill.assault.description": "直接射擊對手。空彈時給予對手2點信心。",
 	
 	"pauseMenu.title": "遊戲暫停",
 	"pauseMenu.resume": "繼續",
@@ -331,8 +329,6 @@
 	"stats.confidence": "自信",
 	"stats.skill": "技能",
 	"stats.skills": "技能",
-	"stats.modifier": "修制",
-	"stats.modifiers": "修制",
 	
 	"achievement.firstWin.name": "首次得勝",
 	"achievement.firstWin.description": "從今以後，你一生將被鎖鏈束縛。",
@@ -362,8 +358,10 @@
 	"achievement.rarePolarizeSuccess.description": "你知道這技能風險很高，尤其是在子彈新鮮滾熱辣的時候，但你卻奇妙地成功了。",
 	"achievement.eliminateByAssault.name": "神槍手",
 	"achievement.eliminateByAssault.description": "對於瀕臨失敗者，必須迅速處置⋯⋯用更直接的方法採取。",
+	"achievement.intentionalLoseByPolarize.name": "不獸控制",
+	"achievement.intentionalLoseByPolarize.description": "明明知道自己安全，明明知道自己到了極限，明明知道這樣做會淘汰，但你仍然承受打擊？你戇撚鳩㗎？",
 	"achievement.findCameraman.name": "好戲上場！",
-	"achievement.findCameraman.description": "你見過攝影師嗎？",
+	"achievement.findCameraman.description": "震驚！攝影師鈷百特首次出鏡！",
 	"achievement.winByYourself.name": "孫子恥法",
 	"achievement.winByYourself.description": "「知彼知己，百戰不殆。」",
 	"achievement.winAgainstStrategicCPUs.name": "爾虞我詐",
@@ -372,6 +370,8 @@
 	"achievement.nineTwentyOne.description": "這照片越看越糟。",
 	"achievement.exportCharacterProject.name": "參保者",
 	"achievement.exportCharacterProject.description": "使用移民遊樂計劃註冊程式創建你自己的肉體。",
+	"achievement.liveShots.name": "不夠氣",
+	"achievement.liveShots.description": "一顆 .357 Magnum 子彈的製造成本約為 15 美毫，但零售價從 0.60 到 1.40 美元不等。現在想像一下發射 100 顆這樣的子彈。",
 	
 	"achievementsMenu.title": "你的成就",
 	"achievementsMenu.description": "選擇一項成就以查看其詳述和完成狀態。",

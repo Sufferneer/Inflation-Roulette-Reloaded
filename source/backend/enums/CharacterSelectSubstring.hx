@@ -5,5 +5,4 @@ enum CharacterSelectSubstring {
 	MAX_PRESSURE;
 	MAX_CONFIDENCE;
 	SKILLS;
-	MODIFIERS;
 }

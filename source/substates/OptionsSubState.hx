@@ -319,7 +319,7 @@ class OptionsSubState extends SuffSubState {
 		optionsGroup.add(text);
 
 		var option:SuffSliderOption = new SuffSliderOption(text.x + text.width + 16, optionsY, callback, rangeMin, rangeMax, step, displayFunction,
-			defaultValue);
+		defaultValue);
 		text.y = option.y + (option.height - text.height) / 2;
 		option.camera = this.camera;
 		option.tooltipText = Language.getPhrase('option.${ID}.description');

@@ -293,11 +293,6 @@
 	"gamemode.classic.description": "Истинный рандом и бесконечная подстава.\nКлассический способ игры.",
 	"gamemode.charge.name": "Нарастание",
 	"gamemode.charge.description": "Урон увеличивается с каждым холостым патроном.\nРисково, но зрелищно.",
-	"gamemode.1v1.name": "Дуэль",
-	// Context: A classmate of mine suggested this.
-	"gamemode.1v1.description": "Деньги, ствол, два игрока.\nРежим предложен одним жирдяем.",
-	"gamemode.sixPlayers.name": "Беспредел",
-	"gamemode.sixPlayers.description": "Шестикратный кавардак!\nСразись сразу с пятью другими игроками!",
 	
 	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "ВЫБОР ЛИКА",
@@ -316,7 +311,6 @@
 	"characterSelect.option.skillLevel.3": "Хитроумный",
 	// This text appears when more than 1 player-controlled characters are present.
 	// Prevents player from cheating
-	"characterSelect.cantEarnAchievements": "Вы не сможете получать достижения с данными настройками.",
 	
 	// Goober: A character species present in the original Inflation Roulette.
 	// Looks like a feline, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
@@ -389,8 +383,6 @@
 	"stats.confidence": "Смелость",
 	"stats.skill": "Навык",
 	"stats.skills": "Навыки",
-	"stats.modifier": "Модификатор",
-	"stats.modifiers": "Модификаторы",
 	
 	// Be the last player standing in a match.
 	"achievement.firstWin.name": "Первая Победа",

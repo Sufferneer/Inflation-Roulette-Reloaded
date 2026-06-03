@@ -246,7 +246,7 @@ class CharacterSelectState extends SuffState {
 
 			addSliderOption(i, Language.getPhrase('characterSelect.option.skillLevel'), function(val:Float) {
 				CharacterManager.cpuLevel[i] = Std.int(val);
-			}, 1, 3, 1, function(val:Float) {
+			}, Constants.CPU_SKILL_LIMIT[0], Constants.CPU_SKILL_LIMIT[1], 1, function(val:Float) {
 				return Language.getPhrase('characterSelect.option.skillLevel.' + Std.int(val), [], '${Std.int(val)}');
 			}, CharacterManager.cpuLevel[i]);
 		}
@@ -267,7 +267,6 @@ class CharacterSelectState extends SuffState {
 				// name: '???',
 				// description: 'Not sure who to choose? Let the game decide.',
 				skills: [],
-				modifiers: [],
 				maxPressure: 0,
 				maxConfidence: 0
 			};

@@ -2,7 +2,6 @@
 	"cardDisplayedKey": "character.shibanou.name",
 	"maxPressure": 4,
 	"maxConfidence": 7,
-	"modifiers": {},
 	"skills": [
 		{
 			"id": "sabotage",

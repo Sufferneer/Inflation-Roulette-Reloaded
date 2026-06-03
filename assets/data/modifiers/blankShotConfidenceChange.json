@@ -1,6 +1,0 @@
-{
-	"name": "Confidence change on blank shot",
-	"format": "number",
-	"sentence": "%s confidence on blank shot",
-	"badWhenNegative": true
-}

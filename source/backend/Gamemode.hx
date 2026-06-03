@@ -24,8 +24,6 @@ class Gamemode {
 	public var skillsReplenishCountOnLive:Int = 0;
 	public var skillsReplenishCountOnBlank:Int = 0;
 
-	public var playerCount:Int = 4;
-
 	public var scoreWinBonusMultiplier:Float = 1;
 	public var scoreEdgingBonusMultiplierRange:Array<Float> = [0.5, 1.0];
 	public var scoreEdgingBonusMultiplier:Float = 1;
@@ -72,9 +70,6 @@ class Gamemode {
 			this.skillsRandomPool = Paths.readDirectories('data/skills', 'data/skills/skillList.txt', 'json');
 		if (rawData.skillsCostMultiplier != null)
 			this.skillsCostMultiplier = rawData.skillsCostMultiplier;
-
-		if (rawData.playerCount != null)
-			this.playerCount = Std.int(FlxMath.bound(rawData.playerCount, 2, 6));
 
 		if (rawData.scoreWinBonusMultiplier != null)
 			this.scoreWinBonusMultiplier = Math.max(0, rawData.scoreWinBonusMultiplier);

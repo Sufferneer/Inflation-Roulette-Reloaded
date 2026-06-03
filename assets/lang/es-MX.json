@@ -295,11 +295,6 @@
 	"gamemode.classic.description": "Verdadera aleatoriedad y sabotaje sin fin.\nLa forma original de jugar el juego.",
 	"gamemode.charge.name": "Cargado",
 	"gamemode.charge.description": "El daño aumenta con cada cartucho vacío.\nJuego arriesgado y gratificante.",
-	"gamemode.1v1.name": "Uno a uno",
-	// Contexto: Un compañero mío sugirió esto.
-	"gamemode.1v1.description": "Dos jugadores; una pistola.\nSugerido por un infeliz.",
-	"gamemode.sixPlayers.name": "Caos",
-	"gamemode.sixPlayers.description": "¡Demasiada gente!\n¡Lucha contra otros cinco jugadores a la vez!",
 	
 	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "ELIGE A TU CAMPEÓN",
@@ -318,7 +313,6 @@
 	"characterSelect.option.skillLevel.3": "Estratega",
 	// Este texto aparece cuando hay más de 1 personaje controlado por el jugador.
 	// Evita que el jugador haga trampa
-	"characterSelect.cantEarnAchievements": "No puedes obtener logros con estas configuraciones.",
 	
 	// Goober: Una especie animal presente en el Inflation Roulette original.
 	// Parece un felino, pero no se comporta exactamente como uno. No sé, pregúntale a Snowyboi jaja
@@ -391,8 +385,6 @@
 	"stats.confidence": "Confianza",
 	"stats.skill": "Habilidad",
 	"stats.skills": "Habilidades",
-	"stats.modifier": "Modificador",
-	"stats.modifiers": "Modificadores",
 	
 	// Be the last player standing in a match.
 	"achievement.firstWin.name": "Primera Victoria",

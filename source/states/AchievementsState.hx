@@ -8,6 +8,9 @@ import ui.objects.AchievementPlaque;
 import ui.objects.AchievementProgressBar;
 import ui.objects.SuffIconButton;
 import objects.particleEmitters.SparkleEmitter;
+#if FLX_ACCELEROMETER
+import openfl.sensors.Accelerometer;
+#end
 
 class AchievementsState extends SuffState {
 	var enableInput:Bool = false;
@@ -56,14 +59,14 @@ class AchievementsState extends SuffState {
 		bg.scrollFactor.set(0.8, 0);
 		add(bg);
 
-		add(plaques);
-
 		spotlight = new FlxSprite().loadGraphic(Paths.image('ui/menus/achievements/spotlight'));
 		spotlight.alpha = 0.375;
 		if (!Preferences.data.decreaseDetail)
 			spotlight.blend = ADD;
 		spotlight.visible = false;
 		add(spotlight);
+
+		add(plaques);
 
 		add(shelves);
 		var num:Int = 0;
@@ -314,8 +317,14 @@ class AchievementsState extends SuffState {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		cameraPos.x = FlxG.width / 2 + (FlxG.mouse.getScreenPosition().x - FlxG.width / 2) / 32;
-		cameraPos.y = FlxG.height / 2 + (FlxG.mouse.getScreenPosition().y - FlxG.height / 2) / 16;
+		#if FLX_ACCELEROMETER
+		if (FlxG.accelerometer.isSupported) {
+			cameraPos.x = FlxG.width / 2 + (FlxG.accelerometer.x) * 64;
+			cameraPos.y = FlxG.height / 2 + (FlxG.accelerometer.y) * 32;
+		} else #end {
+			cameraPos.x = FlxG.width / 2 + (FlxG.mouse.getScreenPosition().x - FlxG.width / 2) / 32;
+			cameraPos.y = FlxG.height / 2 + (FlxG.mouse.getScreenPosition().y - FlxG.height / 2) / 16;
+		}
 
 		cameraPosLerped.x = FlxMath.lerp(cameraPosLerped.x, cameraPos.x - cameraPosOffset.x, elapsed * 8);
 		cameraPosLerped.y = FlxMath.lerp(cameraPosLerped.y, cameraPos.y - cameraPosOffset.y, elapsed * 8);

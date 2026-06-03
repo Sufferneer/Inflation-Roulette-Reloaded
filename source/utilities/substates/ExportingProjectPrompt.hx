@@ -131,8 +131,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 			id: characterID,
 			maxPressure: CharacterCreatorState.spriteData.maxPressure,
 			maxConfidence: CharacterCreatorState.spriteData.maxConfidence,
-			skills: convertSkillData(CharacterCreatorState.spriteData.skills),
-			modifiers: []
+			skills: convertSkillData(CharacterCreatorState.spriteData.skills)
 		};
 		var cosmetic:CharacterCosmeticData = {
 			spriteSheets: [for (i in 0...curSpriteSheet) '$i'],
@@ -309,17 +308,20 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 					if (animData.keyframes.contains(i)) {
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-						secPointer.x += 150;
+						if (i != 0)
+							secPointer.x += 150;
 					}
 				}
 			case 'cardCharSelected':
 				var leAnimName:String = 'selected';
+				secPointer.x += 150;
 				for (i in 0...animData.numFrames) {
 					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 					if (animData.keyframes.contains(i)) {
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-						secPointer.x += 150;
+						if (i != 0)
+							secPointer.x += 150;
 					}
 				}
 				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/cards/$characterID', 'character');
@@ -331,29 +333,33 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				secBitmap = what[0];
 				secXML = what[1];
 				for (i in 0...animData.numFrames) {
-					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 320, 468);
 					if (animData.keyframes.contains(i)) {
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
+						if (i > 0)
+							secPointer.x += 320;
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-						secPointer.x += 320;
 					}
+					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 320, 468);
+					trace(exportingAnim, i, secPointer);
 				}
 			case 'bannerBlink':
 				var leAnimName:String = 'idle';
+				secPointer.x += 320;
 				for (i in 0...animData.numFrames) {
-					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 320, 468);
 					if (animData.keyframes.contains(i)) {
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
+						if (i > 0)
+							secPointer.x += 320;
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-						secPointer.x += 320;
 					}
+					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 320, 468);
+					trace(exportingAnim, i, secPointer);
 				}
 				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/banners', '$characterID');
 			default:
 				var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/0.png');
 				var prevKeyframe:Int = -1;
 				for (i in 0...animData.numFrames) {
-					trace(exportingAnim, i);
 					if (baseBitmapSpritesLeft - animData.keyframes.length < 0) {
 						exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
 						trace(exportingAnim, 'new spritesheet!!!');
@@ -390,6 +396,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 					baseBitmap.copyPixels(sprite, sprite.rect, basePointer);
 					// Yeah it copies every frame but it works
 					baseXML = insertLineInXML(baseXML, exportingAnim, i, basePointer.x, basePointer.y, sprite.width, sprite.height);
+					trace(exportingAnim, i, secPointer);
 				}
 				var exportedAnimData:AnimationData = {
 					name: exportingAnim,
@@ -410,6 +417,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	}
 
 	function sucessfulExport() {
+		Achievements.advanceProgress('exportCharacterProject', [true]);
 		openSubState(new GenericPrompt(Language.getPhrase('characterCreator.exportSuccessful.prompt', [exportPath + '/' + projectName]), function() {
 			close();
 		}));

@@ -2,7 +2,6 @@
 	"cardDisplayedKey": "character.chester.name",
 	"maxPressure": 5,
 	"maxConfidence": 6,
-	"modifiers": {},
 	"skills": [
 		{
 			"id": "reload",

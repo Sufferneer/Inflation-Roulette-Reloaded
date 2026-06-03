@@ -7,6 +7,7 @@ import backend.GameplayManager;
 import states.CharacterSelectState;
 import ui.objects.SuffBox;
 import ui.objects.SuffIconButton;
+import ui.objects.SuffSliderOption;
 
 class GamemodeSelectSubState extends SuffSubState {
 	var exitButton:SuffIconButton;
@@ -16,6 +17,7 @@ class GamemodeSelectSubState extends SuffSubState {
 	var gameModeArt:FlxSprite;
 	var light:FlxSprite;
 	var lightColorTween:FlxTween;
+	var playerCountSlider:SuffSliderOption;
 
 	var grpButtons:FlxTypedContainer<SuffButton> = new FlxTypedContainer<SuffButton>();
 
@@ -43,10 +45,19 @@ class GamemodeSelectSubState extends SuffSubState {
 		gameModeArt.visible = false;
 		add(gameModeArt);
 
-		var box:SuffBox = new SuffBox(40 + ScreenSafeZone.X, 80 + ScreenSafeZone.Y, FlxG.width / 2 - 40 - ScreenSafeZone.X, FlxG.height - 120 - ScreenSafeZone.Y * 2);
+		var box:SuffBox = new SuffBox(40 + ScreenSafeZone.X, 80 + ScreenSafeZone.Y, FlxG.width / 2 - 40 - ScreenSafeZone.X, FlxG.height - 120 - ScreenSafeZone.Y * 2 - 96);
 		add(box);
 
-		var boxRect:FlxRect = new FlxRect(box.x, box.y, box.width, box.height);
+		playerCountSlider = new SuffSliderOption(20, 20, function(value:Float) {}, 2, 6, 1, function(value:Float) {
+			return Language.getPhrase('gamemodeSelect.setting.format', [Language.getPhrase('gamemodeSelect.playerCount'), Std.int(value)]);
+		}, 4);
+
+		playerCountSlider.x = box.x + (box.width - playerCountSlider.width) / 2;
+		playerCountSlider.y = FlxG.height - playerCountSlider.height - 20;
+
+		add(playerCountSlider);
+
+		// var boxRect:FlxRect = new FlxRect(box.x, box.y, box.width, box.height);
 
 		add(grpButtons);
 
@@ -56,8 +67,8 @@ class GamemodeSelectSubState extends SuffSubState {
 		if (fileList.length > 4)
 			buttonCount.x = 2;
 		buttonCount.y = Math.ceil(fileList.length / buttonCount.x);
-		var buttonSize:FlxPoint = new FlxPoint((boxRect.width - buttonMargin.x * 2 - buttonPadding.x * (buttonCount.x - 1)) / buttonCount.x,
-			(boxRect.height - buttonMargin.y * 2 - buttonPadding.y * (buttonCount.y - 1)) / buttonCount.y);
+		var buttonSize:FlxPoint = new FlxPoint((box.width - buttonMargin.x * 2 - buttonPadding.x * (buttonCount.x - 1)) / buttonCount.x,
+			(box.height - buttonMargin.y * 2 - buttonPadding.y * (buttonCount.y - 1)) / buttonCount.y);
 		// base size is 48, adjusted to correct to nearest 16.
 
 		for (i => id in fileList) {
@@ -65,8 +76,8 @@ class GamemodeSelectSubState extends SuffSubState {
 			var leGamemode:Gamemode = new Gamemode(ID);
 
 			var leButton:SuffButton = new SuffButton(0, 0, Language.getPhrase('gamemode.$ID.name'), null, null, buttonSize.x, buttonSize.y);
-			leButton.x = boxRect.x + buttonMargin.x + (buttonPadding.x + buttonSize.x) * (i % buttonCount.x);
-			leButton.y = boxRect.y + buttonMargin.y + (buttonPadding.y + buttonSize.y) * Std.int(i / buttonCount.x);
+			leButton.x = box.x + buttonMargin.x + (buttonPadding.x + buttonSize.x) * (i % buttonCount.x);
+			leButton.y = box.y + buttonMargin.y + (buttonPadding.y + buttonSize.y) * Std.int(i / buttonCount.x);
 			leButton.btnBGColorHovered = leButton.btnBGColorClicked = leGamemode.color;
 			leButton.tooltipText = Language.getPhrase('gamemode.$ID.description');
 			leButton.onHover = function() {
@@ -113,17 +124,18 @@ class GamemodeSelectSubState extends SuffSubState {
 
 	function goGoGadgetGamemode(gamemode:Gamemode) {
 		leaving = true;
+		CharacterManager.setPlayerCount(Std.int(playerCountSlider.currentValue));
 		switch (gamemode.id) {
 			case 'quickPlay':
 				GameplayManager.currentGamemode = GameplayManager.defaultGamemode;
 				GameplayManager.currentStage = FlxG.random.getObject(GameplayManager.globalStageList);
-				CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
+				// CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
 				var leRandom = [];
 				var leCPUControl = [];
 				for (num => i in CharacterManager.selectedCharacterList) {
 					leRandom.push('random');
 					leCPUControl.push(true);
-					CharacterManager.cpuLevel[num] = FlxG.random.int(1, 3);
+					CharacterManager.cpuLevel[num] = FlxG.random.int(Constants.CPU_SKILL_LIMIT[0], Constants.CPU_SKILL_LIMIT[1]);
 				}
 				leCPUControl[FlxG.random.int(0, leCPUControl.length - 1)] = false;
 				CharacterManager.selectedCharacterList = leRandom;
@@ -135,7 +147,7 @@ class GamemodeSelectSubState extends SuffSubState {
 				openSubState(new GameOnSubState(new PlayState()));
 			default:
 				GameplayManager.currentGamemode = gamemode;
-				CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
+				// CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
 				SuffState.switchState(new CharacterSelectState());
 		}
 		trace('Current gamemode: ', GameplayManager.currentGamemode);

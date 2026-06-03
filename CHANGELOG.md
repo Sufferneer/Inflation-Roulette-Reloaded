@@ -7,10 +7,22 @@ Minor updates will be referred to as _Pitstops_.
 
 ## v3.0.0 - A Lil' Something Portable - 2026-05-21
 ### Additions
+#### Gameplay
+- New achievements:
+  - Not Enough Air
+  - Reverse Russian Roulette
+  - Quick Draw
+  - Lovesick
+  - ??????, ??????, ??????!
+  - True Singleplayer
+  - Mind Games
+  - ? ?????? ???? ?? ???????
+  - Utilizer
+- Player count slider in Gamemode Select Screen.
 #### Cosmetic
 - A bunch of visual effects.
 #### Localization
-- Added Catalan and Spanish (Mexico) translations.
+- Catalan and Spanish (Mexico) translations.
 #### Quality of Life
 - Exit button in Character Select
 #### Technical
@@ -37,11 +49,18 @@ Minor updates will be referred to as _Pitstops_.
 - Forced Aliasing now renamed to _Forced Pixelation_ to avoid confusion.
 #### Gameplay
 - Quick Play now randomizes the human player's position.
+- Player count is now unaffected by game mode.
 #### Technical
 - All changelogs are now kept in one file.
 - Skill Cards now only uses one file
+- VRAM Caching is now off by default.
 #### Utilities
 - Character Editor now generates addon metadata and localization files for you.
+### Removals
+#### Gameplay
+- Removed Modifiers
+  - Since this feature is under-utilized and not expanded upon, modifiers no longer have any effect.
+- Removed Stand-Off and Mayhem
 ### Fixes
 - Scroll bars, Gallery Image View, Credits menu, and Options sliders snaps elements in place on touchscreens.
 - Blurry Cobalt crashes the game.

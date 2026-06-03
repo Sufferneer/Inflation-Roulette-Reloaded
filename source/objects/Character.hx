@@ -3,10 +3,8 @@ package objects;
 import backend.GameplayManager;
 import backend.typedefs.CharacterData;
 import backend.typedefs.CharacterCosmeticData;
-import backend.typedefs.ModifierData;
 import backend.typedefs.SkillData;
 import flixel.graphics.frames.FlxAtlasFrames;
-import backend.Modifier;
 import backend.Skill;
 import states.PlayState;
 import tjson.TJSON as Json;
@@ -40,7 +38,6 @@ class Character extends FlxSprite {
 	public var skillUseCount:Int = 0;
 	public var canUseSkills:Bool = true;
 
-	public var modifiers:Array<Modifier> = [];
 	public var skills:Array<Skill> = [];
 
 	public var cpuControlled:Bool = true;
@@ -147,16 +144,6 @@ class Character extends FlxSprite {
 		disablePopping = !(!spriteJson.disablePopping);
 		poppingGravityMultiplier = spriteJson.poppingGravityMultiplier;
 
-		var modifiersArray:Array<ModifierData> = json.modifiers;
-		if (modifiersArray != null && modifiersArray.length > 0) {
-			for (modifier in modifiersArray) {
-				var modifierID:String = '' + modifier.id;
-				var modifierValue:Float = modifier.value;
-				modifiers.push(new Modifier(modifierID, modifierValue));
-			}
-		}
-		parseModifiers();
-
 		var skillsArray:Array<SkillData> = json.skills;
 		if (skillsArray != null && skillsArray.length > 0) {
 			for (skill in skillsArray) {
@@ -248,17 +235,6 @@ class Character extends FlxSprite {
 				var offsets = getParticleOffset('over');
 				FlxG.state.add(new Swirl(this.x + offsets.x + FlxG.random.float(-1, 1) * this.width / 5, this.y + offsets.y + FlxG.random.float() * this.height / 5, 0xFFC040FF));
 				swirlSpawnTimer = FlxG.random.float();
-			}
-		}
-	}
-
-	public function parseModifiers() {
-		for (modifier in modifiers) {
-			switch (modifier.id) {
-				case 'liveShotConfidenceChange':
-					confidenceChangeOnLiveShot += Std.int(modifier.value);
-				case 'blankShotConfidenceChange':
-					confidenceChangeOnBlankShot += Std.int(modifier.value);
 			}
 		}
 	}

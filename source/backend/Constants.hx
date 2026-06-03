@@ -74,6 +74,7 @@ class Constants {
 	 * 1st value is width, 2nd value is height
 	 */
 	public static final CHARACTER_CARD_DIMENSIONS:Array<Int> = [150, 200];
+	public static final CPU_SKILL_LIMIT:Array<Int> = [1, 3];
 
 	#if (_ALLOW_EASTER_EGGS && !mobile)
 	public static final EASTER_EGG_INPUTS:Array<String> = ['imhighoncrack', 'blueberryhelium', 'roomoneohone', 'ibeesbees'];

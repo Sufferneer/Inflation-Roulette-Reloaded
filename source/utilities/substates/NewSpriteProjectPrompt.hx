@@ -34,10 +34,10 @@ class NewSpriteProjectPrompt extends UtilitiesBaseMenuSubState {
 		name = new FlxUIInputText(text.x + text.width + 32, text.y, 320, Language.getPhrase('utilitiesMenu.placeholder'), 32);
 		add(name);
 
-		if (FlxG.save.data.defaultAuthorName == null) {
-			FlxG.save.bind('editor', Utilities.getSavePath());
-			FlxG.save.data.defaultAuthorName = Utilities.getUsername();
-			FlxG.save.bind('game', Utilities.getSavePath());
+		var save:FlxSave = new FlxSave();
+		save.bind('editor', Utilities.getSavePath());
+		if (save.data.defaultAuthorName == null) {
+			save.data.defaultAuthorName = Utilities.getUsername();
 		}
 
 		var text:FlxText = new FlxText(text.x, text.y + text.height + 32, 0, Language.getPhrase('characterCreator.parameter.author'), 32);
@@ -101,9 +101,9 @@ class NewSpriteProjectPrompt extends UtilitiesBaseMenuSubState {
 				FileSystem.createDirectory('projects');
 			}
 			var projectName:String = name.text + ' - ' + author.text;
-			FlxG.save.bind('editor', Utilities.getSavePath());
-			FlxG.save.data.defaultAuthorName = author.text;
-			FlxG.save.bind('game', Utilities.getSavePath());
+			var save:FlxSave = new FlxSave();
+			save.bind('editor', Utilities.getSavePath());
+			save.data.defaultAuthorName = author.text;
 			FileSystem.createDirectory('projects/$projectName');
 			FileSystem.createDirectory('projects/$projectName/anims');
 			FileSystem.createDirectory('projects/$projectName/sprites');
@@ -121,9 +121,9 @@ class NewSpriteProjectPrompt extends UtilitiesBaseMenuSubState {
 			File.saveContent('projects/$projectName/spriteData.json', Json.stringify(spriteData, '\t'));
 
 			var path = '${Utilities.getExecutablePath()}\\projects\\$projectName';
-			FlxG.save.data.lastOpenedProject = path;
+			save.data.lastOpenedProject = path;
 			trace('Opening project: ' + FlxG.save.data.lastOpenedProject);
-			FlxG.save.flush();
+			save.flush();
 			UtilitiesBaseMenuState.loadedPath = path;
 			SuffState.switchState(new CharacterCreatorState());
 		} catch(e:Dynamic) {

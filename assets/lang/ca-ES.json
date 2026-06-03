@@ -299,11 +299,6 @@
 	"gamemode.classic.description": "Veritable aleatorietat i sabotatge sense parar.\nLa manera original de jugar.",
 	"gamemode.charge.name": "Càrrega",
 	"gamemode.charge.description": "Dany augmenta amb cada tret sense bala.\nJoc arriscat i gratificant.",
-	"gamemode.1v1.name": "Enfrontament",
-	// Context: A classmate of mine suggested this.
-	"gamemode.1v1.description": "Dos jugadors; una pistola.\nSuggerit per un grassonàs.",
-	"gamemode.sixPlayers.name": "Caos",
-	"gamemode.sixPlayers.description": "Un hextuple estrall!\nLluita contra cinc jugadors més alhora!",
 	
 	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "ESCOLLIR VOSTRES MÈDIUMS",
@@ -322,7 +317,6 @@
 	"characterSelect.option.skillLevel.3": "Estratègic",
 	// This text appears when more than 1 player-controlled characters are present.
 	// Prevents player from cheating
-	"characterSelect.cantEarnAchievements": "No pots obtenir assoliments amb aquesta configuració.",
 	
 	// Goober: A character species present in the original Inflation Roulette.
 	// Looks like a feline, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
@@ -396,8 +390,6 @@
 	"stats.confidence": "Confiança",
 	"stats.skill": "Habilitat",
 	"stats.skills": "Habilitats",
-	"stats.modifier": "Modificador",
-	"stats.modifiers": "Modificadors",
 	
 	// Be the last player standing in a match.
 	"achievement.firstWin.name": "Primera victòria",

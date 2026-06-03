@@ -290,8 +290,10 @@
 	"languageMenu.description": "Note: Translations may not be 100% accurate, and may contain mistranslations or untranslated text. If you want to help improve the translations, please consider contributing to our GitHub repository.",
 	"languageMenu.contributors": "Contributors",
 	"languageMenu.completion": "%1 Complete",
-	
+
 	"gamemodeSelect.title": "SELECT GAMEMODE",
+	"gamemodeSelect.playerCount": "Players",
+	"gamemodeSelect.setting.format": "%1: %2",
 	"gamemode.quickPlay.name": "Quick Play",
 	"gamemode.quickPlay.description": "Random characters.\nStraight ahead. No fuzz.",
 	// Reloaded should remain untranslated (transliterate if not Latin script)
@@ -303,11 +305,6 @@
 	"gamemode.classic.description": "True randomness and sabotage endlessly.\nThe original way of playing the game.",
 	"gamemode.charge.name": "Charge",
 	"gamemode.charge.description": "Damage increases with each blank shot.\nRisky and rewarding gameplay.",
-	"gamemode.1v1.name": "Stand-Off",
-	// Context: A classmate of mine suggested this.
-	"gamemode.1v1.description": "Two players; one gun.\nSuggested by a lard ass.",
-	"gamemode.sixPlayers.name": "Mayhem",
-	"gamemode.sixPlayers.description": "Hextuple havoc!\nFight against five other players at a time!",
 	
 	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "CHOOSE YOUR VESSELS",
@@ -326,7 +323,7 @@
 	"characterSelect.option.skillLevel.3": "Strategic",
 	// This text appears when more than 1 player-controlled characters are present.
 	// Prevents player from cheating
-	"characterSelect.cantEarnAchievements": "You cannot earn achievements with these settings.",
+	"characterSelect.cantEarnAchievements": "You cannot earn most achievements with these settings.",
 	
 	// Goober: A character species present in the original Inflation Roulette.
 	// Looks like a feline, or a canine, or something, but doesn't exactly behave like one. IDK ask Snowyboi ig lmao
@@ -399,8 +396,6 @@
 	"stats.confidence": "Confidence",
 	"stats.skill": "Skill",
 	"stats.skills": "Skills",
-	"stats.modifier": "Modifier",
-	"stats.modifiers": "Modifiers",
 	
 	// Be the last player standing in a match.
 	"achievement.firstWin.name": "First Victory",
@@ -438,27 +433,33 @@
 	// Accumulate 10000 Dongs in the Main Menu.
 	"achievement.noLife.name": "Absolutely Jobless",
 	"achievement.noLife.description": "Waste your life away for no reason. You have been branded, marked permanently.",
-	"achievement.rarePolarizeSuccess.name": "Reverse Russian Roulette ",
+	"achievement.rarePolarizeSuccess.name": "Reverse Russian Roulette",
 	"achievement.rarePolarizeSuccess.description": "You know this skill is risky, especially when it's a fresh batch of bullets, but miraculously you made it work.",
 	// Use Polarize when there are 6 bullets in the chamber, and not inflate yourself.
 	"achievement.eliminateByAssault.name": "Quick Draw",
 	"achievement.eliminateByAssault.description": "A person on the verge of defeat must be dealt with swiftly... using a more direct method.",
 	// Eliminate a player via Assault.
+	"achievement.intentionalLoseByPolarize.name": "Lovesick",
+	"achievement.intentionalLoseByPolarize.description": "You know you're safe; you know you're at your limit; you know it's gonna make you lose; yet you still put yourself in danger? You horny or something?",
+	// Eliminate yourself after using Reveal and Polarize.
 	"achievement.findCameraman.name": "Lights, Camera, Action!",
-	"achievement.findCameraman.description": "Have you seen the cameraman before?",
+	"achievement.findCameraman.description": "OMGWTFBBQ COBALT REAL??",
 	// Meet Cobalt. (1/128 probability)
 	"achievement.winByYourself.name": "True Singleplayer",
 	"achievement.winByYourself.description": "\"If you know yourself, you need not fear the result of a hundred battles.\" - The Art of War, probably.",
 	// Win a game against yourself (All players are human and only one player uses a skill)
 	"achievement.winAgainstStrategicCPUs.name": "Mind Games",
 	"achievement.winAgainstStrategicCPUs.description": "Not gonna lie the bots aren't very smart either, but seeing everyone raging over these freaks, nice job.",
-	// Win a game with every CPU set to its highest skill level.
+	// Win a game with every CPU set to their highest skill level.
 	"achievement.nineTwentyOne.name": "9 Deaths with 21 Injured",
 	"achievement.nineTwentyOne.description": "You seein' this? That's the type of image that gets worse when you see 'em.",
 	// Play at exactly 9:21 PM, a random stupid image will flash on-screen briefly.
 	"achievement.exportCharacterProject.name": "Utilizer",
 	"achievement.exportCharacterProject.description": "Construct your own vessel using the Migrational Order Directive utility program.",
 	// Export your first character creator project.
+	"achievement.liveShots.name": "Not Enough Air",
+	"achievement.liveShots.description": "A single .357 Magnum bullet costs about 15¢ to make, but retail prices ranges from 60¢ to $1.40. Now imagine firing 100 of them.",
+	// Get shot 600 times with a blank round.
 	
 	"achievementsMenu.title": "Your achievements",
 	"achievementsMenu.description": "Select an achievement to view its details and completion status.",

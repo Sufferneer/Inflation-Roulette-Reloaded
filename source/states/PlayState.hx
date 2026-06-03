@@ -180,6 +180,7 @@ class PlayState extends SuffState {
 		add(pumpGun);
 
 		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 64 * 100)) {
+			Achievements.advanceProgress('findCameraman', [true]);
 			var cobalt:FlxSprite = new FlxSprite();
 			cobalt.frames = Paths.sparrowAtlas('game/cobalt');
 			cobalt.animation.addByPrefix('appear', 'appear', 24, false);
@@ -577,6 +578,9 @@ class PlayState extends SuffState {
 		return characterGroup.members[index];
 	}
 
+	var luckyPolarize:Bool = false;
+	var playerUsedPolarize:Bool = false;
+
 	public function activateSkill(playerIndex:Int, skillIndex:Int) {
 		var skill = getPlayer(playerIndex).currentSkills[skillIndex];
 		if (skill == null) {
@@ -650,6 +654,11 @@ class PlayState extends SuffState {
 					Achievements.advanceProgress('doublePressurize', [true]);
 			case 'polarize':
 				cylinderContent[0] = !cylinderContent[0];
+				if (!getPlayer(playerIndex).cpuControlled) {
+					playerUsedPolarize = true;
+					if (!cylinderContent[0] && cylinderContent.length >= GameplayManager.currentGamemode.cylinderSize && !GameplayManager.currentGamemode.cylinderTrueRandomness)
+						luckyPolarize = true;
+				}
 			case 'deflate':
 				getPlayer(playerIndex).currentPressure -= 1;
 				if (getPlayer(playerIndex).currentPressure < 0) {
@@ -716,6 +725,11 @@ class PlayState extends SuffState {
 					if (!Preferences.data.decreaseDetail) {
 						var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill').x, getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill').y, stage.data.characterY, cylinderContent[0]);
 						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+					}
+					if (!getPlayer(attackerIndex).cpuControlled) {
+						Achievements.advanceProgress('liveShots', [1]);
+						if (getPlayer(victimIndex).currentPressure + liveRoundDamage > getPlayer(victimIndex).maxConfidence)
+							Achievements.advanceProgress('eliminateByAssault', [true]);
 					}
 					shoot(victimIndex, false);
 					pumpGun.visible = true;
@@ -806,6 +820,8 @@ class PlayState extends SuffState {
 			FlxG.sound.music.pause();
 		}
 		if (dealDamage) {
+			if (!getPlayer(playerIndex).cpuControlled)
+				Achievements.advanceProgress('liveShots', [1]);
 			SuffState.playSound(Paths.sound('game/shootLive'));
 			getPlayer(playerIndex).currentPressure += 1;
 			getPlayer(playerIndex).currentConfidence += getPlayer(playerIndex).confidenceChangeOnLiveShot;
@@ -858,15 +874,18 @@ class PlayState extends SuffState {
 
 		if (passToPlayer) {
 			getPlayer(playerIndex).currentConfidence = Std.int(FlxMath.bound(getPlayer(playerIndex).currentConfidence, 0, getPlayer(playerIndex).maxConfidence));
-			revealCylinderContents = false;
 			getPlayer(playerIndex).cpuSabotageVictim = false;
 			doTimer('playerChangeTurn', new FlxTimer().start(getPlayer(playerIndex).getCurAnimLength(), function(_:FlxTimer) {
 				if (getPlayer(playerIndex).currentPressure > getPlayer(playerIndex).maxPressure) {
 					eliminatePlayer(playerIndex, 1);
+					if (revealCylinderContents && playerUsedPolarize)
+						Achievements.advanceProgress('intentionalLoseByPolarize', [true]);
 				} else {
 					FlxG.sound.music.resume();
 					changeTurn(1);
 				}
+				playerUsedPolarize = false;
+				revealCylinderContents = false;
 			}));
 		} else {
 			getPlayer(playerIndex).playAnim('shocked', true, true);
@@ -879,6 +898,11 @@ class PlayState extends SuffState {
 				}));
 			}
 		}
+
+		if (luckyPolarize) {
+			Achievements.advanceProgress('rarePolarizeSuccess', [true]);
+		}
+		luckyPolarize = false;
 	}
 
 	function checkToReloadCylinder() {
@@ -972,9 +996,18 @@ class PlayState extends SuffState {
 		focusCameraOnStage();
 		cameraFocusButton.visible = false;
 
+		var allCPU:Bool = true;
+		var allCpuDidntUseSkill:Bool = true;
+		var allCpuAtHighestLevel:Bool = true;
 		for (num => char in characterGroup) {
-			if (char.cpuControlled || char.getPressurePercentage() > 1)
+			if (char.cpuControlled || char.getPressurePercentage() > 1) {
+				allCPU = false;
+				if (char.skillUseCount > 0)
+					allCpuDidntUseSkill = false;
+				if (char.cpuSkillLevel != Constants.CPU_SKILL_LIMIT[1])
+					allCpuAtHighestLevel = false;
 				continue;
+			}
 
 			Achievements.advanceProgress('firstWin', [true]);
 			Achievements.advanceProgress('allGameModeWins', [GameplayManager.currentGamemode.id]);
@@ -982,6 +1015,14 @@ class PlayState extends SuffState {
 			if (char.getPressurePercentage() <= 0)
 				Achievements.advanceProgress('noPressureWin', [true]); else if (char.getPressurePercentage() == 1)
 				Achievements.advanceProgress('fullPressureWin', [true]);
+
+			if (allCPU) {
+				if (allCpuAtHighestLevel)
+					Achievements.advanceProgress('winAgainstStrategicCPUs', [true]);
+			} else {
+				if (allCpuDidntUseSkill)
+					Achievements.advanceProgress('winByYourself', [true]);
+			}
 		}
 
 		doTimer('confettiTimer', new FlxTimer().start(0.5, function(_:FlxTimer) {

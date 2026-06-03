@@ -36,7 +36,9 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 				FlxG.save.data.hasOpenedUtilitiesMenu = true;
 				openWarningPrompt();
 			}
-			playRandomMusic();
+			FlxG.sound.music.onComplete = function() {
+				playRandomMusic();
+			};
 		}
 
 		var warningButton:SuffIconButton = new SuffIconButton(10, 10, 'buttons/warning', 2);
@@ -54,13 +56,17 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 	function buttonFunctions(name:String) {
 		switch (name) {
 			case 'characterCreator':
+				var save:FlxSave = new FlxSave();
+				save.bind('editor', Utilities.getSavePath());
+				if (save.data.lastOpenedProject == null)
+					save.data.lastOpenedProject = '';
 				LoadDirectoryPrompt.loadFileFunction = function(path:String) {
 					try {
 						if (!FileSystem.exists(path + '/' + 'metadata.json') || !FileSystem.exists(path + '/' + 'spriteData.json'))
 							throw {message: 'This folder is not a valid Sprite Project Folder.'};
-						FlxG.save.data.lastOpenedProject = path;
-						trace('Opening project: ' + FlxG.save.data.lastOpenedProject);
-						FlxG.save.flush();
+						save.data.lastOpenedProject = path;
+						trace('Opening project: ' + save.data.lastOpenedProject);
+						save.flush();
 						UtilitiesBaseMenuState.loadedPath = path;
 						SuffState.switchState(new CharacterCreatorState());
 					} catch(e:Dynamic) {
@@ -70,14 +76,13 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 				LoadDirectoryPrompt.newFileFunction = function() {
 					openSubState(new NewSpriteProjectPrompt());
 				}
-				var what = FlxG.save.data.lastOpenedProject;
-				if (FlxG.save.data.lastOpenedProject == null || !FileSystem.exists(what)) {
-					FlxG.save.data.lastOpenedProject = Utilities.getExecutablePath() + '\\projects\\';
+				if (save.data.lastOpenedProject == null || !FileSystem.exists(save.data.lastOpenedProject)) {
+					save.data.lastOpenedProject = Utilities.getExecutablePath() + '\\projects\\';
 				}
-				if (!FileSystem.exists(what)) {
-					FlxG.save.data.lastOpenedProject = Utilities.getExecutablePath();
+				if (!FileSystem.exists(save.data.lastOpenedProject)) {
+					save.data.lastOpenedProject = Utilities.getExecutablePath();
 				}
-				openSubState(new LoadDirectoryPrompt(FlxG.save.data.lastOpenedProject));
+				openSubState(new LoadDirectoryPrompt(save.data.lastOpenedProject));
 			case 'stageEditor':
 				LoadFilePrompt.loadFileFunction = function(path:String) {
 					try {

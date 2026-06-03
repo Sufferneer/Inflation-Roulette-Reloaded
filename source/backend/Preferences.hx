@@ -27,7 +27,7 @@ class SaveVariables {
 	public var playCursorSounds:Bool = true;
 	public var enableBellyGurgles:Bool = false;
 	public var enableBellyCreaks:Bool = true;
-	public var cacheOnGPU:Bool = true;
+	public var cacheOnGPU:Bool = false;
 	public var showDebugText:Bool = false;
 	public var showFramerateOnDebugText:Bool = true;
 	public var showMemoryUsageOnDebugText:Bool = true;

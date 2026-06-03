@@ -20,7 +20,7 @@ import openfl.display.BitmapData;
 import backend.CharacterManager;
 
 class StageEditorState extends UtilitiesBaseMenuState {
-	public static final version:String = '1.0.0';
+	public static final version:String = '2.0.0';
 
 	public static var stageData:StageData;
 
