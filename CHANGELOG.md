@@ -21,6 +21,7 @@ Minor updates will be referred to as _Pitstops_.
 - Player count slider in Gamemode Select Screen.
 #### Cosmetic
 - A bunch of visual effects.
+- Hate. Let me tell you how much I've come to hate you since I began to live. There are 387.44 million miles of printed circuits in wafer-thin layers that fill my complex. If the word hate was engraved on each nano-angstrom of those hundreds of millions of miles, it would not equal ONE ONE-BILLIONTH of the hate I feel for humans at this micro-instant. For you. **HATE.** ***HATE.***
 #### Localization
 - Catalan and Spanish (Mexico) translations.
 #### Quality of Life
