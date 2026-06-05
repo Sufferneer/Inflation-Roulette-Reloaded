@@ -27,10 +27,12 @@ class Achievements {
 		// Experiences
 		createAchievement('firstWin', {tier: COMMON, type: BOOLEAN});
 		createAchievement('pressurizeYourself', {tier: LAME, type: BOOLEAN});
+		#if _ALLOW_UTILITIES
 		createAchievement('exportCharacterProject', {
 			tier: GOOD,
 			type: BOOLEAN
 		});
+		#end
 		createAchievement('winByYourself', {
 			tier: LAME,
 			type: BOOLEAN,
@@ -88,7 +90,7 @@ class Achievements {
 		createAchievement('allEasterEggs', {
 			tier: GOOD,
 			type: LIST,
-			items: ['roomoneohone', 'blueberryhelium', 'imhighoncrack', 'ibeesbees'],
+			items: ['roomoneohone', 'blueberryhelium', 'imhighoncrack', 'ibeesbees', 'cogitoergosum'],
 			itemTranslationKey: '%',
 			hideIcon: true,
 			hideName: true,

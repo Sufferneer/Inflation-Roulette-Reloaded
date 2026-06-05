@@ -3,7 +3,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="3.0.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="a.1" />
+	<set name="versionState" value="a.2" />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<!--The HaxeFlixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
