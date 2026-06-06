@@ -33,8 +33,9 @@ class CogitoErgoSumStartupState extends SuffState {
 
 		super.create();
 
-		for (i in 1...21) {
-			Paths.image('ui/menus/easterEggStartups/cogitoergosum/' + i);
+		if (!Preferences.data.decreaseDetail) {
+			for (i in 1...21)
+				Paths.image('ui/menus/easterEggStartups/cogitoergosum/' + i);
 		}
 
 		upThumbnails = new FlxSpriteContainer();
@@ -90,12 +91,14 @@ class CogitoErgoSumStartupState extends SuffState {
 		var black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		black.camera = camHUD;
 		add(black);
-		FlxTween.tween(black, {alpha: 0.25}, hateSpeech.length * 0.001);
+		FlxTween.tween(black, {alpha: 0.25}, 10);
 
 		skipTimer = new FlxTimer().start(hateSpeech.length * 0.001 - 6, function(_) {
 			FlxTween.tween(black, {alpha: 1}, 4, {
 				onComplete: function (_) {
 					new FlxTimer().start(2, function(_) {
+						if (!allowToSkip)
+							return;
 						FlxTransitionableState.skipNextTransIn = true;
 						SuffState.switchState(new MainMenuState());
 					});
@@ -158,9 +161,9 @@ class CogitoErgoSumStartupState extends SuffState {
 	}
 
 	function detach(member:FlxSprite) {
-		member.velocity.x = FlxG.random.int(-200, 200);
-		member.velocity.y = -FlxG.height + FlxG.random.int(-100, 100);
-		member.angularVelocity = FlxG.random.int(-45, 45);
+		member.velocity.x = FlxG.random.int(-320, 320);
+		member.velocity.y = -FlxG.height + FlxG.random.int(-360, 360);
+		member.angularVelocity = FlxG.random.int(-180, 180);
 		member.acceleration.y = FlxG.height * 4;
 	}
 
@@ -170,13 +173,15 @@ class CogitoErgoSumStartupState extends SuffState {
 		for (member in downThumbnails) {
 			if (member.y > FlxG.height + thumbnailHeight) {
 				member.y = -thumbnailHeight * 2;
-				member.loadGraphic(getRandomThumbnail());
+				if (!Preferences.data.decreaseDetail)
+					member.loadGraphic(getRandomThumbnail());
 			}
 		}
 		for (member in upThumbnails) {
 			if (member.y < -thumbnailHeight * 2) {
 				member.y = FlxG.height + thumbnailHeight;
-				member.loadGraphic(getRandomThumbnail());
+				if (!Preferences.data.decreaseDetail)
+					member.loadGraphic(getRandomThumbnail());
 			}
 		}
 		if (Controls.justPressed('exit') || Controls.justPressed('shoot') || FlxG.mouse.justPressed) {
