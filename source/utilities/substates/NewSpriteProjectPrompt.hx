@@ -116,7 +116,9 @@ class NewSpriteProjectPrompt extends UtilitiesBaseMenuSubState {
 				defaultDimensions: [Std.int(dimensionX.value), Std.int(dimensionY.value)],
 				defaultFramerate: Std.int(framerate.value),
 				maxPressure: Std.int(maxPressure.value),
-				skills: skills.text.split(',').map(item -> item.trim())
+				skills: skills.text.split(',').map(item -> item.trim()),
+				originPosition: [320, 560],
+				particleOffsets: []
 			};
 			File.saveContent('projects/$projectName/spriteData.json', Json.stringify(spriteData, '\t'));
 

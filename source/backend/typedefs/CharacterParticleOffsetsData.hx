@@ -1,7 +1,7 @@
 package backend.typedefs;
 
 typedef CharacterParticleOffsetsData = {
-	over:Array<Array<Float>>,
+	overhead:Array<Array<Float>>,
 	mouth:Array<Array<Float>>,
 	navel:Array<Array<Float>>,
 	gunShoot:Array<Array<Float>>,

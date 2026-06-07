@@ -1,12 +1,12 @@
 package utilities.typedefs;
-import backend.typedefs.CharacterParticleOffsetsData;
+import haxe.DynamicAccess;
 
-typedef SpriteProjectSpritedata = {
+typedef SpriteProjectSpriteJSON = {
     defaultFramerate:Int,
     defaultDimensions:Array<Int>,
     maxPressure:Int,
     maxConfidence:Int,
     skills:Array<String>,
     originPosition:Array<Float>,
-    particleOffsets:CharacterParticleOffsetsData
+    particleOffsets:DynamicAccess<Array<Array<Float>>>
 }

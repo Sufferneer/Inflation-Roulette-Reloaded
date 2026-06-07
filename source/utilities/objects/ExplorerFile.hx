@@ -3,7 +3,7 @@ package utilities.objects;
 import utilities.enums.ExplorerFileFileType;
 
 class ExplorerFile extends SuffButton {
-	public static final size:Int = 130;
+	public static final size:Int = 112;
 	var fileIcon:FlxSprite;
 	var fileNameTxt:FlxText;
 	var icon:FlxSprite;

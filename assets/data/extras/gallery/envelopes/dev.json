@@ -11,7 +11,14 @@
 		"jukeboxScreenLightsOld",
 		"jukeboxScreenGlyphsOld",
 		"spriteCreatorConceptArt",
-		"oldCursor"
+		"oldCursor",
+		"gooberOldSprite",
+		"gameCoverArtV1",
+		"gameCoverArtV2",
+		"colorPalette",
+		"inflationTypeConceptArt",
+		"1v1CoverArt",
+		"sixPlayersCoverArt"
 	],
 	"color": "#00C080",
 	"quotes": [

@@ -473,11 +473,11 @@
 	"poppingGravityMultiplier": 1.0,
 	"antialiasing": false,
 
-	"originPosition": [320, 570],
+	"originPosition": [320, 560],
 	"cameraOffset": [0, -320],
 	"poppedCameraOffset": [0, -120],
 	"particleOffsets": {
-		"over": [
+		"overhead": [
 			[0, -500],
 			[0, -500],
 			[0, -500],

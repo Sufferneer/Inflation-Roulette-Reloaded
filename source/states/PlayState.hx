@@ -342,7 +342,7 @@ class PlayState extends SuffState {
 		for (num => i in CharacterManager.cpuControlled) {
 			if (i) continue;
 			var player = getPlayer(num);
-			var offset = player.getParticleOffset('over');
+			var offset = player.getParticleOffset('overhead');
 			members.insert(members.indexOf(characterGroup) + 1, new PlayerIndicator(player.x + offset.x, player.y + offset.y, humanPlayer, humanPlayerCount == 1));
 			humanPlayer ++;
 		}
@@ -611,7 +611,7 @@ class PlayState extends SuffState {
 			actualAnimName = 'skill';
 		}
 		getPlayer(playerIndex).playAnim(actualAnimName);
-		var offsets = getPlayer(playerIndex).getParticleOffset('over');
+		var offsets = getPlayer(playerIndex).getParticleOffset('overhead');
 		members.insert(members.indexOf(getPlayer(playerIndex)), new SkillIndicator(getPlayer(playerIndex).x + offsets.x, getPlayer(playerIndex).y + offsets.y, skill.id));
 
 		switch (skill.id) {
@@ -732,7 +732,7 @@ class PlayState extends SuffState {
 							Achievements.advanceProgress('eliminateByAssault', [true]);
 					}
 					shoot(victimIndex, false);
-					pumpGun.visible = true;
+					pumpGun.visible = false;
 					var flipX:Bool = (attackerIndex - victimIndex) < 0;
 					if (getPlayer(victimIndex).flipX) flipX = !flipX;
 					getPlayer(victimIndex).playAnim('shocked', true, true, flipX);
@@ -760,7 +760,7 @@ class PlayState extends SuffState {
 		var flipX:Bool = (attackerIndex - victimIndex) > 0;
 		if (getPlayer(attackerIndex).flipX) flipX = !flipX;
 		getPlayer(attackerIndex).playAnim(actualAnimName, false, true, flipX);
-		var offsets = getPlayer(attackerIndex).getParticleOffset('over');
+		var offsets = getPlayer(attackerIndex).getParticleOffset('overhead');
 		members.insert(members.indexOf(getPlayer(attackerIndex)), new SkillIndicator(getPlayer(attackerIndex).x + offsets.x, getPlayer(attackerIndex).y + offsets.y, skill.id));
 
 		toggleLetterbox(true);

@@ -148,51 +148,11 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 			cameraOffset: [0, Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] / -2)],
 			poppedCameraOffset: [0, Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] * -0.2)],
 			particleOffsets: {
-				over: [
-					[0, -480],
-					[0, -480],
-					[0, -480],
-					[0, -480],
-					[0, -480],
-					[-160, -180],
-					[-100, -460]
-				],
-				mouth: [
-					[0, -410],
-					[0, -410],
-					[0, -410],
-					[0, -420],
-					[0, -440],
-					[-100, -140],
-					[-80, -420]
-				],
-				navel: [
-					[10, -290],
-					[40, -285],
-					[70, -280],
-					[100, -275],
-					[130, -270],
-					[40, -160],
-					[150, -220]
-				],
-				gunShoot: [
-					[0, -380],
-					[0, -380],
-					[0, -380],
-					[0, -420],
-					[0, -420],
-					[0, 0],
-					[0, 0]
-				],
-				gunSkill: [
-					[0, -320],
-					[0, -320],
-					[0, -360],
-					[0, -400],
-					[0, -400],
-					[0, 0],
-					[0, 0]
-				]
+				overhead: CharacterCreatorState.spriteData.particleOffsets.overhead,
+				mouth: CharacterCreatorState.spriteData.particleOffsets.mouth,
+				navel: CharacterCreatorState.spriteData.particleOffsets.navel,
+				gunShoot: CharacterCreatorState.spriteData.particleOffsets.gunShoot,
+				gunSkill: CharacterCreatorState.spriteData.particleOffsets.gunSkill
 			},
 			poppingVelocityMultiplier: [1.0, 1.0],
 			poppingGravityMultiplier: 1.0
@@ -356,57 +316,88 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 					trace(exportingAnim, i, secPointer);
 				}
 				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/banners', '$characterID');
-			default:
-				var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/0.png');
-				var prevKeyframe:Int = -1;
+			case 'results_idleStanding':
+				secPointer.x = 0;
+				secPointer.y = 0;
+				var leAnimName:String = 'idleStanding';
+				var what = newSpriteSheet(4096, 4096, 480, 720);
+				secBitmap = what[0];
+				secXML = what[1];
 				for (i in 0...animData.numFrames) {
-					if (baseBitmapSpritesLeft - animData.keyframes.length < 0) {
-						exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
-						trace(exportingAnim, 'new spritesheet!!!');
-						curSpriteSheet++;
-						var what = newSpriteSheet(4096, 4096, CharacterCreatorState.spriteData.defaultDimensions[0], CharacterCreatorState.spriteData.defaultDimensions[1]);
-						baseBitmap = what[0];
-						baseXML = what[1];
-						basePointer.x = 0;
-						basePointer.y = 0;
-					}
 					if (animData.keyframes.contains(i)) {
-						trace(exportingAnim, 'export keyframe');
-						if (prevKeyframe != i) {
-							prevKeyframe = i;
-							basePointer.x += sprite.width;
-							if (basePointer.x > baseBitmap.width - sprite.width) {
-								basePointer.x = 0;
-								basePointer.y += sprite.height;
-							}
-							if (basePointer.y > baseBitmap.height - sprite.height) {
-								exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
-								trace(exportingAnim, 'new spritesheet!!!');
-								curSpriteSheet++;
-								var what = newSpriteSheet(4096, 4096, CharacterCreatorState.spriteData.defaultDimensions[0], CharacterCreatorState.spriteData.defaultDimensions[1]);
-								baseBitmap = what[0];
-								baseXML = what[1];
-								basePointer.x = 0;
-								basePointer.y = 0;
-							}
-							sprite = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
-							baseBitmapSpritesLeft--;
-						}
+						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
+						if (i > 0)
+							secPointer.x += 480;
+						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
 					}
-					baseBitmap.copyPixels(sprite, sprite.rect, basePointer);
-					// Yeah it copies every frame but it works
-					baseXML = insertLineInXML(baseXML, exportingAnim, i, basePointer.x, basePointer.y, sprite.width, sprite.height);
+					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 480, 720);
 					trace(exportingAnim, i, secPointer);
 				}
-				var exportedAnimData:AnimationData = {
-					name: exportingAnim,
-					prefix: exportingAnim,
-					fps: animData.framerate,
-					indices: [],
-					loop: false,
-					soundPaths: []
-				};
-				animationDataArray.push(exportedAnimData);
+			default:
+				if (!exportingAnim.startsWith('results_')) {
+					var leAnimName:String = exportingAnim.replace('results_', '');
+					for (i in 0...animData.numFrames) {
+						if (animData.keyframes.contains(i)) {
+							var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
+							if (i > 0)
+								secPointer.x += 480;
+							secBitmap.copyPixels(sprite, sprite.rect, secPointer);
+						}
+						secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 480, 720);
+						trace(exportingAnim, i, secPointer);
+					}
+				} else {
+					var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/0.png');
+					var prevKeyframe:Int = -1;
+					for (i in 0...animData.numFrames) {
+						if (baseBitmapSpritesLeft - animData.keyframes.length < 0) {
+							exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
+							trace(exportingAnim, 'new spritesheet!!!');
+							curSpriteSheet++;
+							var what = newSpriteSheet(4096, 4096, CharacterCreatorState.spriteData.defaultDimensions[0], CharacterCreatorState.spriteData.defaultDimensions[1]);
+							baseBitmap = what[0];
+							baseXML = what[1];
+							basePointer.x = 0;
+							basePointer.y = 0;
+						}
+						if (animData.keyframes.contains(i)) {
+							trace(exportingAnim, 'export keyframe');
+							if (prevKeyframe != i) {
+								prevKeyframe = i;
+								basePointer.x += sprite.width;
+								if (basePointer.x > baseBitmap.width - sprite.width) {
+									basePointer.x = 0;
+									basePointer.y += sprite.height;
+								}
+								if (basePointer.y > baseBitmap.height - sprite.height) {
+									exportSpriteSheet(baseBitmap, baseXML, 'exports/$projectName/images/game/characters/$characterID', '$curSpriteSheet');
+									trace(exportingAnim, 'new spritesheet!!!');
+									curSpriteSheet++;
+									var what = newSpriteSheet(4096, 4096, CharacterCreatorState.spriteData.defaultDimensions[0], CharacterCreatorState.spriteData.defaultDimensions[1]);
+									baseBitmap = what[0];
+									baseXML = what[1];
+									basePointer.x = 0;
+									basePointer.y = 0;
+								}
+								sprite = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
+								baseBitmapSpritesLeft--;
+							}
+						}
+						baseBitmap.copyPixels(sprite, sprite.rect, basePointer);
+						// Yeah it copies every frame but it works
+						baseXML = insertLineInXML(baseXML, exportingAnim, i, basePointer.x, basePointer.y, sprite.width, sprite.height);
+						trace(exportingAnim, i, secPointer);
+					}
+					var exportedAnimData:AnimationData = {
+						name: exportingAnim,
+						prefix: exportingAnim,
+						fps: animData.framerate,
+						indices: [],
+						loop: false,
+						soundPaths: []
+					};
+					animationDataArray.push(exportedAnimData);
+				}
 		}
 		exportedAnims.push(exportingAnim);
 		bar.updateBar();

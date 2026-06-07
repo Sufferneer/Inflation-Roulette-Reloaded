@@ -20,6 +20,9 @@ import utilities.substates.ExportingProjectPrompt;
 import utilities.substates.ErrorPrompt;
 import flixel.addons.ui.FlxUINumericStepper;
 import ui.addons.SuffUITabMenu;
+import utilities.substates.OffsetEditorSubstate;
+import haxe.DynamicAccess;
+import utilities.typedefs.SpriteProjectSpriteJSON;
 
 class CharacterCreatorState extends UtilitiesBaseMenuState {
 	public static final version:String = '0.0.2';
@@ -40,7 +43,8 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		{name: 'win', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'helpless', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'amnesic', type: ExplorerFileFileType.folder, icon: 'animation'},
-		{name: 'eructate', type: ExplorerFileFileType.folder, icon: 'animation'},
+		{name: 'belch', type: ExplorerFileFileType.folder, icon: 'animation'},
+		{name: 'leak', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'rubbed', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'popped', type: ExplorerFileFileType.file, icon: 'animation'},
 		{name: 'introPartOne', type: ExplorerFileFileType.file, icon: 'animation'},
@@ -50,7 +54,17 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		{name: 'cardCharIdle', type: ExplorerFileFileType.file, icon: 'charSelect'},
 		{name: 'cardCharSelected', type: ExplorerFileFileType.file, icon: 'charSelect'},
 		{name: 'bannerAppear', type: ExplorerFileFileType.file, icon: 'charSelect'},
-		{name: 'bannerBlink', type: ExplorerFileFileType.file, icon: 'charSelect'}
+		{name: 'bannerBlink', type: ExplorerFileFileType.file, icon: 'charSelect'},
+		{name: 'results_idleStanding', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_idleDefeated', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winStanding', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winStandingLoop', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winDefeated', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winDefeatedLoop', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseStanding', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseStandingLoop', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseDefeated', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseDefeatedLoop', type: ExplorerFileFileType.file, icon: 'results'}
 	];
 	var currentFiles = [];
 	final defaultAnimsType:Map<String, CharacterCreatorAnimType> = [
@@ -66,7 +80,8 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		'amnesic' => ONLY_INFLATED_STATES,
 		'rubbed' => ONLY_INFLATED_STATES,
 		'helpless' => ONLY_DEFEATED_STATES,
-		'eructate' => ONLY_INFLATED_STATES,
+		'belch' => ONLY_INFLATED_STATES,
+		'leak' => ONLY_INFLATED_STATES,
 		'popped' => NO_STATES,
 		'introPartOne' => NO_STATES,
 		'introPartTwo' => NO_STATES,
@@ -75,14 +90,25 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		'cardCharIdle' => NO_STATES,
 		'cardCharSelected' => NO_STATES,
 		'bannerAppear' => NO_STATES,
-		'bannerBlink' => NO_STATES
+		'bannerBlink' => NO_STATES,
+		'results_idleStanding' => NO_STATES,
+		'results_idleDefeated' => NO_STATES,
+		'results_winStanding' => NO_STATES,
+		'results_winStandingLoop' => NO_STATES,
+		'results_winDefeated' => NO_STATES,
+		'results_winDefeatedLoop' => NO_STATES,
+		'results_loseStanding' => NO_STATES,
+		'results_loseStandingLoop' => NO_STATES,
+		'results_loseDefeated' => NO_STATES,
+		'results_loseDefeatedLoop' => NO_STATES
 	];
 	var currentAnimsType:Map<String, CharacterCreatorAnimType> = [];
 	final defaultOptionalAnims:Array<String> = [
 		'shocked',
 		'win',
 		'amnesic',
-		'eructate',
+		'belch',
+		'leak',
 		'rubbed',
 		'helpless',
 		'introPartOne',
@@ -327,6 +353,12 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		spriteDataReloadSkillsButton.resize(128, 32);
 		tabGroup.add(spriteDataReloadSkillsButton);
 
+		var modifyOffsetsButton = new SuffUIButton(20, spriteDataReloadSkillsButton.y + 64, Language.getPhrase('characterCreator.modifyOffsets'), function() {
+			openSubState(new OffsetEditorSubstate());
+		});
+		modifyOffsetsButton.resize(128, 32);
+		tabGroup.add(modifyOffsetsButton);
+
 		UI_box.addGroup(tabGroup);
 	}
 
@@ -344,7 +376,7 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 
 	public function generateExplorer() {
 		var num = 0;
-		final iconsPerRow = 7;
+		final iconsPerRow = Std.int(explorerBG.width / ExplorerFile.size);
 		explorerFiles.clear();
 		var leFiles = currentFiles.copy();
 		if (explorerCurPath != 'root/') {
@@ -377,6 +409,13 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 					template = 'characterSelectBanner';
 				default:
 					leDefaultDimensions = [spriteData.defaultDimensions[0], spriteData.defaultDimensions[1]];
+			}
+			if (leFolder.name.startsWith('results_')) {
+				leDefaultDimensions = [480, 720];
+				if (leFolder.name == 'results_loseStandingLoop' || leFolder.name == 'results_loseDefeatedLoop')
+					template = 'resultsLose';
+				else
+					template = 'resultsIdle';
 			}
 			if (leType == file && !FileSystem.exists(getPath() + '/anims/${leFolder.name}.json')) {
 				leType = emptyFile;
@@ -418,6 +457,40 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 	function reloadJSONData() {
 		metadata = Json.parse(File.getContent(getPath() + '/metadata.json'));
 		spriteData = Json.parse(File.getContent(getPath() + '/spriteData.json'));
+		if (spriteData.originPosition == null)
+			spriteData.originPosition = [320, 560];
+		if (spriteData.particleOffsets == null)
+			spriteData.particleOffsets = {
+				overhead: [],
+				mouth: [],
+				navel: [],
+				gunShoot: [],
+				gunSkill: []
+			}
+		if (!Reflect.hasField(spriteData.particleOffsets, 'overhead') || spriteData.particleOffsets.overhead.length <= 0) {
+			spriteData.particleOffsets.overhead = makeParticleOffset([0, -480], [-160, -180], [-100, -460]);
+		}
+		if (!Reflect.hasField(spriteData.particleOffsets, 'mouth') || spriteData.particleOffsets.mouth.length <= 0) {
+			spriteData.particleOffsets.mouth = makeParticleOffset([0, -340], [-100, -70], [-80, -350]);
+		}
+		if (!Reflect.hasField(spriteData.particleOffsets, 'navel') || spriteData.particleOffsets.navel.length <= 0) {
+			spriteData.particleOffsets.navel = makeParticleOffset([70, -210], [40, -90], [150, -150]);
+		}
+		if (!Reflect.hasField(spriteData.particleOffsets, 'gunShoot') || spriteData.particleOffsets.gunShoot.length <= 0) {
+			spriteData.particleOffsets.gunShoot = makeParticleOffset([0, -330], [0, 0], [0, 0]);
+		}
+		if (!Reflect.hasField(spriteData.particleOffsets, 'gunSkill') || spriteData.particleOffsets.gunSkill.length <= 0) {
+			spriteData.particleOffsets.gunSkill = makeParticleOffset([0, -250], [0, 0], [0, 0]);
+		}
+	}
+
+	function makeParticleOffset(defaultOffsets:Array<Float>, poppedOffsets:Array<Float>, overinflatedOffsets:Array<Float>) {
+		var leArray:Array<Array<Float>> = [];
+		for (i in 0...spriteData.maxPressure + 1)
+			leArray.push(defaultOffsets);
+		leArray.push(poppedOffsets);
+		leArray.push(overinflatedOffsets);
+		return leArray;
 	}
 
 	function saveJSONData() {

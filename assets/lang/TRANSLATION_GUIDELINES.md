@@ -21,7 +21,7 @@ Technical for small UI elements, witty and humorous for lengthy prompts and flav
 | Context                            | Tone               | Examples / Guidelines                                                                                |
 |------------------------------------|--------------------|------------------------------------------------------------------------------------------------------|
 | **Game UI**                        | Technical, Compact | **Do:** Select Target <br>**Don't:** Who do you want to apply this on?                               |
-| **Lengthy Prompts & Descriptions** | Witty, Natural     | **Do:** Make jokes in local context<br>**Don't:** Force punchlines in that cannot be translated      |
+| **Lengthy Prompts & Descriptions** | Witty, Natural     | **Do:** Make jokes in local context<br>**Don't:** Force punchlines in that don't translate           |
 | **Instructions**                   | Clear & Helpful    | **Do:** Press any key to exit<br>**Don't:** If you wanna leave, just press any key on your keyboard! |
 
 ### Writing
@@ -54,6 +54,8 @@ Translation notes and instructions in comments are not translated and should be 
 
 ## Inclusivity
 Everyone from Mexico to Russia to Hong Kong China is gonna play this game. Ensure all users feel respected.
+
+---
 
 ## Try To Not Break Down
 If you think you're not doing good enough, remember it isn't your fault.

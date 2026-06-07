@@ -9,7 +9,7 @@ class CharacterDummy extends FlxSpriteGroup {
 		dummy.offset.set(dummy.width / 2, 570);
 		add(dummy);
 
-		pointer = new FlxSprite().loadGraphic(Paths.image('debug/pointer'));
+		pointer = new FlxSprite().loadGraphic(Paths.image('debug/marker'));
 		pointer.offset.set(pointer.width / 2, pointer.height / 2);
 		add(pointer);
 

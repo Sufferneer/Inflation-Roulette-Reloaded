@@ -87,7 +87,7 @@ class Character extends FlxSprite {
 			cameraOffset = spriteJson.cameraOffset;
 		if (spriteJson.particleOffsets == null) {
 			spriteJson.particleOffsets = {
-				over: [
+				overhead: [
 					[0, -480],
 					[0, -480],
 					[0, -480],
@@ -134,7 +134,7 @@ class Character extends FlxSprite {
 				]
 			};
 		}
-		particleOffsets.set('over', spriteJson.particleOffsets.over);
+		particleOffsets.set('overhead', spriteJson.particleOffsets.overhead);
 		particleOffsets.set('mouth', spriteJson.particleOffsets.mouth);
 		particleOffsets.set('navel', spriteJson.particleOffsets.navel);
 		particleOffsets.set('gunShoot', spriteJson.particleOffsets.gunShoot);
@@ -232,7 +232,7 @@ class Character extends FlxSprite {
 		if (!canUseSkills) {
 			swirlSpawnTimer -= elapsed;
 			if (swirlSpawnTimer <= 0) {
-				var offsets = getParticleOffset('over');
+				var offsets = getParticleOffset('overhead');
 				FlxG.state.add(new Swirl(this.x + offsets.x + FlxG.random.float(-1, 1) * this.width / 5, this.y + offsets.y + FlxG.random.float() * this.height / 5, 0xFFC040FF));
 				swirlSpawnTimer = FlxG.random.float();
 			}
@@ -289,7 +289,7 @@ class Character extends FlxSprite {
 		// trace(id, usedAnimName);
 	}
 	
-	public function getParticleOffset(position:String = 'over'):FlxPoint {
+	public function getParticleOffset(position:String = 'overhead'):FlxPoint {
 		if (!particleOffsets.exists(position))
 			return FlxPoint.get(0, 0);
 		var offsetArray = particleOffsets.get(position);

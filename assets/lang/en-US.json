@@ -10,7 +10,7 @@
 	
 	// For the majority of the text in the game UI, a technical tone is used.
 	// Unless specified otherwise, most lengthy prompts uses a witty/humorous tone.
-	// Some jokes may be regional and lose its punchline. In this case, try come up with a similar joke
+	// Some jokes may be regional and lose its punchline. In this case, try to come up with a similar joke
 	// that works in your country's region. If all else fails, just make an entirely different joke.
 	
 	// In all cases, try your best to capture the original tone of the locale strings.
@@ -25,11 +25,8 @@
 	// For terms like "Inflation Roulette" and "Reloaded" used in a naming context,
 	// unless your language does not use the Latin script, it should be remain
 	// untranslated.
-	
-	// Valid Escape Sequences:
-	// \n: New line
-	// \s: Whitespace
-	// The positions of escape sequences in-between sentences should be left AS IS.
+
+	// The positions of escape sequence in-between sentences should be left AS IS.
 	
 	// Remember the "Transliterate Names" rule
 	"game.title": "Inflation Roulette: Reloaded",
@@ -391,8 +388,10 @@
 	"pauseMenu.resume": "Resume",
 	"pauseMenu.restart": "Restart",
 	"pauseMenu.options": "Options",
-	
+
 	"stats.pressure": "Pressure",
+	"stats.pressure.Null": "Popped",
+	"stats.pressure.Overinflated": "Overinflated",
 	"stats.confidence": "Confidence",
 	"stats.skill": "Skill",
 	"stats.skills": "Skills",
@@ -545,6 +544,7 @@
 	"characterCreator.save": "Save Project",
 	"characterCreator.exit": "Exit Editor",
 	"characterCreator.reloadSkills": "Reload Skills",
+	"characterCreator.modifyOffsets": "Modify Offsets",
 	"characterCreator.exit.prompt": "Are you sure you want to exit the Character Creator?\nAny unsaved progress will be LOST.",
 	"characterCreator.newCharacter.title": "NEW CHARACTER",
 	"characterCreator.newCharacter.unchangeableParameter": "This parameter cannot be changed and should not be changed after creation.",
@@ -574,6 +574,15 @@
 	"stageEditor.screenshot": "Screenshot Mode",
 	"stageEditor.exit": "Exit Viewer",
 	"stageEditor.exit.prompt": "Are you sure you want to exit the Stage Viewer?",
+
+	"offsetEditor.title": "Modify Offsets",
+	"offsetEditor.description": "Arrow Keys to Move Image\nHold SHIFT/CTRL to Increase Rate\nMake Sure Crosshair Centers Desired Location",
+	"offsetEditor.offsetType.origin": "Origin",
+	"offsetEditor.offsetType.overhead": "Overhead",
+	"offsetEditor.offsetType.mouth": "Mouth",
+	"offsetEditor.offsetType.navel": "Navel",
+	"offsetEditor.offsetType.gunShoot": "Gun Chamber (Shooting)",
+	"offsetEditor.offsetType.gunSkill": "Gun Chamber (Skill)",
 	
 	"resultsMenu.title": "THE SCORES ARE IN!",
 	"resultsMenu.instructions": "Press Any Key To Exit",
