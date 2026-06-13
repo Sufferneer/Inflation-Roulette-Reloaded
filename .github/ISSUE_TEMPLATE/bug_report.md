@@ -10,6 +10,9 @@ assignees: ''
 **Describle the bug**
 A clear and concise description of what the bug is.
 
+**Crash log contents**
+If applicable, paste the content of the crash log here.
+
 **To Reproduce**
 Steps to reproduce the behavior:
 1. Go to '...'
