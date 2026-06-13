@@ -309,11 +309,11 @@
 			"indices": [],
 			"loop": false,
 			"soundPaths": [
-				"game/characters/chester/helpless_1",
-				"game/characters/chester/helpless_2",
-				"game/characters/chester/helpless_3",
-				"game/characters/chester/helpless_4",
-				"game/characters/chester/helpless_5"
+				"game/inflation/universal/hiccups/hiccup_1",
+				"game/inflation/universal/hiccups/hiccup_2",
+				"game/inflation/universal/hiccups/hiccup_3",
+				"game/inflation/universal/hiccups/hiccup_4",
+				"game/inflation/universal/hiccups/hiccup_5"
 			]
 		},
 		{
@@ -324,11 +324,11 @@
 			"indices": [],
 			"loop": false,
 			"soundPaths": [
-				"game/characters/chester/helpless_1",
-				"game/characters/chester/helpless_2",
-				"game/characters/chester/helpless_3",
-				"game/characters/chester/helpless_4",
-				"game/characters/chester/helpless_5"
+				"game/inflation/universal/hiccups/hiccup_1",
+				"game/inflation/universal/hiccups/hiccup_2",
+				"game/inflation/universal/hiccups/hiccup_3",
+				"game/inflation/universal/hiccups/hiccup_4",
+				"game/inflation/universal/hiccups/hiccup_5"
 			]
 		},
 		{
@@ -469,6 +469,8 @@
 	"belchThreshold": 3,
 	"gurgleThreshold": 3,
 	"creakThreshold": 4,
+	"leakThreshold": 4,
+	"voicePitch": 1,
 	"poppingVelocityMultiplier": [1.0, 1.0],
 	"poppingGravityMultiplier": 1.0,
 	"antialiasing": false,

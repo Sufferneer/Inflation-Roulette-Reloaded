@@ -14,7 +14,7 @@ class GitHubButton extends SuffIconButton {
 		this.btnTextColorDisabled = 0xFF96A199;
 
 		this.onClick = function() {
-			Utilities.browserLoad('https://github.com/Sufferneer/Inflation-Roulette/' + directory);
+			Utilities.browserLoad('https://github.com/Sufferneer/Inflation-Roulette-Reloaded/' + directory);
 		};
 	}
 

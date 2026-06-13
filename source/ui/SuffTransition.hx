@@ -35,35 +35,6 @@ class SuffTransition extends SuffSubState {
 
 	static final blockSize:Int = 160;
 
-	static final randomLoadingLines:Array<String> = [
-		'Loading',
-		'Please wait',
-		'Please be patient',
-		'Setting things up',
-		'Placing furniture',
-		'Refilling bullets',
-		'Patching abdomens',
-		'Recruiting participants',
-		'Deflating participants',
-		'Preparing refreshments',
-		'Spiking refreshments'
-	];
-
-	static final randomLoadingLinesRare:Array<String> = [
-		'Unloading then reloading everything',
-		'Calling the police',
-		'Running the hell machine',
-		'Wasting time',
-		'Creating more bugs',
-		'Copyright claiming AI videos',
-		'Running out of ideas',
-		'Fixing the Character Creator',
-		'Rubbing bellies',
-		'Curing cholera',
-		'Praying for mercy',
-		'Uhh'
-	];
-
 	public function new(duration:Float, isTransIn:Bool) {
 		super();
 
@@ -116,13 +87,13 @@ class SuffTransition extends SuffSubState {
 		}
 
 		var leText = '';
-		if (FlxG.random.bool(1 / 10 * 100)) {
-			leText = randomLoadingLinesRare[FlxG.random.int(0, randomLoadingLinesRare.length - 1)];
+		if (FlxG.random.bool(10)) {
+			leText = FlxG.random.getObject(Language.getPhraseList('loading.messages'));
 		} else {
-			leText = randomLoadingLines[FlxG.random.int(0, randomLoadingLines.length - 1)];
+			leText = FlxG.random.getObject(Language.getPhraseList('loading.messagesRare'));
 		}
 
-		loadingTxt = new FlxText(0, 0, FlxG.width / 2, leText.toUpperCase() + '...');
+		loadingTxt = new FlxText(0, 0, FlxG.width / 2, Language.getPhrase('loading.message.format', [leText]).toUpperCase());
 		loadingTxt.setFormat(Paths.font('default'), 72, FlxColor.WHITE);
 		loadingTxt.setPosition(72, FlxG.height - 72 - loadingTxt.height);
 		add(loadingTxt);

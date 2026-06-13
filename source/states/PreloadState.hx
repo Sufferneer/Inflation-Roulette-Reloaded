@@ -25,6 +25,7 @@ class PreloadState extends SuffState {
 		if (AndroidUtils.checkAllFilesPermission())
 			Addons.pushGlobalAddons();
 		Language.initialize();
+		Window.setTitle(Language.getPhrase('preloadMenu.windowDisplay'));
 
 		#if !html5
 		bg = new FlxSprite().loadGraphic(Paths.image('ui/menus/preload/loadingArt'));
@@ -54,6 +55,7 @@ class PreloadState extends SuffState {
 		#if !html5
 		preloadTxt.text = Language.getPhrase('preloadMenu.progress.' + loadingTexts[loadingProgress]);
 		#end
+		Window.setTitle(Language.getPhrase('preloadMenu.windowDisplay'), preloadTxt.text);
 		new FlxTimer().start(FlxG.elapsed, function(_) {
 			switch (loadingTexts[loadingProgress]) {
 				case 'characters':
@@ -132,7 +134,7 @@ class PreloadState extends SuffState {
 			bg.setGraphicSize(Std.int(originalDimensions[0]), Std.int(originalDimensions[1]));
 			bg.updateHitbox();
 			preloadTxt.visible = false;
-			Achievements.advanceProgress('nineTwentyTwo', [true]);
+			Achievements.advanceProgress('nineTwentyOne', [true]);
 			SuffState.playUISound(Paths.sound('void'));
 			new FlxTimer().start(1, function(_) {
 				FlxG.camera.fade(0xFF000000, 0, false);
@@ -144,6 +146,7 @@ class PreloadState extends SuffState {
 		#end
 		{
 			preloadTxt.text = Language.getPhrase('preloadMenu.finished');
+			Window.setTitle(Language.getPhrase('preloadMenu.windowDisplay'), preloadTxt.text);
 			FlxG.camera.fade(0xFF000000, 1, false, function() {
 				goToStartupState();
 			});
@@ -156,7 +159,7 @@ class PreloadState extends SuffState {
 	function goToStartupState() {
 		#if _CHECK_FOR_UPDATES
 		if (Preferences.data.checkForUpdates) {
-			var http = new haxe.Http("https://raw.githubusercontent.com/Sufferneer/Inflation-Roulette/main/curVersion.txt");
+			var http = new haxe.Http("https://raw.githubusercontent.com/Sufferneer/Inflation-Roulette-Reloaded/main/curVersion.txt");
 
 			http.onData = function (data:String) {
 				OutdatedVersionState.latestVersion = data.split('\n')[0].trim();

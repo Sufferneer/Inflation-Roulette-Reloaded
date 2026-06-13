@@ -10,6 +10,8 @@ class ExtrasSubState extends SuffSubState {
 	public function new() {
 		super();
 
+		Window.setTitle(Language.getPhrase('extrasMenu.windowDisplay'));
+
 		persistentUpdate = false;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -110,6 +112,7 @@ class ExtrasSubState extends SuffSubState {
 
 	function exitMenu() {
 		persistentUpdate = true;
+		Window.setTitle(Language.getPhrase('mainMenu.windowDisplay'));
 		close();
 	}
 }

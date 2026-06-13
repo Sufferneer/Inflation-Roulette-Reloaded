@@ -15,6 +15,8 @@ class ScreenSafeZoneSubState extends SuffSubState {
 	public function new() {
 		super();
 
+		Window.setTitle(Language.getPhrase('optionsMenu.windowDisplay'), Language.getPhrase('option.screenSafeZone.name'));
+
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('ui/menus/options/bg'));
 		bg.color = 0x303030;
 		bg.setGraphicSize(FlxG.width, FlxG.height);
@@ -97,6 +99,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 
 	function exit() {
 		Preferences.data.screenSafeZone = slider.currentValue;
+		Window.setTitle(Language.getPhrase('optionsMenu.windowDisplay'));
 		close();
 	}
 }

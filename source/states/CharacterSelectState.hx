@@ -10,8 +10,8 @@ import states.MainMenuState;
 import states.PlayState;
 import substates.GameOnSubState;
 import tjson.TJSON as Json;
-import ui.objects.CharacterSelectBanner;
-import ui.objects.CharacterSelectCard;
+import ui.objects.CharacterBanner;
+import ui.objects.CharacterCard;
 import ui.objects.CharacterSelectText;
 import ui.objects.ReadySign;
 import ui.objects.SuffBooleanOption;
@@ -19,10 +19,13 @@ import ui.objects.SuffSliderOption;
 import ui.objects.SuffIconButton;
 import backend.GameplayManager;
 import shaders.DissolveShader;
-import ui.objects.CharacterSelectStage;
+import ui.objects.StageCard;
+import ui.objects.FillerCard;
+import backend.Filler;
 
 enum CharacterSelectStatus {
 	CHARACTER_SELECT;
+	FILLER_SELECT;
 	STAGE_SELECT;
 	PLAYER_SETTINGS;
 }
@@ -55,7 +58,7 @@ class CharacterSelectState extends SuffState {
 	var playerOutline:FlxSprite;
 	var playerOutlineShadows:FlxTypedContainer<FlxSprite> = new FlxTypedContainer<FlxSprite>();
 	var description:CharacterSelectText;
-	var bannerGroup:FlxTypedSpriteGroup<CharacterSelectBanner> = new FlxTypedSpriteGroup<CharacterSelectBanner>();
+	var bannerGroup:FlxTypedSpriteGroup<CharacterBanner> = new FlxTypedSpriteGroup<CharacterBanner>();
 	var stageSelectGroup:FlxSpriteGroup = new FlxSpriteGroup();
 	var playerSettingGroup:FlxSpriteGroup = new FlxSpriteGroup();
 	var cantEarnAchievementsTxt:FlxText;
@@ -72,22 +75,30 @@ class CharacterSelectState extends SuffState {
 	var curStage:Int = 0;
 	var rightStageButton:SuffIconButton;
 
-	var cardGroup:FlxTypedSpriteGroup<CharacterSelectCard> = new FlxTypedSpriteGroup<CharacterSelectCard>();
+	var cardGroup:FlxTypedSpriteGroup<CharacterCard> = new FlxTypedSpriteGroup<CharacterCard>();
+	var fillerGroup:FlxTypedSpriteGroup<FillerCard> = new FlxTypedSpriteGroup<FillerCard>();
 
 	override function create() {
 		super.create();
+
+		Window.setTitle(Language.getPhrase('characterSelect.windowDisplay'));
 
 		var characterList = CharacterManager.globalCharacterList.copy();
 		if (characterList.length >= 3) {
 			characterList.push('random');
 		}
 
+		var fillerList = GameplayManager.globalFillerList.copy();
+		if (fillerList.length >= 3) {
+			fillerList.push('random');
+		}
+
 		stageGroup = new FlxSpriteGroup();
 		add(stageGroup);
 		add(bannerGroup);
-		CharacterSelectBanner.precacheBanners();
+		CharacterBanner.precacheBanners();
 		for (i in 0...CharacterManager.selectedCharacterList.length) {
-			var banner = new CharacterSelectBanner(i);
+			var banner = new CharacterBanner(i);
 			banner.onClick = function() {
 				if (!leftButton.disabled)
 					setPlayer(i);
@@ -147,10 +158,11 @@ class CharacterSelectState extends SuffState {
 		add(bg2);
 
 		add(cardGroup);
+		add(fillerGroup);
 
-		var leScale = Math.min(1, FlxG.height * cardOccupicationHeight / Constants.CHARACTER_CARD_DIMENSIONS[0]);
-		var calculatedWidth = Constants.CHARACTER_CARD_DIMENSIONS[0] * leScale;
-		maxNumberInRow = findMaximumCardsPerRow(leScale);
+		var leScale = 1;
+		var calculatedWidth = Constants.CHARACTER_CARD_DIMENSIONS[0];
+		maxNumberInRow = findMaximumCardsPerRow();
 
 		var fadeWidth:Int = 16;
 
@@ -189,13 +201,13 @@ class CharacterSelectState extends SuffState {
 		stages.push('random');
 		// trace(stages);
 		for (num => i in stages) {
-			var stage:CharacterSelectStage = new CharacterSelectStage(0, 0, i);
+			var stage:StageCard = new StageCard(0, 0, i);
 			stage.onClick = function() {
 				confirmStage(i);
 			}
 			stage.x = (FlxG.width - stage.width) / 2 + FlxG.width * num;
 
-			var stageName = new FlxText(0, 0, 0, Language.getPhrase('stage.$i'), 48);
+			var stageName = new FlxText(0, 0, 0, Language.getPhrase('stage.$i.name'), 48);
 			stageName.x = stage.x + (stage.width - stageName.width) / 2;
 			stageName.y = stage.y + stage.height + 8;
 			stageSelectGroup.add(stage);
@@ -265,7 +277,7 @@ class CharacterSelectState extends SuffState {
 			var leChar:CharacterData = {
 				id: 'random',
 				// name: '???',
-				// description: 'Not sure who to choose? Let the game decide.',
+				// description: 'Not sure who to choose? Let the game decide!',
 				skills: [],
 				maxPressure: 0,
 				maxConfidence: 0
@@ -274,7 +286,7 @@ class CharacterSelectState extends SuffState {
 				leChar = cast Json.parse(Paths.getTextFromFile('data/characters/' + characterList[i] + '/stats.json'));
 			leChar.id = characterList[i];
 
-			var card = new CharacterSelectCard(0, 0, leChar);
+			var card = new CharacterCard(0, 0, leChar);
 			card.setScale(leScale, leScale);
 			card.x = (FlxG.width - maxNumberInRow * calculatedWidth) / 2 + calculatedWidth * i;
 			if (lastPage == 0) {
@@ -295,6 +307,23 @@ class CharacterSelectState extends SuffState {
 			};
 			cardGroup.add(card);
 		}
+		for (i => fillerID in fillerList) {
+			var fillerData = new Filler(fillerID);
+			var card:FillerCard = new FillerCard(0, 0, fillerData);
+			card.x = (FlxG.width - maxNumberInRow * calculatedWidth) / 2 + calculatedWidth * i;
+			if (lastPage == 0) {
+				card.x = (FlxG.width - fillerList.length * calculatedWidth) / 2 + calculatedWidth * i;
+			}
+			card.y = initialCardY;
+			card.onHover = function() {
+				changeDescription(null, 'filler.$fillerID.description');
+			};
+			card.onClick = function() {
+				confirmFiller(i);
+			};
+			fillerGroup.add(card);
+		}
+		fillerGroup.y = FlxG.height;
 
 		leftButton = new SuffButton(0, 0, null, Paths.image('ui/icons/buttons/left'), null, 100, 100);
 		leftButton.x = marginLeft.x + marginLeft.width - leftButton.width - 32;
@@ -445,10 +474,9 @@ class CharacterSelectState extends SuffState {
 	function exitFunction() {
 		if (status == PLAYER_SETTINGS)
 			moveOnToStageSelect();
-		else if (status == STAGE_SELECT) {
-			for (banner in bannerGroup) {
-				banner.undissolve();
-			}
+		else if (status == STAGE_SELECT)
+			moveOnToFillerSelect();
+		else if (status == FILLER_SELECT) {
 			changePlayer();
 		}
 		else
@@ -541,11 +569,59 @@ class CharacterSelectState extends SuffState {
 					if (curPlayer != index) {
 						setPlayer(index);
 					} else {
-						moveOnToStageSelect();
+						moveOnToFillerSelect();
 					}
 				});
 			}
 		}
+	}
+
+	function moveOnToFillerSelect() {
+		status = FILLER_SELECT;
+		playerOutline.visible = false;
+		selectCharacterTxt.text = Language.getPhrase('characterSelect.selectFiller');
+		selectCharacterTxt.screenCenter(X);
+		for (outline in playerOutlineShadows) {
+			outline.visible = false;
+		}
+		for (banner in bannerGroup) {
+			banner.undissolve();
+			banner.disabled = true;
+		}
+		for (card in cardGroup) {
+			card.visible = false;
+		}
+		for (stage in stageSelectGroup) {
+			if (Std.isOfType(stage, StageCard)) {
+				var wha:StageCard = cast stage;
+				wha.disabled = true;
+			}
+		}
+		for (i => filler in fillerGroup.members) {
+			filler.visible = true;
+			filler.disabled = false;
+			cardTweens.set(i + '', FlxTween.tween(filler, {y: initialCardY}, 0.5, {
+				ease: FlxEase.quintOut
+			}));
+		}
+		cardTweens.set('grid', FlxTween.tween(grid, {'alpha': 1}, 1, {ease: FlxEase.quadInOut}));
+		cardTweens.set('gridVel', FlxTween.tween(grid.velocity, {x: 80, y: 80}, 0.5, {ease: FlxEase.quadInOut}));
+		cardTweens.set('leftButton', FlxTween.tween(leftButton, {alpha: 1}, 0.25));
+		cardTweens.set('rightButton', FlxTween.tween(rightButton, {alpha: 1}, 0.25));
+		cardTweens.set('fillerGroup', FlxTween.tween(fillerGroup, {y: 0}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('stageSelectGroup', FlxTween.tween(stageSelectGroup, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('leftStageButton', FlxTween.tween(leftStageButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('rightStageButton', FlxTween.tween(rightStageButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('bg2', FlxTween.tween(bg2, {y: FlxG.height * (1 - cardOccupicationHeight)}, 0.5, {ease: FlxEase.quintOut, onUpdate: function(_) {
+			selectCharacterTxt.y = bg2.y - selectCharacterTxt.height;
+		}}));
+		cardTweens.set('playerSettingGroup', FlxTween.tween(playerSettingGroup, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('description', FlxTween.tween(description, {alpha: 1}, 0.75, {ease: FlxEase.quintOut}));
+		leftButton.disabled = false;
+		rightButton.disabled = false;
+
+		changeDescription(null, 'stage.${stages[curStage]}.description');
+		changeStage();
 	}
 
 	function moveOnToStageSelect() {
@@ -577,8 +653,8 @@ class CharacterSelectState extends SuffState {
 			card.visible = false;
 		}
 		for (stage in stageSelectGroup) {
-			if (Std.isOfType(stage, CharacterSelectStage)) {
-				var wha:CharacterSelectStage = cast stage;
+			if (Std.isOfType(stage, StageCard)) {
+				var wha:StageCard = cast stage;
 				wha.disabled = false;
 			}
 		}
@@ -630,8 +706,8 @@ class CharacterSelectState extends SuffState {
 
 	function confirmStage(stage:String) {
 		for (stage in stageSelectGroup) {
-			if (Std.isOfType(stage, CharacterSelectStage)) {
-				var wha:CharacterSelectStage = cast stage;
+			if (Std.isOfType(stage, StageCard)) {
+				var wha:StageCard = cast stage;
 				wha.disabled = true;
 			}
 		}
@@ -651,6 +727,45 @@ class CharacterSelectState extends SuffState {
 				moveOnToPlayerSettings();
 			});
 		}
+	}
+
+	function confirmFiller(fillerIndex:Int) {
+		for (fillerCard in fillerGroup) {
+			fillerCard.disabled = true;
+		}
+		var fillerID = fillerGroup.members[fillerIndex].filler.id;
+		if (fillerID != 'random')
+			GameplayManager.currentFiller = new Filler(fillerID);
+		else
+			GameplayManager.currentFiller = new Filler(FlxG.random.getObject(GameplayManager.globalFillerList));
+		if (fillerLeft != null) {
+			FlxTween.cancelTweensOf(fillerLeft, ['x']);
+			FlxTween.tween(fillerLeft, {x: bannerGroup.x - fillerLeft.width}, 1, {ease: FlxEase.cubeInOut});
+		}
+		if (fillerRight != null) {
+			FlxTween.cancelTweensOf(fillerRight, ['x']);
+			FlxTween.tween(fillerRight, {x: bannerGroup.x + bannerGroup.width}, 1, {ease: FlxEase.cubeInOut});
+		}
+		leftButton.disabled = true;
+		rightButton.disabled = true;
+		cardTweens.set('leftStageButton', FlxTween.tween(leftButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('rightStageButton', FlxTween.tween(rightButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		cardTweens.set('description', FlxTween.tween(description, {alpha: 0}, 0.25, {ease: FlxEase.quintOut}));
+		selectCharacterTxt.visible = false;
+		for (leIndex => filler in fillerGroup.members) {
+			filler.disabled = true;
+			if (leIndex != fillerIndex) {
+				cardTweens.set(leIndex + '', FlxTween.tween(filler, {y: FlxG.height}, 0.5, {
+					ease: FlxEase.quintOut
+				}));
+			} else {
+				// Technically disable flickering if photosensitive mode is on
+				FlxFlicker.flicker(filler, 1, (!Preferences.data.enablePhotosensitiveMode ? FlxG.elapsed : 1), false, true, function(_) {
+					moveOnToStageSelect();
+				});
+			}
+		}
+		trace('Current filler', GameplayManager.currentFiller);
 	}
 
 	function moveOnToPlayerSettings() {
@@ -693,20 +808,6 @@ class CharacterSelectState extends SuffState {
 			banner.disabled = false;
 		}
 		selectCharacterTxt.visible = true;
-		for (stage in stageSelectGroup) {
-			if (Std.isOfType(stage, CharacterSelectStage)) {
-				var wha:CharacterSelectStage = cast stage;
-				wha.disabled = true;
-			}
-		}
-		if (fillerLeft != null) {
-			FlxTween.cancelTweensOf(fillerLeft, ['x']);
-			FlxTween.tween(fillerLeft, {x: bannerGroup.x - fillerLeft.width}, 1, {ease: FlxEase.cubeInOut});
-		}
-		if (fillerRight != null) {
-			FlxTween.cancelTweensOf(fillerRight, ['x']);
-			FlxTween.tween(fillerRight, {x: bannerGroup.x + bannerGroup.width}, 1, {ease: FlxEase.cubeInOut});
-		}
 
 		curPlayer += change;
 		curPage = playerPages[curPlayer];
@@ -714,6 +815,7 @@ class CharacterSelectState extends SuffState {
 		cancelAllTweens();
 		cardTweens.set('selectCharacterTxt', FlxTween.tween(selectCharacterTxt, {y: bannerGroup.height - selectCharacterTxt.height}, 0.5, {ease: FlxEase.quintOut}));
 		cardTweens.set('gridVel', FlxTween.tween(grid, {'alpha': 1}, 1, {ease: FlxEase.quadInOut}));
+		cardTweens.set('fillerGroup', FlxTween.tween(fillerGroup, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
 		cardTweens.set('stageSelectGroup', FlxTween.tween(stageSelectGroup, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
 		cardTweens.set('leftStageButton', FlxTween.tween(leftStageButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
 		cardTweens.set('rightStageButton', FlxTween.tween(rightStageButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
@@ -746,8 +848,8 @@ class CharacterSelectState extends SuffState {
 		rightButton.disabled = false;
 	}
 
-	function findMaximumCardsPerRow(leScale:Float = 1) {
-		return Std.int(FlxMath.bound((FlxG.width - margin * 2) / (Constants.CHARACTER_CARD_DIMENSIONS[0] * leScale), 1, 6));
+	function findMaximumCardsPerRow() {
+		return Std.int(FlxMath.bound((FlxG.width - margin * 2) / (Constants.CHARACTER_CARD_DIMENSIONS[0]), 1, 6));
 	}
 
 	function proceedToPlayState() {
@@ -756,8 +858,9 @@ class CharacterSelectState extends SuffState {
 		for (i in CharacterManager.cpuControlled) {
 			characterCPUControlled += i ? '1' : '0';
 		}
-		FlxG.save.bind('preferences', Utilities.getSavePath());
-		FlxG.save.data.characterCPUControlled = characterCPUControlled;
+		var save:FlxSave = new FlxSave();
+		save.bind('preferences', Utilities.getSavePath());
+		save.data.characterCPUControlled = characterCPUControlled;
 		var characterSkillLevel = '';
 		for (i in CharacterManager.cpuLevel) {
 			characterSkillLevel += i;
@@ -765,9 +868,8 @@ class CharacterSelectState extends SuffState {
 		if (GameplayManager.currentStage == 'random') {
 			GameplayManager.currentStage = FlxG.random.getObject(GameplayManager.globalStageList);
 		}
-		FlxG.save.data.characterSkillLevel = characterSkillLevel;
-		FlxG.save.flush();
-		FlxG.save.bind('game', Utilities.getSavePath());
+		save.data.characterSkillLevel = characterSkillLevel;
+		save.flush();
 		isExiting = true;
 		readySign.moveSign(true);
 		PlayState.hasSeenStartCutscene = false;

@@ -31,9 +31,9 @@
 	// \s: Whitespace
 	// The positions of escape sequences in-between sentences should be left AS IS.
 	
-	"game.title": "Раздутая Рулетка: Перезапуск",
-	"game.titleShort": "Раздутая Рулетка",
-	"game.acronym": "РРП",
+	"metadata.title": "Раздутая Рулетка: Перезапуск",
+	"metadata.titleShort": "Раздутая Рулетка",
+	"metadata.acronym": "РРП",
 	
 	// Version Formatting
 	// For example, if the version is 2.3.1 in an Linux environment,
@@ -44,28 +44,28 @@
 	// Version 2.3.1
 	// Linux Build
 	
-	"game.version.numeral.format": "Версия %1",
-	"game.version.numeralModded.format": "Мод Версии %1",
-	"game.version.name.minor.format": "Дроп %1",
-	"game.version.name.hotfix.format": "Хотфикс %1",
+	"metadata.version.numeral.format": "Версия %1",
+	"metadata.version.numeralModded.format": "Мод Версии %1",
+	"metadata.version.name.minor.format": "Дроп %1",
+	"metadata.version.name.hotfix.format": "Хотфикс %1",
 	// %1 is the platform in which the executable is dedicated.
 	// For example, if the game is on Windows, "Windows Build" will be displayed.
 	// Note that platform names will remain untranslated.
 	"game.build.format": "Билд Для %1",
 	
-	"game.version.name.major.0": "В Разработке",
+	"metadata.version.name.major.0": "В Разработке",
 	// Version 1: Initial Release
-	"game.version.name.major.1": "Релиз Игры",
+	"metadata.version.name.major.1": "Релиз Игры",
 	// Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
 	// The Version Name has two interpretations. One being it being a update that introduces creative-related content (e.g. Modding Tools, Extras).
 	// Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 	// ^My uncreative, unpatched ass could NEVER :fire:
-	"game.version.name.major.2": "Патч Творчества",
+	"metadata.version.name.major.2": "Патч Творчества",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"game.version.name.state.a": "Публичная Альфа %1",
-	"game.version.name.state.b": "Публичная Бета %1",
-	"game.version.name.state.c": "Предрелиз %1",
+	"metadata.version.name.state.a": "Публичная Альфа %1",
+	"metadata.version.name.state.b": "Публичная Бета %1",
+	"metadata.version.name.state.c": "Предрелиз %1",
 	
 	// These are the button texts in the Main Menu.
 	"mainMenu.play": "Играть",
@@ -321,35 +321,33 @@
 	// Shib: Character created by NicklySuffer. Non-binary, and designed to look like one of those simplistic white cat anons.
 	// Screams "city boy" vibes.
 	// Skills: Sabotage, Amnesia
-	"character.shibanou.name": "Шибаноу",
-	"character.shibanou.name.short": "Шиб",
-	"character.shibanou.description": "Внеземной хитрец, обожает чай с лимоном. Способен наколдовать помутнение памяти.",
+	"character.shib.name": "Шибаноу",
+	"character.shib.name.short": "Шиб",
+	"character.shib.description": "Внеземной хитрец, обожает чай с лимоном. Способен наколдовать помутнение памяти.",
 	// Chester: Character created by NicklySuffer. Works in a coffee shop, and also looks like one of those simplistic white cat anons,
 	// but wears a cap too I guess. Screams "overworked minimum wagie" vibes.
 	// Designed with no offensive skills, but has one more pressure point lmao.
 	// Skills: Reveal, Reload
-	"character.chester.name": "Честер",
+	"character.chester.name": "Честер Дамиан",
 	"character.chester.name.short": "Честер",
 	"character.chester.description": "Несчастный бариста, вынужденный играть своей компанией. Его работа воспитала в нём устойчивость.",
 	// Option to choose a random character.
-	"character.random.name": "???",
-	"character.random.name.short": "???",
 	"character.random.description": "Не уверены, кого выбрать? Позвольте игре решить.",
 	
 	// Classic Room: The original stage from the original game redrawn.
-	"stage.classic": "Классическая Комната",
+	"stage.classic.name": "Классическая Комната",
 	"stage.classic.description": "Та самая комната, которая Вам так хорошо знакома.",
 	// Manager's Lounge: The context is that four people, either motivated by a better life or forced by their higher-ups, are
 	// offered a place as a game participant to satisfy the manager's desires.
-	"stage.reloaded": "Гостиная Менеджера",
+	"stage.reloaded.name": "Гостиная Менеджера",
 	"stage.reloaded.description": "Эта сцена выглядит, как что-то из порнушки. На деле так и есть, и вас записывают.",
 	// Shitfucks Café: Named Shitfucks. The exact coffee shop that Chester works at.
 	// Sells coffee that inflates people, and agreed to host horrible shit like this. Disgusting.
 	// Again, transliterate Shitfucks.
-	"stage.shitfucks": "Кофейня Щитфакс",
+	"stage.shitfucks.name": "Кофейня Щитфакс",
 	"stage.shitfucks.description": "Здесь продаются всякие ничуть не сомнительные напитки. Все слухи о том, что они надувают людей, надуманы.",
 	// White Void: Literally just a white void with a glass table.
-	"stage.void": "Пустота",
+	"stage.void.name": "Пустота",
 	"stage.void.description": "Имя нарицательное месту для разного рода занятий, что встречается в многочисленных артах и анимациях.",
 	"stage.random": "?????",
 	"stage.random.description": "Не уверены, что выбрать? Позвольте игре решить.",
@@ -440,7 +438,7 @@
 	"galleryMainMenu.envelope.asimo.description": "Обладающий силой тока Асимо врывается в Раздутую Рулетку, чтобы, по его словам, \"повеселиться\".\n\nМы понятия не имеем, как он сюда попал, и вообще у нас с ним никаких связей нет, разве что у Менеджера, Асимо работает тестером для его тупого мода на Friday Night Funkin', а ещё он победил в лотерее и попал в игру как персонаж для Аддона \"Example Addon\".\n\nАсимо — персонаж-гость, принадлежащий WolfKylis.",
 	// Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
 	// that agrees to join that's it.
-	"galleryMainMenu.envelope.shibanou.description": "Фамилия — Ноу; имя — Шиба. У этого кошкоподобного пришельца так и чешутся руки кого-то подорвать. Его имя с китайского можно перевести как \"Ноль Десять Восемь\", происходящее от названия ядерного объекта в Пекине, куда он и приземлился.\n\nПервые годы своей жизни Шиба потратил на поиск жилища, и в определённый момент обосновался у Менеджера в гараже. Чел решил его приютить, дабы тот был его вторым ассистентом, а он взял и втюрился в первого ассистента (фу, он же из пробирки). Без особых причин, кроме как выпендриться перед своим парнем, он вступил в игру, чтобы показать своё волшебство.\n\nШибаноу — это персонаж, принадлежащий NicklySuffer, созданный до начала разработки Раздутой Рулетки: Перезапуск.",
+	"galleryMainMenu.envelope.shib.description": "Фамилия — Ноу; имя — Шиба. У этого кошкоподобного пришельца так и чешутся руки кого-то подорвать. Его имя с китайского можно перевести как \"Ноль Десять Восемь\", происходящее от названия ядерного объекта в Пекине, куда он и приземлился.\n\nПервые годы своей жизни Шиба потратил на поиск жилища, и в определённый момент обосновался у Менеджера в гараже. Чел решил его приютить, дабы тот был его вторым ассистентом, а он взял и втюрился в первого ассистента (фу, он же из пробирки). Без особых причин, кроме как выпендриться перед своим парнем, он вступил в игру, чтобы показать своё волшебство.\n\nШиб — это персонаж, принадлежащий NicklySuffer, созданный до начала разработки Раздутой Рулетки: Перезапуск.",
 	// Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
 	"galleryMainMenu.envelope.chester.description": "Будучи главным бариста кофейни, Честер был вынужден играть в эту игру в качестве представителя компании. Из-за своего низкого среднего балла и нехаризматичного характера, его мечта об успехе и богатстве остаётся недостижимой.\n\nЕго ежедневная работа состоит из приготовления приторных напитков для похотливых клиентов. Ходят слухи, что эти напитки обладают неким \"расширяющим\" эффектом, что привлекло внимание нескольких инспекторов безопасности. Однако, стоит компании предложить монеточку — и все предупреждения сразу же снимаются с кофейни.\n\nЧестер — это персонаж, принадлежащий NicklySuffer, созданный до начала разработки Раздутой Рулетки: Перезапуск.",
 	"galleryMainMenu.envelope.dev": "Арты Разработчиков",
@@ -451,7 +449,7 @@
 	
 	// These will be button text that will be in the Utilities Main Menu.
 	"utilitiesMenu.characterCreator": "Редактор Персонажей",
-	"utilitiesMenu.stageEditor": "Просмотр Локаций",
+	"utilitiesMenu.stagePreviewer": "Просмотр Локаций",
 	"utilitiesMenu.loadFile": "Импорт Файла",
 	"utilitiesMenu.newFile": "Новый Файл",
 	"utilitiesMenu.loadDirectory": "Импорт Папки",
@@ -528,13 +526,13 @@
 	"animationCreator.exit.prompt": "Вы ДЕЙСТВИТЕЛЬНО хотите покинуть Редактор Анимаций?\nНесохранённый прогресс будет утерян.",
 	"animationCreator.saveSuccessful.prompt": "Анимация успешно сохранена.",
 	
-	"stageEditor.stage": "Локация",
-	"stageEditor.stage.description": "Это меню используется лишь для предпросмотра локаций и НЕ содержит функций для редактирования. Для наибольшего удобства, используйте также редактор файлов JSON.",
-	"stageEditor.objectList": "Список Объектов",
-	"stageEditor.reload": "Перезагрузить Локацию",
-	"stageEditor.screenshot": "Режим Снимков",
-	"stageEditor.exit": "Покинуть Просмотр",
-	"stageEditor.exit.prompt": "Вы ДЕЙСТВИТЕЛЬНО хотите покинуть просмотр локаций?",
+	"stagePreviewer.stage": "Локация",
+	"stagePreviewer.stage.description": "Это меню используется лишь для предпросмотра локаций и НЕ содержит функций для редактирования. Для наибольшего удобства, используйте также редактор файлов JSON.",
+	"stagePreviewer.objectList": "Список Объектов",
+	"stagePreviewer.reload": "Перезагрузить Локацию",
+	"stagePreviewer.screenshot": "Режим Снимков",
+	"stagePreviewer.exit": "Покинуть Просмотр",
+	"stagePreviewer.exit.prompt": "Вы ДЕЙСТВИТЕЛЬНО хотите покинуть просмотр локаций?",
 	
 	"resultsMenu.title": "ПЕРЕЙДЁМ К ИТОГАМ!",
 	"resultsMenu.instructions": "Нажмите Любую Клавишу Для Выхода",
@@ -572,7 +570,7 @@
 	"menu.exit": "Выйти",
 	
 	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
-	"gameUI.selectTarget": "ВЫБЕРИТЕ ЦЕЛЬ",
+	"game.selectTarget": "ВЫБЕРИТЕ ЦЕЛЬ",
 	
 	"preloadMenu.progress.characters": "Загружаем Персонажей...",
 	"preloadMenu.progress.gameplay": "Загрузжаем Режимы...",

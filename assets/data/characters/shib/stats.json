@@ -1,0 +1,15 @@
+{
+	"cardDisplayedKey": "character.shib.name.short",
+	"maxPressure": 4,
+	"maxConfidence": 7,
+	"skills": [
+		{
+			"id": "sabotage",
+			"cost": 4
+		},
+		{
+			"id": "amnesia",
+			"cost": 3
+		}
+	]
+}

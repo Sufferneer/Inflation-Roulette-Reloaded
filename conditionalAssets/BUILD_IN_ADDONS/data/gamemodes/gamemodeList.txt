@@ -1,6 +1,6 @@
 reloaded
 quickPlay
 inequality
-classic
 charge
 fiftyFifty
+classic

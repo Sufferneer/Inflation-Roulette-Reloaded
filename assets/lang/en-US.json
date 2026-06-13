@@ -1,4 +1,6 @@
 {
+	// !!     DO NOT DELETE THE COMMENTS    !!
+	// !! COMMENTS WILL NOT BE READ BY GAME !!
 	// Translation File
 	// Language: English (US)
 	
@@ -17,7 +19,7 @@
 	// But if the language you're translating is inherently unserious (e.g. LOLCAT, Pirate Speak), ehh just get the message across.
 	// Ultimately, the message that came across should remain unchanged to avoid any confusion.
 	
-	// For names of people and places, they should remain untranslated.
+	// For names of fictional people and fictional places, they should remain untranslated.
 	// If your language uses another script other than Latin, make sure they phonetically
 	// sound similar to its English counterpart.
 	// In a nutshell, transliterate names.
@@ -29,9 +31,9 @@
 	// The positions of escape sequence in-between sentences should be left AS IS.
 	
 	// Remember the "Transliterate Names" rule
-	"game.title": "Inflation Roulette: Reloaded",
-	"game.titleShort": "Inflation Roulette",
-	"game.acronym": "IRR",
+	"metadata.title": "Inflation Roulette: Reloaded",
+	"metadata.titleShort": "Inflation Roulette",
+	"metadata.acronym": "IRR",
 	
 	// Version Formatting
 	// For example, if the version is 2.3.1 in an Linux environment,
@@ -42,31 +44,32 @@
 	// Version 2.3.1
 	// Linux Build
 	
-	"game.version.numeral.format": "Version %1",
-	"game.version.numeralModded.format": "Modded Version %1",
-	"game.version.name.minor.format": "Pitstop %1",
-	"game.version.name.hotfix.format": "Hotfix %1",
+	"metadata.version.numeral.format": "Version %1",
+	"metadata.version.numeralModded.format": "Modded Version %1",
+	"metadata.version.name.minor.format": "Pitstop %1",
+	"metadata.version.name.hotfix.format": "Hotfix %1",
 	// %1 is the platform in which the executable is dedicated.
 	// For example, if the game is on Windows, "Windows Build" will be displayed.
 	// Note that platform names will remain untranslated.
 	"game.build.format": "%1 Build",
 	
-	"game.version.name.major.0": "Indev",
+	"metadata.version.name.major.0": "Indev",
 	// Version 1: Initial Release
-	"game.version.name.major.1": "Initial Release",
+	"metadata.version.name.major.1": "Initial Release",
 	// Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
 	// The Version Name has two interpretations. One being it being a update that introduces creative-related content (e.g. Modding Tools, Extras).
 	// Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
-	"game.version.name.major.2": "Patch of Creativity",
-	// Version 3: Added Android support and quality of life features.
-	"game.version.name.major.3": "A Lil' Something Portable",
+	"metadata.version.name.major.2": "Patch of Creativity",
+	// Version 3: Final update. Added Android support and quality of life features.
+	"metadata.version.name.major.3": "Definitive Edition",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"game.version.name.state.a": "Public Alphα %1",
-	"game.version.name.state.b": "Public βeta %1",
-	"game.version.name.state.c": "Release Candidate %1",
+	"metadata.version.name.state.a": "Public Alphα %1",
+	"metadata.version.name.state.b": "Public βeta %1",
+	"metadata.version.name.state.c": "Release Candidate %1",
 	
 	// These are the button texts in the Main Menu.
+	"mainMenu.windowDisplay": "Main Menu",
 	"mainMenu.play": "Play",
 	"mainMenu.achievements": "Achievements",
 	"mainMenu.options": "Options",
@@ -78,7 +81,7 @@
 	"mainMenu.donate": "Donate",
 	
 	// Tooltips for buttons in the Main Menu.
-	"mainMenu.donate.tooltip": "Your generous donations help contribute to more games!",
+	"mainMenu.donate.tooltip": "Your generous donation will support the developer!",
 	
 	// When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
 	"mainMenu.dongs": "You have accumulated:\n%1 Dongs",
@@ -108,7 +111,8 @@
 	"mainMenu.dongs.comment.3000": "you're just that bored aint you",
 	"mainMenu.dongs.comment.5000": "at 10000 dongs, your save data will be erased, and the game will delete itself.",
 	"mainMenu.dongs.comment.10000": "ok fine here's your achievement. now get the hell out of my sight.",
-	
+
+	"extrasMenu.windowDisplay": "Extras",
 	"extrasMenu.title": "EXTRA CONTENT",
 	"extrasMenu.gallery": "Gallery",
 	"extrasMenu.jukebox": "Jukebox",
@@ -121,10 +125,12 @@
 	"debugText.format": "%1: %2",
 	
 	// Please make sure that this is written in a formal tone.
+	"warningMenu.windowDisplay": "Warning",
 	"warningMenu.title": "WARNING",
 	"warningMenu.content": "This game is only for mature demographics over 18 YEARS OF AGE.\nThis is a fetish game, primarily containing FURRY INFLATION content, and may not be suitable to some. External addons made by third-parties are unmoderated and may contain material which may cause discomfort in some players. Recording and streaming of this game to social media platforms where juveniles are widely present is highly discouraged.\nThis game also features flashing images and screen shaking that may trigger photosensitive symptoms to some people. These effects can be dampened via the Options menu.\nBy pressing 'Accept', you acknowledge these warnings and fully bear any consequences caused by this game.",
 	"menu.accept": "Accept",
-	
+
+	"optionsMenu.windowDisplay": "Options",
 	"optionsMenu.heading.gameplay": "Gameplay",
 	"optionsMenu.heading.preferences": "Preferences",
 	"optionsMenu.heading.visuals": "Visuals",
@@ -223,6 +229,14 @@
 	"option.enableBellyGurgles.description": "Players play belly gurgle sounds on idle when inflated.",
 	"option.enableBellyCreaks.name": "Creaking",
 	"option.enableBellyCreaks.description": "Players play balloon overstretching sounds on idle when inflated.",
+	"option.enableBelching.name": "Eructation",
+	"option.enableBelching.description": "Players burp when inflated.",
+	"option.enableSkinTinting.name": "Discoloration",
+	"option.enableSkinTinting.description": "Players' skin shifts color when inflated with certain mediums.",
+	"option.enableOralLeaking.name": "Leaking (Oral)",
+	"option.enableOralLeaking.description": "Players leak fluids from their mouth when inflated with certain mediums.",
+	"option.enableNavelLeaking.name": "Leaking (Navel)",
+	"option.enableNavelLeaking.description": "Players leak fluids from their belly button when inflated with certain mediums.",
 	"option.enableFullscreen.name": "Fullscreen",
 	"option.enableFullscreen.description": "Self-explanatory, but are you that deprived?",
 	"option.hideHUD.name": "Hide HUD",
@@ -278,16 +292,21 @@
 	"option.showMemoryUsageOnDebugText.description": "Displays the current amount of memory used on the Debug Text.",
 	"option.showCurrentStateOnDebugText.name": "Current State",
 	"option.showCurrentStateOnDebugText.description": "Displays the current menu being navigated on the Debug Text.",
-	
+
+	"addonsMenu.windowDisplay": "Addons",
 	"addonsMenu.authors": "Authors:",
 	"addonsMenu.noAddonsDetected.title": "No Add-Ons Detected",
 	"addonsMenu.noAddonsDetected.content": "No addons are detected within the addons folder. Please check whether you have included a metadata.json in the metadata folder in the addons.\nIf you think this is a mistake, please report your issue to our GitHub repository.",
-	
+
+	"languageMenu.windowDisplay": "Language Select",
 	"languageMenu.title": "SELECT LANGUAGE",
 	"languageMenu.description": "Note: Translations may not be 100% accurate, and may contain mistranslations or untranslated text. If you want to help improve the translations, please consider contributing to our GitHub repository.",
 	"languageMenu.contributors": "Contributors",
 	"languageMenu.completion": "%1 Complete",
+	"languageMenu.deprecated": "[DEPRECATED]",
+	"languageMenu.exportedUnmatchedKeys": "Missing and deprecated localization keys exported in:\n%1",
 
+	"gamemodeSelect.windowDisplay": "Gamemode Select",
 	"gamemodeSelect.title": "SELECT GAMEMODE",
 	"gamemodeSelect.playerCount": "Players",
 	"gamemodeSelect.setting.format": "%1: %2",
@@ -299,13 +318,16 @@
 	"gamemode.inequality.name": "Inequality",
 	"gamemode.inequality.description": "Players are given random skills on each live shot.\n\"All players are equal, but some players are more equal than others.\" - Animal Farm, probably",
 	"gamemode.classic.name": "Classic",
-	"gamemode.classic.description": "True randomness and sabotage endlessly.\nThe original way of playing the game.",
+	"gamemode.classic.description": "True randomness and sabotage endlessly.\nFor archival purposes only.",
 	"gamemode.charge.name": "Charge",
 	"gamemode.charge.description": "Damage increases with each blank shot.\nRisky and rewarding gameplay.",
-	
-	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
+
+	"characterSelect.windowDisplay": "Gameplay Configuration",
+	// Select Character: This phrase is meant to be archaic. Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "CHOOSE YOUR VESSELS",
 	"characterSelect.holdCardsToSeeInfo": "Hold Cards To See Info",
+	// Select Filler: This however, does not need to be in the same tone as Select Character.
+	"characterSelect.selectFiller": "PICK YOUR POISON",
 	// Select Stage: This however, does not need to be in the same tone as Select Character.
 	"characterSelect.selectStage": "CHOOSE YOUR STAGE",
 	
@@ -331,37 +353,37 @@
 	// Shib: Character created by NicklySuffer. Non-binary, and designed to look like one of those simplistic white cat anons.
 	// Screams "city boy" vibes.
 	// Skills: Sabotage, Amnesia
-	"character.shibanou.name": "Shibanou",
-	"character.shibanou.name.short": "Shib",
-	"character.shibanou.description": "Extraterrestrial, cunning and loves lemon tea. Can cast temporary memory loss.",
+	"character.shib.name": "Shibanou",
+	"character.shib.name.short": "Shib",
+	"character.shib.description": "Extraterrestrial, cunning and loves lemon tea. Can cast temporary memory loss.",
 	// Chester: Character created by NicklySuffer. Works in a coffee shop, and also looks like one of those simplistic white cat anons,
 	// but wears a cap too I guess. Screams "overworked minimum wagie" vibes.
 	// Designed with no offensive skills, but has one more pressure point lmao.
 	// Skills: Reveal, Reload
-	"character.chester.name": "Chester",
+	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "An unfortunate barista forced to play this game for a company. His work trains his endurance.",
 	// Option to choose a random character.
-	"character.random.name": "???",
-	"character.random.name.short": "???",
+	"character.random.name": "Random",
+	"character.random.name.short": "Random",
 	"character.random.description": "Not sure who to choose? Let the game decide!",
 	
 	// Classic Room: The original stage from the original game redrawn.
-	"stage.classic": "Classic Room",
+	"stage.classic.name": "Classic Room",
 	"stage.classic.description": "The room we all know nice and well.",
 	// Manager's Lounge: The context is that four people, either motivated by a better life or forced by their higher-ups, are
 	// offered a place as a game participant to satisfy the manager's desires.
-	"stage.reloaded": "Manager's Lounge",
+	"stage.reloaded.name": "Manager's Lounge",
 	"stage.reloaded.description": "This scene looks like a porn set. That's because it kinda is, and it's being recorded.",
 	// Shitfucks Café: Named Shitfucks. The exact coffee shop that Chester works at.
 	// Sells coffee that inflates people, and agreed to host horrible shit like this. Disgusting.
 	// Again, transliterate Shitfucks.
-	"stage.shitfucks": "Shitfucks Café",
+	"stage.shitfucks.name": "Shitfucks Café",
 	"stage.shitfucks.description": "Specializes in selling beverages. Definitely nothing wrong going on here.",
 	// White Void: Literally just a white void with a glass table.
-	"stage.void": "White Void",
+	"stage.void.name": "White Void",
 	"stage.void.description": "Household name as a place for all activities, featured in countless art pieces and animations.",
-	"stage.random": "?????",
+	"stage.random": "Random",
 	"stage.random.description": "Not sure where to choose? Let the game decide!",
 	
 	// Splash text that is displayed
@@ -383,7 +405,8 @@
 	"skill.amnesia.description": "Disable an opponent's skills for one turn.",
 	"skill.assault.name": "Assault",
 	"skill.assault.description": "Shoot an opponent. Gives victim 2 confidence on blank.",
-	
+
+	"pauseMenu.windowDisplay": "Paused",
 	"pauseMenu.title": "GAME PAUSED",
 	"pauseMenu.resume": "Resume",
 	"pauseMenu.restart": "Restart",
@@ -395,7 +418,9 @@
 	"stats.confidence": "Confidence",
 	"stats.skill": "Skill",
 	"stats.skills": "Skills",
-	
+
+	"creditsMenu.windowDisplay": "Credits",
+
 	// Be the last player standing in a match.
 	"achievement.firstWin.name": "First Victory",
 	"achievement.firstWin.description": "Your life will be bound by chains from now on.",
@@ -442,9 +467,9 @@
 	"achievement.intentionalLoseByPolarize.description": "You know you're safe; you know you're at your limit; you know it's gonna make you lose; yet you still put yourself in danger? You horny or something?",
 	// Eliminate yourself after using Reveal and Polarize.
 	"achievement.findCameraman.name": "Lights, Camera, Action!",
-	"achievement.findCameraman.description": "OMGWTFBBQ COBALT REAL??",
+	"achievement.findCameraman.description": "Have you seen the cameraman?",
 	// Meet Cobalt. (1/128 probability)
-	"achievement.winByYourself.name": "True Singleplayer",
+	"achievement.winByYourself.name": "Forever Alone",
 	"achievement.winByYourself.description": "\"If you know yourself, you need not fear the result of a hundred battles.\" - The Art of War, probably.",
 	// Win a game against yourself (All players are human and only one player uses a skill)
 	"achievement.winAgainstStrategicCPUs.name": "Mind Games",
@@ -459,7 +484,17 @@
 	"achievement.liveShots.name": "Not Enough Air",
 	"achievement.liveShots.description": "A single .357 Magnum bullet costs about 15¢ to make, but retail prices ranges from 60¢ to $1.40. Now imagine firing 100 of them.",
 	// Get shot 600 times with a blank round.
-	
+	"achievement.twoPlayers.name": "Stand-Off",
+	"achievement.twoPlayers.description": "Two idiots, one gun. Who would survive? Answer: The manager.",
+	// Set player count to 2 and win.
+	"achievement.sixPlayers.name": "Hextuple Havoc",
+	"achievement.sixPlayers.description": "That's what kids these days call 6's? Might as well call it circlejerking at this point.",
+	// Set player count to 6 and win.
+	"achievement.allFillerWins.name": "A Balanced Diet",
+	"achievement.allFillerWins.description": "Experience every single method of torture, and keep yourself intact every time.",
+	// Win as every filler. (Air, Water, Soda, Slime, Berry)
+
+	"achievementsMenu.windowDisplay": "Achievements",
 	"achievementsMenu.title": "Your achievements",
 	"achievementsMenu.description": "Select an achievement to view its details and completion status.",
 	"achievementsMenu.resetProgress": "Reset Progress",
@@ -467,7 +502,8 @@
 	"achievementToast.title": "Achievement Unlocked!",
 	
 	"resetAchievementMenu.prompt": "Confirm your reset of\n%1?\nThis action is irreversible.",
-	
+
+	"galleryMainMenu.windowDisplay": "Gallery",
 	// If the language's script can be written vertically, set this string to false
 	"galleryMainMenu.envelope.rotateText": "true",
 	// Context: According to Snowyboi, there are different versions of Goobers, one being Slime Goobers, and one labelled "???".
@@ -477,18 +513,24 @@
 	"galleryMainMenu.envelope.asimo.description": "Harnessing his electric powers, Asimo jolts into Inflation Roulette claiming to \"have some fun\".\n\nWe don't know how he got here, and we totally have no connections with him, other than he's a wolf, he's the Manager's playtester for his stupid Friday Night Funkin' mod, and he's the winner of an art raffle to be added to the game as a character for the Example Addon.\n\nAsimo is a guest character owned by WolfKylis.",
 	// Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
 	// that agrees to join that's it.
-	"galleryMainMenu.envelope.shibanou.description": "Last name Nou; first name Shiba. Hailing from a mysterious planet, this cat-like creature is ready to blast someone. Their Chinese name can be interpreted as \"Zero Ten Eight\", derived from the nuclear site they landed on in Beijing.\n\nSpending the first few years of their life scouring to different places to live, they eventually founded themself inside of The Manager's garage. The man adopted them as his secondary assistant and soon found themself in love with the primary assistant (lab-grown btw, ew). With no apparent reason other than to show-off in front of their boyfriend, they joined the game to show off their hidden abilities.\n\nShibanou is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
+	"galleryMainMenu.envelope.shib.description": "Last name Nou; first name Shiba. Hailing from a mysterious planet, this cat-like creature is ready to blast someone. Their Chinese name can be interpreted as \"Zero Ten Eight\", derived from the nuclear site they landed on in Beijing.\n\nSpending the first few years of their life scouring to different places to live, they eventually founded themself inside of The Manager's garage. The man adopted them as his secondary assistant and soon found themself in love with the primary assistant (lab-grown btw, ew). With no apparent reason other than to show-off in front of their boyfriend, they joined the game to show off their hidden abilities.\n\nShib is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
 	// Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
 	"galleryMainMenu.envelope.chester.description": "As the lead barista of a coffee shop, he was forced to play this game as an ambassador for the company. With his poor academic results and his uncharismatic personality, his dream of prosperity and wealth is yet to be in reach.\n\nHis daily work involves making oversweetened beverages for horny customers. Some say the drinks have an \"expansive\" effect, which has grabbed the attention of several food safety agents. However, due to some capitalist bullshit, warnings from the food department went nowhere.\n\nChester is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.dev": "Developer Art",
 	"galleryMainMenu.envelope.dev.description": "A collection of concept art, sketches, and unused assets made by the developers and other artists.\n\nangry           bird",
 	"galleryMainMenu.envelope.community": "Community Art",
 	"galleryMainMenu.envelope.community.description": "A collection of fanart drawn by the developers' friends and the community.",
+
+	// %1 - Envelope Name
 	"galleryEntryMenu.viewFullImage": "View Full Image",
-	
+
+	"jukeboxMenu.windowDisplay": "Jukebox",
+
+	"utilitiesMenu.windowDisplay": "Utilities",
 	// These will be button text that will be in the Utilities Main Menu.
 	"utilitiesMenu.characterCreator": "Character Creator",
-	"utilitiesMenu.stageEditor": "Stage Viewer",
+	"utilitiesMenu.stagePreviewer": "Stage Previewer",
+	"utilitiesMenu.langConverter": ".LANG Converter",
 	"utilitiesMenu.loadFile": "Load File",
 	"utilitiesMenu.newFile": "New File",
 	"utilitiesMenu.loadDirectory": "Load Folder",
@@ -507,7 +549,7 @@
 	"utilitiesMenu.firstStartup.prompt": "Warning: Very Unstable\n\nThe following tools are not intended to serve as Development Tools, and are only created as a means for casual artists to make their own characters. At any time, anywhere, the tools will at some point crash out and die. The tools do not have an autosave feature; MANUAL SAVING is highly recommend.\n\nIf you wish to complain about the features, learn JSON and Flash goddamnit",
 	// Dummy text. Used as the default name for newly created Sprite Projects.
 	"utilitiesMenu.placeholder": "Placeholder",
-	
+
 	"characterCreator.dataType.metadata": "Metadata",
 	"characterCreator.dataType.spriteData": "Sprite Data",
 	"characterCreator.parameter.name": "Character Name",
@@ -561,20 +603,22 @@
 	"prompt.andManyMore": "and many more...",
 	"characterCreator.exporting.description": "Please keep this program open.",
 	"characterCreator.exportSuccessful.prompt": "Project exported successfully. You might want to tweak the variables in the JSON files.\n\nExported as:\n%1",
-	
+
+	"animationCreator.windowDisplay": "Animation Editor",
 	"animationCreator.save": "Save Animation",
 	"animationCreator.exit": "Exit Editor",
 	"animationCreator.exit.prompt": "Are you sure you want to exit the Animation Editor?\nAny unsaved progress will be LOST.",
 	"animationCreator.saveSuccessful.prompt": "Animation saved successfully.",
-	
-	"stageEditor.stage": "Stage",
-	"stageEditor.stage.description": "This menu is only used for previewing stages and offers NO editing functions. Use this with a JSON editor for the best experience.",
-	"stageEditor.objectList": "Object List",
-	"stageEditor.reload": "Reload Stage",
-	"stageEditor.screenshot": "Screenshot Mode",
-	"stageEditor.exit": "Exit Viewer",
-	"stageEditor.exit.prompt": "Are you sure you want to exit the Stage Viewer?",
 
+	"stagePreviewer.stage": "Stage",
+	"stagePreviewer.stage.description": "This menu is only used for previewing stages and offers NO editing functions. Use this with a JSON editor for the best experience.",
+	"stagePreviewer.objectList": "Object List",
+	"stagePreviewer.reload": "Reload Stage",
+	"stagePreviewer.screenshot": "Screenshot Mode",
+	"stagePreviewer.exit": "Exit Viewer",
+	"stagePreviewer.exit.prompt": "Are you sure you want to exit the Stage Viewer?",
+
+	"offsetEditor.windowDisplay": "Offset Editor",
 	"offsetEditor.title": "Modify Offsets",
 	"offsetEditor.description": "Arrow Keys to Move Image\nHold SHIFT/CTRL to Increase Rate\nMake Sure Crosshair Centers Desired Location",
 	"offsetEditor.offsetType.origin": "Origin",
@@ -583,7 +627,10 @@
 	"offsetEditor.offsetType.navel": "Navel",
 	"offsetEditor.offsetType.gunShoot": "Gun Chamber (Shooting)",
 	"offsetEditor.offsetType.gunSkill": "Gun Chamber (Skill)",
-	
+
+	"langConverter.successPrompt": "JSON file exported in:\n%1",
+
+	"resultsMenu.windowDisplay": "Results",
 	"resultsMenu.title": "THE SCORES ARE IN!",
 	"resultsMenu.instructions": "Press Any Key To Exit",
 	// Score bonus for last standing players
@@ -618,12 +665,15 @@
 	"menu.confirm": "Confirm",
 	"menu.cancel": "Cancel",
 	"menu.exit": "Exit",
-	
+
+	// %1: Gamemode, %2: Player Count
+	"game.windowDisplay": "%1 - %2 Players",
 	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
-	"gameUI.selectTarget": "SELECT TARGET",
-	"gameUI.playerIndicator.you": "YOU",
-	"gameUI.playerIndicator.player": "P%1",
-	
+	"game.selectTarget": "SELECT TARGET",
+	"game.playerIndicator.you": "YOU",
+	"game.playerIndicator.player": "P%1",
+
+	"preloadMenu.windowDisplay": "Preloading",
 	"preloadMenu.progress.characters": "Loading Characters...",
 	"preloadMenu.progress.gameplay": "Loading Game Modes...",
 	"preloadMenu.progress.achievements": "Tracking Achievements...",
@@ -633,18 +683,61 @@
 	"preloadMenu.progress.splashes": "Writing Splashes...",
 	"preloadMenu.progress.music": "Finding Music Discs...",
 	"preloadMenu.finished": "All Set!",
-	
+
+	"outdatedVersionMenu.windowDisplay": "Version Outdated!",
 	"outdatedVersionMenu.heading": "Version Outdated",
 	"outdatedVersionMenu.text": "Hey! You are currently using an older version of Inflation Roulette: Reloaded. Please download the latest version to enjoy the newest features and bug fixes!\n\nYour Version: %1\nLatest Version: %2",
 	"outdatedVersionMenu.update": "Update",
 	"outdatedVersionMenu.dismiss": "Later",
-	
+
+	"androidPermissionsMenu.windowDisplay": "Permissions Required!",
 	"androidPermissionsMenu.permissionsRequired": "Permissions Required",
 	"androidPermissionsMenu.permissionsGranted": "Permissions Granted!",
 	"androidPermissionsMenu.description": "OK, funny thing: Android doesn't want us to look at the add-ons you've installed.\n\nIn order for add-ons to work correctly, please allow us the permission to read external storage of your phone.",
 	"androidPermissionsMenu.playWithoutAddons": "Play Without Addons",
 	"menu.decline": "Decline",
-	
+
+	"filler.air.name": "Air",
+	"filler.air.description": "The default pick. Bullets full of compressed carbon dioxide.",
+	"filler.water.name": "Water",
+	"filler.water.description": "Hefty and sloshy. Overconsumption may cause involuntary oral leakages.",
+	"filler.soda.name": "Soda",
+	"filler.soda.description": "A sweet and carbonated drink. Has the characteristics of both air and water.",
+	"filler.slime.name": "Slime",
+	"filler.slime.description": "Sentient goo that reproduces asexually inside of gut. Squirms inside hosts and siphons their DNA.",
+	"filler.berry.name": "Berry",
+	"filler.berry.description": "Radioactive blueberry juice. Causes skin discoloration and leakages from several orifices.",
+	"filler.random.name": "Random",
+	"filler.random.description": "Not sure which to choose? Let the game decide!",
+
+	"loading.message.format": "%1...",
+	"loading.messages": [
+		"Loading",
+		"Please wait",
+		"Please be patient",
+		"Setting things up",
+		"Placing furniture",
+		"Refilling bullets",
+		"Patching abdomens",
+		"Recruiting participants",
+		"Deflating participants",
+		"Preparing refreshments",
+		"Spiking refreshments"
+	],
+	"loading.messagesRare": [
+		"Unloading then reloading everything",
+		"Calling the police",
+		"Running the hell machine",
+		"Wasting time",
+		"Creating more bugs",
+		"Copyright claiming AI videos",
+		"Running out of ideas",
+		"Fixing the Character Creator",
+		"Rubbing bellies",
+		"Curing cholera",
+		"Praying for mercy"
+	],
+
 	// Fallback for HTML build
 	"gamemode.fiftyFifty.name": "50/50",
 	"gamemode.fiftyFifty.description": "Purely a coin flip chance with replacement.\nQuick and risky gameplay.",

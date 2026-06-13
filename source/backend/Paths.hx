@@ -12,6 +12,7 @@ import openfl.utils.Assets as OpenFlAssets;
 import openfl.system.System;
 import openfl.geom.Rectangle;
 import tjson.TJSON as Json;
+import backend.typedefs.FillerSoundData;
 
 /**
  * List of functions for getting assets.
@@ -31,29 +32,47 @@ class Paths {
 	 * Preload belly sounds to memory to prevent crashes and lag spikes.
 	 */
 	public static function precacheBellySounds() {
-		var creakType:String = 'air';
-		var gurgleType:String = 'air';
-		var belchType:String = 'air';
-		var burstType:String = 'air';
-		for (i in 1...Constants.CREAKS_SAMPLE_COUNT + 1) {
-			var key:String = 'game/belly/creaks/creak_' + i;
-			precacheSound(key);
+		var creaks:FillerSoundData = GameplayManager.currentFiller?.creaks;
+		var gurgles:FillerSoundData = GameplayManager.currentFiller?.gurgles;
+		var belches:FillerSoundData = GameplayManager.currentFiller?.belches;
+		var leaks:FillerSoundData = GameplayManager.currentFiller?.leaks;
+		var bursts:FillerSoundData = GameplayManager.currentFiller?.bursts;
+		if (creaks != null) {
+			for (i in 1...creaks.samples + 1) {
+				var key:String = 'game/inflation/${creaks.archetype}/creaks/creak_' + i;
+				precacheSound(key);
+			}
 		}
-		for (i in 1...Constants.GURGLES_SAMPLE_COUNT + 1) {
-			var key:String = 'game/belly/gurgles/gurgle_' + i;
-			precacheSound(key);
+		if (gurgles != null) {
+			for (i in 1...gurgles.samples + 1) {
+				var key:String = 'game/inflation/${gurgles.archetype}/gurgles/gurgle_' + i;
+				precacheSound(key);
+			}
 		}
-		for (i in 1...Constants.BELCHES_SAMPLE_COUNT + 1) {
-			var key:String = 'game/belly/belches/belch_' + i;
-			precacheSound(key);
+		if (belches != null) {
+			for (i in 1...belches.samples + 1) {
+				var key:String = 'game/inflation/${belches.archetype}/belches/belch_' + i;
+				precacheSound(key);
+			}
+		}
+		if (leaks != null) {
+			for (i in 1...leaks.samples + 1) {
+				var key:String = 'game/inflation/${leaks.archetype}/leaks/leak_' + i;
+				precacheSound(key);
+			}
+		}
+		if (bursts != null) {
+			for (i in 1...bursts.samples + 1) {
+				var key:String = 'game/inflation/${bursts.archetype}/bursts/burst_' + i;
+				precacheSound(key);
+			}
 		}
 		for (i in 1...Constants.FWOOMPS_SAMPLE_COUNT + 1) {
-			var key:String = 'game/belly/fwoomps/fwoompLarge_' + i;
+			var key:String = 'game/inflation/universal/fwoomps/fwoompLarge_' + i;
 			precacheSound(key);
-			key = 'game/belly/fwoomps/fwoompSmall_' + i;
+			key = 'game/inflation/universal/fwoomps/fwoompSmall_' + i;
 			precacheSound(key);
 		}
-		precacheSound('game/belly/burst');
 	}
 
 	public static function precacheSound(key:String) {

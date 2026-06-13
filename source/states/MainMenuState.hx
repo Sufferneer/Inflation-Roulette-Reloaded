@@ -70,6 +70,8 @@ class MainMenuState extends SuffState {
 	override public function create():Void {
 		Paths.clearUnusedMemory();
 
+		Window.setTitle(Language.getPhrase('mainMenu.windowDisplay'));
+
 		if (FlxG.sound.music == null || SuffState.currentMusicName == 'null') { // idk lmao
 			SuffState.playMusic('mainMenu');
 		}
@@ -88,10 +90,10 @@ class MainMenuState extends SuffState {
 		overlay.alpha = 0.75;
 		add(overlay);
 
-		logo = new GameLogo(0, 0, false);
-		logo.showVersion = true;
-		logo.x = FlxG.width / 2 + (FlxG.width / 2 - logo.width) / 2;
-		logo.y = (FlxG.height - logo.height) / 2;
+		logo = new GameLogo(0, 0);
+		logo.x = Std.int(FlxG.width / 2 + (FlxG.width / 2 - logo.width) / 2);
+		// logo.y = Std.int((FlxG.height / 2 - logo.height) / 2);
+		logo.y = Std.int((FlxG.height - (logo.height + 64)) / 2);
 		add(logo);
 
 		dongText = new FlxText(0, 0, 0, '', 32);
@@ -130,12 +132,12 @@ class MainMenuState extends SuffState {
 		}
 
 		final bottomInfoTextList:Array<String> = [
-			Language.getPhrase('game.title'),
+			Language.getPhrase('metadata.title'),
 			#if _OFFICIAL_BUILD
-			VersionMetadata.getVersionName(FlxG.stage.application.meta.get('version')), Language.getPhrase('game.version.numeral.format',
+			VersionMetadata.getVersionName(FlxG.stage.application.meta.get('version')), Language.getPhrase('metadata.version.numeral.format',
 				[FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
 			#else
-			Language.getPhrase('game.version.numeralModded.format', [FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
+			Language.getPhrase('metadata.version.numeralModded.format', [FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
 			#end
 			Language.getPhrase('game.build.format', [PlatformMetadata.getBuildName()])
 		];
@@ -172,6 +174,7 @@ class MainMenuState extends SuffState {
 				}
 				button.x = (((FlxG.width - ScreenSafeZone.X * 2) / 2 - 40) - menuItemSize.x) / 2 + (curMenuItemSize.x + menuItemPadding.x) * iIndex;
 				button.y = (((FlxG.height - ScreenSafeZone.Y * 2) - ((FlxG.height - ScreenSafeZone.Y * 2) - creditsButton.y)) - menuItemSize.y) / 2 + (curMenuItemSize.y + menuItemPadding.y) * jIndex;
+				button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip', [], '');
 				button.onClick = function() {
 					menuButtonFunctions(item);
 				};
@@ -193,20 +196,15 @@ class MainMenuState extends SuffState {
 		finishedAnimation = false;
 		var logoX = logo.x;
 		var logoY = logo.y;
-		logo.showVersion = false;
-		logo.animated = true;
 		logo.x = (FlxG.width - logo.width) / 2;
 		logo.y = -logo.height;
-		FlxTween.tween(logo, {y: logoY}, 1, {
+		FlxTween.tween(logo, {y: (FlxG.height - logo.height) / 2}, 1, {
 			ease: FlxEase.quintOut,
 			startDelay: 0.5
 		});
-		FlxTween.tween(logo, {x: logoX}, 1, {
+		FlxTween.tween(logo, {x: logoX, y: logoY}, 1, {
 			ease: FlxEase.quintInOut,
-			startDelay: 1.5,
-			onComplete: function(_) {
-				logo.showVersion = true;
-			}
+			startDelay: 1.5
 		});
 
 		var overlayPos = overlay.x;
@@ -391,9 +389,9 @@ class MainMenuState extends SuffState {
 		splashText.offset.x = -Math.pow(Math.max(0, dongsPerSecond - 5) * 6, 2);
 		dongCommentText.alpha = FlxMath.bound(splashText.offset.x / -2000, 0, 1);
 
-		logo.angle = splashText.angle = Math.sin(SuffState.timePassedOnState) * 5;
+		logo.angle = splashText.angle = Math.sin(SuffState.timePassedOnState / 2) * 3;
 		displayedLogoScale = FlxMath.lerp(displayedLogoScale, GameLogo.logoScale, elapsed * 10);
-		var leScale = displayedLogoScale - Math.pow(Math.sin(SuffState.timePassedOnState / 2), 2) * 0.05;
+		var leScale = displayedLogoScale - Math.pow(Math.sin(SuffState.timePassedOnState / 4), 2) * 0.05;
 		logo.scale.set(leScale, leScale);
 
 		splashText.x = logo.x + (logo.width - splashText.width) / 2;

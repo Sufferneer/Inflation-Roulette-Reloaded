@@ -19,6 +19,8 @@ class GalleryMainMenuState extends SuffState {
 	override function create() {
 		super.create();
 
+		Window.setTitle(Language.getPhrase('galleryMainMenu.windowDisplay'));
+
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 		bg.color = 0xFFE0E0E0;
 		bg.scrollFactor.set();

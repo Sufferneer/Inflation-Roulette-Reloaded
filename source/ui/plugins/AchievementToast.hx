@@ -49,6 +49,7 @@ class AchievementToast extends FlxSpriteGroup {
 		instance.icon.alpha = 0;
 		displayedText = Language.getPhrase('achievementToast.title') + '\n' + Language.getPhrase('achievement.$id.name');
 		instance.text.color = 0xFFFFFFFF;
+		instance.text.font = Paths.font('default');
 		instance.text.text = displayedText;
 		instance.text.updateHitbox();
 		instance.text.x = instance.x + instance.icon.width + 20;

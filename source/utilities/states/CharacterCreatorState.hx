@@ -131,6 +131,8 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 	override function create() {
 		super.create();
 
+		Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'), Language.getPhrase('utilitiesMenu.characterCreator'));
+
 		reloadJSONData();
 		reloadSkills();
 		generateUI();

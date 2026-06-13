@@ -1,0 +1,22 @@
+{
+	"displayColor": "#80FF40",
+	"liquidColor": "#80FF40",
+
+	"gurgles": {
+		"archetype": "slime",
+		"samples": 11
+	},
+	"creaks": {
+		"archetype": "liquid",
+		"samples": 5
+	},
+	"bursts": {
+		"archetype": "slime",
+		"samples": 1
+	},
+
+	"gravityMultiplier": 3,
+	"stumbleForce": 5,
+	"disablePoppingPhysics": true,
+	"npcOnPop": "slime"
+}

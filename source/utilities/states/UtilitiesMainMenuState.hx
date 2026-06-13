@@ -6,11 +6,16 @@ import utilities.substates.ErrorPrompt;
 import utilities.substates.NewSpriteProjectPrompt;
 import substates.GenericPrompt;
 import ui.objects.SuffIconButton;
+import utilities.backend.LangFileConvert;
+import openfl.net.FileFilter;
+
+using StringTools;
 
 class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 	final buttons:Array<String> = [
 		'characterCreator',
-		'stageEditor'
+		'stagePreviewer',
+		'langConverter'
 	];
 	final disabledButtons:Array<String> = [];
 	final buttonSpacing:Float = 20;
@@ -19,8 +24,10 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 	override function create() {
 		super.create();
 
+		resetTitle();
+
 		for (num => btn in buttons) {
-			var button:SuffButton = new SuffButton(0, 0, Language.getPhrase('utilitiesMenu.$btn'), null, null, 500, 100);
+			var button:SuffButton = new SuffButton(0, 0, Language.getPhrase('utilitiesMenu.$btn'), null, null, 550, 100);
 			button.screenCenter(X);
 			button.y = (FlxG.height - (button.height * buttons.length + buttonSpacing * (buttons.length - 1))) / 2 + (button.height + buttonSpacing) * num;
 			button.disabled = disabledButtons.contains(btn);
@@ -83,18 +90,38 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 					save.data.lastOpenedProject = Utilities.getExecutablePath();
 				}
 				openSubState(new LoadDirectoryPrompt(save.data.lastOpenedProject));
-			case 'stageEditor':
+			case 'stagePreviewer':
 				LoadFilePrompt.loadFileFunction = function(path:String) {
 					try {
 						UtilitiesBaseMenuState.loadedPath = path;
-						SuffState.switchState(new StageEditorState());
+						SuffState.switchState(new StagePreviewerState());
 					} catch(e:Dynamic) {
 						openSubState(new ErrorPrompt(e.message));
 					}
 				}
 				LoadFilePrompt.newFileFunction = null;
 				openSubState(new LoadFilePrompt('${Utilities.getExecutablePath()}\\assets\\data\\stages\\'));
+			case 'langConverter':
+				Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'), Language.getPhrase('utilitiesMenu.langConverter'));
+				LoadFilePrompt.loadFileFunction = function(path:String) {
+					try {
+						var fullDirectory = path.split('/');
+						var lastDirectory = fullDirectory[fullDirectory.length - 1].replace('.lang', '');
+						LangFileConvert.langToJson(File.getContent(path), lastDirectory);
+						openSubState(new GenericPrompt(Language.getPhrase('langConverter.successPrompt', ['exports/lang/${lastDirectory}.json']), function() {
+							resetTitle();
+						}));
+					} catch(e:Dynamic) {
+						openSubState(new ErrorPrompt(e.message));
+					}
+				}
+				LoadFilePrompt.newFileFunction = null;
+				openSubState(new LoadFilePrompt('${Utilities.getExecutablePath()}\\assets\\lang\\', [new FileFilter('LANG', 'lang')]));
 		}
+	}
+
+	function resetTitle() {
+		Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'));
 	}
 
 	override function update(elapsed:Float) {

@@ -1,0 +1,485 @@
+{
+	"spriteSheets": [
+		"mandatory",
+		"shooting",
+		"cutscenes",
+		"skills"
+	],
+	"animations": [
+		{
+			"name": "idle0",
+			"prefix": "idle0",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "idle1",
+			"prefix": "idle1",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "idle2",
+			"prefix": "idle2",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "idle3",
+			"prefix": "idle3",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "idle4",
+			"prefix": "idle4",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "idleOverinflated",
+			"prefix": "idleOverinflated",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "idleNull",
+			"prefix": "idleNull",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "popped",
+			"prefix": "popped",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "introPartOne",
+			"prefix": "introPartOne",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "introPartTwo",
+			"prefix": "introPartTwo",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "prepareShoot0",
+			"prefix": "prepareShoot0",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "prepareShoot1",
+			"prefix": "prepareShoot1",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "prepareShoot2",
+			"prefix": "prepareShoot2",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "prepareShoot3",
+			"prefix": "prepareShoot3",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "prepareShoot4",
+			"prefix": "prepareShoot4",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "preShoot0",
+			"prefix": "preShoot0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "preShoot1",
+			"prefix": "preShoot1",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "preShoot2",
+			"prefix": "preShoot2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "preShoot3",
+			"prefix": "preShoot3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "preShoot4",
+			"prefix": "preShoot4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "pass0",
+			"prefix": "pass0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "pass1",
+			"prefix": "pass1",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "pass2",
+			"prefix": "pass2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "pass3",
+			"prefix": "pass3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "pass4",
+			"prefix": "pass4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootBlank0",
+			"prefix": "shootBlank0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootBlank1",
+			"prefix": "shootBlank1",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootBlank2",
+			"prefix": "shootBlank2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootBlank3",
+			"prefix": "shootBlank3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootBlank4",
+			"prefix": "shootBlank4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootLive0",
+			"prefix": "shootLive0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootLive1",
+			"prefix": "shootLive1",
+			"fps": 24,
+
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootLive2",
+			"prefix": "shootLive2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootLive3",
+			"prefix": "shootLive3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shootLive4",
+			"prefix": "shootLive4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "helplessOverinflated",
+			"prefix": "helplessOverinflated",
+			"fps": 24,
+			"indices": [],
+			"loop": false,
+			"soundPaths": [
+				"game/inflation/universal/hiccups/hiccup_1",
+				"game/inflation/universal/hiccups/hiccup_2",
+				"game/inflation/universal/hiccups/hiccup_3",
+				"game/inflation/universal/hiccups/hiccup_4",
+				"game/inflation/universal/hiccups/hiccup_5"
+			]
+		},
+		{
+			"name": "helplessNull",
+			"prefix": "helplessNull",
+			"fps": 24,
+
+			"indices": [],
+			"loop": false,
+			"soundPaths": [
+				"game/inflation/universal/hiccups/hiccup_1",
+				"game/inflation/universal/hiccups/hiccup_2",
+				"game/inflation/universal/hiccups/hiccup_3",
+				"game/inflation/universal/hiccups/hiccup_4",
+				"game/inflation/universal/hiccups/hiccup_5"
+			]
+		},
+		{
+			"name": "skill0",
+			"prefix": "skill0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "skill1",
+			"prefix": "skill1",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "skill2",
+			"prefix": "skill2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "skill3",
+			"prefix": "skill3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "skill4",
+			"prefix": "skill4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "skillAmnesia0",
+			"prefix": "skillAmnesia0",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "skillAmnesia1",
+			"prefix": "skillAmnesia1",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "skillAmnesia2",
+			"prefix": "skillAmnesia2",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "skillAmnesia3",
+			"prefix": "skillAmnesia3",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "skillAmnesia4",
+			"prefix": "skillAmnesia4",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "shocked0",
+			"prefix": "shocked0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shocked1",
+			"prefix": "shocked1",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shocked2",
+			"prefix": "shocked2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shocked3",
+			"prefix": "shocked3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "shocked4",
+			"prefix": "shocked4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "win0",
+			"prefix": "win0",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "win1",
+			"prefix": "win1",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "win2",
+			"prefix": "win2",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "win3",
+			"prefix": "win3",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "win4",
+			"prefix": "win4",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		}
+	],
+
+	"belchThreshold": 3,
+	"gurgleThreshold": 2,
+	"creakThreshold": 3,
+	"leakThreshold": 4,
+	"voicePitch": 1.2,
+	"poppingVelocityMultiplier": [1.0, 1.0],
+	"poppingGravityMultiplier": 1.0,
+	"antialiasing": false,
+
+	"originPosition": [320, 560],
+	"cameraOffset": [0, -320],
+	"poppedCameraOffset": [0, -120],
+	"particleOffsets": {
+		"overhead": [
+			[0, -480],
+			[0, -480],
+			[0, -480],
+			[0, -480],
+			[0, -480],
+			[-160, -180],
+			[-100, -460]
+		],
+		"mouth": [
+			[0, -350],
+			[0, -350],
+			[0, -350],
+			[0, -355],
+			[0, -360],
+			[-100, -70],
+			[-80, -350]
+		],
+		"navel": [
+			[10, -150],
+			[10, -150],
+			[30, -150],
+			[50, -150],
+			[70, -165],
+			[10, -90],
+			[140, -140]
+		],
+		"gunShoot": [
+			[0, -310],
+			[0, -310],
+			[0, -310],
+			[0, -330],
+			[0, -350],
+			[0, 0],
+			[0, 0]
+		],
+		"gunSkill": [
+			[0, -250],
+			[0, -250],
+			[0, -250],
+			[0, -290],
+			[0, -330],
+			[0, 0],
+			[0, 0]
+		]
+	}
+}

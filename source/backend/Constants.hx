@@ -70,7 +70,7 @@ class Constants {
 	public static final LETTERBOX_HEIGHT:Int = 72;
 
 	/**
-	 * The size of CharacterSelectCards.
+	 * The size of CharacterCards.
 	 * 1st value is width, 2nd value is height
 	 */
 	public static final CHARACTER_CARD_DIMENSIONS:Array<Int> = [150, 200];

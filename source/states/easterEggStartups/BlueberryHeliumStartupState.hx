@@ -35,7 +35,7 @@ class BlueberryHeliumStartupState extends SuffState {
 		" - src/ui/objects/AddonMenuItem.cpp",
 		" - src/states/StartupState.cpp",
 		" - src/states/easterEggStartups/BlueberryHeliumStartupState.cpp",
-		" - src/ui/objects/CharacterSelectBanner.cpp",
+		" - src/ui/objects/CharacterBanner.cpp",
 		" - src/ui/objects/SuffBox.cpp",
 		" - src/states/InitStartupState.cpp",
 		" - src/backend/Addons.cpp",
@@ -51,7 +51,7 @@ class BlueberryHeliumStartupState extends SuffState {
 		" - src/objects/particles/ScrapEmitter.cpp",
 		" - src/backend/Paths.cpp",
 		" - src/ui/SuffState.cpp",
-		" - src/ui/objects/CharacterSelectCard.cpp",
+		" - src/ui/objects/CharacterCard.cpp",
 		" - src/states/PlayState.cpp",
 		" - src/ui/objects/ReadySign.cpp",
 		" - src/backend/Gamemode.cpp",
@@ -87,7 +87,7 @@ class BlueberryHeliumStartupState extends SuffState {
 		add(bg);
 
 		add(terminal);
-		addTextToTerminal('D:\\CODING\\Inflation-Roulette>');
+		addTextToTerminal('D:\\CODING\\Inflation-Roulette-Reloaded>');
 		addTextToTerminal('');
 
 		add(scanlines);

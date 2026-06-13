@@ -157,7 +157,7 @@ class Main extends Sprite {
 
 		errMsg += "\nUncaught Error: " + e.error;
 		#if _OFFICIAL_BUILD
-		errMsg += "\n\nPlease report this error to the GitHub page: https://github.com/Sufferneer/Inflation-Roulette";
+		errMsg += "\n\nPlease report this error to the GitHub page: https://github.com/Sufferneer/Inflation-Roulette-Reloaded";
 		#end
 
 		#if desktop

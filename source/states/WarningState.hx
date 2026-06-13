@@ -15,6 +15,8 @@ class WarningState extends SuffState {
 	override function create() {
 		super.create();
 
+		Window.setTitle(Language.getPhrase('warningMenu.windowDisplay'));
+
 		warningText = Language.getPhrase('warningMenu.content');
 
 		warningTitle = new FlxText(0, 0, 0, Language.getPhrase('warningMenu.title'));

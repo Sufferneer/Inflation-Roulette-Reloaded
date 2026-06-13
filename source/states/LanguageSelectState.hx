@@ -43,6 +43,8 @@ class LanguageSelectState extends SuffState {
 	var bgOverlayScale:FlxPoint;
 
 	override function create() {
+		Window.setTitle(Language.getPhrase('languageMenu.windowDisplay'));
+
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 		add(bg);
 
@@ -153,10 +155,10 @@ class LanguageSelectState extends SuffState {
 		var leProgress = (Language.getCompletionProgress(Preferences.data.language) * 100) + '%';
 		progress = new SuffTextButton(0, title.y + title.height + 16, Language.getPhrase('languageMenu.completion', [leProgress]), 32, FlxPoint.get(0, 0));
 		progress.btnTextFontPath = Paths.font('small');
-		var missingKeys = Language.logMissingKeys();
-		progress.disabled = (missingKeys.length <= 0);
 		progress.onClick = function() {
-			openSubState(new GenericPrompt(missingKeys.join('\n'), 1080));
+			if (!Language.exportUnmatchingKeys())
+				return;
+			openSubState(new GenericPrompt(Language.getPhrase('languageMenu.exportedUnmatchedKeys', ['exports/lang/${Preferences.data.language}_UNMATCHED.json']), 1080));
 		};
 		progress.btnTextColor = progress.btnTextColorHovered = progress.btnTextColorClicked = progress.btnTextColorDisabled = textColor;
 		progress.x = -progress.width;

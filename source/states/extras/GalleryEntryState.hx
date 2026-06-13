@@ -8,6 +8,7 @@ import objects.CharacterSimple;
 import objects.particleEmitters.ScrapEmitter;
 import substates.GalleryArtworkSubState;
 import flixel.graphics.FlxGraphic;
+import backend.GameplayManager;
 
 class GalleryEntryState extends SuffState {
 	var allowInput:Bool = false;
@@ -101,6 +102,8 @@ class GalleryEntryState extends SuffState {
 		title = new FlxText(60, 60, FlxG.width / 2 - 120, titleText, 64);
 		title.color = overlay.color;
 		add(title);
+
+		Window.setTitle(Language.getPhrase('galleryMainMenu.windowDisplay'), titleText);
 
 		descriptionText = Language.getPhrase('galleryMainMenu.envelope.${envelopeData.id}.description');
 		description = new FlxText(title.x, title.y + title.height + 16, FlxG.width / 2 - title.x * 2, descriptionText, 32);
@@ -237,7 +240,7 @@ class GalleryEntryState extends SuffState {
 			character.currentPressure++;
 			if (character.currentPressure <= character.maxPressure) {
 				var fwoompSuffix:String = character.getPressurePercentage() >= 0.5 ? 'Large' : 'Small';
-				SuffState.playSound(Paths.soundRandom('game/belly/fwoomps/fwoomp' + fwoompSuffix, 1, Constants.FWOOMPS_SAMPLE_COUNT), 0.75, 0.5);
+				SuffState.playSound(Paths.soundRandom('game/inflation/universal/fwoomps/fwoomp' + fwoompSuffix, 1, Constants.FWOOMPS_SAMPLE_COUNT), 0.75, 0.5);
 				character.playAnim('shocked', true);
 				if (idleTimer != null) idleTimer.cancel();
 				idleTimer = new FlxTimer().start(1.0, function(_) {
@@ -247,7 +250,7 @@ class GalleryEntryState extends SuffState {
 				if (clickRate > 5 && !character.disableBellySounds && Preferences.data.enablePopping) {
 					character.disableBellySounds = true;
 					character.popped = true;
-					SuffState.playSound(Paths.sound('game/belly/burst'));
+					SuffState.playSound(GameplayManager.currentFiller.getBurstSound());
 					if (!Preferences.data.enablePhotosensitiveMode)
 						FlxG.camera.flash(0xFFFFFFFF, 0.125);
 					FlxG.camera.shake(0.02 * Preferences.data.cameraEffectIntensity, 0.125);

@@ -114,6 +114,7 @@ class JukeboxState extends SuffState {
 					changeAlbumText(bar.album.name);
 				}
 				SuffState.playMusic(bar.musicID, 1, false);
+				Window.setTitle(Language.getPhrase('jukeboxMenu.windowDisplay'), bar.music.name);
 			} else {
 				bar.initTextPanning();
 			}

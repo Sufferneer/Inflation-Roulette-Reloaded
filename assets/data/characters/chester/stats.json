@@ -1,5 +1,5 @@
 {
-	"cardDisplayedKey": "character.chester.name",
+	"cardDisplayedKey": "character.chester.name.short",
 	"maxPressure": 5,
 	"maxConfidence": 6,
 	"skills": [

@@ -43,6 +43,8 @@ class AchievementsState extends SuffState {
 	override function create() {
 		super.create();
 
+		Window.setTitle(Language.getPhrase('achievementsMenu.windowDisplay'));
+
 		persistentDraw = true;
 		persistentUpdate = false;
 
@@ -110,7 +112,7 @@ class AchievementsState extends SuffState {
 
 			num++;
 		}
-		lastPage = Math.floor((num + 1) / plaquesPerShelf / shelvesPerPage);
+		lastPage = Math.floor((num - 1) / plaquesPerShelf / shelvesPerPage);
 
 		overlay = new FlxSprite(FlxG.width).loadGraphic(Paths.image('ui/menus/achievements/overlay'));
 		overlay.scrollFactor.set();

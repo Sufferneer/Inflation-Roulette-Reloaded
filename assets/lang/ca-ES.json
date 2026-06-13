@@ -31,9 +31,9 @@
 	// \s: Whitespace
 	// The positions of escape sequences in-between sentences should be left AS IS.
 	
-	"game.title": "Inflation Roulette: Reloaded",
-	"game.titleShort": "Inflation Roulette",
-	"game.acronym": "RIR",
+	"metadata.title": "Inflation Roulette: Reloaded",
+	"metadata.titleShort": "Inflation Roulette",
+	"metadata.acronym": "RIR",
 	
 	// Version Formatting
 	// For example, if the version is 2.3.1 in an Linux environment,
@@ -44,28 +44,28 @@
 	// Version 2.3.1
 	// Linux Build
 	
-	"game.version.numeral.format": "Versió %1",
-	"game.version.numeralModded.format": "Versió modificada %1",
+	"metadata.version.numeral.format": "Versió %1",
+	"metadata.version.numeralModded.format": "Versió modificada %1",
 	// yeah we dont have a pitstop metaphor, hopefully this works
-	"game.version.name.minor.format": "Taverna %1",
-	"game.version.name.hotfix.format": "Correcció %1",
+	"metadata.version.name.minor.format": "Taverna %1",
+	"metadata.version.name.hotfix.format": "Correcció %1",
 	// %1 is the platform in which the executable is dedicated.
 	// For example, if the game is on Windows, "Windows Build" will be displayed.
 	// Note that platform names will remain untranslated.
 	"game.build.format": "Compilació de %1",
 	
-	"game.version.name.major.0": "En desenvolupament",
+	"metadata.version.name.major.0": "En desenvolupament",
 	// Version 1: Initial Release
-	"game.version.name.major.1": "Llançament inicial",
+	"metadata.version.name.major.1": "Llançament inicial",
 	// Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
 	// The Version Name has two interpretations. One being it being a update that introduces creative-related content (e.g. Modding Tools, Extras).
 	// Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
-	"game.version.name.major.2": "Pegat de Creativitat",
+	"metadata.version.name.major.2": "Pegat de Creativitat",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"game.version.name.state.a": "Alfα pública %1",
-	"game.version.name.state.b": "βeta pública %1",
-	"game.version.name.state.c": "Candidat a publicació %1",
+	"metadata.version.name.state.a": "Alfα pública %1",
+	"metadata.version.name.state.b": "βeta pública %1",
+	"metadata.version.name.state.c": "Candidat a publicació %1",
 	
 	// These are the button texts in the Main Menu.
 	"mainMenu.play": "Juga",
@@ -327,36 +327,34 @@
 	// Shib: Character created by NicklySuffer. Non-binary, and designed to look like one of those simplistic white cat anons.
 	// Screams "city boy" vibes.
 	// Skills: Sabotage, Amnesia
-	"character.shibanou.name": "Shibanou",
-	"character.shibanou.name.short": "Shib",
-	"character.shibanou.description": "Extraterrestre, astut i li encanta te de llimona. Pot provocar pèrdua de memòria temporal.",
+	"character.shib.name": "Shibanou",
+	"character.shib.name.short": "Shib",
+	"character.shib.description": "Extraterrestre, astut i li encanta te de llimona. Pot provocar pèrdua de memòria temporal.",
 	// Chester: Character created by NicklySuffer. Works in a coffee shop, and also looks like one of those simplistic white cat anons,
 	// but wears a cap too I guess. Screams "overworked minimum wagie" vibes.
 	// Designed with no offensive skills, but has one more pressure point lmao.
 	// Skills: Reveal, Reload
-	"character.chester.name": "Chester",
+	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "Un barista desafortunat obligat a jugar a aquest joc per a una empresa. Seva feina entrena seva resistència.",
 	// Option to choose a random character.
-	"character.random.name": "???",
-	"character.random.name.short": "???",
 	"character.random.description": "No saps qui triar? Deixa que el joc decideixi!",
 	
 	// Classic Room: The original stage from the original game redrawn.
-	"stage.classic": "Cambra clàssica",
+	"stage.classic.name": "Cambra clàssica",
 	"stage.classic.description": "La cambra que tots coneixem bé.",
 	// Manager's Lounge: The context is that four people, either motivated by a better life or forced by their higher-ups, are
 	// offered a place as a game participant to satisfy the manager's desires.
-	"stage.reloaded": "Saló del gerent",
+	"stage.reloaded.name": "Saló del gerent",
 	"stage.reloaded.description": "Aquesta escena sembla un plató porno. Això és perquè en certa manera ho és, i s'està gravant.",
 	// Shitfucks Café: Named Shitfucks. The exact coffee shop that Chester works at.
 	// Sells coffee that inflates people, and agreed to host horrible shit like this. Disgusting.
 	// Again, transliterate Shitfucks.
 	// Honestly I'd translate it as Merdcarall, but I guess it's some in-universe brand name
-	"stage.shitfucks": "Cafè Shitfucks",
+	"stage.shitfucks.name": "Cafè Shitfucks",
 	"stage.shitfucks.description": "S'especialitza en venda de begudes. Definitivament no hi ha res de dolent aquí.",
 	// White Void: Literally just a white void with a glass table.
-	"stage.void": "Buit blanc",
+	"stage.void.name": "Buit blanc",
 	"stage.void.description": "Nom conegut com a lloc per a totes activitats, que apareix en innombrables obres d'art i animacions.",
 	"stage.random": "?????",
 	"stage.random.description": "No saps on triar? Deixa que el joc decideixi!",
@@ -445,7 +443,7 @@
 	"galleryMainMenu.envelope.asimo.description": "Aprofitant seus poders elèctrics, Asimo es espanta per Inflation Roulette dient que \"s'ho està passant bé\".\n\nNo sabem com ha arribat aquí, i no tenim cap connexió amb ell, a part que és un llop, és el tester del Gerent per a seu estúpid mod Friday Night Funkin', i és el guanyador d'un sorteig d'art per afegir-lo al joc com a personatge per al complement d'exemple.\n\nAsimo és un personatge convidat propietat de WolfKylis.",
 	// Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
 	// that agrees to join that's it.
-	"galleryMainMenu.envelope.shibanou.description": "Cognom Nou; prenom Shiba. Procedent d'un planeta misteriós, aquesta criatura felina està a punt de fer explotar algú. El seu nom xinès es pot interpretar com a \"Zero Deu Vuit\", derivat del lloc nuclear on van aterrar a Pequín.\n\nVan passar els primers anys de la seva vida buscant per diferents llocs on viure, i finalment es van establir a garatge del Gerent. L'home els va adoptar com a ajudants secundaris i aviat es va enamorar de l'ajudant principal (crescuda a laboratori per cert, ecs). Sense raó aparent més enllà de presumir davant de seu xicot, es van unir al joc per mostrar seves habilitats ocultes.\n\nShibanou és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
+	"galleryMainMenu.envelope.shib.description": "Cognom Nou; prenom Shiba. Procedent d'un planeta misteriós, aquesta criatura felina està a punt de fer explotar algú. El seu nom xinès es pot interpretar com a \"Zero Deu Vuit\", derivat del lloc nuclear on van aterrar a Pequín.\n\nVan passar els primers anys de la seva vida buscant per diferents llocs on viure, i finalment es van establir a garatge del Gerent. L'home els va adoptar com a ajudants secundaris i aviat es va enamorar de l'ajudant principal (crescuda a laboratori per cert, ecs). Sense raó aparent més enllà de presumir davant de seu xicot, es van unir al joc per mostrar seves habilitats ocultes.\n\nShib és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
 	// Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
 	"galleryMainMenu.envelope.chester.description": "Com a barista principal d'una cafeteria, es va veure obligat a jugar a aquest joc com a ambaixador de l'empresa. Amb seus mals resultats acadèmics i seva personalitat poc carismàtica, seu somni de prosperitat i riquesa encara no ha estat a l'abast.\n\nSeva feina diària consisteix a preparar begudes massa ensucrades per a clients calentes. Alguns diuen que les begudes tenen un efecte \"expansiu\", que ha cridat l'atenció de diversos agents de seguretat alimentària. Tanmateix, a causa d'algunes collonades capitalistes, avisos del departament d'alimentació no van servir de res.\n\nChester és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
 	"galleryMainMenu.envelope.dev": "Art del desenvolupador",
@@ -456,7 +454,7 @@
 	
 	// These will be button text that will be in the Utilities Main Menu.
 	"utilitiesMenu.characterCreator": "Creador de personatges",
-	"utilitiesMenu.stageEditor": "Visor d'escenari",
+	"utilitiesMenu.stagePreviewer": "Visor d'escenari",
 	"utilitiesMenu.loadFile": "Carrega fitxer",
 	"utilitiesMenu.newFile": "Nou fitxer",
 	"utilitiesMenu.loadDirectory": "Carrega carpeta",
@@ -534,13 +532,13 @@
 	"animationCreator.exit.prompt": "Esta segur que vols sortir de l'Editor d'animacions?\nQualsevol progrés no desat es PERDRÀ.",
 	"animationCreator.saveSuccessful.prompt": "Animació s'ha desat correctament.",
 	
-	"stageEditor.stage": "Escenari",
-	"stageEditor.stage.description": "Aquest menú només s'utilitza per previsualitzar etapes i NO ofereix funcions d'edició. Fes-lo servir amb un editor JSON per obtenir la millor experiència.",
-	"stageEditor.objectList": "Llista d'objectes",
-	"stageEditor.reload": "Recarregar escenari",
-	"stageEditor.screenshot": "Mode de captura de pantalla",
-	"stageEditor.exit": "Sortir de visor",
-	"stageEditor.exit.prompt": "Esta segur que vols sortir del Visor d'escenari?",
+	"stagePreviewer.stage": "Escenari",
+	"stagePreviewer.stage.description": "Aquest menú només s'utilitza per previsualitzar etapes i NO ofereix funcions d'edició. Fes-lo servir amb un editor JSON per obtenir la millor experiència.",
+	"stagePreviewer.objectList": "Llista d'objectes",
+	"stagePreviewer.reload": "Recarregar escenari",
+	"stagePreviewer.screenshot": "Mode de captura de pantalla",
+	"stagePreviewer.exit": "Sortir de visor",
+	"stagePreviewer.exit.prompt": "Esta segur que vols sortir del Visor d'escenari?",
 	
 	"resultsMenu.title": "LES RESULTATS SÓN A!",
 	"resultsMenu.instructions": "Prema qualsevol tecla per sortir",
@@ -578,7 +576,9 @@
 	"menu.exit": "Surt",
 	
 	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
-	"gameUI.selectTarget": "SELECCIONA OBJECTIU",
+	"game.selectTarget": "SELECCIONA OBJECTIU",
+	"gameUI.playerIndicator.you": "TU",
+	"gameUI.playerIndicator.player": "J%1",
 	
 	"preloadMenu.progress.characters": "Carregant caràcters...",
 	"preloadMenu.progress.gameplay": "Carregant modes de joc...",

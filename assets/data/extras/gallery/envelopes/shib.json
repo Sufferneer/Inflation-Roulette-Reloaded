@@ -1,0 +1,22 @@
+{
+	"titleTranslationKey": "character.shib.name",
+	"hasCharacter": true,
+	"artwork": [
+		"shibRender",
+		"shibSticker",
+		"shibReference",
+		"cobaltReference",
+		"shibDinner",
+		"shibCrush",
+		"shibGay",
+		"shibPoptart",
+		"lemonTea"
+	],
+	"color": "#FFDD32",
+	"quotes": [
+		"HYPNOTISM",
+		"HEH HEH HEH",
+		"LEMON TEA",
+		"HI COBALT"
+	]
+}

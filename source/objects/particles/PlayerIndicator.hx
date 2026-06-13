@@ -9,9 +9,9 @@ class PlayerIndicator extends FlxSpriteGroup {
 		arrow.loadGraphic(Paths.image('game/particles/playerIndicator'));
 		arrow.color = Constants.PLAYER_COLORS[player];
 
-		text = new FlxText(Language.getPhrase('gameUI.playerIndicator.player', ['${player + 1}']), 64);
+		text = new FlxText(Language.getPhrase('game.playerIndicator.player', ['${player + 1}']), 64);
 		if (alt) {
-			text.text = Language.getPhrase('gameUI.playerIndicator.you');
+			text.text = Language.getPhrase('game.playerIndicator.you');
 		}
 		text.setPosition((arrow.width - text.width) / 2, (arrow.height - text.height) / 2);
 		text.setBorderStyle(OUTLINE, 0xFF000000, 4);

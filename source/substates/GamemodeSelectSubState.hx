@@ -8,6 +8,7 @@ import states.CharacterSelectState;
 import ui.objects.SuffBox;
 import ui.objects.SuffIconButton;
 import ui.objects.SuffSliderOption;
+import backend.Filler;
 
 class GamemodeSelectSubState extends SuffSubState {
 	var exitButton:SuffIconButton;
@@ -25,6 +26,8 @@ class GamemodeSelectSubState extends SuffSubState {
 
 	public function new() {
 		super();
+
+		Window.setTitle(Language.getPhrase('gamemodeSelect.windowDisplay'));
 
 		persistentUpdate = false;
 
@@ -129,6 +132,7 @@ class GamemodeSelectSubState extends SuffSubState {
 			case 'quickPlay':
 				GameplayManager.currentGamemode = GameplayManager.defaultGamemode;
 				GameplayManager.currentStage = FlxG.random.getObject(GameplayManager.globalStageList);
+				GameplayManager.currentFiller = new Filler(FlxG.random.getObject(GameplayManager.globalFillerList));
 				// CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
 				var leRandom = [];
 				var leCPUControl = [];
@@ -144,6 +148,8 @@ class GamemodeSelectSubState extends SuffSubState {
 				CharacterManager.parseRandomCharacters();
 				trace('Current characters: ', CharacterManager.selectedCharacterList);
 				trace('Current CPU level: ', CharacterManager.cpuLevel);
+				trace('Current stage: ', GameplayManager.currentStage);
+				trace('Current filler: ', GameplayManager.currentFiller.id);
 				openSubState(new GameOnSubState(new PlayState()));
 			default:
 				GameplayManager.currentGamemode = gamemode;
@@ -156,6 +162,7 @@ class GamemodeSelectSubState extends SuffSubState {
 	function exitMenu() {
 		persistentUpdate = true;
 		Tooltip.text = '';
+		Window.setTitle(Language.getPhrase('mainMenu.windowDisplay'));
 		close();
 	}
 

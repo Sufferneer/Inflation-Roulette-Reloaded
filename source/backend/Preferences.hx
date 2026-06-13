@@ -21,12 +21,16 @@ class SaveVariables {
 	public var useBuiltInCursor:Bool = true;
 	public var hideHUD:Bool = false;
 	public var hideTooltip:Bool = false;
-	public var musicVolume:Float = 0.25;
+	public var musicVolume:Float = 0.35;
 	public var gameSoundVolume:Float = 1;
 	public var uiSoundVolume:Float = 0.5;
 	public var playCursorSounds:Bool = true;
 	public var enableBellyGurgles:Bool = false;
 	public var enableBellyCreaks:Bool = true;
+	public var enableBelching:Bool = true;
+	public var enableSkinTinting:Bool = true;
+	public var enableOralLeaking:Bool = false;
+	public var enableNavelLeaking:Bool = false;
 	public var cacheOnGPU:Bool = false;
 	public var showDebugText:Bool = false;
 	public var showFramerateOnDebugText:Bool = true;

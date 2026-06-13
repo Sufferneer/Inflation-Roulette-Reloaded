@@ -11,7 +11,7 @@ The game features a dynamic animation and sound system that is supported for ani
 
 A vast number of in-game options are available to customize your preferable playing experience.
 
-## [Wiki](https://github.com/Sufferneer/Inflation-Roulette/wiki)
+## [Wiki](https://github.com/Sufferneer/Inflation-Roulette-Reloaded/wiki)
 We have a dedicated wiki for the documentation and guides for the inner workings for _Inflation Roulette: Reloaded_.
 ## Credits
 ### NicklySuffer

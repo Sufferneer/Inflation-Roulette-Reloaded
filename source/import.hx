@@ -9,6 +9,7 @@ import backend.Paths;
 import backend.Preferences;
 import backend.Utilities;
 import backend.ScreenSafeZone;
+import backend.WindowTitleHandler as Window;
 // Flixel
 import flixel.sound.FlxSound;
 import flixel.FlxG;

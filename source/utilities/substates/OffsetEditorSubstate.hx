@@ -38,6 +38,8 @@ class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
 	public function new() {
 		super();
 
+		Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'), Language.getPhrase('offsetEditor.windowDisplay'));
+
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		bg.alpha = 0.5;
 		add(bg);
@@ -125,6 +127,11 @@ class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
 			graphic = FlxGraphic.fromBitmapData(BitmapData.fromFile(path));
 		}
 		sprite.loadGraphic(graphic);
+	}
+
+	public override function leaveMenu() {
+		Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'));
+		super.leaveMenu();
 	}
 
 	override function update(elapsed:Float) {

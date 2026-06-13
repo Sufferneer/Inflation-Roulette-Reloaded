@@ -24,19 +24,19 @@ class Stage extends FlxBasic {
 		var tableObjects:Array<StageObjectData> = data.tableObjects;
 		var foregroundObjects:Array<StageObjectData> = data.foregroundObjects;
 		for (object in backgroundObjects) {
-			if (object.hideInDecreaseDetail == true) continue;
+			if (Preferences.data.decreaseDetail && object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addBehindCharacters(object.id, obj);
 		}
 		trace('Loaded background objects');
 		for (object in tableObjects) {
-			if (object.hideInDecreaseDetail == true) continue;
+			if (Preferences.data.decreaseDetail && object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addBehindGun(object.id, obj);
 		}
 		trace('Loaded table objects');
 		for (object in foregroundObjects) {
-			if (object.hideInDecreaseDetail == true) continue;
+			if (Preferences.data.decreaseDetail && object.hideInDecreaseDetail == true) continue;
 			var obj:StageObject = loadObject(object, data.id);
 			addObject(object.id, obj);
 		}

@@ -16,7 +16,7 @@ class CreditsState extends SuffState {
 		['NicklySuffer', 'nicklysuffer', 'LOGO'],
 		['Original Concept', '', 'HEADING'],
 		['Snowyboi', '', 'default'],
-		['Linux Programmer', '', 'HEADING'],
+		['Additional Programmer', '', 'HEADING'],
 		['changedinflation.de', '', 'default'],
 		['Additional UI Art', '', 'HEADING'],
 		['Globe-Freak', 'globe-freak', 'LOGO'],
@@ -24,10 +24,6 @@ class CreditsState extends SuffState {
 		['Sound Source', '', 'HEADING'],
 		['PixelCarnagee\n(OpenNSFW Sound Pack)', '', 'default'],
 		['Runey\n(Balloonomatopoeia)', '', 'default'],
-		['Crash Handler', '', 'HEADING'],
-		['SqirraRNG', '', 'default'],
-		['?\'? ???? ?? ?????', '', 'HEADING'],
-		['BugzForBreakfast', '', 'default'],
 		['Developed With', '', 'HEADING'],
 		['HaxeFlixel', 'haxeflixel', 'LOGO', Std.int(FlxG.height / 4)],
 		[
@@ -51,6 +47,8 @@ class CreditsState extends SuffState {
 
 	override public function create():Void {
 		super.create();
+
+		Window.setTitle(Language.getPhrase('creditsMenu.windowDisplay'));
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(FlxGradient.createGradientBitmapData(FlxG.width, FlxG.height, [0xFF794080, 0xFF404080]));
 		add(bg);

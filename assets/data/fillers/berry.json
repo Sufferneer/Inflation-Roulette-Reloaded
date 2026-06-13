@@ -1,0 +1,27 @@
+{
+	"displayColor": "#3030C0",
+	"liquidColor": "#400080",
+
+	"tintColor": "#6060FF",
+	"decolorizeFactor": [0.25, -0.25, 0.5],
+
+	"gurgles": {
+		"archetype": "berry",
+		"samples": 12
+	},
+	"creaks": {
+		"archetype": "liquid",
+		"samples": 5
+	},
+	"leaks": {
+		"archetype": "liquid",
+		"samples": 4
+	},
+	"bursts": {
+		"archetype": "liquid",
+		"samples": 1
+	},
+
+	"navelLeaks": true,
+	"gravityMultiplier": 2
+}

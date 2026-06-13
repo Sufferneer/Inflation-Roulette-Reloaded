@@ -62,6 +62,8 @@ class Achievements {
 			tier: EPIC,
 			type: BOOLEAN
 		});
+		createAchievement('twoPlayers', {tier: COMMON, type: BOOLEAN});
+		createAchievement('sixPlayers', {tier: GOOD, type: BOOLEAN});
 		// Milestones
 		createAchievement('sabotages', {
 			tier: COMMON,
@@ -74,17 +76,23 @@ class Achievements {
 			type: NUMBER,
 			target: 100
 		});
-		createAchievement('allCharacterWins', {
-			tier: GOOD,
-			type: LIST,
-			items: ['goober', 'asimo', 'chester', 'shibanou'],
-			itemTranslationKey: 'character.%.name.short'
-		});
 		createAchievement('allGameModeWins', {
-			tier: GOOD,
+			tier: COMMON,
 			type: LIST,
 			items: ['reloaded', 'inequality', 'classic', 'charge', 'fiftyFifty'],
 			itemTranslationKey: 'gamemode.%.name'
+		});
+		createAchievement('allCharacterWins', {
+			tier: GOOD,
+			type: LIST,
+			items: ['goober', 'asimo', 'chester', 'shib'],
+			itemTranslationKey: 'character.%.name.short'
+		});
+		createAchievement('allFillerWins', {
+			tier: COMMON,
+			type: LIST,
+			items: ['air', 'water', 'soda', 'slime', 'berry'],
+			itemTranslationKey: 'filler.%.name'
 		});
 		#if (_ALLOW_EASTER_EGGS && !mobile)
 		createAchievement('allEasterEggs', {
@@ -100,24 +108,27 @@ class Achievements {
 		});
 		#end
 
-		// Hidden
-		createAchievement('findCameraman', {
-			tier: COMMON,
-			type: BOOLEAN,
-			hideFromMenu: true,
-			silent: true
-		});
-		createAchievement('nineTwentyOne', {
-			tier: LAME,
-			type: BOOLEAN,
-			hideFromMenu: true,
-			silent: true
-		});
 		createAchievement('noLife', {
 			tier: LAME,
 			type: BOOLEAN,
 			hideFromMenu: true,
 			resettable: false
+		});
+
+		// Hidden
+		createAchievement('findCameraman', {
+			tier: COMMON,
+			type: BOOLEAN,
+			hideIcon: true,
+			hideName: true,
+			silent: true
+		});
+		createAchievement('nineTwentyOne', {
+			tier: LAME,
+			type: BOOLEAN,
+			hideIcon: true,
+			hideName: true,
+			silent: true
 		});
 
 		for (id => data in achievementsList) {
@@ -160,8 +171,14 @@ class Achievements {
 	}
 
 	public static function advanceProgress(id:String, progress:Array<Dynamic>) {
-		if (!enabled && Achievements.achievementsList[id]?.alwaysAchievable != true)
+		if (!enabled && Achievements.achievementsList[id]?.alwaysAchievable != true) {
+			trace('Cannot advance $id; Achievements disabled');
 			return;
+		}
+		if (!Achievements.achievementIDs.contains(id)) {
+			trace('Achievement $id does not exist');
+			return;
+		}
 		var prevLocked:Bool = isLocked(id);
 		switch (Achievements.achievementsList[id].type) {
 			case BOOLEAN:

@@ -5,26 +5,27 @@
 	// Comments are prefixed with two slashes (//), and will not be recognized by the game.
 	// Comments are reserved for translation notes, either to clarify context or give instructions.
 	
-	"game.title": "膨脹輪盤：重裝上陣",
-	"game.titleShort": "膨脹輪盤",
-	"game.acronym": "膨脹輪盤",
+	"metadata.title": "膨脹輪盤：重裝上陣",
+	"metadata.titleShort": "膨脹輪盤",
+	"metadata.acronym": "膨脹輪盤",
 	
-	"game.version.numeral.format": "版本編號 %1",
-	"game.version.numeralModded.format": "模組版本編號 %1",
-	"game.version.name.minor.format": "次版 %1",
-	"game.version.name.hotfix.format": "修訂 %1",
+	"metadata.version.numeral.format": "版本編號 %1",
+	"metadata.version.numeralModded.format": "模組版本編號 %1",
+	"metadata.version.name.minor.format": "次版 %1",
+	"metadata.version.name.hotfix.format": "修訂 %1",
 	
-	"game.version.name.major.0": "開發版本",
-	"game.version.name.major.1": "初始版本",
-	"game.version.name.major.2": "創意包裹",
-	"game.version.name.major.3": "一項輕便的小玩意",
+	"metadata.version.name.major.0": "開發版本",
+	"metadata.version.name.major.1": "初始版本",
+	"metadata.version.name.major.2": "創意包裹",
+	"metadata.version.name.major.3": "決定版",
 	
-	"game.version.name.state.a": "預覽版本 %1",
-	"game.version.name.state.b": "公開測試 %1",
-	"game.version.name.state.c": "發布候選 %1",
+	"metadata.version.name.state.a": "預覽版本 %1",
+	"metadata.version.name.state.b": "公開測試 %1",
+	"metadata.version.name.state.c": "發布候選 %1",
 	
 	"game.build.format": "%1 版本",
-	
+
+	"mainMenu.windowDisplay": "主選單",
 	"mainMenu.play": "遊玩",
 	"mainMenu.achievements": "成就",
 	"mainMenu.options": "設定",
@@ -63,21 +64,24 @@
 	"mainMenu.dongs.comment.3000": "你真是很無聊嗎？",
 	"mainMenu.dongs.comment.5000": "當咚數達到 10000 時，您的存檔資料將被清除，遊戲也將自動刪除。",
 	"mainMenu.dongs.comment.10000": "好了，成就就給你吧。滾出。",
-	
+
+	"extrasMenu.windowDisplay": "額外",
 	"extrasMenu.title": "額外遊戲內容",
 	"extrasMenu.gallery": "畫廊",
-	"extrasMenu.jukebox": "點唱機",
+	"extrasMenu.jukebox": "點唱單",
 	
 	"debugText.framerate": "FPS",
 	"debugText.memory": "RAM",
 	"debugText.memoryPeak": "RAM高峰",
 	"debugText.state": "選單",
 	"debugText.format": "%1: %2",
-	
+
+	"warningMenu.windowDisplay": "警告",
 	"warningMenu.title": "警告",
 	"warningMenu.content": "本遊戲僅限18歲以上之成年玩家！\n\n本遊戲為戀物向作品，主要包含獸人膨脹內容，部分玩家可能感到不適。由第三方製作的附加包未經審核，可能包含令部分玩家不適的內容。強烈建議勿於未成年人常駐之社群平台錄製或直播本遊戲！\n\n本遊戲包含閃爍畫面與畫面晃動效果，能引發部分玩家光敏性癲癇症狀，可透過設定選單減緩此類特效。\n\n點擊「接受」即表示您已知悉上述警告，並願自行承擔遊戲所引發之任何影響。",
 	"menu.accept": "接受",
-	
+
+	"optionsMenu.windowDisplay": "設定",
 	"optionsMenu.heading.gameplay": "遊戲",
 	"optionsMenu.heading.preferences": "偏好",
 	"optionsMenu.heading.visuals": "視效",
@@ -173,11 +177,19 @@
 	"option.enablePopping.name": "爆裂",
 	"option.enablePopping.description": "玩家被擊敗之後會非致命地爆裂。\n如果被關閉，玩家會被過度膨脹。\n將在下一場遊戲中生效。",
 	"option.enableBellyGurgles.name": "腹鳴",
-	"option.enableBellyGurgles.description": "玩家在充氣狀態下發出腹部蠕動聲。",
+	"option.enableBellyGurgles.description": "玩家在膨脹狀態下，會發出腹部蠕動聲。",
 	"option.enableBellyCreaks.name": "嘎吱",
-	"option.enableBellyCreaks.description": "玩家在充氣狀態下發出氣球嘎吱的聲音。",
+	"option.enableBellyCreaks.description": "玩家在膨脹狀態下，會發出氣球嘎吱的聲音。",
+	"option.enableBelching.name": "嗝氣",
+	"option.enableBelching.description": "玩家在膨脹狀態下會打嗝。",
+	"option.enableSkinTinting.name": "變色",
+	"option.enableSkinTinting.description": "玩家被某些介質膨脹時，皮膚會改變顏色。",
+	"option.enableOralLeaking.name": "漏液（口腔）",
+	"option.enableOralLeaking.description": "玩家被某些介質膨脹時，嘴裡會漏出液體。",
+	"option.enableNavelLeaking.name": "漏液（肚臍）",
+	"option.enableNavelLeaking.description": "玩家被某些介質膨脹時，肚臍會漏出液體。",
 	"option.enableFullscreen.name": "全螢幕",
-	"option.enableFullscreen.description": "無需贅述，但你真的那麼匱乏嗎？",
+	"option.enableFullscreen.description": "一目了然，但你真的那麼匱乏嗎？",
 	"option.hideHUD.name": "隱藏遊戲介面",
 	"option.hideHUD.description": "遊戲中隱藏介面，方便錄製遊戲畫面。",
 	"option.hideTooltip.name": "隱藏工具提示",
@@ -230,16 +242,21 @@
 	"option.showMemoryUsageOnDebugText.description": "在調試文字中顯示目前使用的記憶體量。",
 	"option.showCurrentStateOnDebugText.name": "目前選單",
 	"option.showCurrentStateOnDebugText.description": "在調試文字中顯示目前正在瀏覽的選單。",
-	
+
+	"addonsMenu.windowDisplay": "附加包",
 	"addonsMenu.authors": "作者名單：",
 	"addonsMenu.noAddonsDetected.title": "未偵測到任何附加包",
 	"addonsMenu.noAddonsDetected.content": "在附加包資料夾中未偵測到任何附加包。請檢查你是否已在附加包資料夾的 metadata 資料夾中新增了 metadata.json 檔案。 \n如果你認為這是一個錯誤，請將此問題報告到我們的 GitHub 程式碼庫。",
-	
+
+	"languageMenu.windowDisplay": "語言選單",
 	"languageMenu.title": "選擇語言",
 	"languageMenu.description": "譯文可能並非 100% 準確，可能包含誤譯或未翻譯的文字。如果你想協助改進翻譯，歡迎為我們的 GitHub 程式碼庫貢獻！",
 	"languageMenu.contributors": "協作者",
 	"languageMenu.completion": "%1 完成",
-	
+	"languageMenu.deprecated": "已棄用",
+	"languageMenu.exportedUnmatchedKeys": "缺失或已棄用的本地化字串已導出至：\n%1",
+
+	"gamemodeSelect.windowDisplay": "遊戲模式選單",
 	"gamemodeSelect.title": "選擇遊戲模式",
 	"gamemodeSelect.playerCount": "玩家數量",
 	"gamemodeSelect.setting.format": "%1：%2",
@@ -253,52 +270,48 @@
 	"gamemode.classic.description": "真正隨機，無盡偷襲。\n經典的遊戲玩法。",
 	"gamemode.charge.name": "蓄力",
 	"gamemode.charge.description": "每次空彈都會增加傷害力。\n風險與回報並存。",
-	
+
+	"characterSelect.windowDisplay": "遊戲配置",
 	"characterSelect.selectCharacter": "擇爾之軀",
 	"characterSelect.holdCardsToSeeInfo": "持卡查看訊息",
+	"characterSelect.selectFiller": "任君選擇",
 	"characterSelect.selectStage": "選擇背景",
-	
-	// Player Settings
+
 	"characterSelect.option.cpuControlled": "CPU",
 	"characterSelect.option.skillLevel": "CPU 水平",
-	// Easy mode. Only shoots and does nothing else.
 	"characterSelect.option.skillLevel.1": "張宗昌",
-	// Normal mode. Same as Easy mode. Can use Skills periodically... at random.
 	"characterSelect.option.skillLevel.2": "諸葛亮",
-	// Hard mode. Estimate chances and acts accordingly.
 	"characterSelect.option.skillLevel.3": "孫子",
-	// This text appears when more than 1 player-controlled characters are present.
-	// Prevents player from cheating
 	"characterSelect.cantEarnAchievements": "這設定下無法獲得大多數成就。",
 	
 	"character.goober.name": "古伯",
 	"character.goober.name.short": "古伯",
 	"character.goober.description": "生活在城市地區，有感知且是主導物種。擅長修理槍械。",
-	"character.shibanou.name": "歐拾巴",
-	"character.shibanou.name.short": "拾巴",
-	"character.shibanou.description": "來自外星，狡猾，喜歡檸檬茶。能使人暫時失憶。",
-	"character.chester.name": "切斯特",
+	"character.shib.name": "歐拾巴",
+	"character.shib.name.short": "拾巴",
+	"character.shib.description": "來自外星，狡猾，喜歡檸檬茶。能使人暫時失憶。",
+	"character.chester.name": "切斯特·德明",
 	"character.chester.name.short": "切斯特",
 	"character.chester.description": "一位不幸的咖啡師，被迫為公司玩遊。他的工作鍛鍊了耐力。",
-	"character.random.name": "？？？",
-	"character.random.name.short": "？？？",
+	"character.random.name": "隨機",
+	"character.random.name.short": "隨機",
 	"character.random.description": "不知選誰？讓遊戲決定吧！",
 	
 	// Classic Room: The original stage from the original game redrawn.
-	"stage.classic": "經典客房",
+	"stage.classic.name": "經典客房",
 	"stage.classic.description": "我們都熟悉且喜愛的房。",
 	// Manager's Lounge: The context is that four people, either motivated by a better life or forced by their higher-ups, are
 	// offered a place as a game participant to satisfy the manager's desires.
-	"stage.reloaded": "休息室",
-	"stage.reloaded.description": "這場景⋯⋯是鹹片的拍攝現場吧？恭喜你，答對了，攝影機還正轉著呢。",
+	"stage.reloaded.name": "休息室",
+	"stage.reloaded.description": "這場景⋯是鹹片的拍攝現場吧？恭喜你，答對了，攝影機還正轉著呢。",
 	// Shitfucks Café: Named Shitfucks. The exact coffee shop that Chester works at. Sells coffee that inflates people, and agreed
 	// to host horrible shit like this. Disgusting.
-	"stage.shitfucks": "史弗事咖啡廳",
+	"stage.shitfucks.name": "史弗事咖啡廳",
 	"stage.shitfucks.description": "出名的咖啡店。裡面絕對沒有任何不可告人的事。",
 	// White Void: Literally just a white void with a glass table.
-	"stage.void": "白色虛空",
+	"stage.void.name": "白色虛空",
 	"stage.void.description": "大名鼎鼎的全能活動場所，無數藝術作品和動畫裡都有它的身影。",
-	"stage.random": "？？？？？",
+	"stage.random": "隨機",
 	"stage.random.description": "不知選哪裡？讓遊戲決定吧！",
 	
 	"gameOn.text": "遊戲開始",
@@ -319,7 +332,8 @@
 	"skill.amnesia.description": "使目標的技能失效一回合。",
 	"skill.assault.name": "直射",
 	"skill.assault.description": "直接射擊對手。空彈時給予對手2點信心。",
-	
+
+	"pauseMenu.windowDisplay": "暫停",
 	"pauseMenu.title": "遊戲暫停",
 	"pauseMenu.resume": "繼續",
 	"pauseMenu.restart": "重玩",
@@ -331,6 +345,8 @@
 	"stats.confidence": "自信",
 	"stats.skill": "技能",
 	"stats.skills": "技能",
+
+	"creditsMenu.windowDisplay": "鳴謝",
 	
 	"achievement.firstWin.name": "首次得勝",
 	"achievement.firstWin.description": "從今以後，你一生將被鎖鏈束縛。",
@@ -347,7 +363,7 @@
 	"achievement.maximumScore.name": "完美之苦",
 	"achievement.maximumScore.description": "很好，你贏得完美一場，但為此付出了什麼代價？",
 	"achievement.minimumScore.name": "策略性失敗",
-	"achievement.minimumScore.description": "表面上看你根本沒努力，但仔細一看又好像花了努力⋯⋯來輸？",
+	"achievement.minimumScore.description": "表面上看你根本沒努力，但仔細一看又好像花了努力⋯來輸？",
 	"achievement.allGameModeWins.name": "全景遊",
 	"achievement.allGameModeWins.description": "全心投入和浪費時間的徽章。",
 	"achievement.allCharacterWins.name": "我和我的朋友們",
@@ -359,12 +375,12 @@
 	"achievement.rarePolarizeSuccess.name": "反向俄羅斯輪盤賭",
 	"achievement.rarePolarizeSuccess.description": "你知道這技能風險很高，尤其是在子彈新鮮滾熱辣的時候，但你卻奇妙地成功了。",
 	"achievement.eliminateByAssault.name": "神槍手",
-	"achievement.eliminateByAssault.description": "對於瀕臨失敗者，必須迅速處置⋯⋯用更直接的方法採取。",
+	"achievement.eliminateByAssault.description": "對於瀕臨失敗者，必須迅速處置⋯用更直接的方法採取。",
 	"achievement.intentionalLoseByPolarize.name": "不獸控制",
 	"achievement.intentionalLoseByPolarize.description": "明明知道自己安全，明明知道自己到了極限，明明知道這樣做會淘汰，但你仍然承受打擊？你戇撚鳩㗎？",
 	"achievement.findCameraman.name": "好戲上場！",
-	"achievement.findCameraman.description": "震驚！攝影師鈷百特首次出鏡！",
-	"achievement.winByYourself.name": "孫子恥法",
+	"achievement.findCameraman.description": "你看到攝影師了嗎？",
+	"achievement.winByYourself.name": "孫子悲法",
 	"achievement.winByYourself.description": "「知彼知己，百戰不殆。」",
 	"achievement.winAgainstStrategicCPUs.name": "爾虞我詐",
 	"achievement.winAgainstStrategicCPUs.description": "說實話，這些CPU也不算很聰明，但見人輪給他們時怒髮衝冠，算吧。",
@@ -374,7 +390,14 @@
 	"achievement.exportCharacterProject.description": "使用移民遊樂計劃註冊程式創建你自己的肉體。",
 	"achievement.liveShots.name": "不夠氣",
 	"achievement.liveShots.description": "一顆 .357 Magnum 子彈的製造成本約為 15 美毫，但零售價從 0.60 到 1.40 美元不等。現在想像一下發射 100 顆這樣的子彈。",
-	
+	"achievement.twoPlayers.name": "對峙",
+	"achievement.twoPlayers.description": "兩隻笨蛋，一把氣槍。誰能活下來？答案：經理先生。",
+	"achievement.sixPlayers.name": "六六大順",
+	"achievement.sixPlayers.description": "這就是年輕人所謂的「六六六」嗎？不如直接叫他們圍團打飛機算了。",
+	"achievement.allFillerWins.name": "均衡飲食",
+	"achievement.allFillerWins.description": "體驗每一種酷刑，每次都能毫髮無傷。",
+
+	"achievementsMenu.windowDisplay": "成就",
 	"achievementsMenu.title": "你的成就",
 	"achievementsMenu.description": "選擇一項成就以查看其詳述和完成狀態。",
 	"achievementsMenu.resetProgress": "重置進度",
@@ -382,20 +405,25 @@
 	"achievementToast.title": "成就解鎖！",
 	
 	"resetAchievementMenu.prompt": "確認重置\n%1？\n此行動不可逆轉。",
-	
+
+	"galleryMainMenu.windowDisplay": "畫廊",
 	"galleryMainMenu.envelope.rotateText": "false",
 	"galleryMainMenu.envelope.goober.description": "古伯最初出現在原版遊戲中，現在以全新的面貌登場！他們已成為無數重製版和同人作品中不可或缺的人物。\n\n至於他們為何以及如何加入遊戲，無人知道！演員？人質？叛徒？很多可能性的！關於他們的生物學知之甚少，但已證實他們被分為幾個種族，從完全由史萊姆組成的古伯到R»EDA©±ED§²½\n\n古伯是由Snowyboi創造的物種。",
 	"galleryMainMenu.envelope.asimo.description": "阿西莫衝進了膨脹輪盤，聲稱要「找點樂子」。\n\n我們不知道他是怎麼來到這裡的，我們也完全與他沒有任何關係，除了他是一隻狼，他是為經理的死人《週五放克夜》模組造遊玩測試，而且他是抽出來添加到遊戲中，作為範例附件包的人物。\n\n阿西莫是 WolfKylis 擁有的客串人物。",
-	"galleryMainMenu.envelope.shibanou.description": "姓歐名拾巴，這隻生物來自一個神秘的外星球。他的名字可以解釋為「〇十八」，源自他在北京降落的核彈機地。\n\n他生命中的前幾年都在不同的地方尋找住所，最終經理在車庫裡找到了他。經理便收養了他作為第二助理，很快就發現自己愛上了第一助理（實驗室培養的，真噁心）。沒有其他明顯的原因，只是為了在男朋友面前炫耀，他加入了遊戲，展示他隱藏的能力。\n\n歐拾巴是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝上陣》開發之前製作。",
+	"galleryMainMenu.envelope.shib.description": "姓歐名拾巴，這隻生物來自一個神秘的外星球。他的名字可以解釋為「〇十八」，源自他在北京降落的核彈機地。\n\n他生命中的前幾年都在不同的地方尋找住所，最終經理在車庫裡找到了他。經理便收養了他作為第二助理，很快就發現自己愛上了第一助理（實驗室培養的，真噁心）。沒有其他明顯的原因，只是為了在男朋友面前炫耀，他加入了遊戲，展示他隱藏的能力。\n\n歐拾巴是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝上陣》開發之前製作。",
 	"galleryMainMenu.envelope.chester.description": "作為咖啡店的首席咖啡師，切斯特被迫作為公司的代表來玩這個遊戲。由於他糟糕的學業成績和內向的性格，他對繁榮和財富的夢想尚未實現。\n\n他日常的工作包括為心理變態的顧客製作飲料。有人說這些飲料有「膨脹」的效果，這引起了幾位食品安全官員的注意。然而，由於資本主義的力量，食品部門警告了它後無所作為。\n\n切斯特是 NicklySuffer 擁有的人物，在《膨脹輪盤：重裝上陣》開發之前製作。",
 	"galleryMainMenu.envelope.dev": "開發者畫作",
 	"galleryMainMenu.envelope.dev.description": "開發者及其他畫家製作的概念畫、草圖和未使用的畫作集合。\n\nangry           bird",
 	"galleryMainMenu.envelope.community": "粉絲作品",
 	"galleryMainMenu.envelope.community.description": "由開發者的朋友和粉絲製作的畫作集。",
 	"galleryEntryMenu.viewFullImage": "觀看完整圖片",
-	
+
+	"jukeboxMenu.windowDisplay": "點唱單",
+
+	"utilitiesMenu.windowDisplay": "製作工具",
 	"utilitiesMenu.characterCreator": "人物創建器",
-	"utilitiesMenu.stageEditor": "背景預覽器",
+	"utilitiesMenu.stagePreviewer": "背景預覽器",
+	"utilitiesMenu.langConverter": "LANG 檔案轉換器",
 	"utilitiesMenu.loadFile": "載入文件",
 	"utilitiesMenu.newFile": "新增文件",
 	"utilitiesMenu.loadDirectory": "載入資料夾",
@@ -463,20 +491,22 @@
 	"prompt.andManyMore": "及更多⋯",
 	"characterCreator.exporting.description": "請保持應用程式開放。",
 	"characterCreator.exportSuccessful.prompt": "項目匯出成功。可能需要調整JSON檔案中的變數。\n匯出為：\n%1",
-	
+
+	"animationCreator.windowDisplay": "動畫編輯器",
 	"animationCreator.save": "儲存動畫",
 	"animationCreator.exit": "退出編輯器",
 	"animationCreator.exit.prompt": "確定要退出動畫編輯器嗎？\n任何未儲存的進度會被遺失。",
 	"animationCreator.saveSuccessful.prompt": "動畫保存成功。",
-	
-	"stageEditor.stage": "背景",
-	"stageEditor.stage.description": "此選單僅用於預覽，不會提供任何編輯功能。建議配合JSON編輯器使用以獲得最佳體驗。",
-	"stageEditor.objectList": "物件列表",
-	"stageEditor.reload": "重載背景",
-	"stageEditor.screenshot": "截圖模式",
-	"stageEditor.exit": "退出預覽器",
-	"stageEditor.exit.prompt": "確定要退出背景預覽器嗎？",
 
+	"stagePreviewer.stage": "背景",
+	"stagePreviewer.stage.description": "此選單僅用於預覽，不會提供任何編輯功能。建議配合JSON編輯器使用以獲得最佳體驗。",
+	"stagePreviewer.objectList": "物件列表",
+	"stagePreviewer.reload": "重載背景",
+	"stagePreviewer.screenshot": "截圖模式",
+	"stagePreviewer.exit": "退出預覽器",
+	"stagePreviewer.exit.prompt": "確定要退出背景預覽器嗎？",
+
+	"offsetEditor.windowDisplay": "偏移編輯器",
 	"offsetEditor.title": "修改偏移",
 	"offsetEditor.description": "用方向鍵調整偏移\n按住 SHIFT/CTRL 鍵提高移動速度\n確保十字準星對準目標位置",
 	"offsetEditor.offsetType.origin": "原點",
@@ -485,7 +515,10 @@
 	"offsetEditor.offsetType.navel": "肚臍",
 	"offsetEditor.offsetType.gunShoot": "槍膛（射擊）",
 	"offsetEditor.offsetType.gunSkill": "槍膛（技能）",
-	
+
+	"langConverter.successPrompt": "JSON檔案已導出至：\n%1",
+
+	"resultsMenu.windowDisplay": "遊戲結果",
 	"resultsMenu.title": "遊戲結果！",
 	"resultsMenu.instructions": "按任意鍵退出",
 	// Score bonus for last standing players
@@ -519,33 +552,77 @@
 	"menu.confirm": "確認",
 	"menu.cancel": "取消",
 	"menu.exit": "退出",
-	
-	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
-	"gameUI.selectTarget": "選擇目標",
-	"gameUI.playerIndicator.you": "YOU",
-	"gameUI.playerIndicator.player": "P%1",
-	
-	"preloadMenu.progress.characters": "正在載入人物⋯⋯",
-	"preloadMenu.progress.gameplay": "正在載入遊戲模式⋯⋯",
-	"preloadMenu.progress.achievements": "正在載入成就⋯⋯",
-	"preloadMenu.progress.toasts": "正在建置通知⋯⋯",
-	"preloadMenu.progress.tooltip": "正在建置工具提示⋯⋯",
-	"preloadMenu.progress.cursor": "正在裝飾滑鼠遊標⋯⋯",
-	"preloadMenu.progress.splashes": "正在寫入閃爍標語⋯⋯",
-	"preloadMenu.progress.music": "正在尋找音樂光碟⋯⋯",
+
+	"game.windowDisplay": "%1 - %2 位玩家",
+	"game.selectTarget": "選擇目標",
+	"game.playerIndicator.you": "YOU",
+	"game.playerIndicator.player": "P%1",
+
+	"preloadMenu.windowDisplay": "載入中",
+	"preloadMenu.progress.characters": "正在載入人物⋯",
+	"preloadMenu.progress.gameplay": "正在載入遊戲模式⋯",
+	"preloadMenu.progress.achievements": "正在載入成就⋯",
+	"preloadMenu.progress.toasts": "正在建置通知⋯",
+	"preloadMenu.progress.tooltip": "正在建置工具提示⋯",
+	"preloadMenu.progress.cursor": "正在裝飾滑鼠遊標⋯",
+	"preloadMenu.progress.splashes": "正在寫入閃爍標語⋯",
+	"preloadMenu.progress.music": "正在尋找音樂光碟⋯",
 	"preloadMenu.finished": "完成！",
-	
+
+	"outdatedVersionMenu.windowDisplay": "版本過期！",
 	"outdatedVersionMenu.heading": "版本過期",
 	"outdatedVersionMenu.text": "喂！你目前使用的《膨脹輪盤：重裝上陣》的版本已過期。請下載最新版本，以體驗最新功能和修復錯誤！\n\n你的版本：%1\n最新版本：%2",
 	"outdatedVersionMenu.update": "更新",
 	"outdatedVersionMenu.dismiss": "下次先啦",
-	
+
+	"androidPermissionsMenu.windowDisplay": "需要獲得權限！",
 	"androidPermissionsMenu.permissionsRequired": "需要獲得權限",
 	"androidPermissionsMenu.permissionsGranted": "權限已授予！",
 	"androidPermissionsMenu.description": "好吧，說來也怪：安卓不想讓我們讀取你安裝的附件包。\n\n為了確保附件包正常運行，請允許我們讀取你手機的外部儲存空間的權限。",
 	"androidPermissionsMenu.playWithoutAddons": "不用附件包遊玩",
 	"menu.decline": "拒絕",
-	
+
+	"filler.air.name": "空氣",
+	"filler.air.description": "預設選項。子彈內裝滿了壓縮二氧化碳。",
+	"filler.water.name": "開水",
+	"filler.water.description": "力不能支，波濤潺潺。過量飲用可能導致口漏。",
+	"filler.soda.name": "汽水",
+	"filler.soda.description": "甘甜和有氣的飲料品牌。具有空氣和開水的特性。",
+	"filler.slime.name": "史萊姆",
+	"filler.slime.description": "有感知能力的黏液，在腸道內進行無性繁殖。會在宿主體內蠕動，吸取宿主的DNA。",
+	"filler.berry.name": "藍莓",
+	"filler.berry.description": "被輻照的藍莓汁。會導致皮膚變色，並從多個身體孔口滲漏。",
+	"filler.random.name": "隨機",
+	"filler.random.description": "讓遊戲決定吧！",
+
+	"loading.message.format": "%1⋯",
+	"loading.messages": [
+		"正在載上",
+		"請稍等一下",
+		"請耐心等待",
+		"設定中",
+		"正在擺放家具",
+		"正在補充彈藥",
+		"正在包紮傷口",
+		"正在招募玩家",
+		"正在給玩家放氣",
+		"正在準備茶點",
+		"正在為茶點下藥"
+	],
+	"loading.messagesRare": [
+		"正在卸載並重新載入所有東西",
+		"正在報警",
+		"正在啟動地獄機器",
+		"正在浪費時間",
+		"正在製造更多漏洞",
+		"正在對AI影片發起版權投訴",
+		"正在清除想法",
+		"正在修復角色創建器",
+		"正在揉揉肚子",
+		"正在治療霍亂",
+		"正在祈求憐憫"
+	],
+
 	// Fallback for HTML build
 	"gamemode.fiftyFifty.name": "五十五十",
 	"gamemode.fiftyFifty.description": "純粹靠50/50決定勝負。\n快速而高風險。",

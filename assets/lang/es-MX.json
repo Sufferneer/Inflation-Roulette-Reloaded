@@ -31,9 +31,9 @@
 	// \s: Whitespace
 	// The positions of escape sequences in-between sentences should be left AS IS.
 	
-	"game.title": "Inflation Roulette: Reloaded",
-	"game.titleShort": "Inflation Roulette",
-	"game.acronym": "IRR",
+	"metadata.title": "Inflation Roulette: Reloaded",
+	"metadata.titleShort": "Inflation Roulette",
+	"metadata.acronym": "IRR",
 	
 	// Version Formatting
 	// For example, if the version is 2.3.1 in an Linux environment,
@@ -44,27 +44,27 @@
 	// Version 2.3.1
 	// Linux Build
 	
-	"game.version.numeral.format": "Version %1",
-	"game.version.numeralModded.format": "Modded Version %1",
-	"game.version.name.minor.format": "Pitstop %1",
-	"game.version.name.hotfix.format": "Hotfix %1",
+	"metadata.version.numeral.format": "Version %1",
+	"metadata.version.numeralModded.format": "Modded Version %1",
+	"metadata.version.name.minor.format": "Pitstop %1",
+	"metadata.version.name.hotfix.format": "Hotfix %1",
 	// %1 is the platform in which the executable is dedicated.
 	// For example, if the game is on Windows, "Windows Build" will be displayed.
 	// Note that platform names will remain untranslated.
 	"game.build.format": "%1 Build",
 	
-	"game.version.name.major.0": "Indev",
+	"metadata.version.name.major.0": "Indev",
 	// Version 1: Initial Release
-	"game.version.name.major.1": "Initial Release",
+	"metadata.version.name.major.1": "Initial Release",
 	// Version 2: Added Achievements, Modding Tools, More Characters, Gallery & Jukebox and Results Screen
 	// The Version Name has two interpretations. One being it being a update that introduces creative-related content (e.g. Modding Tools, Extras).
 	// Another way to interpret this is the update being a piece of cloth, which is usually associated with creativity, suiting the update content.
 	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
-	"game.version.name.major.2": "Patch of Creativity",
+	"metadata.version.name.major.2": "Patch of Creativity",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"game.version.name.state.a": "Public Alphα %1",
-	"game.version.name.state.b": "Public βeta %1",
-	"game.version.name.state.c": "Release Candidate %1",
+	"metadata.version.name.state.a": "Public Alphα %1",
+	"metadata.version.name.state.b": "Public βeta %1",
+	"metadata.version.name.state.c": "Release Candidate %1",
 	
 	// These are the button texts in the Main Menu.
 	"mainMenu.play": "Jugar",
@@ -323,35 +323,33 @@
 	// Shib: Personaje creado por NicklySuffer. No binario, y diseñado para parecer uno de esos gatos blancos simplistas tipo anon.
 	// Transmite vibras de "chico de ciudad".
 	// Skills: Sabotaje, Amnesia
-	"character.shibanou.name": "Shibanou",
-	"character.shibanou.name.short": "Shib",
-	"character.shibanou.description": "Extraterrestre, astuto y amante del té de limón. Puede provocar pérdida temporal de memoria.",
+	"character.shib.name": "Shibanou",
+	"character.shib.name.short": "Shib",
+	"character.shib.description": "Extraterrestre, astuto y amante del té de limón. Puede provocar pérdida temporal de memoria.",
 	// Chester: Personaje creado por NicklySuffer. Trabaja en una cafetería y también parece uno de esos gatos blancos simplistas tipo anon,
 	// pero usa una gorra, supongo. Transmite vibras de "empleado mal pagado y sobreexplotado".
 	// Diseñado sin habilidades ofensivas, pero puede aguantar inflaciones extremas jaja.
 	// Skills: Revelar, Recarga
-	"character.chester.name": "Chester",
+	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "Un desafortunado barista obligado a jugar este juego para una empresa. Su trabajo entrena su resistencia.",
 	// Opción para elegir un personaje aleatorio.
-	"character.random.name": "???",
-	"character.random.name.short": "???",
 	"character.random.description": "¿No sabes que elegir?, ¡Nosotros lo hacemos!",
 	
 	// Classic Room: The original stage from the original game redrawn.
-	"stage.classic": "Habitación Original",
+	"stage.classic.name": "Habitación Original",
 	"stage.classic.description": "La habitación que ya conocemos.",
 	// Sala de directivos: El contexto es que a cuatro personas, motivadas por una vida mejor o forzadas por sus superiores,
 	// se les ofrece participar en un juego para satisfacer los deseos del directivo.
-	"stage.reloaded": "Cuarto del Gerente",
+	"stage.reloaded.name": "Cuarto del Gerente",
 	"stage.reloaded.description": "Parece que aquí graban porno. Y de hecho en cierto modo, lo es, y además está siendo grabada.",
 	// Shitfucks Café: Named Shitfucks. La cafetería donde trabaja Chester.
 	// Vende café que infla a la gente y aceptó organizar eventos tan horribles como este. ¡Nefasto!.
 	// Again, transliterate Shitfucks.
-	"stage.shitfucks": "Shitfucks Café",
+	"stage.shitfucks.name": "Shitfucks Café",
 	"stage.shitfucks.description": "Se especializa en la venta de bebidas, Claramente, aquí no pasa nada.",
 	// Vacío Blanco: Literalmente, solo un vacío blanco con una mesa de cristal.
-	"stage.void": "El Vacío",
+	"stage.void.name": "El Vacío",
 	"stage.void.description": "Un lugar para todo tipo de actividades, presente en innumerables obras de arte y animaciones..",
 	"stage.random": "?????",
 	"stage.random.description": "¿No sabes donde jugar?, ¡Nosotros elegimos!",
@@ -440,7 +438,7 @@
 	"galleryMainMenu.envelope.asimo.description": "Aprovechando sus poderes eléctricos, Asimo llega electrizando a Inflation Roulette afirmando que viene “a divertirse un poco”.\n\nNo sabemos cómo llegó aquí, y definitivamente no tenemos ninguna relación con él, aparte de que es un lobo, es el tester del Manager para su estúpido mod de Friday Night Funkin’, y fue el ganador de un sorteo de arte para ser añadido al juego como personaje del Example Addon.\n\nAsimo es un personaje invitado propiedad de WolfKylis.",
 	// Context: You can say the reason they're here is nepotism? They're just a partner with the Manager's lab-grown assistant
 	// that agrees to join that's it.
-	"galleryMainMenu.envelope.shibanou.description": "Apellido: Nou; nombre: Shiba. Proveniente de un planeta misterioso, esta criatura con apariencia felina está lista para volarle la cabeza a alguien. Su nombre en chino puede interpretarse como “Cero Diez Ocho”, derivado del sitio nuclear en el que aterrizó en Pekín.\n\nTras pasar los primeros años de su vida vagando de un lugar a otro en busca de dónde vivir, terminó encontrándose dentro del garaje del Manager. El hombre lo adoptó como su asistente secundario, y poco después terminó enamorándose del asistente principal (creado en laboratorio, por cierto… qué asco). Sin ninguna razón aparente más allá de presumir frente a su novio, se unió al juego para demostrar sus habilidades ocultas.\n\nShibanou es un personaje propiedad de NicklySuffer, creado antes del desarrollo de Inflation Roulette Reloaded.",
+	"galleryMainMenu.envelope.shib.description": "Apellido: Nou; nombre: Shiba. Proveniente de un planeta misterioso, esta criatura con apariencia felina está lista para volarle la cabeza a alguien. Su nombre en chino puede interpretarse como “Cero Diez Ocho”, derivado del sitio nuclear en el que aterrizó en Pekín.\n\nTras pasar los primeros años de su vida vagando de un lugar a otro en busca de dónde vivir, terminó encontrándose dentro del garaje del Manager. El hombre lo adoptó como su asistente secundario, y poco después terminó enamorándose del asistente principal (creado en laboratorio, por cierto… qué asco). Sin ninguna razón aparente más allá de presumir frente a su novio, se unió al juego para demostrar sus habilidades ocultas.\n\nShib es un personaje propiedad de NicklySuffer, creado antes del desarrollo de Inflation Roulette Reloaded.",
 	// Context: El Manager y Shitfucks se asociaron y eligieron a Chester como su embajador o algo así..
 	"galleryMainMenu.envelope.chester.description": "Como barista principal de una cafetería, fue obligado a participar en este juego como embajador de la empresa. Con sus malos resultados académicos y su personalidad nada carismática, su sueño de prosperidad y riqueza sigue estando lejos de alcanzarse.\n\nSu trabajo diario consiste en preparar bebidas exageradamente dulces para clientes calientes. Algunos dicen que las bebidas tienen un efecto “expansivo”, lo que ha llamado la atención de varios agentes de seguridad alimentaria. Sin embargo, debido a ciertas estupideces capitalistas, las advertencias del departamento de salubridad no llegaron a ninguna parte.\n\nChester es un personaje propiedad de NicklySuffer, creado antes del desarrollo de Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.dev": "Arte de los desarrolladores",
@@ -451,7 +449,7 @@
 	
 	// These will be button text that will be in the Utilities Main Menu.
 	"utilitiesMenu.characterCreator": "Creador de Personajes",
-	"utilitiesMenu.stageEditor": "Visor de Escenarios",
+	"utilitiesMenu.stagePreviewer": "Visor de Escenarios",
 	"utilitiesMenu.loadFile": "Cargar Archivo",
 	"utilitiesMenu.newFile": "Nuevo Archivo",
 	"utilitiesMenu.loadDirectory": "Cargar Carpeta",
@@ -531,13 +529,13 @@
 	"animationCreator.exit.prompt": "¿Estás seguro de que quieres salir del Editor de Animaciones?\nCualquier progreso no guardado se PERDERÁ.",
 	"animationCreator.saveSuccessful.prompt": "Animación guardada correctamente.",
 	
-	"stageEditor.stage": "Escenario",
-	"stageEditor.stage.description": "Este menú solo se usa para previsualizar escenarios y NO ofrece funciones de edición. Úsalo con un editor JSON para una mejor experiencia.",
-	"stageEditor.objectList": "Lista de Objetos",
-	"stageEditor.reload": "Recargar Escenario",
-	"stageEditor.screenshot": "Modo Captura",
-	"stageEditor.exit": "Salir del Visor",
-	"stageEditor.exit.prompt": "¿Estás seguro de que quieres salir del Visor de Escenarios?",
+	"stagePreviewer.stage": "Escenario",
+	"stagePreviewer.stage.description": "Este menú solo se usa para previsualizar escenarios y NO ofrece funciones de edición. Úsalo con un editor JSON para una mejor experiencia.",
+	"stagePreviewer.objectList": "Lista de Objetos",
+	"stagePreviewer.reload": "Recargar Escenario",
+	"stagePreviewer.screenshot": "Modo Captura",
+	"stagePreviewer.exit": "Salir del Visor",
+	"stagePreviewer.exit.prompt": "¿Estás seguro de que quieres salir del Visor de Escenarios?",
 	
 	"resultsMenu.title": "¡LOS RESULTADOS ESTÁN LISTOS!",
 	"resultsMenu.instructions": "Presiona cualquier tecla para salir",
@@ -575,7 +573,7 @@
 	"menu.exit": "Salir",
 	
 	// Mensaje tras activar una habilidad ofensiva (ej. Asalto, Amnesia)
-	"gameUI.selectTarget": "SELECCIONA OBJETIVO",
+	"game.selectTarget": "SELECCIONA OBJETIVO",
 	
 	"preloadMenu.progress.characters": "Cargando personajes...",
 	"preloadMenu.progress.gameplay": "Cargando modos de juego...",

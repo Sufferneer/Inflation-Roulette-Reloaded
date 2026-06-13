@@ -1,0 +1,24 @@
+{
+	"displayColor": "#FF4080",
+	"gasColor": "#FFFFFF",
+	"liquidColor": "#400010",
+
+	"gurgles": {
+		"archetype": "liquid",
+		"samples": 20
+	},
+	"creaks": {
+		"archetype": "gas",
+		"samples": 9
+	},
+	"belches": {
+		"archetype": "gas",
+		"samples": 12
+	},
+	"bursts": {
+		"archetype": "liquid",
+		"samples": 1
+	},
+
+	"gravityMultiplier": 2
+}

@@ -33,6 +33,8 @@ class OptionsSubState extends SuffSubState {
 	public function new() {
 		super();
 
+		Window.setTitle(Language.getPhrase('optionsMenu.windowDisplay'));
+
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0.75;
 		add(bg);
@@ -90,18 +92,34 @@ class OptionsSubState extends SuffSubState {
 
 		createHeading('preferences');
 
-		createBooleanOption('enablePopping',
-			function(value:Bool) {
-				Preferences.data.enablePopping = value;
-			}, Preferences.data.enablePopping);
+		createBooleanOption("enableBellyCreaks", function(value:Bool) {
+			Preferences.data.enableBellyCreaks = value;
+		}, Preferences.data.enableBellyCreaks);
 
 		createBooleanOption("enableBellyGurgles", function(value:Bool) {
 			Preferences.data.enableBellyGurgles = value;
 		}, Preferences.data.enableBellyGurgles);
 
-		createBooleanOption("enableBellyCreaks", function(value:Bool) {
-			Preferences.data.enableBellyCreaks = value;
-		}, Preferences.data.enableBellyCreaks);
+		createBooleanOption("enableBelching", function(value:Bool) {
+			Preferences.data.enableBelching = value;
+		}, Preferences.data.enableBelching);
+
+		createBooleanOption('enablePopping',
+			function(value:Bool) {
+				Preferences.data.enablePopping = value;
+			}, Preferences.data.enablePopping);
+
+		createBooleanOption("enableSkinTinting", function(value:Bool) {
+			Preferences.data.enableSkinTinting = value;
+		}, Preferences.data.enableSkinTinting);
+
+		createBooleanOption("enableOralLeaking", function(value:Bool) {
+			Preferences.data.enableOralLeaking = value;
+		}, Preferences.data.enableOralLeaking);
+
+		createBooleanOption("enableNavelLeaking", function(value:Bool) {
+			Preferences.data.enableNavelLeaking = value;
+		}, Preferences.data.enableNavelLeaking);
 
 		// GRAPHICS SETTINGS
 		createHeading('visuals');
@@ -350,6 +368,7 @@ class OptionsSubState extends SuffSubState {
 			PauseSubState.resetMusic = true;
 		}
 		Tooltip.text = '';
+		Window.setTitle(Language.getPhrase('mainMenu.windowDisplay'));
 		close();
 		if (notInGame) {
 			SuffState.playMusic('mainMenu');

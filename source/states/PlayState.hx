@@ -22,6 +22,8 @@ import objects.particles.Bloosh;
 import objects.particleEmitters.PuffEmitter;
 import objects.particles.BulletShell;
 import objects.particles.PlayerIndicator;
+import backend.RecordingDetector;
+import substates.RecordingWarning;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
@@ -108,6 +110,8 @@ class PlayState extends SuffState {
 	public var stage:Stage;
 
 	override public function create() {
+		RecordingDetector.checkIfRecording();
+
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camOther = new FlxCamera();
@@ -241,7 +245,7 @@ class PlayState extends SuffState {
 		letterboxBottom.y = FlxG.height;
 		add(letterboxBottom);
 
-		selectTargetText = new FlxText(Language.getPhrase('gameUI.selectTarget'), 48);
+		selectTargetText = new FlxText(Language.getPhrase('game.selectTarget'), 48);
 		selectTargetText.setBorderStyle(OUTLINE, 0xFF000000, 3.25);
 		selectTargetText.x = Std.int((FlxG.width - selectTargetText.width) / 2);
 		selectTargetText.y = -selectTargetText.height;
@@ -315,6 +319,7 @@ class PlayState extends SuffState {
 		pauseButton.camera = camHUD;
 		pauseButton.onClick = function() {
 			pauseGame();
+			openSubState(new PauseSubState());
 		};
 		add(pauseButton);
 
@@ -357,6 +362,8 @@ class PlayState extends SuffState {
 		} else {
 			finishStartCutscene();
 		}
+
+		Window.setTitle(Language.getPhrase('game.windowDisplay', [Language.getPhrase('gamemode.' + GameplayManager.currentGamemode.id + '.name'), characterGroup.members.length]));
 	}
 
 	private function set_isSelectingPlayer(value:Bool):Bool {
@@ -678,8 +685,8 @@ class PlayState extends SuffState {
 		toggleLetterbox(true);
 		// trace(getPlayer(playerIndex).animSoundPaths[soundName]);
 		if (getPlayer(playerIndex).animSoundPaths[soundName] == null || getPlayer(playerIndex).animSoundPaths[soundName].length <= 0) {
-			if (Paths.fileExists(Paths.getSoundPath('game/characters/GLOBAL/' + soundName), SOUND)) {
-				SuffState.playSound(Paths.sound('game/characters/GLOBAL/' + soundName));
+			if (Paths.fileExists(Paths.getSoundPath('game/skills/' + soundName), SOUND)) {
+				SuffState.playSound(Paths.sound('game/skills/' + soundName));
 			}
 		}
 		doTimer('reenablePlayerUI', new FlxTimer().start(getPlayer(playerIndex).getCurAnimLength(), function(_:FlxTimer) {
@@ -765,8 +772,8 @@ class PlayState extends SuffState {
 
 		toggleLetterbox(true);
 		if (getPlayer(attackerIndex).animSoundPaths[soundName] == null || getPlayer(attackerIndex).animSoundPaths[soundName].length <= 0) {
-			if (Paths.fileExists(Paths.getSoundPath('game/characters/GLOBAL/' + soundName), SOUND)) {
-				SuffState.playSound(Paths.sound('game/characters/GLOBAL/' + soundName));
+			if (Paths.fileExists(Paths.getSoundPath('game/skills/' + soundName), SOUND)) {
+				SuffState.playSound(Paths.sound('game/skills/' + soundName));
 			}
 		}
 	}
@@ -792,6 +799,12 @@ class PlayState extends SuffState {
 	}
 
 	public function shoot(playerIndex:Int, passToPlayer:Bool = true) {
+		if (RecordingDetector.isRecording) {
+			pauseGame();
+			openSubState(new RecordingWarning());
+			return;
+		}
+
 		var dealDamage:Bool = false;
 		if (!GameplayManager.currentGamemode.cylinderTrueRandomness)
 			dealDamage = cylinderContent[0]; else {
@@ -855,9 +868,9 @@ class PlayState extends SuffState {
 
 			var percent = getPlayer(playerIndex).getPressurePercentage();
 			var fwoompSuffix:String = percent >= 0.5 ? 'Large' : 'Small';
-			SuffState.playSound(Paths.soundRandom('game/belly/fwoomps/fwoomp' + fwoompSuffix, 1, Constants.FWOOMPS_SAMPLE_COUNT), 0.75, 0.5);
+			SuffState.playSound(Paths.soundRandom('game/inflation/universal/fwoomps/fwoomp' + fwoompSuffix, 1, Constants.FWOOMPS_SAMPLE_COUNT), 0.75, 0.5);
 			if (Preferences.data.enableBellyCreaks) {
-				SuffState.playSound(Paths.soundRandom('game/belly/creaks/creak', 1, Constants.CREAKS_SAMPLE_COUNT), percent, percent * 1.5 + 1);
+				SuffState.playSound(GameplayManager.currentFiller.getCreakSound(), percent, percent * 1.5 + 1);
 			}
 
 			screenShake(0.01, 0.1);
@@ -954,7 +967,7 @@ class PlayState extends SuffState {
 				members.insert(members.indexOf(characterGroup) + 1, new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY, character.maxPressure));
 				members.insert(members.indexOf(characterGroup) + 1, new PuffEmitter(character.x, character.y - character.height / 2));
 			}
-			SuffState.playSound(Paths.sound('game/belly/burst'));
+			SuffState.playSound(GameplayManager.currentFiller.getBurstSound());
 			getPlayer(playerIndex).disableBellySounds = true;
 			screenShake(0.03, 0.5);
 			screenFlash();
@@ -996,31 +1009,36 @@ class PlayState extends SuffState {
 		focusCameraOnStage();
 		cameraFocusButton.visible = false;
 
-		var allCPU:Bool = true;
-		var allCpuDidntUseSkill:Bool = true;
+		var allHumanPlayers:Bool = true;
+		var playersThatUsedSkills:Int = 0;
 		var allCpuAtHighestLevel:Bool = true;
 		for (num => char in characterGroup) {
 			if (char.cpuControlled || char.getPressurePercentage() > 1) {
-				allCPU = false;
-				if (char.skillUseCount > 0)
-					allCpuDidntUseSkill = false;
+				allHumanPlayers = false;
 				if (char.cpuSkillLevel != Constants.CPU_SKILL_LIMIT[1])
 					allCpuAtHighestLevel = false;
 				continue;
 			}
+			if (char.skillUseCount > 0)
+				playersThatUsedSkills++;
 
 			Achievements.advanceProgress('firstWin', [true]);
 			Achievements.advanceProgress('allGameModeWins', [GameplayManager.currentGamemode.id]);
 			Achievements.advanceProgress('allCharacterWins', [char.id]);
+			Achievements.advanceProgress('allFillerWins', [GameplayManager.currentFiller.id]);
 			if (char.getPressurePercentage() <= 0)
 				Achievements.advanceProgress('noPressureWin', [true]); else if (char.getPressurePercentage() == 1)
 				Achievements.advanceProgress('fullPressureWin', [true]);
 
-			if (allCPU) {
+			if (!allHumanPlayers) {
+				if (characterGroup.members.length == 2)
+					Achievements.advanceProgress('twoPlayers', [true]);
+				else if (characterGroup.members.length == 6)
+					Achievements.advanceProgress('sixPlayers', [true]);
 				if (allCpuAtHighestLevel)
 					Achievements.advanceProgress('winAgainstStrategicCPUs', [true]);
 			} else {
-				if (allCpuDidntUseSkill)
+				if (playersThatUsedSkills == 1)
 					Achievements.advanceProgress('winByYourself', [true]);
 			}
 		}
@@ -1370,8 +1388,6 @@ class PlayState extends SuffState {
 			tmr.active = false);
 		FlxTween.globalManager.forEach(function(twn:FlxTween) if (!twn.finished)
 			twn.active = false);
-
-		openSubState(new PauseSubState());
 	}
 
 	public function resumeGame() {
@@ -1445,8 +1461,10 @@ class PlayState extends SuffState {
 			} else {
 				if (Controls.justPressed('camera') && !cameraFocusButton.disabled)
 					toggleCameraFocus();
-				else if (Controls.justPressed('pause') && canPause)
+				else if (Controls.justPressed('pause') && canPause) {
 					pauseGame();
+					openSubState(new PauseSubState());
+				}
 			}
 
 			for (player in characterGroup) {

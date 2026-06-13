@@ -259,11 +259,11 @@
 			"indices": [],
 			"loop": false,
 			"soundPaths": [
-				"game/belly/belches/belch_1",
-				"game/belly/belches/belch_2",
-				"game/belly/belches/belch_3",
-				"game/belly/belches/belch_4",
-				"game/belly/belches/belch_5"
+				"game/inflation/gas/belches/belch_1",
+				"game/inflation/gas/belches/belch_2",
+				"game/inflation/gas/belches/belch_3",
+				"game/inflation/gas/belches/belch_4",
+				"game/inflation/gas/belches/belch_5"
 			]
 		},
 		{
@@ -274,11 +274,11 @@
 			"indices": [],
 			"loop": false,
 			"soundPaths": [
-				"game/belly/belches/belch_1",
-				"game/belly/belches/belch_2",
-				"game/belly/belches/belch_3",
-				"game/belly/belches/belch_4",
-				"game/belly/belches/belch_5"
+				"game/inflation/gas/belches/belch_1",
+				"game/inflation/gas/belches/belch_2",
+				"game/inflation/gas/belches/belch_3",
+				"game/inflation/gas/belches/belch_4",
+				"game/inflation/gas/belches/belch_5"
 			]
 		},
 		{
@@ -462,6 +462,8 @@
 	"belchThreshold": 3,
 	"gurgleThreshold": 2,
 	"creakThreshold": 3,
+	"leakThreshold": 3,
+	"voicePitch": 0.9,
 	"poppingVelocityMultiplier": [1.0, 1.0],
 	"poppingGravityMultiplier": 1.0,
 	"antialiasing": false,

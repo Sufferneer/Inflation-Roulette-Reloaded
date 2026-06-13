@@ -49,6 +49,9 @@ class ResultsState extends SuffState {
 		}
 		allowSkip = achievementsToEarn.length <= 0;
 		trace(achievementsToEarn);
+
+		Window.setTitle(Language.getPhrase('resultsMenu.windowDisplay'));
+
 		super.create();
 
 		var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFAA80FF);

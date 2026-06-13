@@ -18,8 +18,10 @@ class Character extends FlxSprite {
 	// public var description:String = 'No description.';
 	public var animSoundPaths:Map<String, Array<String>>;
 	public var belchThreshold:Int = 3;
+	public var leakThreshold:Int = 4;
 	public var gurgleThreshold:Int = 2;
 	public var creakThreshold:Int = 4;
+	public var voicePitch:Float = 1;
 	public var originPosition:Array<Int> = [0, 0];
 	public var poppedCameraOffset:Array<Int> = [0, 0];
 	public var cameraOffset:Array<Int> = [0, 0];
@@ -58,6 +60,8 @@ class Character extends FlxSprite {
 	public var disableBellySounds:Bool = false;
 
 	var gurgleTimer:Float = 0;
+	var belchTimer:Float = 25;
+	var leakTimer:Float = 25;
 	var creakTimer:Float = 0;
 	var swirlSpawnTimer:Float = 0;
 
@@ -76,9 +80,11 @@ class Character extends FlxSprite {
 		*/
 		maxPressure = json.maxPressure;
 		maxConfidence = json.maxConfidence;
-		belchThreshold = spriteJson.belchThreshold;
-		gurgleThreshold = spriteJson.gurgleThreshold;
-		creakThreshold = spriteJson.creakThreshold;
+		belchThreshold = spriteJson.belchThreshold ?? 3;
+		leakThreshold = spriteJson.belchThreshold ?? 4;
+		gurgleThreshold = spriteJson.gurgleThreshold ?? 3;
+		creakThreshold = spriteJson.creakThreshold ?? 4;
+		voicePitch = spriteJson.voicePitch ?? 4;
 		if (spriteJson.originPosition != null)
 			originPosition = spriteJson.originPosition;
 		if (spriteJson.poppedCameraOffset != null)
@@ -206,25 +212,53 @@ class Character extends FlxSprite {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 		if (currentPressure <= maxPressure || !disableBellySounds) {
-			if (Preferences.data.enableBellyGurgles) {
+			if (Preferences.data.enableBellyGurgles && GameplayManager.currentFiller.gurgles != null) {
 				if (gurgleThreshold > -1 && currentPressure >= gurgleThreshold) {
 					gurgleTimer -= elapsed;
 					if (gurgleTimer < 0) {
 						var intensity = Math.min(1, (currentPressure - gurgleThreshold + 1) / (maxPressure - gurgleThreshold + 1));
-						gurgleTimer = FlxG.random.float(1.0, 5.0) / intensity;
-						SuffState.playSound(Paths.soundRandom('game/belly/gurgles/gurgle', 1, Constants.GURGLES_SAMPLE_COUNT), intensity * 0.65,
+						var sound = GameplayManager.currentFiller.getGurgleSound();
+						SuffState.playSound(sound, intensity * 0.65,
 							FlxG.random.float(0.5, 2.0));
+						gurgleTimer = sound.length / 1000 + FlxG.random.float(-2.0, 5.0) / intensity;
 					}
 				}
 			}
-			if (Preferences.data.enableBellyCreaks) {
+			if (Preferences.data.enableBellyCreaks && GameplayManager.currentFiller.creaks != null) {
 				if (creakThreshold > -1 && currentPressure >= creakThreshold) {
 					creakTimer -= elapsed;
 					if (creakTimer < 0) {
 						var intensity = Math.min(1, (currentPressure - creakThreshold + 1) / (maxPressure - creakThreshold + 1));
-						creakTimer = FlxG.random.float(1.0, 5.0) / intensity;
-						SuffState.playSound(Paths.soundRandom('game/belly/creaks/creak', 1, Constants.CREAKS_SAMPLE_COUNT), intensity * 0.65,
-							FlxG.random.float(0.5, 1.0));
+						var sound = GameplayManager.currentFiller.getCreakSound();
+						SuffState.playSound(sound, intensity * 0.65,
+						FlxG.random.float(0.5, 1.0));
+						creakTimer = sound.length / 1000 + FlxG.random.float(-2.0, 5.0) / intensity;
+					}
+				}
+			}
+			if (animation.curAnim.name.startsWith('idle')) {
+				if (Preferences.data.enableBelching && GameplayManager.currentFiller.belches != null) {
+					if (belchThreshold > -1 && currentPressure >= belchThreshold) {
+						belchTimer -= elapsed;
+						if (belchTimer < 0) {
+							var intensity = Math.min(1, (currentPressure - belchThreshold + 1) / (maxPressure - belchThreshold + 1));
+							belchTimer = FlxG.random.float(15, 25) / intensity;
+							SuffState.playSound(GameplayManager.currentFiller.getBelchSound(), intensity * 0.65,
+							voicePitch + FlxG.random.float(-0.1, 0.1));
+							playAnim('belch');
+						}
+					}
+				}
+				if (Preferences.data.enableOralLeaking && GameplayManager.currentFiller.leaks != null) {
+					if (leakThreshold > -1 && currentPressure >= leakThreshold) {
+						leakTimer -= elapsed;
+						if (leakTimer < 0) {
+							var intensity = Math.min(1, (currentPressure - leakThreshold + 1) / (maxPressure - leakThreshold + 1));
+							leakTimer = FlxG.random.float(15, 25) / intensity;
+							SuffState.playSound(GameplayManager.currentFiller.getLeakSound(), intensity * 0.65,
+							voicePitch + FlxG.random.float(-0.1, 0.1));
+							playAnim('leak');
+						}
 					}
 				}
 			}
@@ -282,7 +316,7 @@ class Character extends FlxSprite {
 			if (animSoundPaths.exists(usedAnimName)) {
 				var daSoundList:Array<String> = animSoundPaths.get(usedAnimName);
 				var daSound = daSoundList[FlxG.random.int(0, daSoundList.length - 1)];
-				SuffState.playSound(Paths.sound(daSound));
+				SuffState.playSound(Paths.sound(daSound), 1, voicePitch + FlxG.random.float(-0.1, 0.1));
 			}
 		}
 		
