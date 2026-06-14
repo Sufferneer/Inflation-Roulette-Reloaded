@@ -12,7 +12,7 @@ import utilities.states.AnimationEditorState;
 import ui.objects.SuffMarker;
 import utilities.states.CharacterCreatorState;
 import ui.objects.SuffTextButton;
-import ui.objects.SuffSliderOption;
+import ui.objects.SuffSlider;
 import objects.Character;
 
 class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
@@ -90,7 +90,7 @@ class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
 		add(helpTitle);
 		var helpDesc:FlxText = new FlxText(32, helpTitle.y + helpTitle.height, leftBorder.width - 40, Language.getPhrase('offsetEditor.description'), 16);
 		add(helpDesc);
-		var pressureSlider = new SuffSliderOption(helpDesc.x, helpDesc.y + helpDesc.height, function(val:Float) {
+		var pressureSlider = new SuffSlider(helpDesc.x, helpDesc.y + helpDesc.height, function(val:Float) {
 			currentPressure = Std.int(val);
 			reloadSprite();
 			var what = getParticleOffset(currentOffsetType);

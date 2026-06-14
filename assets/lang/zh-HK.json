@@ -198,7 +198,7 @@
 	"option.screenSafeZone.description": "調整滑桿，直到白色區域覆蓋螢幕上所有無遮蔽區域。\n（退出後介面將更新）",
 	"option.decreaseDetail.name": "低細節",
 	"option.decreaseDetail.description": "減少不必要的粒子效果。可對低端設備有幫助。",
-	"option.enableForcedAliasing.name": "強迫鋸齒",
+	"option.enableForcedAliasing.name": "強迫像素化",
 	"option.enableForcedAliasing.description": "即使人物啟用抗鋸齒功能，也會停用它所有圖案的抗鋸齒效果。會導致某些圖形出現鋸齒狀邊緣。",
 	"option.enableGLSL.name": "GLSL 著色器",
 	"option.enableGLSL.description": "為部分選單元素啟用 GLSL 著色器。停用此功能可減輕低階 GPU 的負載。",
@@ -311,7 +311,7 @@
 	// White Void: Literally just a white void with a glass table.
 	"stage.void.name": "白色虛空",
 	"stage.void.description": "大名鼎鼎的全能活動場所，無數藝術作品和動畫裡都有它的身影。",
-	"stage.random": "隨機",
+	"stage.random.name": "隨機",
 	"stage.random.description": "不知選哪裡？讓遊戲決定吧！",
 	
 	"gameOn.text": "遊戲開始",

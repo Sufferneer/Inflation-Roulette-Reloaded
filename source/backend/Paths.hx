@@ -22,6 +22,7 @@ class Paths {
 	 * The current used extension for sounds.
 	 */
 	inline public static var SOUND_EXT = #if _USE_MP3 "mp3" #else "ogg" #end;
+	inline public static var VIDEO_EXT = "mp4";
 
 	/**
 	 * List of directories to be ignored during memory clearing.
@@ -420,6 +421,15 @@ class Paths {
 		return newGraphic;
 	}
 
+	static public function video(key:String) {
+		#if _ALLOW_ADDONS
+		var file:String = addonsVideos(key);
+		if (FileSystem.exists(file))
+			return file;
+		#end
+		return getPath('videos/$key.$VIDEO_EXT');
+	}
+
 	/**
 	 * Reads a text file's contents, then converts it to a String.
 	 * 
@@ -554,6 +564,13 @@ class Paths {
 		if (fileExists(langPath))
 			return langPath;
 		return addonFolders('images/' + key + '.png');
+	}
+
+	inline static public function addonsVideos(key:String) {
+		var langPath = addonFolders('lang/${Preferences.data.language}/videos/' + key + VIDEO_EXT);
+		if (fileExists(langPath))
+			return langPath;
+		return addonFolders('videos/' + key + VIDEO_EXT);
 	}
 
 	inline static public function addonsXml(key:String) {

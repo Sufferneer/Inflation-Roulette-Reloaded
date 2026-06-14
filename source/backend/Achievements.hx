@@ -98,7 +98,7 @@ class Achievements {
 		createAchievement('allEasterEggs', {
 			tier: GOOD,
 			type: LIST,
-			items: ['roomoneohone', 'blueberryhelium', 'imhighoncrack', 'ibeesbees', 'cogitoergosum'],
+			items: ['roomoneohone', 'blueberryhelium', 'imhighoncrack', 'ibeesbees', 'cogitoergosum', 'youreboringme'],
 			itemTranslationKey: '%',
 			hideIcon: true,
 			hideName: true,

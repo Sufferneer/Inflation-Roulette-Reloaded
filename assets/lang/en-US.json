@@ -383,7 +383,7 @@
 	// White Void: Literally just a white void with a glass table.
 	"stage.void.name": "White Void",
 	"stage.void.description": "Household name as a place for all activities, featured in countless art pieces and animations.",
-	"stage.random": "Random",
+	"stage.random.name": "Random",
 	"stage.random.description": "Not sure where to choose? Let the game decide!",
 	
 	// Splash text that is displayed

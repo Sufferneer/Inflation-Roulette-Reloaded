@@ -7,7 +7,7 @@ import backend.GameplayManager;
 import states.CharacterSelectState;
 import ui.objects.SuffBox;
 import ui.objects.SuffIconButton;
-import ui.objects.SuffSliderOption;
+import ui.objects.SuffSlider;
 import backend.Filler;
 
 class GamemodeSelectSubState extends SuffSubState {
@@ -18,7 +18,7 @@ class GamemodeSelectSubState extends SuffSubState {
 	var gameModeArt:FlxSprite;
 	var light:FlxSprite;
 	var lightColorTween:FlxTween;
-	var playerCountSlider:SuffSliderOption;
+	var playerCountSlider:SuffSlider;
 
 	var grpButtons:FlxTypedContainer<SuffButton> = new FlxTypedContainer<SuffButton>();
 
@@ -51,7 +51,7 @@ class GamemodeSelectSubState extends SuffSubState {
 		var box:SuffBox = new SuffBox(40 + ScreenSafeZone.X, 80 + ScreenSafeZone.Y, FlxG.width / 2 - 40 - ScreenSafeZone.X, FlxG.height - 120 - ScreenSafeZone.Y * 2 - 96);
 		add(box);
 
-		playerCountSlider = new SuffSliderOption(20, 20, function(value:Float) {}, 2, 6, 1, function(value:Float) {
+		playerCountSlider = new SuffSlider(20, 20, function(value:Float) {}, 2, 6, 1, function(value:Float) {
 			return Language.getPhrase('gamemodeSelect.setting.format', [Language.getPhrase('gamemodeSelect.playerCount'), Std.int(value)]);
 		}, 4);
 

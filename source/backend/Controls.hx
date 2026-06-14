@@ -16,7 +16,7 @@ class Controls {
 	}
 	
 	public static function getKeyList(key:String) {
-		return [for (i in keybinds.get(key)) if (i != FlxKey.NONE) i];
+		return [for (i in keybinds.get(key)) if (i != FlxKey.NONE) i] ?? [];
 	}
 
 	public static function reloadKeybinds() {

@@ -28,7 +28,7 @@ class BlueberryHeliumStartupState extends SuffState {
 		" - src/backend/SplashManager.cpp",
 		" - src/states/CharacterSelectState.cpp",
 		" - src/lime/utils/AssetCache.cpp  [haxe,release]",
-		" - src/ui/objects/SuffBooleanOption.cpp",
+		" - src/ui/objects/SuffBoolean.cpp",
 		" - src/objects/Skill.cpp",
 		" - src/ui/objects/GameIcon.cpp",
 		" - src/states/easterEggStartups/ImHighOnCrackStartupState.cpp",
@@ -66,7 +66,7 @@ class BlueberryHeliumStartupState extends SuffState {
 		" - src/openfl/display/FPS.cpp  [haxe,release]",
 		" - src/ui/objects/AddonMenuBGTile.cpp",
 		" - src/ui/objects/CharacterSelectText.cpp",
-		" - src/ui/objects/SuffSliderOption.cpp",
+		" - src/ui/objects/SuffSlider.cpp",
 		"Link: ApplicationMain.exe",
 		"    Creating library ApplicationMain.lib and object ApplicationMain.exp"
 	];

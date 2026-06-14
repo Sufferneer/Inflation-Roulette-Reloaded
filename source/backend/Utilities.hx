@@ -95,6 +95,10 @@ class Utilities {
 		return spr.graphic;
 	}
 
+	inline public static function lerp(a:Float, b:Float, ratio:Float, exponent:Float = 1):Float {
+		return a + (b - a) * Math.pow(ratio, exponent);
+	}
+
 	/**
 	 * Inverse linear interpolation function.
 	 * Calculates the percentage along a range of two values, based on the given lerped value.
@@ -103,8 +107,8 @@ class Utilities {
 	 * @param b Ending range.
 	 * @param v Lerped value.
 	 */
-	inline public static function invLerp(a:Float, b:Float, v:Float):Float {
-		return (v - a) / (b - a);
+	inline public static function invLerp(a:Float, b:Float, v:Float, exponent:Float = 1):Float {
+		return Math.pow((v - a) / (b - a), exponent);
 	}
 
 	/**

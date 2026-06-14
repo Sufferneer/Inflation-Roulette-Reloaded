@@ -14,8 +14,8 @@ import ui.objects.CharacterBanner;
 import ui.objects.CharacterCard;
 import ui.objects.CharacterSelectText;
 import ui.objects.ReadySign;
-import ui.objects.SuffBooleanOption;
-import ui.objects.SuffSliderOption;
+import ui.objects.SuffBoolean;
+import ui.objects.SuffSlider;
 import ui.objects.SuffIconButton;
 import backend.GameplayManager;
 import shaders.DissolveShader;
@@ -232,10 +232,10 @@ class CharacterSelectState extends SuffState {
 		add(rightStageButton);
 		stageSelectGroup.y = FlxG.height;
 
-		FlxG.save.bind('preferences', Utilities.getSavePath());
-		var CPUControlled:String = FlxG.save.data.characterCPUControlled != null ? FlxG.save.data.characterCPUControlled : '01111111';
-		var SkillLevel:String = FlxG.save.data.characterSkillLevel != null ? FlxG.save.data.characterSkillLevel : '22222222';
-		FlxG.save.bind('game', Utilities.getSavePath());
+		var save = new FlxSave();
+		save.bind('preferences', Utilities.getSavePath());
+		var CPUControlled:String = save.data.characterCPUControlled ?? '01111111';
+		var SkillLevel:String = save.data.characterSkillLevel ?? '22222222';
 		for (i in 0...CharacterManager.selectedCharacterList.length) {
 			var int = CPUControlled.charAt(i);
 			if (int.length <= 0)
@@ -365,7 +365,7 @@ class CharacterSelectState extends SuffState {
 	}
 
 	function addBooleanOption(i:Int, name:String, callback:Bool->Void, defaultValue:Bool) {
-		var option:SuffBooleanOption = new SuffBooleanOption(0, optionY[i], callback, defaultValue);
+		var option:SuffBoolean = new SuffBoolean(0, optionY[i], callback, defaultValue);
 
 		var text:FlxText = new FlxText(0, optionY[i], 0, name);
 		text.setFormat(Paths.font('default'), 32, FlxColor.WHITE, LEFT);
@@ -382,7 +382,7 @@ class CharacterSelectState extends SuffState {
 
 	function addSliderOption(i:Int, name:String, callback:Float->Void, rangeMin:Float, rangeMax:Float, step:Float, displayFunction:Float->String,
 			defaultValue:Float) {
-		var option:SuffSliderOption = new SuffSliderOption(sectionWidth * i + (sectionWidth - 256) / 2, optionY[i], callback, rangeMin, rangeMax, step,
+		var option:SuffSlider = new SuffSlider(sectionWidth * i + (sectionWidth - 256) / 2, optionY[i], callback, rangeMin, rangeMax, step,
 			displayFunction, defaultValue);
 
 		var text:FlxText = new FlxText(0, optionY[i], 0, name);

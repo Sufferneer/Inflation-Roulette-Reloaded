@@ -349,7 +349,7 @@
 	// White Void: Literally just a white void with a glass table.
 	"stage.void.name": "Пустота",
 	"stage.void.description": "Имя нарицательное месту для разного рода занятий, что встречается в многочисленных артах и анимациях.",
-	"stage.random": "?????",
+
 	"stage.random.description": "Не уверены, что выбрать? Позвольте игре решить.",
 	
 	// Splash text that is displayed

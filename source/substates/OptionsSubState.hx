@@ -1,8 +1,8 @@
 package substates;
 
-import ui.objects.SuffBooleanOption;
+import ui.objects.SuffBoolean;
 import ui.objects.SuffIconButton;
-import ui.objects.SuffSliderOption;
+import ui.objects.SuffSlider;
 import states.PlayState;
 import ui.objects.SuffScrollBar;
 #if mobile
@@ -181,21 +181,21 @@ class OptionsSubState extends SuffSubState {
 				FlxG.sound.music.volume = Preferences.data.musicVolume;
 		}, 0.0, 1.0, 0.05, function(value:Float) {
 			return Math.round(value * 100) + '%';
-		}, Preferences.data.musicVolume);
+		}, Preferences.data.musicVolume, LOGARITHMIC);
 
 		createSliderOption('gameSoundVolume', function(value:Float) {
 			Preferences.data.gameSoundVolume = value;
 			SuffState.playSound(Paths.soundRandom('game/weapon', 1, 3));
 		}, 0.0, 1.0, 0.05, function(value:Float) {
 			return Math.round(value * 100) + '%';
-		}, Preferences.data.gameSoundVolume);
+		}, Preferences.data.gameSoundVolume, LOGARITHMIC);
 
 		createSliderOption('uiSoundVolume', function(value:Float) {
 			Preferences.data.uiSoundVolume = value;
-			SuffState.playUISound(Paths.soundRandom('game/weapon', 1, 3));
+			SuffState.playUISound(Paths.sound('ui/dong'));
 		}, 0.0, 1.0, 0.05, function(value:Float) {
 			return Math.round(value * 100) + '%';
-		}, Preferences.data.uiSoundVolume);
+		}, Preferences.data.uiSoundVolume, LOGARITHMIC);
 
 		createHeading('accessibility');
 
@@ -319,7 +319,7 @@ class OptionsSubState extends SuffSubState {
 		text.setFormat(Paths.font('default'), 48, FlxColor.WHITE, CENTER);
 		optionsGroup.add(text);
 
-		var option:SuffBooleanOption = new SuffBooleanOption(text.x + text.width + 16, optionsY, callback, defaultValue);
+		var option:SuffBoolean = new SuffBoolean(text.x + text.width + 16, optionsY, callback, defaultValue);
 		text.y = option.y + (option.height - text.height) / 2;
 		option.camera = this.camera;
 		option.tooltipText = Language.getPhrase('option.${ID}.description');
@@ -331,13 +331,13 @@ class OptionsSubState extends SuffSubState {
 		}
 	}
 
-	function createSliderOption(ID:String, callback:Float->Void, rangeMin:Float, rangeMax:Float, step:Float, displayFunction:Float->String, defaultValue:Float) {
+	function createSliderOption(ID:String, callback:Float->Void, rangeMin:Float, rangeMax:Float, step:Float, displayFunction:Float->String, defaultValue:Float, scaling:SuffSliderScaling = LINEAR) {
 		var text:FlxText = new FlxText(optionsXPadding, optionsY, 0, Language.getPhrase('option.${ID}.name'));
 		text.setFormat(Paths.font('default'), 48, FlxColor.WHITE, CENTER);
 		optionsGroup.add(text);
 
-		var option:SuffSliderOption = new SuffSliderOption(text.x + text.width + 16, optionsY, callback, rangeMin, rangeMax, step, displayFunction,
-		defaultValue);
+		var option:SuffSlider = new SuffSlider(text.x + text.width + 16, optionsY, callback, rangeMin, rangeMax, step, displayFunction,
+		defaultValue, scaling);
 		text.y = option.y + (option.height - text.height) / 2;
 		option.camera = this.camera;
 		option.tooltipText = Language.getPhrase('option.${ID}.description');
@@ -388,13 +388,13 @@ class OptionsSubState extends SuffSubState {
 
 		allowMouseScrolling = true;
 		for (opt in optionsGroup) {
-			if (Std.isOfType(opt, SuffBooleanOption)) {
-				var option:SuffBooleanOption = cast opt;
+			if (Std.isOfType(opt, SuffBoolean)) {
+				var option:SuffBoolean = cast opt;
 				if (option.hovered) {
 					allowMouseScrolling = false;
 				}
-			} else if (Std.isOfType(opt, SuffSliderOption)) {
-				var option:SuffSliderOption = cast opt;
+			} else if (Std.isOfType(opt, SuffSlider)) {
+				var option:SuffSlider = cast opt;
 				if (option.pressed) {
 					allowMouseScrolling = false;
 				}

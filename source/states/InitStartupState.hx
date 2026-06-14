@@ -52,6 +52,8 @@ class InitStartupState extends SuffState {
 					SuffState.switchState(new IBeesBeesStartupState());
 				case 'cogitoergosum':
 					SuffState.switchState(new CogitoErgoSumStartupState());
+				case 'youreboringme':
+					SuffState.switchState(new YouReBoringMeStartupState());
 				#end
 				default:
 					SuffState.switchState(new StartupState());

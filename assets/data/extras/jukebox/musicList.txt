@@ -1,6 +1,6 @@
 mainMenu
 cutscene
-game
+stages/default
 characterSelect
 characterSelectEnd
 win
@@ -12,3 +12,5 @@ language
 achievements
 resultsStart
 resultsLoop
+stages/classic
+stages/void

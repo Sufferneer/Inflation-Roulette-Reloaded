@@ -77,7 +77,7 @@ class Constants {
 	public static final CPU_SKILL_LIMIT:Array<Int> = [1, 3];
 
 	#if (_ALLOW_EASTER_EGGS && !mobile)
-	public static final EASTER_EGG_INPUTS:Array<String> = ['imhighoncrack', 'blueberryhelium', 'roomoneohone', 'ibeesbees', 'cogitoergosum'];
+	public static final EASTER_EGG_INPUTS:Array<String> = ['imhighoncrack', 'blueberryhelium', 'roomoneohone', 'ibeesbees', 'cogitoergosum', 'youreboringme'];
 	#end
 	public static final ALPHABET_UPPERCASE:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

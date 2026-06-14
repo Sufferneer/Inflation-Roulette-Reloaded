@@ -232,7 +232,6 @@
 	"option.screenSafeZone.name": "Zona segura de pantalla",
 	"option.screenSafeZone.description": "Ajusta el control lliscant fins que l'àrea sense obstacles cobreixi totes àrees visibles de pantalla.\n(Canvis a IU s'actualitzaran després de sortir)",
 	// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
-	"option.enableForcedAliasing.name": "Aliàsing forçat",
 	"option.enableForcedAliasing.description": "Desactiva antialiàsing de tots sprites fins i tot quan està habilitat. Pot fer que alguns gràfics semblin oscats.",
 	"option.enableGLSL.name": "Ombradors GLSL",
 	"option.enableGLSL.description": "Activa ombradors GLSL per a alguns elements de menú. Desactivar-ho pot reduir càrrega a GPU de gamma baixa.",
@@ -356,7 +355,7 @@
 	// White Void: Literally just a white void with a glass table.
 	"stage.void.name": "Buit blanc",
 	"stage.void.description": "Nom conegut com a lloc per a totes activitats, que apareix en innombrables obres d'art i animacions.",
-	"stage.random": "?????",
+
 	"stage.random.description": "No saps on triar? Deixa que el joc decideixi!",
 	
 	// Splash text that is displayed

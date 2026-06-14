@@ -553,7 +553,7 @@ class PlayState extends SuffState {
 		toggleLetterbox(false);
 		cameraFocusButton.visible = true;
 		canUseSkillKeybinds = true;
-		SuffState.playMusic('game', 1, true);
+		SuffState.playMusic(stage.data.music, 1, true);
 
 		doTween('camHUD', FlxTween.tween(camHUD, {alpha: 1}, 0.5));
 

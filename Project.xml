@@ -84,6 +84,10 @@
 	<haxelib name="tjson" />
 	<haxelib name="hre" />
 
+	<!--Fixes hxvlc using global rather than local. you will need to use hmm / hxpkg to compile this project though-->
+	<setenv name="HAXEPATH" value="./"/>
+	<haxelib name="hxvlc" />
+
 	<!-- Enables a terminal log prompt on debug builds -->
 	<haxelib name="hxcpp-debug-server" if="debug"/>
 	

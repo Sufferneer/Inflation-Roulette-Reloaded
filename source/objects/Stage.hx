@@ -13,9 +13,16 @@ class Stage extends FlxBasic {
 	public var data:StageData;
 	public var objects:Map<String, StageObject> = new Map<String, StageObject>();
 
-	public function new(id:String = 'classic') {
+	public function new(id:String = 'reloaded') {
 		data = cast Json.parse(Paths.getTextFromFile('data/stages/$id.json'));
 		data.id = id;
+		if (data.music == null)
+			data.music = 'stages/${data.id}';
+		var musicPath = Paths.getMusicPath(data.music);
+		if (!Paths.fileExists(musicPath)) {
+			trace('Specialized music path for stage ($musicPath) does not exist. Using default path');
+			data.music = 'stages/default';
+		}
 		super();
 	}
 

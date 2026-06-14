@@ -83,7 +83,7 @@ class PauseSubState extends SuffSubState {
 				FlxG.sound.music.volume = Preferences.data.musicVolume;
 				close();
 				if (resetMusic) {
-					SuffState.playMusic('game');
+					SuffState.playMusic(PlayState.instance.stage.data.music);
 				}
 			case 'restart':
 				restartGame();

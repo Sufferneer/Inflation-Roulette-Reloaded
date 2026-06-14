@@ -1,5 +1,5 @@
 package substates;
-import ui.objects.SuffSliderOption;
+import ui.objects.SuffSlider;
 import ui.objects.SuffIconButton;
 import backend.ScreenSafeZone;
 
@@ -9,7 +9,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 	var cornerTopRight:FlxSprite;
 	var cornerBottomLeft:FlxSprite;
 	var cornerBottomRight:FlxSprite;
-	var slider:SuffSliderOption;
+	var slider:SuffSlider;
 	var exitButton:SuffIconButton;
 
 	public function new() {
@@ -51,7 +51,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 		subtitle.alignment = CENTER;
 		subtitle.screenCenter(X);
 
-		slider = new SuffSliderOption(0, 0, function(value:Float) {
+		slider = new SuffSlider(0, 0, function(value:Float) {
 			updateSafeZone(value);
 		}, 0, 1, 0.05, function(value:Float) {
 			return '${Math.round(value * 100)}%';

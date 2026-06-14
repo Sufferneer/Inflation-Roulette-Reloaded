@@ -231,7 +231,6 @@
 	"option.hideTooltip.name": "Ocultar información emergente",
 	"option.hideTooltip.description": "Oculta las descripciones de los botones al pasar el cursor.",
 	// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
-	"option.enableForcedAliasing.name": "Aliasing forzado",
 	"option.enableForcedAliasing.description": "Desactiva el antialiasing de todos los sprites incluso cuando está activado. Puede hacer que algunos gráficos se vean dentados.",
 	"option.enableGLSL.name": "Shaders GLSL",
 	"option.enableGLSL.description": "Activa shaders GLSL para algunos elementos del menú. Desactivarlo puede reducir la carga en GPUs de gama baja.",
@@ -351,7 +350,7 @@
 	// Vacío Blanco: Literalmente, solo un vacío blanco con una mesa de cristal.
 	"stage.void.name": "El Vacío",
 	"stage.void.description": "Un lugar para todo tipo de actividades, presente en innumerables obras de arte y animaciones..",
-	"stage.random": "?????",
+	// "stage.random.name": "?????",
 	"stage.random.description": "¿No sabes donde jugar?, ¡Nosotros elegimos!",
 	
 	// Splash text that is displayed
