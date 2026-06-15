@@ -50,12 +50,13 @@ class OptionsSubState extends SuffSubState {
 		optionsGroup.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
 		generateOptions();
 
-		bg2.makeGraphic(Std.int(optionsXPadding + optionsMaxWidth + optionsXPadding), FlxG.height, FlxColor.BLACK);
-		bg2.alpha = 0.375;
-
-		scrollBar = new SuffScrollBar(bg2.width, 0, function(percent:Float) {
+		scrollBar = new SuffScrollBar(0, 0, function(percent:Float) {
 			optionsGroup.y = FlxMath.lerp(0, FlxG.height - (optionsGroup.height + 64), percent);
 		}, 32, optionsGroup.height + 64);
+		bg2.makeGraphic(Std.int(Math.min(FlxG.width - scrollBar.width - ScreenSafeZone.X, optionsXPadding + optionsMaxWidth + optionsXPadding)), FlxG.height, FlxColor.BLACK);
+		bg2.alpha = 0.375;
+
+		scrollBar.x = bg2.width;
 		scrollBar.camera = this.camera;
 		add(scrollBar);
 

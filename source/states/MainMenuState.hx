@@ -50,6 +50,7 @@ class MainMenuState extends SuffState {
 
 	final menuItemPadding:FlxPoint = new FlxPoint(10, 10);
 	final menuItemSize:FlxPoint = new FlxPoint(520, 550);
+	// Y value is unused
 
 	var creditsButton:SuffButton;
 
@@ -151,29 +152,28 @@ class MainMenuState extends SuffState {
 		}
 
 		var creditImage = Paths.image('ui/menus/nicklySufferLogo');
-		var creditImageHovered = Paths.image('ui/menus/nicklySufferLogoHighlighted');
-		creditsButton = new SuffButton(10 + ScreenSafeZone.X, 0, '', creditImage, creditImageHovered, creditImage.width * 2, creditImage.height * 2, false);
-		creditsButton.btnTextColorHovered = 0xFFFFFF00;
-		creditsButton.y = FlxG.height - creditsButton.height - 10 - ScreenSafeZone.Y;
+		creditsButton = new SuffButton(20 + ScreenSafeZone.X, 0, '', creditImage, null, creditImage.width * 2, creditImage.height * 2, false);
+		creditsButton.y = FlxG.height - creditsButton.height - 20 - ScreenSafeZone.Y;
+		creditsButton.btnTextColorHovered = creditsButton.btnTextColorClicked = 0xFFFFFF00;
 		creditsButton.onClick = function() {
 			menuButtonFunctions('credits');
 		}
-		creditsButton.tooltipText = '© 2026 NicklySuffer';
+		creditsButton.tooltipText = Constants.COPYRIGHT;
 		add(creditsButton);
 
 		add(buttonGroup);
 
 		for (jIndex => j in menuItems) {
 			for (iIndex => item in j) {
-				var curMenuItemSize:FlxPoint = new FlxPoint((menuItemSize.x - menuItemPadding.x * (j.length - 1)) / j.length,
-					(menuItemSize.y - menuItemPadding.y * (menuItems.length - 1)) / menuItems.length);
+				var curMenuItemSize:FlxPoint = new FlxPoint(Math.max(FlxG.width / 2 - ScreenSafeZone.X, (menuItemSize.x - menuItemPadding.x * (j.length - 1)) / j.length),
+					Math.max(72, (FlxG.height - (20 + ScreenSafeZone.Y) * 2 - creditsButton.height) / menuItems.length - menuItemPadding.y));
 				var button = new SuffButton(0, 0, Language.getPhrase('mainMenu.$item'), null, null, curMenuItemSize.x, curMenuItemSize.y);
 				if (disabledMenuItems.contains(item)) {
 					button.disabled = true;
 					button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip.disabled');
 				}
-				button.x = (((FlxG.width - ScreenSafeZone.X * 2) / 2 - 40) - menuItemSize.x) / 2 + (curMenuItemSize.x + menuItemPadding.x) * iIndex;
-				button.y = (((FlxG.height - ScreenSafeZone.Y * 2) - ((FlxG.height - ScreenSafeZone.Y * 2) - creditsButton.y)) - menuItemSize.y) / 2 + (curMenuItemSize.y + menuItemPadding.y) * jIndex;
+				button.x = Math.max(ScreenSafeZone.X, (FlxG.width / 2 - menuItemSize.x) / 2) + (curMenuItemSize.x + menuItemPadding.x) * iIndex;
+				button.y = 20 + ScreenSafeZone.Y + (curMenuItemSize.y + menuItemPadding.y) * jIndex;
 				button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip', [], '');
 				button.onClick = function() {
 					menuButtonFunctions(item);

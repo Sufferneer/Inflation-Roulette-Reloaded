@@ -3,3 +3,4 @@ private/
 **/*.zip
 .idea/
 .haxelib/
+*.keystore

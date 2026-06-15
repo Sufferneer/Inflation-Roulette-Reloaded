@@ -6,6 +6,8 @@ class ImHighOnCrackStartupState extends SuffState {
 	override function create() {
 		super.create();
 
+		Window.setTitle('IM GOING TO PRISON AND NEVER COMING BACK');
+
 		// Precache shards
 		for (i in 0...shardCount) {
 			Paths.image('ui/menus/easterEggStartups/imhighoncrack/shards/' + i);

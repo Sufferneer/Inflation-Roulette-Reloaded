@@ -68,6 +68,7 @@ class Constants {
 	public static final ORIGINAL_FLXG_HEIGHT:Float = 720;
 
 	public static final LETTERBOX_HEIGHT:Int = 72;
+	public static final COPYRIGHT:String = '© 2026 NicklySuffer';
 
 	/**
 	 * The size of CharacterCards.

@@ -4,6 +4,8 @@ class StartupState extends SuffState {
 	override function create() {
 		super.create();
 
+		Window.setTitle(Constants.COPYRIGHT);
+
 		startIntro();
 	}
 

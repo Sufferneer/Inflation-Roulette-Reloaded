@@ -6,6 +6,35 @@
 	<set name="versionState" value="a.2" />
 	<haxedef name="versionState" value="${versionState}" />
 
+	<section if="android">
+		<architecture name="arm64"/>
+		<haxelib name="extension-androidtools"/>
+		<template path="dev/templates"/>
+		<config:android mininum-sdk-version="21"/>
+		<config:android target-sdk-version="31"/>
+		<config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+		<config:android attribute="android:requestLegacyExternalStorage=&quot;true&quot;"/>
+		<config:android>
+			<gradle-properties org.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=512m" />
+			<application android:icon="@mipmap/ic_launcher"/>
+			<activity android:label="IR: Reloaded"/>
+		</config:android>
+		<dependency name="android.packagingOptions" value="
+			packagingOptions {
+				pickFirst 'lib/x86/libc++_shared.so'
+				pickFirst 'lib/x86_64/libc++_shared.so'
+				pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+				pickFirst 'lib/arm64-v8a/libc++_shared.so'
+			}
+		" />
+		<certificate
+			path="key.keystore"
+			alias="inflation-roulette-reloaded"
+			password="beAGoodFriend123"
+			alias-password="beAGoodFriend123"
+		/>
+	</section>
+
 	<!--The HaxeFlixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
 	<!-- <app preloader="Preloader" resizable="true" /> -->
@@ -43,7 +72,8 @@
 		<define name="_CHECK_FOR_UPDATES" if="desktop"/>
 		<define name="_ALLOW_ADDONS" unless="web" />
 		<define name="_ALLOW_UTILITIES" if="desktop" />
-		<define name="_ALLOW_RECORDING"/>
+		<define name="_ALLOW_FILE_CREATION" if="_ALLOW_UTILITIES" />
+		<define name="_ALLOW_SAVE_EXPORTING" if="mobile" />
 		<define name="_ALLOW_EASTER_EGGS"/>
 	</section>
 	<define name="_USE_MP3" if="web"/>
@@ -51,8 +81,16 @@
 
 	<!-- Preload Assets -->
 
-	<assets path="assets" exclude="*.ogg" if="_USE_MP3" preload="true"/>
-	<assets path="assets" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
+	<assets path="assets/data" preload="true"/>
+	<assets path="assets/fonts" preload="true"/>
+	<assets path="assets/images" preload="true"/>
+	<assets path="assets/lang" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
+	<assets path="assets/lang" exclude="*.ogg" if="_USE_MP3" preload="true"/>
+	<assets path="assets/music" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
+	<assets path="assets/music" exclude="*.ogg" if="_USE_MP3" preload="true"/>
+	<assets path="assets/sounds" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
+	<assets path="assets/sounds" exclude="*.ogg" if="_USE_MP3" preload="true"/>
+	<assets path="assets/videos" preload="true"/>
     <section if="_ALLOW_ADDONS">
 		<assets path='addons' unless="_BUILD_IN_ADDONS"/>
     </section>
@@ -139,16 +177,4 @@
 	<icon path="dev/icon128.png" size='128'/>
 	<icon path="dev/icon256.png" size='256'/>
 	<assets path='dev/iconLinux.png' if="linux" unless="mobile" id="iconLinux" preload="true" embed="true"/>
-
-	<section if="android">
-		<haxelib name="extension-androidtools"/>
-		<template path="dev/templates"/>
-		<config:android target-sdk-version="31" />
-		<config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" />
-		<config:android attribute="android:requestLegacyExternalStorage=&quot;true&quot;" />
-		<config:android>
-			<application android:icon="@mipmap/ic_launcher"/>
-			<activity android:label="IR: Reloaded"/>
-		</config:android>
-	</section>
 </project>

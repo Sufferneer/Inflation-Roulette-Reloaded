@@ -14,3 +14,4 @@ resultsStart
 resultsLoop
 stages/classic
 stages/void
+stages/classicAlt

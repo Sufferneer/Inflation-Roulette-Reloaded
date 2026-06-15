@@ -17,8 +17,6 @@ class InitStartupState extends SuffState {
 
 		super.create();
 
-		Window.setTitle();
-
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 

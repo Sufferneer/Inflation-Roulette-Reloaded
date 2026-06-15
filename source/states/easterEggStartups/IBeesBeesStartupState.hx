@@ -14,6 +14,9 @@ class IBeesBeesStartupState extends SuffState {
 
 	override function create() {
 		super.create();
+
+		Window.setTitle(Constants.COPYRIGHT, 'Original Concept by Snowyboi');
+
 		bg = new FlxBackdrop(Paths.image('ui/menus/easterEggStartups/ibeesbees/bg'));
 		bg.color = 0xFFFFFFFF;
 		bg.velocity.set(60, 60);

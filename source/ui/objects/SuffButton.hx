@@ -329,9 +329,9 @@ class SuffButton extends FlxSpriteGroup {
 			btnBGColorTween = FlxTween.color(btnBG, 0.1, btnBG.color, finalBGColor);
 		if (btnOutline.color != finalOutlineColor)
 			btnOutlineColorTween = FlxTween.color(btnOutline, 0.1, btnOutline.color, finalOutlineColor);
-		/*
 		if (btnText != null && btnText.color != finalTextColor)
 			btnTextColorTween = FlxTween.color(btnText, 0.1, btnText.color, finalTextColor);
-		*/
+		if (btnIcon != null && btnIcon.color != finalTextColor)
+			btnTextColorTween = FlxTween.color(btnIcon, 0.1, btnIcon.color, finalTextColor);
 	}
 }

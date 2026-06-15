@@ -23,7 +23,6 @@ import objects.particleEmitters.PuffEmitter;
 import objects.particles.BulletShell;
 import objects.particles.PlayerIndicator;
 import backend.RecordingDetector;
-import substates.RecordingWarning;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
@@ -219,7 +218,12 @@ class PlayState extends SuffState {
 
 		stage.load();
 
-		selectLight = new FlxSprite().loadGraphic(Paths.image('game/selectLight' + (FlxG.random.bool(1 / 128 * 100) ? 'Alt' : '')));
+		selectLight = new FlxSprite();
+		selectLight.loadGraphic(Paths.image('game/selectLight'));
+		#if _ALLOW_EASTER_EGGS
+		if (FlxG.random.bool(1 / 128 * 100))
+			selectLight.loadGraphic(Paths.image('game/selectLightAlt'));
+		#end
 		selectLight.visible = false;
 		members.insert(members.indexOf(characterGroup), selectLight);
 
@@ -799,12 +803,6 @@ class PlayState extends SuffState {
 	}
 
 	public function shoot(playerIndex:Int, passToPlayer:Bool = true) {
-		if (RecordingDetector.isRecording) {
-			pauseGame();
-			openSubState(new RecordingWarning());
-			return;
-		}
-
 		var dealDamage:Bool = false;
 		if (!GameplayManager.currentGamemode.cylinderTrueRandomness)
 			dealDamage = cylinderContent[0]; else {
