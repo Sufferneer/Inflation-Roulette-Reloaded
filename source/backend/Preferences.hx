@@ -8,14 +8,14 @@ class SaveVariables {
 	public var enableFullscreen:Bool = false;
 	public var pauseOnUnfocus:Bool = false;
 	public var enablePopping:Bool = true;
-	public var ignoreEliminatedPlayers:Bool = false;
+	public var skipEliminatedPlayers:Bool = false;
 	public var enableDebugKeybinds:Bool = false;
 	public var enablePhotosensitiveMode:Bool = false;
 	public var enableForcedAliasing:Bool = false;
 	public var alwaysPlayMainMenuAnims:Bool = false;
 	public var cameraSpeed:Float = 0.75;
 	public var cameraEffectIntensity:Float = 1;
-	public var screenSafeZone:Float = 0.2;
+	public var screenSafeArea:Float = 0;
 	public var enableLetterbox:Bool = true;
 	public var showMusicToast:Bool = false;
 	public var useBuiltInCursor:Bool = true;
@@ -28,7 +28,7 @@ class SaveVariables {
 	public var enableBellyGurgles:Bool = false;
 	public var enableBellyCreaks:Bool = true;
 	public var enableBelching:Bool = true;
-	public var enableSkinTinting:Bool = true;
+	public var enableDiscoloration:Bool = true;
 	public var enableOralLeaking:Bool = false;
 	public var enableNavelLeaking:Bool = false;
 	public var cacheOnGPU:Bool = false;
@@ -131,7 +131,7 @@ class Preferences {
 				keybinds.set(name, value);
 		}
 		Controls.reloadKeybinds();
-		ScreenSafeZone.recalculateConstants();
+		ScreenSafeArea.recalculateConstants();
 
 		if (Main.debugText != null) {
 			Main.debugText.updateText();

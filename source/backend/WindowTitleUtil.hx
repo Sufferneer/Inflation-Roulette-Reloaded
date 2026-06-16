@@ -1,6 +1,6 @@
 package backend;
 
-class WindowTitleHandler {
+class WindowTitleUtil {
 	inline public static function setTitle(...params:String) {
 		#if !html
 		var text:Array<String> = [Language.getPhrase('metadata.title')];

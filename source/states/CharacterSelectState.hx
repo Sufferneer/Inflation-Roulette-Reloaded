@@ -344,8 +344,8 @@ class CharacterSelectState extends SuffState {
 		add(rightButton);
 
 		var exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);
-		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
-		exitButton.y = FlxG.height - exitButton.height - 20 - ScreenSafeZone.Y;
+		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeArea.X;
+		exitButton.y = FlxG.height - exitButton.height - 20 - ScreenSafeArea.Y;
 		exitButton.scrollFactor.set();
 		exitButton.onClick = function() {
 			exitFunction();

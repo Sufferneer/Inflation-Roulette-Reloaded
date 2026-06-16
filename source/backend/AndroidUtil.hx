@@ -11,7 +11,7 @@ import android.Settings;
 #end
 #end
 
-class AndroidUtils {
+class AndroidUtil {
 	public static var androidDirectory:String = '';
 
 	public static function getPath():String {

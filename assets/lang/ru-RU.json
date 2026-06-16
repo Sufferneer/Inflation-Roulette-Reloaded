@@ -133,8 +133,8 @@
 	"optionsMenu.heading.technical": "Техническое",
 	"optionsMenu.heading.debugText": "Информация для Отладки",
 	
-	"option.ignoreEliminatedPlayers.name": "Пропуск Выбывших",
-	"option.ignoreEliminatedPlayers.description": "Выбывшие игроки не будут проигрывать анимацию во время своего хода.",
+	"option.skipEliminatedPlayers.name": "Пропуск Выбывших",
+	"option.skipEliminatedPlayers.description": "Выбывшие игроки не будут проигрывать анимацию во время своего хода.",
 	// This option is a button.
 	"option.controls.name": "Управление",
 	"option.controls.description": "Настройка клавиш.",
@@ -277,7 +277,7 @@
 	"addonsMenu.noAddonsDetected.content": "Аддоны не были обнаружены в соответствующей папке. Проверьте наличие файла metadata.json в папке metadata Ваших аддонов.\nЕсли Вы думаете, что произошла ошибка, пожалуйтесь на проблему в нашем репозитории GitHub.",
 	
 	"languageMenu.title": "ВЫБОР ЯЗЫКА",
-	"languageMenu.description": "Учтите: Перевод может быть неточным и содержать ошибки/непереведённый текст. Если Вы желаете улучшить перевод, Вы можете сделать вклад в наш репозиторий на GitHub.",
+	"languageMenu.description": "Учтите: Перевод может быть неточным и содержать ошибки/непереведённый текст.",
 	"languageMenu.contributors": "Авторы",
 	"languageMenu.completion": "%1 Выполнено",
 	

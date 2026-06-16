@@ -124,7 +124,7 @@ class CreditsState extends SuffState {
 
 			creditsTxtGroup.add(leText);
 		}
-		creditsTxtGroup.x += ScreenSafeZone.X;
+		creditsTxtGroup.x += ScreenSafeArea.X;
 
 		var creditsUpperLimit = creditsTxtGroup.members[0].height / 2;
 		var creditsLowerLimit = creditsTxtGroup.members[creditsTxtGroup.members.length - 1].height / 2;
@@ -140,8 +140,8 @@ class CreditsState extends SuffState {
 
 		add(creditsTxtGroup);
 
-		var exitButton = new SuffIconButton(20, 20 + ScreenSafeZone.Y, 'buttons/exit', null, 2);
-		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
+		var exitButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/exit', null, 2);
+		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeArea.X;
 		exitButton.onClick = function() {
 			exitMenu();
 		};

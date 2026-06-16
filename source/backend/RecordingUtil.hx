@@ -1,6 +1,6 @@
 package backend;
 
-class RecordingDetector {
+class RecordingUtil {
 	public static var isRecording:Bool = false;
 
 	public static function checkIfRecording() {

@@ -92,8 +92,8 @@ class Tooltip extends FlxSpriteGroup {
 		}
 		instance.y = FlxMath.bound(instance.y, 0, FlxG.height - instance.bg.height);
 		#else
-		instance.x = ScreenSafeZone.X;
-		instance.y = (Preferences.data.showDebugText ? Main.debugText.height : 0) + ScreenSafeZone.Y;
+		instance.x = ScreenSafeArea.X;
+		instance.y = (Preferences.data.showDebugText ? Main.debugText.height : 0) + ScreenSafeArea.Y;
 		#end
 	}
 }

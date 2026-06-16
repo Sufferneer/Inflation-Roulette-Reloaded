@@ -5,7 +5,7 @@ import flixel.group.FlxSpriteContainer;
 import flixel.effects.FlxFlicker;
 import flixel.util.FlxGradient;
 import flixel.addons.display.FlxGridOverlay;
-import backend.Scoring;
+import backend.ScoringUtil;
 import backend.enums.SuffTransitionStyle;
 
 class ResultsState extends SuffState {
@@ -41,9 +41,9 @@ class ResultsState extends SuffState {
 			if (jesus == highestScore)
 				highestScoreIndices.push(num);
 			if (Achievements.enabled && !what.cpuControlled) {
-				if (jesus >= Scoring.getMaxScore() && Achievements.isLocked('maximumScore'))
+				if (jesus >= ScoringUtil.getMaxScore() && Achievements.isLocked('maximumScore'))
 					achievementsToEarn.push('maximumScore');
-				if (jesus <= Scoring.getMinScore() && Achievements.isLocked('minimumScore'))
+				if (jesus <= ScoringUtil.getMinScore() && Achievements.isLocked('minimumScore'))
 					achievementsToEarn.push('minimumScore');
 			}
 		}
@@ -136,7 +136,7 @@ class ResultsState extends SuffState {
 			var isWinner:Bool = highestScoreIndices.contains(playerNum);
 			var hasDuplicate:Bool = [for (char in data) if (char.charID == leData.charID) char.charID].length > 1;
 			var playerStr = Language.getPhrase('resultsMenu.leaderboard.player' + (hasDuplicate ? 'Duplicate' : '') + 'Format', [Language.getPhrase('resultsMenu.leaderboard.playerType.' + (isCPU ? 'cpu' : 'human'), [], ''), Language.getPhrase('character.${leData.charID}.name.short'), playerNum + 1]);
-			var str = Language.getPhrase('resultsMenu.leaderboard.format' + (isWinner ? '' : '.reversed'), ['${rank + 1}', playerStr, totalScore[playerNum], Scoring.gradePercent(Scoring.calculateScoreToPercent(totalScore[playerNum]))]);
+			var str = Language.getPhrase('resultsMenu.leaderboard.format' + (isWinner ? '' : '.reversed'), ['${rank + 1}', playerStr, totalScore[playerNum], ScoringUtil.gradePercent(ScoringUtil.calculateScoreToPercent(totalScore[playerNum]))]);
 			var text = new FlxText(0, 0, str, 32);
 			text.y = barUp.height + rank * (text.height + 8);
 			text.color = Constants.PLAYER_COLORS[playerNum];

@@ -131,7 +131,7 @@ class AchievementsState extends SuffState {
 		achievementProgress.scrollFactor.set();
 		add(achievementProgress);
 
-		exitButton = new SuffIconButton(20 + ScreenSafeZone.X, 20, 'buttons/exit', null, 2);
+		exitButton = new SuffIconButton(20 + ScreenSafeArea.X, 20, 'buttons/exit', null, 2);
 		exitButton.y = -exitButton.height;
 		exitButton.scrollFactor.set();
 		exitButton.onClick = function() {
@@ -290,7 +290,7 @@ class AchievementsState extends SuffState {
 	function showUI() {
 		if (!Preferences.data.enablePhotosensitiveMode)
 			FlxG.camera.flash(0xFFFFFFFF, 0.5);
-		FlxTween.tween(exitButton, {y: 20 + ScreenSafeZone.Y}, 1, {
+		FlxTween.tween(exitButton, {y: 20 + ScreenSafeArea.Y}, 1, {
 			ease: FlxEase.backOut
 		});
 		FlxTween.tween(overlay, {x: FlxG.width - overlay.width}, 0.75, {

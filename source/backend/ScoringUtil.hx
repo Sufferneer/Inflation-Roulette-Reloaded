@@ -4,7 +4,7 @@ import backend.enums.ScoreRank;
 import objects.Character;
 import backend.typedefs.ScoreData;
 
-class Scoring {
+class ScoringUtil {
 	public static final WIN_BONUS:Int = 1800;
 	public static final EDGING_BONUS:Int = 6400;
 	public static final SKILL_BONUS:Int = 1800;

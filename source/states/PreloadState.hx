@@ -6,7 +6,7 @@ import backend.CharacterManager;
 import backend.SplashManager;
 import openfl.utils.Assets.Assets.getBitmapData;
 import openfl.utils.Assets;
-import backend.AndroidUtils;
+import backend.AndroidUtil;
 
 class PreloadState extends SuffState {
 	#if !html5
@@ -22,7 +22,7 @@ class PreloadState extends SuffState {
 
 		FlxG.save.bind('game', Utilities.getSavePath());
 		Preferences.loadPrefs();
-		if (AndroidUtils.checkAllFilesPermission())
+		if (AndroidUtil.checkAllFilesPermission())
 			Addons.pushGlobalAddons();
 		Language.initialize();
 		Window.setTitle(Language.getPhrase('preloadMenu.windowDisplay'));
@@ -78,12 +78,12 @@ class PreloadState extends SuffState {
 				case 'toasts':
 					MusicToast.initialize();
 					AchievementToast.initialize();
-					trace('Setup Music Toasts and Achievement Toasts');
+					trace('Setup Music Toasts, Achievement Toasts');
 				case 'tooltip':
 					Tooltip.initialize();
 					// shhhhh
-					ScreenSafeZone.recalculateConstants();
-					trace('Setup Tooltip and Recalculated Screen Safe Zone');
+					ScreenSafeArea.recalculateConstants();
+					trace('Setup Tooltip and Recalculated Screen Safe Area');
 				case 'cursor':
 					CursorHandler.initialize();
 					CursorHandler.cursorVisible = true;

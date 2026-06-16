@@ -58,6 +58,7 @@ class Character extends FlxSprite {
 	// Cosmetic Variables //
 	public var idleAfterAnimation:Bool = true;
 	public var disableBellySounds:Bool = false;
+	public var mask:FlxSprite;
 
 	var gurgleTimer:Float = 0;
 	var belchTimer:Float = 25;
@@ -162,18 +163,23 @@ class Character extends FlxSprite {
 			}
 		}
 
+		mask = new FlxSprite();
+
 		var combinedAtlas:FlxAtlasFrames = Paths.sparrowAtlas('game/characters/$id/${spriteJson.spriteSheets[0]}');
 		for (i in 1...spriteJson.spriteSheets.length) {
 			var atlas:FlxAtlasFrames = Paths.sparrowAtlas('game/characters/$id/${spriteJson.spriteSheets[i]}');
 			combinedAtlas.addAtlas(atlas, false);
 		}
+
+		var combinedMaskAtlas:FlxAtlasFrames = Paths.sparrowAtlas('game/characters/$id/mask/${spriteJson.spriteSheets[0]}');
+		for (i in 1...spriteJson.spriteSheets.length) {
+			var atlas:FlxAtlasFrames = Paths.sparrowAtlas('game/characters/$id/mask/${spriteJson.spriteSheets[i]}');
+			combinedMaskAtlas.addAtlas(atlas, false);
+		}
 		super(x, y);
 		frames = combinedAtlas;
+		mask.frames = combinedMaskAtlas;
 		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!spriteJson.antialiasing) : false;
-
-		if (Preferences.data.enableGLSL) {
-			
-		}
 
 		animSoundPaths = new Map<String, Array<String>>();
 
@@ -270,6 +276,15 @@ class Character extends FlxSprite {
 				FlxG.state.add(new Swirl(this.x + offsets.x + FlxG.random.float(-1, 1) * this.width / 5, this.y + offsets.y + FlxG.random.float() * this.height / 5, 0xFFC040FF));
 				swirlSpawnTimer = FlxG.random.float();
 			}
+		}
+		if (mask != null && mask.animation.curAnim != null) {
+			mask.animation.curAnim.flipX = this.animation.curAnim.flipX;
+			mask.animation.play(
+				this.animation.curAnim.name,
+				true,
+				this.animation.curAnim.reversed,
+				this.animation.curAnim.curFrame
+			);
 		}
 	}
 

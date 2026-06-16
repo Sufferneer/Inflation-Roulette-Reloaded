@@ -14,7 +14,7 @@ import ui.objects.SkillCard;
 import ui.objects.SuffBar;
 import ui.objects.SuffIconButton;
 import objects.Stage;
-import backend.Scoring;
+import backend.ScoringUtil;
 import objects.particles.SkillIndicator;
 import ui.objects.RevealBullet;
 import shaders.GaussianBlurShader;
@@ -22,7 +22,7 @@ import objects.particles.Bloosh;
 import objects.particleEmitters.PuffEmitter;
 import objects.particles.BulletShell;
 import objects.particles.PlayerIndicator;
-import backend.RecordingDetector;
+import backend.RecordingUtil;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
@@ -109,7 +109,7 @@ class PlayState extends SuffState {
 	public var stage:Stage;
 
 	override public function create() {
-		RecordingDetector.checkIfRecording();
+		RecordingUtil.checkIfRecording();
 
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -117,7 +117,7 @@ class PlayState extends SuffState {
 		camHUD.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
 
-		skillCardsGroupPaddingX = 10 + ScreenSafeZone.X;
+		skillCardsGroupPaddingX = 10 + ScreenSafeArea.X;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
@@ -280,7 +280,7 @@ class PlayState extends SuffState {
 		skillsIcon.y = skillsText.y + (skillsText.height - skillsIcon.height) / 2;
 		uiBGGroup.add(skillsIcon);
 
-		pressureIcon = new GameIcon(ScreenSafeZone.X, 0, 'stats/pressure', 32);
+		pressureIcon = new GameIcon(ScreenSafeArea.X, 0, 'stats/pressure', 32);
 
 		pressureText = new FlxText(pressureIcon.x + pressureIcon.width + 4, 0, 0, '');
 		pressureText.setFormat(Paths.font('default'), 32, pressureBarColors[0]);
@@ -295,7 +295,7 @@ class PlayState extends SuffState {
 		confidenceBar = new SuffBar(0, 0, function() return 0, 0, 1, Std.int(uiBGTop.width), 20, 4, 1, confidenceBarColors[0], confidenceBarColors[1]);
 		uiBGGroup.add(confidenceBar);
 
-		confidenceIcon = new GameIcon(ScreenSafeZone.X, 0, 'stats/confidence', 32);
+		confidenceIcon = new GameIcon(ScreenSafeArea.X, 0, 'stats/confidence', 32);
 
 		confidenceText = new FlxText(confidenceIcon.x + confidenceIcon.width + 4, 0, 0, '');
 		confidenceText.setFormat(Paths.font('default'), 32, confidenceBarColors[0]);
@@ -311,15 +311,15 @@ class PlayState extends SuffState {
 		var shootButtonImage = Paths.image('ui/icons/buttons/shoot');
 		var shootButtonHighlightedImage = Paths.image('ui/icons/buttons/shootHighlighted');
 		shootButton = new SuffButton(0, 0, null, shootButtonImage, shootButtonHighlightedImage, shootButtonImage.width, shootButtonImage.height, false);
-		shootButton.y = FlxG.height - shootButton.height - ScreenSafeZone.Y;
+		shootButton.y = FlxG.height - shootButton.height - ScreenSafeArea.Y;
 		shootButton.camera = camHUD;
 		shootButton.onClick = function() {
 			deployGun(currentTurnIndex, function() return getPlayer(currentTurnIndex).getPressurePercentage());
 		}
 		add(shootButton);
 
-		pauseButton = new SuffIconButton(20, 20 + ScreenSafeZone.Y, 'buttons/pause', null, 2);
-		pauseButton.x = FlxG.width - pauseButton.width - 20 - ScreenSafeZone.X;
+		pauseButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/pause', null, 2);
+		pauseButton.x = FlxG.width - pauseButton.width - 20 - ScreenSafeArea.X;
 		pauseButton.camera = camHUD;
 		pauseButton.onClick = function() {
 			pauseGame();
@@ -328,8 +328,8 @@ class PlayState extends SuffState {
 		add(pauseButton);
 
 		cameraFocusButton = new SuffIconButton(20, 20, 'buttons/camera', null, 2);
-		cameraFocusButton.x = FlxG.width - cameraFocusButton.width - 20 - ScreenSafeZone.X;
-		cameraFocusButton.y = FlxG.height - cameraFocusButton.height - 20 - ScreenSafeZone.Y;
+		cameraFocusButton.x = FlxG.width - cameraFocusButton.width - 20 - ScreenSafeArea.X;
+		cameraFocusButton.y = FlxG.height - cameraFocusButton.height - 20 - ScreenSafeArea.Y;
 		cameraFocusButton.camera = camHUD;
 		cameraFocusButton.onClick = function() {
 			toggleCameraFocus();
@@ -1058,7 +1058,7 @@ class PlayState extends SuffState {
 
 	function finishEndCutscene() {
 		SuffState.playMusic('null');
-		ResultsState.data = Scoring.judgeGame(characterGroup.members);
+		ResultsState.data = ScoringUtil.judgeGame(characterGroup.members);
 		FlxTransitionableState.skipNextTransOut = true;
 		SuffState.switchState(new ResultsState(), FADE);
 	}
@@ -1072,7 +1072,7 @@ class PlayState extends SuffState {
 		var flipX:Bool = PrevTurn >= Std.int(CharacterManager.selectedCharacterList.length / 2) && PrevTurn != CharacterManager.selectedCharacterList.length - 1;
 		changeTurnNumber(change);
 		getPlayer(PrevTurn).canUseSkills = true;
-		if (!(Preferences.data.ignoreEliminatedPlayers && getPlayer(PrevTurn).isEliminated())) {
+		if (!(Preferences.data.skipEliminatedPlayers && getPlayer(PrevTurn).isEliminated())) {
 			focusCameraOnPlayer(PrevTurn);
 			getPlayer(PrevTurn).playAnim('pass', true, true, flipX);
 		}
@@ -1082,10 +1082,10 @@ class PlayState extends SuffState {
 		if (change != 0) {
 			pumpGun.visible = true;
 			doTween('pumpGunPass', FlxTween.tween(pumpGun, {x: pumpGunXDestinations[currentTurnIndex]}, 0.5, {
-				startDelay: (!(Preferences.data.ignoreEliminatedPlayers && getPlayer(currentTurnIndex).isEliminated()) ? 0.5 : 0), ease: FlxEase.quadOut, onStart: function(_:FlxTween) {
+				startDelay: (!(Preferences.data.skipEliminatedPlayers && getPlayer(currentTurnIndex).isEliminated()) ? 0.5 : 0), ease: FlxEase.quadOut, onStart: function(_:FlxTween) {
 					if (!slient)
 						SuffState.playSound(Paths.sound('game/weaponSlide'));
-					if (!(Preferences.data.ignoreEliminatedPlayers && getPlayer(currentTurnIndex).isEliminated()))
+					if (!(Preferences.data.skipEliminatedPlayers && getPlayer(currentTurnIndex).isEliminated()))
 						focusCameraOnPlayer(currentTurnIndex); else
 						changeTurn(change, true);
 				}, onComplete: function(_:FlxTween) {
@@ -1289,7 +1289,7 @@ class PlayState extends SuffState {
 		if (reallyMoveIn) {
 			doTween('letterboxTopTween', FlxTween.tween(letterboxTop, {y: 0}, 1, {
 				ease: FlxEase.cubeOut, onUpdate: function(_:FlxTween) {
-					pauseButton.y = letterboxTop.y + letterboxTop.height + 20 + ScreenSafeZone.Y;
+					pauseButton.y = letterboxTop.y + letterboxTop.height + 20 + ScreenSafeArea.Y;
 				}
 			}));
 			doTween('letterboxBottomTween', FlxTween.tween(letterboxBottom, {y: FlxG.height - letterboxBottom.height}, 1, {
@@ -1300,7 +1300,7 @@ class PlayState extends SuffState {
 		} else {
 			doTween('letterboxTopTween', FlxTween.tween(letterboxTop, {y: -letterboxTop.height}, 1, {
 				ease: FlxEase.cubeOut, onUpdate: function(_:FlxTween) {
-					pauseButton.y = letterboxTop.y + letterboxTop.height + 20 + ScreenSafeZone.Y;
+					pauseButton.y = letterboxTop.y + letterboxTop.height + 20 + ScreenSafeArea.Y;
 				}
 			}));
 			doTween('letterboxBottomTween', FlxTween.tween(letterboxBottom, {y: FlxG.height}, 1, {
@@ -1321,10 +1321,10 @@ class PlayState extends SuffState {
 		}
 		reloadRevealUI();
 		if (moveIn) {
-			doTween('shootButtonMoveTween', FlxTween.tween(shootButton, {x: ScreenSafeZone.X}, 0.5, {ease: FlxEase.cubeOut}));
+			doTween('shootButtonMoveTween', FlxTween.tween(shootButton, {x: ScreenSafeArea.X}, 0.5, {ease: FlxEase.cubeOut}));
 			doTween('skillCardsGroupMoveTween', FlxTween.tween(skillCardsGroup, {x: skillCardsGroupPaddingX}, 0.5, {ease: FlxEase.cubeOut}));
 			doTween('uiBGGroupMoveTween', FlxTween.tween(uiBGGroup, {x: 0}, 0.25, {ease: FlxEase.cubeOut}));
-			doTween('uiRevealGroupMoveTween', FlxTween.tween(uiRevealGroup, {x: ScreenSafeZone.X + shootButton.width}, 0.325, {ease: FlxEase.cubeOut}));
+			doTween('uiRevealGroupMoveTween', FlxTween.tween(uiRevealGroup, {x: ScreenSafeArea.X + shootButton.width}, 0.325, {ease: FlxEase.cubeOut}));
 		} else {
 			doTween('shootButtonMoveTween', FlxTween.tween(shootButton, {x: -shootButton.width}, 0.5, {ease: FlxEase.cubeOut}));
 			doTween('skillCardsGroupMoveTween', FlxTween.tween(skillCardsGroup, {x: -skillCardsGroup.width}, 0.5, {ease: FlxEase.cubeOut}));

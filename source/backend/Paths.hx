@@ -549,7 +549,7 @@ class Paths {
 
 	#if _ALLOW_ADDONS
 	inline static public function addons(key:String = '') {
-		return AndroidUtils.getPath() + 'addons/' + key;
+		return AndroidUtil.getPath() + 'addons/' + key;
 	}
 
 	inline static public function addonsSounds(path:String, key:String) {

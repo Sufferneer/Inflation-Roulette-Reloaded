@@ -147,7 +147,7 @@ class LanguageSelectState extends SuffState {
 		add(selectorLeft);
 		add(selectorRight);
 
-		title = new FlxText(0, 64 + ScreenSafeZone.Y, (FlxG.width - languageOverlay.width) / 2 - 64, Language.getPhrase('languageMenu.title'));
+		title = new FlxText(0, 64 + ScreenSafeArea.Y, (FlxG.width - languageOverlay.width) / 2 - 64 - ScreenSafeArea.X, Language.getPhrase('languageMenu.title'));
 		title.setFormat(Paths.font('default'), 48, textColor);
 		title.x = -title.width;
 		add(title);
@@ -172,8 +172,8 @@ class LanguageSelectState extends SuffState {
 		description.x = -description.width;
 		add(description);
 
-		exitButton = new SuffIconButton(20, 20 + ScreenSafeZone.Y, 'buttons/exit', null, 2);
-		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
+		exitButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/exit', null, 2);
+		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeArea.X;
 		exitButton.btnTextColor = exitButton.btnTextColorHovered = exitButton.btnTextColorClicked = textColor;
 		exitButton.btnOutlineColor = exitButton.btnOutlineColorHovered = exitButton.btnOutlineColorClicked = textColor;
 		exitButton.btnBGColor = exitButton.btnBGColorHovered = exitButton.btnBGColorClicked = leBGColor;
@@ -226,18 +226,18 @@ class LanguageSelectState extends SuffState {
 			else
 				text.font = Paths.font('small');
 			text.x = -text.width;
-			text.y = FlxG.height - 32 - 32 * (contributors.length - num) - ScreenSafeZone.Y;
-			FlxTween.tween(text, {x: 32 + ScreenSafeZone.X}, 0.75, {
+			text.y = FlxG.height - 32 - 32 * (contributors.length - num) - ScreenSafeArea.Y;
+			FlxTween.tween(text, {x: 32 + ScreenSafeArea.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0.25 + 0.125 * num
 			});
 			contributorText.add(text);
 		}
-		var titleText:FlxText = new FlxText(0, 0, Language.getPhrase('languageMenu.contributors'), 48);
+		var titleText:FlxText = new FlxText(0, 0, Language.getPhrase('languageMenu.contributors'), 32);
 		titleText.color = textColor;
 		titleText.x = -titleText.width;
-		titleText.y = FlxG.height - titleText.height - 32 - 32 * contributors.length - ScreenSafeZone.Y;
-		FlxTween.tween(titleText, {x: 32 + ScreenSafeZone.X}, 0.75, {
+		titleText.y = FlxG.height - titleText.height - 32 - 32 * contributors.length - ScreenSafeArea.Y;
+		FlxTween.tween(titleText, {x: 32 + ScreenSafeArea.X}, 0.75, {
 			ease: FlxEase.quintOut
 		});
 		contributorText.add(titleText);
@@ -330,15 +330,15 @@ class LanguageSelectState extends SuffState {
 				ease: FlxEase.quintOut
 			});
 
-			FlxTween.tween(title, {x: 32 + ScreenSafeZone.X}, 0.75, {
+			FlxTween.tween(title, {x: 32 + ScreenSafeArea.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0
 			});
-			FlxTween.tween(progress, {x: 32 + ScreenSafeZone.X}, 0.75, {
+			FlxTween.tween(progress, {x: 32 + ScreenSafeArea.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0.25
 			});
-			FlxTween.tween(description, {x: 32 + ScreenSafeZone.X}, 0.75, {
+			FlxTween.tween(description, {x: 32 + ScreenSafeArea.X}, 0.75, {
 				ease: FlxEase.quintOut,
 				startDelay: 0.5
 			});
@@ -353,7 +353,7 @@ class LanguageSelectState extends SuffState {
 			}
 			ajuniga.setPosition(FlxG.width * 0.6, FlxG.height * 0.4);
 			ajuniga.scale.set(1.5, 1.5);
-			title.x = description.x = progress.x = 32 + ScreenSafeZone.X;
+			title.x = description.x = progress.x = 32 + ScreenSafeArea.X;
 		}
 		if (!atWarningState)
 			SuffState.playMusic('language');

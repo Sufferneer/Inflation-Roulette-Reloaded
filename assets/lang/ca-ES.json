@@ -133,8 +133,8 @@
 	"optionsMenu.heading.technical": "Tècniques",
 	"optionsMenu.heading.debugText": "Text de depuració",
 	
-	"option.ignoreEliminatedPlayers.name": "Omet eliminats",
-	"option.ignoreEliminatedPlayers.description": "Jugadors derrotats no reproduiran animació quan sigui seu torn.",
+	"option.skipEliminatedPlayers.name": "Omet eliminats",
+	"option.skipEliminatedPlayers.description": "Jugadors derrotats no reproduiran animació quan sigui seu torn.",
 	// This option is a button.
 	"option.controls.name": "Controls",
 	"option.controls.description": "Configura assignacions de tecles.",
@@ -229,8 +229,8 @@
 	"option.hideHUD.description": "Amaga pantalla en pantalla del joc durant partida. Útil per enregistrar de joc.",
 	"option.hideTooltip.name": "Amaga descripció emergent",
 	"option.hideTooltip.description": "Amaga descripcions emergents de botons en passar cursor.",
-	"option.screenSafeZone.name": "Zona segura de pantalla",
-	"option.screenSafeZone.description": "Ajusta el control lliscant fins que l'àrea sense obstacles cobreixi totes àrees visibles de pantalla.\n(Canvis a IU s'actualitzaran després de sortir)",
+	"option.screenSafeArea.name": "Zona segura de pantalla",
+	"option.screenSafeArea.description": "Ajusta el control lliscant fins que l'àrea sense obstacles cobreixi totes àrees visibles de pantalla.\n(Canvis a IU s'actualitzaran després de sortir)",
 	// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 	"option.enableForcedAliasing.description": "Desactiva antialiàsing de tots sprites fins i tot quan està habilitat. Pot fer que alguns gràfics semblin oscats.",
 	"option.enableGLSL.name": "Ombradors GLSL",
@@ -281,7 +281,7 @@
 	"addonsMenu.noAddonsDetected.content": "No s'ha detectat complements a la carpeta de addons. Comproveu si heu inclòs un fitxer metadata.json a la carpeta metadata.\nSi creu que es tracta d'un error, informa de problema a nostre repositori de GitHub.",
 	
 	"languageMenu.title": "SELECCIONA IDIOMA",
-	"languageMenu.description": "Nota: És possible que traduccions no siguin 100% precises i que continguin traduccions incorrectes o text sense traduir. Si vols ajudar a millorar les traduccions, considera possibilitat de contribuir a nostre repositori de GitHub.",
+	"languageMenu.description": "Nota: És possible que traduccions no siguin 100% precises i que continguin traduccions incorrectes o text sense traduir.",
 	"languageMenu.contributors": "Coŀlaboradors",
 	"languageMenu.completion": "%1 completat",
 	"languageMenu.logMissingKeys": "Registra claus de traducció que falten",

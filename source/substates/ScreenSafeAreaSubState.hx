@@ -1,9 +1,9 @@
 package substates;
 import ui.objects.SuffSlider;
 import ui.objects.SuffIconButton;
-import backend.ScreenSafeZone;
+import backend.ScreenSafeArea;
 
-class ScreenSafeZoneSubState extends SuffSubState {
+class ScreenSafeAreaSubState extends SuffSubState {
 	var bounds:FlxSprite;
 	var cornerTopLeft:FlxSprite;
 	var cornerTopRight:FlxSprite;
@@ -15,7 +15,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 	public function new() {
 		super();
 
-		Window.setTitle(Language.getPhrase('optionsMenu.windowDisplay'), Language.getPhrase('option.screenSafeZone.name'));
+		Window.setTitle(Language.getPhrase('optionsMenu.windowDisplay'), Language.getPhrase('option.screenSafeArea.name'));
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('ui/menus/options/bg'));
 		bg.color = 0x303030;
@@ -43,11 +43,11 @@ class ScreenSafeZoneSubState extends SuffSubState {
 		cornerBottomRight.flipY = true;
 		add(cornerBottomRight);
 
-		var title = new FlxText(0, 0, FlxG.width * 0.5, Language.getPhrase('option.screenSafeZone.name'), 48);
+		var title = new FlxText(0, 0, FlxG.width * 0.5, Language.getPhrase('option.screenSafeArea.name'), 48);
 		title.alignment = CENTER;
 		title.screenCenter(X);
 
-		var subtitle = new FlxText(0, 0, title.width, Language.getPhrase('option.screenSafeZone.description'), 32);
+		var subtitle = new FlxText(0, 0, title.width, Language.getPhrase('option.screenSafeArea.description'), 32);
 		subtitle.alignment = CENTER;
 		subtitle.screenCenter(X);
 
@@ -55,7 +55,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 			updateSafeZone(value);
 		}, 0, 1, 0.05, function(value:Float) {
 			return '${Math.round(value * 100)}%';
-		}, Preferences.data.screenSafeZone, function(value:Float) {
+		}, Preferences.data.screenSafeArea, function(value:Float) {
 			updateSafeZone(value);
 		});
 		slider.screenCenter(X);
@@ -68,7 +68,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 		add(subtitle);
 		add(slider);
 
-		updateSafeZone(Preferences.data.screenSafeZone);
+		updateSafeZone(Preferences.data.screenSafeArea);
 
 		exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);
 		exitButton.x = FlxG.width - exitButton.width - 60;
@@ -98,7 +98,7 @@ class ScreenSafeZoneSubState extends SuffSubState {
 	}
 
 	function exit() {
-		Preferences.data.screenSafeZone = slider.currentValue;
+		Preferences.data.screenSafeArea = slider.currentValue;
 		Window.setTitle(Language.getPhrase('optionsMenu.windowDisplay'));
 		close();
 	}

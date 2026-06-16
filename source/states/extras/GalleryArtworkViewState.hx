@@ -65,8 +65,8 @@ class GalleryArtworkViewState extends SuffState {
 		infoText.camera = camHUD;
 		add(infoText);
 
-		zoomIn = new SuffIconButton(20 + ScreenSafeZone.X, 20, 'buttons/zoomIn', null, 1);
-		zoomIn.y = FlxG.height - zoomIn.height - 20 - ScreenSafeZone.Y;
+		zoomIn = new SuffIconButton(20 + ScreenSafeArea.X, 20, 'buttons/zoomIn', null, 1);
+		zoomIn.y = FlxG.height - zoomIn.height - 20 - ScreenSafeArea.Y;
 		zoomIn.camera = camHUD;
 		zoomIn.onClick = function() {
 			changeZoom(0.1);
@@ -94,8 +94,8 @@ class GalleryArtworkViewState extends SuffState {
 		};
 		add(zoomReset);
 
-		exitButton = new SuffIconButton(20, 20 + ScreenSafeZone.Y, 'buttons/exit', null, 2);
-		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
+		exitButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/exit', null, 2);
+		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeArea.X;
 		exitButton.camera = camHUD;
 		exitButton.onClick = function() {
 			exitMenu();
@@ -145,8 +145,8 @@ class GalleryArtworkViewState extends SuffState {
 		var camX = Std.int(FlxMath.lerp(0, art.width - 1, (cameraPos.x - (FlxG.width - art.width) / 2) / art.width));
 		var camY = Std.int(FlxMath.lerp(0, art.height - 1, (cameraPos.y - (FlxG.height - art.height) / 2) / art.height));
 		infoText.text = '[${camX}, ${camY}]\n${Std.int(FlxG.camera.zoom * 100)}%';
-		infoText.x = FlxG.width - infoText.width - 20 - ScreenSafeZone.X;
-		infoText.y = FlxG.height - infoText.height - 20 - ScreenSafeZone.Y;
+		infoText.x = FlxG.width - infoText.width - 20 - ScreenSafeArea.X;
+		infoText.y = FlxG.height - infoText.height - 20 - ScreenSafeArea.Y;
 	}
 
 	function changeZoom(delta:Float = 0) {

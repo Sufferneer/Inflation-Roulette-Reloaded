@@ -5,9 +5,7 @@ import ui.objects.SuffIconButton;
 import ui.objects.SuffSlider;
 import states.PlayState;
 import ui.objects.SuffScrollBar;
-#if mobile
-import substates.ScreenSafeZoneSubState;
-#end
+import substates.ScreenSafeAreaSubState;
 
 class OptionsSubState extends SuffSubState {
 	public static var notInGame:Bool = true;
@@ -53,15 +51,15 @@ class OptionsSubState extends SuffSubState {
 		scrollBar = new SuffScrollBar(0, 0, function(percent:Float) {
 			optionsGroup.y = FlxMath.lerp(0, FlxG.height - (optionsGroup.height + 64), percent);
 		}, 32, optionsGroup.height + 64);
-		bg2.makeGraphic(Std.int(Math.min(FlxG.width - scrollBar.width - ScreenSafeZone.X, optionsXPadding + optionsMaxWidth + optionsXPadding)), FlxG.height, FlxColor.BLACK);
+		bg2.makeGraphic(Std.int(Math.min(FlxG.width - scrollBar.width - ScreenSafeArea.X, optionsXPadding + optionsMaxWidth + optionsXPadding)), FlxG.height, FlxColor.BLACK);
 		bg2.alpha = 0.375;
 
 		scrollBar.x = bg2.width;
 		scrollBar.camera = this.camera;
 		add(scrollBar);
 
-		exitButton = new SuffIconButton(20, 20 + ScreenSafeZone.Y, 'buttons/exit', null, 2);
-		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeZone.X;
+		exitButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/exit', null, 2);
+		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeArea.X;
 		exitButton.onClick = function() {
 			exitOptionsMenu();
 		};
@@ -71,8 +69,8 @@ class OptionsSubState extends SuffSubState {
 	}
 
 	function generateOptions() {
-		optionsXPadding = 32 + ScreenSafeZone.X;
-		optionsY = optionsYPadding + ScreenSafeZone.Y;
+		optionsXPadding = 32 + ScreenSafeArea.X;
+		optionsY = optionsYPadding + ScreenSafeArea.Y;
 		optionsScrollUpperLimit = optionsY;
 		optionsScrollLowerLimit = optionsY;
 
@@ -86,10 +84,10 @@ class OptionsSubState extends SuffSubState {
 		});
 		#end
 
-		createBooleanOption("ignoreEliminatedPlayers",
-			function(value:Bool) {
-				Preferences.data.ignoreEliminatedPlayers = value;
-			}, Preferences.data.ignoreEliminatedPlayers);
+		createBooleanOption("skipEliminatedPlayers",
+		function(value:Bool) {
+			Preferences.data.skipEliminatedPlayers = value;
+		}, Preferences.data.skipEliminatedPlayers);
 
 		createHeading('preferences');
 
@@ -110,9 +108,9 @@ class OptionsSubState extends SuffSubState {
 				Preferences.data.enablePopping = value;
 			}, Preferences.data.enablePopping);
 
-		createBooleanOption("enableSkinTinting", function(value:Bool) {
-			Preferences.data.enableSkinTinting = value;
-		}, Preferences.data.enableSkinTinting);
+		createBooleanOption("enableDiscoloration", function(value:Bool) {
+			Preferences.data.enableDiscoloration = value;
+		}, Preferences.data.enableDiscoloration);
 
 		createBooleanOption("enableOralLeaking", function(value:Bool) {
 			Preferences.data.enableOralLeaking = value;
@@ -137,13 +135,11 @@ class OptionsSubState extends SuffSubState {
 			Preferences.data.hideTooltip = value;
 		}, Preferences.data.hideTooltip);
 
-		#if mobile
 		if (notInGame) {
-			createButtonOption('screenSafeZone', function() {
-				openSubState(new ScreenSafeZoneSubState());
+			createButtonOption('screenSafeArea', function() {
+				openSubState(new ScreenSafeAreaSubState());
 			});
 		}
-		#end
 
 		#if desktop
 		createBooleanOption('enableFullscreen', function(value:Bool) {

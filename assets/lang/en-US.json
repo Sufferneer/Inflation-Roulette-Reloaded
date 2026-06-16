@@ -139,9 +139,9 @@
 	"optionsMenu.heading.cursor": "Cursor",
 	"optionsMenu.heading.technical": "Technical",
 	"optionsMenu.heading.debugText": "Debug Text",
-	
-	"option.ignoreEliminatedPlayers.name": "Eliminee Skip",
-	"option.ignoreEliminatedPlayers.description": "Players who are defeated will not play an animation when it's their turn.",
+
+	"option.skipEliminatedPlayers.name": "Eliminee Skip",
+	"option.skipEliminatedPlayers.description": "Players who are defeated will not play an animation when it's their turn.",
 	// This option is a button.
 	"option.controls.name": "Controls",
 	"option.controls.description": "Configure keybinds.",
@@ -231,8 +231,8 @@
 	"option.enableBellyCreaks.description": "Players play balloon overstretching sounds on idle when inflated.",
 	"option.enableBelching.name": "Eructation",
 	"option.enableBelching.description": "Players burp when inflated.",
-	"option.enableSkinTinting.name": "Discoloration",
-	"option.enableSkinTinting.description": "Players' skin shifts color when inflated with certain mediums.",
+	"option.enableDiscoloration.name": "Discoloration",
+	"option.enableDiscoloration.description": "Players' skin shifts color when inflated with certain mediums.",
 	"option.enableOralLeaking.name": "Leaking (Oral)",
 	"option.enableOralLeaking.description": "Players leak fluids from their mouth when inflated with certain mediums.",
 	"option.enableNavelLeaking.name": "Leaking (Navel)",
@@ -243,8 +243,8 @@
 	"option.hideHUD.description": "Hides the game's HUD during gameplay. Useful for capturing game footage.",
 	"option.hideTooltip.name": "Hide Tooltip",
 	"option.hideTooltip.description": "Hides button tooltips on hover.",
-	"option.screenSafeZone.name": "Screen Safe Zone",
-	"option.screenSafeZone.description": "Adjust the slider until the white area covers all unobstructed areas of your screen.\n(UI changes will be updated after exiting)",
+	"option.screenSafeArea.name": "Screen Safe Area",
+	"option.screenSafeArea.description": "Adjust the slider until the white area covers all unobstructed areas of your screen.\n(UI changes will be updated after exiting)",
 	// Yes. This DOES mean Forced Aliasing as in like forcing to turn off anti-aliasing
 	"option.decreaseDetail.name": "Low Detail",
 	"option.decreaseDetail.description": "Decrease non-essential particle effects. May help with low-end devices.",
@@ -300,7 +300,7 @@
 
 	"languageMenu.windowDisplay": "Language Select",
 	"languageMenu.title": "SELECT LANGUAGE",
-	"languageMenu.description": "Note: Translations may not be 100% accurate, and may contain mistranslations or untranslated text. If you want to help improve the translations, please consider contributing to our GitHub repository.",
+	"languageMenu.description": "Note: Translations may not be 100% accurate, and may contain mistranslations or untranslated text.",
 	"languageMenu.contributors": "Contributors",
 	"languageMenu.completion": "%1 Complete",
 	"languageMenu.deprecated": "[DEPRECATED]",

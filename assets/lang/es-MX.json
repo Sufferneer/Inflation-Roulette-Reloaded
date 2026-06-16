@@ -132,8 +132,8 @@
 	"optionsMenu.heading.technical": "Técnico",
 	"optionsMenu.heading.debugText": "Debug Text",
 	
-	"option.ignoreEliminatedPlayers.name": "Ignorar Eliminados",
-	"option.ignoreEliminatedPlayers.description": "Los jugadores derrotados no reproducirán una animación cuando sea su turno",
+	"option.skipEliminatedPlayers.name": "Ignorar Eliminados",
+	"option.skipEliminatedPlayers.description": "Los jugadores derrotados no reproducirán una animación cuando sea su turno",
 	// This option is a button.
 	"option.controls.name": "Controles",
 	"option.controls.description": "Configuración de Teclas.",
@@ -225,8 +225,8 @@
 	"option.enableFullscreen.description": "Se explica por sí solo, pero ¿Estás seguro?",
 	"option.hideHUD.name": "Ocultar HUD",
 	"option.hideHUD.description": "Oculta el HUD del juego durante el juego. Útil para capturar imágenes del juego.",
-	"option.screenSafeZone.name": "Screen Safe Zone",
-	"option.screenSafeZone.description": "Ajusta el control deslizante hasta que el área blanca cubra todas las zonas visibles de tu pantalla. (Los cambios en la interfaz de usuario se aplicarán después de salir)",
+	"option.screenSafeArea.name": "Screen Safe Area",
+	"option.screenSafeArea.description": "Ajusta el control deslizante hasta que el área blanca cubra todas las zonas visibles de tu pantalla. (Los cambios en la interfaz de usuario se aplicarán después de salir)",
 	
 	"option.hideTooltip.name": "Ocultar información emergente",
 	"option.hideTooltip.description": "Oculta las descripciones de los botones al pasar el cursor.",
@@ -278,7 +278,7 @@
 	"addonsMenu.noAddonsDetected.content": "No se detectan complementos dentro de la carpeta de complementos. Verifique si ha incluido un metadata.json en la carpeta de metadatos de los complementos.\nSi cree que esto es un error, informe su problema a nuestro repositorio de GitHub.",
 	
 	"languageMenu.title": "SELECCIONAR LENGUAJE",
-	"languageMenu.description": "Note: Es posible que las traducciones no sean 100% precisas y puedan contener traducciones erróneas o texto no traducido. Si desea ayudar a mejorar las traducciones, considere contribuir a nuestro repositorio de GitHub.",
+	"languageMenu.description": "Note: Es posible que las traducciones no sean 100% precisas y puedan contener traducciones erróneas o texto no traducido.",
 	"languageMenu.contributors": "Contribuir",
 	"languageMenu.completion": "%1 Completado",
 	

@@ -1,4 +1,4 @@
-package states;
+package states.debug;
 
 import ui.objects.SuffIconButton;
 

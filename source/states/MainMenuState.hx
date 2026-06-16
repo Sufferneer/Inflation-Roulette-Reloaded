@@ -2,9 +2,9 @@ package states;
 
 import backend.SplashManager;
 import backend.lunarDate.LunarDate;
-import backend.PlatformMetadata;
+import backend.VersionUtil;
 #if _OFFICIAL_BUILD
-import backend.VersionMetadata;
+import backend.VersionUtil;
 #end
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
@@ -22,10 +22,11 @@ import substates.OptionsSubState;
 import substates.ExtrasSubState;
 import substates.GamemodeSelectSubState;
 import ui.objects.GameLogo;
-import backend.Scoring.Scoring.gradePercent;
+import backend.ScoringUtil.ScoringUtil.gradePercent;
 import backend.typedefs.ScoreData;
 import backend.enums.ScoreRank;
-import backend.Scoring;
+import backend.ScoringUtil;
+import states.debug.DiscolorationTestState;
 
 class MainMenuState extends SuffState {
 	public static var initialized:Bool = false;
@@ -127,33 +128,33 @@ class MainMenuState extends SuffState {
 		for (i in 0...topInfoTextList.length) {
 			var infoText = new FlxText(0, 0, 0, topInfoTextList[i]);
 			infoText.setFormat(Paths.font((i == 0) ? 'default' : 'unicode'), 16, FlxColor.WHITE);
-			infoText.x = FlxG.width - infoText.width - ScreenSafeZone.X;
-			infoText.y = infoText.height * i + ScreenSafeZone.Y;
+			infoText.x = FlxG.width - infoText.width - ScreenSafeArea.X;
+			infoText.y = infoText.height * i + ScreenSafeArea.Y;
 			topInfoTextGroup.add(infoText);
 		}
 
 		final bottomInfoTextList:Array<String> = [
 			Language.getPhrase('metadata.title'),
 			#if _OFFICIAL_BUILD
-			VersionMetadata.getVersionName(FlxG.stage.application.meta.get('version')), Language.getPhrase('metadata.version.numeral.format',
+			VersionUtil.getVersionName(FlxG.stage.application.meta.get('version')), Language.getPhrase('metadata.version.numeral.format',
 				[FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
 			#else
 			Language.getPhrase('metadata.version.numeralModded.format', [FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
 			#end
-			Language.getPhrase('game.build.format', [PlatformMetadata.getBuildName()])
+			Language.getPhrase('game.build.format', [VersionUtil.getBuildName()])
 		];
 		add(bottomInfoTextGroup);
 		for (i in 0...bottomInfoTextList.length) {
 			var infoText = new FlxText(0, 0, 0, bottomInfoTextList[i]);
 			infoText.setFormat(Paths.font('default'), 16, FlxColor.WHITE);
-			infoText.x = FlxG.width - infoText.width - ScreenSafeZone.X;
-			infoText.y = FlxG.height - infoText.height * (bottomInfoTextList.length - i) - ScreenSafeZone.Y;
+			infoText.x = FlxG.width - infoText.width - ScreenSafeArea.X;
+			infoText.y = FlxG.height - infoText.height * (bottomInfoTextList.length - i) - ScreenSafeArea.Y;
 			bottomInfoTextGroup.add(infoText);
 		}
 
 		var creditImage = Paths.image('ui/menus/nicklySufferLogo');
-		creditsButton = new SuffButton(20 + ScreenSafeZone.X, 0, '', creditImage, null, creditImage.width * 2, creditImage.height * 2, false);
-		creditsButton.y = FlxG.height - creditsButton.height - 20 - ScreenSafeZone.Y;
+		creditsButton = new SuffButton(20 + ScreenSafeArea.X, 0, '', creditImage, null, creditImage.width * 2, creditImage.height * 2, false);
+		creditsButton.y = FlxG.height - creditsButton.height - 20 - ScreenSafeArea.Y;
 		creditsButton.btnTextColorHovered = creditsButton.btnTextColorClicked = 0xFFFFFF00;
 		creditsButton.onClick = function() {
 			menuButtonFunctions('credits');
@@ -165,15 +166,15 @@ class MainMenuState extends SuffState {
 
 		for (jIndex => j in menuItems) {
 			for (iIndex => item in j) {
-				var curMenuItemSize:FlxPoint = new FlxPoint(Math.max(FlxG.width / 2 - ScreenSafeZone.X, (menuItemSize.x - menuItemPadding.x * (j.length - 1)) / j.length),
-					Math.max(72, (FlxG.height - (20 + ScreenSafeZone.Y) * 2 - creditsButton.height) / menuItems.length - menuItemPadding.y));
+				var curMenuItemSize:FlxPoint = new FlxPoint(Math.min(FlxG.width / 2 - ScreenSafeArea.X * 2, (menuItemSize.x - menuItemPadding.x * (j.length - 1))) / j.length,
+					Math.max(72, (FlxG.height - (20 + ScreenSafeArea.Y) * 2 - creditsButton.height) / menuItems.length - menuItemPadding.y));
 				var button = new SuffButton(0, 0, Language.getPhrase('mainMenu.$item'), null, null, curMenuItemSize.x, curMenuItemSize.y);
 				if (disabledMenuItems.contains(item)) {
 					button.disabled = true;
 					button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip.disabled');
 				}
-				button.x = Math.max(ScreenSafeZone.X, (FlxG.width / 2 - menuItemSize.x) / 2) + (curMenuItemSize.x + menuItemPadding.x) * iIndex;
-				button.y = 20 + ScreenSafeZone.Y + (curMenuItemSize.y + menuItemPadding.y) * jIndex;
+				button.x = Math.max(ScreenSafeArea.X, (FlxG.width / 2 - menuItemSize.x) / 2) + (curMenuItemSize.x + menuItemPadding.x) * iIndex;
+				button.y = 20 + ScreenSafeArea.Y + (curMenuItemSize.y + menuItemPadding.y) * jIndex;
 				button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip', [], '');
 				button.onClick = function() {
 					menuButtonFunctions(item);
@@ -442,5 +443,9 @@ class MainMenuState extends SuffState {
 			}
 		}
 		#end
+
+		if (FlxG.keys.justPressed.G) {
+			SuffState.switchState(new DiscolorationTestState());
+		}
 	}
 }
