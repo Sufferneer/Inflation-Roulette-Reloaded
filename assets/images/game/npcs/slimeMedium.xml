@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="slime.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle0000" x="0" y="0" width="160" height="120"/>
+	<SubTexture name="idle0001" x="0" y="0" width="160" height="120"/>
+	<SubTexture name="idle0002" x="0" y="0" width="160" height="120"/>
+	<SubTexture name="idle0003" x="0" y="0" width="160" height="120"/>
+	<SubTexture name="idle0004" x="160" y="0" width="160" height="120"/>
+	<SubTexture name="idle0005" x="160" y="0" width="160" height="120"/>
+	<SubTexture name="idle0006" x="160" y="0" width="160" height="120"/>
+	<SubTexture name="idle0007" x="160" y="0" width="160" height="120"/>
+	<SubTexture name="idle0008" x="320" y="0" width="160" height="120"/>
+	<SubTexture name="idle0009" x="320" y="0" width="160" height="120"/>
+	<SubTexture name="idle0010" x="320" y="0" width="160" height="120"/>
+	<SubTexture name="idle0011" x="320" y="0" width="160" height="120"/>
+	<SubTexture name="idle0012" x="480" y="0" width="160" height="120"/>
+	<SubTexture name="idle0013" x="480" y="0" width="160" height="120"/>
+	<SubTexture name="idle0014" x="480" y="0" width="160" height="120"/>
+	<SubTexture name="idle0015" x="480" y="0" width="160" height="120"/>
+	<SubTexture name="move0000" x="480" y="0" width="160" height="120"/>
+	<SubTexture name="move0001" x="480" y="0" width="160" height="120"/>
+	<SubTexture name="move0002" x="640" y="0" width="160" height="120"/>
+	<SubTexture name="move0003" x="640" y="0" width="160" height="120"/>
+	<SubTexture name="move0004" x="800" y="0" width="160" height="120"/>
+	<SubTexture name="move0005" x="800" y="0" width="160" height="120"/>
+	<SubTexture name="move0006" x="640" y="0" width="160" height="120"/>
+	<SubTexture name="move0007" x="640" y="0" width="160" height="120"/>
+</TextureAtlas>

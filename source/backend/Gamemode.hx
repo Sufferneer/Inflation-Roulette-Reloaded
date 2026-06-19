@@ -17,7 +17,7 @@ class Gamemode {
 	public var cylinderDamageChangeOnBlank:Int = 0;
 	public var cylinderTrueRandomness:Bool = false;
 
-	public var skillsExhaustible:Bool = false;
+	public var skillsTangible:Bool = false;
 	public var skillsFixedPool:Array<String> = [];
 	public var skillsRandomPool:Array<String> = [];
 	public var skillsCostMultiplier:Float = 1;
@@ -29,6 +29,9 @@ class Gamemode {
 	public var scoreEdgingBonusMultiplier:Float = 1;
 	public var scoreSkillBonusRequirement:Int = 5;
 	public var scoreSkillBonusMultiplier:Float = 1;
+
+	public var cpuMinLevel:Int = 1;
+	public var cpuMaxLevel:Int = 1;
 
 	public function new(id:String) {
 		this.id = id;
@@ -58,8 +61,8 @@ class Gamemode {
 
 		if (rawData.skillsFixedPool != null)
 			this.skillsFixedPool = rawData.skillsFixedPool;
-		if (rawData.skillsExhaustible != null)
-			this.skillsExhaustible = rawData.skillsExhaustible;
+		if (rawData.skillsTangible != null)
+			this.skillsTangible = rawData.skillsTangible;
 		if (rawData.skillsReplenishCountOnLive != null)
 			this.skillsReplenishCountOnLive = rawData.skillsReplenishCountOnLive;
 		if (rawData.skillsReplenishCountOnBlank != null)
@@ -79,6 +82,11 @@ class Gamemode {
 			this.scoreSkillBonusRequirement = Std.int(Math.max(1, rawData.scoreSkillBonusRequirement));
 		if (rawData.scoreSkillBonusMultiplier != null)
 			this.scoreSkillBonusMultiplier = Math.max(0, rawData.scoreSkillBonusMultiplier);
+
+		if (rawData.cpuMinLevel != null)
+			this.cpuMinLevel = Std.int(Math.max(1, rawData.cpuMinLevel));
+		if (rawData.cpuMaxLevel != null)
+			this.cpuMaxLevel = Std.int(FlxMath.bound(rawData.cpuMaxLevel, cpuMinLevel, 3));
 	}
 
 	public function toString():String {

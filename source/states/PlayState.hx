@@ -691,7 +691,7 @@ class PlayState extends SuffState {
 
 		getPlayer(playerIndex).currentConfidence -= skill.cost;
 		getPlayer(playerIndex).skillUseCount++;
-		if (Gameplay.currentGamemode.skillsExhaustible) {
+		if (Gameplay.currentGamemode.skillsTangible) {
 			getPlayer(playerIndex).currentSkills.remove(skill);
 		}
 
@@ -726,7 +726,7 @@ class PlayState extends SuffState {
 		}
 		getPlayer(attackerIndex).currentConfidence -= skill.cost;
 		getPlayer(attackerIndex).skillUseCount++;
-		if (Gameplay.currentGamemode.skillsExhaustible) {
+		if (Gameplay.currentGamemode.skillsTangible) {
 			getPlayer(attackerIndex).currentSkills.remove(skill);
 		}
 
@@ -1032,14 +1032,15 @@ class PlayState extends SuffState {
 		for (num => char in characterGroup) {
 			if (char.cpuControlled) {
 				allHumanPlayers = false;
-				if (char.cpuSkillLevel != Constants.CPU_SKILL_LIMIT[1])
+				if (char.cpuSkillLevel < Constants.CPU_SKILL_LIMIT[1])
 					allCpuAtHighestLevel = false;
-			}
-			if (char.cpuControlled || char.getPressurePercentage() > 1) {
 				continue;
 			}
 			if (char.skillUseCount > 0)
 				humansThatUsedSkills++;
+			if (char.getPressurePercentage() > 1) {
+				continue;
+			}
 
 			Achievements.advanceProgress('firstWin', [true]);
 			Achievements.advanceProgress('allGameModeWins', [Gameplay.currentGamemode.id]);

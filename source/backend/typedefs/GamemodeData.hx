@@ -13,14 +13,15 @@ typedef GamemodeData = {
 	?cylinderDamageChangeOnBlank:Int,
 	?cylinderTrueRandomness:Bool,
 
-	?skillsExhaustible:Bool,
+	?skillsTangible:Bool,
 	?skillsFixedPool:Array<String>,
 	?skillsRandomPool:Array<String>,
 	?skillsCostMultiplier:Float,
 	?skillsReplenishCountOnLive:Int,
 	?skillsReplenishCountOnBlank:Int,
 
-	?playerCount:Int,
+	?cpuMinLevel:Int,
+	?cpuMaxLevel:Int,
 
 	?scoreWinBonusMultiplier:Float,
 	?scoreEdgingBonusMultiplierRange:Array<Float>,

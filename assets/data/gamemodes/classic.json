@@ -3,5 +3,7 @@
 
 	"cylinderTrueRandomness": true,
 	"skillsFixedPool": ["sabotage"],
-	"skillsCostMultiplier": 0
+	"skillsCostMultiplier": 0,
+
+	"cpuMaxLevel": 2
 }
