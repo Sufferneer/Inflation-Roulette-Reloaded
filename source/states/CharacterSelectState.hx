@@ -678,7 +678,7 @@ class CharacterSelectState extends SuffState {
 		var stageID = stages[curStage];
 		var stage = new FlxSprite();
 		stage.loadGraphic(Paths.image('ui/menus/characterSelect/stages/blurred/' + stageID));
-		stage.setGraphicSize(FlxG.width, FlxG.height);
+		stage.setGraphicSize(FlxG.width);
 		stage.updateHitbox();
 		stage.antialiasing = !Preferences.data.enableForcedAliasing;
 		stage.y = (FlxG.height / 2 - stage.height) / 2;

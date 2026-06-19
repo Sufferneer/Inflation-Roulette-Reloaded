@@ -96,6 +96,7 @@ class PlayState extends SuffState {
 	var isManuallyFocusingStage:Bool = false;
 
 	public var camGame:FlxCamera;
+	public var camEffects:FlxCamera;
 	public var camHUD:FlxCamera;
 	public var camOther:FlxCamera;
 
@@ -114,14 +115,17 @@ class PlayState extends SuffState {
 		RecordingUtil.checkIfRecording();
 
 		camGame = new FlxCamera();
+		camEffects = new FlxCamera();
 		camHUD = new FlxCamera();
 		camOther = new FlxCamera();
+		camEffects.bgColor.alpha = 0;
 		camHUD.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
 
 		skillCardsGroupPaddingX = 10 + ScreenSafeArea.X;
 
 		FlxG.cameras.reset(camGame);
+		FlxG.cameras.add(camEffects, false);
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.add(camOther, false);
 		camHUD.visible = !Preferences.data.hideHUD;
@@ -186,6 +190,7 @@ class PlayState extends SuffState {
 
 		if (!hasSeenStartCutscene && FlxG.random.bool(1 / 64 * 100)) {
 			Achievements.advanceProgress('findCameraman', [true]);
+
 			var cobalt:FlxSprite = new FlxSprite();
 			cobalt.frames = Paths.sparrowAtlas('game/cobalt');
 			cobalt.animation.addByPrefix('appear', 'appear', 24, false);
@@ -193,7 +198,7 @@ class PlayState extends SuffState {
 			cobalt.x = FlxG.width - cobalt.width;
 			cobalt.y = FlxG.height - cobalt.height;
 			cobalt.animation.onFrameChange.add(function(animName, frameNumber, frameIndex) {
-				if (frameNumber == 1) SuffState.playSound(Paths.sound('game/glassTap'));
+				if (frameNumber == 4 || frameNumber == 10) SuffState.playSound(Paths.sound('game/glassTap'));
 			});
 			cobalt.animation.onFinish.add(function(_) {
 				cobalt.destroy();
@@ -214,7 +219,7 @@ class PlayState extends SuffState {
 				cobalt.antialiasing = !Preferences.data.enableForcedAliasing;
 			} else
 				cobalt.color = 0xFF808080;
-			cobalt.camera = camOther;
+			cobalt.camera = camEffects;
 			add(cobalt);
 		}
 
@@ -501,8 +506,10 @@ class PlayState extends SuffState {
 		return maxLength;
 	}
 
-	function playGunContactSound(volume:Float = 1) {
+	function playGunContactSound(glassVolume:Float = 0) {
 		SuffState.playSound(Paths.soundRandom('game/weapon', 1, 3));
+		if (glassVolume <= 0) return;
+		SuffState.playSound(Paths.sound('game/glassTap'), glassVolume);
 	}
 
 	function togglePauseFunctionality(enable:Bool = true) {
@@ -523,24 +530,24 @@ class PlayState extends SuffState {
 
 		// I am sorry future me
 		animAllCharacters('introPartOne', 1, false); // All characters play their first intro animation
-		new FlxTimer().start(1 + getMaximumAnimLength('introPartOne'), function(_:FlxTimer) { // First intro animation delay + 1.5 seconds
+		new FlxTimer().start(1.5 + getMaximumAnimLength('introPartOne'), function(_:FlxTimer) { // First intro animation delay + 1.5 seconds
 			FlxTween.tween(pumpGun, {y: pumpGunY}, 0.5, { // Gun lands on table
 				onComplete: function(_:FlxTween) {
 					animAllCharacters('introPartTwo', 0.5, true); // All characters play their second intro animation
-					new FlxTimer().start(1 + getMaximumAnimLength('introPartTwo'), function(_:FlxTimer) {
+					new FlxTimer().start(1.5 + getMaximumAnimLength('introPartTwo'), function(_:FlxTimer) {
 						finishStartCutscene();
 					});
-					playGunContactSound(); // Gun bounces on table
+					playGunContactSound(1); // Gun bounces on table
 					FlxTween.tween(pumpGun, {y: pumpGunY - 50}, 0.25, {
 						ease: FlxEase.quadOut, onComplete: function(_:FlxTween) { // Gun lands on table 2nd time
 							FlxTween.tween(pumpGun, {y: pumpGunY}, 0.25, {
 								ease: FlxEase.quadIn, onComplete: function(_:FlxTween) { // Gun bounces on table 2nd time
-									playGunContactSound();
+									playGunContactSound(0.5);
 									FlxTween.tween(pumpGun, {y: pumpGunY - 10}, 0.125, {
 										ease: FlxEase.quadOut, onComplete: function(_:FlxTween) { // Gun lands on table FINAL TIME
 											FlxTween.tween(pumpGun, {y: pumpGunY}, 0.125, {
 												ease: FlxEase.quadIn, onComplete: function(_:FlxTween) {
-													playGunContactSound();
+													playGunContactSound(0.25);
 												}
 											});
 										}
@@ -970,7 +977,7 @@ class PlayState extends SuffState {
 				if (Gameplay.currentFiller.particleType == Liquid) {
 					for (i in 0...FlxG.random.int(6, 9)) {
 						var stain = new Stain(FlxG.random.float(0, FlxG.width), FlxG.random.float(0, FlxG.height), Gameplay.currentFiller.particleColor);
-						stain.camera = camHUD;
+						stain.camera = camEffects;
 						members.insert(0, stain);
 					}
 					particleMultiplier = 3;
@@ -1020,17 +1027,19 @@ class PlayState extends SuffState {
 		cameraFocusButton.visible = false;
 
 		var allHumanPlayers:Bool = true;
-		var playersThatUsedSkills:Int = 0;
+		var humansThatUsedSkills:Int = 0;
 		var allCpuAtHighestLevel:Bool = true;
 		for (num => char in characterGroup) {
-			if (char.cpuControlled || char.getPressurePercentage() > 1) {
+			if (char.cpuControlled) {
 				allHumanPlayers = false;
 				if (char.cpuSkillLevel != Constants.CPU_SKILL_LIMIT[1])
 					allCpuAtHighestLevel = false;
+			}
+			if (char.cpuControlled || char.getPressurePercentage() > 1) {
 				continue;
 			}
 			if (char.skillUseCount > 0)
-				playersThatUsedSkills++;
+				humansThatUsedSkills++;
 
 			Achievements.advanceProgress('firstWin', [true]);
 			Achievements.advanceProgress('allGameModeWins', [Gameplay.currentGamemode.id]);
@@ -1039,17 +1048,15 @@ class PlayState extends SuffState {
 			if (char.getPressurePercentage() <= 0)
 				Achievements.advanceProgress('noPressureWin', [true]); else if (char.getPressurePercentage() == 1)
 				Achievements.advanceProgress('fullPressureWin', [true]);
+			if (allCpuAtHighestLevel)
+				Achievements.advanceProgress('winAgainstStrategicCPUs', [true]);
+			if (characterGroup.members.length == 2)
+				Achievements.advanceProgress('twoPlayers', [true]);
+			else if (characterGroup.members.length == 6)
+				Achievements.advanceProgress('sixPlayers', [true]);
 
-			if (!allHumanPlayers) {
-				if (characterGroup.members.length == 2)
-					Achievements.advanceProgress('twoPlayers', [true]);
-				else if (characterGroup.members.length == 6)
-					Achievements.advanceProgress('sixPlayers', [true]);
-				if (allCpuAtHighestLevel)
-					Achievements.advanceProgress('winAgainstStrategicCPUs', [true]);
-			} else {
-				if (playersThatUsedSkills == 1)
-					Achievements.advanceProgress('winByYourself', [true]);
+			if (allHumanPlayers && humansThatUsedSkills == 1) {
+				Achievements.advanceProgress('winByYourself', [true]);
 			}
 		}
 

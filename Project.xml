@@ -16,7 +16,10 @@
 		<config:android attribute="android:requestLegacyExternalStorage=&quot;true&quot;"/>
 		<config:android>
 			<gradle-properties org.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=512m" />
-			<application android:icon="@mipmap/ic_launcher"/>
+			<application
+				android:icon="@mipmap/ic_launcher"
+				android:hasFragileUserData="true"
+			/>
 			<activity android:label="IR: Reloaded"/>
 		</config:android>
 		<dependency name="android.packagingOptions" value="

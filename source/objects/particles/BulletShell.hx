@@ -33,7 +33,7 @@ class BulletShell extends FlxSprite {
 				puff.color = Gameplay.currentFiller.particleColor;
 				FlxG.state.members.insert(FlxG.state.members.indexOf(this), puff);
 				if (Gameplay.currentFiller.particleType == Liquid)
-					puffSpawnTimer = 0.01;
+					puffSpawnTimer = 0.05;
 				else
 					puffSpawnTimer = 0.1;
 			}

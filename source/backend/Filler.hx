@@ -88,7 +88,7 @@ class Filler {
 	public function determineSamples(samples:Int):Int {
 		if (!Preferences.data.decreaseSounds) return samples;
 		if (samples <= 4) return samples;
-		return Std.int(FlxMath.bound(this.bursts.samples / 2, 1, 10));
+		return Std.int(FlxMath.bound(samples / 2, 1, 10));
 	}
 
 	public function getGurgleSound() {

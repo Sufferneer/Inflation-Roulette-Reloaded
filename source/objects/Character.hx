@@ -354,7 +354,7 @@ class Character extends FlxSprite {
 
 		if (discoloration != null) {
 			discoloration.setMask(mask.frame.parent.bitmap);
-			if (currentPressure > 0) {
+			if (currentPressure > 0 && currentPressure <= maxPressure) {
 				// trace(discoloration.strength);
 				discoloration.strength += 0.02 * elapsed * getPressurePercentage();
 			}

@@ -17,7 +17,7 @@
 		"samples": 1
 	},
 
-	"gravityMultiplier": 3,
+	"gravityMultiplier": 2,
 	"stumbleForce": 5,
 	"npcOnPop": "slime"
 }
