@@ -33,11 +33,11 @@ class Paths {
 	 * Preload belly sounds to memory to prevent crashes and lag spikes.
 	 */
 	public static function precacheBellySounds() {
-		var creaks:FillerSoundData = GameplayManager.currentFiller?.creaks;
-		var gurgles:FillerSoundData = GameplayManager.currentFiller?.gurgles;
-		var belches:FillerSoundData = GameplayManager.currentFiller?.belches;
-		var leaks:FillerSoundData = GameplayManager.currentFiller?.leaks;
-		var bursts:FillerSoundData = GameplayManager.currentFiller?.bursts;
+		var creaks:FillerSoundData = Gameplay.currentFiller?.creaks;
+		var gurgles:FillerSoundData = Gameplay.currentFiller?.gurgles;
+		var belches:FillerSoundData = Gameplay.currentFiller?.belches;
+		var leaks:FillerSoundData = Gameplay.currentFiller?.leaks;
+		var bursts:FillerSoundData = Gameplay.currentFiller?.bursts;
 		if (creaks != null) {
 			for (i in 1...creaks.samples + 1) {
 				var key:String = 'game/inflation/${creaks.archetype}/creaks/creak_' + i;
@@ -477,12 +477,14 @@ class Paths {
 	 * @param key The directory of both the image and XML file.
 	 * @param allowGPU Whether to allow VRAM to store the texture altas or not.
 	 */
-	inline static public function sparrowAtlas(key:String, ?allowGPU:Bool = true):FlxAtlasFrames {
+	inline static public function sparrowAtlas(key:String, xmlPath:String = null, ?allowGPU:Bool = true):FlxAtlasFrames {
 		var imageLoaded:FlxGraphic = image(key, allowGPU);
 		#if _ALLOW_ADDONS
 		var xmlExists:Bool = false;
 
-		var xml:String = addonsXml(key);
+		if (xmlPath == null)
+			xmlPath = key;
+		var xml:String = addonsXml(xmlPath);
 		if (FileSystem.exists(xml))
 			xmlExists = true;
 

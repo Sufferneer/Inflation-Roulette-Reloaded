@@ -3,7 +3,7 @@ package substates;
 import states.PlayState;
 import backend.CharacterManager;
 import backend.Gamemode;
-import backend.GameplayManager;
+import backend.Gameplay;
 import states.CharacterSelectState;
 import ui.objects.SuffBox;
 import ui.objects.SuffIconButton;
@@ -130,10 +130,10 @@ class GamemodeSelectSubState extends SuffSubState {
 		CharacterManager.setPlayerCount(Std.int(playerCountSlider.currentValue));
 		switch (gamemode.id) {
 			case 'quickPlay':
-				GameplayManager.currentGamemode = GameplayManager.defaultGamemode;
-				GameplayManager.currentStage = FlxG.random.getObject(GameplayManager.globalStageList);
-				GameplayManager.currentFiller = new Filler(FlxG.random.getObject(GameplayManager.globalFillerList));
-				// CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
+				Gameplay.currentGamemode = Gameplay.defaultGamemode;
+				Gameplay.currentStage = FlxG.random.getObject(Gameplay.globalStageList);
+				Gameplay.currentFiller = new Filler(FlxG.random.getObject(Gameplay.globalFillerList));
+				// CharacterManager.setPlayerCount(Gameplay.currentGamemode.playerCount);
 				var leRandom = [];
 				var leCPUControl = [];
 				for (num => i in CharacterManager.selectedCharacterList) {
@@ -148,15 +148,15 @@ class GamemodeSelectSubState extends SuffSubState {
 				CharacterManager.parseRandomCharacters();
 				trace('Current characters: ', CharacterManager.selectedCharacterList);
 				trace('Current CPU level: ', CharacterManager.cpuLevel);
-				trace('Current stage: ', GameplayManager.currentStage);
-				trace('Current filler: ', GameplayManager.currentFiller.id);
+				trace('Current stage: ', Gameplay.currentStage);
+				trace('Current filler: ', Gameplay.currentFiller.id);
 				openSubState(new GameOnSubState(new PlayState()));
 			default:
-				GameplayManager.currentGamemode = gamemode;
-				// CharacterManager.setPlayerCount(GameplayManager.currentGamemode.playerCount);
+				Gameplay.currentGamemode = gamemode;
+				// CharacterManager.setPlayerCount(Gameplay.currentGamemode.playerCount);
 				SuffState.switchState(new CharacterSelectState());
 		}
-		trace('Current gamemode: ', GameplayManager.currentGamemode);
+		trace('Current gamemode: ', Gameplay.currentGamemode);
 	}
 
 	function exitMenu() {

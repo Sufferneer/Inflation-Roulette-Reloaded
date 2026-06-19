@@ -12,6 +12,7 @@ language
 achievements
 resultsStart
 resultsLoop
+addons
 stages/classic
 stages/void
 stages/classicAlt

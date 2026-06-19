@@ -3,6 +3,8 @@
 	"gasColor": "#FFFFFF",
 	"liquidColor": "#400010",
 
+	"particleType": "liquid",
+
 	"gurgles": {
 		"archetype": "liquid",
 		"samples": 20

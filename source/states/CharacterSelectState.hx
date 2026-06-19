@@ -17,7 +17,7 @@ import ui.objects.ReadySign;
 import ui.objects.SuffBoolean;
 import ui.objects.SuffSlider;
 import ui.objects.SuffIconButton;
-import backend.GameplayManager;
+import backend.Gameplay;
 import shaders.DissolveShader;
 import ui.objects.StageCard;
 import ui.objects.FillerCard;
@@ -88,7 +88,7 @@ class CharacterSelectState extends SuffState {
 			characterList.push('random');
 		}
 
-		var fillerList = GameplayManager.globalFillerList.copy();
+		var fillerList = Gameplay.globalFillerList.copy();
 		if (fillerList.length >= 3) {
 			fillerList.push('random');
 		}
@@ -197,7 +197,7 @@ class CharacterSelectState extends SuffState {
 		marginRight.x = FlxG.width - marginRight.width;
 
 		add(stageSelectGroup);
-		stages = GameplayManager.globalStageList.copy();
+		stages = Gameplay.globalStageList.copy();
 		stages.push('random');
 		// trace(stages);
 		for (num => i in stages) {
@@ -711,7 +711,7 @@ class CharacterSelectState extends SuffState {
 				wha.disabled = true;
 			}
 		}
-		GameplayManager.currentStage = stage;
+		Gameplay.currentStage = stage;
 		leftStageButton.disabled = true;
 		rightStageButton.disabled = true;
 		cardTweens.set('leftStageButton', FlxTween.tween(leftStageButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
@@ -735,9 +735,9 @@ class CharacterSelectState extends SuffState {
 		}
 		var fillerID = fillerGroup.members[fillerIndex].filler.id;
 		if (fillerID != 'random')
-			GameplayManager.currentFiller = new Filler(fillerID);
+			Gameplay.currentFiller = new Filler(fillerID);
 		else
-			GameplayManager.currentFiller = new Filler(FlxG.random.getObject(GameplayManager.globalFillerList));
+			Gameplay.currentFiller = new Filler(FlxG.random.getObject(Gameplay.globalFillerList));
 		if (fillerLeft != null) {
 			FlxTween.cancelTweensOf(fillerLeft, ['x']);
 			FlxTween.tween(fillerLeft, {x: bannerGroup.x - fillerLeft.width}, 1, {ease: FlxEase.cubeInOut});
@@ -765,7 +765,7 @@ class CharacterSelectState extends SuffState {
 				});
 			}
 		}
-		trace('Current filler', GameplayManager.currentFiller);
+		trace('Current filler', Gameplay.currentFiller);
 	}
 
 	function moveOnToPlayerSettings() {
@@ -865,8 +865,8 @@ class CharacterSelectState extends SuffState {
 		for (i in CharacterManager.cpuLevel) {
 			characterSkillLevel += i;
 		}
-		if (GameplayManager.currentStage == 'random') {
-			GameplayManager.currentStage = FlxG.random.getObject(GameplayManager.globalStageList);
+		if (Gameplay.currentStage == 'random') {
+			Gameplay.currentStage = FlxG.random.getObject(Gameplay.globalStageList);
 		}
 		save.data.characterSkillLevel = characterSkillLevel;
 		save.flush();

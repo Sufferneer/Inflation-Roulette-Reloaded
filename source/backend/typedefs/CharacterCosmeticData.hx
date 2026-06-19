@@ -5,6 +5,7 @@ typedef CharacterCosmeticData = {
 	animations:Array<AnimationData>,
 	?belchThreshold:Int,
 	?leakThreshold:Int,
+	?navelLeakThreshold:Int,
 	?gurgleThreshold:Int,
 	?creakThreshold:Int,
 	?voicePitch:Float,

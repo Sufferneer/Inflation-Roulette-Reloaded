@@ -149,6 +149,8 @@ class SuffButton extends FlxSpriteGroup {
 		btnOutline.color = !value ? btnOutlineColor : btnOutlineColorDisabled;
 		if (btnText != null)
 			btnText.color = !value ? btnTextColor : btnTextColorDisabled;
+		if (btnIcon != null)
+			btnIcon.color = !value ? btnTextColor : btnTextColorDisabled;
 		return value;
 	}
 

@@ -192,7 +192,10 @@ class Achievements {
 						requirements.push(item);
 				}
 		}
+		trace('Achievement $id advanced');
 		var curLocked:Bool = isLocked(id);
+		if (!curLocked)
+			trace('Achievement $id got!');
 		if (prevLocked != curLocked && !curLocked && prevLocked && Achievements.achievementsList[id].silent != true) {
 			AchievementToast.enqueue(id);
 		}

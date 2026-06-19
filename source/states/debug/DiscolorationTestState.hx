@@ -9,14 +9,13 @@ class DiscolorationTestState extends SuffState {
 	var exitButton:SuffIconButton;
 
 	var character:Character;
-	var discolorationShader:DiscolorationMaskedShader;
 
 	override function create() {
 		super.create();
 
-		character = new Character('shib', FlxG.width / 2, FlxG.height * 0.75);
-		discolorationShader = new DiscolorationMaskedShader([96, 128, 255], character.mask.framePixels);
-		character.shader = discolorationShader;
+		character = new Character('shib', FlxG.width / 2, FlxG.height * 0.825);
+		character.discoloration = new DiscolorationMaskedShader([96, 128, 255]);
+		character.discoloration.destabilization = [0, 0, 0];
 		add(character);
 
 		exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);
@@ -37,18 +36,16 @@ class DiscolorationTestState extends SuffState {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		discolorationShader.mask = character.mask.framePixels;
-
 		if (Controls.justPressed('exit')) {
 			exitMenu();
 		}
 
 		if (Controls.justPressed('left') || Controls.justPressed('right')) {
 			if (Controls.justPressed('left'))
-				discolorationShader.strength -= 0.1;
+				character.discoloration.strength -= 0.1;
 			else if (Controls.justPressed('right'))
-				discolorationShader.strength += 0.1;
-			trace(discolorationShader.strength);
+				character.discoloration.strength += 0.1;
+			trace(character.discoloration.strength);
 		}
 
 		if (Controls.justPressed('up') || Controls.justPressed('down')) {

@@ -2,7 +2,7 @@ package states;
 
 import ui.objects.GameIcon;
 import backend.CharacterManager;
-import backend.GameplayManager;
+import backend.Gameplay;
 import backend.enums.RoundRandomStatus;
 import backend.enums.SuffTransitionStyle;
 import objects.Character;
@@ -19,10 +19,12 @@ import objects.particles.SkillIndicator;
 import ui.objects.RevealBullet;
 import shaders.GaussianBlurShader;
 import objects.particles.Bloosh;
-import objects.particleEmitters.PuffEmitter;
+import objects.particleEmitters.PopEmitter;
 import objects.particles.BulletShell;
 import objects.particles.PlayerIndicator;
 import backend.RecordingUtil;
+import objects.particles.Liquid;
+import objects.particles.Stain;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
@@ -132,7 +134,7 @@ class PlayState extends SuffState {
 
 		instance = this;
 
-		stage = new Stage(GameplayManager.currentStage);
+		stage = new Stage(Gameplay.currentStage);
 
 		currentSessionEnablePopping = Preferences.data.enablePopping;
 
@@ -143,7 +145,7 @@ class PlayState extends SuffState {
 		FlxG.camera.followLerp = 0.1 * Preferences.data.cameraSpeed;
 		FlxG.camera.setScrollBoundsRect(stage.data.cameraBounds[0], stage.data.cameraBounds[1], stage.data.cameraBounds[2], stage.data.cameraBounds[3]);
 
-		reloadCylinder(GameplayManager.currentGamemode.cylinderLiveCount);
+		reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
 
 		pumpGun = new FlxSprite().loadGraphic(Paths.image('game/pumpGun'));
 
@@ -168,7 +170,7 @@ class PlayState extends SuffState {
 		}
 
 		// skillsFixedPool or skillsRandomPool is not empty
-		if (GameplayManager.currentGamemode.skillsFixedPool.length + GameplayManager.currentGamemode.skillsRandomPool.length > 0) {
+		if (Gameplay.currentGamemode.skillsFixedPool.length + Gameplay.currentGamemode.skillsRandomPool.length > 0) {
 			for (char in characterGroup) {
 				char.currentSkills = [];
 			}
@@ -367,7 +369,7 @@ class PlayState extends SuffState {
 			finishStartCutscene();
 		}
 
-		Window.setTitle(Language.getPhrase('game.windowDisplay', [Language.getPhrase('gamemode.' + GameplayManager.currentGamemode.id + '.name'), characterGroup.members.length]));
+		Window.setTitle(Language.getPhrase('game.windowDisplay', [Language.getPhrase('gamemode.' + Gameplay.currentGamemode.id + '.name'), characterGroup.members.length]));
 	}
 
 	private function set_isSelectingPlayer(value:Bool):Bool {
@@ -570,11 +572,11 @@ class PlayState extends SuffState {
 	function reloadCylinder(liveRounds:Int = 1) {
 		cylinderContent = [];
 		var liveRoundsInserted:Int = 0;
-		for (i in 0...GameplayManager.currentGamemode.cylinderSize) {
+		for (i in 0...Gameplay.currentGamemode.cylinderSize) {
 			cylinderContent.push(false);
 		}
-		while (liveRoundsInserted < Math.min(GameplayManager.currentGamemode.cylinderSize, liveRounds)) {
-			var leIndex = FlxG.random.int(0, GameplayManager.currentGamemode.cylinderSize - 1);
+		while (liveRoundsInserted < Math.min(Gameplay.currentGamemode.cylinderSize, liveRounds)) {
+			var leIndex = FlxG.random.int(0, Gameplay.currentGamemode.cylinderSize - 1);
 			if (cylinderContent[leIndex] != true) {
 				cylinderContent[leIndex] = true;
 				liveRoundsInserted++;
@@ -633,7 +635,7 @@ class PlayState extends SuffState {
 						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
 					}
 				}
-				reloadCylinder(GameplayManager.currentGamemode.cylinderLiveCount);
+				reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
 			case 'sabotage':
 				cylinderContent[0] = false;
 				if (cylinderContent.length > 1) {
@@ -641,7 +643,7 @@ class PlayState extends SuffState {
 				} else {
 					cylinderContent.push(true);
 				}
-				if (GameplayManager.currentGamemode.cylinderTrueRandomness) {
+				if (Gameplay.currentGamemode.cylinderTrueRandomness) {
 					roundRandomStatuses[0] = IMPOSSIBLE;
 					if (roundRandomStatuses.length > 1) {
 						roundRandomStatuses[1] = GUARANTEED;
@@ -667,7 +669,7 @@ class PlayState extends SuffState {
 				cylinderContent[0] = !cylinderContent[0];
 				if (!getPlayer(playerIndex).cpuControlled) {
 					playerUsedPolarize = true;
-					if (!cylinderContent[0] && cylinderContent.length >= GameplayManager.currentGamemode.cylinderSize && !GameplayManager.currentGamemode.cylinderTrueRandomness)
+					if (!cylinderContent[0] && cylinderContent.length >= Gameplay.currentGamemode.cylinderSize && !Gameplay.currentGamemode.cylinderTrueRandomness)
 						luckyPolarize = true;
 				}
 			case 'deflate':
@@ -682,7 +684,7 @@ class PlayState extends SuffState {
 
 		getPlayer(playerIndex).currentConfidence -= skill.cost;
 		getPlayer(playerIndex).skillUseCount++;
-		if (GameplayManager.currentGamemode.skillsExhaustible) {
+		if (Gameplay.currentGamemode.skillsExhaustible) {
 			getPlayer(playerIndex).currentSkills.remove(skill);
 		}
 
@@ -717,7 +719,7 @@ class PlayState extends SuffState {
 		}
 		getPlayer(attackerIndex).currentConfidence -= skill.cost;
 		getPlayer(attackerIndex).skillUseCount++;
-		if (GameplayManager.currentGamemode.skillsExhaustible) {
+		if (Gameplay.currentGamemode.skillsExhaustible) {
 			getPlayer(attackerIndex).currentSkills.remove(skill);
 		}
 
@@ -804,7 +806,7 @@ class PlayState extends SuffState {
 
 	public function shoot(playerIndex:Int, passToPlayer:Bool = true) {
 		var dealDamage:Bool = false;
-		if (!GameplayManager.currentGamemode.cylinderTrueRandomness)
+		if (!Gameplay.currentGamemode.cylinderTrueRandomness)
 			dealDamage = cylinderContent[0]; else {
 			switch (roundRandomStatuses[0]) {
 				case GUARANTEED:
@@ -812,7 +814,7 @@ class PlayState extends SuffState {
 				case IMPOSSIBLE:
 					dealDamage = false;
 				default:
-					dealDamage = FlxG.random.bool((GameplayManager.currentGamemode.cylinderLiveCount / GameplayManager.currentGamemode.cylinderSize) * 100);
+					dealDamage = FlxG.random.bool((Gameplay.currentGamemode.cylinderLiveCount / Gameplay.currentGamemode.cylinderSize) * 100);
 			}
 			roundRandomStatuses.shift();
 			if (roundRandomStatuses.length <= 0)
@@ -847,28 +849,28 @@ class PlayState extends SuffState {
 						shoot(playerIndex, passToPlayer);
 					}));
 				} else {
-					liveRoundDamage = GameplayManager.currentGamemode.cylinderInitialDamage;
+					liveRoundDamage = Gameplay.currentGamemode.cylinderInitialDamage;
 					cylinderContent.shift();
 					checkToReloadCylinder();
-					if (GameplayManager.currentGamemode.skillsFixedPool.length + GameplayManager.currentGamemode.skillsRandomPool.length > 0) {
-						giveSkillsToAllPlayers(GameplayManager.currentGamemode.skillsReplenishCountOnLive);
+					if (Gameplay.currentGamemode.skillsFixedPool.length + Gameplay.currentGamemode.skillsRandomPool.length > 0) {
+						giveSkillsToAllPlayers(Gameplay.currentGamemode.skillsReplenishCountOnLive);
 					}
 				}
 			} else {
 				cylinderContent.shift();
 				checkToReloadCylinder();
-				if (GameplayManager.currentGamemode.skillsFixedPool.length + GameplayManager.currentGamemode.skillsRandomPool.length > 0) {
-					giveSkillsToAllPlayers(GameplayManager.currentGamemode.skillsReplenishCountOnLive);
+				if (Gameplay.currentGamemode.skillsFixedPool.length + Gameplay.currentGamemode.skillsRandomPool.length > 0) {
+					giveSkillsToAllPlayers(Gameplay.currentGamemode.skillsReplenishCountOnLive);
 				}
 			}
 
-			liveRoundDamage += GameplayManager.currentGamemode.cylinderDamageChangeOnLive;
+			liveRoundDamage += Gameplay.currentGamemode.cylinderDamageChangeOnLive;
 
 			var percent = getPlayer(playerIndex).getPressurePercentage();
 			var fwoompSuffix:String = percent >= 0.5 ? 'Large' : 'Small';
 			SuffState.playSound(Paths.soundRandom('game/inflation/universal/fwoomps/fwoomp' + fwoompSuffix, 1, Constants.FWOOMPS_SAMPLE_COUNT), 0.75, 0.5);
 			if (Preferences.data.enableBellyCreaks) {
-				SuffState.playSound(GameplayManager.currentFiller.getCreakSound(), percent, percent * 1.5 + 1);
+				SuffState.playSound(Gameplay.currentFiller.getCreakSound(), percent, percent * 1.5 + 1);
 			}
 
 			screenShake(0.01, 0.1);
@@ -876,10 +878,10 @@ class PlayState extends SuffState {
 			getPlayer(playerIndex).currentConfidence += getPlayer(playerIndex).confidenceChangeOnBlankShot;
 			cylinderContent.shift();
 			checkToReloadCylinder();
-			if (GameplayManager.currentGamemode.skillsFixedPool.length + GameplayManager.currentGamemode.skillsRandomPool.length > 0) {
-				giveSkillsToAllPlayers(GameplayManager.currentGamemode.skillsReplenishCountOnBlank);
+			if (Gameplay.currentGamemode.skillsFixedPool.length + Gameplay.currentGamemode.skillsRandomPool.length > 0) {
+				giveSkillsToAllPlayers(Gameplay.currentGamemode.skillsReplenishCountOnBlank);
 			}
-			liveRoundDamage += GameplayManager.currentGamemode.cylinderDamageChangeOnBlank;
+			liveRoundDamage += Gameplay.currentGamemode.cylinderDamageChangeOnBlank;
 		}
 		trace(cylinderContent);
 
@@ -917,8 +919,8 @@ class PlayState extends SuffState {
 	}
 
 	function checkToReloadCylinder() {
-		if ((!cylinderContent.contains(true) && GameplayManager.currentGamemode.cylinderReloadOnNoLives) || cylinderContent.length <= 0) {
-			reloadCylinder(GameplayManager.currentGamemode.cylinderLiveCount);
+		if ((!cylinderContent.contains(true) && Gameplay.currentGamemode.cylinderReloadOnNoLives) || cylinderContent.length <= 0) {
+			reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
 		}
 	}
 
@@ -935,17 +937,17 @@ class PlayState extends SuffState {
 	}
 
 	function giveSkillsToAllPlayers(count:Int = 1) {
-		var leArray = (GameplayManager.currentGamemode.skillsRandomPool.length > 0) ? GameplayManager.currentGamemode.skillsRandomPool : GameplayManager.currentGamemode.skillsFixedPool;
-		var leCount = (GameplayManager.currentGamemode.skillsRandomPool.length > 0) ? count : leArray.length;
+		var leArray = (Gameplay.currentGamemode.skillsRandomPool.length > 0) ? Gameplay.currentGamemode.skillsRandomPool : Gameplay.currentGamemode.skillsFixedPool;
+		var leCount = (Gameplay.currentGamemode.skillsRandomPool.length > 0) ? count : leArray.length;
 		for (char in characterGroup) {
-			if (GameplayManager.currentGamemode.skillsFixedPool.length > 0)
+			if (Gameplay.currentGamemode.skillsFixedPool.length > 0)
 				char.currentSkills = [];
 			for (i in 0...leCount) {
 				var skillName = '';
-				if (GameplayManager.currentGamemode.skillsRandomPool.length > 0)
-					skillName = GameplayManager.currentGamemode.skillsRandomPool[FlxG.random.int(0, GameplayManager.currentGamemode.skillsRandomPool.length - 1)]; else if (GameplayManager.currentGamemode.skillsFixedPool.length > 0)
+				if (Gameplay.currentGamemode.skillsRandomPool.length > 0)
+					skillName = Gameplay.currentGamemode.skillsRandomPool[FlxG.random.int(0, Gameplay.currentGamemode.skillsRandomPool.length - 1)]; else if (Gameplay.currentGamemode.skillsFixedPool.length > 0)
 					skillName = leArray[i];
-				char.currentSkills.push(new Skill(skillName, null, GameplayManager.currentGamemode.skillsCostMultiplier));
+				char.currentSkills.push(new Skill(skillName, null, Gameplay.currentGamemode.skillsCostMultiplier));
 			}
 			if (char.currentSkills.length > 3)
 				char.currentSkills.shift(); // Maximum of three skills
@@ -963,16 +965,26 @@ class PlayState extends SuffState {
 			members.insert(members.indexOf(characterGroup) + 1, new Bloosh(character.x, character.y - character.height / 2));
 			if (!Preferences.data.decreaseDetail) {
 				members.insert(members.indexOf(characterGroup) + 1, new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY, character.maxPressure));
-				members.insert(members.indexOf(characterGroup) + 1, new PuffEmitter(character.x, character.y - character.height / 2));
+
+				var particleMultiplier:Float = 1;
+				if (Gameplay.currentFiller.particleType == Liquid) {
+					for (i in 0...FlxG.random.int(6, 9)) {
+						var stain = new Stain(FlxG.random.float(0, FlxG.width), FlxG.random.float(0, FlxG.height), Gameplay.currentFiller.particleColor);
+						stain.camera = camHUD;
+						members.insert(0, stain);
+					}
+					particleMultiplier = 3;
+				}
+				members.insert(members.indexOf(characterGroup) + 1, new PopEmitter(character.x, character.y - character.height / 2, stage.data.characterY, Gameplay.currentFiller.particleType, particleMultiplier, Gameplay.currentFiller.particleColor));
 			}
-			SuffState.playSound(GameplayManager.currentFiller.getBurstSound());
+			SuffState.playSound(Gameplay.currentFiller.getBurstSound());
 			getPlayer(playerIndex).disableBellySounds = true;
 			screenShake(0.03, 0.5);
 			screenFlash();
 			getPlayer(playerIndex).acceleration.y = 4800 * getPlayer(playerIndex).poppingGravityMultiplier;
 			getPlayer(playerIndex).velocity.x += 320 * (playerIndex >= characterGroup.members.length / 2 ? 1 : -1) * getPlayer(playerIndex)
-			.poppingVelocityMultiplier[0];
-			getPlayer(playerIndex).velocity.y = -1600 * getPlayer(playerIndex).poppingVelocityMultiplier[1];
+			.poppingVelocityMultiplier[0] / Gameplay.currentFiller.gravityMultiplier;
+			getPlayer(playerIndex).velocity.y = -1200 * getPlayer(playerIndex).poppingVelocityMultiplier[1];
 		} else {
 			getPlayer(playerIndex).playAnim('idle');
 		}
@@ -1021,9 +1033,9 @@ class PlayState extends SuffState {
 				playersThatUsedSkills++;
 
 			Achievements.advanceProgress('firstWin', [true]);
-			Achievements.advanceProgress('allGameModeWins', [GameplayManager.currentGamemode.id]);
+			Achievements.advanceProgress('allGameModeWins', [Gameplay.currentGamemode.id]);
 			Achievements.advanceProgress('allCharacterWins', [char.id]);
-			Achievements.advanceProgress('allFillerWins', [GameplayManager.currentFiller.id]);
+			Achievements.advanceProgress('allFillerWins', [Gameplay.currentFiller.id]);
 			if (char.getPressurePercentage() <= 0)
 				Achievements.advanceProgress('noPressureWin', [true]); else if (char.getPressurePercentage() == 1)
 				Achievements.advanceProgress('fullPressureWin', [true]);

@@ -8,7 +8,7 @@ import objects.CharacterSimple;
 import objects.particleEmitters.ScrapEmitter;
 import substates.GalleryArtworkSubState;
 import flixel.graphics.FlxGraphic;
-import backend.GameplayManager;
+import backend.Gameplay;
 
 class GalleryEntryState extends SuffState {
 	var allowInput:Bool = false;
@@ -250,7 +250,7 @@ class GalleryEntryState extends SuffState {
 				if (clickRate > 5 && !character.disableBellySounds && Preferences.data.enablePopping) {
 					character.disableBellySounds = true;
 					character.popped = true;
-					SuffState.playSound(GameplayManager.currentFiller.getBurstSound());
+					SuffState.playSound(Gameplay.currentFiller.getBurstSound());
 					if (!Preferences.data.enablePhotosensitiveMode)
 						FlxG.camera.flash(0xFFFFFFFF, 0.125);
 					FlxG.camera.shake(0.02 * Preferences.data.cameraEffectIntensity, 0.125);

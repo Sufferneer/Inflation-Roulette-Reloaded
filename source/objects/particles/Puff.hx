@@ -2,6 +2,8 @@ package objects.particles;
 
 class Puff extends FlxSprite {
 	var floorY:Float = 690;
+	var targetScale:Float = 1;
+	var scaleLerp:Float = 0;
 	public function new(x, y, floorY) {
 		super(x, y);
 		var graphic = Paths.image('game/particles/puff');
@@ -11,14 +13,15 @@ class Puff extends FlxSprite {
 		offset.x += width / 2;
 		offset.y += height / 2;
 		alpha = 0.5;
-		var scale = 1 + FlxG.random.float();
-		this.scale.set(scale, scale);
+		targetScale = 1 + FlxG.random.float() * 0.25;
 		this.floorY = floorY;
 		angularVelocity = FlxG.random.float(-45, 45);
 	}
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
+		scaleLerp = FlxMath.lerp(scaleLerp, targetScale, elapsed * 8);
+		this.scale.set(scaleLerp, scaleLerp);
 		if (velocity.x > 0) {
 			velocity.x -= 1080 * elapsed;
 		} else if (velocity.x < 0) {
@@ -31,9 +34,8 @@ class Puff extends FlxSprite {
 		}
 		if (y > floorY)
 			velocity.y = 0;
-		if (Math.abs(velocity.x) <= 32) {
-			scale.x -= elapsed / 2;
-			scale.y -= elapsed / 2;
+		if (Math.abs(velocity.x) <= 16) {
+			targetScale -= elapsed / 2;
 		}
 		if (this != null && (scale.x <= 0 || scale.y <= 0)) {
 			this.destroy();

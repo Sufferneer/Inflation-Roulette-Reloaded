@@ -1,9 +1,11 @@
 {
 	"displayColor": "#3030C0",
-	"liquidColor": "#400080",
+	"liquidColor": "#503080",
 
-	"tintColor": "#6060FF",
-	"decolorizeFactor": [0.25, -0.25, 0.5],
+	"particleType": "liquid",
+
+	"tintColor": "#6040FF",
+	"destabilizationFactor": [0.25, 0, 0.5],
 
 	"gurgles": {
 		"archetype": "berry",

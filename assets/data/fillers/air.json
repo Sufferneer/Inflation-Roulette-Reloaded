@@ -2,6 +2,8 @@
 	"displayColor": "#FFD400",
 	"gasColor": "#FFFFFF",
 
+	"particleType": "gas",
+
 	"gurgles": {
 		"archetype": "gas",
 		"samples": 17

@@ -1,4 +1,5 @@
 package objects.particles;
+import backend.Gameplay;
 
 class BulletShell extends FlxSprite {
 	var floorY:Float = 690;
@@ -23,14 +24,18 @@ class BulletShell extends FlxSprite {
 	var bouncesLeft:Int = 6;
 	var puffSpawnTimer:Float = 0.1;
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		if (spawnPuff) {
 			puffSpawnTimer -= elapsed;
 			if (puffSpawnTimer <= 0) {
-				var puff = new Puff(this.x, this.y, floorY);
+				var puff = Type.createInstance(Gameplay.currentFiller.particleType, [this.x, this.y, floorY]);
 				puff.scale.set(0.625, 0.625);
+				puff.color = Gameplay.currentFiller.particleColor;
 				FlxG.state.members.insert(FlxG.state.members.indexOf(this), puff);
-				puffSpawnTimer = 0.1;
+				if (Gameplay.currentFiller.particleType == Liquid)
+					puffSpawnTimer = 0.01;
+				else
+					puffSpawnTimer = 0.1;
 			}
 		}
 		if (y >= floorY && bouncesLeft > 0) {
@@ -39,7 +44,8 @@ class BulletShell extends FlxSprite {
 			this.y += velocity.y * elapsed;
 			velocity.x *= 0.75;
 			angularVelocity = FlxG.random.float(-1080, 1080);
-			SuffState.playSound(Paths.sound('game/shell'), Math.pow(bouncesLeft / 6, 2) * 0.5, 1 + FlxG.random.float(-0.02, 0.02));
+			if (!Preferences.data.decreaseSounds)
+				SuffState.playSound(Paths.sound('game/shell'), Math.pow(bouncesLeft / 6, 2) * 0.5, 1 + FlxG.random.float(-0.02, 0.02));
 			if (bouncesLeft <= 0) {
 				velocity.x = velocity.y = acceleration.y = angularVelocity = 0;
 				angle = 90 * FlxG.random.int(-1, 1, [0]);

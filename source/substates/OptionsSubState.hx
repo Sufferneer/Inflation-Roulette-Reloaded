@@ -120,12 +120,33 @@ class OptionsSubState extends SuffSubState {
 			Preferences.data.enableNavelLeaking = value;
 		}, Preferences.data.enableNavelLeaking);
 
-		// GRAPHICS SETTINGS
-		createHeading('visuals');
+		createHeading('performance');
 
 		createBooleanOption('decreaseDetail', function(value:Bool) {
 			Preferences.data.decreaseDetail = value;
 		}, Preferences.data.decreaseDetail);
+
+		createBooleanOption('decreaseSounds', function(value:Bool) {
+			Preferences.data.decreaseSounds = value;
+		}, Preferences.data.decreaseSounds);
+
+		createBooleanOption('enableForcedAliasing', function(value:Bool) {
+			Preferences.data.enableForcedAliasing = value;
+		}, Preferences.data.enableForcedAliasing);
+
+		createBooleanOption('enableGLSL', function(value:Bool) {
+			Preferences.data.enableGLSL = value;
+		}, Preferences.data.enableGLSL);
+
+		#if (openfl && !html5)
+		createBooleanOption("cacheOnGPU",
+		function(value:Bool) {
+			Preferences.data.cacheOnGPU = value;
+		}, Preferences.data.cacheOnGPU);
+		#end
+
+		// GRAPHICS SETTINGS
+		createHeading('visuals');
 
 		createBooleanOption('hideHUD', function(value:Bool) {
 			Preferences.data.hideHUD = value;
@@ -146,14 +167,6 @@ class OptionsSubState extends SuffSubState {
 			Preferences.data.enableFullscreen = value;
 		}, Preferences.data.enableFullscreen);
 		#end
-
-		createBooleanOption('enableForcedAliasing', function(value:Bool) {
-			Preferences.data.enableForcedAliasing = value;
-		}, Preferences.data.enableForcedAliasing);
-
-		createBooleanOption('enableGLSL', function(value:Bool) {
-			Preferences.data.enableGLSL = value;
-		}, Preferences.data.enableGLSL);
 
 		createBooleanOption('alwaysPlayMainMenuAnims', function(value:Bool) {
 			Preferences.data.alwaysPlayMainMenuAnims = value;
@@ -249,13 +262,6 @@ class OptionsSubState extends SuffSubState {
 		createBooleanOption('pauseOnUnfocus', function(value:Bool) {
 			Preferences.data.pauseOnUnfocus = value;
 		}, Preferences.data.pauseOnUnfocus);
-		#end
-
-		#if (openfl && !html5)
-		createBooleanOption("cacheOnGPU",
-			function(value:Bool) {
-				Preferences.data.cacheOnGPU = value;
-			}, Preferences.data.cacheOnGPU);
 		#end
 
 		#if !mobile

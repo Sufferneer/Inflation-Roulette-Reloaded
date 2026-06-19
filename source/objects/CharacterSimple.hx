@@ -4,7 +4,7 @@ import backend.typedefs.CharacterData;
 import backend.typedefs.CharacterCosmeticData;
 import flixel.graphics.frames.FlxAtlasFrames;
 import tjson.TJSON as Json;
-import backend.GameplayManager;
+import backend.Gameplay;
 
 class CharacterSimple extends FlxSprite {
 	// Metadata //
@@ -91,7 +91,7 @@ class CharacterSimple extends FlxSprite {
 					if (gurgleTimer < 0) {
 						var intensity = Math.min(1, (currentPressure - gurgleThreshold + 1) / (maxPressure - gurgleThreshold + 1));
 						gurgleTimer = FlxG.random.float(1.0, 5.0) / intensity;
-						SuffState.playSound(GameplayManager.currentFiller.getGurgleSound(), intensity * 0.65,
+						SuffState.playSound(Gameplay.currentFiller.getGurgleSound(), intensity * 0.65,
 							FlxG.random.float(0.5, 2.0));
 					}
 				}
@@ -102,7 +102,7 @@ class CharacterSimple extends FlxSprite {
 					if (creakTimer < 0) {
 						var intensity = Math.min(1, (currentPressure - creakThreshold + 1) / (maxPressure - creakThreshold + 1));
 						creakTimer = FlxG.random.float(1.0, 5.0) / intensity;
-						SuffState.playSound(GameplayManager.currentFiller.getCreakSound(), intensity * 0.65,
+						SuffState.playSound(Gameplay.currentFiller.getCreakSound(), intensity * 0.65,
 							FlxG.random.float(0.5, 1.0));
 					}
 				}

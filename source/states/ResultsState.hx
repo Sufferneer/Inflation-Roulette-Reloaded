@@ -140,9 +140,8 @@ class ResultsState extends SuffState {
 			var text = new FlxText(0, 0, str, 32);
 			text.y = barUp.height + rank * (text.height + 8);
 			text.color = Constants.PLAYER_COLORS[playerNum];
-			if (leData.charPressure <= 1) {
+			if (leData.charPressure > 1) {
 				var outlineColor = text.color;
-				outlineColor.saturation *= 0.75;
 				text.setBorderStyle(OUTLINE, outlineColor, 0.25);
 			}
 			if (leData.cpuControlled) {

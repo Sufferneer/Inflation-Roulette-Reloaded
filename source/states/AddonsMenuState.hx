@@ -52,7 +52,7 @@ class AddonsMenuState extends SuffState {
 			backToMainMenu();
 		};
 
-		SuffState.playMusic('options');
+		SuffState.playMusic('addons');
 
 		var leAddons = Addons.globalAddons;
 

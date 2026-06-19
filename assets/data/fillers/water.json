@@ -2,6 +2,8 @@
 	"displayColor": "#00C0FF",
 	"liquidColor": "#C0E0FF",
 
+	"particleType": "liquid",
+
 	"gurgles": {
 		"archetype": "liquid",
 		"samples": 20

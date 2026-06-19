@@ -2,6 +2,8 @@
 	"displayColor": "#80FF40",
 	"liquidColor": "#80FF40",
 
+	"particleType": "liquid",
+
 	"gurgles": {
 		"archetype": "slime",
 		"samples": 11
@@ -11,12 +13,11 @@
 		"samples": 5
 	},
 	"bursts": {
-		"archetype": "slime",
+		"archetype": "liquid",
 		"samples": 1
 	},
 
 	"gravityMultiplier": 3,
 	"stumbleForce": 5,
-	"disablePoppingPhysics": true,
 	"npcOnPop": "slime"
 }

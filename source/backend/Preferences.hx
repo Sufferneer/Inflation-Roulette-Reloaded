@@ -39,6 +39,7 @@ class SaveVariables {
 	public var checkForUpdates:Bool = true;
 	public var enableGLSL:Bool = true;
 	public var decreaseDetail:Bool = false;
+	public var decreaseSounds:Bool = false;
 	public var language:String = 'en-US';
 
 	public function new() {

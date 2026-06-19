@@ -6,7 +6,7 @@ typedef FillerData = {
 	?liquidColor:String,
 
 	?tintColor:String,
-	?decolorizeFactor:Array<Float>, // [0, 0, 0]
+	?destabilizationFactor:Array<Float>, // [0, 0, 0]
 
 	?gurgles:FillerSoundData,
 	?creaks:FillerSoundData,
@@ -16,7 +16,8 @@ typedef FillerData = {
 
 	?gravityMultiplier:Float, // 1
 	?stumbleForce:Float, // 0
-	?disablePoppingPhysics:Bool, // false
 	?navelLeaks:Bool, // false
-	?npcOnPop:String // ""
+	?npcOnPop:String, // ""
+
+	?particleType:String,
 }

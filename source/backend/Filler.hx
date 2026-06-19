@@ -1,19 +1,22 @@
 package backend;
 
-import backend.typedefs.GamemodeData;
 import tjson.TJSON as Json;
 import backend.typedefs.FillerSoundData;
 import backend.typedefs.FillerData;
+import objects.particles.Puff;
+import objects.particles.Liquid;
 
 class Filler {
 	public var id:String = 'nameless';
+	public var particleType:Class<FlxSprite> = Puff;
+	public var particleColor:FlxColor = 0xFFFFFFFF;
 
 	public var displayColor:FlxColor = 0xFFFFFFFF;
 	public var gasColor:FlxColor = 0xFFFFFFFF;
 	public var liquidColor:FlxColor = 0xFFFFFFFF;
 
-	public var tintColor:FlxColor = 0xFFFFFFFF;
-	public var decolorizeFactor:Array<Float> = [0, 0, 0];
+	public var tintColor:Null<FlxColor>;
+	public var destabilizationFactor:Array<Float> = [0, 0, 0];
 
 	public var gurgles:FillerSoundData;
 	public var creaks:FillerSoundData;
@@ -23,10 +26,8 @@ class Filler {
 
 	public var gravityMultiplier:Float = 1;
 	public var stumbleForce:Float = 0;
-	public var disablePoppingPhysics:Bool = false;
 	public var navelLeaks:Bool = false;
 	public var npcOnPop:String = '';
-
 
 	public function new(id:String) {
 		this.id = id;
@@ -37,48 +38,57 @@ class Filler {
 			this.gasColor = FlxColor.fromString(rawData.gasColor);
 		if (rawData.liquidColor != null)
 			this.liquidColor = FlxColor.fromString(rawData.liquidColor);
+		if (rawData.particleType != null) {
+			switch (rawData.particleType) {
+				case 'gas':
+					particleType = Puff;
+					particleColor = gasColor;
+				case 'liquid':
+					particleType = Liquid;
+					particleColor = liquidColor;
+			}
+		}
 
 		if (rawData.tintColor != null)
 			this.tintColor = FlxColor.fromString(rawData.tintColor);
-		if (rawData.decolorizeFactor != null)
-			this.decolorizeFactor = rawData.decolorizeFactor;
+		if (rawData.destabilizationFactor != null)
+			this.destabilizationFactor = rawData.destabilizationFactor;
 
 		if (rawData.gurgles != null) {
 			this.gurgles = cast rawData.gurgles;
-			if (Preferences.data.decreaseDetail)
-				this.gurgles.samples = Std.int(FlxMath.bound(this.gurgles.samples / 2, 1, 10));
+			this.gurgles.samples = determineSamples(this.gurgles.samples);
 		}
 		if (rawData.creaks != null) {
 			this.creaks = cast rawData.creaks;
-			if (Preferences.data.decreaseDetail)
-				this.creaks.samples = Std.int(FlxMath.bound(this.creaks.samples / 2, 1, 10));
+			this.creaks.samples = determineSamples(this.creaks.samples);
 		}
 		if (rawData.belches != null) {
 			this.belches = cast rawData.belches;
-			if (Preferences.data.decreaseDetail)
-				this.belches.samples = Std.int(FlxMath.bound(this.belches.samples / 2, 1, 10));
+			this.belches.samples = determineSamples(this.belches.samples);
 		}
 		if (rawData.leaks != null) {
 			this.leaks = cast rawData.leaks;
-			if (Preferences.data.decreaseDetail)
-				this.leaks.samples = Std.int(FlxMath.bound(this.leaks.samples / 2, 1, 10));
+			this.leaks.samples = determineSamples(this.leaks.samples);
 		}
 		if (rawData.bursts != null) {
 			this.bursts = cast rawData.bursts;
-			if (Preferences.data.decreaseDetail)
-				this.bursts.samples = Std.int(FlxMath.bound(this.bursts.samples / 2, 1, 10));
+			this.bursts.samples = determineSamples(this.bursts.samples);
 		}
 
 		if (rawData.gravityMultiplier != null)
 			this.gravityMultiplier = cast rawData.gravityMultiplier;
 		if (rawData.stumbleForce != null)
 			this.stumbleForce = cast rawData.stumbleForce;
-		if (rawData.disablePoppingPhysics != null)
-			this.disablePoppingPhysics = cast rawData.disablePoppingPhysics;
 		if (rawData.navelLeaks != null)
 			this.navelLeaks = cast rawData.navelLeaks;
 		if (rawData.npcOnPop != null)
 			this.npcOnPop = cast rawData.npcOnPop;
+	}
+
+	public function determineSamples(samples:Int):Int {
+		if (!Preferences.data.decreaseSounds) return samples;
+		if (samples <= 4) return samples;
+		return Std.int(FlxMath.bound(this.bursts.samples / 2, 1, 10));
 	}
 
 	public function getGurgleSound() {

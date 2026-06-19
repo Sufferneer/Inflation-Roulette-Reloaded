@@ -470,6 +470,7 @@
 	"gurgleThreshold": 3,
 	"creakThreshold": 4,
 	"leakThreshold": 4,
+	"navelLeakThreshold": 3,
 	"voicePitch": 1,
 	"poppingVelocityMultiplier": [1.0, 1.0],
 	"poppingGravityMultiplier": 1.0,

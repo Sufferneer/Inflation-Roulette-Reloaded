@@ -123,7 +123,7 @@
 					"fps": 24
 				}
 			],
-			"position": ["c-1690", "360"],
+			"position": ["c-1690", "300"],
 			"scrollFactor": [1.5, 1.2],
 			"walkStep": [90, 0],
 			"walkMovement": [0, 50],

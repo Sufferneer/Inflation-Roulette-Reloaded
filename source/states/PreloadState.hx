@@ -1,7 +1,7 @@
 package states;
 
 import backend.Addons;
-import backend.GameplayManager;
+import backend.Gameplay;
 import backend.CharacterManager;
 import backend.SplashManager;
 import openfl.utils.Assets.Assets.getBitmapData;
@@ -64,7 +64,7 @@ class PreloadState extends SuffState {
 					CharacterManager.precacheSprites();
 					#end
 				case 'gameplay':
-					GameplayManager.initialize();
+					Gameplay.initialize();
 				case 'music':
 					#if (!html && !mobile)
 					var musicList = Utilities.textFileToArray('data/extras/jukebox/musicList.txt', true);

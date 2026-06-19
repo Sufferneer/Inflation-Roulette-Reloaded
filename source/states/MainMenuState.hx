@@ -3,9 +3,6 @@ package states;
 import backend.SplashManager;
 import backend.lunarDate.LunarDate;
 import backend.VersionUtil;
-#if _OFFICIAL_BUILD
-import backend.VersionUtil;
-#end
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import states.AchievementsState;
@@ -22,11 +19,8 @@ import substates.OptionsSubState;
 import substates.ExtrasSubState;
 import substates.GamemodeSelectSubState;
 import ui.objects.GameLogo;
-import backend.ScoringUtil.ScoringUtil.gradePercent;
-import backend.typedefs.ScoreData;
-import backend.enums.ScoreRank;
-import backend.ScoringUtil;
 import states.debug.DiscolorationTestState;
+import states.debug.LiquidTestState;
 
 class MainMenuState extends SuffState {
 	public static var initialized:Bool = false;
@@ -444,8 +438,12 @@ class MainMenuState extends SuffState {
 		}
 		#end
 
-		if (FlxG.keys.justPressed.G) {
-			SuffState.switchState(new DiscolorationTestState());
+		if (Preferences.data.enableDebugKeybinds) {
+			if (FlxG.keys.justPressed.C) {
+				SuffState.switchState(new DiscolorationTestState());
+			} else if (FlxG.keys.justPressed.L) {
+				SuffState.switchState(new LiquidTestState());
+			}
 		}
 	}
 }

@@ -6,24 +6,31 @@ import openfl.display.BitmapData;
 class DiscolorationMaskedShader extends FlxShader {
 	@:glFragmentSource('
 	#pragma header
-	uniform vec3 tintColor;
-	uniform vec3 destabilizeIntensity;
-	uniform float intensity;
-	uniform sampler2D maskTexture;
+        uniform vec3 tintColor;
+        uniform vec3 destabilizeIntensity;
+        uniform float intensity;
+        uniform sampler2D excludeMaskTexture;
 
-	void main() {
-		vec4 color = texture2D(bitmap, openfl_TextureCoordv);
-		vec4 maskColor = texture2D(maskTexture, openfl_TextureCoordv);
+        uniform bool useMask;
 
-		color.r *= pow((tintColor.r / 255.) * (1. + destabilizeIntensity.r), intensity);
-		color.g *= pow((tintColor.g / 255.) * (1. + destabilizeIntensity.g), intensity);
-		color.b *= pow((tintColor.b / 255.) * (1. + destabilizeIntensity.b), intensity);
+        void main() {
+            vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
+            vec4 excludeMaskColor = flixel_texture2D(excludeMaskTexture, openfl_TextureCoordv);
 
-		gl_FragColor = vec4(maskColor.rgb, maskColor.a);
-	}
+            // Skip math entirely if base pixel is already transparent
+            if (color.a == 0.0) {
+                gl_FragColor = vec4(0.0);
+                return;
+            }
+
+            color.r *= pow((tintColor.r / 255.) * (1. + destabilizeIntensity.r), intensity * (1.0 - excludeMaskColor.a));
+			color.g *= pow((tintColor.g / 255.) * (1. + destabilizeIntensity.g), intensity * (1.0 - excludeMaskColor.a));
+			color.b *= pow((tintColor.b / 255.) * (1. + destabilizeIntensity.b), intensity * (1.0 - excludeMaskColor.a));
+
+			gl_FragColor = vec4(color.rgb, color.a);
+		}
 	')
 	public var color(default, set):Array<Float> = [0, 0, 0];
-	public var mask(default, set):BitmapData;
 	public var destabilization(default, set):Array<Float> = [0, 0, 0];
 	public var strength(default, set):Float = 0;
 
@@ -34,15 +41,6 @@ class DiscolorationMaskedShader extends FlxShader {
 	}
 	private function get_color():Array<Float> {
 		return tintColor.value;
-	}
-
-	private function set_mask(value:BitmapData):BitmapData {
-		mask = value;
-		this.data.maskTexture.input = value;
-		return value;
-	}
-	private function get_mask():BitmapData {
-		return this.mask;
 	}
 
 	private function set_destabilization(value:Array<Float>):Array<Float> {
@@ -62,12 +60,17 @@ class DiscolorationMaskedShader extends FlxShader {
 		return intensity.value[0];
 	}
 
-	public function new(color:Array<Float>, mask:BitmapData) {
+	public function new(color:Array<Float>) {
 		super();
+		this.useMask.value = [true];
 		this.color = color;
 		this.destabilization = [0, 0, 0];
-		this.mask = mask;
 		this.strength = 0;
+	}
+
+	public function setMask(bitmap:BitmapData):Void {
+		this.useMask.value = [(bitmap != null)];
+		this.excludeMaskTexture.input = bitmap;
 	}
 
 	public function update(elapsed:Float) {
