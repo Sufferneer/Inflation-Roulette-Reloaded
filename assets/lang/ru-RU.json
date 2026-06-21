@@ -571,8 +571,7 @@
 	
 	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 	"game.selectTarget": "ВЫБЕРИТЕ ЦЕЛЬ",
-	
-	"preloadMenu.progress.characters": "Загружаем Персонажей...",
+
 	"preloadMenu.progress.gameplay": "Загрузжаем Режимы...",
 	"preloadMenu.progress.achievements": "Задаём Прогресс Достижений...",
 	"preloadMenu.progress.toasts": "Сооружаем Уведомления...",

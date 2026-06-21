@@ -573,8 +573,7 @@
 	
 	// Mensaje tras activar una habilidad ofensiva (ej. Asalto, Amnesia)
 	"game.selectTarget": "SELECCIONA OBJETIVO",
-	
-	"preloadMenu.progress.characters": "Cargando personajes...",
+
 	"preloadMenu.progress.gameplay": "Cargando modos de juego...",
 	"preloadMenu.progress.achievements": "Registrando logros...",
 	"preloadMenu.progress.toasts": "Construyendo notificaciones...",

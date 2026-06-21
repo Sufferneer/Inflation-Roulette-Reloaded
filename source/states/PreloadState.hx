@@ -2,7 +2,7 @@ package states;
 
 import backend.Addons;
 import backend.Gameplay;
-import backend.CharacterManager;
+import backend.Gameplay;
 import backend.SplashManager;
 import openfl.utils.Assets.Assets.getBitmapData;
 import openfl.utils.Assets;
@@ -15,7 +15,7 @@ class PreloadState extends SuffState {
 	#end
 
 	var loadingProgress:Int = -1;
-	var loadingTexts:Array<String> = ['characters', 'gameplay', 'music', 'achievements', 'toasts', 'tooltip', 'cursor', 'splashes'];
+	var loadingTexts:Array<String> = ['gameplay', 'music', 'achievements', 'toasts', 'tooltip', 'cursor', 'splashes'];
 
 	override function create() {
 		super.create();
@@ -58,11 +58,6 @@ class PreloadState extends SuffState {
 		Window.setTitle(Language.getPhrase('preloadMenu.windowDisplay'), preloadTxt.text);
 		new FlxTimer().start(FlxG.elapsed, function(_) {
 			switch (loadingTexts[loadingProgress]) {
-				case 'characters':
-					CharacterManager.initialize();
-					#if (!html && !mobile)
-					CharacterManager.precacheSprites();
-					#end
 				case 'gameplay':
 					Gameplay.initialize();
 				case 'music':

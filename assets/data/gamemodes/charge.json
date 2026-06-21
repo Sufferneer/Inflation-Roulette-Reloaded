@@ -1,5 +1,5 @@
 {
 	"color": "#C00020",
 
-	"cylinderDamageChangeOnBlank": 1
+	"cylinderDamageChangeOnBlank": 0.5
 }

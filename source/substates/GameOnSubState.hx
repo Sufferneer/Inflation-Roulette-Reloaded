@@ -1,6 +1,6 @@
 package substates;
 
-import backend.CharacterManager;
+import backend.Gameplay;
 import states.PlayState;
 
 class GameOnSubState extends SuffSubState {

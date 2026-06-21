@@ -19,5 +19,6 @@
 
 	"gravityMultiplier": 2,
 	"stumbleForce": 5,
-	"npcOnPop": "slime"
+	"npcOnPop": "slimeBlob",
+	"npcCountOnPop": [3, 5]
 }

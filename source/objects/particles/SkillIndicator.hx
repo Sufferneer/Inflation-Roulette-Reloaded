@@ -13,7 +13,7 @@ class SkillIndicator extends FlxSprite {
 
 		FlxTween.tween(this, {y: originalY - 60}, 0.5, {ease: FlxEase.expoOut, onComplete: function(_) {
 			if (!Preferences.data.enablePhotosensitiveMode) {
-				FlxFlicker.flicker(this, 0.5, FlxG.elapsed, function(_) {
+				FlxFlicker.flicker(this, 0.5, 1 / 30, function(_) {
 					this.destroy();
 				});
 			} else {

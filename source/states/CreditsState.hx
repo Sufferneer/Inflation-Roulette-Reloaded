@@ -18,6 +18,8 @@ class CreditsState extends SuffState {
 		['Snowyboi', '', 'default'],
 		['Additional Programmer', '', 'HEADING'],
 		['changedinflation.de', '', 'default'],
+		['Additional Music', '', 'HEADING'],
+		['Ninshot At Dawn', '', 'default'],
 		['Additional UI Art', '', 'HEADING'],
 		['Globe-Freak', 'globe-freak', 'LOGO'],
 		['Bloom', 'bloom', 'LOGO'],

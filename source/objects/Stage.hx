@@ -6,7 +6,7 @@ import backend.typedefs.StageData;
 import tjson.TJSON as Json;
 import backend.typedefs.StageObjectData;
 import backend.typedefs.AnimationData;
-import backend.CharacterManager;
+import backend.Gameplay;
 
 class Stage extends FlxBasic {
 	private var game(get, never):PlayState;
@@ -20,7 +20,7 @@ class Stage extends FlxBasic {
 			data.music = 'stages/${data.id}';
 		var musicPath = Paths.getMusicPath(data.music);
 		if (!Paths.fileExists(musicPath)) {
-			trace('Specialized music path for stage ($musicPath) does not exist. Using default path');
+			trace('Specialized music path for stage ($musicPath) does not exist. Using default game music path');
 			data.music = 'stages/default';
 		}
 		super();
@@ -111,9 +111,9 @@ class Stage extends FlxBasic {
 		if (objectData.scrollFactor != null && objectData.scrollFactor.length == 2)
 			object.scrollFactor.set(objectData.scrollFactor[0], objectData.scrollFactor[1]);
 		if (objectData.hideCharacter != null)
-			object.visible = !CharacterManager.selectedCharacterList.contains(objectData.hideCharacter);
+			object.visible = !Gameplay.selectedCharacterList.contains(objectData.hideCharacter);
 		if (objectData.showCharacter != null)
-			object.visible = CharacterManager.selectedCharacterList.contains(objectData.showCharacter);
+			object.visible = Gameplay.selectedCharacterList.contains(objectData.showCharacter);
 		if (objectData.scale != null) {
 			if (objectData.scale.length == 2)
 				object.scale.set(objectData.scale[0], objectData.scale[1]); else if (objectData.scale.length == 1)

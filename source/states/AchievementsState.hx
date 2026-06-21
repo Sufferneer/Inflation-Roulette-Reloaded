@@ -217,7 +217,7 @@ class AchievementsState extends SuffState {
 
 		FlxTween.cancelTweensOf(spotlight, ['scale.x']);
 		if (!Preferences.data.enablePhotosensitiveMode)
-			FlxFlicker.flicker(spotlight, 0.25, FlxG.elapsed * 2, true, true);
+			FlxFlicker.flicker(spotlight, 0.25, 1 / 30, true, true);
 		FlxTween.tween(spotlight, {'scale.x': 1}, 0.25, {
 			ease: FlxEase.cubeOut
 		});

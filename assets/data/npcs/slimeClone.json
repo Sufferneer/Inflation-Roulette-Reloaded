@@ -1,0 +1,34 @@
+{
+	"copyCharacterId": true,
+	"mergeable": false,
+	"walkSpeed": 320,
+	"idleDuration": [3, 6],
+	"sizeMultiplier": [0.9, 1.1],
+	"originPosition": [150, 375],
+	"hitboxSize": [120, 300],
+	"tauntChance": 0.2,
+
+	"animations": [
+		{
+			"name": "idle",
+			"prefix": "idle",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "walk",
+			"prefix": "walk",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "dance",
+			"prefix": "dance",
+			"fps": 12,
+			"indices": [],
+			"loop": false
+		}
+	]
+}

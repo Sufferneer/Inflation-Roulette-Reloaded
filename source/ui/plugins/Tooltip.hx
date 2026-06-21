@@ -78,8 +78,8 @@ class Tooltip extends FlxSpriteGroup {
 		super.update(elapsed);
 		
 		instance.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
-		#if !mobile
 		var leMousePos:FlxPoint = FlxG.mouse.getScreenPosition(this.camera);
+		#if !mobile
 		if (leMousePos.x + position.x > FlxG.width - instance.bg.width) {
 			instance.x = leMousePos.x - instance.bg.width + altPosition.x;
 		} else {
@@ -92,8 +92,8 @@ class Tooltip extends FlxSpriteGroup {
 		}
 		instance.y = FlxMath.bound(instance.y, 0, FlxG.height - instance.bg.height);
 		#else
-		instance.x = ScreenSafeArea.X;
-		instance.y = (Preferences.data.showDebugText ? Main.debugText.height : 0) + ScreenSafeArea.Y;
+		instance.x = (leMousePos.x > FlxG.width / 2) ? ScreenSafeArea.X : FlxG.width - instance.bg.width - ScreenSafeArea.X;
+		instance.y = (leMousePos.y > FlxG.height / 2) ? (Preferences.data.showDebugText ? Main.debugText.height + ScreenSafeArea.Y : ScreenSafeArea.Y) : FlxG.height - instance.bg.height - ScreenSafeArea.Y;
 		#end
 	}
 }

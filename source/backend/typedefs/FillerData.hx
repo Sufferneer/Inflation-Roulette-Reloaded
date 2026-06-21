@@ -18,6 +18,7 @@ typedef FillerData = {
 	?stumbleForce:Float, // 0
 	?navelLeaks:Bool, // false
 	?npcOnPop:String, // ""
+	?npcCountOnPop:Array<Int>,
 
 	?particleType:String,
 }

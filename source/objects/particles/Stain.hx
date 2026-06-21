@@ -11,6 +11,7 @@ class Stain extends FlxSprite {
 		this.scale.set(leScale, leScale);
 		this.color = color;
 		this.alpha = 0.5;
+		this.flipX = FlxG.random.bool(50);
 
 		FlxTween.tween(this, {alpha: 0}, 4, {
 			startDelay: FlxG.random.float(2, 4),

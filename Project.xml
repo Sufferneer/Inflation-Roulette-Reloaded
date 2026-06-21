@@ -3,17 +3,18 @@
 	<!-- _________________________ Application Settings _________________________ -->
 	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="3.0.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="a.2" />
+	<set name="versionState" value="a.3" />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<section if="android">
 		<architecture name="arm64"/>
 		<haxelib name="extension-androidtools"/>
-		<template path="dev/templates"/>
+		<template path="templates/android"/>
 		<config:android mininum-sdk-version="21"/>
 		<config:android target-sdk-version="31"/>
 		<config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 		<config:android attribute="android:requestLegacyExternalStorage=&quot;true&quot;"/>
+		<config:android layoutInDisplayCutoutMode="shortEdges" />
 		<config:android>
 			<gradle-properties org.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=512m" />
 			<application
@@ -84,16 +85,8 @@
 
 	<!-- Preload Assets -->
 
-	<assets path="assets/data" preload="true"/>
-	<assets path="assets/fonts" preload="true"/>
-	<assets path="assets/images" preload="true"/>
-	<assets path="assets/lang" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
-	<assets path="assets/lang" exclude="*.ogg" if="_USE_MP3" preload="true"/>
-	<assets path="assets/music" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
-	<assets path="assets/music" exclude="*.ogg" if="_USE_MP3" preload="true"/>
-	<assets path="assets/sounds" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
-	<assets path="assets/sounds" exclude="*.ogg" if="_USE_MP3" preload="true"/>
-	<assets path="assets/videos" preload="true"/>
+	<assets path="assets" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
+	<assets path="assets" exclude="*.ogg" if="_USE_MP3" preload="true"/>
     <section if="_ALLOW_ADDONS">
 		<assets path='addons' unless="_BUILD_IN_ADDONS"/>
     </section>
@@ -111,8 +104,8 @@
 		<assets path="conditionalAssets/ALLOW_EASTER_EGGS" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true" embed="true"/>
 		<assets path="conditionalAssets/ALLOW_EASTER_EGGS" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true" embed="true"/>
 	</section>
-	<assets path="conditionalAssets/embed" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true"/>
-	<assets path="conditionalAssets/embed" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true"/>
+	<assets path="conditionalAssets/embed" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true" embed="true"/>
+	<assets path="conditionalAssets/embed" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true" embed="true"/>
     <assets path='dev/readme.txt' rename="readme.txt"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->

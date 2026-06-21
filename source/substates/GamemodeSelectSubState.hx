@@ -1,7 +1,7 @@
 package substates;
 
 import states.PlayState;
-import backend.CharacterManager;
+import backend.Gameplay;
 import backend.Gamemode;
 import backend.Gameplay;
 import states.CharacterSelectState;
@@ -33,7 +33,7 @@ class GamemodeSelectSubState extends SuffSubState {
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
-		FlxTween.tween(bg, {alpha: 0.5}, 0.5);
+		FlxTween.tween(bg, {alpha: 0.75}, 0.5);
 		add(bg);
 
 		light = new FlxSprite().loadGraphic(Paths.image('game/selectLight'));
@@ -127,33 +127,33 @@ class GamemodeSelectSubState extends SuffSubState {
 
 	function goGoGadgetGamemode(gamemode:Gamemode) {
 		leaving = true;
-		CharacterManager.setPlayerCount(Std.int(playerCountSlider.currentValue));
+		Gameplay.setPlayerCount(Std.int(playerCountSlider.currentValue));
 		switch (gamemode.id) {
 			case 'quickPlay':
 				Gameplay.currentGamemode = Gameplay.defaultGamemode;
 				Gameplay.currentStage = FlxG.random.getObject(Gameplay.globalStageList);
 				Gameplay.currentFiller = new Filler(FlxG.random.getObject(Gameplay.globalFillerList));
-				// CharacterManager.setPlayerCount(Gameplay.currentGamemode.playerCount);
+				// Gameplay.setPlayerCount(Gameplay.currentGamemode.playerCount);
 				var leRandom = [];
 				var leCPUControl = [];
-				for (num => i in CharacterManager.selectedCharacterList) {
+				for (num => i in Gameplay.selectedCharacterList) {
 					leRandom.push('random');
 					leCPUControl.push(true);
-					CharacterManager.cpuLevel[num] = FlxG.random.int(Constants.CPU_SKILL_LIMIT[0], Constants.CPU_SKILL_LIMIT[1]);
+					Gameplay.cpuLevel[num] = FlxG.random.int(Constants.CPU_SKILL_LIMIT[0], Constants.CPU_SKILL_LIMIT[1]);
 				}
 				leCPUControl[FlxG.random.int(0, leCPUControl.length - 1)] = false;
-				CharacterManager.selectedCharacterList = leRandom;
-				CharacterManager.cpuControlled = leCPUControl;
+				Gameplay.selectedCharacterList = leRandom;
+				Gameplay.cpuControlled = leCPUControl;
 				PlayState.hasSeenStartCutscene = false;
-				CharacterManager.parseRandomCharacters();
-				trace('Current characters: ', CharacterManager.selectedCharacterList);
-				trace('Current CPU level: ', CharacterManager.cpuLevel);
+				Gameplay.parseRandomCharacters();
+				trace('Current characters: ', Gameplay.selectedCharacterList);
+				trace('Current CPU level: ', Gameplay.cpuLevel);
 				trace('Current stage: ', Gameplay.currentStage);
 				trace('Current filler: ', Gameplay.currentFiller.id);
 				openSubState(new GameOnSubState(new PlayState()));
 			default:
 				Gameplay.currentGamemode = gamemode;
-				// CharacterManager.setPlayerCount(Gameplay.currentGamemode.playerCount);
+				// Gameplay.setPlayerCount(Gameplay.currentGamemode.playerCount);
 				SuffState.switchState(new CharacterSelectState());
 		}
 		trace('Current gamemode: ', Gameplay.currentGamemode);

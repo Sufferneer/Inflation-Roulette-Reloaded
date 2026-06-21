@@ -12,9 +12,9 @@ class Gamemode {
 	public var cylinderSize:Int = Constants.CYLINDER_CAPACITY;
 	public var cylinderLiveCount:Int = Constants.LIVE_ROUND_COUNT;
 	public var cylinderReloadOnNoLives:Bool = true;
-	public var cylinderInitialDamage:Int = 1;
-	public var cylinderDamageChangeOnLive:Int = 0;
-	public var cylinderDamageChangeOnBlank:Int = 0;
+	public var cylinderInitialDamage:Float = 1;
+	public var cylinderDamageChangeOnLive:Float = 0;
+	public var cylinderDamageChangeOnBlank:Float = 0;
 	public var cylinderTrueRandomness:Bool = false;
 
 	public var skillsTangible:Bool = false;

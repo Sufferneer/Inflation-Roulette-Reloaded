@@ -466,7 +466,7 @@
 		}
 	],
 
-	"belchThreshold": 3,
+	"belchThreshold": 2,
 	"gurgleThreshold": 3,
 	"creakThreshold": 4,
 	"leakThreshold": 4,

@@ -12,7 +12,7 @@ class Liquid extends FlxSprite {
 		this.floorY = floorY;
 		this.angle = angle;
 		this.alpha = 0.75;
-		this.acceleration.y = 4000;
+		this.acceleration.y = 4800;
 	}
 
 	var onFloor:Bool = false;

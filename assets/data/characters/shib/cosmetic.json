@@ -67,6 +67,13 @@
 			"prefix": "introPartOne",
 			"fps": 24,
 			"indices": [],
+			"loop": false
+		},
+		{
+			"name": "introPartOne-loop",
+			"prefix": "introPartOne-loop",
+			"fps": 24,
+			"indices": [],
 			"loop": true
 		},
 		{
@@ -423,7 +430,7 @@
 		}
 	],
 
-	"belchThreshold": 3,
+	"belchThreshold": 2,
 	"gurgleThreshold": 2,
 	"creakThreshold": 3,
 	"leakThreshold": 4,

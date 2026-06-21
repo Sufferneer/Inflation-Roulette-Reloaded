@@ -16,7 +16,7 @@ class ExtrasSubState extends SuffSubState {
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
-		FlxTween.tween(bg, {alpha: 0.5}, 0.5);
+		FlxTween.tween(bg, {alpha: 0.75}, 0.5);
 		add(bg);
 
 		var box:FlxSprite = new FlxSprite().makeGraphic(840, 360, 0xFF008FB5);

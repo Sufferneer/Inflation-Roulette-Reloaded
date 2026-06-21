@@ -1,7 +1,7 @@
 package substates;
 
 import states.AchievementsState;
-import backend.CharacterManager;
+import backend.Gameplay;
 import states.PlayState;
 
 class ResetAchievementPrompt extends SuffSubState {

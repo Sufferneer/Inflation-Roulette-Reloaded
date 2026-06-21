@@ -62,10 +62,14 @@ Hotfixes are quick updates that fixes critical bugs.
 #### Gameplay
 - Quick Play now randomizes the human player's position.
 - Player count is now unaffected by game mode.
+- The damage of the live round in the Charge gamemode now increments by 0.5 instead of 1.
 #### Technical
 - All changelogs are now kept in one file.
 - Skill Cards now only uses one file
 - VRAM Caching is now off by default.
+- `cylinderDamageChangeOnBlank`, `cylinderDamageChangeOnLive`, and `cylinderInitialDamage` now support floats.
+  - The final damage dealt will be rounded down.
+- Character sprites are no longer preloaded on the start of the game.
 #### Utilities
 - Character Editor now generates addon metadata and localization files for you.
 ### Removals
@@ -85,6 +89,8 @@ Hotfixes are quick updates that fixes critical bugs.
 - Scroll bars crashes the game mid-scroll
 - Assault duplicates the pump gun on the table briefly.
 - Texts on achievement toasts not visible after changing a language that modifies the game font.
+- `cylinderInitialDamage` has no effect on first round.
+- Shib's starting animation snaps into looping animation with no anticipation
 
 
 ## v2.1.1 - Patch of Creativity, Pitstop 1 Hotfix 1 - 2026-04-19

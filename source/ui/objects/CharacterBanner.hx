@@ -1,6 +1,6 @@
 package ui.objects;
 
-import backend.CharacterManager;
+import backend.Gameplay;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxGradient;
 import states.CharacterSelectState;
@@ -17,7 +17,7 @@ class CharacterBanner extends SuffButton {
 	public var dissolveShader:DissolveShader;
 
 	public function new(playerIndex:Int) {
-		var sectionWidth:Int = Std.int(Math.min(FlxG.width / CharacterManager.selectedCharacterList.length, 320));
+		var sectionWidth:Int = Std.int(Math.min(FlxG.width / Gameplay.selectedCharacterList.length, 320));
 		var sectionHeight:Int = Std.int(FlxG.height * (1 - CharacterSelectState.cardOccupicationHeight));
 
 		var color1:FlxColor = Constants.PLAYER_COLORS[playerIndex];
@@ -40,7 +40,7 @@ class CharacterBanner extends SuffButton {
 	}
 
 	public static function precacheBanners() {
-		for (item in CharacterManager.globalCharacterList) {
+		for (item in Gameplay.globalCharacterList) {
 			Paths.sparrowAtlas('ui/menus/characterSelect/banners/$item');
 		}
 		Paths.sparrowAtlas('ui/menus/characterSelect/banners/random');
@@ -75,6 +75,7 @@ class CharacterBanner extends SuffButton {
 		allowBlinking = false;
 		character.animation.play('start');
 		character.x = this.x + (bg.width - character.width) / 2;
+		character.y = this.y + (bg.height - character.height);
 		character.clipRect = new FlxRect((bg.width - character.width) / -2, 0, bg.width, bg.height);
 		character.animation.onFinish.add(function(name:String) {
 			if (name == 'start') {

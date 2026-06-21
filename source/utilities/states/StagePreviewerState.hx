@@ -17,7 +17,7 @@ import backend.FileDialogHandler;
 import openfl.display.PNGEncoderOptions;
 import openfl.utils.ByteArray;
 import openfl.display.BitmapData;
-import backend.CharacterManager;
+import backend.Gameplay;
 
 class StagePreviewerState extends UtilitiesBaseMenuState {
 	public static final version:String = '2.0.0';

@@ -322,7 +322,7 @@
 	"gamemode.inequality.description": "Players are given random skills on each live shot.\n\"All players are equal, but some players are more equal than others.\" - Animal Farm, probably",
 	"gamemode.classic.name": "Classic",
 	"gamemode.classic.description": "True randomness and sabotage endlessly.\nFor archival purposes only.",
-	"gamemode.charge.name": "Charge",
+	"gamemode.charge.name": "Charged",
 	"gamemode.charge.description": "Damage increases with each blank shot.\nRisky and rewarding gameplay.",
 
 	"characterSelect.windowDisplay": "Gameplay Configuration",
@@ -414,6 +414,9 @@
 	"pauseMenu.resume": "Resume",
 	"pauseMenu.restart": "Restart",
 	"pauseMenu.options": "Options",
+	"gameType.singleplayer": "Singleplayer",
+	"gameType.multiplayer": "Multiplayer",
+	"pauseMenu.details.players": "%1 Players",
 
 	"stats.pressure": "Pressure",
 	"stats.pressure.Null": "Popped",
@@ -669,15 +672,14 @@
 	"menu.cancel": "Cancel",
 	"menu.exit": "Exit",
 
-	// %1: Gamemode, %2: Player Count
-	"game.windowDisplay": "%1 - %2 Players",
+	// %1: Gamemode, %2: Game Type (Singleplayer / Multiplayer), %3: Player Count
+	"game.windowDisplay": "%1 · %2 · %3 Players",
 	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 	"game.selectTarget": "SELECT TARGET",
 	"game.playerIndicator.you": "YOU",
 	"game.playerIndicator.player": "P%1",
 
 	"preloadMenu.windowDisplay": "Preloading",
-	"preloadMenu.progress.characters": "Loading Characters...",
 	"preloadMenu.progress.gameplay": "Loading Game Modes...",
 	"preloadMenu.progress.achievements": "Tracking Achievements...",
 	"preloadMenu.progress.toasts": "Constructing Notifs...",

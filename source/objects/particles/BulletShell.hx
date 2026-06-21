@@ -17,7 +17,7 @@ class BulletShell extends FlxSprite {
 		this.floorY = floorY;
 		this.spawnPuff = spawnPuff;
 		angularVelocity = FlxG.random.float(-180, 180);
-		acceleration.y = 4000;
+		acceleration.y = 4800;
 	}
 
 	var despawning:Bool = false;
@@ -41,7 +41,7 @@ class BulletShell extends FlxSprite {
 		if (y >= floorY && bouncesLeft > 0) {
 			bouncesLeft --;
 			velocity.y *= -0.5 + FlxG.random.float(-0.2, 0.2);
-			this.y += velocity.y * elapsed;
+			this.y += velocity.y * elapsed * 2;
 			velocity.x *= 0.75;
 			angularVelocity = FlxG.random.float(-1080, 1080);
 			if (!Preferences.data.decreaseSounds)

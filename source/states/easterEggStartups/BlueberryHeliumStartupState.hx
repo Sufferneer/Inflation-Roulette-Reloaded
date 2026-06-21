@@ -7,7 +7,7 @@ class BlueberryHeliumStartupState extends SuffState {
 	override function create() {
 		super.create();
 
-		Window.setTitle('我要食魚翅啊');
+		Window.setTitle('我要食魚翅');
 
 		startIntro();
 	}
@@ -60,7 +60,7 @@ class BlueberryHeliumStartupState extends SuffState {
 		" - src/ui/objects/SuffIconButton.cpp",
 		" - src/ui/objects/SuffTransitionBlock.cpp",
 		" - src/states/AddonsMenuState.cpp",
-		" - src/backend/CharacterManager.cpp",
+		" - src/backend/Gameplay.cpp",
 		" - src/substates/GamemodeSelectSubState.cpp",
 		" - src/ui/objects/CreditsSketch.cpp",
 		" - src/ui/objects/SuffButton.cpp",

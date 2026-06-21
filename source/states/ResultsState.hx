@@ -399,7 +399,7 @@ class ResultsState extends SuffState {
 					if (Preferences.data.enablePhotosensitiveMode) {
 						black.alpha = 0;
 					} else {
-						FlxFlicker.flicker(black, 0.3, FlxG.elapsed * 2, false);
+						FlxFlicker.flicker(black, 0.3, 1 / 30, false);
 					}
 				} else {
 					FlxTween.tween(black, {alpha: 0}, 1.4, {startDelay: 0.2, ease: FlxEase.quadIn});

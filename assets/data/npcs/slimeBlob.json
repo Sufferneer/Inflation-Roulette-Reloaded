@@ -1,0 +1,35 @@
+{
+	"copyCharacterId": true,
+	"mergeable": true,
+	"mergedNpc": "slimeClone",
+	"walkSpeed": 320,
+	"idleDuration": [1, 2],
+	"sizeMultiplier": [0.75, 1.25],
+	"originPosition": [80, 120],
+	"hitboxSize": [80, 80],
+	"tauntChance": 0.2,
+
+	"animations": [
+		{
+			"name": "idle",
+			"prefix": "idle",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "walk",
+			"prefix": "walk",
+			"fps": 24,
+			"indices": [],
+			"loop": true
+		},
+		{
+			"name": "dance",
+			"prefix": "dance",
+			"fps": 24,
+			"indices": [],
+			"loop": false
+		}
+	]
+}

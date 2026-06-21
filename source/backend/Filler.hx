@@ -28,6 +28,7 @@ class Filler {
 	public var stumbleForce:Float = 0;
 	public var navelLeaks:Bool = false;
 	public var npcOnPop:String = '';
+	public var npcCountOnPop:Array<Int> = [0, 0];
 
 	public function new(id:String) {
 		this.id = id;
@@ -76,13 +77,15 @@ class Filler {
 		}
 
 		if (rawData.gravityMultiplier != null)
-			this.gravityMultiplier = cast rawData.gravityMultiplier;
+			this.gravityMultiplier = rawData.gravityMultiplier;
 		if (rawData.stumbleForce != null)
-			this.stumbleForce = cast rawData.stumbleForce;
+			this.stumbleForce = rawData.stumbleForce;
 		if (rawData.navelLeaks != null)
-			this.navelLeaks = cast rawData.navelLeaks;
+			this.navelLeaks = rawData.navelLeaks;
 		if (rawData.npcOnPop != null)
-			this.npcOnPop = cast rawData.npcOnPop;
+			this.npcOnPop = rawData.npcOnPop;
+		if (rawData.npcCountOnPop != null)
+			this.npcCountOnPop = rawData.npcCountOnPop;
 	}
 
 	public function determineSamples(samples:Int):Int {
