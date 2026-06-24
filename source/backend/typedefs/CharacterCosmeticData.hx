@@ -11,10 +11,6 @@ typedef CharacterCosmeticData = {
 	?voicePitch:Float,
 	?antialiasing:Bool,
 	?disablePopping:Bool,
-	?originPosition:Array<Int>,
-	?poppedCameraOffset:Array<Int>,
-	?cameraOffset:Array<Int>,
-	?particleOffsets:CharacterParticleOffsetsData,
 	?poppingVelocityMultiplier:Array<Float>,
 	?poppingGravityMultiplier:Float
 }

@@ -536,6 +536,7 @@
 	// These will be button text that will be in the Utilities Main Menu.
 	"utilitiesMenu.characterCreator": "Character Creator",
 	"utilitiesMenu.stagePreviewer": "Stage Previewer",
+	"utilitiesMenu.offsetEditor": "Offset Editor",
 	"utilitiesMenu.langConverter": ".LANG Converter",
 	"utilitiesMenu.loadFile": "Load File",
 	"utilitiesMenu.newFile": "New File",
@@ -622,17 +623,21 @@
 	"stagePreviewer.reload": "Reload Stage",
 	"stagePreviewer.screenshot": "Screenshot Mode",
 	"stagePreviewer.exit": "Exit Viewer",
-	"stagePreviewer.exit.prompt": "Are you sure you want to exit the Stage Viewer?",
+	"stagePreviewer.exit.prompt": "Are you sure you want to exit the Stage Previewer?",
 
-	"offsetEditor.windowDisplay": "Offset Editor",
 	"offsetEditor.title": "Modify Offsets",
 	"offsetEditor.description": "Arrow Keys to Move Image\nHold SHIFT/CTRL to Increase Rate\nMake Sure Crosshair Centers Desired Location",
 	"offsetEditor.offsetType.origin": "Origin",
-	"offsetEditor.offsetType.overhead": "Overhead",
-	"offsetEditor.offsetType.mouth": "Mouth",
-	"offsetEditor.offsetType.navel": "Navel",
-	"offsetEditor.offsetType.gunShoot": "Gun Chamber (Shooting)",
-	"offsetEditor.offsetType.gunSkill": "Gun Chamber (Skill)",
+	"offsetEditor.offsetType.cameraOffset": "Camera",
+	"offsetEditor.offsetType.poppedCameraOffset": "Camera (Popped)",
+	"offsetEditor.offsetType.particle": "Particles",
+	"offsetEditor.particleType.origin": "Origin",
+	"offsetEditor.particleType.overhead": "Overhead",
+	"offsetEditor.particleType.mouth": "Mouth",
+	"offsetEditor.particleType.navel": "Navel",
+	"offsetEditor.particleType.gunShoot": "Gun Chamber (Shooting)",
+	"offsetEditor.particleType.gunSkill": "Gun Chamber (Skill)",
+	"offsetEditor.exit.prompt": "Are you sure you want to exit the Offset Editor?",
 
 	"langConverter.successPrompt": "JSON file exported in:\n%1",
 
@@ -747,6 +752,6 @@
 	"gamemode.fiftyFifty.name": "50/50",
 	"gamemode.fiftyFifty.description": "Purely a coin flip chance with replacement.\nQuick and risky gameplay.",
 	
-	"character.asimo.name": "Asimo",
+	"character.asimo.name": "Asimo Dracomaw",
 	"character.asimo.name.short": "Asimo",
 	"character.asimo.description": "This wolf just wants to have some fun. His experience in electrical occult allows him to overload weapons."}

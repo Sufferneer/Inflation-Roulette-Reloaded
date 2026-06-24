@@ -15,6 +15,7 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 	final buttons:Array<String> = [
 		'characterCreator',
 		'stagePreviewer',
+		'offsetEditor',
 		'langConverter'
 	];
 	final disabledButtons:Array<String> = [];
@@ -100,7 +101,14 @@ class UtilitiesMainMenuState extends UtilitiesBaseMenuState {
 					}
 				}
 				LoadFilePrompt.newFileFunction = null;
-				openSubState(new LoadFilePrompt('${Utilities.getExecutablePath()}\\assets\\data\\stages\\'));
+				openSubState(new LoadFilePrompt('${Utilities.getExecutablePath()}\\assets\\data\\stages\\', [new FileFilter('JSON', 'json')]));
+			case 'offsetEditor':
+				LoadDirectoryPrompt.loadFileFunction = function(path:String) {
+					UtilitiesBaseMenuState.loadedPath = path;
+					SuffState.switchState(new OffsetEditorState());
+				}
+				LoadDirectoryPrompt.newFileFunction = null;
+				openSubState(new LoadDirectoryPrompt('${Utilities.getExecutablePath()}\\assets\\data\\characters\\goober\\'));
 			case 'langConverter':
 				Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'), Language.getPhrase('utilitiesMenu.langConverter'));
 				LoadFilePrompt.loadFileFunction = function(path:String) {

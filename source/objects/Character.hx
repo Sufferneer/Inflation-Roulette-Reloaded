@@ -8,12 +8,11 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import backend.Skill;
 import states.PlayState;
 import tjson.TJSON as Json;
-import shaders.FlashingShader;
 import objects.particles.Swirl;
 import shaders.DiscolorationMaskedShader;
-import openfl.display.BitmapData;
 import objects.particles.Liquid;
 import objects.particles.Puff;
+import backend.typedefs.CharacterOffsetsData;
 
 class Character extends FlxSprite {
 	// Metadata //
@@ -27,10 +26,10 @@ class Character extends FlxSprite {
 	public var gurgleThreshold:Int = 2;
 	public var creakThreshold:Int = 4;
 	public var voicePitch:Float = 1;
-	public var originPosition:Array<Int> = [0, 0];
-	public var poppedCameraOffset:Array<Int> = [0, 0];
-	public var cameraOffset:Array<Int> = [0, 0];
-	public var headParticlePosition:Array<Int> = [0, 0];
+	public var originPosition:Array<Float> = [0, 0];
+	public var poppedCameraOffset:Array<Float> = [0, 0];
+	public var cameraOffset:Array<Float> = [0, 0];
+	public var headParticlePosition:Array<Float> = [0, 0];
 	public var particleOffsets:Map<String, Array<Array<Float>>> = [];
 	public var poppingGravityMultiplier:Float = 1.0;
 	public var poppingVelocityMultiplier:Array<Float> = [1, 1];
@@ -73,16 +72,14 @@ class Character extends FlxSprite {
 	var creakTimer:Float = 0;
 	var navelLeakTimer:Float = 0;
 	var swirlSpawnTimer:Float = 0;
-	static var timerMultiplier:Float = 0;
+	static var timerMultiplier:Float = 1;
 
 	public function new(character:String, x:Float = 0, y:Float = 0) {
 		this.id = character;
 		timerMultiplier = Preferences.data.decreaseSounds ? 3 : 1;
-		var rawJson = Paths.getTextFromFile('data/characters/' + id + '/stats.json');
-		var json:CharacterData = cast Json.parse(rawJson);
-
-		var rawJson2 = Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json');
-		var spriteJson:CharacterCosmeticData = cast Json.parse(rawJson2);
+		var json:CharacterData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/stats.json'));
+		var spriteJson:CharacterCosmeticData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json'));
+		var offsetsJson:CharacterOffsetsData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/offsets.json'));
 
 		// name = json.name;
 		/*
@@ -97,14 +94,14 @@ class Character extends FlxSprite {
 		gurgleThreshold = spriteJson.gurgleThreshold ?? 3;
 		creakThreshold = spriteJson.creakThreshold ?? 4;
 		voicePitch = spriteJson.voicePitch ?? 4;
-		if (spriteJson.originPosition != null)
-			originPosition = spriteJson.originPosition;
-		if (spriteJson.poppedCameraOffset != null)
-			poppedCameraOffset = spriteJson.poppedCameraOffset;
-		if (spriteJson.cameraOffset != null)
-			cameraOffset = spriteJson.cameraOffset;
-		if (spriteJson.particleOffsets == null) {
-			spriteJson.particleOffsets = {
+		if (offsetsJson.originPosition != null)
+			originPosition = offsetsJson.originPosition;
+		if (offsetsJson.poppedCameraOffset != null)
+			poppedCameraOffset = offsetsJson.poppedCameraOffset;
+		if (offsetsJson.cameraOffset != null)
+			cameraOffset = offsetsJson.cameraOffset;
+		if (offsetsJson.particleOffsets == null) {
+			offsetsJson.particleOffsets = {
 				overhead: [
 					[0, -480],
 					[0, -480],
@@ -152,11 +149,11 @@ class Character extends FlxSprite {
 				]
 			};
 		}
-		particleOffsets.set('overhead', spriteJson.particleOffsets.overhead);
-		particleOffsets.set('mouth', spriteJson.particleOffsets.mouth);
-		particleOffsets.set('navel', spriteJson.particleOffsets.navel);
-		particleOffsets.set('gunShoot', spriteJson.particleOffsets.gunShoot);
-		particleOffsets.set('gunSkill', spriteJson.particleOffsets.gunSkill);
+		particleOffsets.set('overhead', offsetsJson.particleOffsets.overhead);
+		particleOffsets.set('mouth', offsetsJson.particleOffsets.mouth);
+		particleOffsets.set('navel', offsetsJson.particleOffsets.navel);
+		particleOffsets.set('gunShoot', offsetsJson.particleOffsets.gunShoot);
+		particleOffsets.set('gunSkill', offsetsJson.particleOffsets.gunSkill);
 		if (spriteJson.poppingVelocityMultiplier != null)
 			poppingVelocityMultiplier = spriteJson.poppingVelocityMultiplier;
 		disablePopping = !(!spriteJson.disablePopping);

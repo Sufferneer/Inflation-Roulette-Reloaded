@@ -429,6 +429,7 @@
 	"utilitiesMenu.windowDisplay": "製作工具",
 	"utilitiesMenu.characterCreator": "人物創建器",
 	"utilitiesMenu.stagePreviewer": "背景預覽器",
+	"utilitiesMenu.offsetEditor": "偏移編輯器",
 	"utilitiesMenu.langConverter": "LANG 檔案轉換器",
 	"utilitiesMenu.loadFile": "載入文件",
 	"utilitiesMenu.newFile": "新增文件",
@@ -512,15 +513,14 @@
 	"stagePreviewer.exit": "退出預覽器",
 	"stagePreviewer.exit.prompt": "確定要退出背景預覽器嗎？",
 
-	"offsetEditor.windowDisplay": "偏移編輯器",
 	"offsetEditor.title": "修改偏移",
 	"offsetEditor.description": "用方向鍵調整偏移\n按住 SHIFT/CTRL 鍵提高移動速度\n確保十字準星對準目標位置",
-	"offsetEditor.offsetType.origin": "原點",
-	"offsetEditor.offsetType.overhead": "頭上",
-	"offsetEditor.offsetType.mouth": "嘴巴",
-	"offsetEditor.offsetType.navel": "肚臍",
-	"offsetEditor.offsetType.gunShoot": "槍膛（射擊）",
-	"offsetEditor.offsetType.gunSkill": "槍膛（技能）",
+	"offsetEditor.particleType.origin": "原點",
+	"offsetEditor.particleType.overhead": "頭上",
+	"offsetEditor.particleType.mouth": "嘴巴",
+	"offsetEditor.particleType.navel": "肚臍",
+	"offsetEditor.particleType.gunShoot": "槍膛（射擊）",
+	"offsetEditor.particleType.gunSkill": "槍膛（技能）",
 
 	"langConverter.successPrompt": "JSON檔案已導出至：\n%1",
 
@@ -632,7 +632,7 @@
 	"gamemode.fiftyFifty.name": "五十五十",
 	"gamemode.fiftyFifty.description": "純粹靠50/50決定勝負。\n快速而高風險。",
 	
-	"character.asimo.name": "阿西莫",
-	"character.asimo.name.short": "阿西莫",
+	"character.asimo.name": "阿西冒・德拉科莫",
+	"character.asimo.name.short": "阿西冒",
 	"character.asimo.description": "這隻狼只想找點樂。他精通電力武技，能讓武器過載。"
 }

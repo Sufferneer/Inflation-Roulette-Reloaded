@@ -5,11 +5,12 @@ import backend.typedefs.CharacterCosmeticData;
 import flixel.graphics.frames.FlxAtlasFrames;
 import tjson.TJSON as Json;
 import backend.Gameplay;
+import backend.typedefs.CharacterOffsetsData;
 
 class CharacterSimple extends FlxSprite {
 	// Metadata //
 	public var id:String = 'unnamed';
-	public var originPosition:Array<Int> = [0, 0];
+	public var originPosition:Array<Float> = [0, 0];
 
 	public var animSoundPaths:Map<String, Array<String>>;
 
@@ -32,11 +33,9 @@ class CharacterSimple extends FlxSprite {
 		super(x, y);
 
 		this.id = character;
-		var rawJson = Paths.getTextFromFile('data/characters/' + id + '/stats.json');
-		var json:CharacterData = cast Json.parse(rawJson);
-
-		var rawJson2 = Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json');
-		var spriteJson:CharacterCosmeticData = cast Json.parse(rawJson2);
+		var json:CharacterData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/stats.json'));
+		var spriteJson:CharacterCosmeticData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json'));
+		var offsetsJson:CharacterOffsetsData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/offsets.json'));
 
 		// name = json.name;
 		/*
@@ -44,8 +43,8 @@ class CharacterSimple extends FlxSprite {
 			description = json.description;
 		*/
 		maxPressure = json.maxPressure;
-		if (spriteJson.originPosition != null)
-			originPosition = spriteJson.originPosition;
+		if (offsetsJson.originPosition != null)
+			originPosition = offsetsJson.originPosition;
 		gurgleThreshold = spriteJson.gurgleThreshold;
 		creakThreshold = spriteJson.creakThreshold;
 

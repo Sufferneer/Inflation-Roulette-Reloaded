@@ -19,7 +19,6 @@ class LoadDirectoryPrompt extends UtilitiesBaseMenuSubState {
 
 		loadFileButton = new SuffButton(0, 0, Language.getPhrase('utilitiesMenu.loadDirectory'), 400, 100);
 		loadFileButton.screenCenter();
-		loadFileButton.y -= 60;
 		loadFileButton.onClick = function() {
 			try {
 				fileDialog.openDirectory(defaultPath, Language.getPhrase(title), function () {
@@ -32,16 +31,20 @@ class LoadDirectoryPrompt extends UtilitiesBaseMenuSubState {
 		}
 		add(loadFileButton);
 
-		newFileButton = new SuffButton(0, 0, Language.getPhrase('utilitiesMenu.newDirectory'), 400, 100);
-		newFileButton.screenCenter();
-		newFileButton.y += 60;
-		newFileButton.onClick = function() {
-			try {
-				newFileFunction();
-			} catch(e:Dynamic) {
-				openSubState(new ErrorPrompt(e));
+		if (newFileFunction != null) {
+			newFileButton = new SuffButton(0, 0, Language.getPhrase('utilitiesMenu.newDirectory'), 400, 100);
+			newFileButton.screenCenter();
+			newFileButton.onClick = function() {
+				try {
+					newFileFunction();
+				} catch(e:Dynamic) {
+					openSubState(new ErrorPrompt(e));
+				}
 			}
+			add(newFileButton);
+
+			loadFileButton.y -= 60;
+			newFileButton.y += 60;
 		}
-		add(newFileButton);
 	}
 }

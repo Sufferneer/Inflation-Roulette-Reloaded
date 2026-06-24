@@ -14,5 +14,6 @@ resultsStart
 resultsLoop
 addons
 stages/classic
+stages/shitfucks
 stages/void
 stages/classicAlt

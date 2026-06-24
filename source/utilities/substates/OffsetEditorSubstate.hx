@@ -38,7 +38,7 @@ class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
 	public function new() {
 		super();
 
-		Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'), Language.getPhrase('offsetEditor.windowDisplay'));
+		Window.setTitle(Language.getPhrase('utilitiesMenu.windowDisplay'), Language.getPhrase('utilitiesMenu.offsetEditor'));
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		bg.alpha = 0.5;
@@ -75,7 +75,7 @@ class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
 		add(downBorder);
 
 		for (num => offset in offsets) {
-			var button = new SuffButton(rightBorder.x + 32, rightBorder.y + 32 + 80 * num, Language.getPhrase('offsetEditor.offsetType.' + offset), rightBorder.width - 64, 64);
+			var button = new SuffButton(rightBorder.x + 32, rightBorder.y + 32 + 80 * num, Language.getPhrase('offsetEditor.particleType.' + offset), rightBorder.width - 64, 64);
 			button.onClick = function() {
 				currentOffsetType = offset;
 				reloadSprite();
@@ -167,10 +167,10 @@ class OffsetEditorSubstate extends UtilitiesBaseMenuSubState {
 		CharacterCreatorState.spriteData.originPosition = [origin.x, origin.y];
 		offset.x = offsetMarker.x - originMarker.x;
 		offset.y = offsetMarker.y - originMarker.y;
-		offsetTxt.text = Language.getPhrase('offsetEditor.offsetType.origin') + '\n[${origin.x}, ${origin.y}]';
+		offsetTxt.text = Language.getPhrase('offsetEditor.particleType.origin') + '\n[${origin.x}, ${origin.y}]';
 		if (currentOffsetType != 'origin') {
 			Reflect.getProperty(CharacterCreatorState.spriteData.particleOffsets, currentOffsetType)[currentPressure] = [offset.x, offset.y];
-			offsetTxt.text = Language.getPhrase('offsetEditor.offsetType.' + currentOffsetType) + '\n[${offset.x}, ${offset.y}]\n' + offsetTxt.text;
+			offsetTxt.text = Language.getPhrase('offsetEditor.particleType.' + currentOffsetType) + '\n[${offset.x}, ${offset.y}]\n' + offsetTxt.text;
 		}
 		offsetTxt.y = FlxG.height - offsetTxt.height - 32;
 	}

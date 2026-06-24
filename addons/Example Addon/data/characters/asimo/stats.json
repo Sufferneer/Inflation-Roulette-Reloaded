@@ -1,5 +1,5 @@
 {
-	"cardDisplayedKey": "character.asimo.name",
+	"cardDisplayedKey": "character.asimo.name.short",
 	"maxPressure": 3,
 	"maxConfidence": 6,
 	"skills": [

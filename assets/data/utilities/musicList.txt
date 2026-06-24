@@ -10,3 +10,4 @@ resultsLoop
 addons
 stages/classic
 stages/void
+stages/shitfucks

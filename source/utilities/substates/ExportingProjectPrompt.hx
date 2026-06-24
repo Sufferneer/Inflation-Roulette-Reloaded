@@ -16,6 +16,7 @@ import backend.typedefs.CharacterCosmeticData;
 import backend.typedefs.AnimationData;
 import backend.typedefs.AddonMetadata;
 import substates.GenericPrompt;
+import backend.typedefs.CharacterOffsetsData;
 
 class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	var exportingText:FlxText;
@@ -141,6 +142,10 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 			creakThreshold: Math.ceil(stats.maxPressure * 0.75),
 			antialiasing: false,
 			disablePopping: false,
+			poppingVelocityMultiplier: [1.0, 1.0],
+			poppingGravityMultiplier: 1.0
+		};
+		var offsets:CharacterOffsetsData = {
 			originPosition: [
 				Std.int(CharacterCreatorState.spriteData.defaultDimensions[0] / 2),
 				Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] * 0.9)
@@ -154,14 +159,13 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				gunShoot: CharacterCreatorState.spriteData.particleOffsets.gunShoot,
 				gunSkill: CharacterCreatorState.spriteData.particleOffsets.gunSkill
 			},
-			poppingVelocityMultiplier: [1.0, 1.0],
-			poppingGravityMultiplier: 1.0
 		};
 
 		if (!FileSystem.isDirectory('exports/$projectName/data/characters/$characterID') || !FileSystem.exists('exports/$projectName/data/characters/$characterID'))
 			FileSystem.createDirectory('exports/$projectName/data/characters/$characterID');
 		File.saveContent('exports/$projectName/data/characters/$characterID/stats.json', haxe.Json.stringify(stats, '\t'));
 		File.saveContent('exports/$projectName/data/characters/$characterID/cosmetic.json', haxe.Json.stringify(cosmetic, '\t'));
+		File.saveContent('exports/$projectName/data/characters/$characterID/offsets.json', haxe.Json.stringify(offsets, '\t'));
 
 		new FlxTimer().start(0.02, function(_) {
 			generateLangFile();

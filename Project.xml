@@ -106,7 +106,7 @@
 	</section>
 	<assets path="conditionalAssets/embed" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true" embed="true"/>
 	<assets path="conditionalAssets/embed" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true" embed="true"/>
-    <assets path='dev/readme.txt' rename="readme.txt"/>
+	<assets path='importantFile.png'/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

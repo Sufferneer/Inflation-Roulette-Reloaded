@@ -155,7 +155,6 @@ class PlayState extends SuffState {
 			npc.active = false;
 			loadedNpcs.remove(npc);
 		}
-
 		 */
 
 		super.create();
@@ -1299,7 +1298,7 @@ class PlayState extends SuffState {
 	}
 
 	function focusCameraOnPlayer(playerIndex:Int) {
-		var characterCameraOffset:Array<Int> = getPlayer(playerIndex).cameraOffset;
+		var characterCameraOffset:Array<Float> = getPlayer(playerIndex).cameraOffset;
 		if (getPlayer(playerIndex).isEliminated() && (currentSessionEnablePopping && !getPlayer(playerIndex).disablePopping))
 			characterCameraOffset = getPlayer(playerIndex).poppedCameraOffset;
 
