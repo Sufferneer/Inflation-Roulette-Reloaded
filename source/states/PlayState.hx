@@ -2,7 +2,6 @@ package states;
 
 import ui.objects.GameIcon;
 import backend.Gameplay;
-import backend.Gameplay;
 import backend.enums.RoundRandomStatus;
 import backend.enums.SuffTransitionStyle;
 import objects.Character;
@@ -29,6 +28,7 @@ import objects.NPC;
 
 class PlayState extends SuffState {
 	public var characterGroup:FlxTypedContainer<Character> = new FlxTypedContainer<Character>();
+	public var particleGroup:FlxTypedContainer<FlxObject> = new FlxTypedContainer<FlxObject>();
 	public var npcGroup:FlxTypedContainer<NPC> = new FlxTypedContainer<NPC>();
 
 	var letterboxTop:FlxSprite;
@@ -116,6 +116,8 @@ class PlayState extends SuffState {
 	override public function create() {
 		RecordingUtil.checkIfRecording();
 
+		Paths.clearStoredMemory();
+
 		liveRoundDamage = Gameplay.currentGamemode.cylinderInitialDamage;
 
 		camGame = new FlxCamera();
@@ -135,8 +137,6 @@ class PlayState extends SuffState {
 		camHUD.visible = !Preferences.data.hideHUD;
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
-
-		// Paths.precacheBellySounds();
 
 		// Recursively cache NPC sprites
 		// Nvm this shit doesnt work
@@ -178,6 +178,8 @@ class PlayState extends SuffState {
 
 		characterGroup = new FlxTypedContainer<Character>();
 		add(characterGroup);
+		particleGroup = new FlxTypedContainer<FlxObject>();
+		add(particleGroup);
 		npcGroup = new FlxTypedContainer<NPC>();
 		add(npcGroup);
 		for (i in 0...Gameplay.selectedCharacterList.length) {
@@ -400,10 +402,12 @@ class PlayState extends SuffState {
 		}
 
 		setWindowTitle();
+
+		Paths.clearUnusedMemory();
 	}
 
 	public function setWindowTitle() {
-		Window.setTitle(Language.getPhrase('game.windowDisplay', [Language.getPhrase('gamemode.' + Gameplay.currentGamemode.id + '.name'), Language.getPhrase('gameType.' + (Gameplay.isMultiplayer() ? 'multiplayer' : 'singleplayer')), characterGroup.members.length]));
+		Window.setTitle(Language.getPhrase('game.windowDisplay', [Language.getPhrase('gameType.' + (Gameplay.isMultiplayer() ? 'multiplayer' : 'singleplayer')), characterGroup.members.length]));
 	}
 
 	private function set_isSelectingPlayer(value:Bool):Bool {
@@ -430,11 +434,11 @@ class PlayState extends SuffState {
 		doTimer('playerShoot', new FlxTimer().start(character.getAnimLength('preShoot') + usedDelay(), function(_:FlxTimer) {
 			if (!Preferences.data.decreaseDetail) {
 				var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot').x, character.y + character.getParticleOffset('gunShoot').y, stage.data.characterY, cylinderContent[0]);
-				members.insert(members.indexOf(characterGroup) + 1, bulletShell);
-				if (cylinderContent[0]) {
-					for (i in 0...cylinderContent.length - 1) {
+				particleGroup.add(bulletShell);
+				if (cylinderContent[0] && !cylinderContent.contains(true)) {
+					for (i in 1...cylinderContent.length) {
 						var bulletShell = new BulletShell(character.x + character.getParticleOffset('gunShoot').x, character.y + character.getParticleOffset('gunShoot').y, stage.data.characterY, false);
-						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+						particleGroup.add(bulletShell);
 					}
 				}
 			}
@@ -668,7 +672,7 @@ class PlayState extends SuffState {
 				if (!Preferences.data.decreaseDetail) {
 					for (i in 0...cylinderContent.length) {
 						var bulletShell = new BulletShell(getPlayer(playerIndex).x + getPlayer(playerIndex).getParticleOffset('gunSkill').x, getPlayer(playerIndex).y + getPlayer(playerIndex).getParticleOffset('gunSkill').y, stage.data.characterY, cylinderContent[i]);
-						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+						particleGroup.add(bulletShell);
 					}
 				}
 				reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
@@ -773,7 +777,7 @@ class PlayState extends SuffState {
 					}
 					if (!Preferences.data.decreaseDetail) {
 						var bulletShell = new BulletShell(getPlayer(attackerIndex).x + getPlayer(attackerIndex).getParticleOffset('gunSkill').x, getPlayer(attackerIndex).y + getPlayer(attackerIndex).getParticleOffset('gunSkill').y, stage.data.characterY, cylinderContent[0]);
-						members.insert(members.indexOf(characterGroup) + 1, bulletShell);
+						particleGroup.add(bulletShell);
 					}
 					if (!getPlayer(attackerIndex).cpuControlled) {
 						Achievements.advanceProgress('liveShots', [1]);
@@ -999,9 +1003,9 @@ class PlayState extends SuffState {
 		if (currentSessionEnablePopping && !getPlayer(playerIndex).disablePopping) { // Pop player instead
 			getPlayer(playerIndex).playAnim('popped', false);
 			var character = getPlayer(playerIndex);
-			members.insert(members.indexOf(characterGroup) + 1, new Bloosh(character.x, character.y - character.height / 2));
+			particleGroup.add(new Bloosh(character.x, character.y - character.height / 2));
 			if (!Preferences.data.decreaseDetail) {
-				members.insert(members.indexOf(characterGroup) + 1, new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY, character.maxPressure));
+				particleGroup.add(new ScrapEmitter(character.x, character.y - character.width / 2, character.id, stage.data.characterY, character.maxPressure));
 
 				var particleMultiplier:Float = 1;
 				if (Gameplay.currentFiller.particleType == Liquid) {
@@ -1009,20 +1013,20 @@ class PlayState extends SuffState {
 						for (i in 0...FlxG.random.int(6, 9)) {
 							var stain = new Stain(FlxG.random.float(0, FlxG.width), FlxG.random.float(0, FlxG.height), Gameplay.currentFiller.particleColor);
 							stain.camera = camEffects;
-							members.insert(0, stain);
+							particleGroup.add(stain);
 						}
 					}
 					particleMultiplier = 3;
 				}
-				members.insert(members.indexOf(characterGroup) + 1, new PopEmitter(character.x, character.y - character.height / 2, stage.data.characterY, Gameplay.currentFiller.particleType, particleMultiplier, Gameplay.currentFiller.particleColor));
+				particleGroup.add(new PopEmitter(character.x, character.y - character.height / 2, stage.data.characterY, Gameplay.currentFiller.particleType, particleMultiplier, Gameplay.currentFiller.particleColor));
 				if (!Preferences.data.decreaseDetail) {
 					var npcCount = FlxG.random.int(Gameplay.currentFiller.npcCountOnPop[0], Gameplay.currentFiller.npcCountOnPop[1]);
 					for (i in 0...npcCount) {
 						var npc:NPC = new NPC(Gameplay.currentFiller.npcOnPop, character.x, character.y - character.height / 2, character.id);
 						npc.transmutateThreshold = npcCount;
 						npc.velocity.set(
-							FlxG.random.float(-480, 480),
-							FlxG.random.float(-480, 0)
+							FlxG.random.float(-640, 640),
+							FlxG.random.float(-640, 0)
 						);
 						npcGroup.add(npc);
 					}
@@ -1466,6 +1470,61 @@ class PlayState extends SuffState {
 		super.closeSubState();
 	}
 
+	public function restartGame() {
+		persistentUpdate = true;
+		isPaused = false;
+		toggleMonochrome(false);
+		FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if (!tmr.finished)
+			tmr.cancel());
+		FlxTween.globalManager.forEach(function(twn:FlxTween) if (!twn.finished)
+			twn.cancel());
+
+		setWindowTitle();
+
+		currentTurnIndex = 0;
+		reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
+		currentSessionEnablePopping = Preferences.data.enablePopping;
+
+		for (npc in npcGroup) {
+			if (npc != null)
+				npc.destroy();
+		}
+		npcGroup.clear();
+
+		for (effect in particleGroup) {
+			if (effect != null)
+				effect.destroy();
+		}
+		particleGroup.clear();
+
+		pressurizeStreak = [];
+		lastPressurizeUserIndex = -1;
+		for (num => char in characterGroup) {
+			pressurizeStreak.push(0);
+			var leX:Int = Std.int(FlxMath.lerp(FlxG.width / 2 + stage.data.characterX[0], FlxG.width / 2 + stage.data.characterX[1], num / (characterGroup.members.length - 1)));
+			char.x = leX;
+			char.y = stage.data.characterY;
+			char.currentPressure = 0;
+			char.currentConfidence = 0;
+			char.playAnim('idle' + char.currentPressure);
+		}
+
+		pumpGun.x = pumpGunXDestinations[currentTurnIndex];
+
+		if (Gameplay.currentGamemode.skillsFixedPool.length + Gameplay.currentGamemode.skillsRandomPool.length > 0) {
+			for (char in characterGroup) {
+				char.currentSkills = [];
+			}
+			giveSkillsToAllPlayers(1);
+		}
+
+		toggleCameraFocusButton(!getPlayer(currentTurnIndex).cpuControlled);
+		reloadRevealUI();
+		focusCameraOnPlayer(currentTurnIndex);
+
+		finishStartCutscene();
+	}
+
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
@@ -1517,6 +1576,7 @@ class PlayState extends SuffState {
 						}
 						if (FlxG.mouse.justPressed && player.hovered) {
 							activateOffensiveSkill(offensiveSkillAttacker, offensiveSkillIndex, num);
+							break;
 						}
 					} else if (player.hovered) {
 						player.hovered = false;
@@ -1531,7 +1591,10 @@ class PlayState extends SuffState {
 				}
 			}
 
+			var switchCursor:Bool = false;
 			for (player in characterGroup) {
+				if (player.cursorOnBelly)
+					switchCursor = false;
 				if (player.velocity.x != 0 && player.velocity.y != 0) {
 					if (player.x + player.velocity.x * elapsed < stage.data.cameraBounds[0] || player.x + player.velocity.x * elapsed > stage.data.cameraBounds[2] - Math.abs(stage.data.cameraBounds[0])) {
 						player.velocity.x *= -1;
@@ -1550,6 +1613,7 @@ class PlayState extends SuffState {
 					}
 				}
 			}
+			CursorHandler.setCursorStyle((switchCursor ? 'rub' : 'default'));
 		}
 	}
 }

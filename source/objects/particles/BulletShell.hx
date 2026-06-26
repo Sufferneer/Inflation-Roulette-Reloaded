@@ -1,5 +1,6 @@
 package objects.particles;
 import backend.Gameplay;
+import states.PlayState;
 
 class BulletShell extends FlxSprite {
 	var floorY:Float = 690;
@@ -31,7 +32,7 @@ class BulletShell extends FlxSprite {
 				var puff = Type.createInstance(Gameplay.currentFiller.particleType, [this.x, this.y, floorY]);
 				puff.scale.set(0.625, 0.625);
 				puff.color = Gameplay.currentFiller.particleColor;
-				FlxG.state.members.insert(FlxG.state.members.indexOf(this), puff);
+				PlayState.instance.particleGroup.add(puff);
 				if (Gameplay.currentFiller.particleType == Liquid)
 					puffSpawnTimer = 0.05;
 				else

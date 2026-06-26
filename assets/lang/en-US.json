@@ -118,8 +118,8 @@
 	"extrasMenu.jukebox": "Jukebox",
 	
 	"debugText.framerate": "FPS",
-	"debugText.memory": "RAM",
-	"debugText.memoryPeak": "RAM Peak",
+	"debugText.memory": "GC RAM",
+	"debugText.memoryPeak": "GC RAM Peak",
 	"debugText.state": "State",
 	// %1: Debug Text
 	"debugText.format": "%1: %2",
@@ -143,6 +143,8 @@
 
 	"option.skipEliminatedPlayers.name": "Eliminee Skip",
 	"option.skipEliminatedPlayers.description": "Players who are defeated will not play an animation when it's their turn.",
+	"option.enableBellyRubbing.name": "Rubbing",
+	"option.enableBellyRubbing.description": "Cursor able to rub players' bodies when they're on idle. Disabling might help with performance on low-end devices.",
 	// This option is a button.
 	"option.controls.name": "Controls",
 	"option.controls.description": "Configure keybinds.",
@@ -291,8 +293,8 @@
 	"option.showDebugText.description": "Displays debug information on the top-left corner of the screen.",
 	"option.showFramerateOnDebugText.name": "Framerate",
 	"option.showFramerateOnDebugText.description": "Displays the current framerate on the Debug Text.",
-	"option.showMemoryUsageOnDebugText.name": "Memory Usage",
-	"option.showMemoryUsageOnDebugText.description": "Displays the current amount of memory used on the Debug Text.",
+	"option.showMemoryUsageOnDebugText.name": "GC Memory Usage",
+	"option.showMemoryUsageOnDebugText.description": "Displays the current amount of memory used by the garbage collector on the Debug Text.",
 	"option.showCurrentStateOnDebugText.name": "Current State",
 	"option.showCurrentStateOnDebugText.description": "Displays the current menu being navigated on the Debug Text.",
 
@@ -677,8 +679,8 @@
 	"menu.cancel": "Cancel",
 	"menu.exit": "Exit",
 
-	// %1: Gamemode, %2: Game Type (Singleplayer / Multiplayer), %3: Player Count
-	"game.windowDisplay": "%1 · %2 · %3 Players",
+	// %1: Game Type (Singleplayer / Multiplayer), %2: Player Count
+	"game.windowDisplay": "%1 (%2 Players)",
 	// Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 	"game.selectTarget": "SELECT TARGET",
 	"game.playerIndicator.you": "YOU",

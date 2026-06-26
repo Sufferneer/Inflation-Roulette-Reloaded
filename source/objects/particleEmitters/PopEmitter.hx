@@ -14,7 +14,7 @@ class PopEmitter extends FlxObject {
 			var force = FlxG.random.float(720, 1080);
 			puff.velocity.x = Math.cos(direction * Constants.TO_RADIANS) * force;
 			puff.velocity.y = Math.sin(direction * Constants.TO_RADIANS) * force;
-			FlxG.state.members.insert(PlayState.instance.members.indexOf(PlayState.instance.characterGroup), puff);
+			PlayState.instance.particleGroup.add(puff);
 		}
 		this.destroy();
 	}

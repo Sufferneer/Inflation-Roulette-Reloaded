@@ -21,6 +21,7 @@ import substates.GamemodeSelectSubState;
 import ui.objects.GameLogo;
 import states.debug.DiscolorationTestState;
 import states.debug.LiquidTestState;
+import backend.VersionUtil;
 
 class MainMenuState extends SuffState {
 	public static var initialized:Bool = false;
@@ -64,6 +65,7 @@ class MainMenuState extends SuffState {
 	var currentEasterEggInput:String = '';
 
 	override public function create():Void {
+		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
 		Window.setTitle(Language.getPhrase('mainMenu.windowDisplay'));
@@ -131,9 +133,9 @@ class MainMenuState extends SuffState {
 			Language.getPhrase('metadata.title'),
 			#if _OFFICIAL_BUILD
 			VersionUtil.getVersionName(FlxG.stage.application.meta.get('version')), Language.getPhrase('metadata.version.numeral.format',
-				[FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
+				[VersionUtil.getFullVersion()]),
 			#else
-			Language.getPhrase('metadata.version.numeralModded.format', [FlxG.stage.application.meta.get('version') + '-' + haxe.macro.Compiler.getDefine('versionState')]),
+			Language.getPhrase('metadata.version.numeralModded.format', [VersionUtil.getFullVersion()]),
 			#end
 			Language.getPhrase('game.build.format', [VersionUtil.getBuildName()])
 		];
@@ -147,7 +149,7 @@ class MainMenuState extends SuffState {
 		}
 
 		var creditImage = Paths.image('ui/menus/nicklySufferLogo');
-		creditsButton = new SuffButton(20 + ScreenSafeArea.X, 0, '', creditImage, null, creditImage.width * 2, creditImage.height * 2, false);
+		creditsButton = new SuffButton(20 + ScreenSafeArea.X, 0, '', creditImage, null, creditImage.width, creditImage.height, false);
 		creditsButton.y = FlxG.height - creditsButton.height - 20 - ScreenSafeArea.Y;
 		creditsButton.btnTextColorHovered = creditsButton.btnTextColorClicked = 0xFFFFFF00;
 		creditsButton.onClick = function() {

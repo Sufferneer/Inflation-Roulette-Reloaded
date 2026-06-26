@@ -85,11 +85,15 @@ class DebugText extends TextField {
 		}
 
 		cacheCount = currentCount;
-
-		if (System.totalMemoryNumber > memPeak) memPeak = System.totalMemoryNumber;
+		if (memCount > memPeak) memPeak = memCount;
 	}
 
 	private var memPeak:Float = 0;
+	private var memCount(get, never):Float;
+
+	private function get_memCount() {
+		return cpp.vm.Gc.memInfo64(cpp.vm.Gc.MEM_INFO_USAGE);
+	}
 
 	public function updateText() {
 		visible = Preferences.data.showDebugText;
@@ -98,7 +102,7 @@ class DebugText extends TextField {
 			text += Language.getPhrase('debugText.format', [Language.getPhrase('debugText.framerate'), currentFPS]) + '\n';
 		#if (openfl && !html5)
 		if (Preferences.data.showMemoryUsageOnDebugText) {
-			text += Language.getPhrase('debugText.format', [Language.getPhrase('debugText.memory'), Utilities.formatBytes(System.totalMemoryNumber, 1)]) + '\n';
+			text += Language.getPhrase('debugText.format', [Language.getPhrase('debugText.memory'), Utilities.formatBytes(memCount, 1)]) + '\n';
 			text += Language.getPhrase('debugText.format', [Language.getPhrase('debugText.memoryPeak'), Utilities.formatBytes(memPeak, 1)]) + '\n';
 		}
 		#end

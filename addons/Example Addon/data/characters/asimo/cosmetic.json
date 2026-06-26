@@ -263,7 +263,14 @@
 				"game/inflation/gas/belches/belch_2",
 				"game/inflation/gas/belches/belch_3",
 				"game/inflation/gas/belches/belch_4",
-				"game/inflation/gas/belches/belch_5"
+				"game/inflation/gas/belches/belch_5",
+				"game/inflation/gas/belches/belch_6",
+				"game/inflation/gas/belches/belch_7",
+				"game/inflation/gas/belches/belch_8",
+				"game/inflation/gas/belches/belch_9",
+				"game/inflation/gas/belches/belch_10",
+				"game/inflation/gas/belches/belch_11",
+				"game/inflation/gas/belches/belch_12"
 			]
 		},
 		{
@@ -278,7 +285,14 @@
 				"game/inflation/gas/belches/belch_2",
 				"game/inflation/gas/belches/belch_3",
 				"game/inflation/gas/belches/belch_4",
-				"game/inflation/gas/belches/belch_5"
+				"game/inflation/gas/belches/belch_5",
+				"game/inflation/gas/belches/belch_6",
+				"game/inflation/gas/belches/belch_7",
+				"game/inflation/gas/belches/belch_8",
+				"game/inflation/gas/belches/belch_9",
+				"game/inflation/gas/belches/belch_10",
+				"game/inflation/gas/belches/belch_11",
+				"game/inflation/gas/belches/belch_12"
 			]
 		},
 		{
@@ -456,6 +470,29 @@
 
 			"indices": [],
 			"loop": true
+		}
+	],
+
+	"rubHitboxes": [
+		{
+			"position": [250, 270],
+			"size": [140, 120]
+		},
+		{
+			"position": [230, 250],
+			"size": [180, 150]
+		},
+		{
+			"position": [220, 240],
+			"size": [230, 200]
+		},
+		{
+			"position": [200, 200],
+			"size": [290, 290]
+		},
+		{
+			"position": [170, 220],
+			"size": [350, 370]
 		}
 	],
 

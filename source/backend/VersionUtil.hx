@@ -63,5 +63,16 @@ class VersionUtil {
 		appendices.push(str);
 	}
 
+	public static var curVersion = '';
+
+	public static function getFullVersion() {
+		if (curVersion != '')
+			return curVersion;
+		curVersion = FlxG.stage.application.meta.get('version');
+		if (haxe.macro.Compiler.getDefine('versionState') != '')
+			curVersion += '-' + haxe.macro.Compiler.getDefine('versionState');
+		return curVersion;
+	}
+
 	public function new() {}
 }

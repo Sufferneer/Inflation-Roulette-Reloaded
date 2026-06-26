@@ -104,6 +104,7 @@ class PauseSubState extends SuffSubState {
 				}
 			case 'restart':
 				restartGame();
+				close();
 			case 'options':
 				OptionsSubState.notInGame = false;
 				openSubState(new OptionsSubState());
@@ -123,9 +124,12 @@ class PauseSubState extends SuffSubState {
 		}
 	}
 
-	public static function restartGame(noTrans:Bool = true) {
-		if (FlxG.keys.pressed.SHIFT) PlayState.hasSeenStartCutscene = false;
-		SuffState.resetState();
+	public static function restartGame() {
+		PlayState.instance.isPaused = false;
+		PlayState.instance.restartGame();
+		FlxG.camera.followLerp = usedFollowLerp;
+		FlxG.sound.music.volume = Preferences.data.musicVolume;
+		SuffState.playMusic(PlayState.instance.stage.data.music, true);
 	}
 
 	override function destroy() {

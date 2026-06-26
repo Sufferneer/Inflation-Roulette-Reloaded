@@ -21,6 +21,9 @@ class JukeboxState extends SuffState {
 	var exitButton:SuffIconButton;
 
 	override function create() {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		super.create();
 
 		bg = new FlxSprite().loadGraphic(Paths.image('ui/menus/extras/jukebox/bg'));

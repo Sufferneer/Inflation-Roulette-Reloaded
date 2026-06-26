@@ -46,8 +46,6 @@ class NPC extends FlxSprite {
 
 		this.copyCharacterId = rawJson.copyCharacterId ?? false;
 		this.currentCharacterId = (copyCharacterId && characterId != null) ? characterId : 'universal';
-		if (Paths.sparrowAtlas('game/npcs/$npcId/' + currentCharacterId) == null)
-			this.currentCharacterId = 'universal';
 		this.mergeable = rawJson.mergeable ?? false;
 		this.mergedNpc = rawJson.mergedNpc ?? '';
 		this.walkSpeed = rawJson.walkSpeed ?? 640;
@@ -57,13 +55,17 @@ class NPC extends FlxSprite {
 		this.sizeMultiplier = rawJson.sizeMultiplier ?? [1, 1];
 		this.originPosition = rawJson.originPosition ?? [80, 160];
 
+		var start = (FlxG.width - FlxG.width / PlayState?.instance?.stage?.data?.stageCameraZoom) / 2 ?? 0;
 		this.moveRange = [
-			PlayState?.instance?.stage?.data?.cameraBounds[0] + this.hitboxSize[0],
-			PlayState?.instance?.stage?.data?.cameraBounds[0] + PlayState?.instance?.stage?.data?.cameraBounds[2] - this.hitboxSize[0]
+			start,
+			start + FlxG.width / (PlayState?.instance?.stage?.data?.stageCameraZoom ?? 1)
 		];
 
 		super(x, y);
-		this.frames = Paths.sparrowAtlas('game/npcs/$npcId/' + currentCharacterId);
+		if (Paths.sparrowAtlas('game/npcs/$npcId/' + currentCharacterId) == null)
+			this.frames = Paths.sparrowAtlas('game/npcs/$npcId/universal');
+		else
+			this.frames = Paths.sparrowAtlas('game/npcs/$npcId/' + currentCharacterId);
 		var animationArray:Array<AnimationData> = rawJson.animations ?? [];
 		for (anim in animationArray) {
 			var name = anim.name;

@@ -13,6 +13,11 @@ import shaders.DiscolorationMaskedShader;
 import objects.particles.Liquid;
 import objects.particles.Puff;
 import backend.typedefs.CharacterOffsetsData;
+import backend.typedefs.CharacterHitboxData;
+import flixel.input.mouse.FlxMouseEvent;
+import flixel.util.FlxSpriteUtil;
+import ui.plugins.CursorHandler;
+import ui.plugins.CursorHandler;
 
 class Character extends FlxSprite {
 	// Metadata //
@@ -51,9 +56,11 @@ class Character extends FlxSprite {
 	public var cpuSabotageVictim:Bool = false;
 	public var cpuSkillMemories:Array<String> = [];
 	public var cpuSkillLevel:Int = 1;
+	public var rubHitboxes:Array<CharacterHitboxData> = [];
 
-	public var boundingBox:FlxRect = new FlxRect(170, 70, 300, 500);
+	public var boundingBox:FlxRect = new FlxRect(170, 70, 200, 500);
 	public var hovered:Bool = false;
+	public var onIdle:Bool = true;
 
 	// Modifier-Related Variables //
 	public var confidenceChangeOnLiveShot:Int = 1;
@@ -63,16 +70,34 @@ class Character extends FlxSprite {
 	public var idleAfterAnimation:Bool = true;
 	public var disableBellySounds:Bool = false;
 	public var mask:FlxSprite;
+	public var rubHitbox:FlxSprite;
 
 	public var discoloration:DiscolorationMaskedShader;
+	// VORE IN IRR REAL??
+	public var stomachNpcContents:Array<String> = [];
 
-	var gurgleTimer:Float = 0;
-	var belchTimer:Float = 25;
-	var leakTimer:Float = 25;
-	var creakTimer:Float = 0;
+	public var gurgleTimer:Float = 0;
+	public var belchTimer:Float = 25;
+	public var leakTimer:Float = 25;
+	public var creakTimer:Float = 0;
 	var navelLeakTimer:Float = 0;
 	var swirlSpawnTimer:Float = 0;
+
+	public var cursorOnBelly:Bool = false;
+	public var rubValue:Float = 0;
+	public var rubDuration:Float = 0;
+	public var rubbedComfortably:Bool = false;
+	public var forceExpulsionTimer:Float = 0;
+
 	static var timerMultiplier:Float = 1;
+
+	static final missingAnimReplace:Map<String, String> = [
+		'rubbed' => 'win',
+		'shocked' => 'preWin',
+		'belch' => 'shocked',
+		'leak' => 'shocked'
+	];
+	static final idleAnimations:Array<String> = ['idle', 'rubbed'];
 
 	public function new(character:String, x:Float = 0, y:Float = 0) {
 		this.id = character;
@@ -89,7 +114,7 @@ class Character extends FlxSprite {
 		maxPressure = json.maxPressure;
 		maxConfidence = json.maxConfidence;
 		belchThreshold = spriteJson.belchThreshold ?? 3;
-		leakThreshold = spriteJson.belchThreshold ?? 4;
+		leakThreshold = spriteJson.leakThreshold ?? 4;
 		navelLeakThreshold = spriteJson.navelLeakThreshold ?? 3;
 		gurgleThreshold = spriteJson.gurgleThreshold ?? 3;
 		creakThreshold = spriteJson.creakThreshold ?? 4;
@@ -159,6 +184,22 @@ class Character extends FlxSprite {
 		disablePopping = !(!spriteJson.disablePopping);
 		poppingGravityMultiplier = spriteJson.poppingGravityMultiplier;
 
+		var hitboxes:Array<CharacterHitboxData> = cast spriteJson.rubHitboxes;
+		for (hitboxData in hitboxes) {
+			this.rubHitboxes.push(hitboxData);
+		}
+		if (this.rubHitboxes.length <= 0) {
+			for (i in 0...maxPressure + 1)
+				this.rubHitboxes.push({
+					position: [260, 290],
+					size: [160, 160]
+				});
+		}
+		trace(rubHitboxes);
+
+		if (Preferences.data.enableBellyRubbing)
+			rubHitbox = new FlxSprite();
+
 		var skillsArray:Array<SkillData> = json.skills;
 		if (skillsArray != null && skillsArray.length > 0) {
 			for (skill in skillsArray) {
@@ -191,6 +232,7 @@ class Character extends FlxSprite {
 
 		mask = new FlxSprite();
 		mask.frames = combinedMaskAtlas;
+
 		super(x, y);
 		frames = combinedAtlas;
 		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!spriteJson.antialiasing) : false;
@@ -220,6 +262,8 @@ class Character extends FlxSprite {
 			animation.addByPrefix('idle0', 'idle0', 24);
 		}
 		playAnim('idle');
+		currentPressure = 0;
+
 		boundingBox = new FlxRect((width - 200) / 2, 70, 200, 500);
 		animation.onFinish.add(function(animName:String) {
 			if (idleAfterAnimation && !animName.startsWith('idle'))
@@ -229,10 +273,22 @@ class Character extends FlxSprite {
 		});
 		
 		trace(animSoundPaths);
+
+		if (rubHitbox != null)
+			FlxG.state.add(rubHitbox);
 	}
 
 	public override function update(elapsed:Float) {
+		if (discoloration != null) {
+			discoloration.setMask(mask.frame.parent.bitmap);
+			if (currentPressure > 0 && currentPressure <= maxPressure) {
+				// trace(discoloration.strength);
+				discoloration.strength += 0.02 * elapsed * getPressurePercentage();
+			}
+		}
+
 		super.update(elapsed);
+
 		if (currentPressure <= maxPressure || !disableBellySounds) {
 			if (Preferences.data.enableBellyGurgles && Gameplay.currentFiller.gurgles != null) {
 				if (gurgleThreshold > -1 && currentPressure >= gurgleThreshold) {
@@ -267,7 +323,7 @@ class Character extends FlxSprite {
 
 						var liquidVelocity = getParticleVelocity(64 * intensity, 0, 64);
 						var position = getParticleOffset('navel').add(x, y);
-						var liquid = new Liquid(position.x, position.y, PlayState?.instance?.stage?.data?.characterY);
+						var liquid = new Liquid(position.x, position.y, PlayState?.instance?.stage?.data?.characterY ?? 690);
 						liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
 						liquid.color = Gameplay.currentFiller.liquidColor;
 						if (PlayState?.instance != null) {
@@ -278,53 +334,53 @@ class Character extends FlxSprite {
 					}
 				}
 			}
-			if (animation.curAnim.name.startsWith('idle')) {
-				if (Preferences.data.enableBelching && Gameplay.currentFiller.belches != null) {
-					if (belchThreshold > -1 && currentPressure >= belchThreshold) {
+			if (Preferences.data.enableBelching && Gameplay.currentFiller.belches != null) {
+				if (belchThreshold > -1 && currentPressure >= belchThreshold) {
+					if (onIdle)
 						belchTimer -= elapsed;
-						if (belchTimer < 0) {
-							var intensity = Math.min(1, (currentPressure - belchThreshold + 1) / (maxPressure - belchThreshold + 1));
-							belchTimer = FlxG.random.float(15, 25) / intensity;
-							SuffState.playSound(Gameplay.currentFiller.getBelchSound(), intensity * 0.65,
-							voicePitch + FlxG.random.float(-0.025, 0.025));
-							playAnim('belch');
+					if (belchTimer < 0) {
+						var intensity = Math.min(1, (currentPressure - belchThreshold + 1) / (maxPressure - belchThreshold + 1));
+						belchTimer = FlxG.random.float(15, 25) / intensity;
+						SuffState.playSound(Gameplay.currentFiller.getBelchSound(), intensity * 0.65,
+						voicePitch + FlxG.random.float(-0.025, 0.025));
+						playAnim('belch');
 
-							for (i in 0...Math.ceil(10 * intensity)) {
-								var liquidVelocity = getParticleVelocity(400 * intensity, 100, 200);
-								var position = getParticleOffset('mouth').add(x, y);
-								var liquid = new Puff(position.x, position.y, PlayState?.instance?.stage?.data?.characterY);
-								liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
-								liquid.color = Gameplay.currentFiller.gasColor;
-								if (PlayState?.instance != null) {
-									FlxG.state.insert(PlayState.instance.members.indexOf(PlayState.instance.characterGroup) + 1, liquid);
-								} else {
-									FlxG.state.add(liquid);
-								}
+						for (i in 0...Math.ceil(10 * intensity)) {
+							var liquidVelocity = getParticleVelocity(400 * intensity, 100, 200);
+							var position = getParticleOffset('mouth').add(x, y);
+							var liquid = new Puff(position.x, position.y, PlayState?.instance?.stage?.data?.characterY ?? 690);
+							liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
+							liquid.color = Gameplay.currentFiller.gasColor;
+							if (PlayState?.instance != null) {
+								FlxG.state.insert(PlayState.instance.members.indexOf(PlayState.instance.characterGroup) + 1, liquid);
+							} else {
+								FlxG.state.add(liquid);
 							}
 						}
 					}
 				}
-				if (Preferences.data.enableOralLeaking && Gameplay.currentFiller.leaks != null) {
-					if (leakThreshold > -1 && currentPressure >= leakThreshold) {
+			}
+			if (Preferences.data.enableOralLeaking && Gameplay.currentFiller.leaks != null) {
+				if (leakThreshold > -1 && currentPressure >= leakThreshold) {
+					if (onIdle)
 						leakTimer -= elapsed;
-						if (leakTimer < 0) {
-							var intensity = Math.min(1, (currentPressure - leakThreshold + 1) / (maxPressure - leakThreshold + 1));
-							leakTimer = FlxG.random.float(15, 25) / intensity;
-							SuffState.playSound(Gameplay.currentFiller.getLeakSound(), intensity * 0.65,
-							voicePitch + FlxG.random.float(-0.025, 0.025));
-							playAnim('leak');
+					if (leakTimer < 0) {
+						var intensity = Math.min(1, (currentPressure - leakThreshold + 1) / (maxPressure - leakThreshold + 1));
+						leakTimer = FlxG.random.float(15, 25) / intensity;
+						SuffState.playSound(Gameplay.currentFiller.getLeakSound(), intensity * 0.65,
+						voicePitch + FlxG.random.float(-0.025, 0.025));
+						playAnim('leak');
 
-							for (i in 0...Math.ceil(20 * intensity)) {
-								var liquidVelocity = getParticleVelocity(100 * intensity, -10, 100);
-								var position = getParticleOffset('mouth').add(x, y);
-								var liquid = new Liquid(position.x, position.y, PlayState?.instance?.stage?.data?.characterY);
-								liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
-								liquid.color = Gameplay.currentFiller.liquidColor;
-								if (PlayState?.instance != null) {
-									FlxG.state.insert(PlayState.instance.members.indexOf(PlayState.instance.characterGroup) + 1, liquid);
-								} else {
-									FlxG.state.add(liquid);
-								}
+						for (i in 0...Math.ceil(20 * intensity)) {
+							var liquidVelocity = getParticleVelocity(100 * intensity, -10, 100);
+							var position = getParticleOffset('mouth').add(x, y);
+							var liquid = new Liquid(position.x, position.y, PlayState?.instance?.stage?.data?.characterY ?? 690);
+							liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
+							liquid.color = Gameplay.currentFiller.liquidColor;
+							if (PlayState?.instance != null) {
+								FlxG.state.insert(PlayState.instance.members.indexOf(PlayState.instance.characterGroup) + 1, liquid);
+							} else {
+								FlxG.state.add(liquid);
 							}
 						}
 					}
@@ -349,13 +405,71 @@ class Character extends FlxSprite {
 			mask.animation.curAnim.flipX = this.animation.curAnim.flipX;
 		}
 
-		if (discoloration != null) {
-			discoloration.setMask(mask.frame.parent.bitmap);
-			if (currentPressure > 0 && currentPressure <= maxPressure) {
-				// trace(discoloration.strength);
-				discoloration.strength += 0.02 * elapsed * getPressurePercentage();
+		if (rubHitbox != null) {
+			updateRubHitbox();
+			if (onIdle && currentPressure > 0 && animation.curAnim.name.endsWith('Null')) {
+				cursorOnBelly = mouseOverlapsRubHitbox();
+				if (cursorOnBelly) {
+					if (FlxG.mouse.pressed) {
+						rubDuration += elapsed;
+						var mouseVel = Math.sqrt(FlxG.mouse.deltaX * FlxG.mouse.deltaX + FlxG.mouse.deltaY * FlxG.mouse.deltaY);
+						if (mouseVel > 10) {
+							SuffState.playSound(Paths.soundRandom('game/inflation/universal/rubs/rub', 1, 6), elapsed * 2 * (mouseVel / 10), 0.75);
+						}
+						// You have to be gentle with it
+						var strength = FlxMath.roundDecimal(1 / (1 + 0.002 * Math.pow(mouseVel - 10, 4)) * 10, 1);
+						if (rubValue < 4)
+							rubValue += elapsed * strength * 0.5;
+						if (rubValue > 3) {
+							if (!rubbedComfortably)
+								rubbedComfortably = true;
+							if (!animation.curAnim.name.startsWith('rubbed') && !animation.curAnim.name.startsWith(missingAnimReplace.get('rubbed')))
+								playAnim('rubbed', false);
+						}
+					} else if (FlxG.mouse.justReleased && forceExpulsionTimer <= 0 && rubDuration <= 0.1) {
+						if (currentPressure >= leakThreshold) {
+							leakTimer = -1;
+							forceExpulsionTimer = 1;
+						}
+						if (currentPressure >= belchThreshold) {
+							belchTimer = -1;
+							forceExpulsionTimer = 1;
+						}
+					}
+				}
+				if (!cursorOnBelly || !FlxG.mouse.pressed) {
+					rubDuration = 0;
+					if (rubValue > 0)
+						rubValue -= elapsed;
+					if (rubValue <= 0 && rubbedComfortably) {
+						rubbedComfortably = false;
+						playAnim('idle', true);
+					}
+				}
 			}
+			if (forceExpulsionTimer > 0)
+				forceExpulsionTimer -= elapsed;
 		}
+	}
+
+	public function updateRubHitbox() {
+		if (rubHitbox == null || this.offset == null)
+			return;
+		var rubHitboxData:CharacterHitboxData = rubHitboxes[Std.int(FlxMath.bound(currentPressure, 0, maxPressure + 1))];
+		rubHitbox.x = rubHitboxData.position[0];
+		var flippedOffsets:Bool = false;
+		if (this.flipX)
+			flippedOffsets = !flippedOffsets;
+		if (this?.animation?.curAnim?.flipX ?? false)
+			flippedOffsets = !flippedOffsets;
+		if (flippedOffsets)
+			rubHitbox.x = this.width - rubHitbox.width - rubHitbox.x;
+		rubHitbox.x += this.x - this.offset.x;
+		rubHitbox.y = this.y - this.offset.y + rubHitboxData.position[1];
+		rubHitbox.makeGraphic(rubHitboxData.size[0], rubHitboxData.size[1], 0x00000000);
+		FlxSpriteUtil.drawEllipse(rubHitbox, 0, 0, rubHitboxData.size[0], rubHitboxData.size[1], 0xFFFFFFFF);
+		rubHitbox.updateHitbox();
+		rubHitbox.alpha = 1 / 255;
 	}
 
 	public function getParticleVelocity(x:Float, y:Float, random:Int = 0):FlxPoint {
@@ -396,10 +510,17 @@ class Character extends FlxSprite {
 	public function playAnim(AnimName:String, BackToIdle:Bool = true, Force:Bool = true, flipX:Bool = false, playSound:Bool = true, Reversed:Bool = false,
 			Frame:Int = 0):Void {
 		var usedAnimName:String = joinAnimationName(AnimName);
+		var trimmedAnimName:String = trimAnimationName(AnimName);
 		if (!animExists(usedAnimName)) {
-			trace('Animation [${usedAnimName}] for $id does not exist');
-			return;
+			if (missingAnimReplace.exists(trimmedAnimName)) {
+				usedAnimName = joinAnimationName(missingAnimReplace.get(AnimName));
+				trace('Animation [${AnimName}] for $id does not exist, using [$usedAnimName] instead');
+			} else {
+				trace('Animation [${usedAnimName}] for $id does not exist, no replacements exist');
+				return;
+			}
 		}
+		this.onIdle = idleAnimations.contains(trimmedAnimName);
 		animation.getByName(usedAnimName).flipX = flipX;
 		animation.play(usedAnimName, Force, Reversed, Frame);
 
@@ -450,9 +571,9 @@ class Character extends FlxSprite {
 		return currentPressure / maxPressure * (multiplied ? 100 : 1);
 	}
 
-	function joinAnimationName(AnimName:String, checkForExistance:Bool = true):String {
+	function joinAnimationName(AnimName:String, checkForExistence:Bool = true):String {
 		var usedAnimName:String = AnimName;
-		if (checkForExistance && animExists(AnimName + parseAnimationSuffix()))
+		if (checkForExistence && animExists(AnimName + parseAnimationSuffix()))
 			usedAnimName = AnimName + parseAnimationSuffix();
 		return usedAnimName;
 	}
@@ -471,11 +592,15 @@ class Character extends FlxSprite {
 		return FlxG.mouse.x >= this.x - this.offset.x + boundingBox.x && FlxG.mouse.x <= this.x - this.offset.x + boundingBox.x + boundingBox.width && FlxG.mouse.y >= this.y - this.offset.y + boundingBox.y && FlxG.mouse.y <= this.y - this.offset.y + boundingBox.y + boundingBox.height;
 	}
 
+	public function mouseOverlapsRubHitbox() {
+		return rubHitbox?.pixelsOverlapPoint(FlxG.mouse.getWorldPosition(), 0x01, FlxG.camera) ?? false;
+	}
+
 	public function isEliminated() {
 		return currentPressure > maxPressure;
 	}
 
-	override function toString():String {
+	public override function toString():String {
 		return 'Character(id: ${id} | P:${currentPressure} / ${maxPressure} | C:${currentConfidence} / ${maxConfidence})';
 	}
 }

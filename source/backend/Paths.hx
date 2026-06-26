@@ -10,7 +10,6 @@ import openfl.display.BitmapData;
 import openfl.display3D.textures.RectangleTexture;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.system.System;
-import openfl.geom.Rectangle;
 import tjson.TJSON as Json;
 import backend.typedefs.FillerSoundData;
 
@@ -27,86 +26,31 @@ class Paths {
 	/**
 	 * List of directories to be ignored during memory clearing.
 	 */
-	public static var dumpExclusions:Array<String> = [];
-
-	/**
-	 * Preload belly sounds to memory to prevent crashes and lag spikes.
-	 */
-	public static function precacheBellySounds() {
-		var creaks:FillerSoundData = Gameplay.currentFiller?.creaks;
-		var gurgles:FillerSoundData = Gameplay.currentFiller?.gurgles;
-		var belches:FillerSoundData = Gameplay.currentFiller?.belches;
-		var leaks:FillerSoundData = Gameplay.currentFiller?.leaks;
-		var bursts:FillerSoundData = Gameplay.currentFiller?.bursts;
-		if (creaks != null) {
-			for (i in 1...creaks.samples + 1) {
-				var key:String = 'game/inflation/${creaks.archetype}/creaks/creak_' + i;
-				precacheSound(key);
-			}
-		}
-		if (gurgles != null) {
-			for (i in 1...gurgles.samples + 1) {
-				var key:String = 'game/inflation/${gurgles.archetype}/gurgles/gurgle_' + i;
-				precacheSound(key);
-			}
-		}
-		if (belches != null) {
-			for (i in 1...belches.samples + 1) {
-				var key:String = 'game/inflation/${belches.archetype}/belches/belch_' + i;
-				precacheSound(key);
-			}
-		}
-		if (leaks != null) {
-			for (i in 1...leaks.samples + 1) {
-				var key:String = 'game/inflation/${leaks.archetype}/leaks/leak_' + i;
-				precacheSound(key);
-			}
-		}
-		if (bursts != null) {
-			for (i in 1...bursts.samples + 1) {
-				var key:String = 'game/inflation/${bursts.archetype}/bursts/burst_' + i;
-				precacheSound(key);
-			}
-		}
-		for (i in 1...Constants.FWOOMPS_SAMPLE_COUNT + 1) {
-			var key:String = 'game/inflation/universal/fwoomps/fwoompLarge_' + i;
-			precacheSound(key);
-			key = 'game/inflation/universal/fwoomps/fwoompSmall_' + i;
-			precacheSound(key);
-		}
-	}
-
-	public static function precacheSound(key:String) {
-		if (!localTrackedAssets.contains(key)) {
-			Paths.sound(key);
-		}
+	public static var dumpExclusions:Array<String> = [
+		'assets/music/',
+		'text',
+		'plugins/'
+	];
+	
+	public static function isDumpExcluded(key:String) {
+		for (prefix in dumpExclusions)
+			if (key.startsWith(prefix))	return true;
+		return false;
 	}
 
 	/**
 	 * Clear stored assets in memory that is currently not used.
 	 */
 	public static function clearUnusedMemory() {
-		// clear non local assets in the tracked assets list
+		// clear non-local assets in the tracked assets list
 		for (key in currentTrackedTextures.keys()) {
 			// if it is not currently contained within the used local assets
-			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key)) {
-				var obj = currentTrackedTextures.get(key);
-				@:privateAccess
-				if (obj != null) {
-					// remove the key from all cache maps
-					FlxG.bitmap._cache.remove(key);
-					openfl.Assets.cache.removeBitmapData(key);
-					currentTrackedTextures.remove(key);
-
-					// and get rid of the object
-					obj.persist = false; // make sure the garbage collector actually clears it up
-					obj.destroyOnNoUse = true;
-					obj.destroy();
-				}
+			if (!localTrackedAssets.contains(key) && !isDumpExcluded(key)) {
+				destroyGraphic(currentTrackedTextures.get(key)); // get rid of the graphic
+				currentTrackedTextures.remove(key); // and remove the key from local cache map
 			}
 		}
 
-		// run the garbage collector for good measure lmfao
 		System.gc();
 	}
 
@@ -118,20 +62,18 @@ class Paths {
 	/**
 	 * Clear all assets not in the tracked assets list.
 	 */
+	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
 	public static function clearStoredMemory() {
-		@:privateAccess
+		// clear anything not in the tracked assets list
 		for (key in FlxG.bitmap._cache.keys()) {
-			var obj = FlxG.bitmap._cache.get(key);
-			if (obj != null && !currentTrackedTextures.exists(key)) {
-				openfl.Assets.cache.removeBitmapData(key);
-				FlxG.bitmap._cache.remove(key);
-				obj.destroy();
-			}
+			// trace(key);
+			if (!currentTrackedTextures.exists(key) && !isDumpExcluded(key))
+				destroyGraphic(FlxG.bitmap.get(key));
 		}
 
 		// clear all sounds that are cached
 		for (key => asset in currentTrackedSounds) {
-			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key) && asset != null) {
+			if (!localTrackedAssets.contains(key) && !isDumpExcluded(key) && asset != null) {
 				Assets.cache.clear(key);
 				currentTrackedSounds.remove(key);
 			}
@@ -139,6 +81,15 @@ class Paths {
 		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
 	}
+
+	public static function destroyGraphic(graphic:FlxGraphic) {
+		// free some gpu memory
+		@:privateAccess
+		if (graphic != null && graphic.bitmap != null && graphic.bitmap.__texture != null)
+			graphic.bitmap.__texture.dispose();
+		FlxG.bitmap.remove(graphic);
+	}
+
 
 	/**
 	 * Convert a relative directory to a directory in the `assets` folder.

@@ -17,13 +17,13 @@ class LiquidTestState extends SuffState {
 	override function create() {
 		super.create();
 
-		Gameplay.currentFiller = new Filler('asimo');
+		Gameplay.currentFiller = new Filler('berry');
 
 		floor = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 		floor.y = FlxG.height * 7 / 8;
 		add(floor);
 
-		character = new Character('goober', 160, floor.y);
+		character = new Character('asimo', 160, floor.y);
 		add(character);
 
 		exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);

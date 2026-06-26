@@ -89,6 +89,11 @@ class OptionsSubState extends SuffSubState {
 			Preferences.data.skipEliminatedPlayers = value;
 		}, Preferences.data.skipEliminatedPlayers);
 
+		createBooleanOption("enableBellyRubbing",
+		function(value:Bool) {
+			Preferences.data.enableBellyRubbing = value;
+		}, Preferences.data.enableBellyRubbing);
+
 		createHeading('preferences');
 
 		createBooleanOption("enableBellyCreaks", function(value:Bool) {

@@ -4,22 +4,26 @@ import flixel.graphics.FlxGraphic;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxEmitter.FlxEmitterMode;
 import objects.particles.Scrap;
+import states.PlayState;
 
-class ScrapEmitter extends FlxTypedEmitter<Scrap> {
-	public function new(x, y, characterID:String, floorY:Float = 690, scrapCount:Float = 4) {
+class ScrapEmitter extends FlxObject {
+	public function new(x, y, characterID:String, floorY:Float = 690, scrapCount:Int = 4) {
 		super(x, y, 25);
-		particleClass = Scrap;
 		Scrap.floorY = floorY;
 
-		var leImage:FlxGraphic = Paths.image('game/particles/scraps/$characterID');
-		loadParticles(leImage, FlxG.random.int(6, 10), 0, true);
-
-		start(true, scrapCount / 32, 0);
-		launchMode = FlxEmitterMode.SQUARE;
-		velocity.set(-1440 * 2, -480 * 4, 1440 * 2, 360 * 3);
-		acceleration.set(0, 150);
-		lifespan.set(999, 999);
-		scale.set(1.0, 1.5);
+		for (i in 0...scrapCount) {
+			var scrap = new Scrap(x, y, characterID);
+			velocity.set(
+				FlxG.random.int(-1440 * 2, 1440 * 2),
+				FlxG.random.int(-480 * 4, 360 * 3)
+			);
+			acceleration.y = 150;
+			if (PlayState.instance != null)
+				PlayState.instance.particleGroup.add(scrap);
+			else
+				FlxG.state.add(scrap);
+		}
+		destroy();
 	}
 
 	override function update(elapsed:Float) {

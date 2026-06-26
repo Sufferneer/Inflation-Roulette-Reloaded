@@ -48,6 +48,9 @@ class CreditsState extends SuffState {
 	var scrollBar:SuffScrollBar;
 
 	override public function create():Void {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		super.create();
 
 		Window.setTitle(Language.getPhrase('creditsMenu.windowDisplay'));

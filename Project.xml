@@ -106,8 +106,9 @@
 	</section>
 	<assets path="conditionalAssets/embed" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true" embed="true"/>
 	<assets path="conditionalAssets/embed" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true" embed="true"/>
-	<assets path='importantFile.png'/>
 
+	<assets path='importantFile.png'/>
+	<assets path='dev/readme.txt' rename='README.txt'/>
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />

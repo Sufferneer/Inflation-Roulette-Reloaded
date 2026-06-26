@@ -1,7 +1,5 @@
 package ui.plugins;
-
-import objects.particles.*;
-import objects.particleEmitters.*;
+import ui.plugins.CursorHandler;
 
 class CursorHandler extends FlxBasic {
 	public static var instance:Null<CursorHandler> = null;
@@ -24,11 +22,20 @@ class CursorHandler extends FlxBasic {
 		cursorVisible = true;
 	}
 
-	override function update(elapsed:Float) {
+	public static var currentCursorStyle:String = 'default';
+
+	public static final cursorStylePriority:Array<String> = ['rub', 'default'];
+	public static function setCursorStyle(value:String) {
+		if (value == currentCursorStyle)
+			return;
+		currentCursorStyle = value;
+	}
+
+	public override function update(elapsed:Float) {
 		if (instance == null || !cursorVisible)
 			return;
 		if (Preferences.data.useBuiltInCursor)
-            Utilities.changeCursorImage('default', FlxG.mouse.pressed);
+            Utilities.changeCursorImage(currentCursorStyle, FlxG.mouse.pressed);
 		if (Preferences.data.playCursorSounds) {
 			if (FlxG.mouse.justPressed) {
 				SuffState.playUISound(Paths.sound('ui/cursorClick'), 0.75, FlxG.random.float(2.5, 5));

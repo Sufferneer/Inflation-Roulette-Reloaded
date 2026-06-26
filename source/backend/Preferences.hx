@@ -31,6 +31,7 @@ class SaveVariables {
 	public var enableDiscoloration:Bool = true;
 	public var enableOralLeaking:Bool = false;
 	public var enableNavelLeaking:Bool = false;
+	public var enableBellyRubbing:Bool = true;
 	public var cacheOnGPU:Bool = false;
 	public var showDebugText:Bool = false;
 	public var showFramerateOnDebugText:Bool = true;
@@ -90,7 +91,7 @@ class Preferences {
 		save.flush();
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls', Utilities.getSavePath());
+		save.bind('controlsV2', Utilities.getSavePath());
 		save.data.keybinds = keybinds;
 		save.flush();
 
@@ -121,7 +122,7 @@ class Preferences {
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls', Utilities.getSavePath());
+		save.bind('controlsV2', Utilities.getSavePath());
 		if (save?.data?.keybinds != null) {
 			var saveKeybinds:Map<String, Array<FlxKey>> = save.data.keybinds;
 			for (name => value in saveKeybinds)

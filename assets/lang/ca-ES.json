@@ -114,8 +114,8 @@
 	"extrasMenu.jukebox": "Tocadiscs",
 	
 	"debugText.framerate": "FPS",
-	"debugText.memory": "RAM",
-	"debugText.memoryPeak": "Pic de RAM",
+	"debugText.memory": "RAM GC",
+	"debugText.memoryPeak": "Pic de RAM GC",
 	"debugText.state": "Estat",
 	// %1: Debug Text
 	"debugText.format": "%1: %2",

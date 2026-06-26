@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="slime.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle0000" x="0" y="0" width="300" height="400"/>
+
+	<SubTexture name="walk0000" x="300" y="0" width="300" height="400"/>
+	<SubTexture name="walk0001" x="300" y="0" width="300" height="400"/>
+	<SubTexture name="walk0002" x="600" y="0" width="300" height="400"/>
+	<SubTexture name="walk0003" x="600" y="0" width="300" height="400"/>
+	<SubTexture name="walk0004" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="walk0005" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="walk0006" x="600" y="0" width="300" height="400"/>
+	<SubTexture name="walk0007" x="600" y="0" width="300" height="400"/>
+	
+	<SubTexture name="dance0000" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="dance0001" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="dance0002" x="0" y="400" width="300" height="400"/>
+	<SubTexture name="dance0003" x="0" y="400" width="300" height="400"/>
+	<SubTexture name="dance0004" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0005" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0006" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0007" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0008" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0009" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0010" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0011" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0012" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0013" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0014" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0015" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0016" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0017" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0018" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0019" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0020" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0021" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0022" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0023" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0024" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0025" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0026" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0027" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0028" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0029" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0030" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0031" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0032" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0033" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0034" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0035" x="300" y="400" width="300" height="400"/>
+	<SubTexture name="dance0036" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0037" x="600" y="400" width="300" height="400"/>
+	<SubTexture name="dance0038" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0040" x="900" y="400" width="300" height="400"/>
+	<SubTexture name="dance0041" x="0" y="400" width="300" height="400"/>
+	<SubTexture name="dance0042" x="0" y="400" width="300" height="400"/>
+	<SubTexture name="dance0043" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="dance0044" x="900" y="0" width="300" height="400"/>
+</TextureAtlas>

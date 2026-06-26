@@ -24,6 +24,9 @@ class GalleryArtworkViewState extends SuffState {
 	public static var path:String = '';
 
 	override function create() {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		camGame = new FlxCamera(0, 0, FlxG.width, FlxG.height);
 		camHUD = new FlxCamera(0, 0, FlxG.width, FlxG.height);
 		camGame.bgColor = 0xFF000000;

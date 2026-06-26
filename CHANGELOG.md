@@ -56,6 +56,7 @@ Hotfixes are quick updates that fixes critical bugs.
 - Decreased Asimo's gurgle threshold
 - Increased visibility of Skill icons on white backgrounds
 - Updated some splashes
+- Updated the appearance of the NicklySuffer logo once again.
 #### Localization
 - Forced Aliasing now renamed to _Forced Pixelation_ to avoid confusion.
 - Localization files are now handled by JSON.
@@ -63,6 +64,8 @@ Hotfixes are quick updates that fixes critical bugs.
 - Quick Play now randomizes the human player's position.
 - Player count is now unaffected by game mode.
 - The damage of the live round in the Charge gamemode now increments by 0.5 instead of 1.
+- Restarting a game session now doesn't reload the entire session.
+  - This also reduces memory usage on restart.
 #### Technical
 - All changelogs are now kept in one file.
 - Skill Cards now only uses one file
@@ -76,7 +79,8 @@ Hotfixes are quick updates that fixes critical bugs.
 #### Gameplay
 - Removed Modifiers
   - Since this feature is under-utilized and not expanded upon, modifiers no longer have any effect.
-- Removed Stand-Off and Mayhem
+- Removed gamemodes: Stand-Off and Mayhem
+- Removed ability to replay starting cutscene on game restart.
 ### Fixes
 - Scroll bars, Gallery Image View, Credits menu, and Options sliders snaps elements in place on touchscreens.
 - Blurry Cobalt crashes the game.

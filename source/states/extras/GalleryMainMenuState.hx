@@ -17,6 +17,9 @@ class GalleryMainMenuState extends SuffState {
 	final envelopeSpacing:Float = 80;
 
 	override function create() {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		super.create();
 
 		Window.setTitle(Language.getPhrase('galleryMainMenu.windowDisplay'));

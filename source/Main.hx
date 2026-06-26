@@ -16,6 +16,7 @@ import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 import openfl.utils.Assets;
+import backend.VersionUtil;
 
 #end
 
@@ -157,7 +158,9 @@ class Main extends Sprite {
 
 		errMsg += "\nUncaught Error: " + e.error;
 		#if _OFFICIAL_BUILD
-		errMsg += "\n\nPlease report this error to the GitHub page: https://github.com/Sufferneer/Inflation-Roulette-Reloaded";
+		errMsg += "\n\nGame: " + FlxG.stage.application.meta.get('file');
+		errMsg += "\nVersion: " + VersionUtil.getFullVersion();
+		errMsg += "\nPlease report this error to the GitHub page: https://github.com/Sufferneer/Inflation-Roulette-Reloaded";
 		#end
 
 		#if desktop

@@ -31,6 +31,9 @@ class ResultsState extends SuffState {
 	var highestScore:Float = 0;
 	var highestScoreIndices:Array<Int> = [];
 	override public function create():Void {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		for (num => what in data) {
 			var jesus = what.winBonus + what.edgingBonus + what.skillBonus;
 			if (jesus > highestScore) highestScore = jesus;

@@ -43,6 +43,9 @@ class LanguageSelectState extends SuffState {
 	var bgOverlayScale:FlxPoint;
 
 	override function create() {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		Window.setTitle(Language.getPhrase('languageMenu.windowDisplay'));
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);

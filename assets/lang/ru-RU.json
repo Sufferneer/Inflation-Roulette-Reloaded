@@ -114,8 +114,8 @@
 	"extrasMenu.jukebox": "Пластинки",
 	
 	"debugText.framerate": "FPS",
-	"debugText.memory": "RAM",
-	"debugText.memoryPeak": "RAM Peak",
+	"debugText.memory": "GC RAM",
+	"debugText.memoryPeak": "GC RAM Peak",
 	"debugText.state": "State",
 	// %1: Debug Text
 	"debugText.format": "%1: %2",

@@ -12,5 +12,6 @@ typedef CharacterCosmeticData = {
 	?antialiasing:Bool,
 	?disablePopping:Bool,
 	?poppingVelocityMultiplier:Array<Float>,
+	?rubHitboxes:Array<CharacterHitboxData>,
 	?poppingGravityMultiplier:Float
 }

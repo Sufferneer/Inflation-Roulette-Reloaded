@@ -40,7 +40,7 @@ class MusicToast extends FlxTypedContainer<FlxBasic> {
 		add(musicToast);
 		musicToast.scrollFactor.set();
 
-		bg = new FlxSprite().makeGraphic(1, 50, FlxColor.BLACK);
+		bg = new FlxSprite().makeGraphic(1, 50, FlxColor.BLACK, 'plugins/musicToast/bg');
 		bg.alpha = 0.75;
 		bg.scrollFactor.set();
 		musicToast.add(bg);

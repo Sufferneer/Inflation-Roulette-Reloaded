@@ -89,8 +89,8 @@ class Utilities {
 	 * @param tag The cursor used.
 	 * @param pressed Whether to use the pressed version of the cursor.
 	 */
-	public static function makeBorder(width:Float, height:Float, thickness:Int = 5, color:FlxColor = 0xFFFFFFFF):FlxGraphic {
-		var spr:FlxSprite = new FlxSprite().makeGraphic(Std.int(width), Std.int(height), 0x0);
+	public static function makeBorder(width:Float, height:Float, thickness:Int = 5, color:FlxColor = 0xFFFFFFFF, ?key:String):FlxGraphic {
+		var spr:FlxSprite = new FlxSprite().makeGraphic(Std.int(width), Std.int(height), 0x0, key);
 		FlxSpriteUtil.drawRect(spr, 0, 0, Std.int(width), Std.int(height), 0x0, {color: color, thickness: thickness * 2}, {smoothing: false});
 		return spr.graphic;
 	}

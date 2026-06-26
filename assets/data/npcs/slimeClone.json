@@ -3,10 +3,10 @@
 	"mergeable": false,
 	"walkSpeed": 320,
 	"idleDuration": [3, 6],
-	"sizeMultiplier": [0.9, 1.1],
+	"sizeMultiplier": [1, 1.1],
 	"originPosition": [150, 375],
 	"hitboxSize": [120, 300],
-	"tauntChance": 0.2,
+	"tauntChance": 0.1,
 
 	"animations": [
 		{
@@ -26,7 +26,7 @@
 		{
 			"name": "dance",
 			"prefix": "dance",
-			"fps": 12,
+			"fps": 24,
 			"indices": [],
 			"loop": false
 		}

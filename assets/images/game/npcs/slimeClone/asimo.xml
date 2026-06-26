@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="slime.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle0000" x="0" y="0" width="300" height="400"/>
+
+	<SubTexture name="walk0000" x="300" y="0" width="300" height="400"/>
+	<SubTexture name="walk0001" x="300" y="0" width="300" height="400"/>
+	<SubTexture name="walk0002" x="600" y="0" width="300" height="400"/>
+	<SubTexture name="walk0003" x="600" y="0" width="300" height="400"/>
+	<SubTexture name="walk0004" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="walk0005" x="900" y="0" width="300" height="400"/>
+	<SubTexture name="walk0006" x="600" y="0" width="300" height="400"/>
+	<SubTexture name="walk0007" x="600" y="0" width="300" height="400"/>
+	
+	<SubTexture name="dance0000" x="1200" y="0" width="300" height="400"/>
+	<SubTexture name="dance0001" x="1200" y="0" width="300" height="400"/>
+	<SubTexture name="dance0002" x="1500" y="0" width="300" height="400"/>
+	<SubTexture name="dance0003" x="1500" y="0" width="300" height="400"/>
+	<SubTexture name="dance0004" x="1200" y="0" width="300" height="400"/>
+	<SubTexture name="dance0005" x="1200" y="0" width="300" height="400"/>
+	<SubTexture name="dance0006" x="1500" y="0" width="300" height="400"/>
+	<SubTexture name="dance0007" x="1500" y="0" width="300" height="400"/>
+	<SubTexture name="dance0008" x="1200" y="0" width="300" height="400"/>
+	<SubTexture name="dance0009" x="1200" y="0" width="300" height="400"/>
+	<SubTexture name="dance0010" x="1500" y="0" width="300" height="400"/>
+	<SubTexture name="dance0011" x="1500" y="0" width="300" height="400"/>
+</TextureAtlas>

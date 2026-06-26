@@ -41,6 +41,9 @@ class AchievementsState extends SuffState {
 	public static var instance:AchievementsState;
 
 	override function create() {
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		super.create();
 
 		Window.setTitle(Language.getPhrase('achievementsMenu.windowDisplay'));

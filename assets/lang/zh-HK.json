@@ -71,8 +71,8 @@
 	"extrasMenu.jukebox": "點唱單",
 	
 	"debugText.framerate": "FPS",
-	"debugText.memory": "RAM",
-	"debugText.memoryPeak": "RAM高峰",
+	"debugText.memory": "GC RAM",
+	"debugText.memoryPeak": "GC RAM高峰",
 	"debugText.state": "選單",
 	"debugText.format": "%1: %2",
 
@@ -94,6 +94,8 @@
 	
 	"option.skipEliminatedPlayers.name": "跳過淘汰者",
 	"option.skipEliminatedPlayers.description": "被擊敗的玩家在輪到他們行動時不會播放動畫。",
+	"option.enableBellyRubbing.name": "揉肚",
+	"option.enableBellyRubbing.description": "玩家在膨脹狀態下，遊標可以揉搓玩家的身體。停用此功能可有助低端設備提高性能。",
 	// This option is a button.
 	"option.controls.name": "控制",
 	"option.controls.description": "調置快速鍵。",
@@ -241,8 +243,8 @@
 	"option.showDebugText.description": "在螢幕左上角顯示調試資訊。",
 	"option.showFramerateOnDebugText.name": "FPS",
 	"option.showFramerateOnDebugText.description": "在調試文字中顯示目前的 FPS。",
-	"option.showMemoryUsageOnDebugText.name": "記憶體使用率",
-	"option.showMemoryUsageOnDebugText.description": "在調試文字中顯示目前使用的記憶體量。",
+	"option.showMemoryUsageOnDebugText.name": "GC記憶體使用率",
+	"option.showMemoryUsageOnDebugText.description": "在調試文字中顯示垃圾回收工能使用的記憶體量。",
 	"option.showCurrentStateOnDebugText.name": "目前選單",
 	"option.showCurrentStateOnDebugText.description": "在調試文字中顯示目前正在瀏覽的選單。",
 
@@ -559,7 +561,7 @@
 	"menu.cancel": "取消",
 	"menu.exit": "退出",
 
-	"game.windowDisplay": "%1 · %2 · %3位玩家",
+	"game.windowDisplay": "%1（%2位玩家）",
 	"game.selectTarget": "選擇目標",
 	"game.playerIndicator.you": "YOU",
 	"game.playerIndicator.player": "P%1",

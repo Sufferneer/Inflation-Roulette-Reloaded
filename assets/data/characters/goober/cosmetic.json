@@ -437,6 +437,33 @@
 		}
 	],
 
+	"rubHitboxes": [
+		{
+			"position": [260, 290],
+			"size": [120, 120]
+		},
+		{
+			"position": [260, 280],
+			"size": [160, 160]
+		},
+		{
+			"position": [240, 260],
+			"size": [220, 230]
+		},
+		{
+			"position": [220, 220],
+			"size": [310, 300]
+		},
+		{
+			"position": [180, 180],
+			"size": [390, 390]
+		},
+		{
+			"position": [90, 180],
+			"size": [530, 420]
+		}
+	],
+
 	"belchThreshold": 2,
 	"gurgleThreshold": 2,
 	"creakThreshold": 3,

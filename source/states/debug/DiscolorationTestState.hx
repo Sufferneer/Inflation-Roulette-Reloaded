@@ -3,6 +3,8 @@ package states.debug;
 import ui.objects.SuffIconButton;
 import objects.Character;
 import shaders.DiscolorationMaskedShader;
+import backend.Gameplay;
+import backend.Filler;
 
 class DiscolorationTestState extends SuffState {
 	var exiting:Bool = false;
@@ -10,12 +12,17 @@ class DiscolorationTestState extends SuffState {
 
 	var character:Character;
 
+	var rubText:FlxText;
+
 	override function create() {
 		super.create();
 
-		character = new Character('shib', FlxG.width / 2, FlxG.height * 0.825);
-		character.discoloration = new DiscolorationMaskedShader([96, 128, 255]);
-		character.discoloration.destabilization = [0, 0, 0];
+		Gameplay.currentFiller = new Filler('air');
+
+		rubText = new FlxText(0, 0, 0, '', 32);
+		add(rubText);
+
+		character = new Character('chester', FlxG.width / 2, FlxG.height * 0.825);
 		add(character);
 
 		exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);
@@ -35,6 +42,13 @@ class DiscolorationTestState extends SuffState {
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
+
+		rubText.text = '
+		rubValue: ${character.rubValue}
+		rubDuration: ${character.rubDuration}
+		forceExpulsionTimer: ${character.forceExpulsionTimer}
+		leakTimer: ${character.leakTimer}
+		';
 
 		if (Controls.justPressed('exit')) {
 			exitMenu();

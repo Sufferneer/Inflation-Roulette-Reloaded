@@ -19,7 +19,7 @@ class AchievementToast extends FlxSpriteGroup {
 
 		scrollFactor.set();
 
-		bg = new FlxSprite().makeGraphic(540, 150, 0xFF000000);
+		bg = new FlxSprite().makeGraphic(540, 150, 0xFF000000, 'plugins/achievementToast/bg');
 		add(bg);
 
 		icon = new AchievementIcon(10, 10, '', false);

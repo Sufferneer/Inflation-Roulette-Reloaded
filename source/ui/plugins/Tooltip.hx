@@ -27,10 +27,12 @@ class Tooltip extends FlxSpriteGroup {
 
 		tooltipText = new FlxText(padding.x, padding.y, tooltipWidth, '');
 		tooltipText.setFormat(Paths.font('default'), 32, FlxColor.WHITE, LEFT);
+		tooltipText.graphic.persist = true;
 
-		bg = new FlxSprite().makeGraphic(1, 1, 0xFF000000);
+		bg = new FlxSprite().makeGraphic(1, 1, 0xFF000000, 'plugins/tooltip/bg');
 		bg.alpha = 0.7;
-		bgOutline = new FlxSprite().loadGraphic(Utilities.makeBorder(1, 1, 4, 0xFFFFFFFF));
+		bgOutline = new FlxSprite().loadGraphic(Utilities.makeBorder(1, 1, 4, 0xFFFFFFFF, 'plugins/tooltip/outline'));
+		bgOutline.graphic.persist = true;
 
 		add(bg);
 		add(bgOutline);
@@ -66,7 +68,8 @@ class Tooltip extends FlxSpriteGroup {
 		instance.bg.scale.set(leWidth, leHeight);
 		instance.bg.updateHitbox();
 
-		instance.bgOutline.loadGraphic(Utilities.makeBorder(leWidth, leHeight, 4, 0xFFFFFFFF));
+		Paths.destroyGraphic(FlxG.bitmap.get('plugins/tooltip/outline'));
+		instance.bgOutline.loadGraphic(Utilities.makeBorder(leWidth, leHeight, 4, 0xFFFFFFFF, 'plugins/tooltip/outline'));
 		instance.visible = (CursorHandler.cursorVisible) && (text.length > 0);
 		return value;
 	}
