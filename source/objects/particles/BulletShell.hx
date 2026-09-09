@@ -52,7 +52,7 @@ class BulletShell extends FlxSprite {
 				angle = 90 * FlxG.random.int(-1, 1, [0]);
 				if (!despawning) {
 					FlxTween.tween(this, {alpha: 0}, 2, {startDelay: 5 + FlxG.random.float() * 5, onComplete: function(_) {
-						FlxG.state.remove(this);
+						FlxG.state.remove(this, true);
 						this.destroy();
 					}});
 					despawning = true;

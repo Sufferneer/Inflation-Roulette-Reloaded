@@ -7,6 +7,7 @@ import tjson.TJSON as Json;
 import backend.typedefs.StageObjectData;
 import backend.typedefs.AnimationData;
 import backend.Gameplay;
+import backend.StageRules;
 
 class Stage extends FlxBasic {
 	private var game(get, never):PlayState;
@@ -26,6 +27,7 @@ class Stage extends FlxBasic {
 			trace('Specialized music path for stage ($musicPath) does not exist. Using default game music path');
 			data.music = 'stages/default';
 		}
+		Gameplay.currentStageRules = new StageRules(data.rules);
 		super();
 	}
 

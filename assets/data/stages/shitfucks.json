@@ -1,4 +1,7 @@
 {
+	"rules": {
+		"allowConfidenceOverflow": true
+	},
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
 	"cameraBounds": [-540, -240, 2360, 1080],

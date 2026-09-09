@@ -5,7 +5,7 @@ import tjson.TJSON as Json;
 
 class Skill {
 	public var id:String = 'null';
-	public var cost:Int = 0;
+	public var cost:Float = 0;
 
 	// public var name:String = 'Unnamed';
 	// public var description:String = 'No description.';
@@ -14,7 +14,7 @@ class Skill {
 	public var cpuConservePreferred:Bool = false;
 	public var cpuUseOnce:Bool = true;
 
-	public function new(id:String, cost:Null<Int> = null, costMultiplier:Float = 1) {
+	public function new(id:String, cost:Null<Float> = null, costMultiplier:Float = 1) {
 		this.id = id;
 
 		var rawJson = Paths.getTextFromFile('data/skills/' + id + '.json');
@@ -22,7 +22,7 @@ class Skill {
 
 		this.defaultCost = json.defaultCost;
 		this.offensive = json.offensive;
-		this.cost = Math.ceil(((cost != null) ? cost : this.defaultCost) * costMultiplier);
+		this.cost = Math.ceil(((cost != null) ? Std.int(cost) : this.defaultCost) * costMultiplier);
 
 		// this.name = json.name;
 		// this.description = json.description;

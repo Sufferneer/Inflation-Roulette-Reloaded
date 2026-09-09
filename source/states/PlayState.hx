@@ -27,6 +27,7 @@ import objects.NPC;
 import objects.particles.DenialShield;
 import openfl.filters.ShaderFilter;
 import shaders.GaussianBlurShader;
+import ui.objects.TimeBalloon;
 
 class PlayState extends SuffState {
 	public var characterMap:Map<Int, Character> = [];
@@ -58,8 +59,6 @@ class PlayState extends SuffState {
 
 	var selectTargetText:FlxText;
 
-	var shootButton:SuffButton;
-
 	var pressureBar:SuffBar;
 	final pressureBarColors:Array<FlxColor> = [0xFF404060, 0xFFFFFFFF];
 	var pressureIcon:GameIcon;
@@ -71,6 +70,8 @@ class PlayState extends SuffState {
 	var pauseButton:SuffIconButton;
 	var cameraFocusButton:SuffIconButton;
 	var skillCancelButton:SuffIconButton;
+	var shootButton:SuffButton;
+	var timeBalloon:TimeBalloon;
 	
 	var dangerVignette:FlxSprite;
 
@@ -78,6 +79,7 @@ class PlayState extends SuffState {
 	var currentTurnIndex:Int = 0;
 	var winnerIndex:Null<Int> = null;
 	public var canUseSkillKeybinds:Bool = false;
+	var currentTurnDirection:Int = 1;
 
 	var cylinderContent:Array<Bool> = []; // True: Live, False: Blank
 	var currentLiveRoundDamage:Float = 1;
@@ -114,6 +116,7 @@ class PlayState extends SuffState {
 	var lastPressurizeUserIndex:Int = -1;
 
 	public var stage:Stage;
+	public var timerActive:Bool = false;
 
 	override public function create() {
 		RecordingUtil.checkIfRecording();
@@ -194,6 +197,7 @@ class PlayState extends SuffState {
 
 			char.cpuControlled = Gameplay.cpuControlled[i];
 			char.cpuSkillLevel = Gameplay.cpuLevel[i];
+			char.timeRemaining = Gameplay.currentStageRules.timeLimit;
 
 			pumpGunXDestinations.push(char.x - pumpGun.width / 2);
 
@@ -273,7 +277,7 @@ class PlayState extends SuffState {
 			dangerVignette.setGraphicSize(FlxG.width + 20, FlxG.height + 20);
 			dangerVignette.updateHitbox();
 			dangerVignette.screenCenter();
-			dangerVignette.color = 0xC00040;
+			dangerVignette.color = Constants.DANGER_COLOR;
 			dangerVignette.alpha = 0;
 			dangerVignette.camera = camHUD;
 			add(dangerVignette);
@@ -356,6 +360,11 @@ class PlayState extends SuffState {
 		shootButton.onClick = function() {
 			deployGun(currentTurnIndex, function() return getPlayer(currentTurnIndex).getPressurePercentage());
 		}
+		if (Gameplay.currentStageRules.hasTimeLimit()) {
+			timeBalloon = new TimeBalloon(0, 0, Gameplay.currentStageRules.timeLimit);
+			timeBalloon.setPosition(uiBGTop.width - timeBalloon.width, FlxG.height - timeBalloon.height - ScreenSafeArea.Y);
+			uiBGGroup.add(timeBalloon);
+		}
 		add(shootButton);
 
 		pauseButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/pause', null, 2);
@@ -428,6 +437,7 @@ class PlayState extends SuffState {
 	}
 
 	public function deployGun(playerIndex:Int, delay:Void -> Float = null) {
+		timerActive = false;
 		// Delay is a function for dynamic value update via calculation
 		var usedDelay = delay;
 		if (delay == null)
@@ -516,12 +526,8 @@ class PlayState extends SuffState {
 
 	function updateSkillAvailability(playerIndex:Int) {
 		for (skillCard in skillCardsGroup) {
-			var disabled:Bool = getPlayer(playerIndex).currentConfidence < skillCard.skill.cost || !getPlayer(playerIndex).canUseSkills;
-			if (disabled) {
-				skillCard.notEnoughConfidence = true;
-			} else {
-				skillCard.notEnoughConfidence = false;
-			}
+			var disabled:Bool = getPlayer(playerIndex).currentConfidence < Std.int(skillCard.skill.cost) || !getPlayer(playerIndex).canUseSkills;
+			skillCard.notEnoughConfidence = disabled;
 		}
 		updateUIText(playerIndex);
 	}
@@ -650,7 +656,7 @@ class PlayState extends SuffState {
 			trace('Skill does not exist for Player ${playerIndex + 1}');
 			return;
 		}
-		if (player.currentConfidence < skill.cost) {
+		if (player.currentConfidence < Std.int(skill.cost)) {
 			trace('Not enough confidence for Player ${playerIndex + 1}');
 			return;
 		}
@@ -662,6 +668,7 @@ class PlayState extends SuffState {
 			chooseForOffensiveSkill(playerIndex, skillIndex);
 			return;
 		}
+		timerActive = false;
 
 		var animName:String = 'skill' + Utilities.capitalize(skill.id);
 		var actualAnimName:String = animName + player.parseAnimationSuffix();
@@ -738,9 +745,11 @@ class PlayState extends SuffState {
 				cylinderContent[FlxG.random.int(0, count - 1)] = true;
 			case 'denial':
 				getPlayer(playerIndex).denialCount = characterCount + 1;
+			case 'reverse':
+				currentTurnDirection *= -1;
 		}
 
-		getPlayer(playerIndex).currentConfidence -= skill.cost;
+		getPlayer(playerIndex).currentConfidence -= Std.int(skill.cost);
 		getPlayer(playerIndex).skillUseCount++;
 		if (Gameplay.currentGamemode.skillsTangible) {
 			getPlayer(playerIndex).currentSkills.remove(skill);
@@ -754,6 +763,7 @@ class PlayState extends SuffState {
 			}
 		}
 		doTimer('reenablePlayerUI', new FlxTimer().start(getPlayer(playerIndex).getCurAnimLength(), function(_:FlxTimer) {
+			timerActive = true;
 			getPlayer(playerIndex).playAnim('prepareShoot', false);
 			reloadPlayerUI(playerIndex);
 			togglePlayerUI((currentTurnIndex == playerIndex && !getPlayer(playerIndex).cpuControlled));
@@ -775,7 +785,7 @@ class PlayState extends SuffState {
 			trace('Skill does not exist for Player ${attackerIndex + 1}');
 			return;
 		}
-		getPlayer(attackerIndex).currentConfidence -= skill.cost;
+		getPlayer(attackerIndex).currentConfidence -= Std.int(skill.cost);
 		getPlayer(attackerIndex).skillUseCount++;
 		if (Gameplay.currentGamemode.skillsTangible) {
 			getPlayer(attackerIndex).currentSkills.remove(skill);
@@ -784,13 +794,14 @@ class PlayState extends SuffState {
 		isSelectingPlayer = false;
 		toggleCameraFocusButton(false);
 		focusCameraOnPlayer(attackerIndex);
+		timerActive = false;
 
 		doTimer('offensiveSkillRegister', new FlxTimer().start(0.625, function(_) {
 			switch (skill.id) {
 				case 'assault':
 					if (!cylinderContent[0]) {
 						getPlayer(victimIndex).currentConfidence += 2;
-						if (getPlayer(victimIndex).currentConfidence > getPlayer(victimIndex).maxConfidence)
+						if (getPlayer(victimIndex).currentConfidence > getPlayer(victimIndex).maxConfidence && !Gameplay.currentStageRules.allowConfidenceOverflow)
 							getPlayer(victimIndex).currentConfidence = getPlayer(victimIndex).maxConfidence;
 					}
 					if (!Preferences.data.decreaseDetail) {
@@ -989,7 +1000,8 @@ class PlayState extends SuffState {
 		trace(cylinderContent);
 
 		if (passToPlayer) {
-			player.currentConfidence = Std.int(FlxMath.bound(player.currentConfidence, 0, getPlayer(playerIndex).maxConfidence));
+			if (player.currentConfidence > player.maxConfidence && !Gameplay.currentStageRules.allowConfidenceOverflow)
+				player.currentConfidence = player.maxConfidence;
 			player.cpuSabotageVictim = false;
 			doTimer('playerChangeTurn', new FlxTimer().start(player.getCurAnimLength(), function(_:FlxTimer) {
 				if (player.currentPressure > player.maxPressure) {
@@ -998,7 +1010,9 @@ class PlayState extends SuffState {
 						Achievements.advanceProgress('intentionalLoseByPolarize', [true]);
 				} else {
 					FlxG.sound.music.resume();
-					changeTurn(1);
+					triggerPressureTurnChange([playerIndex]);
+					triggerSkillTurnCostChange();
+					changeTurn(currentTurnDirection);
 				}
 				playerUsedPolarize = false;
 				revealCylinderContents = false;
@@ -1010,7 +1024,7 @@ class PlayState extends SuffState {
 			} else {
 				doTimer('resumeMusic', new FlxTimer().start(1.0, function(_) {
 					FlxG.sound.music.resume();
-					changeTurn(0);
+					changeTurn();
 				}));
 			}
 		}
@@ -1108,7 +1122,7 @@ class PlayState extends SuffState {
 			.poppingVelocityMultiplier[0] / Gameplay.currentFiller.gravityMultiplier;
 			character.velocity.y = -1200 * character.poppingVelocityMultiplier[1];
 			members.remove(character);
-			members.insert(members.indexOf(characterGroup) - 1, character);
+			members.insert(members.indexOf(characterGroup), character);
 		} else {
 			character.playAnim('idle');
 			stage.dynamicPlayAnim('overinflate');
@@ -1128,7 +1142,9 @@ class PlayState extends SuffState {
 				onUpdate: function(_:FlxTween) {
 					focusCameraOnPlayer(playerIndex);
 				}, onComplete: function(_:FlxTween) {
-					changeTurn(turnChangeAfterwards);
+					triggerPressureTurnChange();
+					triggerSkillTurnCostChange();
+					changeTurn(turnChangeAfterwards * currentTurnDirection);
 				}
 			}));
 		} else {
@@ -1217,7 +1233,7 @@ class PlayState extends SuffState {
 	}
 
 	function changeTurnNumber(change:Int = 0) {
-		currentTurnIndex = (currentTurnIndex + change) % Gameplay.selectedCharacterList.length;
+		currentTurnIndex = FlxMath.wrap(currentTurnIndex + change, 0, Gameplay.selectedCharacterList.length - 1);
 	}
 
 	function changeTurn(change:Int = 0, slient:Bool = false) {
@@ -1256,6 +1272,7 @@ class PlayState extends SuffState {
 						} else {
 							toggleCameraFocusButton(true);
 						}
+						timerActive = true;
 					} else {
 						doTimer('helplessPreAnim', new FlxTimer().start(0.5, function(_:FlxTimer) {
 							currentPlayer.playAnim('helpless', true);
@@ -1271,14 +1288,15 @@ class PlayState extends SuffState {
 			pumpGun.visible = false;
 			togglePlayerUI(!Gameplay.cpuControlled[currentTurnIndex]);
 			toggleLetterbox(Gameplay.cpuControlled[currentTurnIndex]);
+			timerActive = true;
 		}
 	}
 
 	function startCPUAction() {
 		trace(getPlayer(currentTurnIndex));
-		new FlxTimer().start(FlxG.random.float() + 0.5, function(timer:FlxTimer) {
+		doTimer('startEvaluateCPUActions', new FlxTimer().start(FlxG.random.float() + 0.5, function(_) {
 			evaluateCPUActions(currentTurnIndex);
-		});
+		}));
 	}
 
 	function evaluateCPUActions(charIndex:Int) {
@@ -1299,7 +1317,7 @@ class PlayState extends SuffState {
 		}
 		for (skillIndex => skill in char.currentSkills) {
 			if (char.cpuSkillMemories.contains(skill.id) && skill.cpuUseOnce) continue;
-			if (char.currentConfidence - skill.cost < 0) {
+			if (char.currentConfidence < Std.int(skill.cost)) {
 				trace('Not enough confidence for ${skill.id}');
 				continue;
 			}
@@ -1522,6 +1540,30 @@ class PlayState extends SuffState {
 		return [for (char in characterMap) if (!char.isEliminated()) true].length;
 	}
 
+	function triggerPressureTurnChange(excludeIndices:Array<Int> = null) {
+		for (index => char in characterMap) {
+			if (char.isEliminated() || (excludeIndices != null && excludeIndices.contains(index)))
+				continue;
+			var prevPressure = char.currentPressure;
+			char.currentPressure += Gameplay.currentStageRules.getTurnPressureChange(char);
+			char.currentPressure = FlxMath.bound(char.currentPressure, 0, char.maxPressure);
+			if (Std.int(char.currentPressure) > Std.int(prevPressure))
+				char.playAnim('shocked');
+		}
+	}
+
+	function triggerSkillTurnCostChange() {
+		for (char in characterMap) {
+			if (char.isEliminated())
+				return;
+			for (skill in char.currentSkills) {
+				skill.cost += Gameplay.currentStageRules.skillTurnCostChange;
+				if (skill.cost > char.maxConfidence)
+					skill.cost = char.maxConfidence;
+			}
+		}
+	}
+
 	function evaluateEnding() {
 		var aliveCharCount:Int = 0;
 		var aliveCharIndex:Int = 0;
@@ -1614,6 +1656,7 @@ class PlayState extends SuffState {
 			if (char.discoloration != null)
 				char.discoloration.intensity = 0;
 			char.playAnim('idle' + char.currentPressure);
+			char.timeRemaining = Gameplay.currentStageRules.timeLimit;
 		}
 
 		pumpGun.x = pumpGunXDestinations[currentTurnIndex];
@@ -1641,6 +1684,38 @@ class PlayState extends SuffState {
 
 		Paths.clearUnusedMemory();
 	}
+	
+	function triggerTimeout(playerIndex:Int) {
+		timerActive = false;
+		if (!Gameplay.currentStageRules.hasTimeLimit())
+			return;
+		var player = getPlayer(playerIndex);
+		if (player.isEliminated())
+			return;
+		focusCameraOnPlayer(playerIndex);
+		FlxG.sound.music.pause();
+		togglePlayerUI(false);
+		toggleCameraFocusButton(false);
+		toggleLetterbox(true);
+		player.playAnim('shocked', false);
+		screenFlash(Constants.DANGER_COLOR, 0.2);
+		screenShake(0.01, 0.3);
+		SuffState.playSound(Paths.getSound('game/timesUp'));
+		doTimer('startElimination', new FlxTimer().start(0.75, function(_:FlxTimer) {
+			doTimer('inflatePlayer', new FlxTimer().start(0.5, function(_:FlxTimer) {
+				player.currentPressure += 1;
+				SuffState.playSound(Paths.getSoundRandom('game/inflation/universal/fwoomps/fwoompLarge', 1, Constants.FWOOMPS_SAMPLE_COUNT), 0.75, 0.5);
+				if (Preferences.data.enableBellyCreaks) {
+					var percent = player.getPressurePercentage();
+					SuffState.playSound(Gameplay.currentFiller.getCreakSound(), percent, percent * 1.5 + 1);
+				}
+				if (player.isEliminated())
+					eliminatePlayer(playerIndex, 1, true);
+				else
+					player.playAnim('shocked', false);
+			}, Math.ceil(player.maxPressure - player.currentPressure) + 1));
+		}));
+	}
 
 	public override function update(elapsed:Float) {
 		super.update(elapsed);
@@ -1650,6 +1725,21 @@ class PlayState extends SuffState {
 
 		if (!isPaused) {
 			FlxG.camera.zoom = FlxMath.lerp(FlxG.camera.zoom, camFollowZoom, FlxMath.bound(elapsed * 5, 0, 1));
+			
+			if (Gameplay.currentStageRules.hasTimeLimit() && timerActive) {
+				if (gameTimers.exists('evaluateCPUActions')) {
+					gameTimers.get('evaluateCPUActions').cancel();
+					gameTimers.remove('evaluateCPUActions');
+				}
+				var curPlayer = getPlayer(currentTurnIndex);
+				if (timeBalloon != null)
+					timeBalloon.timeRemaining = curPlayer.timeRemaining;
+				if (!curPlayer.isEliminated()) {
+					curPlayer.timeRemaining -= elapsed;
+					if (curPlayer.timeRemaining <= 0)
+						triggerTimeout(currentTurnIndex);
+				}
+			}
 
 			if (Controls.justPressed('shoot') && !Gameplay.cpuControlled[currentTurnIndex] && !shootButton.disabled) {
 				deployGun(currentTurnIndex, function() return getPlayer(currentTurnIndex).getPressurePercentage());

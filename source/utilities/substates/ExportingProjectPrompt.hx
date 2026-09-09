@@ -175,14 +175,14 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	function generateLangFile() {
 		exportingText.text = Language.getPhrase('characterCreator.exporting.generatingLangFile');
 		var langFile:String = '{\n';
-		langFile += '\tcharacter.$characterID.name: $characterName\n';
-		langFile += '\tcharacter.$characterID.name.short = ${characterName.split(' ')[0]}\n';
-		langFile += '\tcharacter.$characterID.description = $characterDescription\n}';
+		langFile += '\t"character.$characterID.name": "$characterName",\n';
+		langFile += '\t"character.$characterID.name.short": "${characterName.split(' ')[0]}",\n';
+		langFile += '\t"character.$characterID.description": "$characterDescription"\n}';
 
 		if (!FileSystem.isDirectory('exports/$projectName/lang') || !FileSystem.exists('exports/$projectName/lang'))
 			FileSystem.createDirectory('exports/$projectName/lang');
-		File.saveContent('exports/$projectName/lang/${Preferences.data.language}.json5', langFile);
-		File.saveContent('exports/$projectName/lang/en-US.json5', langFile);
+		File.saveContent('exports/$projectName/lang/${Preferences.data.language}.json', langFile);
+		File.saveContent('exports/$projectName/lang/en-US.json', langFile);
 
 		new FlxTimer().start(0.02, function(_) {
 			generateAddonMetadata();
@@ -264,28 +264,38 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				secPointer.x = 5;
 				secPointer.y = 5;
 				var leAnimName:String = 'idle';
-				var what = newSpriteSheet(150 * cardKeyframes, 200, 150, 200);
+				var what = newSpriteSheet(Std.int(Math.min(4050, 150 * cardKeyframes)), Math.ceil(cardKeyframes / 27) * 200, 150, 200);
 				secBitmap = what[0];
 				secXML = what[1];
 				for (i in 0...animData.numFrames) {
 					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 					if (animData.keyframes.contains(i)) {
+						if (i != 0) {
+							secPointer.x += 150;
+							if (secPointer.x > secBitmap.width - 150) {
+								secPointer.x = 0;
+								secPointer.y += 200;
+							}
+						}
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-						if (i != 0)
-							secPointer.x += 150;
 					}
 				}
 			case 'cardCharSelected':
 				var leAnimName:String = 'selected';
-				secPointer.x += 150;
+				// secPointer.x += 150;
 				for (i in 0...animData.numFrames) {
 					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 					if (animData.keyframes.contains(i)) {
+						if (i != 0) {
+							secPointer.x += 150;
+							if (secPointer.x > secBitmap.width - 150) {
+								secPointer.x = 0;
+								secPointer.y += 200;
+							}
+						}
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-						if (i != 0)
-							secPointer.x += 150;
 					}
 				}
 				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/cards/$characterID', 'character');
@@ -324,7 +334,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				secPointer.x = 0;
 				secPointer.y = 0;
 				var leAnimName:String = 'idleStanding';
-				var what = newSpriteSheet(4096, 4096, 480, 720);
+				var what = newSpriteSheet(3840, 3600, 480, 720);
 				secBitmap = what[0];
 				secXML = what[1];
 				for (i in 0...animData.numFrames) {
@@ -338,18 +348,25 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 					trace(exportingAnim, i, secPointer);
 				}
 			default:
-				if (!exportingAnim.startsWith('results_')) {
+				if (exportingAnim.startsWith('results_')) {
 					var leAnimName:String = exportingAnim.replace('results_', '');
 					for (i in 0...animData.numFrames) {
 						if (animData.keyframes.contains(i)) {
 							var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
-							if (i > 0)
+							if (i > 0) {
 								secPointer.x += 480;
+								if (secPointer.x > secBitmap.width - 480) {
+									secPointer.x = 0;
+									secPointer.y += sprite.height;
+								}
+							}
 							secBitmap.copyPixels(sprite, sprite.rect, secPointer);
 						}
 						secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 480, 720);
 						trace(exportingAnim, i, secPointer);
 					}
+					if (exportingAnim == 'results_loseDefeatedLoop')
+						exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/results/characters', '$characterID');
 				} else {
 					var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/0.png');
 					var prevKeyframe:Int = -1;

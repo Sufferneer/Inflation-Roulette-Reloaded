@@ -3,6 +3,7 @@ package substates;
 import ui.objects.SuffIconButton;
 import states.extras.JukeboxState;
 import states.extras.GalleryMainMenuState;
+import ui.objects.BackgroundButton;
 
 class ExtrasSubState extends SuffSubState {
 	var exitButton:SuffIconButton;
@@ -19,67 +20,18 @@ class ExtrasSubState extends SuffSubState {
 		FlxTween.tween(bg, {alpha: 0.75}, 0.5);
 		add(bg);
 
-		var box:FlxSprite = new FlxSprite().makeGraphic(840, 360, 0xFF008FB5);
+		final outlineThickness:Int = 4;
+		var box:FlxSprite = new FlxSprite().makeGraphic(840 + outlineThickness * 3, 360 + outlineThickness * 2, 0xFF008FB5);
 		box.screenCenter();
 		add(box);
 
-		final outlineThickness:Int = 4;
-
-		var galleryBG:FlxSprite = new FlxSprite(box.x + outlineThickness, box.y + outlineThickness);
-		galleryBG.loadGraphic(Paths.getImage('ui/menus/extras/galleryBG'), true, 420, 360);
-		galleryBG.animation.add('selected', [0]);
-		galleryBG.animation.add('idle', [1]);
-		galleryBG.animation.play('idle');
-		galleryBG.clipRect = new FlxRect(0, 0, box.width / 2 - outlineThickness * 1.5, box.height - outlineThickness * 2);
-		galleryBG.clipRect = galleryBG.clipRect;
-		add(galleryBG);
-
-		var galleryText:FlxText = new FlxText(galleryBG.x, galleryBG.y + galleryBG.height * 0.15, galleryBG.width, Language.getPhrase('extrasMenu.gallery'), 48);
-		galleryText.setFormat(Paths.getFont('default'), 48, 0xFFFFFFFF, CENTER, OUTLINE, 0xFFFFFFFF);
-		galleryText.borderSize = 0;
-		add(galleryText);
-
-		var galleryButton:SuffButton = new SuffButton(galleryBG.x, galleryBG.y, '', null, null, galleryBG.width, galleryBG.height, false);
-		galleryButton.onHover = function() {
-			galleryBG.animation.play('selected');
-			galleryText.borderSize = 3;
-			galleryText.color = 0xFF000000;
-		}
-		galleryButton.onIdle = function() {
-			galleryBG.animation.play('idle');
-			galleryText.borderSize = 0;
-			galleryText.color = 0xFFFFFFFF;
-		}
+		var galleryButton = new BackgroundButton(box.x + outlineThickness, box.y + outlineThickness, 'extrasMenu.gallery', 'extras/gallery');
 		galleryButton.onClick = function() {
 			SuffState.switchState(new GalleryMainMenuState(), DEFAULT, true);
 		}
 		add(galleryButton);
 
-		var jukeboxBG:FlxSprite = new FlxSprite(box.x + box.width / 2 + outlineThickness * 0.5, box.y + outlineThickness);
-		jukeboxBG.loadGraphic(Paths.getImage('ui/menus/extras/jukeboxBG'), true, 420, 360);
-		jukeboxBG.animation.add('selected', [0]);
-		jukeboxBG.animation.add('idle', [1]);
-		jukeboxBG.animation.play('idle');
-		jukeboxBG.clipRect = new FlxRect(0, 0, box.width / 2 - outlineThickness * 1.5, box.height - outlineThickness * 2);
-		jukeboxBG.clipRect = jukeboxBG.clipRect;
-		add(jukeboxBG);
-
-		var jukeboxText:FlxText = new FlxText(jukeboxBG.x, jukeboxBG.y + jukeboxBG.height * 0.15, jukeboxBG.width, Language.getPhrase('extrasMenu.jukebox'), 48);
-		jukeboxText.setFormat(Paths.getFont('default'), 48, 0xFFFFFFFF, CENTER, OUTLINE, 0xFFFFFFFF);
-		jukeboxText.borderSize = 0;
-		add(jukeboxText);
-
-		var jukeboxButton:SuffButton = new SuffButton(jukeboxBG.x, jukeboxBG.y, '', null, null, jukeboxBG.width, jukeboxBG.height, false);
-		jukeboxButton.onHover = function() {
-			jukeboxBG.animation.play('selected');
-			jukeboxText.borderSize = 3;
-			jukeboxText.color = 0xFF000000;
-		}
-		jukeboxButton.onIdle = function() {
-			jukeboxBG.animation.play('idle');
-			jukeboxText.borderSize = 0;
-			jukeboxText.color = 0xFFFFFFFF;
-		}
+		var jukeboxButton = new BackgroundButton(box.x + galleryButton.width + outlineThickness * 2, box.y + outlineThickness, 'extrasMenu.jukebox', 'extras/jukebox');
 		jukeboxButton.onClick = function() {
 			SuffState.switchState(new JukeboxState(), DEFAULT, true);
 		}
@@ -102,7 +54,7 @@ class ExtrasSubState extends SuffSubState {
 		add(exitButton);
 	}
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
 
 		if (Controls.justPressed('exit')) {

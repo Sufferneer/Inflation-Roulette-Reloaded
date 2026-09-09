@@ -20,7 +20,7 @@ class Confetti extends FlxParticle {
 		this._actualScaleY = FlxG.random.int(50, 100) / 100;
 	}
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
 		_age += elapsed;
 		if (y + velocity.y * elapsed >= floorY - width / 2) {

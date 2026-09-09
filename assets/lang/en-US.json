@@ -81,10 +81,14 @@
 	// Utilities means Modding Utilities
 	"mainMenu.utilities": "Utilities",
 	"mainMenu.extras": "Extras",
-	"mainMenu.donate": "Donate",
-	
-	// Tooltips for buttons in the Main Menu.
-	"mainMenu.donate.tooltip": "Your generous donation will support the developer!",
+	"mainMenu.socials": "Socials",
+
+	"socialsMenu.windowDisplay": "Socials",
+	"socialsMenu.title": "DEVELOPER SOCIALS",
+	"socialsMenu.kofi": "Ko-Fi",
+	"socialsMenu.kofi.tooltip": "Your generous donation will support the developer!",
+	"socialsMenu.discord": "Discord",
+	"socialsMenu.discord.tooltip": "Join the Discord server to chat with other players and download add-ons!",
 	
 	// When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
 	"mainMenu.dongs": "You have accumulated:\n%1 Dongs",
@@ -114,7 +118,7 @@
 	"mainMenu.dongs.comment.3000": "you're just that bored aint you",
 	"mainMenu.dongs.comment.5000": "at 10000 dongs, your save data will be erased, and the game will delete itself.",
 	"mainMenu.dongs.comment.10000": "ok fine here's your achievement. now get the hell out of my sight.",
-	
+
 	"mainMenu.quit.prompt": "Are you sure you want to quit?",
 
 	"extrasMenu.windowDisplay": "Extras",
@@ -340,7 +344,7 @@
 	// Select Filler: This however, does not need to be in the same tone as Select Character.
 	"characterSelect.selectFiller": "PICK YOUR POISON",
 	// Select Stage: This however, does not need to be in the same tone as Select Character.
-	"characterSelect.selectStage": "CHOOSE YOUR STAGE",
+	"characterSelect.selectStage": "SELECT YOUR DESTINATION",
 	
 	// Player Settings
 	"characterSelect.option.cpuControlled": "CPU",
@@ -792,6 +796,7 @@
 		"Curing cholera",
 		"Praying for mercy"
 	],
+
 	"hyperlink.prompt": "Do you want to open this link in your browser?\n\n%1",
 
 	// Fallback for HTML build

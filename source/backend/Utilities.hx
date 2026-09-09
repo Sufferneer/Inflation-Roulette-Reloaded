@@ -198,7 +198,7 @@ class Utilities {
 	}
 	#end
 
-	public static inline function getDarkerShade(color:FlxColor, darkness:Float = 0.25, hueShifted:Bool = true) {
+	public static function getDarkerShade(color:FlxColor, darkness:Float = 0.25, hueShifted:Bool = true) {
 		var hue = color.hue;
 		var saturation = color.saturation;
 		if (hueShifted) {
@@ -213,7 +213,7 @@ class Utilities {
 		return FlxColor.fromHSB(hue, saturation, brightness);
 	}
 
-	public static inline function getLighterShade(color:FlxColor, lightness:Float = 0.25, hueShifted:Bool = true) {
+	public static function getLighterShade(color:FlxColor, lightness:Float = 0.25, hueShifted:Bool = true) {
 		var hue = color.hue;
 		var saturation = color.saturation;
 		if (hueShifted) {
@@ -244,5 +244,24 @@ class Utilities {
 		var regex = new RegExp('[\u0000-\u017F]|[\u0370-\u04FF]');
 		// Supported Characters: NUL to ſ, Ͱ to ӿ
 		return regex.test(str);
+	}
+
+	static public function formatDecimal(value:Float, decimals:Int):String {
+		// Round to decimal place
+		var power = Math.pow(10, decimals);
+		var rounded = Math.round(value * power) / power;
+
+		var str = Std.string(rounded);
+
+		var dotIndex = str.indexOf(".");
+		if (dotIndex == -1) {
+			str += ".";
+			dotIndex = str.length - 1;
+		}
+
+		while (str.length - 1 - dotIndex < decimals)
+			str += "0";
+
+		return str;
 	}
 }

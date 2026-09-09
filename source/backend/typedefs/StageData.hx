@@ -13,5 +13,7 @@ typedef StageData = {
 	characterX:Array<Float>,
 	characterY:Float,
 	gunY:Float,
-	gunScrollFactor:Array<Float>
+	gunScrollFactor:Array<Float>,
+	
+	rules:StageRulesData
 }

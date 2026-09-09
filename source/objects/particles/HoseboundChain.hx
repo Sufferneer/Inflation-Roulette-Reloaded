@@ -13,7 +13,7 @@ class HoseboundChain extends FlxSprite {
 		FlxTween.tween(this, {alpha: 0}, 0.5, {
 			startDelay: 0.5,
 			onComplete: function(_) {
-				FlxG.state.remove(this);
+				FlxG.state.remove(this, true);
 				this.destroy();
 			}
 		});

@@ -42,7 +42,7 @@ class Character extends FlxSprite {
 	public var bounceFrames:Int = 3;
 
 	// Gameplay Variables //
-	public var currentPressure(default, set):Int = 0;
+	public var currentPressure(default, set):Float = 0;
 	public var maxPressure:Int = 4;
 	public var currentConfidence:Int = 0;
 	public var maxConfidence:Int = 4;
@@ -60,6 +60,8 @@ class Character extends FlxSprite {
 	public var cpuSkillMemories:Array<String> = [];
 	public var cpuSkillLevel:Int = 1;
 	public var rubHitboxes:Array<CharacterBoxData> = [];
+	
+	public var timeRemaining:Float = -1;
 
 	public var boundingBox:FlxRect = new FlxRect(170, 70, 200, 500);
 	public var hovered:Bool = false;
@@ -339,7 +341,7 @@ class Character extends FlxSprite {
 		return discolorationIntensity = FlxMath.bound(value, 0, 1);
 	}
 
-	function set_currentPressure(value:Int):Int {
+	function set_currentPressure(value:Float):Float {
 		currentPressure = value;
 		updateRubHitbox();
 		return value;
@@ -676,7 +678,7 @@ class Character extends FlxSprite {
 				index = offsetArray.length - 2;
 			vel.set(offsetArray[index][0], offsetArray[index][1]);
 		} else {
-			vel.set(offsetArray[currentPressure][0], offsetArray[currentPressure][1]);
+			vel.set(offsetArray[Std.int(currentPressure)][0], offsetArray[Std.int(currentPressure)][1]);
 		}
 		if (flipX)
 			vel.x *= -1;
@@ -693,7 +695,7 @@ class Character extends FlxSprite {
 				else
 					'Overinflated';
 			default:
-				'' + currentPressure;
+				'' + Std.int(currentPressure);
 		}
 	}
 

@@ -44,7 +44,9 @@ class ReadySign extends SuffButton {
 	
 	static function initShader() {
 		if (!Preferences.data.enableGLSL || outlineShader != null) return;
-		outlineShader = new OutlineShader(0xFFFFFFFF, 3);
+		outlineShader = new OutlineShader(0xFFFFFFFF, 4);
+		outlineShader.lineBoil = true;
+		outlineShader.lineBoilStep = 6;
 		outlineShader.enabled = false;
 	}
 	
@@ -98,8 +100,10 @@ class ReadySign extends SuffButton {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		if (outlineShader != null)
+		if (outlineShader != null) {
+			outlineShader.update(elapsed);
 			outlineShader.enabled = (!disabled && hovered);
+		}
 
 		currentFrame = FlxMath.bound(currentFrame + elapsed * frameRate * frameDirection, firstFrame, lastFrame);
 		animate(currentFrame);

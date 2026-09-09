@@ -1,4 +1,7 @@
 {
+	"rules": {
+		"timeLimit": 120
+	},
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
 	"cameraBounds": [-440, -140, 2160, 1080],

@@ -1,13 +1,11 @@
 [
 	{
 		"text": "",
-		"graphic": "",
 		"type": "GAME_LOGO",
 		"spacing": 180
 	},
 	{
 		"text": "Design, Code, Art, Sound, Music",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{
@@ -19,7 +17,6 @@
 	},
 	{
 		"text": "Additional UI Art",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{
@@ -30,37 +27,32 @@
 		"artId": "globe-freak"
 	},
 	{
-		"text": "Bloom",
-		"graphic": "bloom",
+		"text": "SpiceBloom",
+		"graphic": "spiceBloom",
 		"type": "LOGO",
-		"artId": "bloom"
+		"link": "https://bsky.app/profile/hydrogendrinker.bsky.social",
+		"artId": "spiceBloom"
 	},
 	{
 		"text": "Additional Character Design",
-		"graphic": "",
+		"type": "HEADING"
+	},
+	{
+		"text": "CrashCassette",
+		"artId": "crashCassette",
+		"link": "https://twitter.com/crashcassette"
+	},
+	{
+		"text": "Additional Music & Character Design",
 		"type": "HEADING"
 	},
 	{
 		"text": "Ninshot At Dawn",
-		"artId": "ninshotAtDawn"
-	},
-	{
-		"text": "LunarEclipse (CrashCassette)",
-		"link": "https://x.com/CrashCassette",
-		"artId": "lunarEclipse"
-	},
-	{
-		"text": "Additional Music",
-		"graphic": "",
-		"type": "HEADING"
-	},
-	{
-		"text": "Ninshot At Dawn",
-		"artId": "ninshotAtDawn"
+		"artId": "ninshotAtDawn",
+		"link": "https://youtube.com/@ninshot.1"
 	},
 	{
 		"text": "Linux Compilation & Testing",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{
@@ -70,7 +62,6 @@
 	},
 	{
 		"text": "Gameplay Sound Sources",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{
@@ -79,15 +70,14 @@
 	},
 	{
 		"text": "Runey\n(Balloonomatopoeia)",
-		"link": "https://www.furaffinity.net/view/51905256/"
+		"link": "https://www.furaffinity.net/view/51905256"
 	},
 	{
 		"text": "V1sage\n(Bworps Pack)",
-		"link": "https://goldenvisage.itch.io/"
+		"link": "https://goldenvisage.itch.io"
 	},
 	{
 		"text": "Original Concept",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{
@@ -95,18 +85,17 @@
 	},
 	{
 		"text": "Developed With",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{
 		"text": "HaxeFlixel",
 		"graphic": "haxeflixel",
 		"type": "LOGO",
+		"link": "https://haxeflixel.com",
 		"spacing": 180
 	},
 	{
 		"text": "Ko-Fi Donators",
-		"graphic": "",
 		"type": "HEADING"
 	},
 	{

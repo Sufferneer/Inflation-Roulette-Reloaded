@@ -62,12 +62,12 @@ class SkillCard extends SuffButton {
 		if (notEnoughConfidence) {
 			this.btnIcon.color = 0xFF808080;
 			this.alpha = 0.6;
-			skillCost.text = '${skill.cost} · </>';
+			skillCost.text = '${Std.int(skill.cost)} · </>';
 			costIcon.color = skillCost.color = 0xFFC00000;
 		} else {
 			this.btnIcon.color = 0xFFFFFFFF;
 			this.alpha = 1;
-			skillCost.text = '${skill.cost}';
+			skillCost.text = '${Std.int(skill.cost)}';
 			costIcon.color = skillCost.color = 0xFF4A4399;
 		}
 		return value;

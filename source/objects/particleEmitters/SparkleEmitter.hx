@@ -32,7 +32,7 @@ class SparkleEmitter extends FlxTypedSpriteContainer<Sparkle> {
 		if (spawnTick <= 0) {
 			spawnTick = FlxG.random.float();
 			add(new Sparkle(this.spawnWidth * FlxG.random.float(), this.spawnHeight * FlxG.random.float(), function(me) {
-				this.remove(me);
+				this.remove(me, true);
 				me.destroy();
 			}));
 		}

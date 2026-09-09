@@ -5,6 +5,7 @@ import backend.Gameplay.Gameplay.setPlayerCount;
 import tjson.TJSON.TJSON.parse;
 import tjson.TJSON;
 import backend.typedefs.CharacterCosmeticData;
+import backend.typedefs.StageRulesData;
 
 class Gameplay {
 	public static var globalCharacterList:Array<String> = [];
@@ -18,6 +19,9 @@ class Gameplay {
 
 	public static var defaultGamemode:Gamemode;
 	public static var currentGamemode:Gamemode;
+
+	// public static var defaultStageRules:StageRules;
+	public static var currentStageRules:StageRules;
 
 	public static var currentFiller:Filler;
 	public static var globalFillerList:Array<String> = ['air'];

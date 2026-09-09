@@ -11,6 +11,7 @@ import ui.objects.SuffScrollBar;
 import backend.typedefs.CreditsTextData;
 import haxe.Json;
 import substates.HyperlinkPrompt;
+import shaders.OutlineShader;
 
 class CreditsState extends SuffState {
 	var creditsTxt:Array<CreditsTextData> = [];
@@ -20,14 +21,14 @@ class CreditsState extends SuffState {
 
 	var scrollBar:SuffScrollBar;
 	
+	var curCreditsArtId:String = '';
 	var creditsArt:FlxSprite;
-	var creditsArtText:Map<Int, String> = [];
 
 	override public function create():Void {
 		Paths.clearUnusedMemory();
 		Paths.clearStoredMemory();
 
-		creditsTxt = Json.parse(Paths.getTextFromFile('data/credits.json'));
+		creditsTxt = Json.parse(Paths.getTextFromFile('data/credits.json', false));
 		super.create();
 
 		WindowUtil.setTitle(Language.getPhrase('creditsMenu.windowDisplay'));
@@ -103,14 +104,12 @@ class CreditsState extends SuffState {
 				leLineSpace += Std.int(leChar.height + 16);
 			}
 			leText.add(leChar);
-			if (lineArtId != '')
-				creditsArtText.set(Std.int(leText.y), lineArtId);
 			
-			if (lineLink != '') {
+			if (lineLink != '' || lineArtId != '') {
 				var leButton:SuffButton = new SuffButton(32, 0, leText.width, leText.height, false);
-				leButton.onClick = function() {
-					openSubState(new HyperlinkPrompt(lineLink));
-				}
+				leButton.onHover = function() loadCreditsArt(lineArtId);
+				if (lineLink != '')
+					leButton.onClick = function() openSubState(new HyperlinkPrompt(lineLink));
 				leText.add(leButton);
 			}
 
@@ -131,6 +130,12 @@ class CreditsState extends SuffState {
 		add(scrollBar);
 
 		creditsArt = new FlxSprite();
+		if (Preferences.data.enableGLSL) {
+			var outlineShader = new OutlineShader(0xFFFFFFFF, 5);
+			outlineShader.lineBoil = true;
+			outlineShader.lineBoilStep = 6;
+			creditsArt.shader = outlineShader;
+		}
 		creditsArt.visible = false;
 		add(creditsArt);
 
@@ -152,13 +157,23 @@ class CreditsState extends SuffState {
 	}
 	
 	function loadCreditsArt(artId:String = 'nicklysuffer') {
-		creditsArt.loadGraphic(Paths.getImage('ui/menus/credits/art/$artId'));
-		creditsArt.x = FlxG.width / 2 + (FlxG.width / 2 - creditsArt.width) / 2;
-		creditsArt.y = FlxG.height - creditsArt.height + 50;
-		creditsArt.alpha = 0;
-		creditsArt.visible = true;
+		if (curCreditsArtId == artId)
+			return;
+		curCreditsArtId = artId;
 		FlxTween.cancelTweensOf(creditsArt);
-		FlxTween.tween(creditsArt, {x: FlxG.height - creditsArt.height, alpha: 1}, 1, {
+		if (artId == '') {
+			FlxTween.tween(creditsArt, {x: FlxG.width}, 0.5, {
+				ease: FlxEase.cubeIn
+			});
+			return;
+		}
+		creditsArt.loadGraphic(Paths.getImage('ui/menus/credits/art/$artId'));
+		creditsArt.scale.set(0.8, 0.8);
+		creditsArt.updateHitbox();
+		creditsArt.x = FlxG.width / 2 / Math.sqrt(creditsArt.scale.x) + (FlxG.width / 2 * Math.sqrt(creditsArt.scale.x) - creditsArt.width) / 2;
+		creditsArt.y = FlxG.height - creditsArt.height + 50;
+		creditsArt.visible = true;
+		FlxTween.tween(creditsArt, {y: FlxG.height - creditsArt.height}, 0.5, {
 			ease: FlxEase.cubeOut
 		});
 	}
@@ -167,6 +182,11 @@ class CreditsState extends SuffState {
 
 	public override function update(elapsed:Float) {
 		super.update(elapsed);
+		
+		if (creditsArt.shader != null) {
+			var outlineShader:OutlineShader = cast creditsArt.shader;
+			outlineShader.update(elapsed);
+		}
 
 		if (spawnSketchTime <= 0) {
 			insert(members.indexOf(creditsTxtGroup) - 1, new CreditsSketch(imageList[FlxG.random.int(0, imageList.length - 1)]));

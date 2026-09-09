@@ -25,7 +25,7 @@ class Sparkle extends FlxSprite {
 			if (finishCallback != null)
 				finishCallback(this);
 			else {
-				FlxG.state.remove(this);
+				FlxG.state.remove(this, true);
 				this.destroy();
 			}
 		});

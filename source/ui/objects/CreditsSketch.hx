@@ -15,7 +15,7 @@ class CreditsSketch extends FlxSprite {
 		this.velocity.x = FlxG.random.int(-1280, -320);
     }
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
 		if (this.x <= -width) {
 			this.destroy();

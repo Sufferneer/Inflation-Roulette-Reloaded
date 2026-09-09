@@ -5,7 +5,7 @@ class HyperlinkPrompt extends ChoicePrompt {
 		var text:FlxText = new FlxText(hyperlink, 32);
 		super(Language.getPhrase('hyperlink.prompt', [hyperlink]), function() {
 			Utilities.browserLoad(hyperlink);
-		}, text.width + 64);
+		}, Math.max(320, text.width + 64));
 		text.destroy();
 	}
 }

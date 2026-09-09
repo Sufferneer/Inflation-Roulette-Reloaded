@@ -29,6 +29,8 @@ import ui.SuffState;
 import ui.objects.SuffIconButton;
 import substates.ChoicePrompt;
 import substates.HyperlinkPrompt;
+import states.debug.TimeBalloonTestState;
+import substates.SocialsSubState;
 
 class MainMenuState extends SuffState {
 	public static var initialized:Bool = false;
@@ -65,7 +67,7 @@ class MainMenuState extends SuffState {
 		#end
 		['achievements'],
 		['options', 'language'],
-		['extras', 'donate']
+		['extras', 'socials']
 	];
 
 	static final disabledMenuItems:Array<String> = [];
@@ -345,8 +347,8 @@ class MainMenuState extends SuffState {
 				openSubState(new ExtrasSubState());
 			case 'credits':
 				SuffState.switchState(new CreditsState());
-			case 'donate':
-				openSubState(new HyperlinkPrompt('https://ko-fi.com/nicklysuffer'));
+			case 'socials':
+				openSubState(new SocialsSubState());
 		}
 	}
 
@@ -470,6 +472,8 @@ class MainMenuState extends SuffState {
 					SuffState.switchState(new LiquidTestState());
 				if (FlxG.keys.justPressed.S)
 					SuffState.switchState(new ReadySignTestState());
+				if (FlxG.keys.justPressed.T)
+					SuffState.switchState(new TimeBalloonTestState());
 				if (FlxG.keys.justPressed.R) {
 					ResultsState.data = [
 						{

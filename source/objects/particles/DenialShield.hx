@@ -20,7 +20,7 @@ class DenialShield extends FlxSprite {
 		FlxTween.tween(this, {alpha: 0}, 1, {
 			startDelay: 1,
 			onComplete: function(_) {
-				FlxG.state.remove(this);
+				FlxG.state.remove(this, true);
 				this.destroy();
 			}
 		});

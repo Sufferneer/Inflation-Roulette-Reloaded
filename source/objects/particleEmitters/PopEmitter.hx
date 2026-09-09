@@ -16,7 +16,7 @@ class PopEmitter extends FlxObject {
 			puff.velocity.y = Math.sin(direction * Constants.TO_RADIANS) * force;
 			PlayState.instance.particleGroup.add(puff);
 		}
-		FlxG.state.remove(this);
+		FlxG.state.remove(this, true);
 		this.destroy();
 	}
 

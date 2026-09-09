@@ -25,7 +25,7 @@ class ScrapEmitter extends FlxObject {
 			else
 				FlxG.state.members.insert(FlxG.state.members.indexOf(this), scrap);
 		}
-		FlxG.state.remove(this);
+		FlxG.state.remove(this, true);
 		destroy();
 	}
 

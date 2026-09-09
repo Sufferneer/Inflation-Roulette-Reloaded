@@ -34,11 +34,7 @@ class Constants {
 	public static final LIVE_ROUND_COUNT:Int = 1;
 
 	// VISUAL CONSTANTS
-	/**
-	 * How fast should the game camera move in default.
-	 * 0 means the camera does not move at all.
-	 * 1 means the camera moves instantly.
-	 */
+	public static final DANGER_COLOR:FlxColor = 0xC00040;
 
 	/**
 	 * The representative color of a player. First item is for Player 1, second is for Player 2, and so on.

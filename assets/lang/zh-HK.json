@@ -61,9 +61,14 @@
 	"mainMenu.addons": "附加包",
 	"mainMenu.utilities": "製作工具",
 	"mainMenu.extras": "額外",
-	"mainMenu.donate": "捐款",
-	
-	"mainMenu.donate.tooltip": "您的捐款有助支持更多遊戲！",
+	"mainMenu.socials": "社群媒體",
+
+	"socialsMenu.windowDisplay": "社群媒體",
+	"socialsMenu.title": "開發者社群媒體",
+	"socialsMenu.kofi": "Ko-Fi",
+	"socialsMenu.kofi.tooltip": "您的捐款有助支持更多遊戲！",
+	"socialsMenu.discord": "Discord",
+	"socialsMenu.discord.tooltip": "加入伺服器與其他玩家聊天和下載附加包！",
 	
 	"mainMenu.dongs": "你已累計：\n%1個咚",
 	"mainMenu.dongs.comment.10": "好了，你可以停止了",
@@ -92,6 +97,8 @@
 	"mainMenu.dongs.comment.3000": "你真是很無聊嗎？",
 	"mainMenu.dongs.comment.5000": "當咚數達到 10000 時，您的存檔資料將被清除，遊戲也將自動刪除。",
 	"mainMenu.dongs.comment.10000": "好了，成就就給你吧。滾出。",
+
+	"mainMenu.quit.prompt": "確定要退出嗎？",
 
 	"extrasMenu.windowDisplay": "額外",
 	"extrasMenu.title": "額外遊戲內容",
@@ -309,7 +316,7 @@
 	"characterSelect.selectCharacter": "擇爾之軀",
 	"characterSelect.holdCardsToSeeInfo": "持卡查看訊息",
 	"characterSelect.selectFiller": "擇爾之毒",
-	"characterSelect.selectStage": "選擇背景",
+	"characterSelect.selectStage": "擇爾所往",
 
 	"characterSelect.option.cpuControlled": "CPU",
 	"characterSelect.option.skillLevel": "CPU 水平",
@@ -686,6 +693,8 @@
 		"正在治療霍亂",
 		"正在祈求憐憫"
 	],
+
+	"hyperlink.prompt": "確定在瀏覽器中開啟此連結嗎？\n\n%1",
 
 	// Fallback for HTML build
 	"gamemode.fiftyFifty.name": "五十五十",

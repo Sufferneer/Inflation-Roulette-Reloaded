@@ -81,10 +81,14 @@
     // Utilities means Modding Utilities
     "mainMenu.utilities": "制作工具",
     "mainMenu.extras": "额外",
-    "mainMenu.donate": "捐款",
-    
-    // Tooltips for buttons in the Main Menu.
-    "mainMenu.donate.tooltip": "您的捐款有助支持更多游戏！",
+    "mainMenu.socials": "社群媒体",
+
+	"socialsMenu.windowDisplay": "社群媒体",
+	"socialsMenu.title": "开发者社群媒体",
+	"socialsMenu.kofi": "Ko-Fi",
+	"socialsMenu.kofi.tooltip": "您的捐款有助支持更多游戏！",
+	"socialsMenu.discord": "Discord",
+	"socialsMenu.discord.tooltip": "加入伺服器与其他玩家聊天和下载附加包！",
     
     // When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
     "mainMenu.dongs": "你已累计：\n%1个咚",
@@ -114,6 +118,8 @@
     "mainMenu.dongs.comment.3000": "你真是很无聊吗？",
     "mainMenu.dongs.comment.5000": "当咚数达到 10000 时，您的存档数据将被清除，游戏也将自动删除。",
     "mainMenu.dongs.comment.10000": "好了，成就就给你吧。滚出去。",
+
+	"mainMenu.quit.prompt": "确定要退出吗？",
 
     "extrasMenu.windowDisplay": "额外",
     "extrasMenu.title": "额外游戏内容",
@@ -338,7 +344,7 @@
     // Select Filler: This however, does not need to be in the same tone as Select Character.
     "characterSelect.selectFiller": "择尔之毒",
     // Select Stage: This however, does not need to be in the same tone as Select Character.
-    "characterSelect.selectStage": "选择背景",
+    "characterSelect.selectStage": "择尔所往",
     
     // Player Settings
     "characterSelect.option.cpuControlled": "CPU",
@@ -790,6 +796,8 @@
         "正在治疗霍乱",
         "正在祈求怜悯"
     ],
+
+	"hyperlink.prompt": "确定在浏览器中开启此连结吗？\n\n%1",
 
     // Fallback for HTML build
     "gamemode.fiftyFifty.name": "五十五十",

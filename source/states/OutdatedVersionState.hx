@@ -6,7 +6,7 @@ class OutdatedVersionState extends SuffState {
 	var exiting:Bool = false;
 	public static var latestVersion:String = '';
 
-	override function create() {
+	public override function create() {
 		super.create();
 
 		WindowUtil.setTitle(Language.getPhrase('outdatedVersionMenu.windowDisplay'));
@@ -51,7 +51,7 @@ class OutdatedVersionState extends SuffState {
 		SuffState.switchState(new InitStartupState());
 	}
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
 
 		if (Controls.justPressed('exit')) {

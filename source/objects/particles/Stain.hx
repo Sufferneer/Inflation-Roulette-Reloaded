@@ -16,7 +16,7 @@ class Stain extends FlxSprite {
 		FlxTween.tween(this, {alpha: 0}, 4, {
 			startDelay: FlxG.random.float(2, 4),
 			onComplete: function(_) {
-				FlxG.state.remove(this);
+				FlxG.state.remove(this, true);
 				this.destroy();
 			}
 		});

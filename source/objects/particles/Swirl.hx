@@ -14,7 +14,7 @@ class Swirl extends FlxSprite {
 		this.alpha = alpha;
 		this.velocity.y = FlxG.random.float(-128, -64);
 		animation.onFinish.add(function(_) {
-			FlxG.state.remove(this);
+			FlxG.state.remove(this, true);
 			this.destroy();
 		});
 	}
