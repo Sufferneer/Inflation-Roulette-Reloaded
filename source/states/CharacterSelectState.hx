@@ -33,7 +33,7 @@ class CharacterSelectState extends SuffState {
 	static final margin:Int = 50;
 	public static final cardOccupicationHeight:Float = 0.35;
 
-	var sectionWidth:Int = Math.ceil(FlxG.width / Gameplay.selectedCharacterList.length);
+	var sectionWidth:Int = Math.ceil(FlxG.width / Gameplay.currentCharacterList.length);
 	var optionY:Array<Float> = [16, 16, 16, 16, 16, 16, 16, 16];
 
 	var initialCardY:Float = 0;
@@ -90,7 +90,7 @@ class CharacterSelectState extends SuffState {
 		add(stageGroup);
 		add(bannerGroup);
 		CharacterBanner.precacheBanners();
-		for (i in 0...Gameplay.selectedCharacterList.length) {
+		for (i in 0...Gameplay.currentCharacterList.length) {
 			var banner = new CharacterBanner(i);
 			banner.onClick = function() {
 				if (!leftButton.disabled)
@@ -98,7 +98,7 @@ class CharacterSelectState extends SuffState {
 			}
 			bannerGroup.add(banner);
 
-			Gameplay.selectedCharacterList[i] = '';
+			Gameplay.currentCharacterList[i] = '';
 
 			playerPages.push(curPage);
 		}
@@ -229,7 +229,7 @@ class CharacterSelectState extends SuffState {
 		save.bind('preferences', Utilities.getSavePath());
 		var CPUControlled:String = save.data.characterCPUControlled ?? '01111111';
 		var SkillLevel:String = save.data.characterSkillLevel ?? '22222222';
-		for (i in 0...Gameplay.selectedCharacterList.length) {
+		for (i in 0...Gameplay.currentCharacterList.length) {
 			var int = CPUControlled.charAt(i);
 			if (int.length <= 0)
 				if (i == 0) int = '0'; else int = '1';
@@ -242,7 +242,7 @@ class CharacterSelectState extends SuffState {
 		canEarnAchievements = ([for (i in Gameplay.cpuControlled) if (!i) i].length == 1);
 
 		add(playerSettingGroup);
-		for (i in 0...Gameplay.selectedCharacterList.length) {
+		for (i in 0...Gameplay.currentCharacterList.length) {
 			addBooleanOption(i, Language.getPhrase('characterSelect.option.cpuControlled'), function(val:Bool) {
 				Gameplay.cpuControlled[i] = val;
 				canEarnAchievements = ([for (i in Gameplay.cpuControlled) if (!i) i].length == 1);
@@ -553,7 +553,7 @@ class CharacterSelectState extends SuffState {
 	}
 
 	function confirmCharacter(character:String = 'random', index:Int = 0) {
-		Gameplay.selectedCharacterList[curPlayer] = character;
+		Gameplay.currentCharacterList[curPlayer] = character;
 		cancelAllTweens();
 		FlxTween.cancelTweensOf(description);
 		leftButton.disabled = true;
@@ -579,9 +579,9 @@ class CharacterSelectState extends SuffState {
 				if (!Preferences.data.enablePhotosensitiveMode) {
 					FlxFlicker.flicker(card, 0.75, 1 / 30, function(_) {
 						var index:Int = curPlayer;
-						for (i in 0...Gameplay.selectedCharacterList.length) {
-							index = (index + 1) % Gameplay.selectedCharacterList.length;
-							if (Gameplay.selectedCharacterList[index] == '') {
+						for (i in 0...Gameplay.currentCharacterList.length) {
+							index = (index + 1) % Gameplay.currentCharacterList.length;
+							if (Gameplay.currentCharacterList[index] == '') {
 								break;
 							}
 						}
@@ -594,9 +594,9 @@ class CharacterSelectState extends SuffState {
 				} else {
 					new FlxTimer().start(0.75, function(_) {
 						var index:Int = curPlayer;
-						for (i in 0...Gameplay.selectedCharacterList.length) {
-							index = (index + 1) % Gameplay.selectedCharacterList.length;
-							if (Gameplay.selectedCharacterList[index] == '') {
+						for (i in 0...Gameplay.currentCharacterList.length) {
+							index = (index + 1) % Gameplay.currentCharacterList.length;
+							if (Gameplay.currentCharacterList[index] == '') {
 								break;
 							}
 						}

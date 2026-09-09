@@ -460,7 +460,7 @@
 	"utilitiesMenu.browseImage.adjustOffsets.title": "Ajustar Desplazamientos",
 	"utilitiesMenu.browseImage.adjustOffsets.description": "Teclas de Flecha para Mover la Imagen\nMantén SHIFT/CTRL para Aumentar la Velocidad\nAsegúrate de que la Imagen se Alinee con la Parte Inferior Central de la Silueta",
 	"utilitiesMenu.error.prompt": "Ocurrió un error.",
-	"utilitiesMenu.firstStartup.prompt": "Advertencia: Muy Inestable\n\nLas siguientes herramientas no están pensadas para servir como Herramientas de Desarrollo, y solo fueron creadas como un medio para que artistas casuales puedan crear sus propios personajes. En cualquier momento y lugar, las herramientas eventualmente fallarán y dejarán de funcionar. Las herramientas no cuentan con una función de autoguardado; se recomienda ENCARECIDAMENTE guardar MANUALMENTE.\n\nSi quieres quejarte de las funciones, aprende JSON y Flash de una maldita vez",
+	"utilitiesMenu.firstStartup.prompt": "Advertencia: Muy Inestable\n\nLas siguientes herramientas no están pensadas para servir como Herramientas de Desarrollo, y solo fueron creadas como un medio para que artistas casuales puedan crear sus propios personajes. En cualquier momento y lugar, las herramientas eventualmente fallarán y dejarán de funcionar. Las herramientas no cuentan con una función de autoguardado; se recomienda ENCARECIDAMENTE guardar MANUALMENTE.\n\nSi quieres quejarte de las funciones, aprende JSON y Adobe Animate de una maldita vez",
 	// Texto de relleno. Usado como el nombre predeterminado para los Proyectos de Sprite recién creados.
 	"utilitiesMenu.placeholder": "Marcador de Posición",
 	

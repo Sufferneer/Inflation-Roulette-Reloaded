@@ -595,7 +595,7 @@
 	"utilitiesMenu.browseImage.adjustOffsets.title": "Adjust Offsets",
 	"utilitiesMenu.browseImage.adjustOffsets.description": "Arrow Keys to Move Image\nHold SHIFT/CTRL to Increase Rate\nMake Sure Image Aligns with Bottom Center of Silhouette",
 	"utilitiesMenu.error.prompt": "An error occurred.",
-	"utilitiesMenu.firstStartup.prompt": "Warning: Very Unstable\n\nThe following tools are not intended to serve as Development Tools, and are only created as a means for casual artists to make their own characters. At any time, anywhere, the tools will at some point crash out and die. The tools do not have an autosave feature; MANUAL SAVING is highly recommend.\n\nIf you wish to complain about the features, learn JSON and Flash goddamnit",
+	"utilitiesMenu.firstStartup.prompt": "Warning: Very Unstable\n\nThe following tools are not intended to serve as Development Tools, and are only created as a means for casual artists to make their own characters. At any time, anywhere, the tools will at some point crash out and die. The tools do not have an autosave feature; MANUAL SAVING is highly recommend.\n\nIf you wish to complain about the features, learn JSON and Adobe Animate goddamnit",
 	// Dummy text. Used as the default name for newly created Sprite Projects.
 	"utilitiesMenu.placeholder": "Placeholder",
 

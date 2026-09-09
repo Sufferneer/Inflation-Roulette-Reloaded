@@ -595,7 +595,7 @@
     "utilitiesMenu.browseImage.adjustOffsets.title": "调整偏移",
     "utilitiesMenu.browseImage.adjustOffsets.description": "用方向键调整偏移\n按住 SHIFT/CTRL 键提高移动速度\n确保图像与模板的底部中心对齐",
     "utilitiesMenu.error.prompt": "抱歉，发生错误！",
-    "utilitiesMenu.firstStartup.prompt": "警告：极不稳定\n\n以下工具并非为开发用途而设，纯粹是为了让业余画家能自己做人物才弄出来的。这些工具随时可能毫无预警地崩溃，又没有自动保存功能，强烈建议你手动保存。\n\n想说功能不好用的话，去学 JSON 和 Flash 吧，笨蛋。",
+    "utilitiesMenu.firstStartup.prompt": "警告：极不稳定\n\n以下工具并非为开发用途而设，纯粹是为了让业余画家能自己做人物才弄出来的。这些工具随时可能毫无预警地崩溃，又没有自动保存功能，强烈建议你手动保存。\n\n想说功能不好用的话，去学 JSON 和 Adobe Animate 吧，笨蛋。",
     // Dummy text. Used as the default name for newly created Sprite Projects.
     "utilitiesMenu.placeholder": "小明",
 

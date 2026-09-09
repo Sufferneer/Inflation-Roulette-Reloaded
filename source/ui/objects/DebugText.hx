@@ -7,9 +7,6 @@ import openfl.text.TextFormat;
 import openfl.display._internal.stats.Context3DStats;
 import openfl.display._internal.stats.DrawCallContext;
 #end
-#if flash
-import openfl.Lib;
-#end
 
 /**
 	The FPS class provides an easy-to-use monitor to display
@@ -57,7 +54,7 @@ class DebugText extends TextField {
 
 	// Event Handlers
 	@:noCompletion
-	private #if !flash override #end function __enterFrame(deltaTime:Float):Void {
+	private override function __enterFrame(deltaTime:Float):Void {
 		currentTime += deltaTime;
 		times.push(currentTime);
 

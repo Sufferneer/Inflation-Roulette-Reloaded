@@ -17,7 +17,7 @@ class CharacterBanner extends SuffButton {
 	public var dissolveShader:DissolveShader;
 
 	public function new(playerIndex:Int) {
-		var sectionWidth:Int = Std.int(Math.min(FlxG.width / Gameplay.selectedCharacterList.length, 320));
+		var sectionWidth:Int = Std.int(Math.min(FlxG.width / Gameplay.currentCharacterList.length, 320));
 		var sectionHeight:Int = Std.int(FlxG.height * (1 - CharacterSelectState.cardOccupicationHeight));
 
 		var color1:FlxColor = Constants.PLAYER_COLORS[playerIndex];

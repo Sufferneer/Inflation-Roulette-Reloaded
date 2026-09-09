@@ -7,7 +7,7 @@ class StageRules {
 	public var allowConfidenceOverflow:Bool = false;
 	public var skillTurnCostChange:Float = 0;
 	public var timeLimit:Float = -1;
-	public var confidenceChangeForElimination:Float = 0;
+	public var confidenceEliminationFactorChange:Float = 0;
 	public var pressureTurnChangeBase:Float = 0;
 	public var pressureTurnChangeFactor:Float = 0;
 
@@ -15,13 +15,13 @@ class StageRules {
 		allowConfidenceOverflow = data?.allowConfidenceOverflow ?? false;
 		skillTurnCostChange = data?.skillTurnCostChange ?? 0;
 		timeLimit = data?.timeLimit ?? 0;
-		confidenceChangeForElimination = data?.confidenceChangeForElimination ?? 0;
+		confidenceEliminationFactorChange = data?.confidenceEliminationFactorChange ?? 0;
 		pressureTurnChangeBase = data?.pressureTurnChangeBase ?? 0;
 		pressureTurnChangeFactor = data?.pressureTurnChangeFactor ?? 0;
 	}
 
 	public function toString():String {
-		return 'StageRules(allowConfidenceOverflow: $allowConfidenceOverflow, skillTurnCostChange: $skillTurnCostChange, timeLimit: $timeLimit, confidenceChangeForElimination: $confidenceChangeForElimination)';
+		return 'StageRules(allowConfidenceOverflow: $allowConfidenceOverflow, skillTurnCostChange: $skillTurnCostChange, timeLimit: $timeLimit, confidenceEliminationFactorChange: $confidenceEliminationFactorChange)';
 	}
 
 	inline public function hasTimeLimit() {

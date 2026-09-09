@@ -186,11 +186,11 @@ class PlayState extends SuffState {
 
 		characterGroup = new FlxObject();
 		add(characterGroup);
-		for (i in 0...Gameplay.selectedCharacterList.length) {
+		for (i in 0...Gameplay.currentCharacterList.length) {
 			pressurizeStreak.push(0);
-			var leX:Int = Std.int(FlxMath.lerp(FlxG.width / 2 + stage.data.characterX[0], FlxG.width / 2 + stage.data.characterX[1], i / (Gameplay.selectedCharacterList.length - 1)));
-			var char:Character = new Character(Gameplay.selectedCharacterList[i], leX, stage.data.characterY);
-			if (i >= Std.int(Gameplay.selectedCharacterList.length / 2)) {
+			var leX:Int = Std.int(FlxMath.lerp(FlxG.width / 2 + stage.data.characterX[0], FlxG.width / 2 + stage.data.characterX[1], i / (Gameplay.currentCharacterList.length - 1)));
+			var char:Character = new Character(Gameplay.currentCharacterList[i], leX, stage.data.characterY);
+			if (i >= Std.int(Gameplay.currentCharacterList.length / 2)) {
 				char.flipX = true;
 			}
 			char.playAnim('idle' + char.currentPressure);
@@ -800,7 +800,7 @@ class PlayState extends SuffState {
 			switch (skill.id) {
 				case 'assault':
 					if (!cylinderContent[0]) {
-						getPlayer(victimIndex).currentConfidence += 2;
+						getPlayer(victimIndex).currentConfidence += Std.int(2 * getConfidenceChangeMultiplier());
 						if (getPlayer(victimIndex).currentConfidence > getPlayer(victimIndex).maxConfidence && !Gameplay.currentStageRules.allowConfidenceOverflow)
 							getPlayer(victimIndex).currentConfidence = getPlayer(victimIndex).maxConfidence;
 					}
@@ -860,6 +860,10 @@ class PlayState extends SuffState {
 				SuffState.playSound(Paths.getSound('game/skills/' + soundName));
 			}
 		}
+	}
+	
+	function getConfidenceChangeMultiplier() {
+		return 1 + Gameplay.currentStageRules.confidenceEliminationFactorChange * getEliminatedPlayers();
 	}
 
 	public var offensiveSkillAttacker:Int = 0;
@@ -934,7 +938,7 @@ class PlayState extends SuffState {
 			SuffState.playSound(Paths.getSound('game/inflate'));
 			player.currentPressure += 1;
 			player.discolorationIntensity += 1 / player.maxPressure * 0.75;
-			player.currentConfidence += player.confidenceChangeOnLiveShot;
+			player.currentConfidence += Std.int(player.confidenceChangeOnLiveShot * getConfidenceChangeMultiplier());
 			var hoseboundIndices = player.hoseboundIndices;
 			for (index in hoseboundIndices) {
 				if (getPlayer(index).isEliminated())
@@ -988,7 +992,7 @@ class PlayState extends SuffState {
 
 			screenShake(0.01, 0.1);
 		} else {
-			player.currentConfidence += player.confidenceChangeOnBlankShot;
+			player.currentConfidence += Std.int(player.confidenceChangeOnBlankShot * getConfidenceChangeMultiplier());
 			cylinderContent.shift();
 			checkToReloadCylinder();
 			if (Gameplay.currentGamemode.skillsFixedPool.length + Gameplay.currentGamemode.skillsRandomPool.length > 0) {
@@ -1233,12 +1237,12 @@ class PlayState extends SuffState {
 	}
 
 	function changeTurnNumber(change:Int = 0) {
-		currentTurnIndex = FlxMath.wrap(currentTurnIndex + change, 0, Gameplay.selectedCharacterList.length - 1);
+		currentTurnIndex = FlxMath.wrap(currentTurnIndex + change, 0, Gameplay.currentCharacterList.length - 1);
 	}
 
 	function changeTurn(change:Int = 0, slient:Bool = false) {
 		var PrevTurn:Int = currentTurnIndex;
-		var flipX:Bool = PrevTurn >= Std.int(Gameplay.selectedCharacterList.length / 2) && PrevTurn != Gameplay.selectedCharacterList.length - 1;
+		var flipX:Bool = PrevTurn >= Std.int(Gameplay.currentCharacterList.length / 2) && PrevTurn != Gameplay.currentCharacterList.length - 1;
 		changeTurnNumber(change);
 		var prevTurnPlayer = getPlayer(PrevTurn);
 		prevTurnPlayer.canUseSkills = true;
@@ -1535,9 +1539,13 @@ class PlayState extends SuffState {
 		}
 		updateSkillAvailability(currentTurnIndex);
 	}
-	
-	function getRemainingPlayers():Int {
+
+	inline function getRemainingPlayers():Int {
 		return [for (char in characterMap) if (!char.isEliminated()) true].length;
+	}
+
+	inline function getEliminatedPlayers():Int {
+		return Gameplay.currentCharacterList.length - getRemainingPlayers();
 	}
 
 	function triggerPressureTurnChange(excludeIndices:Array<Int> = null) {
@@ -1558,8 +1566,7 @@ class PlayState extends SuffState {
 				return;
 			for (skill in char.currentSkills) {
 				skill.cost += Gameplay.currentStageRules.skillTurnCostChange;
-				if (skill.cost > char.maxConfidence)
-					skill.cost = char.maxConfidence;
+				skill.cost = FlxMath.bound(skill.cost, 0, char.maxConfidence);
 			}
 		}
 	}

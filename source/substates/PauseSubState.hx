@@ -73,7 +73,7 @@ class PauseSubState extends SuffSubState {
 		var texts:Array<String> = [
 			Language.getPhrase('gamemode.${Gameplay.currentGamemode.id}.name'),
 			Language.getPhrase('gameType.' + (Gameplay.isMultiplayer() ? 'multiplayer' : 'singleplayer')),
-			Language.getPhrase('pauseMenu.details.players', [Gameplay.selectedCharacterList.length])
+			Language.getPhrase('pauseMenu.details.players', [Gameplay.currentCharacterList.length])
 		];
 		for (num => txt in texts) {
 			var text:FlxText = new FlxText(0, 0, txt, 32);

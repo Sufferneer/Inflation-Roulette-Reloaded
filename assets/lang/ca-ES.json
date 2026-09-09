@@ -465,7 +465,7 @@
 	"utilitiesMenu.browseImage.adjustOffsets.title": "Ajusta desplaçaments",
 	"utilitiesMenu.browseImage.adjustOffsets.description": "Tecles de fletxa per moure la imatge\nMantén premut SHIFT/CTRL per augmentar velocitat\nAssegura-te que imatge s'alineï amb part inferior central de silueta",
 	"utilitiesMenu.error.prompt": "S'ha produït un error.",
-	"utilitiesMenu.firstStartup.prompt": "Avís: Molt inestable\n\nLes eines següents no estan pensades per servir com a eines de desenvolupament i només es creen com a mitjà perquè artistes casuals creïn seus propis personatges. En qualsevol moment i en qualsevol lloc, les eines es bloquejaran i moriran. Les eines no tenen una funció de desament automàtic; es recomana molt DESAMENT MANUAL.\n\nSi vols queixar-te de les funcions, aprèn JSON i Flash collons",
+	"utilitiesMenu.firstStartup.prompt": "Avís: Molt inestable\n\nLes eines següents no estan pensades per servir com a eines de desenvolupament i només es creen com a mitjà perquè artistes casuals creïn seus propis personatges. En qualsevol moment i en qualsevol lloc, les eines es bloquejaran i moriran. Les eines no tenen una funció de desament automàtic; es recomana molt DESAMENT MANUAL.\n\nSi vols queixar-te de les funcions, aprèn JSON i Adobe Animate collons",
 	// Dummy text. Used as the default name for newly created Sprite Projects.
 	"utilitiesMenu.placeholder": "Marcador",
 	

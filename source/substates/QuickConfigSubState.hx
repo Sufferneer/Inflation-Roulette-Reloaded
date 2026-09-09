@@ -118,16 +118,16 @@ class QuickConfigSubState extends SuffSubState {
 		Gameplay.currentGamemode = Gameplay.defaultGamemode;
 		var leRandom = [];
 		var leCPUControl = [];
-		for (num => i in Gameplay.selectedCharacterList) {
+		for (num => i in Gameplay.currentCharacterList) {
 			leRandom.push('random');
 			leCPUControl.push(true);
 			Gameplay.cpuLevel[num] = FlxG.random.int(Constants.CPU_SKILL_LIMIT[0], Constants.CPU_SKILL_LIMIT[1]);
 		}
 		leCPUControl[FlxG.random.int(0, leCPUControl.length - 1)] = false;
-		Gameplay.selectedCharacterList = leRandom;
+		Gameplay.currentCharacterList = leRandom;
 		Gameplay.cpuControlled = leCPUControl;
 		Gameplay.parseRandomCharacters();
-		trace('Current characters: ', Gameplay.selectedCharacterList);
+		trace('Current characters: ', Gameplay.currentCharacterList);
 		trace('Current CPU level: ', Gameplay.cpuLevel);
 		// Gameplay.currentStage = FlxG.random.getObject(Gameplay.globalStageList);
 		// Gameplay.currentFiller = new Filler(FlxG.random.getObject(Gameplay.globalFillerList));

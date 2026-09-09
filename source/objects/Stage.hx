@@ -154,9 +154,9 @@ class Stage extends FlxBasic {
 		if (objectData.scrollFactor != null && objectData.scrollFactor.length == 2)
 			object.scrollFactor.set(objectData.scrollFactor[0], objectData.scrollFactor[1]);
 		if (objectData.hideCharacter != null)
-			object.visible = !Gameplay.selectedCharacterList.contains(objectData.hideCharacter);
+			object.visible = !Gameplay.currentCharacterList.contains(objectData.hideCharacter);
 		if (objectData.showCharacter != null)
-			object.visible = Gameplay.selectedCharacterList.contains(objectData.showCharacter);
+			object.visible = Gameplay.currentCharacterList.contains(objectData.showCharacter);
 		if (objectData.scale != null) {
 			if (objectData.scale.length == 2)
 				object.scale.set(objectData.scale[0], objectData.scale[1]); else if (objectData.scale.length == 1)

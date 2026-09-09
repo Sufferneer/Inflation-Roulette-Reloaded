@@ -496,7 +496,7 @@
 	"utilitiesMenu.browseImage.adjustOffsets.title": "調整偏移",
 	"utilitiesMenu.browseImage.adjustOffsets.description": "用方向鍵調整偏移\n按住 SHIFT/CTRL 鍵提高移動速度\n確保圖像與模板的底部中心對齊",
 	"utilitiesMenu.error.prompt": "抱歉，發生錯誤！",
-	"utilitiesMenu.firstStartup.prompt": "警告：極不穩定\n\n以下工具並非為開發用途而設，純粹是為了讓業餘畫家能自己做人物才弄出來的。這些工具隨時可能毫無預警地仆街，又沒有自動儲存功能，強烈建議你手動儲存。\n\n想說功能不好用的話，去學 JSON 同 Flash 啦，死蠢。",
+	"utilitiesMenu.firstStartup.prompt": "警告：極不穩定\n\n以下工具並非為開發用途而設，純粹是為了讓業餘畫家能自己做人物才弄出來的。這些工具隨時可能毫無預警地仆街，又沒有自動儲存功能，強烈建議你手動儲存。\n\n想說功能不好用的話，去學 JSON 同 Adobe Animate 啦，死蠢。",
 	"utilitiesMenu.placeholder": "小明",
 	
 	"characterCreator.dataType.metadata": "中繼資料",

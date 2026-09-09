@@ -9,7 +9,7 @@ import backend.typedefs.StageRulesData;
 
 class Gameplay {
 	public static var globalCharacterList:Array<String> = [];
-	public static var selectedCharacterList:Array<String> = ['goober', 'goober', 'goober', 'goober'];
+	public static var currentCharacterList:Array<String> = ['goober', 'goober', 'goober', 'goober'];
 
 	public static var cpuControlled:Array<Bool> = [false, true, true, true];
 	public static var cpuLevel:Array<Int> = [2, 2, 2, 2];
@@ -73,13 +73,13 @@ class Gameplay {
 
 	public static function parseRandomCharacters() {
 		// Make a copy of the list excluding "random"
-		var list = [for (i in globalCharacterList) if (!selectedCharacterList.contains(i) && i != 'random') i];
+		var list = [for (i in globalCharacterList) if (!currentCharacterList.contains(i) && i != 'random') i];
 		// If list is empty (full of randoms)
 		if (list.length <= 0) list = globalCharacterList.copy();
-		for (i in 0...selectedCharacterList.length) {
-			if (selectedCharacterList[i] == 'random') {
+		for (i in 0...currentCharacterList.length) {
+			if (currentCharacterList[i] == 'random') {
 				var picked = FlxG.random.getObject(list);
-				selectedCharacterList[i] = picked;
+				currentCharacterList[i] = picked;
 				list.remove(picked);
 				if (list.length <= 0)
 					list = globalCharacterList.copy();
@@ -88,7 +88,7 @@ class Gameplay {
 	}
 
 	public static function setPlayerCount(value:Int = 4) {
-		selectedCharacterList = [for (i in 0...value) 'goober'];
+		currentCharacterList = [for (i in 0...value) 'goober'];
 		cpuControlled = [for (i in 0...value) true];
 		cpuControlled[0] = false;
 		cpuLevel = [for (i in 0...value) 2];

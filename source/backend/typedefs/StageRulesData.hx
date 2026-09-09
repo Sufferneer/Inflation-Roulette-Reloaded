@@ -4,7 +4,7 @@ typedef StageRulesData = {
 	?allowConfidenceOverflow:Bool,
 	?skillTurnCostChange:Float,
 	?timeLimit:Float,
-	?confidenceChangeForElimination:Int,
+	?confidenceEliminationFactorChange:Float,
 	?pressureTurnChangeBase:Float,
 	?pressureTurnChangeFactor:Float
 }
