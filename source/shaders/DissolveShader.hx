@@ -29,10 +29,10 @@ class DissolveShader extends FlxShader {
 		vec2 localPosInCell = (posInGrid - cellPosInGrid);
 		vec2 blend = localPosInCell * localPosInCell * (3.0 - 2.0 * localPosInCell);
 	
-		vec2 topLeft = cellPosInGrid + vec2(0, 1);
-		vec2 topRight = cellPosInGrid + vec2(1, 1);
-		vec2 bottomLeft = cellPosInGrid + vec2(0, 0);
-		vec2 bottomRight = cellPosInGrid + vec2(1, 0);
+		vec2 topLeft = cellPosInGrid + vec2(0.0, 1.0);
+		vec2 topRight = cellPosInGrid + vec2(1.0, 1.0);
+		vec2 bottomLeft = cellPosInGrid + vec2(0.0, 0.0);
+		vec2 bottomRight = cellPosInGrid + vec2(1.0, 0.0);
 	
 		float topLeftDot = dot(posInGrid - topLeft, getGradient(topLeft));
 		float topRightDot = dot(posInGrid - topRight, getGradient(topRight));

@@ -37,7 +37,7 @@ class BloomShader extends FlxShader {
 	uniform float uBlurSize;
 	uniform vec2 uDirection;
 	
-	vec4 blurColor (in vec2 coord, in sampler2D tex, in float mipBias) {
+	vec4 blurColor(in vec2 coord, in sampler2D tex, in float mipBias) {
 		vec2 texelSize = mipBias / openfl_TextureSize.xy;
 		
 		vec4 color = vec4(0.0);

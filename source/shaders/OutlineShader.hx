@@ -6,7 +6,7 @@ class OutlineShader extends FlxShader {
 	public var color(default, set):FlxColor;
 	public var thickness(default, set):Float = 4.0;
 	public var enabled(default, set):Bool = true;
-	public var lineBoilStep(default, set):Int = 6;
+	public var lineBoilStep(default, set):Float = 6.0;
 	public var lineBoilTick(default, set):Float = 0.0;
 	public var lineBoil(default, set):Bool = false;
 	function set_color(value:FlxColor) {
@@ -24,7 +24,7 @@ class OutlineShader extends FlxShader {
 		this.data.uEnabled.value = [value];
 		return value;
 	}
-	function set_lineBoilStep(value:Int) {
+	function set_lineBoilStep(value:Float) {
 		this.lineBoilStep = value;
 		this.data.uLineBoilStep.value = [value];
 		return value;
@@ -71,7 +71,7 @@ class OutlineShader extends FlxShader {
 	
 	void main() {
 		vec2 uv = openfl_TextureCoordv;
-		vec4 texColor = flixel_texture2D(bitmap, uv);
+		vec4 texColor = texture2D(bitmap, uv);
 		if (!uEnabled || texColor.a > 0.0) {
 			gl_FragColor = texColor;
 			return;
@@ -79,7 +79,7 @@ class OutlineShader extends FlxShader {
 		float alpha = 0.0;
 		float thickness = uThickness;
 		if (uLineBoil) {
-			float tick = floor(uLineBoilTick * uLineBoilStep) * (1 / uLineBoilStep);
+			float tick = floor(uLineBoilTick * uLineBoilStep) * (1.0 / uLineBoilStep);
 			thickness += perlin1d(uv.x * openfl_TextureSize.x / 80.0 + tick * 90.0) * uThickness * 2.5;
 		}
 		vec2 inc = thickness / openfl_TextureSize.xy;
@@ -87,7 +87,7 @@ class OutlineShader extends FlxShader {
 		for (float i = 0.0; i <= iterations; i += 1.0) {
 			float outlineX = sin(i / iterations * PI * 2.0) * inc.x;
 			float outlineY = cos(i / iterations * PI * 2.0) * inc.y;
-			alpha += flixel_texture2D(bitmap, uv + vec2(outlineX, outlineY)).a;
+			alpha += texture2D(bitmap, uv + vec2(outlineX, outlineY)).a;
 		}
 		if (alpha > 0.0) {
 			gl_FragColor = uColor;
@@ -101,8 +101,8 @@ class OutlineShader extends FlxShader {
 		this.color = color;
 		this.thickness = thickness;
 		this.enabled = true;
-		this.lineBoilTick = 0;
-		this.lineBoilStep = 0;
+		this.lineBoilTick = 0.0;
+		this.lineBoilStep = 0.0;
 		this.lineBoil = false;
 	}
 	

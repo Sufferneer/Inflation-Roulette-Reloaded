@@ -40,7 +40,7 @@ class CheckerboardShader extends FlxShader {
 	void main() {
 		vec2 uv = openfl_TextureCoordv;
 		vec4 texColor = flixel_texture2D(bitmap, uv);
-		vec2 dt = iTime / uGridSize * 32;
+		vec2 dt = iTime / uGridSize * 32.0;
 		uv -= dt;
 		vec4 maskColor = flixel_texture2D(uGridTex, fract(uv * uTexSize / uGridSize));
 		if (uUseAlpha) {

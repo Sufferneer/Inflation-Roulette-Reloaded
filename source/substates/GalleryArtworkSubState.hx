@@ -115,14 +115,13 @@ class GalleryArtworkSubState extends SuffSubState {
 			artworkGroup.members[curSelected].tooltipText = Language.getPhrase('galleryEntryMenu.viewFullImageWarned', [translatedWarnings.join(', ')]);
 			var dimensions = [artworkGroup.members[curSelected].width, artworkGroup.members[curSelected].height];
 			var contentWarningImage = Paths.getImage('ui/menus/extras/gallery/images/contentWarning');
-			#if desktop
 			if (Preferences.data.enableGLSL) {
 				var shader = new CheckerboardShader();
 				shader.gridTexture = contentWarningImage.bitmap;
 				shader.parentSize = [artworkGroup.members[curSelected].image.width, artworkGroup.members[curSelected].image.height];
 				shader.useAlpha = false;
 				artworkGroup.members[curSelected].image.shader = shader;
-			} else #end{
+			} else {
 				artworkGroup.members[curSelected].image.loadGraphic(contentWarningImage);
 				artworkGroup.members[curSelected].image.setGraphicSize(dimensions[0], dimensions[1]);
 				artworkGroup.members[curSelected].image.updateHitbox();
