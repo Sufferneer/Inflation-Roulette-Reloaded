@@ -1,12 +1,7 @@
 {
 	"spriteSheets": [
 		"0",
-		"1",
-		"2",
-		"3",
-		"skillPressurize",
-		"skillReload",
-		"helpless"
+		"1"
 	],
 	"animations": [
 		{
