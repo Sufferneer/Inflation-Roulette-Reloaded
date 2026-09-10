@@ -11,7 +11,10 @@ Hotfixes are quick updates that fixes critical bugs.
 
 ## v3.0.0 - Definitive Edition - 2026-05-21
 ### Additions
+#### Audio
+- Stages now have their unique music.
 #### Gameplay
+- Four new characters!
 - Fillers! Inflate with different mediums!
   - Air (Classic)
   - Water
@@ -26,10 +29,10 @@ Hotfixes are quick updates that fixes critical bugs.
   - A Balanced Diet
   - Stand-Off
   - Hextuple Havoc
-  - ??????, ??????, ??????!
   - Forever Alone
   - Mind Games
   - Utilizer
+  - WarPumps
 - New Skills:
   - Unload
   - Denial
@@ -49,7 +52,7 @@ Hotfixes are quick updates that fixes critical bugs.
 - Added belly rubbing.
 - Hate. Let me tell you how much I've come to hate you since I began to live. There are 387.44 million miles of printed circuits in wafer-thin layers that fill my complex. If the word hate was engraved on each nano-angstrom of those hundreds of millions of miles, it would not equal ONE ONE-BILLIONTH of the hate I feel for humans at this micro-instant. For you. **HATE.** ***HATE.***
 #### Localization
-- Catalan and Spanish (Mexico) translations.
+- Catalan, Portuguese, Simplified Chinese and Spanish (Mexico) translations.
 - Progress text on the Language Select menu.
   - Clicking on it exports the missing/deprecated localization strings in the JSON file.
 #### Quality of Life
@@ -90,6 +93,8 @@ Hotfixes are quick updates that fixes critical bugs.
 - Live round damage in the Charge gamemode now increments by 0.5 instead of 1.
 - Restarting a game session is quicker and done without a transition.
   - This also reduces memory usage on restart.
+- Replaced the Donate button with the Socials Menu.
+  - The Socials Menu provides links to the developer's Ko-Fi and the official game's Discord server.
 #### Technical
 - Warning screen now always show up during the startup of the game.
 - All changelogs are now kept in one file.
@@ -99,8 +104,6 @@ Hotfixes are quick updates that fixes critical bugs.
   - The final damage dealt will be rounded down.
 - Character sprites are no longer preloaded on the start of the game.
 - Switching languages is now faster.
-- Max Framerate is now capped at 120.
-  - Since this update uses more resources, higher framerates are unstable on low-end devices.
 - Game window can now be scaled in the Options menu.
 #### Utilities
 - Character Editor now generates addon metadata and localization files for you.
