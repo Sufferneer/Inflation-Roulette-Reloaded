@@ -79,7 +79,7 @@ class OutlineShader extends FlxShader {
 		float alpha = 0.0;
 		float thickness = uThickness;
 		if (uLineBoil) {
-			float tick = floor(uLineBoilTick * uLineBoilStep) * (1.0 / uLineBoilStep);
+			float tick = floor(uLineBoilTick * uLineBoilStep) / uLineBoilStep;
 			thickness += perlin1d(uv.x * openfl_TextureSize.x / 80.0 + tick * 90.0) * uThickness * 2.5;
 		}
 		vec2 inc = thickness / openfl_TextureSize.xy;
