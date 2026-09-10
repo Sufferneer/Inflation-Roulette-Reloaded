@@ -9,471 +9,299 @@
 			"prefix": "idle0",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idle1",
 			"prefix": "idle1",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idle2",
 			"prefix": "idle2",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idle3",
 			"prefix": "idle3",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				180,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idle4",
 			"prefix": "idle4",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				140,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idle5",
 			"prefix": "idle5",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				118,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idleOverinflated",
 			"prefix": "idleOverinflated",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				118,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "idleNull",
 			"prefix": "idleNull",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				84,
-				423
-			]
+			"loop": true
 		},
 		{
 			"name": "popped",
 			"prefix": "popped",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				53,
-				48
-			]
+			"loop": true
 		},
 		{
 			"name": "introPartOne",
 			"prefix": "introPartOne",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				219,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "introPartOne-loop",
 			"prefix": "introPartOne-loop",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "introPartTwo",
 			"prefix": "introPartTwo",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				75
-			]
+			"loop": false
 		},
 		{
 			"name": "prepareShoot0",
 			"prefix": "prepareShoot0",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "prepareShoot1",
 			"prefix": "prepareShoot1",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "prepareShoot2",
 			"prefix": "prepareShoot2",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "prepareShoot3",
 			"prefix": "prepareShoot3",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				180,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "prepareShoot4",
 			"prefix": "prepareShoot4",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				140,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "prepareShoot5",
 			"prefix": "prepareShoot5",
 			"fps": 24,
 			"indices": [],
-			"loop": true,
-			"offsets": [
-				118,
-				71
-			]
+			"loop": true
 		},
 		{
 			"name": "preShoot0",
 			"prefix": "preShoot0",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "preShoot1",
 			"prefix": "preShoot1",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "preShoot2",
 			"prefix": "preShoot2",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "preShoot3",
 			"prefix": "preShoot3",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				180,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "preShoot4",
 			"prefix": "preShoot4",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				166,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "preShoot5",
 			"prefix": "preShoot5",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				138,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "pass0",
 			"prefix": "pass0",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				203,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "pass1",
 			"prefix": "pass1",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				203,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "pass2",
 			"prefix": "pass2",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				203,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "pass3",
 			"prefix": "pass3",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				183,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "pass4",
 			"prefix": "pass4",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				166,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "pass5",
 			"prefix": "pass5",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				138,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootBlank0",
 			"prefix": "shootBlank0",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootBlank1",
 			"prefix": "shootBlank1",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootBlank2",
 			"prefix": "shootBlank2",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootBlank3",
 			"prefix": "shootBlank3",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				180,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootBlank4",
 			"prefix": "shootBlank4",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				166,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootBlank5",
 			"prefix": "shootBlank5",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				138,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootLive0",
 			"prefix": "shootLive0",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				201,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootLive1",
 			"prefix": "shootLive1",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				207,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootLive2",
 			"prefix": "shootLive2",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				255,
-				72
-			]
+			"loop": false
 		},
 		{
 			"name": "shootLive3",
 			"prefix": "shootLive3",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				217,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shootLive4",
 			"prefix": "shootLive4",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				199,
-				72
-			]
+			"loop": false
 		},
 		{
 			"name": "shootLive5",
 			"prefix": "shootLive5",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				160,
-				74
-			]
+			"loop": false
 		},
 		{
 			"name": "helplessOverinflated",
 			"prefix": "helplessOverinflated",
 			"fps": 24,
-			"offsets": [
-				63,
-				56
-			],
 			"indices": [],
 			"loop": false,
 			"soundPaths": [
@@ -488,10 +316,6 @@
 			"name": "helplessNull",
 			"prefix": "helplessNull",
 			"fps": 24,
-			"offsets": [
-				88,
-				424
-			],
 			"indices": [],
 			"loop": false,
 			"soundPaths": [
@@ -507,66 +331,42 @@
 			"prefix": "skill0",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				223,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "skill1",
 			"prefix": "skill1",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				223,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "skill2",
 			"prefix": "skill2",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				223,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "skill3",
 			"prefix": "skill3",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				183,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "skill4",
 			"prefix": "skill4",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				166,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "skill5",
 			"prefix": "skill5",
 			"fps": 24,
 			"indices": [],
-			"loop": false,
-			"offsets": [
-				131,
-				71
-			]
+			"loop": false
 		},
 		{
 			"name": "shocked0",
@@ -574,11 +374,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				201,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "shocked1",
@@ -586,11 +382,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				201,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "shocked2",
@@ -598,11 +390,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				201,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "shocked3",
@@ -610,11 +398,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				180,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "shocked4",
@@ -622,11 +406,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				140,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "shocked5",
@@ -634,11 +414,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				117,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "win0",
@@ -646,11 +422,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				217,
-				63
-			]
+			"bouncy": true
 		},
 		{
 			"name": "win1",
@@ -658,11 +430,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				212,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "win2",
@@ -670,11 +438,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				207,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "win3",
@@ -682,11 +446,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				183,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "win4",
@@ -694,11 +454,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				166,
-				71
-			]
+			"bouncy": true
 		},
 		{
 			"name": "win5",
@@ -706,11 +462,7 @@
 			"fps": 24,
 			"indices": [],
 			"loop": false,
-			"bouncy": true,
-			"offsets": [
-				138,
-				71
-			]
+			"bouncy": true
 		}
 	],
 

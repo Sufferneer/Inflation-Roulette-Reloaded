@@ -16,6 +16,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.haxelib" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/export" />
     </content>
     <orderEntry type="jdk" jdkName="Haxe 4.3.7" jdkType="Haxe toolkit" />
     <orderEntry type="sourceFolder" forTests="false" />
