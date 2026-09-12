@@ -17,6 +17,8 @@ import backend.typedefs.AnimationData;
 import backend.typedefs.AddonMetadata;
 import substates.GenericPrompt;
 import backend.typedefs.CharacterOffsetsData;
+import backend.typedefs.CharacterHitboxData;
+import backend.typedefs.CharacterBoxData;
 
 class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	var exportingText:FlxText;
@@ -160,12 +162,19 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				gunSkill: CharacterCreatorState.spriteData.particleOffsets.gunSkill
 			},
 		};
+		var hitbox:CharacterHitboxData = {
+			rubHitboxes: [for (i in 0...stats.maxPressure + 2) {
+				position: [0, 0],
+				size: [100, 100]
+			}]
+		};
 
 		if (!FileSystem.isDirectory('exports/$projectName/data/characters/$characterID') || !FileSystem.exists('exports/$projectName/data/characters/$characterID'))
 			FileSystem.createDirectory('exports/$projectName/data/characters/$characterID');
 		File.saveContent('exports/$projectName/data/characters/$characterID/stats.json', haxe.Json.stringify(stats, '\t'));
 		File.saveContent('exports/$projectName/data/characters/$characterID/cosmetic.json', haxe.Json.stringify(cosmetic, '\t'));
 		File.saveContent('exports/$projectName/data/characters/$characterID/offsets.json', haxe.Json.stringify(offsets, '\t'));
+		File.saveContent('exports/$projectName/data/characters/$characterID/hitbox.json', haxe.Json.stringify(hitbox, '\t'));
 
 		new FlxTimer().start(0.02, function(_) {
 			generateLangFile();
@@ -205,7 +214,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 		File.saveContent('exports/$projectName/metadata.json', haxe.Json.stringify(metadata, '\t'));
 
 		new FlxTimer().start(0.02, function(_) {
-			sucessfulExport();
+			successfulExport();
 		});
 	}
 
@@ -268,11 +277,10 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				secBitmap = what[0];
 				secXML = what[1];
 				for (i in 0...animData.numFrames) {
-					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 					if (animData.keyframes.contains(i)) {
 						if (i != 0) {
 							secPointer.x += 150;
-							if (secPointer.x > secBitmap.width - 150) {
+							if (secPointer.x - 5 > secBitmap.width - 150) {
 								secPointer.x = 0;
 								secPointer.y += 200;
 							}
@@ -280,23 +288,21 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
 					}
+					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 				}
 			case 'cardCharSelected':
 				var leAnimName:String = 'selected';
-				// secPointer.x += 150;
 				for (i in 0...animData.numFrames) {
-					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 					if (animData.keyframes.contains(i)) {
-						if (i != 0) {
-							secPointer.x += 150;
-							if (secPointer.x > secBitmap.width - 150) {
-								secPointer.x = 0;
-								secPointer.y += 200;
-							}
+						secPointer.x += 150;
+						if (secPointer.x - 5 > secBitmap.width - 150) {
+							secPointer.x = 0;
+							secPointer.y += 200;
 						}
 						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
 						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
 					}
+					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x - 5, secPointer.y - 5, 150, 200);
 				}
 				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/cards/$characterID', 'character');
 			case 'bannerAppear':
@@ -330,40 +336,35 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 					trace(exportingAnim, i, secPointer);
 				}
 				exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/characterSelect/banners', '$characterID');
-			case 'results_idleStanding':
-				secPointer.x = 0;
-				secPointer.y = 0;
-				var leAnimName:String = 'idleStanding';
-				var what = newSpriteSheet(3840, 3600, 480, 720);
-				secBitmap = what[0];
-				secXML = what[1];
-				for (i in 0...animData.numFrames) {
-					if (animData.keyframes.contains(i)) {
-						var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
-						if (i > 0)
-							secPointer.x += 480;
-						secBitmap.copyPixels(sprite, sprite.rect, secPointer);
-					}
-					secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 480, 720);
-					trace(exportingAnim, i, secPointer);
-				}
 			default:
 				if (exportingAnim.startsWith('results_')) {
 					var leAnimName:String = exportingAnim.replace('results_', '');
+					if (leAnimName == 'idleStanding') {
+						secPointer.x = 0;
+						secPointer.y = 0;
+						var what = newSpriteSheet(3840, 3600, 480, 720);
+						secBitmap = what[0];
+						secXML = what[1];
+					}
 					for (i in 0...animData.numFrames) {
 						if (animData.keyframes.contains(i)) {
 							var sprite:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/$exportingAnim/$i.png');
-							if (i > 0) {
+							if (i != 0) {
 								secPointer.x += 480;
 								if (secPointer.x > secBitmap.width - 480) {
 									secPointer.x = 0;
-									secPointer.y += sprite.height;
+									secPointer.y += 720;
 								}
 							}
 							secBitmap.copyPixels(sprite, sprite.rect, secPointer);
 						}
 						secXML = insertLineInXML(secXML, leAnimName, i, secPointer.x, secPointer.y, 480, 720);
 						trace(exportingAnim, i, secPointer);
+					}
+					secPointer.x += 480;
+					if (secPointer.x > secBitmap.width - 480) {
+						secPointer.x = 0;
+						secPointer.y += 720;
 					}
 					if (exportingAnim == 'results_loseDefeatedLoop')
 						exportSpriteSheet(secBitmap, secXML, 'exports/$projectName/images/ui/menus/results/characters', '$characterID');
@@ -430,11 +431,11 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 		});
 	}
 
-	function sucessfulExport() {
+	function successfulExport() {
 		Achievements.advanceProgress('exportCharacterProject', [true]);
 		openSubState(new GenericPrompt(Language.getPhrase('characterCreator.exportSuccessful.prompt', [exportPath + '/' + projectName]), function() {
 			close();
-		}));
+		}, boxWidth));
 	}
 
 	override function update(elapsed:Float) {

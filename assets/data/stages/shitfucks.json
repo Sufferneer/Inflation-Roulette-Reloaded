@@ -4,7 +4,7 @@
 	},
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
-	"cameraBounds": [-540, -240, 2360, 1080],
+	"cameraBounds": [0, -60, 2360, 1080],
 	"backgroundObjects": [
 		{
 			"id": "bg",

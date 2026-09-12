@@ -1,6 +1,7 @@
 package objects.particles;
 
 import shaders.DiscolorationMaskedShader;
+import states.PlayState;
 
 class Bloosh extends FlxSprite {
 	// Balt is bloosh!
@@ -16,6 +17,7 @@ class Bloosh extends FlxSprite {
 		this.alpha = 0.75;
 		animation.play('idle', true);
 		animation.onFinish.add(function(_) {
+			this.kill();
 			FlxG.state.remove(this, true);
 			this.destroy();
 		});

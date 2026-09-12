@@ -1,5 +1,7 @@
 package objects.particles;
 
+import states.PlayState;
+
 class Swirl extends FlxSprite {
 	public function new(x:Float = 0, y:Float = 0, color:FlxColor = 0xFFFFFFFF, alpha:Float = 0.5) {
 		super(x, y);
@@ -14,6 +16,7 @@ class Swirl extends FlxSprite {
 		this.alpha = alpha;
 		this.velocity.y = FlxG.random.float(-128, -64);
 		animation.onFinish.add(function(_) {
+			this.kill();
 			FlxG.state.remove(this, true);
 			this.destroy();
 		});

@@ -9,6 +9,7 @@ class Explosion extends FlxSprite {
 		this.scale.set(scale, scale);
 		this.updateHitbox();
 		this.animation.onFinish.add(function(name:String) {
+			this.kill();
 			FlxG.state.remove(this, true);
 			this.destroy();
 		});

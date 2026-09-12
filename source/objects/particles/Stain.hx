@@ -1,5 +1,7 @@
 package objects.particles;
 
+import states.PlayState;
+
 class Stain extends FlxSprite {
 	public function new(x:Float = 0, y:Float = 0, color:FlxColor = 0xFFFFFFFF) {
 		super(x, y);
@@ -16,6 +18,7 @@ class Stain extends FlxSprite {
 		FlxTween.tween(this, {alpha: 0}, 4, {
 			startDelay: FlxG.random.float(2, 4),
 			onComplete: function(_) {
+				this.kill();
 				FlxG.state.remove(this, true);
 				this.destroy();
 			}

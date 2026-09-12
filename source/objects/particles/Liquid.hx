@@ -1,5 +1,7 @@
 package objects.particles;
 
+import states.PlayState;
+
 class Liquid extends FlxSprite {
 	var floorY:Float = 690;
 	public function new(x:Float = 0, y:Float = 0, ?floorY:Float = 690) {
@@ -29,6 +31,7 @@ class Liquid extends FlxSprite {
 				this.origin.y = this.height * 0.25;
 				FlxTween.tween(this.scale, {x: 0, y: 0}, 2, {
 					onComplete: function(_) {
+						this.kill();
 						FlxG.state.remove(this, true);
 						this.destroy();
 					},

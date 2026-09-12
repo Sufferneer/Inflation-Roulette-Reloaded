@@ -1,5 +1,7 @@
 package objects.particles;
 
+import states.PlayState;
+
 class PlayerIndicator extends FlxSpriteGroup {
 	var arrow:FlxSprite;
 	var text:FlxText;
@@ -23,6 +25,7 @@ class PlayerIndicator extends FlxSpriteGroup {
 		offset.y += height;
 
 		FlxTween.tween(this, {alpha: 0}, 1, {startDelay: 3, onComplete: function(_) {
+			this.kill();
 			FlxG.state.remove(this, true);
 			this.destroy();
 		}});

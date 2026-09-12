@@ -178,7 +178,12 @@ class PlayState extends SuffState {
 		camFollow = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
 		FlxG.camera.follow(camFollow, LOCKON);
 		FlxG.camera.followLerp = 0.1 * Preferences.data.cameraSpeed;
-		FlxG.camera.setScrollBoundsRect(stage.data.cameraBounds[0], stage.data.cameraBounds[1], stage.data.cameraBounds[2], stage.data.cameraBounds[3]);
+		FlxG.camera.setScrollBoundsRect(
+			FlxG.width / 2 + stage.data.cameraBounds[0] - stage.data.cameraBounds[2] / 2,
+			FlxG.height / 2 + stage.data.cameraBounds[1] - stage.data.cameraBounds[3] / 2,
+			stage.data.cameraBounds[2],
+			stage.data.cameraBounds[3]
+		);
 
 		reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
 
@@ -1729,6 +1734,11 @@ class PlayState extends SuffState {
 
 		pressureBar.updateBar();
 		confidenceBar.updateBar();
+		
+		for (member in particleGroup) {
+			if (!member.exists || !member.alive || member == null)
+				particleGroup.remove(member, true);
+		}
 
 		if (!isPaused) {
 			FlxG.camera.zoom = FlxMath.lerp(FlxG.camera.zoom, camFollowZoom, FlxMath.bound(elapsed * 5, 0, 1));
@@ -1811,9 +1821,12 @@ class PlayState extends SuffState {
 				if (player.cursorOnBelly)
 					switchCursor = true;
 				if (player.velocity.x != 0 && player.velocity.y != 0) {
-					if (player.x + player.velocity.x * elapsed < stage.data.cameraBounds[0] || player.x + player.velocity.x * elapsed > stage.data.cameraBounds[2] - Math.abs(stage.data.cameraBounds[0])) {
+					if (player.x < camGame.minScrollX) {
+						player.x = camGame.minScrollX;
 						player.velocity.x *= -1;
-						player.x = player.x + player.velocity.x * elapsed;
+					} else if (player.x > camGame.maxScrollX) {
+						player.x = camGame.maxScrollX;
+						player.velocity.x *= -1;
 					}
 					if (player.y + player.velocity.y * elapsed > stage.data.characterY) {
 						player.velocity.y *= -0.5;

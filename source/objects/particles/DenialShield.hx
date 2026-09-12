@@ -1,6 +1,7 @@
 package objects.particles;
 
 import flixel.effects.FlxFlicker;
+import states.PlayState;
 
 class DenialShield extends FlxSprite {
 	public function new(x:Float = 0, y:Float = 0) {
@@ -20,6 +21,7 @@ class DenialShield extends FlxSprite {
 		FlxTween.tween(this, {alpha: 0}, 1, {
 			startDelay: 1,
 			onComplete: function(_) {
+				this.kill();
 				FlxG.state.remove(this, true);
 				this.destroy();
 			}

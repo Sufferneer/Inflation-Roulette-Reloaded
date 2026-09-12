@@ -36,6 +36,11 @@ class RubHitboxEditorState extends UtilitiesBaseMenuState {
 		add(hitbox);
 
 		rubHitboxData = character.rubHitboxes.copy();
+		if (rubHitboxData == null) {
+			trace('Hitbox data for character $charId not found. Using chester\'s');
+			rubHitboxData = new Character('chester').rubHitboxes;
+			rubHitboxData.resize(character.maxPressure + 1);
+		}
 
 		var leftBorder:FlxSprite = new FlxSprite().makeGraphic(Std.int(FlxG.width / 2 - character.width / 2), FlxG.height, 0xFF000000);
 		leftBorder.alpha = 0.5;

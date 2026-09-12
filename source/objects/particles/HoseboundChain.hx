@@ -1,5 +1,7 @@
 package objects.particles;
 
+import states.PlayState;
+
 class HoseboundChain extends FlxSprite {
 	public function new(x:Float = 0, y:Float = 0, playerIndex:Int = 0) {
 		super(x, y);
@@ -13,6 +15,7 @@ class HoseboundChain extends FlxSprite {
 		FlxTween.tween(this, {alpha: 0}, 0.5, {
 			startDelay: 0.5,
 			onComplete: function(_) {
+				this.kill();
 				FlxG.state.remove(this, true);
 				this.destroy();
 			}

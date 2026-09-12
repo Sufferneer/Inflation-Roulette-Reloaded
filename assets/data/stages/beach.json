@@ -4,7 +4,7 @@
 	},
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
-	"cameraBounds": [-540, -240, 2360, 1100],
+	"cameraBounds": [0, -50, 2360, 1100],
 	"backgroundObjects": [
 		{
 			"id": "sky",

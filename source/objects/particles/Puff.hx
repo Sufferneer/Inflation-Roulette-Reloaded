@@ -1,5 +1,7 @@
 package objects.particles;
 
+import states.PlayState;
+
 class Puff extends FlxSprite {
 	var floorY:Float = 690;
 	var targetScale:Float = 1;
@@ -38,6 +40,7 @@ class Puff extends FlxSprite {
 			targetScale -= elapsed / 2;
 		}
 		if (this != null && (scale.x <= 0 || scale.y <= 0)) {
+			this.kill();
 			FlxG.state.remove(this, true);
 			this.destroy();
 			return;
