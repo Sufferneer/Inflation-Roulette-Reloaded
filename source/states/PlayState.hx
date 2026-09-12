@@ -301,7 +301,7 @@ class PlayState extends SuffState {
 		selectTargetText = new FlxText(Language.getPhrase('game.selectTarget'), 48);
 		selectTargetText.setBorderStyle(OUTLINE, 0xFF000000, 3.25);
 		selectTargetText.x = Std.int((FlxG.width - selectTargetText.width) / 2);
-		selectTargetText.y = -selectTargetText.height;
+		selectTargetText.y = -selectTargetText.height * 1.25;
 		selectTargetText.camera = camHUD;
 		add(selectTargetText);
 
@@ -435,7 +435,7 @@ class PlayState extends SuffState {
 		skillCancelButton.visible = value;
 		if (!value) selectLight.visible = false;
 		toggleCameraFocusButton(!value);
-		doTween('selectTargetText', FlxTween.tween(selectTargetText, {y: value ? 0 : -selectTargetText.height}, 0.75, {
+		doTween('selectTargetText', FlxTween.tween(selectTargetText, {y: value ? 0 : -selectTargetText.height * 1.25}, 0.75, {
 			ease: FlxEase.backOut
 		}));
 		return value;

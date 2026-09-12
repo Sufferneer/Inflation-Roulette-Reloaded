@@ -2,6 +2,7 @@
 	// ! DO NOT DELETE THE COMMENTS        !
 	// ! COMMENTS WILL NOT BE READ BY GAME !
 	// Translation File
+	// Language: Portuguese (Brazil)
 
 	// Comments are prefixed with two slashes (//) before each LINE, and will not be recognized by the game.
 	// Comments are reserved for translation notes, either to clarify context or give instructions.
@@ -80,11 +81,15 @@
 	// Utilities means Modding Utilities
 	"mainMenu.utilities": "Ferramentas",
 	"mainMenu.extras": "Extras",
-	"mainMenu.donate": "Doar",
-	
-	// Tooltips for buttons in the Main Menu.
-	"mainMenu.donate.tooltip": "Sua genorosa doação apoiará o desenvolvedor!",
-	
+	"mainMenu.socials": "Redes",
+
+	"socialsMenu.windowDisplay": "Redes",
+	"socialsMenu.title": "REDES DO DESENVOLVEDOR",
+	"socialsMenu.kofi": "Ko-Fi",
+	"socialsMenu.kofi.tooltip": "Sua generosa doação irá apoiar o desenvolvedor!",
+	"socialsMenu.discord": "Discord",
+	"socialsMenu.discord.tooltip": "Junte-se ao nosso servidor no Discord para conversar com outros jogadores e baixar adições ao jogo!",
+
 	// When clicking on the Main Menu icon, a tally counter will be incremented. Get 10000 results in an achievement.
 	"mainMenu.dongs": "Você acumulou: \n%1 Dongs",
 	"mainMenu.dongs.comment.10": "ok você pode parar com isso",
@@ -113,6 +118,8 @@
 	"mainMenu.dongs.comment.3000": "você só tá entediado demais, não é?",
 	"mainMenu.dongs.comment.5000": "aos 10000 dongs, o seu progresso vai ser apagado, e o jogo vai se auto-deletar.",
 	"mainMenu.dongs.comment.10000": "ok tá legal, toma sua conquista. agora some da minha vista.",
+
+	"mainMenu.quit.prompt": "Tem certeza que deseja sair?",
 
 	"extrasMenu.windowDisplay": "Extras",
 	"extrasMenu.title": "CONTEÚDO EXTRA",
@@ -644,7 +651,7 @@
 	"characterCreator.exporting.missingAnimations": "O projeto está faltando estas animações:\n%1",
 	"prompt.andManyMore": "e muito mais...",
 	"characterCreator.exporting.description": "Por favor, mantenha este programa aberto.",
-	"characterCreator.exportSuccessful.prompt": "Projeto exportado com sucesso. Você deve considerar ajustar as variáveis nos arquivos JSON.\n\nExported as:\n%1",
+	"characterCreator.exportSuccessful.prompt": "Projeto exportado com sucesso. Você deve considerar ajustar as variáveis nos arquivos JSON.\n\nAntes de você querer editar parâmetros como offsets e hitboxes, coloque a pasta exportada na pasta de addons primeiro.\n\nExported as:\n%1",
 
 	"animationCreator.windowDisplay": "Editor de Animações",
 	"animationCreator.save": "Salvar Animação",
@@ -789,6 +796,8 @@
 		"Curando a Cólera",
 		"Rezando por misericórdia"
 	],
+
+	"hyperlink.prompt": "Deseja abrir este link em seu navegador?\n\n%1",
 
 	// Fallback for HTML build
 	"gamemode.fiftyFifty.name": "50/50",

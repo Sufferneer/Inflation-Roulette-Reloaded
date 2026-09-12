@@ -68,7 +68,7 @@ class GalleryArtworkViewState extends SuffState {
 		infoText.camera = camHUD;
 		add(infoText);
 
-		zoomIn = new SuffIconButton(20 + ScreenSafeArea.X, 20, 'buttons/zoomIn', null, 1);
+		zoomIn = new SuffIconButton(20 + ScreenSafeArea.X, 20, 'buttons/zoomIn', null, 2);
 		zoomIn.y = FlxG.height - zoomIn.height - 20 - ScreenSafeArea.Y;
 		zoomIn.camera = camHUD;
 		zoomIn.onClick = function() {
@@ -76,7 +76,7 @@ class GalleryArtworkViewState extends SuffState {
 		};
 		add(zoomIn);
 
-		zoomOut = new SuffIconButton(zoomIn.x + zoomIn.width + 10, 20, 'buttons/zoomOut', null, 1);
+		zoomOut = new SuffIconButton(zoomIn.x + zoomIn.width + 10, 20, 'buttons/zoomOut', null, 2);
 		zoomOut.y = zoomIn.y;
 		zoomOut.camera = camHUD;
 		zoomOut.onClick = function() {
@@ -84,7 +84,7 @@ class GalleryArtworkViewState extends SuffState {
 		};
 		add(zoomOut);
 
-		zoomReset = new SuffIconButton(zoomOut.x + zoomOut.width + 10, 20, 'buttons/zoomReset', null, 1);
+		zoomReset = new SuffIconButton(zoomOut.x + zoomOut.width + 10, 20, 'buttons/zoomReset', null, 2);
 		zoomReset.y = zoomOut.y;
 		zoomReset.camera = camHUD;
 		zoomReset.onClick = function() {
@@ -110,7 +110,7 @@ class GalleryArtworkViewState extends SuffState {
 		changeZoom();
 	}
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
 
 		if (!allowInput) return;

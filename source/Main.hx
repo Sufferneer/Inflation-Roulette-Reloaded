@@ -147,13 +147,16 @@ class Main extends Sprite {
 			"WAIT!! THAT'S NOT AN INTENDED FEATURE!! :broken_heart: :skull:",
 			"here comes a chopper to chop off your head",
 			"don't take ajuniga's name in vain",
-			"屌你老母臭閪",
+			"DLLMCHHGC",
 			"oops, my system crashed",
 			"i lost my data, but i had an antivirus",
 			"antivirus is not enough; you need protogen",
 			"play monochrome or you're dead",
 			"i ran out of things to say so just report it to github",
-			"pursuitcore inflation yuri"
+			"i accidentally left pursuitcore inflation yuri there",
+			"i think you exploded the cameraman :(",
+			"sending crash report to absolutely nowhere",
+			"we are angry bird, we carry the egg"
 		];
 		
 		#if _OFFICIAL_BUILD
