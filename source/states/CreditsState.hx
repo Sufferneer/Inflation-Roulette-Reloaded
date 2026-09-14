@@ -108,9 +108,10 @@ class CreditsState extends SuffState {
 			if (lineLink != '' || lineArtId != '') {
 				var leButton:SuffButton = new SuffButton(32, 0, leText.width, leText.height, false);
 				if (lineLink != '') {
+					var usedString = lineArtId != '' ? lineArtId : lineText;
 					leButton.onClick = function() {
-						if (curCreditsArtId != lineArtId)
-							loadCreditsArt(lineArtId != '' ? lineArtId : lineText); else
+						if (curCreditsArtId != usedString)
+							loadCreditsArt(usedString); else
 							openSubState(new HyperlinkPrompt(lineLink));
 					};
 				}
