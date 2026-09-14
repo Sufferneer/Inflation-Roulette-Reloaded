@@ -107,9 +107,13 @@ class CreditsState extends SuffState {
 			
 			if (lineLink != '' || lineArtId != '') {
 				var leButton:SuffButton = new SuffButton(32, 0, leText.width, leText.height, false);
-				leButton.onHover = function() loadCreditsArt(lineArtId);
-				if (lineLink != '')
-					leButton.onClick = function() openSubState(new HyperlinkPrompt(lineLink));
+				if (lineLink != '') {
+					leButton.onClick = function() {
+						if (curCreditsArtId != lineArtId)
+							loadCreditsArt(lineArtId != '' ? lineArtId : 'empty'); else
+							openSubState(new HyperlinkPrompt(lineLink));
+					};
+				}
 				leText.add(leButton);
 			}
 
@@ -117,14 +121,13 @@ class CreditsState extends SuffState {
 		}
 		creditsTxtGroup.x += ScreenSafeArea.X;
 
-		var creditsUpperLimit = creditsTxtGroup.members[0].height / 2;
-		var creditsLowerLimit = creditsTxtGroup.members[creditsTxtGroup.members.length - 1].height / 2;
-		var creditsBounds = creditsTxtGroup.height - creditsUpperLimit + creditsLowerLimit;
+		var creditsUpperLimit = (FlxG.height - creditsTxtGroup.members[0].height) / 2;
+		var creditsLowerLimit = FlxG.height - creditsTxtGroup.height - (FlxG.height - creditsTxtGroup.members[creditsTxtGroup.members.length - 1].height) / 2;
 		scrollBar = new SuffScrollBar(0, 0, function(percent:Float) {
-			creditsTxtGroup.y = FlxMath.lerp(creditsUpperLimit, FlxG.height - (creditsTxtGroup.height + FlxG.height / 2), percent);
-		}, FlxG.width / 2, creditsBounds);
+			creditsTxtGroup.y = FlxMath.lerp(creditsUpperLimit, creditsLowerLimit, percent);
+		}, FlxG.width / 2, creditsLowerLimit - creditsUpperLimit);
 		scrollBar.scrollInBG = true;
-		scrollBar.scrollMultiplier = -FlxG.height / creditsBounds * 0.5;
+		scrollBar.scrollMultiplier = FlxG.height / (creditsLowerLimit - creditsUpperLimit);
 		scrollBar.autoScrollVelocity = 10;
 		scrollBar.visible = false;
 		add(scrollBar);
@@ -156,11 +159,15 @@ class CreditsState extends SuffState {
 		SuffState.switchState(new MainMenuState());
 	}
 	
+	var creditsArtTimer:FlxTimer;
+	
 	function loadCreditsArt(artId:String = 'nicklysuffer') {
 		if (curCreditsArtId == artId)
 			return;
 		curCreditsArtId = artId;
 		FlxTween.cancelTweensOf(creditsArt);
+		if (creditsArtTimer != null)
+			creditsArtTimer.cancel();
 		if (artId == '') {
 			FlxTween.tween(creditsArt, {x: FlxG.width}, 0.5, {
 				ease: FlxEase.cubeIn
@@ -176,6 +183,8 @@ class CreditsState extends SuffState {
 		FlxTween.tween(creditsArt, {y: FlxG.height - creditsArt.height}, 0.5, {
 			ease: FlxEase.cubeOut
 		});
+
+		creditsArtTimer = new FlxTimer().start(8, function(_) loadCreditsArt(''));
 	}
 
 	var spawnSketchTime:Float = 0;
