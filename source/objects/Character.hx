@@ -9,7 +9,7 @@ import backend.Skill;
 import states.PlayState;
 import tjson.TJSON as Json;
 import objects.particles.Swirl;
-import shaders.DiscolorationMaskedShader;
+import shaders.DiscolorationShader;
 import objects.particles.Liquid;
 import objects.particles.Puff;
 import backend.typedefs.CharacterOffsetsData;
@@ -82,7 +82,7 @@ class Character extends FlxSprite {
 	public var autoPitchAnims:Map<String, Bool> = [];
 	public var animBounceTween:FlxTween;
 
-	public var discoloration:DiscolorationMaskedShader;
+	public var discoloration:DiscolorationShader;
 	// VORE IN IRR REAL??
 	public var stomachNpcContents:Array<String> = [];
 
@@ -235,7 +235,7 @@ class Character extends FlxSprite {
 
 		if (Preferences.data.enableDiscoloration && Preferences.data.enableGLSL && Gameplay.currentFiller.tintColor != null) {
 			var leColor = Gameplay.currentFiller.tintColor;
-			discoloration = new DiscolorationMaskedShader(leColor);
+			discoloration = new DiscolorationShader(leColor);
 			this.shader = discoloration;
 			trace('Discoloration shader created for $id with color $leColor');
 		}
@@ -397,7 +397,7 @@ class Character extends FlxSprite {
 						liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
 						liquid.color = Gameplay.currentFiller.liquidColor;
 						if (PlayState?.instance != null) {
-							FlxG.state.insert(PlayState.instance.members.indexOf(this) + 1, liquid);
+							PlayState.instance.particleGroup.add(liquid);
 						} else {
 							FlxG.state.add(liquid);
 						}
@@ -422,7 +422,7 @@ class Character extends FlxSprite {
 							liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
 							liquid.color = Gameplay.currentFiller.gasColor;
 							if (PlayState?.instance != null) {
-								FlxG.state.insert(PlayState.instance.members.indexOf(this) + 1, liquid);
+								PlayState.instance.particleGroup.add(liquid);
 							} else {
 								FlxG.state.add(liquid);
 							}
@@ -448,7 +448,7 @@ class Character extends FlxSprite {
 							liquid.velocity.set(liquidVelocity.x, liquidVelocity.y);
 							liquid.color = Gameplay.currentFiller.liquidColor;
 							if (PlayState?.instance != null) {
-								FlxG.state.insert(PlayState.instance.members.indexOf(this) + 1, liquid);
+								PlayState.instance.particleGroup.add(liquid);
 							} else {
 								FlxG.state.add(liquid);
 							}

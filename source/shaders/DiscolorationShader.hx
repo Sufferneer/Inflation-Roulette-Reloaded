@@ -3,7 +3,7 @@ package shaders;
 import openfl.display.BitmapData;
 import flixel.system.FlxAssets.FlxShader;
 
-class DiscolorationMaskedShader extends FlxShader {
+class DiscolorationShader extends FlxShader {
 	@:glFragmentSource('
 	#pragma header
 	uniform vec3 uTintColor;
@@ -12,6 +12,7 @@ class DiscolorationMaskedShader extends FlxShader {
 	// x = left, y = top, z = right, w = bottom
 	uniform vec4 uFrameBounds;
 	uniform sampler2D uMaskTexture;
+	const vec3 lum = vec3(0.2126, 0.7152, 0.0722);
 	
 	void main() {
 		vec2 uv = openfl_TextureCoordv;
@@ -28,9 +29,9 @@ class DiscolorationMaskedShader extends FlxShader {
 			vec4 maskColor = flixel_texture2D(uMaskTexture, uFrameBounds.xy + localCoord * (uFrameBounds.zw - uFrameBounds.xy));
 			color.rgb = mix(color.rgb, uTintColor.rgb * maskColor.rgb, uIntensity * maskColor.a);
 		} else {
-			color.r *= pow(uTintColor.r, uIntensity);
-			color.g *= pow(uTintColor.g, uIntensity);
-			color.b *= pow(uTintColor.b, uIntensity);
+			vec3 monocolor = vec3(dot(lum, color.rgb));
+			monocolor *= uTintColor;
+			color.rgb = mix(color.rgb, monocolor, uIntensity);
 		}
 	
 		gl_FragColor = color;

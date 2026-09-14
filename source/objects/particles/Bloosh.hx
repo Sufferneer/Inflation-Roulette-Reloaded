@@ -1,6 +1,6 @@
 package objects.particles;
 
-import shaders.DiscolorationMaskedShader;
+import shaders.DiscolorationShader;
 import states.PlayState;
 
 class Bloosh extends FlxSprite {

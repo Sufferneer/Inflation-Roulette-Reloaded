@@ -1,7 +1,7 @@
 package states.debug;
 
 import objects.Character;
-import shaders.DiscolorationMaskedShader;
+import shaders.DiscolorationShader;
 import ui.objects.SuffIconButton;
 import objects.particles.Liquid;
 import backend.Gameplay;

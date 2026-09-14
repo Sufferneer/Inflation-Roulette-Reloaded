@@ -151,7 +151,6 @@ class Main extends Sprite {
 			"oops, my system crashed",
 			"i lost my data, but i had an antivirus",
 			"antivirus is not enough; you need protogen",
-			"play monochrome or you're dead",
 			"i ran out of things to say so just report it to github",
 			"i accidentally left pursuitcore inflation yuri there",
 			"i think you exploded the cameraman :(",

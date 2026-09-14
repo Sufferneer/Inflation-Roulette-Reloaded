@@ -5,7 +5,7 @@ import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxEmitter.FlxEmitterMode;
 import objects.particles.Scrap;
 import states.PlayState;
-import shaders.DiscolorationMaskedShader;
+import shaders.DiscolorationShader;
 
 class ScrapEmitter extends FlxObject {
 	public function new(x, y, characterID:String, floorY:Float = 690, scrapCount:Int = 4, tint:FlxColor = 0xFFFFFFFF) {
@@ -20,15 +20,14 @@ class ScrapEmitter extends FlxObject {
 				FlxG.random.int(-480 * 4, 360 * 3)
 			);
 			scrap.acceleration.y = 150;
-			if (PlayState.instance != null)
+			if (PlayState?.instance != null)
 				PlayState.instance.particleGroup.add(scrap);
 			else
 				FlxG.state.members.insert(FlxG.state.members.indexOf(this), scrap);
 		}
-		if (PlayState.instance != null)
-			PlayState.instance.particleGroup.remove(this, true);
+		this.kill();
 		FlxG.state.remove(this, true);
-		destroy();
+		this.destroy();
 	}
 
 	public override function update(elapsed:Float) {
