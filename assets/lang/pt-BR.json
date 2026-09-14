@@ -651,7 +651,7 @@
 	"characterCreator.exporting.missingAnimations": "O projeto está faltando estas animações:\n%1",
 	"prompt.andManyMore": "e muito mais...",
 	"characterCreator.exporting.description": "Por favor, mantenha este programa aberto.",
-	"characterCreator.exportSuccessful.prompt": "Projeto exportado com sucesso. Você deve considerar ajustar as variáveis nos arquivos JSON.\n\nAntes de você querer editar parâmetros como offsets e hitboxes, coloque a pasta exportada na pasta de addons primeiro.\n\nExported as:\n%1",
+	"characterCreator.exportSuccessful.prompt": "Projeto exportado com sucesso. Você pode querer mexer nas variáveis dos arquivos JSON. \n\nAntes de você querer editar parâmetros como offsets e hitboxes, coloque a pasta exportada na pasta de addons primeiro. \n\nExportado como:\n%1",
 
 	"animationCreator.windowDisplay": "Editor de Animações",
 	"animationCreator.save": "Salvar Animação",
