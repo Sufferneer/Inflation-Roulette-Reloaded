@@ -110,7 +110,7 @@ class CreditsState extends SuffState {
 				if (lineLink != '') {
 					leButton.onClick = function() {
 						if (curCreditsArtId != lineArtId)
-							loadCreditsArt(lineArtId != '' ? lineArtId : 'empty'); else
+							loadCreditsArt(lineArtId != '' ? lineArtId : lineText); else
 							openSubState(new HyperlinkPrompt(lineLink));
 					};
 				}
@@ -174,7 +174,9 @@ class CreditsState extends SuffState {
 			});
 			return;
 		}
-		creditsArt.loadGraphic(Paths.getImage('ui/menus/credits/art/$artId'));
+		var graphic = Paths.getImage('ui/menus/credits/art/$artId');
+		if (graphic == null) graphic = Paths.getImage('ui/menus/credits/art/empty');
+		creditsArt.loadGraphic(graphic);
 		creditsArt.scale.set(0.8, 0.8);
 		creditsArt.updateHitbox();
 		creditsArt.x = FlxG.width / 2 / Math.sqrt(creditsArt.scale.x) + (FlxG.width / 2 * Math.sqrt(creditsArt.scale.x) - creditsArt.width) / 2;
