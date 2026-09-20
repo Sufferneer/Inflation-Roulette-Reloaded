@@ -26,6 +26,7 @@ import backend.Scoring.Scoring.gradePercent;
 import backend.typedefs.ScoreData;
 import backend.enums.ScoreRank;
 import backend.Scoring;
+import substates.HyperlinkPrompt;
 
 class MainMenuState extends SuffState {
 	public static var initialized:Bool = false;
@@ -322,7 +323,7 @@ class MainMenuState extends SuffState {
 			case 'credits':
 				SuffState.switchState(new CreditsState());
 			case 'donate':
-                Utilities.browserLoad('https://ko-fi.com/nicklysuffer');
+                openSubState(new HyperlinkPrompt('https://ko-fi.com/nicklysuffer'));
 		}
 	}
 
@@ -430,7 +431,6 @@ class MainMenuState extends SuffState {
 					var formattedInput = currentEasterEggInput.toLowerCase();
 					if (currentEasterEggInput.toLowerCase() == easterEgg) {
 						FlxG.save.data.easterEggStartup = formattedInput;
-						Achievements.advanceProgress('allEasterEggs', [formattedInput]);
 						FlxG.save.flush();
 						SuffState.switchState(new InitStartupState(), INTERMISSION, true);
 						break;

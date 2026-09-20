@@ -7,6 +7,7 @@ import states.WarningState;
 
 class InitStartupState extends SuffState {
 	override function create() {
+		var startupState = '';
 		FlxG.mouse.visible = false;
 
 		super.create();

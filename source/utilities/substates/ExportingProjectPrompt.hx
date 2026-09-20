@@ -150,7 +150,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 			],
 			cameraOffset: [0, Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] / -2)],
 			poppedCameraOffset: [0, Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] * -0.2)],
-			headParticlePosition: [0, 0]
+			headParticlePosition: [0, -Std.int(CharacterCreatorState.spriteData.defaultDimensions[1] * 0.75)]
 		};
 
 		if (!FileSystem.isDirectory('exports/$projectName/data/characters/$characterID') || !FileSystem.exists('exports/$projectName/data/characters/$characterID'))
