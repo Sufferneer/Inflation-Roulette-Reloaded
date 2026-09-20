@@ -71,10 +71,10 @@
 		<assets path='assets/desktop' rename='assets' preload="true"/>
 	</section>
 	<assets path='assets/embed/images/ui/iconLinux.png' id="iconLinux" preload="true" embed="true"/>
-	<section if="_ALLOW_EASTER_EGGS">
-		<assets path="assets/embed" exclude="*.ogg" rename='assets' if="web" preload="true" embed="true"/>
-		<assets path="assets/embed" exclude="*.mp3" rename='assets' unless="web" preload="true" embed="true"/>
-	</section>
+    <section if="_ALLOW_EASTER_EGGS">
+        <assets path="assets/embed" exclude="*.ogg" rename='assets' if="web" preload="true" embed="true"/>
+        <assets path="assets/embed" exclude="*.mp3" rename='assets' unless="web" preload="true" embed="true"/>
+    </section>
     <assets path='dev/readme.txt' rename="readme.txt"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
