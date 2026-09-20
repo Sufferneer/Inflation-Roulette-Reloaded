@@ -139,7 +139,18 @@ class CreditsState extends SuffState {
 		};
 		add(exitButton);
 
-		imageList = Paths.readDirectories('images/ui/menus/credits/sketches', 'images/ui/menus/credits/sketches/sketchesList.txt', 'png');
+		imageList = [
+			'goober blep',
+			'pump gun',
+			'goober peek',
+			'goober front',
+			'goober creatura',
+			'gold sad',
+			'goober',
+			'pump gun',
+			'pump',
+			'untitled42'
+		];
 	}
 
 	function exitMenu() {
