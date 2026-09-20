@@ -654,6 +654,9 @@
 	"characterCreator.exportSuccessful.prompt": "Projeto exportado com sucesso. Você pode querer mexer nas variáveis dos arquivos JSON. \n\nAntes de você querer editar parâmetros como offsets e hitboxes, coloque a pasta exportada na pasta de addons primeiro. \n\nExportado como:\n%1",
 
 	"animationCreator.windowDisplay": "Editor de Animações",
+	"animationCreator.parameter.loop": "Repetir?",
+	"animationCreator.parameter.bouncy": "Achatar?",
+	"animationCreator.parameter.autoPitch": "Usar Afinação de Voz?",
 	"animationCreator.save": "Salvar Animação",
 	"animationCreator.exit": "Sair do Editor",
 	"animationCreator.exit.prompt": "Você tem certeza que quer sair do Editor de Animações?\nQualquer progresso não salvo será PERDIDO.",

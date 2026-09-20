@@ -259,7 +259,8 @@ class MainMenuState extends SuffState {
 		splashText.y = FlxG.height * 1.25;
 		FlxTween.tween(splashText, {y: original_splashTextY}, 0.75, {
 			startDelay: 2.0,
-			ease: FlxEase.cubeOut
+			ease: FlxEase.cubeOut,
+			onComplete: function(_) finishedAnimation = true
 		});
 	}
 

@@ -654,6 +654,9 @@
     "characterCreator.exportSuccessful.prompt": "项目导出成功。可能需要调整JSON文件中的变量。\n导出为：\n%1",
 
     "animationCreator.windowDisplay": "动画编辑器",
+	"animationCreator.parameter.loop": "循环播放？",
+	"animationCreator.parameter.bouncy": "挤压？",
+	"animationCreator.parameter.autoPitch": "使用语音音调？",
     "animationCreator.save": "保存动画",
     "animationCreator.exit": "退出编辑器",
     "animationCreator.exit.prompt": "确定要退出动画编辑器吗？\n任何未保存的进度会被遗失。",

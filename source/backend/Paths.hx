@@ -479,19 +479,28 @@ class Paths {
 		// trace(file);
 		if (!currentTrackedSounds.exists(file)) {
 			var sound:Sound = null;
-			#if sys
-			sound = Sound.fromFile(file);
-			#else
-			sound = OpenFlAssets.getSound(file);
-			#end
+			try {
+				#if sys
+				sound = Sound.fromFile(file);
+				#else
+				sound = OpenFlAssets.getSound(file);
+				#end	
+			} catch(e) {
+				trace('Sound $path/$key does not exist. Using placeholder sound');
+				return null;
+			}
 			if (sound == null) {
 				trace('Sound $path/$key does not exist. Using placeholder sound');
-				return returnSound('sounds', 'eh');
+				return null;
 			}
 			currentTrackedSounds.set(file, sound);
 		}
 		localTrackedAssets.push(file);
 		return currentTrackedSounds.get(file);
+	}
+	
+	inline static public function returnDefaultSound() {
+		return returnSound('sounds', 'eh');
 	}
 
 	inline static public function getLangPath(key:String = '') {

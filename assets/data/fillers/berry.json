@@ -4,7 +4,7 @@
 
 	"particleType": "liquid",
 
-	"tintColor": "#6040FF",
+	"tintColor": "#4020C0",
 
 	"gurgles": {
 		"archetype": "berry",

@@ -554,6 +554,9 @@
 	"characterCreator.exportSuccessful.prompt": "項目匯出成功。可能需要調整JSON檔案中的變數。\n匯出為：\n%1",
 
 	"animationCreator.windowDisplay": "動畫編輯器",
+	"animationCreator.parameter.loop": "循環播放？",
+	"animationCreator.parameter.bouncy": "擠壓？",
+	"animationCreator.parameter.autoPitch": "使用語音音調？",
 	"animationCreator.save": "儲存動畫",
 	"animationCreator.exit": "退出編輯器",
 	"animationCreator.exit.prompt": "確定要退出動畫編輯器嗎？\n任何未儲存的進度會被遺失。",

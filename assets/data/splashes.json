@@ -207,7 +207,7 @@
 			"end": "08-16",
 			"id": "midautumnfestival",
 			"name": "Mid-Autumn Festival",
-			"colors": ["#0000A0", "#FFFF00"],
+			"colors": ["#0000A0", "#00A0A0", "#FFFF80", "#00A0A0"],
 			"splashes": [
 				"Happy Mid-Autumn Festival!",
 				"Happy Mooncake Festival!",

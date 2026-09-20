@@ -205,6 +205,10 @@ class ResultsState extends SuffState {
 			} else {
 				char.frames = Paths.getSparrowAtlas('ui/menus/results/characters/goober');
 			}
+			if (charResultsData == null) {
+				trace('Results sprite data for ${data[i].charID} not found. Using Goober\'s');
+				charResultsData = cast Json.parse(Paths.getTextFromFile('data/characters/goober/results.json'));
+			}
 			char.offset.set(charResultsData.offset[0], charResultsData.offset[1]);
 			char.origin.y = char.height;
 			char.scale.set(charResultsData.scale[0], charResultsData.scale[1]);

@@ -654,6 +654,10 @@
 	"characterCreator.exportSuccessful.prompt": "Project exported successfully. You might want to tweak the variables in the JSON files.\n\nBefore you want to edit parameters like offsets and hitboxes, put the exported folder to the addons folder first.\n\nExported as:\n%1",
 
 	"animationCreator.windowDisplay": "Animation Editor",
+	"animationCreator.parameter.loop": "Loop?",
+	"animationCreator.parameter.bouncy": "Squash?",
+	"animationCreator.parameter.autoPitch": "Use Voice Pitch?",
+	"animationCreator.parameter.soundPaths": "Sounds:",
 	"animationCreator.save": "Save Animation",
 	"animationCreator.exit": "Exit Editor",
 	"animationCreator.exit.prompt": "Are you sure you want to exit the Animation Editor?\nAny unsaved progress will be LOST.",

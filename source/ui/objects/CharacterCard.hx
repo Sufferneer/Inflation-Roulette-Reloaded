@@ -24,6 +24,8 @@ class CharacterCard extends SuffButton {
 		add(outline);
 
 		charSprite = new FlxSprite();
+		charSprite.x = (bg.width - charSprite.width) / 2;
+		charSprite.y = (bg.height - charSprite.height) / 2;
 		charSprite.frames = Paths.getSparrowAtlas('ui/menus/characterSelect/cards/${characterData.id}/character');
 		charSprite.animation.addByPrefix('idle', 'idle');
 		charSprite.animation.addByPrefix('selected', 'selected', 24, false);

@@ -19,6 +19,7 @@ import substates.GenericPrompt;
 import backend.typedefs.CharacterOffsetsData;
 import backend.typedefs.CharacterHitboxData;
 import backend.typedefs.CharacterBoxData;
+import backend.typedefs.CharacterResultsData;
 
 class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 	var exportingText:FlxText;
@@ -168,6 +169,11 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 				size: [100, 100]
 			}]
 		};
+		var results:CharacterResultsData = {
+			offset: [0, 0],
+			scale: [1, 1],
+			antialiasing: false
+		};
 
 		if (!FileSystem.isDirectory('exports/$projectName/data/characters/$characterID') || !FileSystem.exists('exports/$projectName/data/characters/$characterID'))
 			FileSystem.createDirectory('exports/$projectName/data/characters/$characterID');
@@ -175,6 +181,7 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 		File.saveContent('exports/$projectName/data/characters/$characterID/cosmetic.json', haxe.Json.stringify(cosmetic, '\t'));
 		File.saveContent('exports/$projectName/data/characters/$characterID/offsets.json', haxe.Json.stringify(offsets, '\t'));
 		File.saveContent('exports/$projectName/data/characters/$characterID/hitbox.json', haxe.Json.stringify(hitbox, '\t'));
+		File.saveContent('exports/$projectName/data/characters/$characterID/results.json', haxe.Json.stringify(results, '\t'));
 
 		new FlxTimer().start(0.02, function(_) {
 			generateLangFile();
@@ -415,10 +422,10 @@ class ExportingProjectPrompt extends UtilitiesBaseMenuSubState {
 						prefix: exportingAnim,
 						fps: animData.framerate,
 						indices: [],
-						loop: false,
-						soundPaths: [],
-						bouncy: false,
-						autoPitch: false
+						loop: animData.loop ?? false,
+						soundPaths: animData.soundPaths ?? [],
+						bouncy: animData.bouncy ?? false,
+						autoPitch: animData.autoPitch ?? false
 					};
 					animationDataArray.push(exportedAnimData);
 				}
