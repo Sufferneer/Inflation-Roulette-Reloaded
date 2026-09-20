@@ -9,6 +9,7 @@ import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import openfl.utils.ByteArray;
 import openfl.display.PNGEncoderOptions;
+import substates.ErrorPrompt;
 
 class SpriteBrowseImagePrompt extends UtilitiesBaseMenuSubState {
 	var exitButton:SuffIconButton;

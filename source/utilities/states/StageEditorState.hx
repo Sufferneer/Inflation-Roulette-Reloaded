@@ -2,7 +2,7 @@ package utilities.states;
 
 import ui.addons.SuffUIButton;
 import tjson.TJSON as Json;
-import utilities.substates.ChoicePrompt;
+import substates.ChoicePrompt;
 import backend.typedefs.StageData;
 import backend.typedefs.StageObjectData;
 import objects.Stage;

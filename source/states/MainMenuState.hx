@@ -63,10 +63,7 @@ class MainMenuState extends SuffState {
 		['extras', 'donate']
 	];
 
-	static final disabledMenuItems:Array<String> = [
-		// Name
-		'donate'
-	];
+	static final disabledMenuItems:Array<String> = [];
 
 	var currentEasterEggInput:String = '';
 
@@ -172,8 +169,8 @@ class MainMenuState extends SuffState {
 				var button = new SuffButton(0, 0, Language.getPhrase('mainMenu.$item'), null, null, curMenuItemSize.x, curMenuItemSize.y);
 				if (disabledMenuItems.contains(item)) {
 					button.disabled = true;
-					button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip.disabled');
 				}
+				button.tooltipText = Language.getPhrase('mainMenu.$item.tooltip', [], '');
 				button.x = ((FlxG.width / 2 - 40) - menuItemSize.x) / 2 + (curMenuItemSize.x + menuItemPadding.x) * iIndex;
 				button.y = ((FlxG.height - (FlxG.height - creditsButton.y)) - menuItemSize.y) / 2 + (curMenuItemSize.y + menuItemPadding.y) * jIndex;
 				button.onClick = function() {

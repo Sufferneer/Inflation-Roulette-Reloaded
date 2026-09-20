@@ -1,14 +1,7 @@
 {
 	"spriteSheets": [
-		"idle",
-		"shocked",
-		"preShoot",
-		"shoot",
-		"skillPressurize",
-		"skillReload",
-		"misc",
-		"intro",
-		"win"
+		"0",
+		"1"
 	],
 	"animations": [
 		{

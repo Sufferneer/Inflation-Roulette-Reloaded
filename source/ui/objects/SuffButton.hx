@@ -103,7 +103,7 @@ class SuffButton extends FlxSpriteGroup {
 			btnText = new FlxText(0, 0, 0, text);
 			btnText.setFormat(btnTextFontPath, btnTextSize, 0xFFFFFFFF, CENTER);
 			while ((btnText.width > (btnBG.width - btnTextSize * 2 / 3.5) || btnText.height > (btnBG.height - btnTextSize * 2 / 3)) && btnTextSize > 16) {
-				btnTextSize -= 16;
+				btnTextSize -= 1;
 				btnText.size = btnTextSize;
 			}
 			btnText.y = (btnBG.height - btnText.height) / 2;
@@ -149,6 +149,8 @@ class SuffButton extends FlxSpriteGroup {
 		btnOutline.color = !value ? btnOutlineColor : btnOutlineColorDisabled;
 		if (btnText != null)
 			btnText.color = !value ? btnTextColor : btnTextColorDisabled;
+		if (btnIcon != null)
+			btnIcon.color = !value ? btnTextColor : btnTextColorDisabled;
 		return value;
 	}
 
@@ -329,9 +331,9 @@ class SuffButton extends FlxSpriteGroup {
 			btnBGColorTween = FlxTween.color(btnBG, 0.1, btnBG.color, finalBGColor);
 		if (btnOutline.color != finalOutlineColor)
 			btnOutlineColorTween = FlxTween.color(btnOutline, 0.1, btnOutline.color, finalOutlineColor);
-		/*
 		if (btnText != null && btnText.color != finalTextColor)
 			btnTextColorTween = FlxTween.color(btnText, 0.1, btnText.color, finalTextColor);
-		*/
+		if (btnIcon != null && btnIcon.color != finalTextColor)
+			btnTextColorTween = FlxTween.color(btnIcon, 0.1, btnIcon.color, finalTextColor);
 	}
 }

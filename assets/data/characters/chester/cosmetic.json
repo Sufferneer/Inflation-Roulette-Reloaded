@@ -1,10 +1,7 @@
 {
 	"spriteSheets": [
-		"mandatory",
-		"shootBlank",
-		"shootLive",
-		"cutscenes",
-		"prePass"
+		"0",
+		"1"
 	],
 	"animations": [
 		{

@@ -4,6 +4,7 @@ package utilities.substates;
 import backend.FileDialogHandler;
 import openfl.net.FileFilter;
 #end
+import substates.ErrorPrompt;
 
 class LoadFilePrompt extends UtilitiesBaseMenuSubState {
 	#if _ALLOW_UTILITIES

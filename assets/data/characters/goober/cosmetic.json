@@ -1,8 +1,6 @@
 {
 	"spriteSheets": [
-		"actions",
-		"cutscenes",
-		"shooting"
+		"0"
 	],
 	"animations": [
 		{

@@ -374,6 +374,8 @@ characterCreator.exporting.description = 請保持應用程式開放。
 characterCreator.exportSuccessful.prompt = 項目匯出成功。可能需要調整JSON檔案中的變數。\n匯出為：\n%1
 
 animationCreator.save = 儲存動畫
+animationCreator.parameter.loop = 循環播放？
+animationCreator.parameter.autoPitch = 使用語音音調？
 animationCreator.exit = 退出編輯器
 animationCreator.exit.prompt = 確定要退出動畫編輯器嗎？\n任何未儲存的進度會被遺失。
 animationCreator.saveSuccessful.prompt = 動畫保存成功。
@@ -418,6 +420,8 @@ menu.no = 否
 menu.confirm = 確認
 menu.cancel = 取消
 menu.exit = 退出
+
+hyperlink.prompt = 確定在瀏覽器中開啟此連結嗎？\n\n%1
 
 // Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 gameUI.selectTarget = 選擇目標

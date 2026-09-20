@@ -16,29 +16,27 @@ class InitStartupState extends SuffState {
 
 		new FlxTimer().start(1.5, function(tmr:FlxTimer) {
 			#if _ALLOW_EASTER_EGGS
-			var startupState = '';
-			if (FlxG.save.data != null && FlxG.save.data.acknowledgedTermsOfService != null && FlxG.save.data.termsOfService != null)
+			if (FlxG.save.data != null && FlxG.save.data.easterEggStartup != null)
 				startupState = FlxG.save.data.easterEggStartup;
 			else {
 				FlxG.save.data.easterEggStartup = '';
-				FlxG.save.flush();
-				SuffState.switchState(new WarningState());
 			}
+			#end
+			FlxG.save.flush();
 			switch (startupState) {
+				#if _ALLOW_EASTER_EGGS
 				case 'imhighoncrack':
 					SuffState.switchState(new ImHighOnCrackStartupState());
-				case 'blueberryhelium':
-					SuffState.switchState(new BlueberryHeliumStartupState());
+				case 'snakemold':
+					SuffState.switchState(new SnakeMoldStartupState());
 				case 'roomoneohone':
 					SuffState.switchState(new RoomOneOhOneStartupState());
 				case 'ibeesbees':
 					SuffState.switchState(new IBeesBeesStartupState());
+				#end
 				default:
 					SuffState.switchState(new StartupState());
 			}
-			#else
-			SuffState.switchState(new StartupState());
-			#end
 		});
 	}
 

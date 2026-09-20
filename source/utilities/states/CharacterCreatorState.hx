@@ -14,21 +14,22 @@ import utilities.enums.CharacterCreatorAnimType;
 import ui.addons.SuffUIButton;
 import utilities.substates.SpriteBrowseImagePrompt;
 import utilities.states.AnimationEditorState;
-import utilities.substates.ChoicePrompt;
-import utilities.substates.GenericPrompt;
+import substates.ChoicePrompt;
+import substates.GenericPrompt;
 import utilities.substates.ExportingProjectPrompt;
-import utilities.substates.ErrorPrompt;
+import substates.ErrorPrompt;
 import flixel.addons.ui.FlxUINumericStepper;
 import ui.addons.SuffUITabMenu;
+import haxe.DynamicAccess;
 
 class CharacterCreatorState extends UtilitiesBaseMenuState {
-	public static final version:String = '1.0.0';
+	public static final version:String = '0.0.2';
 
 	public static var metadata:SpriteProjectMetadata;
 	public static var spriteData:SpriteProjectSpritedata;
 	public static var anims:Array<String> = [];
 
-	var defaultFiles = [
+	final defaultFiles = [
 		{name: 'idle', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'prepareShoot', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'preShoot', type: ExplorerFileFileType.folder, icon: 'animation'},
@@ -39,6 +40,7 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		{name: 'shocked', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'win', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'helpless', type: ExplorerFileFileType.folder, icon: 'animation'},
+		{name: 'amnesic', type: ExplorerFileFileType.folder, icon: 'animation'},
 		{name: 'popped', type: ExplorerFileFileType.file, icon: 'animation'},
 		{name: 'introPartOne', type: ExplorerFileFileType.file, icon: 'animation'},
 		{name: 'introPartTwo', type: ExplorerFileFileType.file, icon: 'animation'},
@@ -47,9 +49,20 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		{name: 'cardCharIdle', type: ExplorerFileFileType.file, icon: 'charSelect'},
 		{name: 'cardCharSelected', type: ExplorerFileFileType.file, icon: 'charSelect'},
 		{name: 'bannerAppear', type: ExplorerFileFileType.file, icon: 'charSelect'},
-		{name: 'bannerBlink', type: ExplorerFileFileType.file, icon: 'charSelect'}
+		{name: 'bannerBlink', type: ExplorerFileFileType.file, icon: 'charSelect'},
+		{name: 'results_idleStanding', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_idleDefeated', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winStanding', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winStandingLoop', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winDefeated', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_winDefeatedLoop', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseStanding', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseStandingLoop', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseDefeated', type: ExplorerFileFileType.file, icon: 'results'},
+		{name: 'results_loseDefeatedLoop', type: ExplorerFileFileType.file, icon: 'results'}
 	];
-	var animsType:Map<String, CharacterCreatorAnimType> = [
+	var currentFiles = [];
+	final defaultAnimsType:Map<String, CharacterCreatorAnimType> = [
 		'idle' => ALL_STATES,
 		'prepareShoot' => ONLY_INFLATED_STATES,
 		'preShoot' => ONLY_INFLATED_STATES,
@@ -59,7 +72,11 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		'skill' => ONLY_INFLATED_STATES,
 		'shocked' => ONLY_INFLATED_STATES,
 		'win' => ONLY_INFLATED_STATES,
+		'amnesic' => ONLY_INFLATED_STATES,
+		'rubbed' => ONLY_INFLATED_STATES,
 		'helpless' => ONLY_DEFEATED_STATES,
+		'belch' => ONLY_INFLATED_STATES,
+		'leak' => ONLY_INFLATED_STATES,
 		'popped' => NO_STATES,
 		'introPartOne' => NO_STATES,
 		'introPartTwo' => NO_STATES,
@@ -68,15 +85,28 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 		'cardCharIdle' => NO_STATES,
 		'cardCharSelected' => NO_STATES,
 		'bannerAppear' => NO_STATES,
-		'bannerBlink' => NO_STATES
+		'bannerBlink' => NO_STATES,
+		'results_idleStanding' => NO_STATES,
+		'results_idleDefeated' => NO_STATES,
+		'results_winStanding' => NO_STATES,
+		'results_winStandingLoop' => NO_STATES,
+		'results_winDefeated' => NO_STATES,
+		'results_winDefeatedLoop' => NO_STATES,
+		'results_loseStanding' => NO_STATES,
+		'results_loseStandingLoop' => NO_STATES,
+		'results_loseDefeated' => NO_STATES,
+		'results_loseDefeatedLoop' => NO_STATES
 	];
-	var optionalAnims:Array<String> = [
+	var currentAnimsType:Map<String, CharacterCreatorAnimType> = [];
+	final defaultOptionalAnims:Array<String> = [
 		'shocked',
 		'win',
+		'amnesic',
 		'helpless',
 		'introPartOne',
 		'introPartTwo'
 	];
+	var currentOptionalAnims:Array<String> = [];
 
 	public static var explorerCurPath = 'root/';
 
@@ -201,15 +231,35 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 	function initExportShit() {
 		var leAnims:Array<String> = [];
 		var missingAnims:Array<String> = [];
-		for (anim in defaultFiles) {
+		for (anim in currentFiles) {
 			var name = anim.name;
-			if (optionalAnims.contains(name)) {
-				for (i in 0...spriteData.maxPressure + 1) {
-					if (FileSystem.exists(getPath() + '/anims/${name}${i}.json'))
-						leAnims.push('$name$i');
+			if (currentOptionalAnims.contains(name)) {
+				switch (currentAnimsType.get(anim.name)) {
+					case ONLY_DEFEATED_STATES:
+						if (FileSystem.exists(getPath() + '/anims/${name}Null.json'))
+							leAnims.push(name + 'Null');
+						if (FileSystem.exists(getPath() + '/anims/${name}Overinflated.json'))
+							leAnims.push(name + 'Overinflated');
+					case ONLY_INFLATED_STATES:
+						for (i in 0...spriteData.maxPressure + 1) {
+							if (FileSystem.exists(getPath() + '/anims/${name}${i}.json'))
+								leAnims.push('$name$i');
+						}
+					case ALL_STATES:
+						for (i in 0...spriteData.maxPressure + 1) {
+							if (FileSystem.exists(getPath() + '/anims/${name}${i}.json'))
+								leAnims.push('$name$i');
+						}
+						if (FileSystem.exists(getPath() + '/anims/${name}Null.json'))
+							leAnims.push(name + 'Null');
+						if (FileSystem.exists(getPath() + '/anims/${name}Overinflated.json'))
+							leAnims.push(name + 'Overinflated');
+					default:
+						if (FileSystem.exists(getPath() + '/anims/$name.json'))
+							leAnims.push(name);
 				}
 			} else {
-				switch (animsType.get(anim.name)) {
+				switch (currentAnimsType.get(anim.name)) {
 					case ONLY_DEFEATED_STATES:
 						if (FileSystem.exists(getPath() + '/anims/${name}Null.json'))
 							leAnims.push(name + 'Null');
@@ -299,75 +349,29 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 	}
 
 	function reloadSkills() {
-		defaultFiles = [
-			{name: 'idle', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'prepareShoot', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'preShoot', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'shootBlank', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'shootLive', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'pass', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'skill', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'shocked', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'win', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'helpless', type: ExplorerFileFileType.folder, icon: 'animation'},
-			{name: 'popped', type: ExplorerFileFileType.file, icon: 'animation'},
-			{name: 'introPartOne', type: ExplorerFileFileType.file, icon: 'animation'},
-			{name: 'introPartTwo', type: ExplorerFileFileType.file, icon: 'animation'},
-			{name: 'scraps', type: ExplorerFileFileType.file, icon: 'scraps'},
-			{name: 'cardBG', type: ExplorerFileFileType.file, icon: 'charSelect'},
-			{name: 'cardCharIdle', type: ExplorerFileFileType.file, icon: 'charSelect'},
-			{name: 'cardCharSelected', type: ExplorerFileFileType.file, icon: 'charSelect'},
-			{name: 'bannerAppear', type: ExplorerFileFileType.file, icon: 'charSelect'},
-			{name: 'bannerBlink', type: ExplorerFileFileType.file, icon: 'charSelect'}
-		];
-		animsType = [
-			'idle' => ALL_STATES,
-			'prepareShoot' => ONLY_INFLATED_STATES,
-			'preShoot' => ONLY_INFLATED_STATES,
-			'shootBlank' => ONLY_INFLATED_STATES,
-			'shootLive' => ONLY_INFLATED_STATES,
-			'pass' => ONLY_INFLATED_STATES,
-			'skill' => ONLY_INFLATED_STATES,
-			'shocked' => ONLY_INFLATED_STATES,
-			'win' => ONLY_INFLATED_STATES,
-			'helpless' => ONLY_DEFEATED_STATES,
-			'popped' => NO_STATES,
-			'introPartOne' => NO_STATES,
-			'introPartTwo' => NO_STATES,
-			'scraps' => NO_STATES,
-			'cardBG' => NO_STATES,
-			'cardCharIdle' => NO_STATES,
-			'cardCharSelected' => NO_STATES,
-			'bannerAppear' => NO_STATES,
-			'bannerBlink' => NO_STATES
-		];
-		optionalAnims = [
-			'shocked',
-			'win',
-			'helpless',
-			'introPartOne',
-			'introPartTwo'
-		];
+		currentFiles = defaultFiles.copy();
+		currentAnimsType = defaultAnimsType.copy();
+		currentOptionalAnims = defaultOptionalAnims.copy();
 		for (i in spriteData.skills) {
 			i = Utilities.capitalize(i);
-			defaultFiles.insert(7, {name: 'skill' + i, type: ExplorerFileFileType.folder, icon: 'animation'});
-			animsType.set('skill' + i, ONLY_INFLATED_STATES);
-			optionalAnims.push('skill' + i);
+			currentFiles.insert(7, {name: 'skill' + i, type: ExplorerFileFileType.folder, icon: 'animation'});
+			currentAnimsType.set('skill' + i, ONLY_INFLATED_STATES);
+			currentOptionalAnims.push('skill' + i);
 		}
 	}
 
 	public function generateExplorer() {
 		var num = 0;
-		final iconsPerRow = 7;
+		final iconsPerRow = Std.int(explorerBG.width / ExplorerFile.size);
 		explorerFiles.clear();
-		var leFiles = defaultFiles.copy();
+		var leFiles = currentFiles.copy();
 		if (explorerCurPath != 'root/') {
 			leFiles = [];
 			var anim:String = explorerPathTxt.getLastPath();
-			if (animsType.get(anim) == ONLY_INFLATED_STATES || animsType.get(anim) == ALL_STATES) {
+			if (currentAnimsType.get(anim) == ONLY_INFLATED_STATES || currentAnimsType.get(anim) == ALL_STATES) {
 				leFiles = [for (i in 0...spriteData.maxPressure + 1) {name: anim + i, type: ExplorerFileFileType.file, icon: 'animation'}];
 			}
-			if (animsType.get(anim) == ONLY_DEFEATED_STATES || animsType.get(anim) == ALL_STATES) {
+			if (currentAnimsType.get(anim) == ONLY_DEFEATED_STATES || currentAnimsType.get(anim) == ALL_STATES) {
 				leFiles.push({name: anim + 'Null', type: ExplorerFileFileType.file, icon: 'animation'});
 				leFiles.push({name: anim + 'Overinflated', type: ExplorerFileFileType.file, icon: 'animation'});
 			}
@@ -391,6 +395,13 @@ class CharacterCreatorState extends UtilitiesBaseMenuState {
 					template = 'characterSelectBanner';
 				default:
 					leDefaultDimensions = [spriteData.defaultDimensions[0], spriteData.defaultDimensions[1]];
+			}
+			if (leFolder.name.startsWith('results_')) {
+				leDefaultDimensions = [480, 720];
+				if (leFolder.name == 'results_loseStandingLoop' || leFolder.name == 'results_loseDefeatedLoop')
+					template = 'resultsLose';
+				else
+					template = 'resultsIdle';
 			}
 			if (leType == file && !FileSystem.exists(getPath() + '/anims/${leFolder.name}.json')) {
 				leType = emptyFile;

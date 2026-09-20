@@ -2,9 +2,9 @@ package utilities.states;
 
 import utilities.substates.LoadFilePrompt;
 import utilities.substates.LoadDirectoryPrompt;
-import utilities.substates.ErrorPrompt;
+import substates.ErrorPrompt;
 import utilities.substates.NewSpriteProjectPrompt;
-import utilities.substates.GenericPrompt;
+import substates.GenericPrompt;
 import ui.objects.SuffIconButton;
 
 class UtilitiesMainMenuState extends UtilitiesBaseMenuState {

@@ -6,6 +6,7 @@ import ui.addons.SuffUINumericStepper;
 import ui.addons.SuffUIButton;
 import haxe.Json;
 import utilities.states.CharacterCreatorState;
+import substates.ErrorPrompt;
 
 class NewSpriteProjectPrompt extends UtilitiesBaseMenuSubState {
 	var exitButton:SuffIconButton;

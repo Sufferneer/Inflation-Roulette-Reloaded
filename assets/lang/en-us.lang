@@ -523,6 +523,8 @@ characterCreator.exporting.description = Please keep this program open.
 characterCreator.exportSuccessful.prompt = Project exported successfully. You might want to tweak the variables in the JSON files.\n\nExported as:\n%1
 
 animationCreator.save = Save Animation
+animationCreator.parameter.loop = Loop?
+animationCreator.parameter.soundPaths = Sounds:
 animationCreator.exit = Exit Editor
 animationCreator.exit.prompt = Are you sure you want to exit the Animation Editor?\nAny unsaved progress will be LOST.
 animationCreator.saveSuccessful.prompt = Animation saved successfully.
@@ -569,6 +571,8 @@ menu.ok = OK
 menu.confirm = Confirm
 menu.cancel = Cancel
 menu.exit = Exit
+
+hyperlink.prompt = Do you want to open this link in your browser?\n\n%1
 
 // Prompt after activating an offensive skill (e.g. Assault, Amnesia)
 gameUI.selectTarget = SELECT TARGET

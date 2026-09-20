@@ -1,9 +1,6 @@
 {
 	"spriteSheets": [
-		"mandatory",
-		"shooting",
-		"cutscenes",
-		"skills"
+		"0"
 	],
 	"animations": [
 		{

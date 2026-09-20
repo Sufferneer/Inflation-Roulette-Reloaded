@@ -3,6 +3,7 @@ package utilities.substates;
 #if _ALLOW_UTILITIES
 import backend.FileDialogHandler;
 #end
+import substates.ErrorPrompt;
 
 class LoadDirectoryPrompt extends UtilitiesBaseMenuSubState {
 	var loadFileButton:SuffButton;

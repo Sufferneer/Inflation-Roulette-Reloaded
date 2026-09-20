@@ -71,7 +71,7 @@ class Constants {
 	public static final CHARACTER_CARD_DIMENSIONS:Array<Int> = [150, 200];
 
 	#if _ALLOW_EASTER_EGGS
-	public static final EASTER_EGG_INPUTS:Array<String> = ['imhighoncrack', 'blueberryhelium', 'roomoneohone', 'ibeesbees'];
+	public static final EASTER_EGG_INPUTS:Array<String> = ['imhighoncrack', 'snakemold', 'roomoneohone', 'ibeesbees'];
 	#end
 	public static final ALPHABET_UPPERCASE:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

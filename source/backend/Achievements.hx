@@ -50,10 +50,11 @@ class Achievements {
 			hideFromMenu: true,
 			resettable: false
 		});
+		/*
 		createAchievement('allEasterEggs', {
 			tier: GOOD,
 			type: LIST,
-			items: ['roomoneohone', 'blueberryhelium', 'imhighoncrack', 'ibeesbees'],
+			items: ['roomoneohone', 'snakemold', 'imhighoncrack', 'ibeesbees'],
 			itemTranslationKey: '%',
 			hideIcon: true,
 			hideName: true,
@@ -61,6 +62,7 @@ class Achievements {
 			// This might not be a good idea.
 			hideItems: true
 		});
+		 */
 
 		for (id => data in achievementsList) {
 			switch (data.type) {

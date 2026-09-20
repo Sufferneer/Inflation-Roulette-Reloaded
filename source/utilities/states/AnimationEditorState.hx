@@ -10,13 +10,19 @@ import ui.addons.SuffUIButton;
 import utilities.typedefs.SpriteProjectAnimData;
 import openfl.display.PNGEncoderOptions;
 import ui.addons.SuffUINumericStepper;
-import utilities.substates.ChoicePrompt;
+import substates.ChoicePrompt;
 import utilities.states.CharacterCreatorState;
 import flixel.addons.ui.FlxUIInputText;
-import utilities.substates.GenericPrompt;
+import substates.GenericPrompt;
 import haxe.Exception;
-import utilities.substates.ErrorPrompt;
+import substates.ErrorPrompt;
 import flixel.addons.ui.FlxUINumericStepper;
+import flixel.addons.ui.FlxUICheckBox;
+import ui.addons.SuffUICheckBox;
+import flixel.addons.ui.FlxUIButton;
+import flixel.addons.ui.FlxUIAssets;
+import flixel.addons.ui.FlxUITypedButton;
+import flixel.addons.ui.FlxUI9SliceSprite;
 
 class AnimationEditorState extends UtilitiesBaseMenuState {
 	public static var frames:Array<FlxGraphic> = [null];
@@ -39,9 +45,13 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 	var frameTimeBar:FrameTimeBar;
 
 	static var frameGroup:FlxSpriteGroup = new FlxSpriteGroup();
+	
+	var soundPathsGroup:FlxTypedSpriteGroup<FlxUIInputText> = new FlxTypedSpriteGroup<FlxUIInputText>();
 
 	public static var animName:String = '';
 	public static var framerate:Int = 24;
+	public static var loop:Bool = false;
+	public static var soundPaths:Array<String> = [];
 	public static var template:String = 'silhouette';
 	public static var animIsNew:Bool = false;
 
@@ -60,10 +70,14 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 				}
 			}
 
+			while (soundPaths.contains(''))
+				soundPaths.remove('');
 			var json = {
 				framerate: AnimationEditorState.framerate,
+				loop: loop,
+				soundPaths: soundPaths,
 				numFrames: frames.length,
-				keyframes: leKeyframes
+				keyframes: leKeyframes,
 			}
 			File.saveContent(UtilitiesBaseMenuState.loadedPath + '/anims/${animName}.json', haxe.Json.stringify(json, '\t'));
 			openSubState(new GenericPrompt('animationCreator.saveSuccessful.prompt'));
@@ -77,6 +91,10 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 		var rawJson = File.getContent(UtilitiesBaseMenuState.loadedPath + '/anims/${animName}.json');
 		var json:SpriteProjectAnimData = cast haxe.Json.parse(rawJson);
 		framerate = json.framerate;
+		loop = json.loop ?? false;
+		soundPaths = json.soundPaths ?? [];
+		while (soundPaths.contains(''))
+			soundPaths.remove('');
 		for (i in 0...json.numFrames) {
 			if (json.keyframes.contains(i)) {
 				var bitmapData:BitmapData = BitmapData.fromFile(UtilitiesBaseMenuState.loadedPath + '/sprites/${animName}/$i.png');
@@ -126,6 +144,8 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 		playButton.x = (playBar.width - playButton.width) / 2;
 		playButton.y = playBar.y;
 		playButton.onClick = function() {
+			charlieKirk = 0;
+			playFrame(curFrame);
 			togglePlaying();
 		}
 		add(playButton);
@@ -212,7 +232,9 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 		}
 		add(addKeyframeButton);
 
-		var animNameText = new FlxText(emptyBar.x + 16, emptyBar.y + 16, emptyBar.width - 32, animName, 32);
+		var animNameText = new FlxText(emptyBar.x + 16, emptyBar.y + 16, 0, animName, 32);
+		if (animNameText.width > emptyBar.width - 32)
+			animNameText.scale.x = (emptyBar.width - 32) / animNameText.width;
 		add(animNameText);
 
 		var framerateText = new FlxText(animNameText.x, animNameText.y + animNameText.height + 16, 0, Language.getPhrase('characterCreator.parameter.framerate'), 16);
@@ -221,10 +243,51 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 		framerateStepper = new SuffUINumericStepper(framerateText.x, framerateText.y + framerateText.height + 8, 1, framerate, 1, 30);
 		add(framerateStepper);
 
-		var saveButton:SuffUIButton = new SuffUIButton(framerateStepper.x, framerateStepper.y + framerateStepper.height + 16, Language.getPhrase('animationCreator.save'), function() {
+		loopCheckbox = new SuffUICheckBox(framerateText.x + framerateText.width + 16, animNameText.y + (animNameText.height - 16) / 2, null, null, Language.getPhrase('animationCreator.parameter.loop'));
+		loopCheckbox.checked = loop;
+		loopCheckbox.callback = function() {
+			loop = loopCheckbox.checked;
+		}
+		add(loopCheckbox);
+
+		var soundPathsText = new FlxText(framerateStepper.x, framerateStepper.y + framerateStepper.height + 16, 0, Language.getPhrase('animationCreator.parameter.soundPaths'), 16);
+		add(soundPathsText);
+
+		var soundPathsPlusButton = new FlxUITypedButton<FlxSprite>(soundPathsText.x + soundPathsText.width + 8, soundPathsText.y);
+		soundPathsPlusButton.loadGraphicSlice9([FlxUIAssets.IMG_BUTTON_THIN], Std.int(soundPathsText.height), Std.int(soundPathsText.height), [FlxStringUtil.toIntArray(FlxUIAssets.SLICE9_BUTTON_THIN)],
+		FlxUI9SliceSprite.TILE_NONE, -1, false, FlxUIAssets.IMG_BUTTON_SIZE, FlxUIAssets.IMG_BUTTON_SIZE);
+		soundPathsPlusButton.label = new FlxSprite(4, 4, FlxUIAssets.IMG_PLUS);
+		soundPathsPlusButton.autoResizeLabel = true;
+		soundPathsPlusButton.autoCenterLabel();
+		soundPathsPlusButton.onDown.callback = function() {
+			if (soundPaths.length >= 10)
+				return;
+			soundPaths.push('game/characters/goober/helpless_1');
+			updateSoundPathsGroup();
+		};
+		add(soundPathsPlusButton);
+
+		var soundPathsMinusButton = new FlxUITypedButton<FlxSprite>(soundPathsPlusButton.x + soundPathsPlusButton.width + 8, soundPathsPlusButton.y);
+		soundPathsMinusButton.loadGraphicSlice9([FlxUIAssets.IMG_BUTTON_THIN], Std.int(soundPathsText.height), Std.int(soundPathsText.height), [FlxStringUtil.toIntArray(FlxUIAssets.SLICE9_BUTTON_THIN)],
+		FlxUI9SliceSprite.TILE_NONE, -1, false, FlxUIAssets.IMG_BUTTON_SIZE, FlxUIAssets.IMG_BUTTON_SIZE);
+		soundPathsMinusButton.label = new FlxSprite(4, 4, FlxUIAssets.IMG_MINUS);
+		soundPathsMinusButton.autoResizeLabel = true;
+		soundPathsMinusButton.autoCenterLabel();
+		soundPathsMinusButton.onDown.callback = function() {
+			soundPaths.pop();
+			updateSoundPathsGroup();
+		};
+		add(soundPathsMinusButton);
+
+		soundPathsGroup.setPosition(soundPathsText.x, soundPathsText.y + soundPathsText.height + 8);
+		updateSoundPathsGroup();
+		add(soundPathsGroup);
+
+		var saveButton:SuffUIButton = new SuffUIButton(soundPathsText.x, 0, Language.getPhrase('animationCreator.save'), function() {
 			saveAnimData();
 		});
 		saveButton.resize(emptyBar.width - 32, 48);
+		saveButton.y = emptyBar.height - (saveButton.height + 16) * 2;
 		add(saveButton);
 
 		var exitButton:SuffUIButton = new SuffUIButton(saveButton.x, 0, Language.getPhrase('animationCreator.exit'), function() {
@@ -233,11 +296,29 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 		exitButton.color = 0xFF2020;
 		exitButton.label.color = 0xFFFFFF;
 		exitButton.resize(emptyBar.width - 32, 48);
-		exitButton.y = emptyBar.height - saveButton.height - 16;
+		exitButton.y = emptyBar.height - exitButton.height - 16;
 		add(exitButton);
 	}
 
 	var framerateStepper:SuffUINumericStepper;
+	var loopCheckbox:SuffUICheckBox;
+	
+	function updateSoundPathsGroup() {
+		for (input in soundPathsGroup)
+			input.destroy();
+		soundPathsGroup.clear();
+		while (soundPaths.contains(''))
+			soundPaths.remove('');
+		for (index => soundPath in soundPaths) {
+			var input:FlxUIInputText = new FlxUIInputText(0, index * 24, 320 - 32, soundPath, 16);
+			input.callback = function(str:String, action:String) {
+				soundPaths[index] = str;
+				if (str == '')
+					updateSoundPathsGroup();
+			}
+			soundPathsGroup.add(input);
+		}
+	}
 
 	static function renderFrameGroup() {
 		if (frameGroup != null)
@@ -287,7 +368,7 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 	}
 
 	function boundCurFrame(wrap:Bool = false) {
-		if (!wrap)
+		if (!wrap || !loop)
 			curFrame = Std.int(FlxMath.bound(curFrame, 0, frames.length - 1));
 		else
 			curFrame = FlxMath.wrap(curFrame, 0, frames.length - 1);
@@ -322,6 +403,9 @@ class AnimationEditorState extends UtilitiesBaseMenuState {
 	}
 
 	static function playFrame(frame:Int = 0) {
+		if (frame == 0 && soundPaths.length > 0) {
+			SuffState.playSound(Paths.sound(FlxG.random.getObject(soundPaths)));
+		}
 		var leFrame:Int = frame;
 		while (frames[leFrame] == null && leFrame > 0) {
 			leFrame--;
