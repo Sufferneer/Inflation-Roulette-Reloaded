@@ -5,6 +5,7 @@ import backend.FileDialogHandler;
 import openfl.net.FileFilter;
 import substates.ErrorPrompt;
 #end
+import substates.ErrorPrompt;
 
 class LoadFilePrompt extends UtilitiesBaseMenuSubState {
 	#if _ALLOW_UTILITIES
