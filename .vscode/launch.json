@@ -1,0 +1,27 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Test (Windows)",
+			"type": "lime",
+			"request": "launch",
+			"preLaunchTask": "Command: Init for Windows"
+		},
+		{
+			// Launch in browser
+			"name": "Test (HTML)",
+			"type": "chrome",
+			"request": "launch",
+			"url": "http://127.0.0.1:3001",
+			"sourceMaps": true,
+			"webRoot": "${workspaceFolder}",
+			"preLaunchTask": "Command: Init for HTML5"
+		},
+		{
+			"name": "Test (Android)",
+			"type": "hxcpp",
+      		"request": "attach",
+			"preLaunchTask": "Command: Init for Android"
+		}
+	]
+}

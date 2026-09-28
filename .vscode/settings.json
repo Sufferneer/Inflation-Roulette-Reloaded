@@ -1,0 +1,12 @@
+{
+	"haxeTestExplorer.testCommand": [
+		"lime",
+		"test",
+		"windows", 
+		"--haxelib=test-adapter",
+		"-D_OFFICIAL_BUILD"
+	],
+	"files.exclude": {
+		"**/.unittest": true
+	}
+}
