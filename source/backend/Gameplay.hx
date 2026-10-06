@@ -30,8 +30,19 @@ class Gameplay {
 		// ass
 	}
 
+	public static function filterCharacterList() {
+		for (char in globalCharacterList) {
+			if (!FileSystem.exists(Paths.getPath('data/characters/$char/stats.json')) && Paths.getAddonsPath('data/characters/$char/stats.json') == null) {
+				// If the character is not in the base game or any addons, remove it from the list
+				trace('Character $char is missing stats.json, removing from list');
+				globalCharacterList.remove(char);
+			}
+		}
+	}
+
 	public static function initialize() {
 		globalCharacterList = Paths.readFolderDirectories('data/characters', 'data/characters/characterList.txt', 'stats.json');
+		filterCharacterList();
 		trace('Loaded characters: ' + globalCharacterList);
 		setPlayerCount(4);
 

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="hxvlc" type="Haxe">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/.haxelib/hxvlc/git/source" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/.haxelib/hxvlc/git/source" />
+    </SOURCES>
+  </library>
+</component>

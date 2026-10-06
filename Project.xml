@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
-	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="3.0.0" package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette" main="Main" company="NicklySuffer" />
+	<app file="Inflation-Roulette" title="Inflation Roulette: Reloaded" version="3.0.0"
+	package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette"
+	main="Main" company="NicklySuffer" />
 
 	<set name="versionState" value="a.14" />
 	<haxedef name="versionState" value="${versionState}" />
@@ -81,13 +83,13 @@
 		<define name="_ALLOW_FILE_CREATION" if="_ALLOW_UTILITIES" />
 		<define name="_CHECK_RECORDING" if="desktop" />
 	</section>
-	<define name="_USE_MP3" if="web"/>
+	<define name="_USE_OGG" unless="web"/>
 	<define name="_BUILD_IN_ADDONS" unless="desktop" />
 
 	<!-- Preload Assets -->
 
-	<assets path="assets" exclude="*.mp3" unless="_USE_MP3" preload="true"/>
-	<assets path="assets" exclude="*.ogg" if="_USE_MP3" preload="true"/>
+	<assets path="assets" exclude="*.mp3" if="_USE_OGG" preload="true"/>
+	<assets path="assets" exclude="*.ogg" unless="_USE_OGG" preload="true"/>
     <section if="_ALLOW_ADDONS">
 		<assets path='addons' unless="_BUILD_IN_ADDONS"/>
     </section>
@@ -97,16 +99,16 @@
 	</section>
 	<section if="_BUILD_IN_ADDONS">
 		<assets path='addons/Example Addon' rename='assets' preload="true"/>
-		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' exclude="*.ogg" if="_USE_MP3" preload="true"/>
-		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' exclude="*.mp3" unless="_USE_MP3" preload="true"/>
+		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' exclude="*.ogg" unless="_USE_OGG" preload="true"/>
+		<assets path='conditionalAssets/BUILD_IN_ADDONS' rename='assets' exclude="*.mp3" if="_USE_OGG" preload="true"/>
 	</section>
 	<assets path='conditionalAssets/NOT_BUILD_IN_ADDONS' unless="_BUILD_IN_ADDONS" rename='assets' preload="true"/>
 	<section if="_ALLOW_EASTER_EGGS">
-		<assets path="conditionalAssets/ALLOW_EASTER_EGGS" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true" embed="true"/>
-		<assets path="conditionalAssets/ALLOW_EASTER_EGGS" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true" embed="true"/>
+		<assets path="conditionalAssets/ALLOW_EASTER_EGGS" exclude="*.ogg" rename='assets' unless="_USE_OGG" preload="true" embed="true"/>
+		<assets path="conditionalAssets/ALLOW_EASTER_EGGS" exclude="*.mp3" rename='assets' if="_USE_OGG" preload="true" embed="true"/>
 	</section>
-	<assets path="conditionalAssets/embed" exclude="*.ogg" rename='assets' if="_USE_MP3" preload="true" embed="true"/>
-	<assets path="conditionalAssets/embed" exclude="*.mp3" rename='assets' unless="_USE_MP3" preload="true" embed="true"/>
+	<assets path="conditionalAssets/embed" exclude="*.ogg" rename='assets' unless="_USE_OGG" preload="true" embed="true"/>
+	<assets path="conditionalAssets/embed" exclude="*.mp3" rename='assets' if="_USE_OGG" preload="true" embed="true"/>
 
 	<section if="desktop">
 		<assets path='importantFile.png'/>

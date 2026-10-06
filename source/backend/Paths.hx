@@ -20,7 +20,7 @@ class Paths {
 	/**
 	 * The current used extension for sounds.
 	 */
-	inline public static var SOUND_EXT = #if _USE_MP3 "mp3" #else "ogg" #end;
+	inline public static var SOUND_EXT = #if _USE_OGG "ogg" #else "mp3" #end;
 	inline public static var VIDEO_EXT = "mp4";
 
 	/**
@@ -520,7 +520,7 @@ class Paths {
 	
 	public static var currentTrackedShaders:Map<String, FlxRuntimeShader> = [];
 
-	public static function getShader(path:String):FlxRuntimeShader {
+	public static function getShader(path:String):Null<FlxRuntimeShader> {
 		var file = 'shaders/$path.frag';
 		if (currentTrackedShaders.exists(file))
 			return currentTrackedShaders.get(file);

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="HaxeProjectSettings" defines="_ALLOW_ADDONS,FLX_ACCELEROMETER,desktop,_USE_OGG,FLX_SOUND_SYSTEM,lime,FLX_MOUSE,sys,FLX_KEYBOARD,FLX_SAVE" auto_detect_defines="true" auto_detect_references="true" />
+</project>

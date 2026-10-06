@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="extension-androidtools" type="Haxe">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/.haxelib/extension-androidtools/2,1,1" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/.haxelib/extension-androidtools/2,1,1" />
+    </SOURCES>
+  </library>
+</component>

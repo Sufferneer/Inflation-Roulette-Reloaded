@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="tjon" type="Haxe">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/.haxelib/tjson/1,4,0" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/.haxelib/tjson/1,4,0" />
+    </SOURCES>
+  </library>
+</component>

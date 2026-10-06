@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="flixel-addons" type="Haxe">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/.haxelib/flixel-addons/4,0,1" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/.haxelib/flixel-addons/4,0,1" />
+    </SOURCES>
+  </library>
+</component>
