@@ -1,5 +1,0 @@
-echo Compiling for Windows...
-rmdir /S /Q "%~dp0export\release\windows\bin\assets\"
-:: rmdir /S /Q "%~dp0export\release\windows\bin\addons\"
-lime update windows
-lime build windows -D_OFFICIAL_BUILD
