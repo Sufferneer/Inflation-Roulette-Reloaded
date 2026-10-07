@@ -576,12 +576,12 @@
 	"gameUI.playerIndicator.player": "J%1",
 
 	"preloadMenu.progress.gameplay": "Carregant modes de joc...",
-	"preloadMenu.progress.achievements": "Seguint d'assoliments...",
+	"preloadMenu.progress.achievements": "Carregant d'assoliments...",
 	"preloadMenu.progress.toasts": "Creant notificacions...",
 	"preloadMenu.progress.tooltip": "Creant descripcions emergent...",
 	"preloadMenu.progress.cursor": "Decorant cursor de ratolí...",
-	"preloadMenu.progress.splashes": "Escrivint text d'inici...",
-	"preloadMenu.progress.music": "Cercant discos de música...",
+	"preloadMenu.progress.splashes": "Carregant text d'inici...",
+	"preloadMenu.progress.music": "Carregant música...",
 	"preloadMenu.finished": "Tot a punt!",
 	
 	"outdatedVersionMenu.heading": "Versió obsoleta",

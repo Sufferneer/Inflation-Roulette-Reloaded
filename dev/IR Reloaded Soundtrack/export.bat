@@ -1,1 +1,0 @@
-ffmpeg -loop 1 -i covers\volume1_cover_bg.png -i "2. Rokkun.flac" -c:v libx264 -c:a aac -b:a 256k -shortest "Rokkun.mp4"

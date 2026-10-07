@@ -575,8 +575,8 @@
 	"preloadMenu.progress.toasts": "Construyendo notificaciones...",
 	"preloadMenu.progress.tooltip": "Creando descripciones emergentes...",
 	"preloadMenu.progress.cursor": "Decorando el cursor del ratón...",
-	"preloadMenu.progress.splashes": "Escribiendo frases destacadas...",
-	"preloadMenu.progress.music": "Buscando discos de música...",
+	"preloadMenu.progress.splashes": "Cargando frases destacadas...",
+	"preloadMenu.progress.music": "Cargando música...",
 	"preloadMenu.finished": "¡Todo listo!",
 	
 	// Respaldo para compilación HTML

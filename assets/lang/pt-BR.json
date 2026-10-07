@@ -741,8 +741,8 @@
 	"preloadMenu.progress.toasts": "Construindo Notificações...",
 	"preloadMenu.progress.tooltip": "Montando Ferramentas...",
 	"preloadMenu.progress.cursor": "Decorando o Cursor do Mouse...",
-	"preloadMenu.progress.splashes": "Escrevendo Espirros...",
-	"preloadMenu.progress.music": "Encontrando Discos de Música...",
+	"preloadMenu.progress.splashes": "Carregando Espirros...",
+	"preloadMenu.progress.music": "Carregando Música...",
 	"preloadMenu.finished": "Tudo Pronto!",
 
 	"outdatedVersionMenu.windowDisplay": "Versão Desatualizada!",

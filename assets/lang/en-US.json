@@ -738,12 +738,12 @@
 
 	"preloadMenu.windowDisplay": "Preloading",
 	"preloadMenu.progress.gameplay": "Loading Game Modes...",
-	"preloadMenu.progress.achievements": "Tracking Achievements...",
-	"preloadMenu.progress.toasts": "Constructing Notifs...",
-	"preloadMenu.progress.tooltip": "Building Tooltips...",
-	"preloadMenu.progress.cursor": "Decorating Mouse Cursor...",
-	"preloadMenu.progress.splashes": "Writing Splashes...",
-	"preloadMenu.progress.music": "Finding Music Discs...",
+	"preloadMenu.progress.achievements": "Loading Achievements...",
+	"preloadMenu.progress.toasts": "Initializing Notifs...",
+	"preloadMenu.progress.tooltip": "Initializing Tooltips...",
+	"preloadMenu.progress.cursor": "Initializing Mouse Cursor...",
+	"preloadMenu.progress.splashes": "Initializing Splashes...",
+	"preloadMenu.progress.music": "Loading Music...",
 	"preloadMenu.finished": "All Set!",
 
 	"outdatedVersionMenu.windowDisplay": "Version Outdated!",
