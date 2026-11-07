@@ -65,8 +65,8 @@
 	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 	"metadata.version.name.major.2": "Pegat de Creativitat",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"metadata.version.name.state.a": "Alfα pública %1",
-	"metadata.version.name.state.b": "βeta pública %1",
+	"metadata.version.name.state.a": "Alfa pública %1",
+	"metadata.version.name.state.b": "Beta pública %1",
 	"metadata.version.name.state.c": "Candidat a publicació %1",
 	
 	// These are the button texts in the Main Menu.

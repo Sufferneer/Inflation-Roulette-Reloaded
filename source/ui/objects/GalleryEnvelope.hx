@@ -26,6 +26,10 @@ class GalleryEnvelope extends SuffButton {
 		this.releaseSound = 'ui/extras/gallery/envelopeClick';
 
 		this.envelopeData = cast Json.parse(Paths.getTextFromFile('data/extras/gallery/envelopes/$envelopeID.json'));
+		if (this.envelopeData?.id == null) {
+			trace('Gallery Envelope $envelopeID does not exist. Using goober\'s');
+			this.envelopeData = cast Json.parse(Paths.getTextFromFile('data/extras/gallery/envelopes/goober.json'));
+		}
 		this.envelopeData.id = envelopeID;
 
 		base = new FlxSprite().loadGraphic(what);

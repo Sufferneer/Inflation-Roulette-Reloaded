@@ -67,8 +67,8 @@
 	// Version 3: Final update. Added Android support and quality of life features.
 	"metadata.version.name.major.3": "Edição Definitiva",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"metadata.version.name.state.a": "Alphα Pública %1",
-	"metadata.version.name.state.b": "βeta Pública %1",
+	"metadata.version.name.state.a": "Alpha Pública %1",
+	"metadata.version.name.state.b": "Beta Pública %1",
 	"metadata.version.name.state.c": "Candidato à Lançamento %1",
 	
 	// These are the button texts in the Main Menu.

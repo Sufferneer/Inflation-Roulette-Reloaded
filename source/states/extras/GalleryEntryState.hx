@@ -262,8 +262,8 @@ class GalleryEntryState extends SuffState {
 						FlxG.camera.flash(0xFFFFFFFF, 0.125);
 					FlxG.camera.shake(0.02 * Preferences.data.cameraEffectIntensity, 0.125);
 					character.playAnim('idle', true);
-					scraps = new ScrapEmitter(character.x, character.y - character.height / 2.5, character.id, 690);
-					members.insert(members.indexOf(artworkButton) - 1, scraps);
+					// scraps = new ScrapEmitter(character.x, character.y - character.height / 2.5, character.id, 690);
+					// members.insert(members.indexOf(artworkButton) - 1, scraps);
 				} else {
 					character.playAnim('helpless', true);
 				}

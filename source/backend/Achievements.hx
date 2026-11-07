@@ -34,6 +34,8 @@ class Achievements {
 		});
 		#end
 		createAchievement('noWinners', {tier: LAME, type: BOOLEAN});
+		createAchievement('twoPlayers', {tier: COMMON, type: BOOLEAN});
+		createAchievement('sixPlayers', {tier: GOOD, type: BOOLEAN});
 		// Challenges
 		createAchievement('doublePressurize', {tier: GOOD, type: BOOLEAN});
 		createAchievement('noPressureWin', {tier: GOOD, type: BOOLEAN});
@@ -58,8 +60,6 @@ class Achievements {
 			tier: EPIC,
 			type: BOOLEAN
 		});
-		createAchievement('twoPlayers', {tier: COMMON, type: BOOLEAN});
-		createAchievement('sixPlayers', {tier: GOOD, type: BOOLEAN});
 		// Milestones
 		createAchievement('sabotages', {
 			tier: COMMON,

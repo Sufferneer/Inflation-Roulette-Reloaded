@@ -30,7 +30,7 @@ class SkillCard extends SuffButton {
 		skillTitle = new FlxText(usedImage.height, 5, usedImage.width - usedImage.height - 6, Language.getPhrase('skill.${skill.id}.name'));
 		skillTitle.setFormat(Paths.getFont('default'), 32, FlxColor.WHITE);
 
-		skillDescription = new FlxText(skillTitle.x, skillTitle.y + skillTitle.height, usedImage.width - usedImage.height - 6,
+		skillDescription = new FlxText(skillTitle.x, skillTitle.y + skillTitle.height - 8, usedImage.width - usedImage.height - 6,
 			Language.getPhrase('skill.${skill.id}.description'));
 		skillDescription.setFormat(Paths.getFont('small'), 16, FlxColor.WHITE);
 		skillDescription.alpha = 0.5;

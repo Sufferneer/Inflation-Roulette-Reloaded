@@ -15,6 +15,6 @@ class LangFileConvert {
         rawJson += '\n}';
         if (FileSystem.exists('./exports/lang/'))
             FileSystem.createDirectory('./exports/lang/');
-        File.saveContent('./exports/lang/$path.json', rawJson);
+        File.saveContent('./exports/lang/$path.json5', rawJson);
     }
 }

@@ -64,8 +64,8 @@
 	// If applicable, try to come up with some clever word-play or multi-interpreting phrases.
 	"metadata.version.name.major.2": "Patch of Creativity",
 	// Yes. I'm using Greek letters for stylistic purposes (even tho it looks kinda offensive lmao)
-	"metadata.version.name.state.a": "Public Alphα %1",
-	"metadata.version.name.state.b": "Public βeta %1",
+	"metadata.version.name.state.a": "Public Alpha %1",
+	"metadata.version.name.state.b": "Public Beta %1",
 	"metadata.version.name.state.c": "Release Candidate %1",
 	
 	// These are the button texts in the Main Menu.

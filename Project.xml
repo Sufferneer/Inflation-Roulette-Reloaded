@@ -178,5 +178,6 @@
 	<icon path="dev/icon96.png" size='96'/>
 	<icon path="dev/icon128.png" size='128'/>
 	<icon path="dev/icon256.png" size='256'/>
+	<icon path="dev/icon512.png" size='512'/>
 	<assets path='dev/iconLinux.png' if="linux" unless="mobile" id="iconLinux" preload="true" embed="true"/>
 </project>

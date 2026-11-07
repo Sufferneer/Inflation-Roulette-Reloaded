@@ -3,6 +3,7 @@ package backend;
 import flixel.system.FlxAssets;
 import tjson.TJSON as Json;
 import haxe.DynamicAccess;
+import sys.FileSystem;
 using StringTools;
 using StringTools;
 using StringTools;
@@ -115,7 +116,7 @@ class Language {
 		rawJson += '\n}';
 		if (!FileSystem.exists('./exports/lang/'))
 			FileSystem.createDirectory('./exports/lang/');
-		File.saveContent('exports/lang/${Preferences.data.language}_UNMATCHING.json', rawJson);
+		File.saveContent('exports/lang/${Preferences.data.language}_UNMATCHING.json5', rawJson);
 
 		return true;
 	}
@@ -123,7 +124,7 @@ class Language {
 	public static function fetchPhrases(langID:String = 'en-US'):Map<String, Dynamic> {
 		phrasesCount.set(langID, 0);
 		trace('Fetching phrases from $langID');
-		var langRawJson = Paths.getTextFromFile('lang/$langID.json', false);
+		var langRawJson = Paths.getTextFromFile('lang/$langID.json5', false) ?? Paths.getTextFromFile('lang/$langID.json', false);
 		if (langRawJson == null) {
 			trace('Cannot read phrases from $langID.');
 			return null;
@@ -140,7 +141,12 @@ class Language {
 		}
 		#if _ALLOW_ADDONS
 		for (addon in Addons.globalAddons) {
-			var moddedPhrases:DynamicAccess<Dynamic> = Json.parse(File.getContent(Paths.getPathInAddons('$addon/lang/$langID.json')));
+			var rawModdedJson = Paths.getPathInAddons('$addon/lang/$langID.json5');
+			if (!FileSystem.exists(rawModdedJson))
+				rawModdedJson = Paths.getPathInAddons('$addon/lang/$langID.json');
+			if (!FileSystem.exists(rawModdedJson))
+				continue;
+			var moddedPhrases:DynamicAccess<Dynamic> = Json.parse(File.getContent(rawModdedJson));
 			for (key => string in moddedPhrases) {
 				lePhrases.set(key, string);
 			}
@@ -152,7 +158,7 @@ class Language {
 
 	public static function fetchKeys(langID:String = 'en-US'):Array<String> {
 		var keys:Array<String> = [];
-		var rawJson:String = Paths.getTextFromFile('lang/$langID.json', false);
+		var rawJson:String = Paths.getTextFromFile('lang/$langID.json5', false) ?? Paths.getTextFromFile('lang/$langID.json', false);
 		var jsonLines:Array<String> = rawJson.split('\n');
 		for (i in 0...jsonLines.length) {
 			// jsonLines[i] = jsonLines[i].replace('  ', '');
