@@ -2,8 +2,16 @@ package ui.objects;
 
 import backend.typedefs.CharacterData;
 
+typedef SimpleCharacterData = {
+	id:String,
+	cardDisplayedKey:String,
+	maxPressure:Int,
+	maxConfidence:Int,
+	skills:Array<String>
+}
+
 class CharacterCard extends SuffButton {
-	public var characterData:CharacterData;
+	public var characterData:SimpleCharacterData;
 	public var designatedPlayer:Null<Int> = null;
 	public var holdAnim:Bool = false;
 
@@ -15,7 +23,13 @@ class CharacterCard extends SuffButton {
 	public function new(x:Float, y:Float, character:CharacterData) {
 		super(x, y, null, null, null, Constants.CHARACTER_CARD_DIMENSIONS[0], Constants.CHARACTER_CARD_DIMENSIONS[1], false);
 
-		this.characterData = character;
+		this.characterData = {
+			id: character.id,
+			cardDisplayedKey: character.cardDisplayedKey,
+			maxPressure: character.maxPressure,
+			maxConfidence: character.maxConfidence,
+			skills: [for (skillData in character.skills) skillData.id]
+		};
 
 		bg = new FlxSprite().loadGraphic(Paths.getImage('ui/menus/characterSelect/cards/${characterData.id}/bg'));
 		add(bg);

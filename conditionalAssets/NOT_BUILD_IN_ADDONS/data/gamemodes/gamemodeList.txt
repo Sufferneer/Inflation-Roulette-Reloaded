@@ -1,5 +1,0 @@
-reloaded
-quickPlay
-inequality
-charge
-classic

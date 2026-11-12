@@ -2,6 +2,7 @@
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
 	"cameraBounds": [0, -60, 2360, 1080],
+	"formatVersion": "2.0.0",
 	"backgroundObjects": [
 		{
 			"id": "bg",

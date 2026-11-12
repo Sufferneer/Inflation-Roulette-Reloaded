@@ -1,9 +1,0 @@
-{
-	"gamemode.fiftyFifty.name": "50/50",
-	"gamemode.fiftyFifty.description": "Purely a coin flip chance with replacement.\nQuick and risky gameplay.",
-	"character.asimo.name": "Asimo Dracomaw",
-	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "This wolf just wants to have some fun. His experience in electrical occult allows him to overload weapons.",
-	// Context: Literally no lore implication. He's just here for the sake of being here lol
-	"galleryMainMenu.envelope.asimo.description": "Harnessing his electric powers, Asimo jolts into Inflation Roulette claiming to \"have some fun\".\n\nWe don't know how he got here, and we totally have no connections with him, other than he's a wolf, he's a random Chinese engineer's playtester for his stupid Friday Night Funkin' mod, and he's the winner of an art raffle to be added to the game as a character for the Example Addon.\n\nAsimo is a guest character owned by WolfKylis."
-}

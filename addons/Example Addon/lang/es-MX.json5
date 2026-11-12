@@ -1,8 +1,0 @@
-{
-	"gamemode.fiftyFifty.name": "50/50",
-	"gamemode.fiftyFifty.description": "Pura probabilidad de cara o cruz con reemplazo.\nJugabilidad rápida y arriesgada.",
-	// "galleryMainMenu.envelope.asimo.description": "Aprovechando sus poderes eléctricos, Asimo llega electrizando a Inflation Roulette afirmando que viene “a divertirse un poco”.\n\nNo sabemos cómo llegó aquí, y definitivamente no tenemos ninguna relación con él, aparte de que es un lobo, es el tester del Manager para su estúpido mod de Friday Night Funkin’, y fue el ganador de un sorteo de arte para ser añadido al juego como personaje del Example Addon.\n\nAsimo es un personaje invitado propiedad de WolfKylis.",
-	"character.asimo.name": "Asimo Dracomaw",
-	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "Este lobo solo quiere divertirse. Su experiencia en lo oculto eléctrico le permite sobrecargar armas."
-}

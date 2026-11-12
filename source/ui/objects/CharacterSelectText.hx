@@ -5,84 +5,25 @@ import backend.typedefs.SkillData;
 import backend.enums.CharacterSelectSubstring;
 import ui.objects.GameIcon;
 
-class CharacterSelectText extends FlxSpriteGroup {
-	static final substringList:Array<CharacterSelectSubstring> = [MAX_PRESSURE, MAX_CONFIDENCE, SKILLS, DESCRIPTION];
-	static final separator:String = '·';
-	static final size:Int = 32;
-
-	public function new(x:Float, y:Float, character:CharacterData) {
+class CharacterSelectText extends FlxText {
+	public function new(x:Float, y:Float) {
 		super(x, y);
+		setFormat(Paths.getFont('default'), 32, FlxColor.WHITE);
 
 		reloadText();
 	}
 
 	public function reloadText(character:CharacterData = null, overlay:String = 'characterSelect.holdCardsToSeeInfo') {
-		var textX:Float = 0;
-		for (item in members) {
-			item.kill();
-			item.destroy();
-		}
-		this.clear();
 		if (character == null) { // Default character data
-			var text:FlxText = new FlxText(0, 0, 0, Language.getPhrase(overlay));
-			text.setFormat(Paths.getFont('default'), size, FlxColor.WHITE);
-			add(text);
+			this.text = Language.getPhrase(overlay);
 		} else if (character.id == 'random') {
-			var text:FlxText = new FlxText(0, 0, 0, Language.getPhrase('character.random.description'));
-			text.setFormat(Paths.getFont('default'), size, FlxColor.WHITE);
-			add(text);
+			this.text = Language.getPhrase('character.random.description');
 		} else {
-			for (item in substringList) {
-				var subString:String = '';
-				var icons:Array<String> = [];
-				switch (item) {
-					case DESCRIPTION:
-						subString = Language.getPhrase('character.${character.id}.description');
-					case MAX_PRESSURE:
-						for (i in 0...character.maxPressure) {
-							icons.push('stats/pressure');
-						};
-					case MAX_CONFIDENCE:
-						for (i in 0...character.maxConfidence) {
-							icons.push('stats/confidence');
-						};
-					case SKILLS:
-						var skillData:Array<SkillData> = cast character.skills;
-						for (skill in skillData) {
-							icons.push('skills/${skill.id}');
-						}
-					default:
-						// idk lol
-				}
-				// Text
-				var text:FlxText = new FlxText(textX, 0, 0, subString);
-				text.setFormat(Paths.getFont('default'), size, FlxColor.WHITE);
-				add(text);
-				if (subString.length > 0)
-					textX += text.width;
-
-				// Icons
-				for (i in 0...icons.length) {
-					var icon:GameIcon = new GameIcon(textX, 0, icons[i], size);
-					add(icon);
-					if (i < icons.length)
-						textX += 32;
-				}
-
-				// Seperator
-				if (substringList.indexOf(item) < substringList.length - 1) {
-					textX += 8;
-					var text:FlxText = new FlxText(textX, 0, 0, separator);
-					text.setFormat(Paths.getFont('default'), size, FlxColor.WHITE);
-					add(text);
-					textX += text.width + 8;
-				}
-			}
+			this.text = Language.getPhrase('character.${character.id}.description');
 		}
-		//updateHitbox();
 	}
 
-	override function update(elapsed:Float) {
+	public override function update(elapsed:Float) {
 		super.update(elapsed);
 	}
 }

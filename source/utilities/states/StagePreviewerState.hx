@@ -57,8 +57,16 @@ class StagePreviewerState extends UtilitiesBaseMenuState {
 
 		camFollow = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
 		FlxG.camera.follow(camFollow, LOCKON, 1);
-		FlxG.camera.setScrollBoundsRect(stageData.cameraBounds[0], stageData.cameraBounds[1], stageData.cameraBounds[2], stageData.cameraBounds[3]);
-
+		if ((stageData?.formatVersion ?? '1.0.0') == '1.0.0') {
+			FlxG.camera.setScrollBoundsRect(stageData.cameraBounds[0], stageData.cameraBounds[1], stageData.cameraBounds[2], stageData.cameraBounds[3]);
+		} else {
+			FlxG.camera.setScrollBoundsRect(
+				FlxG.width / 2 + stageData.cameraBounds[0] - stageData.cameraBounds[2] / 2,
+							   FlxG.height / 2 + stageData.cameraBounds[1] - stageData.cameraBounds[3] / 2,
+				stageData.cameraBounds[2],
+				stageData.cameraBounds[3]
+			);
+		}
 		remove(bg);
 
 		characterGroup = new FlxTypedContainer<CharacterDummy>();

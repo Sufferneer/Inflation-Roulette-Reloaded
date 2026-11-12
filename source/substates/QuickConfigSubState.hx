@@ -19,10 +19,17 @@ class QuickConfigSubState extends SuffSubState {
 	var fillerCards:FlxTypedSpriteContainer<FillerCard> = new FlxTypedSpriteContainer<FillerCard>();
 	var stageCards:FlxTypedSpriteContainer<StageMiniCard> = new FlxTypedSpriteContainer<StageMiniCard>();
 
+	var curFillerPage:Int = 0;
+	var maxFillerPage:Int = 0;
+	var curStagePage:Int = 0;
+	var maxStagePage:Int = 0;
+
 	public function new(quick:Bool = false) {
 		super();
 
 		persistentUpdate = false;
+
+		final itemPerPage:Int = 6;
 
 		if (quick) {
 			confirmStage(-1);
@@ -44,15 +51,39 @@ class QuickConfigSubState extends SuffSubState {
 
 		var fillerList = Gameplay.globalFillerList.copy();
 		fillerList.push('random');
+		maxFillerPage = Std.int(Math.max(0, (fillerList.length - 1) / itemPerPage));
 		for (num => fillerID in fillerList) {
 			var fillerData = new Filler(fillerID);
 			var card:FillerCard = new FillerCard(0, 0, fillerData);
-			card.x = (FlxG.width - Math.min(fillerList.length, 7) * 150) / 2 + 150 * num;
+			var itemPage = Std.int(num / itemPerPage);
+			card.x = (FlxG.width - Math.min(fillerList.length, itemPerPage) * 150) / 2 + 150 * (num - itemPage * itemPerPage) + itemPage * FlxG.width;
 			card.y = fillerText.y + fillerText.height + 20;
 			card.onClick = function() {
 				confirmFiller(num);
 			};
 			fillerCards.add(card);
+		}
+		if (maxFillerPage > 0) {
+			var pageWidth = 150 * itemPerPage;
+			var leftButton:SuffIconButton = new SuffIconButton(20, 20, 'buttons/left', null, 2);
+			leftButton.x = (FlxG.width - pageWidth) / 2 - leftButton.width - 20;
+			leftButton.y = (fillerText.y + fillerText.height + 20) + (fillerCards.height - leftButton.height) / 2;
+			leftButton.onClick = function() {
+				if (curFillerPage <= 0) return;
+				curFillerPage--;
+				fillerCards.x = -FlxG.width * curFillerPage;
+			};
+			add(leftButton);
+
+			var rightButton:SuffIconButton = new SuffIconButton(20, 20, 'buttons/right', null, 2);
+			rightButton.x = (FlxG.width - pageWidth) / 2 + pageWidth + 20;
+			rightButton.y = (fillerText.y + fillerText.height + 20) + (fillerCards.height - rightButton.height) / 2;
+			rightButton.onClick = function() {
+				if (curFillerPage >= maxFillerPage) return;
+				curFillerPage++;
+				stageCards.x = -FlxG.width * curFillerPage;
+			};
+			add(rightButton);
 		}
 
 		var stageText:FlxText = new FlxText(0, fillerText.y + fillerText.height + 240, Language.getPhrase('characterSelect.selectStage'), 32);
@@ -61,15 +92,41 @@ class QuickConfigSubState extends SuffSubState {
 
 		var stageList = Gameplay.globalStageList.copy();
 		stageList.push('random');
+		maxStagePage = Std.int(Math.max(0, (stageList.length - 1) / itemPerPage));
 		for (num => stageID in stageList) {
 			var card:StageMiniCard = new StageMiniCard(0, 0, stageID);
-			card.x = (FlxG.width - Math.min(stageList.length, 7) * 150) / 2 + 150 * num;
+			var itemPage = Std.int(num / itemPerPage);
+			card.x = (FlxG.width - Math.min(stageList.length, itemPerPage) * 150) / 2 + 150 * (num - itemPage * itemPerPage) + itemPage * FlxG.width;
 			card.y = stageText.y + stageText.height + 20;
 			card.onClick = function() {
 				confirmStage(num);
 			};
 			stageCards.add(card);
 		}
+
+		if (maxStagePage > 0) {
+			var leftButton:SuffIconButton = new SuffIconButton(20, 20, 'buttons/left', null, 2);
+			var pageWidth = 150 * itemPerPage;
+			leftButton.x = (FlxG.width - pageWidth) / 2 - leftButton.width - 20;
+			leftButton.y = (stageText.y + stageText.height + 20) + (stageCards.height - leftButton.height) / 2;
+			leftButton.onClick = function() {
+				if (curStagePage <= 0) return;
+				curStagePage--;
+				stageCards.x = -FlxG.width * curStagePage;
+			};
+			add(leftButton);
+
+			var rightButton:SuffIconButton = new SuffIconButton(20, 20, 'buttons/right', null, 2);
+			rightButton.x = (FlxG.width - pageWidth) / 2 + pageWidth + 20;
+			rightButton.y = (stageText.y + stageText.height + 20) + (stageCards.height - rightButton.height) / 2;
+			rightButton.onClick = function() {
+				if (curStagePage >= maxStagePage) return;
+				curStagePage++;
+				stageCards.x = -FlxG.width * curStagePage;
+			};
+			add(rightButton);
+		}
+
 		confirmFiller(fillerList.length - 1);
 		confirmStage(stageList.length - 1);
 

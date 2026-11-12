@@ -5,6 +5,7 @@
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
 	"cameraBounds": [0, -50, 2360, 1100],
+	"formatVersion": "2.0.0",
 	"backgroundObjects": [
 		{
 			"id": "sky",

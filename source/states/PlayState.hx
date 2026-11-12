@@ -178,12 +178,16 @@ class PlayState extends SuffState {
 		camFollow = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
 		FlxG.camera.follow(camFollow, LOCKON);
 		FlxG.camera.followLerp = 0.1 * Preferences.data.cameraSpeed;
-		FlxG.camera.setScrollBoundsRect(
-			FlxG.width / 2 + stage.data.cameraBounds[0] - stage.data.cameraBounds[2] / 2,
-			FlxG.height / 2 + stage.data.cameraBounds[1] - stage.data.cameraBounds[3] / 2,
-			stage.data.cameraBounds[2],
-			stage.data.cameraBounds[3]
-		);
+		if ((stage.data?.formatVersion ?? '1.0.0') == '1.0.0') {
+			FlxG.camera.setScrollBoundsRect(stage.data.cameraBounds[0], stage.data.cameraBounds[1], stage.data.cameraBounds[2], stage.data.cameraBounds[3]);
+		} else {
+			FlxG.camera.setScrollBoundsRect(
+				FlxG.width / 2 + stage.data.cameraBounds[0] - stage.data.cameraBounds[2] / 2,
+				FlxG.height / 2 + stage.data.cameraBounds[1] - stage.data.cameraBounds[3] / 2,
+				stage.data.cameraBounds[2],
+				stage.data.cameraBounds[3]
+			);
+		}
 
 		reloadCylinder(Gameplay.currentGamemode.cylinderLiveCount);
 

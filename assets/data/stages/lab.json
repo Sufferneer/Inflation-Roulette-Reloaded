@@ -5,6 +5,7 @@
 	"stageCameraZoom": 0.9,
 	"characterCameraZoom": 1.2,
 	"cameraBounds": [0, 40, 2160, 1080],
+	"formatVersion": "2.0.0",
 	"backgroundObjects": [
 		{
 			"id": "back",
@@ -119,9 +120,9 @@
 			"scrollFactor": [0.35, 0.45]
 		},
 		{
-			"id": "greenScientist",
+			"id": "leader",
 			"hideInDecreaseDetail": true,
-			"graphic": "greenScientist",
+			"graphic": "leader",
 			"animations": [
 				{
 					"name": "autumn",
@@ -168,8 +169,8 @@
 			"respawnTime": 40
 		},
 		{
-			"id": "blueScientist",
-			"graphic": "blueScientist",
+			"id": "doodler",
+			"graphic": "doodler",
 			"animations": [
 				{
 					"name": "idle",
@@ -210,8 +211,8 @@
 			"scrollFactor": [0.4, 0.5]
 		},
 		{
-			"id": "redScientist",
-			"graphic": "redScientist",
+			"id": "technician",
+			"graphic": "technician",
 			"animations": [
 				{
 					"name": "idle",

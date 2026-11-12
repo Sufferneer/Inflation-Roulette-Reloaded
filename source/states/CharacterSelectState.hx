@@ -165,7 +165,7 @@ class CharacterSelectState extends SuffState {
 		var innerMarginRight = new FlxSprite(fadeWidth,
 			0).makeGraphic(Std.int((FlxG.width - maxNumberInRow * calculatedWidth) / 2 - fadeWidth), Std.int(FlxG.height * cardOccupicationHeight + 100), 0xFF000000);
 
-		description = new CharacterSelectText(0, 0, null);
+		description = new CharacterSelectText(0, 0);
 		description.y = FlxG.height - description.height;
 		initialDescriptionY = description.y;
 
