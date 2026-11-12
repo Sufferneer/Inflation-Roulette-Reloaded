@@ -294,6 +294,8 @@
 	"gamemode.classic.description": "Verdadera aleatoriedad y sabotaje sin fin.\nLa forma original de jugar el juego.",
 	"gamemode.charge.name": "Cargado",
 	"gamemode.charge.description": "El daño aumenta con cada cartucho vacío.\nJuego arriesgado y gratificante.",
+	"gamemode.fiftyFifty.name": "50/50",
+	"gamemode.fiftyFifty.description": "Pura probabilidad de cara o cruz con reemplazo.\nJugabilidad rápida y arriesgada.",
 	
 	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "ELIGE A TU CAMPEÓN",
@@ -333,6 +335,10 @@
 	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "Un desafortunado barista obligado a jugar este juego para una empresa. Su trabajo entrena su resistencia.",
+	// Asimo: Character created by WolfKylis.
+	"character.asimo.name": "Asimo Dracomaw",
+	"character.asimo.name.short": "Asimo",
+	"character.asimo.description": "Este lobo solo quiere divertirse. Su experiencia en lo oculto eléctrico le permite sobrecargar armas.",
 	// Opción para elegir un personaje aleatorio.
 	"character.random.description": "¿No sabes que elegir?, ¡Nosotros lo hacemos!",
 	
@@ -436,6 +442,7 @@
 	// "galleryMainMenu.envelope.shib.description": "Apellido: Nou; nombre: Shiba. Proveniente de un planeta misterioso, esta criatura con apariencia felina está lista para volarle la cabeza a alguien. Su nombre en chino puede interpretarse como “Cero Diez Ocho”, derivado del sitio nuclear en el que aterrizó en Pekín.\n\nTras pasar los primeros años de su vida vagando de un lugar a otro en busca de dónde vivir, terminó encontrándose dentro del garaje del Manager. El hombre lo adoptó como su asistente secundario, y poco después terminó enamorándose del asistente principal (creado en laboratorio, por cierto… qué asco). Sin ninguna razón aparente más allá de presumir frente a su novio, se unió al juego para demostrar sus habilidades ocultas.\n\nShib es un personaje propiedad de NicklySuffer, creado antes del desarrollo de Inflation Roulette Reloaded.",
 	// Context: El Manager y Shitfucks se asociaron y eligieron a Chester como su embajador o algo así..
 	"galleryMainMenu.envelope.chester.description": "Como barista principal de una cafetería, fue obligado a participar en este juego como embajador de la empresa. Con sus malos resultados académicos y su personalidad nada carismática, su sueño de prosperidad y riqueza sigue estando lejos de alcanzarse.\n\nSu trabajo diario consiste en preparar bebidas exageradamente dulces para clientes calientes. Algunos dicen que las bebidas tienen un efecto “expansivo”, lo que ha llamado la atención de varios agentes de seguridad alimentaria. Sin embargo, debido a ciertas estupideces capitalistas, las advertencias del departamento de salubridad no llegaron a ninguna parte.\n\nChester es un personaje propiedad de NicklySuffer, creado antes del desarrollo de Inflation Roulette Reloaded.",
+	"galleryMainMenu.envelope.asimo.description": "Aprovechando sus poderes eléctricos, Asimo llega electrizando a Inflation Roulette afirmando que viene “a divertirse un poco”.\n\nNo sabemos cómo llegó aquí, y definitivamente no tenemos ninguna relación con él, aparte de que es un lobo, es el tester del Manager para su estúpido mod de Friday Night Funkin’, y fue el ganador de un sorteo de arte para ser añadido al juego como personaje del Example Addon.\n\nAsimo es un personaje invitado propiedad de WolfKylis.",
 	"galleryMainMenu.envelope.dev": "Arte de los desarrolladores",
 	"galleryMainMenu.envelope.dev.description": "Una colección de arte conceptual, bocetos y recursos descartados creados por los desarrolladores y otros artistas.\n\nangry           bird",
 	"galleryMainMenu.envelope.community": "Arte de la Comunidad",
@@ -578,13 +585,4 @@
 	"preloadMenu.progress.splashes": "Cargando frases destacadas...",
 	"preloadMenu.progress.music": "Cargando música...",
 	"preloadMenu.finished": "¡Todo listo!",
-	
-	// Respaldo para compilación HTML
-	"gamemode.fiftyFifty.name": "50/50",
-	"gamemode.fiftyFifty.description": "Pura probabilidad de cara o cruz con reemplazo.\nJugabilidad rápida y arriesgada.",
-
-	// "galleryMainMenu.envelope.asimo.description": "Aprovechando sus poderes eléctricos, Asimo llega electrizando a Inflation Roulette afirmando que viene “a divertirse un poco”.\n\nNo sabemos cómo llegó aquí, y definitivamente no tenemos ninguna relación con él, aparte de que es un lobo, es el tester del Manager para su estúpido mod de Friday Night Funkin’, y fue el ganador de un sorteo de arte para ser añadido al juego como personaje del Example Addon.\n\nAsimo es un personaje invitado propiedad de WolfKylis.",
-	"character.asimo.name": "Asimo Dracomaw",
-	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "Este lobo solo quiere divertirse. Su experiencia en lo oculto eléctrico le permite sobrecargar armas."
 }

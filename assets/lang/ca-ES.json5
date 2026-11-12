@@ -298,6 +298,8 @@
 	"gamemode.classic.description": "Veritable aleatorietat i sabotatge sense parar.\nLa manera original de jugar.",
 	"gamemode.charge.name": "Càrrega",
 	"gamemode.charge.description": "Dany augmenta amb cada tret sense bala.\nJoc arriscat i gratificant.",
+	"gamemode.fiftyFifty.name": "50/50",
+	"gamemode.fiftyFifty.description": "Purament una casualitat de llançament de moneda amb reemplaçament.\nJoc ràpid i arriscat.",
 	
 	// Select Character: This phrase is meant to be "epic". Try to make your translation mysterious/archaic.
 	"characterSelect.selectCharacter": "ESCOLLIR VOSTRES MÈDIUMS",
@@ -337,6 +339,10 @@
 	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "Un barista desafortunat obligat a jugar a aquest joc per a una empresa. Seva feina entrena seva resistència.",
+	// Asimo: Character created by WolfKylis.
+	"character.asimo.name": "Asimo Dracomaw",
+	"character.asimo.name.short": "Asimo",
+	"character.asimo.description": "Aquest llop només vol divertir-se una mica. Seva experiència en ocultisme elèctric li permet sobrecarregar armes.",
 	// Option to choose a random character.
 	"character.random.description": "No saps qui triar? Deixa que el joc decideixi!",
 	
@@ -441,6 +447,7 @@
 	// "galleryMainMenu.envelope.shib.description": "Cognom Nou; prenom Shiba. Procedent d'un planeta misteriós, aquesta criatura felina està a punt de fer explotar algú. El seu nom xinès es pot interpretar com a \"Zero Deu Vuit\", derivat del lloc nuclear on van aterrar a Pequín.\n\nVan passar els primers anys de la seva vida buscant per diferents llocs on viure, i finalment es van establir a garatge del Gerent. L'home els va adoptar com a ajudants secundaris i aviat es va enamorar de l'ajudant principal (crescuda a laboratori per cert, ecs). Sense raó aparent més enllà de presumir davant de seu xicot, es van unir al joc per mostrar seves habilitats ocultes.\n\nShib és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
 	// Context: The Manager and Shitfucks partnered, and selected Chester as their ambassador or something.
 	"galleryMainMenu.envelope.chester.description": "Com a barista principal d'una cafeteria, es va veure obligat a jugar a aquest joc com a ambaixador de l'empresa. Amb seus mals resultats acadèmics i seva personalitat poc carismàtica, seu somni de prosperitat i riquesa encara no ha estat a l'abast.\n\nSeva feina diària consisteix a preparar begudes massa ensucrades per a clients calentes. Alguns diuen que les begudes tenen un efecte \"expansiu\", que ha cridat l'atenció de diversos agents de seguretat alimentària. Tanmateix, a causa d'algunes collonades capitalistes, avisos del departament d'alimentació no van servir de res.\n\nChester és un personatge propietat de NicklySuffer, creat abans del desenvolupament de Inflation Roulette.",
+	// "galleryMainMenu.envelope.asimo.description": "Aprofitant seus poders elèctrics, Asimo es espanta per Inflation Roulette dient que \"s'ho està passant bé\".\n\nNo sabem com ha arribat aquí, i no tenim cap connexió amb ell, a part que és un llop, és el tester del Gerent per a seu estúpid mod Friday Night Funkin', i és el guanyador d'un sorteig d'art per afegir-lo al joc com a personatge per al complement d'exemple.\n\nAsimo és un personatge convidat propietat de WolfKylis.",
 	"galleryMainMenu.envelope.dev": "Art del desenvolupador",
 	"galleryMainMenu.envelope.dev.description": "Una coŀlecció d'art conceptual, esbossos i recursos no utilitzats fets pels desenvolupadors i altres artistes.\n\nocell           enfadat",
 	"galleryMainMenu.envelope.community": "Art comunitari",
@@ -588,14 +595,4 @@
 	"outdatedVersionMenu.text": "Ei! Actualment estàs utilitzant una versió obsoleta d'Inflation Roulette: Reloaded. Baixa la darrera versió per gaudir de les funcions i correccions d'errors més noves.\nTeva versió: %1\nDarrera versió: %2",
 	"outdatedVersionMenu.update": "Actualitza",
 	"outdatedVersionMenu.dismiss": "Més tard",
-	
-	// Fallback for HTML build
-	"gamemode.fiftyFifty.name": "50/50",
-	"gamemode.fiftyFifty.description": "Purament una casualitat de llançament de moneda amb reemplaçament.\nJoc ràpid i arriscat.",
-
-	// Context: Literally no lore implication. He's just here for the sake of being here lol
-	// "galleryMainMenu.envelope.asimo.description": "Aprofitant seus poders elèctrics, Asimo es espanta per Inflation Roulette dient que \"s'ho està passant bé\".\n\nNo sabem com ha arribat aquí, i no tenim cap connexió amb ell, a part que és un llop, és el tester del Gerent per a seu estúpid mod Friday Night Funkin', i és el guanyador d'un sorteig d'art per afegir-lo al joc com a personatge per al complement d'exemple.\n\nAsimo és un personatge convidat propietat de WolfKylis.",
-	"character.asimo.name": "Asimo Dracomaw",
-	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "Aquest llop només vol divertir-se una mica. Seva experiència en ocultisme elèctric li permet sobrecarregar armes."
 }

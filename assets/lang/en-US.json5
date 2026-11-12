@@ -336,6 +336,8 @@
 	"gamemode.classic.description": "True randomness and sabotage endlessly.\nFor archival purposes only.",
 	"gamemode.charge.name": "Charged",
 	"gamemode.charge.description": "Damage increases with each blank shot.\nRisky and rewarding gameplay.",
+	"gamemode.fiftyFifty.name": "50/50",
+	"gamemode.fiftyFifty.description": "Purely a coin flip chance with replacement.\nQuick and risky gameplay.",
 
 	"characterSelect.windowDisplay": "Gameplay Configuration",
 	// Select Character: This phrase is meant to be archaic. Try to make your translation mysterious/archaic.
@@ -381,6 +383,10 @@
 	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "An unfortunate barista forced to play this game for a company. His work trains his endurance.",
+	// Asimo: Character created by WolfKylis.
+	"character.asimo.name": "Asimo Dracomaw",
+	"character.asimo.name.short": "Asimo",
+	"character.asimo.description": "This wolf just wants to have some fun. His experience in electrical occult allows him to overload weapons.",
 	// Synda: Character created by NicklySuffer. Resembles one of those squid dogs from Changed.
 	// Her tentacles were amputated due to an accident, and desperately needs money for cybernetic tentacles.
 	// Designed as a high-risk character, with the ability to shoot others.
@@ -557,6 +563,7 @@
 	"galleryMainMenu.envelope.goober.description": "First seen in the original game, the Goobers jump into action with a new coat of paint! They have become the go-to character to be featured in countless remakes and fanart alike.\n\nAs for why and how they joined the game, no one knows! Actors? Hostages? Sell-outs? Lots of theories are out there! Not much is known about their biology, but it has been confirmed that they have been classified into several races, ranging from Goobers composed entirely out of slime to R»EDA©±ED§²½",
 	"galleryMainMenu.envelope.shib.description": "Last name Nou; first name Shiba. Hailing from a mysterious planet, this cat-like creature joins the roster! Their Chinese name can be interpreted as \"Zero Ten Eight\", derived from the nuclear site they landed on in Beijing.\n\nSpending the first few decades of their life scouring to different places to live, they eventually stumbled across a Chinese engineer, who adopted them as his secondary assistant. Soon enough, they found themself in love with the primary assistant (lab-grown btw, ew). Now that their boyfriend got a job from The Manager as a cameraman, they joined the game to show off their hidden abilities.\n\nShib is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.chester.description": "As the lead barista of a coffee shop, he was forced to play this game as an ambassador for the company. With his poor academic results and his uncharismatic personality, his dream of prosperity and wealth is yet to be in reach.\n\nHis daily work involves making oversweetened beverages for horny customers. Some say the drinks have an \"expansive\" effect, which has grabbed the attention of several food safety agents. However, due to some capitalist bullshit, warnings from the food department went nowhere.\n\nChester is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
+	"galleryMainMenu.envelope.asimo.description": "Harnessing his electric powers, Asimo jolts into Inflation Roulette claiming to \"have some fun\".\n\nWe don't know how he got here, and we totally have no connections with him, other than he's a wolf, he's a random Chinese engineer's playtester for his stupid Friday Night Funkin' mod, and he's the winner of an art raffle to be added to the game as a character for the Example Addon.\n\nAsimo is a guest character owned by WolfKylis.",
 	"galleryMainMenu.envelope.synda.description": "Looking for a life quality upgrade, Synda shoots into the arena! Her peers always describe her as an arrogant and irrational person to deal with - not that she cares anyway.\n\nShe was a high-end security guard for a prestige laboratory, until a horrifying accident resulted in an unexplained injury which costed her her job. Looking for ways to recover, she found an experimental procedure which can grant her cybernetic tentacles, only problem is that a pair is hell expensive, so now she's promised a fortune by The Manager, if she's willing to sacrifice her entire lower body for it...\n\nSynda is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.jacob.description": "Jacob steps into the arena! Not much is known about Jacob, looking seemingly like a rando in the group, well, you're right, cuz he's literally just a rando.\n\nNot long ago, he and his beloved partner stumbled across a poster promising a role for seemingly a game show. With his poor reading comprehension, he signed ONLY his boyfriend up for the game, not knowing what the game's about, where the game takes place, and how disgusting it is. Now stuck here in the middle of somewhere, he is forced to play this excruciating game as long as the contract lasts...\n\nJacob is a character owned by a friend.",
 	"galleryMainMenu.envelope.drey.description": "Stepping with pride, Drey slides into action! Believing that she's the main character of an imaginary TV show, her overconfidence leads to Lady Luck literally bending to her will at times. After getting her entire body blown apart by a landmine, she became a cyborg of sorts after surgery. Other than her dimwitted brain, her body is composed entirely on high quality plastic and tidy circuitry. However, due to an absence of an actual mouth, she has to receive nutrients intravenously.\n\nLooking for someone to get an upgrade for her head, she stumbled across The Manager, promising her a procedure. She was given a stoma on her neck for food to enter her esophagus, but now she wants more upgrades to her body. So she joined the roster, playing each game of Inflation Roulette again, and again, and again...\n\nDrey is a character owned by NicklySuffer, made prior to the development of Inflation Roulette Reloaded.",
@@ -801,15 +808,5 @@
 		"Praying for mercy"
 	],
 
-	"hyperlink.prompt": "Do you want to open this link in your browser?\n\n%1",
-
-	// Fallback for HTML build
-	"gamemode.fiftyFifty.name": "50/50",
-	"gamemode.fiftyFifty.description": "Purely a coin flip chance with replacement.\nQuick and risky gameplay.",
-	
-	"character.asimo.name": "Asimo Dracomaw",
-	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "This wolf just wants to have some fun. His experience in electrical occult allows him to overload weapons.",
-	// Context: Literally no lore implication. He's just here for the sake of being here lol
-	"galleryMainMenu.envelope.asimo.description": "Harnessing his electric powers, Asimo jolts into Inflation Roulette claiming to \"have some fun\".\n\nWe don't know how he got here, and we totally have no connections with him, other than he's a wolf, he's a random Chinese engineer's playtester for his stupid Friday Night Funkin' mod, and he's the winner of an art raffle to be added to the game as a character for the Example Addon.\n\nAsimo is a guest character owned by WolfKylis."
+	"hyperlink.prompt": "Do you want to open this link in your browser?\n\n%1"
 }

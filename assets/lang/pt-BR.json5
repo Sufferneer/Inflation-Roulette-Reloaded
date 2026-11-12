@@ -336,6 +336,8 @@
 	"gamemode.classic.description": "Verdadeira aleatoriedade e sabotagem sem fim.\nApenas para fins arquivísticos.",
 	"gamemode.charge.name": "Carregado",
 	"gamemode.charge.description": "Dano aumenta a cada tiro de festim.\nGameplay arriscada e recompensadora.",
+	"gamemode.fiftyFifty.name": "50/50",
+	"gamemode.fiftyFifty.description": "Seja o que deus quiser. Jogatina rápida e arriscada.",
 
 	"characterSelect.windowDisplay": "Configuração de Gameplay",
 	// Select Character: This phrase is meant to be archaic. Try to make your translation mysterious/archaic.
@@ -381,6 +383,10 @@
 	"character.chester.name": "Chester Damian",
 	"character.chester.name.short": "Chester",
 	"character.chester.description": "Um barista desafortunado forçado a jogar esse jogo pela empresa. Seu trabalho treina sua resistência.",
+	// Asimo: Character created by WolfKylis.
+	"character.asimo.name": "Asimo Dracomaw",
+	"character.asimo.name.short": "Asimo",
+	"character.asimo.description": "Esse lobo só quer se divertir. Sua experiência com o oculto elétrico o permite sobrecarregar armas.",
 	// Synda: Character created by NicklySuffer. Resembles one of those squid dogs from Changed.
 	// Her tentacles were amputated due to an accident, and desperately needs money for cybernetic tentacles.
 	// Designed as a high-risk character, with the ability to shoot others.
@@ -557,6 +563,7 @@
 	"galleryMainMenu.envelope.goober.description": "Vistos pela primeira vez no jogo original, os Goobers entram em ação com uma nova cara! Eles se tornaram o personagem certeiro para aparecer em incontáveis remakes e fanarts.\n\nSobre como e porquê eles se uniram ao jogo, ninguém sabe! Atores? Reféns? Vendidos? Há muitas teorias por aí! Não se sabe muito sobre sua biologia, mas foi confirmado que são classificados em diversas raças, variando de Goobers compostos inteiramente de slime até C»0NF!D&NC§AL²½",
 	 "galleryMainMenu.envelope.shib.description": "Sobrenome Nou; primeiro nome Shiba. Vindo de um planeta misterioso, essa criatura parecida com um gato se une à competição! Seu nome em Chinês pode ser interpretado como \"Zero Dez Oito\", derivado da instalação nuclear em que pousou em Pequim.\n\nPassando seus primeiros anos de vida buscando por lugares para viver, eventualmente se esbarrou com um engenheiro chinês. Foi adotade por ele como sue assistente secundárie e em breve se encontraria apaixonade pelo assistente primário (criado em laboratório por sinal, eca). Agora que seu namorado conseguiu um trabalho do Gerente como cameraman, elu se juntou ao jogo para mostrar suas habilidades secretas.\n\nShib é ume personagem não-binárie pertencente a NicklySuffer, criade antes do desenvolvimento de Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.chester.description": "Como o barista chefe de um café, ele foi forçado a jogar este jogo como um representante da empresa. Com seus resultados acadêmicos pobres e personalidade nem um pouco carismática, o seu sonho de prosperidade e riqueza está agora bem ao seu alcance.\n\nSeu trabalho diário envolve preparar bebidas com açúcar em excesso para clientes tarados. Alguns dizem que as bebidas possuem um efeito \"expansivo\" , o que chamou a atenção de vários agentes de segurança alimentar. No entanto, devido a palhaçada capitalista, avisos do departamento alimentar não levaram a lugar nenhum.\n\nChester é um personagem pertencente a NicklySuffer, criado antes do desenvolvimento de Inflation Roulette Reloaded.",
+	"galleryMainMenu.envelope.asimo.description": "Se aproveitando de seus poderes elétricos, Asimo se descarga para dentro de Inflation Roulette querendo \"se divertir\".\n\nNão temos ideia de como ele chegou aqui, e nós com certeza temos 0 conexões com ele, além de sabermos que ele é um lobo, é o testador da porcaria do mod de Friday Night Funkin' de um engenheiro chinês aleatório, e ele é o vencedor de um torneio de arte para ser adicionado como o personagem da Adição de Exemplo.\n\nAsimo é um personagem convidado pertencente a WolfKylis.",
 	"galleryMainMenu.envelope.synda.description": "Procurando por uma melhora na qualidade de vida, Synda se mete na competição pronta pra estourar alguém! Seus colegas sempre a descrevem como uma pessoa arrogante e irracional de se lidar - não que ela se importe com isso, de qualquer forma. \n\n Como uma [CONFIDENCIAL], ela passa a maior parte do seu tempo como uma guarda de segurança de alto calibre em um laboratório, até que um acidente horrível resultou na perda de seu olho esquerdo e apêndices das costas. Procurando por uma substituição, ela descobriu um procedimento experimental que concederia a ela tentáculos cibernéticos, o problema é que cada par é caro pra diacho, então agora uma fortuna foi prometida a ela pelo Gerente, se ela estiver disposta a sacrificar o seu abdômen inferior inteiro para isso...\n\nSynda é uma personagem de autoria de NicklySuffer, criada antes do desenvolvimento de Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.jacob.description": "Jacob se une à competição! Não se sabe muito sobre o Jacob, se você acha que ele pode ser só mais um no grupo, bem, tem razão, isso porque ele realmente é só mais um.\n\nHá não muito tempo, ele e seu amado parceiro se depararam com um pôster oferecendo um papel no que parecia ser um game show. Com sua precária interpretação de texto, ele inscreveu APENAS o seu namorado para o jogo, sem nem saber sobre o que ele é, onde ele se passa ou o quão esquisito é. Agora preso aqui no meio de algum lugar, ele é forçado a jogar este jogo excruciante enquanto o contrato durar...\n\nJacob é um personagem pertencente a um amigo.",
 	"galleryMainMenu.envelope.drey.description": "Caminhando com orgulho, Drey cai pra dentro da ação! Acreditando ser a personagem principal de um show de TV imaginário, seu excesso de confiança faz com que Fortuna se dobre para sua vontade de vez em quando. Após ter seu corpo inteiro explodido por uma mina, ela se tornou uma espécie de ciborgue após cirurgia. Com excessão de seu cérebro meio bobinho, seu corpo é composto inteiramente de plático de alta qualidade e circuitos arrumadinhos. No entanto, devido à ausência de uma boca de verdade, ela tem que receber nutrientes de forma intravenosa.\n\nProcurando por algúem para fazer um upgrade na sua cabeça, ela se deparou com O Gerente, prometendo a ela um procedimento. Ela recebeu um estoma no seu pescoço para comida entrar em seu esôfago, mas agora ela quer mais upgrades para seu corpo. Então ela entrou pro elenco, jogando cada jogo de Inflation Roulette de novo, e de novo, e de novo...\n\nDrey é uma personagem pertencente a NicklySuffer, criada antes do desenvolvimento de Inflation Roulette Reloaded.",
@@ -801,14 +808,4 @@
 	],
 
 	"hyperlink.prompt": "Deseja abrir este link em seu navegador?\n\n%1",
-
-	// Fallback for HTML build
-	"gamemode.fiftyFifty.name": "50/50",
-	"gamemode.fiftyFifty.description": "Seja o que deus quiser. Jogatina rápida e arriscada.",
-
-	// Context: Literally no lore implication. He's just here for the sake of being here lol
-	"galleryMainMenu.envelope.asimo.description": "Se aproveitando de seus poderes elétricos, Asimo se descarga para dentro de Inflation Roulette querendo \"se divertir\".\n\nNão temos ideia de como ele chegou aqui, e nós com certeza temos 0 conexões com ele, além de sabermos que ele é um lobo, é o testador da porcaria do mod de Friday Night Funkin' de um engenheiro chinês aleatório, e ele é o vencedor de um torneio de arte para ser adicionado como o personagem da Adição de Exemplo.\n\nAsimo é um personagem convidado pertencente a WolfKylis.",
-	"character.asimo.name": "Asimo Dracomaw",
-	"character.asimo.name.short": "Asimo",
-	"character.asimo.description": "Esse lobo só quer se divertir. Sua experiência com o oculto elétrico o permite sobrecarregar armas."
 }
