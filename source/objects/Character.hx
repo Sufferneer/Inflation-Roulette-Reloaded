@@ -116,10 +116,14 @@ class Character extends FlxSprite {
 	public function new(character:String, x:Float = 0, y:Float = 0) {
 		this.id = character;
 		timerMultiplier = Preferences.data.decreaseSounds ? 3 : 1;
-		var json:CharacterData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/stats.json')) ?? null;
-		var spriteJson:CharacterCosmeticData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json')) ?? null;
-		var offsetsJson:CharacterOffsetsData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/offsets.json')) ?? null;
-		var hitboxJson:CharacterHitboxData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/hitbox.json')) ?? null;
+		var json:CharacterData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/stats.json')) ?? {};
+		var cosmeticJson:CharacterCosmeticData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json')) ?? {};
+		var offsetsJson:CharacterOffsetsData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/offsets.json')) ?? {
+			originPosition: [0, 0],
+			poppedCameraOffset: [0, 0],
+			cameraOffset: [0, 0]
+		};
+		var hitboxJson:CharacterHitboxData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/hitbox.json')) ?? {};
 
 		// name = json.name;
 		/*
@@ -128,21 +132,33 @@ class Character extends FlxSprite {
 		*/
 		maxPressure = json?.maxPressure ?? 4;
 		maxConfidence = json?.maxConfidence ?? 4;
-		belchThreshold = spriteJson?.belchThreshold ?? 3;
-		leakThreshold = spriteJson?.leakThreshold ?? 4;
-		navelLeakThreshold = spriteJson?.navelLeakThreshold ?? 3;
-		gurgleThreshold = spriteJson?.gurgleThreshold ?? 3;
-		creakThreshold = spriteJson?.creakThreshold ?? 4;
-		voicePitch = spriteJson?.voicePitch ?? 4;
+		belchThreshold = cosmeticJson?.belchThreshold ?? 3;
+		leakThreshold = cosmeticJson?.leakThreshold ?? 4;
+		navelLeakThreshold = cosmeticJson?.navelLeakThreshold ?? 3;
+		gurgleThreshold = cosmeticJson?.gurgleThreshold ?? 3;
+		creakThreshold = cosmeticJson?.creakThreshold ?? 4;
+		voicePitch = cosmeticJson?.voicePitch ?? 4;
 		if (offsetsJson?.originPosition != null)
 			originPosition = offsetsJson.originPosition;
+		else if (cosmeticJson?.originPosition != null)
+			originPosition = cosmeticJson.originPosition;
 		if (offsetsJson?.poppedCameraOffset != null)
 			poppedCameraOffset = offsetsJson.poppedCameraOffset;
+		else if (cosmeticJson?.poppedCameraOffset != null)
+			poppedCameraOffset = cosmeticJson.poppedCameraOffset;
 		if (offsetsJson?.cameraOffset != null)
 			cameraOffset = offsetsJson.cameraOffset;
+		else if (cosmeticJson?.cameraOffset != null)
+			cameraOffset = cosmeticJson.cameraOffset;
 		if (offsetsJson?.particleOffsets == null) {
-			offsetsJson.particleOffsets = {
-				overhead: [
+			if (cosmeticJson?.particleOffsets != null) {
+				particleOffsets.set('overhead', cosmeticJson.particleOffsets.overhead);
+				particleOffsets.set('mouth', cosmeticJson.particleOffsets.mouth);
+				particleOffsets.set('navel', cosmeticJson.particleOffsets.navel);
+				particleOffsets.set('gunShoot', cosmeticJson.particleOffsets.gunShoot);
+				particleOffsets.set('gunSkill', cosmeticJson.particleOffsets.gunSkill);
+			} else {
+				particleOffsets.set('overhead', [
 					[0, -480],
 					[0, -480],
 					[0, -480],
@@ -150,8 +166,8 @@ class Character extends FlxSprite {
 					[0, -480],
 					[-160, -180],
 					[-100, -460]
-				],
-				mouth: [
+				]);
+				particleOffsets.set('mouth', [
 					[0, -410],
 					[0, -410],
 					[0, -410],
@@ -159,8 +175,8 @@ class Character extends FlxSprite {
 					[0, -440],
 					[-100, -140],
 					[-80, -420]
-				],
-				navel: [
+				]);
+				particleOffsets.set('navel', [
 					[10, -290],
 					[40, -285],
 					[70, -280],
@@ -168,8 +184,8 @@ class Character extends FlxSprite {
 					[130, -270],
 					[40, -160],
 					[150, -220]
-				],
-				gunShoot: [
+				]);
+				particleOffsets.set('gunShoot', [
 					[0, -380],
 					[0, -380],
 					[0, -380],
@@ -177,8 +193,8 @@ class Character extends FlxSprite {
 					[0, -420],
 					[0, 0],
 					[0, 0]
-				],
-				gunSkill: [
+				]);
+				particleOffsets.set('gunSkill', [
 					[0, -320],
 					[0, -320],
 					[0, -360],
@@ -186,24 +202,25 @@ class Character extends FlxSprite {
 					[0, -400],
 					[0, 0],
 					[0, 0]
-				]
-			};
+				]);
+			}
+		} else {
+			particleOffsets.set('overhead', offsetsJson.particleOffsets.overhead);
+			particleOffsets.set('mouth', offsetsJson.particleOffsets.mouth);
+			particleOffsets.set('navel', offsetsJson.particleOffsets.navel);
+			particleOffsets.set('gunShoot', offsetsJson.particleOffsets.gunShoot);
+			particleOffsets.set('gunSkill', offsetsJson.particleOffsets.gunSkill);
 		}
-		particleOffsets.set('overhead', offsetsJson.particleOffsets.overhead);
-		particleOffsets.set('mouth', offsetsJson.particleOffsets.mouth);
-		particleOffsets.set('navel', offsetsJson.particleOffsets.navel);
-		particleOffsets.set('gunShoot', offsetsJson.particleOffsets.gunShoot);
-		particleOffsets.set('gunSkill', offsetsJson.particleOffsets.gunSkill);
-		if (spriteJson.poppingVelocityMultiplier != null)
-			poppingVelocityMultiplier = spriteJson.poppingVelocityMultiplier;
-		disablePopping = spriteJson.disablePopping ?? false;
-		poppingGravityMultiplier = spriteJson.poppingGravityMultiplier;
-		bounceScale = spriteJson.bounceScale ?? 0.02;
-		bounceFrames = spriteJson.bounceFrames ?? 3;
+		if (cosmeticJson.poppingVelocityMultiplier != null)
+			poppingVelocityMultiplier = cosmeticJson.poppingVelocityMultiplier;
+		disablePopping = cosmeticJson.disablePopping ?? false;
+		poppingGravityMultiplier = cosmeticJson.poppingGravityMultiplier;
+		bounceScale = cosmeticJson.bounceScale ?? 0.02;
+		bounceFrames = cosmeticJson.bounceFrames ?? 3;
 
 		var hitboxes:Array<CharacterBoxData> = cast hitboxJson?.rubHitboxes;
 		if (hitboxes == null || hitboxes.length <= 0) {
-			for (i in 0...maxPressure + 1) {
+			for (i in 0...maxPressure + 2) {
 				var rubHitbox:CharacterBoxData = {
 					position: [260, 290],
 					size: [160, 160]
@@ -233,7 +250,9 @@ class Character extends FlxSprite {
 			}
 		}
 
-		if (Preferences.data.enableDiscoloration && Preferences.data.enableGLSL && Gameplay.currentFiller.tintColor != null) {
+		var maskGraphic = Paths.getImage('game/characters/$id/mask/${cosmeticJson.spriteSheets[0]}');
+
+		if (Preferences.data.enableDiscoloration && Preferences.data.enableGLSL && Gameplay.currentFiller.tintColor != null && maskGraphic != null) {
 			var leColor = Gameplay.currentFiller.tintColor;
 			discoloration = new DiscolorationShader(leColor);
 			this.shader = discoloration;
@@ -241,37 +260,37 @@ class Character extends FlxSprite {
 		}
 
 
-		var combinedAtlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${spriteJson.spriteSheets[0]}');
+		var combinedAtlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${cosmeticJson.spriteSheets[0]}');
 		if (!Preferences.data.decreaseDetail && discoloration != null) {
 			maskFrames = [];
-			discoloration.initMask(0, Paths.getImage('game/characters/$id/mask/${spriteJson.spriteSheets[0]}').bitmap);
-			maskFrames.set(spriteJson.spriteSheets[0], 0);
+			discoloration.initMask(0, Paths.getImage('game/characters/$id/mask/${cosmeticJson.spriteSheets[0]}').bitmap);
+			maskFrames.set(cosmeticJson.spriteSheets[0], 0);
 			for (frame in combinedAtlas.frames) {
 				if (!frame.name.endsWith('0000')) continue;
-				animToMask.set(frame.name.replace('0000', ''), spriteJson.spriteSheets[0]);
+				animToMask.set(frame.name.replace('0000', ''), cosmeticJson.spriteSheets[0]);
 			}
 		}
-		for (i in 1...spriteJson.spriteSheets.length) {
-			var atlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${spriteJson.spriteSheets[i]}');
+		for (i in 1...cosmeticJson.spriteSheets.length) {
+			var atlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${cosmeticJson.spriteSheets[i]}');
 			combinedAtlas.addAtlas(atlas, false);
 			if (maskFrames != null) {
-				var maskAtlas = Paths.getSparrowAtlas('game/characters/$id/mask/${spriteJson.spriteSheets[i]}');
+				var maskAtlas = Paths.getSparrowAtlas('game/characters/$id/mask/${cosmeticJson.spriteSheets[i]}');
 				for (frame in maskAtlas.frames) {
 					if (!frame.name.endsWith('0000')) continue;
-					animToMask.set(frame.name.replace('0000', ''), spriteJson.spriteSheets[i]);
+					animToMask.set(frame.name.replace('0000', ''), cosmeticJson.spriteSheets[i]);
 				}
 				discoloration.initMask(i, maskAtlas.parent.bitmap);
-				maskFrames.set(spriteJson.spriteSheets[i], i);
+				maskFrames.set(cosmeticJson.spriteSheets[i], i);
 			}
 		}
 
 		super(x, y);
 		frames = combinedAtlas;
-		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!spriteJson.antialiasing) : false;
+		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!cosmeticJson.antialiasing) : false;
 
 		animSoundPaths = new Map<String, Array<String>>();
 
-		var animationsArray = spriteJson.animations;
+		var animationsArray = cosmeticJson.animations;
 		if (animationsArray != null && animationsArray.length > 0) {
 			for (anim in animationsArray) {
 				var animName:String = anim.name;

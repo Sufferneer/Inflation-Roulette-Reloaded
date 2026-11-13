@@ -24,6 +24,9 @@ class AddonMenuItem extends SuffButton {
 
 		var path:String = Paths.getPathInAddons('$folder/pack.png');
 		if (!FileSystem.exists(path)) {
+			path = Paths.getPathInAddons('$folder/metadata/pack.png');
+		}
+		if (!FileSystem.exists(path)) {
 			path = Paths.getImagePath('ui/menus/addons/defaultIcon');
 		}
 		var leIconImage = Paths.cacheBitmap(path);

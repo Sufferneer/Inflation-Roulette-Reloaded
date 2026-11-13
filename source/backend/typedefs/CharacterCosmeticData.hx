@@ -14,5 +14,10 @@ typedef CharacterCosmeticData = {
 	?poppingVelocityMultiplier:Array<Float>,
 	?poppingGravityMultiplier:Float,
 	?bounceScale:Float,
-	?bounceFrames:Int
+	?bounceFrames:Int,
+
+	?originPosition:Array<Float>,
+	?poppedCameraOffset:Array<Float>,
+	?cameraOffset:Array<Float>,
+	?particleOffsets:CharacterParticleOffsetsData
 }

@@ -45,8 +45,8 @@ We have a dedicated wiki for the documentation and guides for the inner workings
 1. Create a fork of the repository.
    1. Click on **Fork**.
    2. Click on **Create fork**.
-   3. From `assets/lang/`, copy `en-US.json5` and the `en-US/` folder.
-   4. Rename the copied `en-US` file and folder to your language's locale code. (formatted as `language-REGION`)
+   3. From `assets/lang/`, copy `en-us.json5` and the `en-us/` folder.
+   4. Rename the copied `en-us` file and folder to your language's locale code. (formatted as `language-REGION`)
    5. Edit the `.json` file's strings. Do *NOT* edit the keys.
    6. In `<language-REGION>/`, edit `metadata.json`.
 2. Click the **Pull Requests** tab in the repository's menu navigation bar.

@@ -18,5 +18,19 @@
   </component>
   <component name="HaxeIdeOverrides">
     <option name="version" value="1" />
+    <option name="buildFiles">
+      <list>
+        <BuildFileOverrides>
+          <option name="buildFilePath" value="$PROJECT_DIR$/Project.xml" />
+          <option name="defines">
+            <list>
+              <DefineState>
+                <option name="name" value="_ALLOW_ADDONS" />
+              </DefineState>
+            </list>
+          </option>
+        </BuildFileOverrides>
+      </list>
+    </option>
   </component>
 </project>

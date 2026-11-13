@@ -83,6 +83,7 @@ Hotfixes are quick updates that fixes critical bugs.
 - Increased visibility of Skill icons on white backgrounds
 - Updated some splashes
 - Updated the appearance of the NicklySuffer logo once again.
+- Updated _Suffirat_, the game's UI text font, to be 2 units taller.
 #### Localization
 - Forced Aliasing now renamed to _Forced Pixelation_ to reduce confusion.
 - Some Preferences Options are now renamed to be less scientific. 
@@ -105,6 +106,7 @@ Hotfixes are quick updates that fixes critical bugs.
 - Character sprites are no longer preloaded on the start of the game.
 - Switching languages is now faster.
 - Game window can now be scaled in the Options menu.
+- Game now has addon backwards compatibility, supporting addons made as far as v1.0.0.
 #### Utilities
 - Character Editor now generates addon metadata and localization files for you.
 ### Removals

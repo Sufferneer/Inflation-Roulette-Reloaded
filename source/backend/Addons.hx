@@ -13,7 +13,7 @@ class Addons {
 		globalAddons = [];
 		#if _ALLOW_ADDONS
 		for (addon in updateAddonList()) {
-			var pack:Dynamic = getAddonMetadata(addon);
+			var pack:AddonMetadata = getAddonMetadata(addon);
 			if (pack != null)
 				globalAddons.push(addon);
 		}
@@ -40,6 +40,8 @@ class Addons {
 	public static function getAddonMetadata(?folder:String = null):AddonMetadata {
 		#if _ALLOW_ADDONS
 		var path = Paths.getPathInAddons(folder + '/metadata.json');
+		if (!FileSystem.exists(path))
+			path = Paths.getPathInAddons(folder + '/metadata/metadata.json');
 		if (FileSystem.exists(path)) {
 			var rawJson:String = File.getContent(path);
 			trace(rawJson);

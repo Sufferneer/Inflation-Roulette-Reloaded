@@ -336,7 +336,6 @@ class CharacterSelectState extends SuffState {
 		leftButton.onClick = function() {
 			changePage(-1);
 		};
-		leftButton.visible = lastPage > 0;
 		add(leftButton);
 
 		rightButton = new SuffButton(0, 0, null, Paths.getImage('ui/icons/buttons/right'), null, 100, 100);
@@ -345,8 +344,10 @@ class CharacterSelectState extends SuffState {
 		rightButton.onClick = function() {
 			changePage(1);
 		};
-		rightButton.visible = lastPage > 0;
 		add(rightButton);
+
+		leftButton.visible = lastPage > 0;
+		rightButton.visible = lastPage > 0;
 
 		var exitButton = new SuffIconButton(20, 20, 'buttons/exit', null, 2);
 		exitButton.x = FlxG.width - exitButton.width - 20 - ScreenSafeArea.X;
@@ -785,8 +786,7 @@ class CharacterSelectState extends SuffState {
 			Gameplay.currentFiller = new Filler(FlxG.random.getObject(Gameplay.globalFillerList));
 		leftButton.disabled = true;
 		rightButton.disabled = true;
-		cardTweens.set('leftStageButton', FlxTween.tween(leftButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
-		cardTweens.set('rightStageButton', FlxTween.tween(rightButton, {y: FlxG.height}, 0.75, {ease: FlxEase.quintOut}));
+		leftButton.visible = rightButton.visible = false;
 		cardTweens.set('description', FlxTween.tween(description, {alpha: 0}, 0.25, {ease: FlxEase.quintOut}));
 		selectCharacterTxt.visible = false;
 		for (leIndex => filler in fillerGroup.members) {
@@ -843,9 +843,6 @@ class CharacterSelectState extends SuffState {
 		selectCharacterTxt.text = Language.getPhrase('characterSelect.selectCharacter');
 		selectCharacterTxt.screenCenter(X);
 
-		lastPage = Std.int((cardGroup.width - 1) / (FlxG.width - marginLeft.width - marginRight.width));
-		leftButton.visible = rightButton.visible = (lastPage > 0);
-
 		for (outline in playerOutlineShadows) {
 			outline.visible = true;
 		}
@@ -889,6 +886,8 @@ class CharacterSelectState extends SuffState {
 			}));
 		}
 		changePage();
+		lastPage = Std.int((cardGroup.width - 1) / (FlxG.width - marginLeft.width - marginRight.width));
+		leftButton.visible = rightButton.visible = (lastPage > 0);
 		leftButton.disabled = false;
 		rightButton.disabled = false;
 	}

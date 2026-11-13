@@ -42,7 +42,7 @@ class SaveVariables {
 	public var enableGLSL:Bool = true;
 	public var decreaseDetail:Bool = false;
 	public var decreaseSounds:Bool = false;
-	public var language:String = 'en-US';
+	public var language:String = 'en-us';
 	public var resolution:Array<Int> = [0, 0]; // Unset, will be calculated by game
 
 	public function new() {

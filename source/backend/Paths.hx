@@ -586,7 +586,8 @@ class Paths {
 			if (FileSystem.exists(fileToCheck)) {
 				// trace('Fetched from addon $addon: $fileToCheck');
 				return fileToCheck;
-			}
+			} else if ((key.startsWith('images/ui/') || key.startsWith('sounds/ui/')) && FileSystem.exists(fileToCheck.replace('/ui/', '/gui/')))
+				return fileToCheck.replace('images/ui/', 'images/gui/').replace('sounds/ui/', 'sounds/gui/');
 		}
 		return null;
 	}

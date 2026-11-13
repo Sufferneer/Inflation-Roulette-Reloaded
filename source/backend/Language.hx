@@ -10,24 +10,34 @@ using StringTools;
 
 using StringTools;
 
+enum LanguageFormat {
+	DEFAULT_JSON5; // e.g. en-us.json5
+	UPPERCASE_JSON5; // e.g. en-US.json5
+	DEFAULT_JSON; // e.g. en-us.json
+	UPPERCASE_JSON; // e.g. en-US.json
+	DEFAULT_LEGACY; // e.g. en-us.lang
+	UPPERCASE_LEGACY; // e.g. en-US.lang
+}
+
 class Language {
-	public static final defaultLanguage:String = 'en-US';
+	public static final defaultLanguage:String = 'en-us';
 	public static var phrases:Map<String, Dynamic> = [];
 	public static var fallbackPhrases:Map<String, Dynamic> = null;
 	public static var fallbackKeys:Array<String> = [];
 
 	public static var phrasesCount:Map<String, Int> = [];
+	public static var languageFormats:Map<String, LanguageFormat> = []; // Language ID => LanguageFormat
 
 	public static function initialize() {
 		var prefLang = Preferences.data.language.split('-');
 		if (prefLang.length > 1) {
-			prefLang[1] = prefLang[1].toUpperCase();
-			if (prefLang[0] == 'ca' && prefLang[1] == 'AD')
-				prefLang[1] = 'ES';
+			prefLang[1] = prefLang[1].toLowerCase();
+			if (prefLang[0] == 'ca' && prefLang[1] == 'ad')
+				prefLang[1] = 'es';
 		}
 		phrases = fetchPhrases(prefLang.join('-'));
 		if (phrases == null) {
-			trace('$prefLang does not exist. Using en-US');
+			trace('$prefLang does not exist. Using en-us');
 			Preferences.data.language = defaultLanguage;
 			phrases = fetchPhrases(defaultLanguage);
 		}
@@ -121,34 +131,126 @@ class Language {
 		return true;
 	}
 
-	public static function fetchPhrases(langID:String = 'en-US'):Map<String, Dynamic> {
-		phrasesCount.set(langID, 0);
-		trace('Fetching phrases from $langID');
-		var langRawJson = Paths.getTextFromFile('lang/$langID.json5', false) ?? Paths.getTextFromFile('lang/$langID.json', false);
-		if (langRawJson == null) {
-			trace('Cannot read phrases from $langID.');
-			return null;
+	public static function parseLangLegacy(rawText:String = ''):Map<String, String> {
+		var lePhrases:Map<String, String> = [];
+		var loadedText:Array<String> = Utilities.stringToArray(rawText);
+		for (text in loadedText) {
+			// Ignore comments and empty lines
+			if (text.startsWith('//') || text == '\n' && text.length <= 0)
+				continue;
+			var splitText:Array<String> = text.split(' = ');
+			if (splitText[1] == null) splitText[1] = '';
+			lePhrases.set(splitText[0], splitText[1].replace('\\n', '\n').replace('\\s', ' '));
+			// For some reason, Haxe does not recognize \n as a newline character when reading from a text file
+			// Also replace \s with whitespace
 		}
-		var vanillaPhrases:DynamicAccess<Dynamic> = Json.parse(langRawJson);
-		if (vanillaPhrases == null) {
-			trace('Cannot read phrases from $langID.');
-			return null;
+		return lePhrases;
+	}
+
+	public static function getLangFormat(langID:String = 'en-us', ?addon:String = ''):Null<LanguageFormat> {
+		var lowercaseID = langID.toLowerCase();
+		if (languageFormats.exists('$lowercaseID-$addon'))
+			return languageFormats.get('$lowercaseID-$addon');
+		var what = lowercaseID.split('-');
+		var uppercaseID = what[0] + '-' + what[1].toUpperCase();
+		var languageFormat:LanguageFormat = null;
+		if (addon == '') { // If an addon is not specified
+			if (Paths.fileExists(Paths.getPath('lang/$lowercaseID.json5'), TEXT)) languageFormat = DEFAULT_JSON5;
+			else if (Paths.fileExists(Paths.getPath('lang/$uppercaseID.json5'), TEXT)) languageFormat = UPPERCASE_JSON5;
+			else if (Paths.fileExists(Paths.getPath('lang/$lowercaseID.json'), TEXT)) languageFormat = DEFAULT_JSON;
+			else if (Paths.fileExists(Paths.getPath('lang/$uppercaseID.json'), TEXT)) languageFormat = UPPERCASE_JSON;
+			else if (Paths.fileExists(Paths.getPath('lang/$lowercaseID.lang'), TEXT)) languageFormat = DEFAULT_LEGACY;
+			else if (Paths.fileExists(Paths.getPath('lang/$uppercaseID.lang'), TEXT)) languageFormat = UPPERCASE_LEGACY;
+		} else {
+			if (FileSystem.exists(Paths.getPathInAddons('$addon/lang/$lowercaseID.json5'))) languageFormat = DEFAULT_JSON5;
+			else if (FileSystem.exists(Paths.getPathInAddons('$addon/lang/$uppercaseID.json5'))) languageFormat = UPPERCASE_JSON5;
+			else if (FileSystem.exists(Paths.getPathInAddons('$addon/lang/$lowercaseID.json'))) languageFormat = DEFAULT_JSON;
+			else if (FileSystem.exists(Paths.getPathInAddons('$addon/lang/$uppercaseID.json'))) languageFormat = UPPERCASE_JSON;
+			else if (FileSystem.exists(Paths.getPathInAddons('$addon/lang/$lowercaseID.lang'))) languageFormat = DEFAULT_LEGACY;
+			else if (FileSystem.exists(Paths.getPathInAddons('$addon/lang/$uppercaseID.lang'))) languageFormat = UPPERCASE_LEGACY;
 		}
+		languageFormats.set('$lowercaseID-$addon', languageFormat); // Stores format in memory
+		trace('Language $lowercaseID-$addon determined to be of the format $languageFormat');
+		return languageFormat;
+	}
+
+	public static function getLangRawText(langID:String = 'en-us', addon:String = '', format:LanguageFormat) {
+		var lowercaseID = langID.toLowerCase();
+		var what = lowercaseID.split('-');
+		var uppercaseID = what[0] + '-' + what[1].toUpperCase();
+		var rawText = '';
+		if (addon == '') {
+			switch (format) {
+				case DEFAULT_JSON5:
+					rawText = Paths.getTextFromFile('lang/$lowercaseID.json5', false);
+				case UPPERCASE_JSON5:
+					rawText = Paths.getTextFromFile('lang/$uppercaseID.json5', false);
+				case DEFAULT_JSON:
+					rawText = Paths.getTextFromFile('lang/$lowercaseID.json', false);
+				case UPPERCASE_JSON:
+					rawText = Paths.getTextFromFile('lang/$uppercaseID.json', false);
+				case DEFAULT_LEGACY:
+					rawText = Paths.getTextFromFile('lang/$lowercaseID.lang', false);
+				case UPPERCASE_LEGACY:
+					rawText = Paths.getTextFromFile('lang/$uppercaseID.lang', false);
+			}
+		} else {
+			switch (format) {
+				case DEFAULT_JSON5:
+					rawText = File.getContent(Paths.getPathInAddons('$addon/lang/$lowercaseID.json5'));
+				case UPPERCASE_JSON5:
+					rawText = File.getContent(Paths.getPathInAddons('$addon/lang/$uppercaseID.json5'));
+				case DEFAULT_JSON:
+					rawText = File.getContent(Paths.getPathInAddons('$addon/lang/$lowercaseID.json'));
+				case UPPERCASE_JSON:
+					rawText = File.getContent(Paths.getPathInAddons('$addon/lang/$uppercaseID.json'));
+				case DEFAULT_LEGACY:
+					rawText = File.getContent(Paths.getPathInAddons('$addon/lang/$lowercaseID.lang'));
+				case UPPERCASE_LEGACY:
+					rawText = File.getContent(Paths.getPathInAddons('$addon/lang/$uppercaseID.lang'));
+			}
+		}
+		return rawText;
+	}
+
+	public static function parseLangRawText(rawText:String = '', format:LanguageFormat):Map<String, Dynamic> {
+		switch (format) {
+			case DEFAULT_LEGACY | UPPERCASE_LEGACY:
+				return cast parseLangLegacy(rawText);
+			default:
+				var map:DynamicAccess<Dynamic> = cast Json.parse(rawText);
+				var outputMap:Map<String, Dynamic> = [];
+				for (key => object in map) {
+					outputMap.set(key, object);
+				}
+				return outputMap;
+		}
+		return [];
+	}
+
+	public static function fetchPhrases(langID:String = 'en-us'):Map<String, Dynamic> {
 		var lePhrases:Map<String, Dynamic> = [];
-		for (key => string in vanillaPhrases) {
-			lePhrases.set(key, string);
-			phrasesCount[langID] += 1;
+		langID = langID.toLowerCase();
+		phrasesCount.set(langID, 0);
+		var langFormat = getLangFormat(langID, '');
+		var langRawText = getLangRawText(langID, '', langFormat);
+		var langMap = parseLangRawText(langRawText, langFormat);
+		if (langMap != null) {
+			trace('Fetching phrases from $langID');
+			for (key => string in langMap) {
+				lePhrases.set(key, string);
+				phrasesCount[langID] += 1;
+			}
 		}
 		#if _ALLOW_ADDONS
 		for (addon in Addons.globalAddons) {
-			var rawModdedJson = Paths.getPathInAddons('$addon/lang/$langID.json5');
-			if (!FileSystem.exists(rawModdedJson))
-				rawModdedJson = Paths.getPathInAddons('$addon/lang/$langID.json');
-			if (!FileSystem.exists(rawModdedJson))
-				continue;
-			var moddedPhrases:DynamicAccess<Dynamic> = Json.parse(File.getContent(rawModdedJson));
-			for (key => string in moddedPhrases) {
+			var langFormat = getLangFormat(langID, addon);
+			var langRawText = getLangRawText(langID, addon, langFormat);
+			var langMap = parseLangRawText(langRawText, langFormat);
+			if (langMap == null) continue;
+			for (key => string in langMap) {
 				lePhrases.set(key, string);
+				phrasesCount[langID] += 1;
 			}
 		}
 		#end
@@ -156,7 +258,7 @@ class Language {
 		return lePhrases;
 	}
 
-	public static function fetchKeys(langID:String = 'en-US'):Array<String> {
+	public static function fetchKeys(langID:String = 'en-us'):Array<String> {
 		var keys:Array<String> = [];
 		var rawJson:String = Paths.getTextFromFile('lang/$langID.json5', false) ?? Paths.getTextFromFile('lang/$langID.json', false);
 		var jsonLines:Array<String> = rawJson.split('\n');

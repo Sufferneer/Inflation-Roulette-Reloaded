@@ -40,7 +40,7 @@ class CharacterSimple extends FlxSprite {
 
 		this.id = character;
 		var json:CharacterData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/stats.json'));
-		var spriteJson:CharacterCosmeticData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json'));
+		var cosmeticJson:CharacterCosmeticData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/cosmetic.json'));
 		var offsetsJson:CharacterOffsetsData = cast Json.parse(Paths.getTextFromFile('data/characters/' + id + '/offsets.json'));
 
 		// name = json.name;
@@ -49,23 +49,25 @@ class CharacterSimple extends FlxSprite {
 			description = json.description;
 		*/
 		maxPressure = json.maxPressure;
-		if (offsetsJson.originPosition != null)
+		if (offsetsJson?.originPosition != null)
 			originPosition = offsetsJson.originPosition;
-		gurgleThreshold = spriteJson.gurgleThreshold;
-		creakThreshold = spriteJson.creakThreshold;
-		bounceScale = spriteJson.bounceScale ?? 0.02;
-		bounceFrames = spriteJson.bounceFrames ?? 3;
-		voicePitch = spriteJson.voicePitch ?? 1;
+		else if (cosmeticJson?.originPosition != null)
+			originPosition = cosmeticJson.originPosition;
+		gurgleThreshold = cosmeticJson.gurgleThreshold;
+		creakThreshold = cosmeticJson.creakThreshold;
+		bounceScale = cosmeticJson.bounceScale ?? 0.02;
+		bounceFrames = cosmeticJson.bounceFrames ?? 3;
+		voicePitch = cosmeticJson.voicePitch ?? 1;
 
-		var combinedAtlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${spriteJson.spriteSheets[0]}');
-		for (i in 1...spriteJson.spriteSheets.length) {
-			var atlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${spriteJson.spriteSheets[i]}');
+		var combinedAtlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${cosmeticJson.spriteSheets[0]}');
+		for (i in 1...cosmeticJson.spriteSheets.length) {
+			var atlas:FlxAtlasFrames = Paths.getSparrowAtlas('game/characters/$id/${cosmeticJson.spriteSheets[i]}');
 			combinedAtlas.addAtlas(atlas, false);
 		}
 		frames = combinedAtlas;
-		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!spriteJson.antialiasing) : false;
+		antialiasing = (!Preferences.data.enableForcedAliasing) ? !(!cosmeticJson.antialiasing) : false;
 
-		var animationsArray = spriteJson.animations;
+		var animationsArray = cosmeticJson.animations;
 		animSoundPaths = new Map<String, Array<String>>();
 		if (animationsArray != null && animationsArray.length > 0) {
 			for (anim in animationsArray) {

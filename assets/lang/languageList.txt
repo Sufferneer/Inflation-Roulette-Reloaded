@@ -1,6 +1,6 @@
-zh-HK
-ru-RU
-ca-ES
-es-MX
-pt-BR
-zh-CN
+ca-es
+es-mx
+pt-br
+ru-ru
+zh-cn
+zh-hk

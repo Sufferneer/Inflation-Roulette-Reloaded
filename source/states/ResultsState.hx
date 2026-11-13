@@ -205,14 +205,12 @@ class ResultsState extends SuffState {
 			} else {
 				char.frames = Paths.getSparrowAtlas('ui/menus/results/characters/goober');
 			}
-			if (charResultsData == null) {
-				trace('Results sprite data for ${data[i].charID} not found. Using Goober\'s');
-				charResultsData = cast Json.parse(Paths.getTextFromFile('data/characters/goober/results.json'));
-			}
-			char.offset.set(charResultsData.offset[0], charResultsData.offset[1]);
+			if (charResultsData?.offset != null)
+				char.offset.set(charResultsData.offset[0], charResultsData.offset[1]);
 			char.origin.y = char.height;
-			char.scale.set(charResultsData.scale[0], charResultsData.scale[1]);
-			char.antialiasing = charResultsData.antialiasing;
+			if (charResultsData?.scale != null)
+				char.scale.set(charResultsData.scale[0], charResultsData.scale[1]);
+			char.antialiasing = charResultsData?.antialiasing ?? false;
 			var suffix = data[i].charPressure <= 1 ? 'Standing' : 'Defeated';
 			char.animation.addByPrefix('idle', 'idle${suffix}0', 24, true);
 			char.animation.addByPrefix('win', 'win${suffix}0', FlxG.random.int(18, 30), false);

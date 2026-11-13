@@ -34,7 +34,7 @@ class Utilities {
 		#end
 		if (daList == null && OpenFlAssets.exists(lePath, TEXT))
 			daList = Assets.getText(lePath);
-		var leList:Array<String> = listFromString(daList);
+		var leList:Array<String> = stringToArray(daList);
 		while (leList.remove('') == true) {
 			leList.remove('');
 		}
@@ -46,7 +46,7 @@ class Utilities {
 	 * 
 	 * @param string The String to be split.
 	 */
-	inline public static function listFromString(string:String):Array<String> {
+	inline public static function stringToArray(string:String):Array<String> {
 		var daList:Array<String> = [];
 		daList = string.trim().split('\n');
 

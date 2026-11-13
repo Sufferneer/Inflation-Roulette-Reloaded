@@ -203,6 +203,9 @@ class AddonsMenuState extends SuffState {
 	function changeBanner(folder:String) {
 		var path:String = Paths.getPathInAddons('$folder/banner.png');
 		if (!FileSystem.exists(path)) {
+			path = Paths.getPathInAddons('$folder/metadata/banner.png');
+		}
+		if (!FileSystem.exists(path)) {
 			path = Paths.getImagePath('ui/menus/addons/defaultBanner');
 		}
 		var leImage = Paths.cacheBitmap(path);
