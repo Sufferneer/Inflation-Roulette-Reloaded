@@ -5,7 +5,7 @@
 	package="com.nicklysuffer.inflationroulette" packageName="com.nicklysuffer.inflationroulette"
 	main="Main" company="NicklySuffer" />
 
-	<set name="versionState" value="b.1" />
+	<set name="versionState" value="b.2" />
 	<haxedef name="versionState" value="${versionState}" />
 
 	<section if="android">
