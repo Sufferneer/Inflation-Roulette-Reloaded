@@ -160,7 +160,10 @@ class StagePreviewerState extends UtilitiesBaseMenuState {
 			addObject(object.id, obj);
 		}
 		for (num => char in characterGroup) {
-			char.x = Std.int(FlxMath.lerp(FlxG.width / 2 + stageData.characterX[0], FlxG.width / 2 + stageData.characterX[1], num / 3));
+			if ((stageData?.formatVersion ?? '1.0.0') == '1.0.0')
+				char.x = Std.int(FlxMath.lerp(stageData.characterX[0], stageData.characterX[1], num / 3));
+			else
+				char.x = Std.int(FlxMath.lerp(FlxG.width / 2 + stageData.characterX[0], FlxG.width / 2 + stageData.characterX[1], num / 3));
 			char.y = stageData.characterY;
 		}
 		pumpGun.x = characterGroup.members[0].x - pumpGun.width / 2;

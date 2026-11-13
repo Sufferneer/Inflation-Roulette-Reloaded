@@ -198,6 +198,8 @@ class PlayState extends SuffState {
 		for (i in 0...Gameplay.currentCharacterList.length) {
 			pressurizeStreak.push(0);
 			var leX:Int = Std.int(FlxMath.lerp(FlxG.width / 2 + stage.data.characterX[0], FlxG.width / 2 + stage.data.characterX[1], i / (Gameplay.currentCharacterList.length - 1)));
+			if ((stage.data?.formatVersion ?? '1.0.0') == '1.0.0')
+				leX = Std.int(FlxMath.lerp(stage.data.characterX[0], stage.data.characterX[1], i / (Gameplay.currentCharacterList.length - 1)));
 			var char:Character = new Character(Gameplay.currentCharacterList[i], leX, stage.data.characterY);
 			if (i >= Std.int(Gameplay.currentCharacterList.length / 2)) {
 				char.flipX = true;
@@ -1655,6 +1657,8 @@ class PlayState extends SuffState {
 		for (num => char in characterMap) {
 			pressurizeStreak.push(0);
 			var leX:Int = Std.int(FlxMath.lerp(FlxG.width / 2 + stage.data.characterX[0], FlxG.width / 2 + stage.data.characterX[1], num / (characterCount - 1)));
+			if ((stage.data?.formatVersion ?? '1.0.0') == '1.0.0')
+				leX = Std.int(FlxMath.lerp(stage.data.characterX[0], stage.data.characterX[1], num / (characterCount - 1)));
 			char.velocity.set(0, 0);
 			char.acceleration.set(0, 0);
 			char.x = leX;
