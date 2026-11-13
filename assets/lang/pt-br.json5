@@ -32,21 +32,21 @@
 	// untranslated.
 
 	// The positions of escape sequence in-between sentences should be left AS IS.
-	
+
 	// Remember the "Transliterate Names" rule
 	"metadata.title": "Inflation Roulette: Reloaded",
 	"metadata.titleShort": "Inflation Roulette",
 	"metadata.acronym": "IRR",
-	
+
 	// Version Formatting
 	// For example, if the version is 2.3.1 in an Linux environment,
 	// it will be formatted in the following way in the bottom info text of the Main Menu:
-	
+
 	// Inflation Roulette: Reloaded
 	// Patch of Creativity (Pitstop 3 Amendment 1)
 	// Version 2.3.1
 	// Linux Build
-	
+
 	"metadata.version.numeral.format": "Versão %1",
 	"metadata.version.numeralModded.format": "Versão modificada %1",
 	"metadata.version.name.minor.format": "Pitstop %1",
@@ -55,7 +55,7 @@
 	// For example, if the game is on Windows, "Windows Build" will be displayed.
 	// Note that platform names will remain untranslated.
 	"game.build.format": "Build pra %1",
-	
+
 	"metadata.version.name.major.0": "Em desenvolvimento",
 	// Version 1: Initial Release
 	"metadata.version.name.major.1": "Lançamento inicial",
@@ -70,7 +70,7 @@
 	"metadata.version.name.state.a": "Alpha Pública %1",
 	"metadata.version.name.state.b": "Beta Pública %1",
 	"metadata.version.name.state.c": "Candidato à Lançamento %1",
-	
+
 	// These are the button texts in the Main Menu.
 	"mainMenu.windowDisplay": "Menu Principal",
 	"mainMenu.play": "Jogar",
@@ -125,13 +125,13 @@
 	"extrasMenu.title": "CONTEÚDO EXTRA",
 	"extrasMenu.gallery": "Galeria",
 	"extrasMenu.jukebox": "Jukebox",
-	
+
 	"debugText.framerate": "FPS",
 	"debugText.gcMemory": "GC RAM",
 	"debugText.state": "State",
 	// %1: Debug Text
 	"debugText.format": "%1: %2",
-	
+
 	// Please make sure that this is written in a formal tone.
 	"warningMenu.windowDisplay": "Aviso",
 	"warningMenu.title": "AVISO",
@@ -156,7 +156,7 @@
 	// This option is a button.
 	"option.controls.name": "Controles",
 	"option.controls.description": "Configurar Teclas.",
-	
+
 	"option.controls.gameplay": "Gameplay",
 	"option.controls.keybind.shoot": "Disparar Arma",
 	"option.controls.keybind.exit": "Cancelar Ação",
@@ -173,7 +173,7 @@
 	"option.controls.debug": "Depuração",
 	"option.controls.keybind.debug1": "Tecla de Depuração 1",
 	"option.controls.keybind.debug2": "Tecla de Depuração 2",
-	
+
 	// 1: Keybind Name, 2: Key Orientation (Primary/Secondary)
 	"option.controls.bindingKey.title": "Configurando %1\n%2 Tecla",
 	"option.controls.bindingKey.bindType.0": "Primária",
@@ -181,7 +181,7 @@
 	"option.controls.bindingKey.subtitle": "Pressione Qualquer Tecla",
 	"option.controls.bindingKey.bind": "Vincular",
 	"option.controls.bindingKey.remove": "Remover",
-	
+
 	// These are not necessary to translate, but they may be helpful for regional keyboards.
 	"keybind.ALT": "Alt",
 	"keybind.BACKSLASH": "\\",
@@ -233,7 +233,7 @@
 	"keybind.THREE": "3",
 	"keybind.TWO": "2",
 	"keybind.ZERO": "0",
-	
+
 	"option.enablePopping.name": "Explosões",
 	"option.enablePopping.description": "Jogadores estouram não fatalmente ao serem eliminados.\nSe desativado, os personagens ficarão apenas super inflados.\nTerá efeito na próxima partida.",
 	"option.enableBellyGurgles.name": "Borbulhar",
@@ -347,7 +347,7 @@
 	"characterSelect.selectFiller": "ESCOLHA O RECHEIO",
 	// Select Stage: This however, does not need to be in the same tone as Select Character.
 	"characterSelect.selectStage": "ESCOLHA O SEU PALCO",
-	
+
 	// Player Settings
 	"characterSelect.option.cpuControlled": "CPU",
 	"characterSelect.option.skillLevel": "Nível da CPU",
@@ -363,7 +363,7 @@
 	// This text appears when more than 1 player-controlled characters are present.
 	// Prevents player from cheating
 	"characterSelect.cantEarnAchievements": "Você não pode desbloquear a maioria das conquistas com essas configurações.",
-	
+
 	// Goober: A character species present in the original Inflation Roulette.
 	// Looks like a feline, or a canine, or something, but doesn't exactly behave like one. IDK lmao
 	// Skills: Reload, Sabotage
@@ -411,7 +411,7 @@
 	"character.random.name": "Aleatório",
 	"character.random.name.short": "Aleatório",
 	"character.random.description": "Não tem certeza de quem escolher? Deixe o jogo decidir!",
-	
+
 	// Classic Room: The original stage from the original game redrawn.
 	"stage.classic.name": "Sala Clássica",
 	"stage.classic.description": "A sala que todos conhecemos muito bem.",
@@ -437,10 +437,10 @@
 	"stage.void.description": "Bem conhecido como um lugar para todas as atividades, retratado em diferentes obras de arte e animações.",
 	"stage.random.name": "Aleatório",
 	"stage.random.description": "Não tem certeza de onde escolher? Deixe o jogo decidir!",
-	
+
 	// Splash text that is displayed
 	"gameOn.text": "BORA LÁ!",
-	
+
 	"skill.reload.name": "Recarregar",
 	"skill.reload.description": "Recarregue o cilindro para resetar sua chance de levar um tiro de bala viva",
 	"skill.sabotage.name": "Sabotar",
@@ -561,7 +561,7 @@
 	// Context: There are different versions of Goobers, one being Slime Goobers, and one labelled "???".
 	// The way I interpret this is like, them having races or something
 	"galleryMainMenu.envelope.goober.description": "Vistos pela primeira vez no jogo original, os Goobers entram em ação com uma nova cara! Eles se tornaram o personagem certeiro para aparecer em incontáveis remakes e fanarts.\n\nSobre como e porquê eles se uniram ao jogo, ninguém sabe! Atores? Reféns? Vendidos? Há muitas teorias por aí! Não se sabe muito sobre sua biologia, mas foi confirmado que são classificados em diversas raças, variando de Goobers compostos inteiramente de slime até C»0NF!D&NC§AL²½",
-	 "galleryMainMenu.envelope.shib.description": "Sobrenome Nou; primeiro nome Shiba. Vindo de um planeta misterioso, essa criatura parecida com um gato se une à competição! Seu nome em Chinês pode ser interpretado como \"Zero Dez Oito\", derivado da instalação nuclear em que pousou em Pequim.\n\nPassando seus primeiros anos de vida buscando por lugares para viver, eventualmente se esbarrou com um engenheiro chinês. Foi adotade por ele como sue assistente secundárie e em breve se encontraria apaixonade pelo assistente primário (criado em laboratório por sinal, eca). Agora que seu namorado conseguiu um trabalho do Gerente como cameraman, elu se juntou ao jogo para mostrar suas habilidades secretas.\n\nShib é ume personagem não-binárie pertencente a NicklySuffer, criade antes do desenvolvimento de Inflation Roulette Reloaded.",
+	"galleryMainMenu.envelope.shib.description": "Sobrenome Nou; primeiro nome Shiba. Vindo de um planeta misterioso, essa criatura parecida com um gato se une à competição! Seu nome em Chinês pode ser interpretado como \"Zero Dez Oito\", derivado da instalação nuclear em que pousou em Pequim.\n\nPassando seus primeiros anos de vida buscando por lugares para viver, eventualmente se esbarrou com um engenheiro chinês. Foi adotade por ele como sue assistente secundárie e em breve se encontraria apaixonade pelo assistente primário (criado em laboratório por sinal, eca). Agora que seu namorado conseguiu um trabalho do Gerente como cameraman, elu se juntou ao jogo para mostrar suas habilidades secretas.\n\nShib é ume personagem não-binárie pertencente a NicklySuffer, criade antes do desenvolvimento de Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.chester.description": "Como o barista chefe de um café, ele foi forçado a jogar este jogo como um representante da empresa. Com seus resultados acadêmicos pobres e personalidade nem um pouco carismática, o seu sonho de prosperidade e riqueza está agora bem ao seu alcance.\n\nSeu trabalho diário envolve preparar bebidas com açúcar em excesso para clientes tarados. Alguns dizem que as bebidas possuem um efeito \"expansivo\" , o que chamou a atenção de vários agentes de segurança alimentar. No entanto, devido a palhaçada capitalista, avisos do departamento alimentar não levaram a lugar nenhum.\n\nChester é um personagem pertencente a NicklySuffer, criado antes do desenvolvimento de Inflation Roulette Reloaded.",
 	"galleryMainMenu.envelope.asimo.description": "Se aproveitando de seus poderes elétricos, Asimo se descarga para dentro de Inflation Roulette querendo \"se divertir\".\n\nNão temos ideia de como ele chegou aqui, e nós com certeza temos 0 conexões com ele, além de sabermos que ele é um lobo, é o testador da porcaria do mod de Friday Night Funkin' de um engenheiro chinês aleatório, e ele é o vencedor de um torneio de arte para ser adicionado como o personagem da Adição de Exemplo.\n\nAsimo é um personagem convidado pertencente a WolfKylis.",
 	"galleryMainMenu.envelope.synda.description": "Procurando por uma melhora na qualidade de vida, Synda se mete na competição pronta pra estourar alguém! Seus colegas sempre a descrevem como uma pessoa arrogante e irracional de se lidar - não que ela se importe com isso, de qualquer forma. \n\n Como uma [CONFIDENCIAL], ela passa a maior parte do seu tempo como uma guarda de segurança de alto calibre em um laboratório, até que um acidente horrível resultou na perda de seu olho esquerdo e apêndices das costas. Procurando por uma substituição, ela descobriu um procedimento experimental que concederia a ela tentáculos cibernéticos, o problema é que cada par é caro pra diacho, então agora uma fortuna foi prometida a ela pelo Gerente, se ela estiver disposta a sacrificar o seu abdômen inferior inteiro para isso...\n\nSynda é uma personagem de autoria de NicklySuffer, criada antes do desenvolvimento de Inflation Roulette Reloaded.",
@@ -664,6 +664,7 @@
 	"animationCreator.parameter.loop": "Repetir?",
 	"animationCreator.parameter.bouncy": "Achatar?",
 	"animationCreator.parameter.autoPitch": "Usar Afinação de Voz?",
+	"animationCreator.parameter.soundPaths": "Sons:",
 	"animationCreator.save": "Salvar Animação",
 	"animationCreator.exit": "Sair do Editor",
 	"animationCreator.exit.prompt": "Você tem certeza que quer sair do Editor de Animações?\nQualquer progresso não salvo será PERDIDO.",
