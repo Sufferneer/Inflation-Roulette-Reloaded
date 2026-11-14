@@ -35,7 +35,9 @@ class Language {
 			if (prefLang[0] == 'ca' && prefLang[1] == 'ad')
 				prefLang[1] = 'es';
 		}
-		phrases = fetchPhrases(prefLang.join('-'));
+		Preferences.data.language = prefLang.join('-');
+		Preferences.savePrefs();
+		phrases = fetchPhrases(Preferences.data.language);
 		if (phrases == null) {
 			trace('$prefLang does not exist. Using en-us');
 			Preferences.data.language = defaultLanguage;
@@ -229,7 +231,7 @@ class Language {
 	}
 
 	public static function fetchPhrases(langID:String = 'en-us'):Map<String, Dynamic> {
-		var lePhrases:Map<String, Dynamic> = [];
+		var lePhrases:Map<String, Dynamic> = null;
 		langID = langID.toLowerCase();
 		phrasesCount.set(langID, 0);
 		var langFormat = getLangFormat(langID, '');
@@ -237,6 +239,8 @@ class Language {
 		var langMap = parseLangRawText(langRawText, langFormat);
 		if (langMap != null) {
 			trace('Fetching phrases from $langID');
+			if (lePhrases == null)
+				lePhrases = [];
 			for (key => string in langMap) {
 				lePhrases.set(key, string);
 				phrasesCount[langID] += 1;
@@ -248,6 +252,8 @@ class Language {
 			var langRawText = getLangRawText(langID, addon, langFormat);
 			var langMap = parseLangRawText(langRawText, langFormat);
 			if (langMap == null) continue;
+			if (lePhrases == null)
+				lePhrases = [];
 			for (key => string in langMap) {
 				lePhrases.set(key, string);
 				phrasesCount[langID] += 1;

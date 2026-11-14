@@ -295,8 +295,10 @@
 
 	"addonsMenu.windowDisplay": "Аддоны",
 	"addonsMenu.authors": "Авторы:",
+	"addonsMenu.openAddonsFolder": "Открыть Папку Addons",
+	"addonsMenu.reloadAddons": "Перезагрузить Аддоны",
 	"addonsMenu.noAddonsDetected.title": "Аддоны не Обнаружены",
-	"addonsMenu.noAddonsDetected.content": "Аддоны не были обнаружены в соответствующей папке. Проверьте наличие файла metadata.json в папке metadata Ваших аддонов.\nЕсли Вы думаете, что произошла ошибка, пожалуйтесь на проблему в нашем репозитории GitHub.",
+	"addonsMenu.noAddonsDetected.content": "В папке аддонов не обнаружено никаких аддонов. Пожалуйста, проверьте присутствие файла metadata.json в имеющихся аддонах.",
 
 	"languageMenu.windowDisplay": "Выбор Языка",
 	"languageMenu.title": "ВЫБОР ЯЗЫКА",

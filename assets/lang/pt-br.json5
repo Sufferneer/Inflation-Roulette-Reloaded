@@ -311,8 +311,10 @@
 
 	"addonsMenu.windowDisplay": "Adições",
 	"addonsMenu.authors": "Autores:",
+	"addonsMenu.openAddonsFolder": "Abrir Pasta de Adições",
+	"addonsMenu.reloadAddons": "Recarregar Adições",
 	"addonsMenu.noAddonsDetected.title": "Nenhuma Adição Detectada",
-	"addonsMenu.noAddonsDetected.content": "Nenhuma adição foi detectada dentro da pasta de adições. Por favor cheque se você incluiu metada.json na pasta metadata dentro de adições\nSe você acha que isso é um engano, por favor reporte o seu problema no nosso repositório GitHub.",
+	"addonsMenu.noAddonsDetected.content": "Nenhuma adição foi detectada na pasta de adições. Por favor cheque se um arquivo metadata.json existe nas adições existentes.",
 
 	"languageMenu.windowDisplay": "Selecionar Idioma",
 	"languageMenu.title": "SELECIONAR IDIOMA",

@@ -26,7 +26,7 @@ class PreloadState extends SuffState {
 		WindowUtil.calculateResolutions();
 		Preferences.loadPrefs();
 		if (AndroidUtil.checkAllFilesPermission())
-			Addons.pushGlobalAddons();
+			Addons.reloadAddonsList();
 		Language.initialize();
 		WindowUtil.setTitle(Language.getPhrase('preloadMenu.windowDisplay'));
 

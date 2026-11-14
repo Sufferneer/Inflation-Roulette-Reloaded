@@ -311,8 +311,10 @@
 
 	"addonsMenu.windowDisplay": "Addons",
 	"addonsMenu.authors": "Authors:",
+	"addonsMenu.openAddonsFolder": "Open Addons Folder",
+	"addonsMenu.reloadAddons": "Reload Addons",
 	"addonsMenu.noAddonsDetected.title": "No Add-Ons Detected",
-	"addonsMenu.noAddonsDetected.content": "No addons are detected within the addons folder. Please check whether you have included a metadata.json in the metadata folder in the addons.\nIf you think this is a mistake, please report your issue to our GitHub repository.",
+	"addonsMenu.noAddonsDetected.content": "No addons were detected in the addons folder. Please check whether a metadata.json file exists in the existing addons.",
 
 	"languageMenu.windowDisplay": "Language Select",
 	"languageMenu.title": "SELECT LANGUAGE",

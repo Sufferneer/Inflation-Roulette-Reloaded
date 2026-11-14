@@ -278,7 +278,7 @@
 	
 	"addonsMenu.authors": "Autors:",
 	"addonsMenu.noAddonsDetected.title": "No s'han detectat complements",
-	"addonsMenu.noAddonsDetected.content": "No s'ha detectat complements a la carpeta de addons. Comproveu si heu inclòs un fitxer metadata.json a la carpeta metadata.\nSi creu que es tracta d'un error, informa de problema a nostre repositori de GitHub.",
+	"addonsMenu.noAddonsDetected.content": "No s'ha detectat complements a la carpeta de addons. Comproveu si heu inclòs un fitxer metadata.json.",
 	
 	"languageMenu.title": "SELECCIONA IDIOMA",
 	"languageMenu.description": "Nota: És possible que traduccions no siguin 100% precises i que continguin traduccions incorrectes o text sense traduir.",

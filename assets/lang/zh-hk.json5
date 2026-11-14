@@ -288,7 +288,7 @@
 	"addonsMenu.windowDisplay": "附加包",
 	"addonsMenu.authors": "作者名單：",
 	"addonsMenu.noAddonsDetected.title": "未偵測到任何附加包",
-	"addonsMenu.noAddonsDetected.content": "在附加包資料夾中未偵測到任何附加包。請檢查你是否已在附加包資料夾的 metadata 資料夾中新增了 metadata.json 檔案。 \n如果你認為這是一個錯誤，請將此問題報告到我們的 GitHub 程式碼庫。",
+	"addonsMenu.noAddonsDetected.content": "未在附加包資料夾中偵測到任何附加包。請檢查現有附加包裡是否存在 metadata.json 檔案。",
 
 	"languageMenu.windowDisplay": "語言選單",
 	"languageMenu.title": "選擇語言",

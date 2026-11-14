@@ -31,6 +31,7 @@ import substates.ChoicePrompt;
 import substates.HyperlinkPrompt;
 import states.debug.TimeBalloonTestState;
 import substates.SocialsSubState;
+import backend.AndroidUtil;
 
 class MainMenuState extends SuffState {
 	public static var initialized:Bool = false;
@@ -69,7 +70,7 @@ class MainMenuState extends SuffState {
 		['extras', 'socials']
 	];
 
-	static final disabledMenuItems:Array<String> = [];
+	var disabledMenuItems:Array<String> = [];
 
 	var currentEasterEggInput:String = '';
 
@@ -82,6 +83,11 @@ class MainMenuState extends SuffState {
 		if (FlxG.sound.music == null || SuffState.currentMusicId == 'null') { // idk lmao
 			SuffState.playMusic('mainMenu');
 		}
+
+		#if android
+		if (!AndroidUtil.checkAllFilesPermission())
+			disabledMenuItems.push('addons')
+		#end
 
 		var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF347277);
 		add(bg);

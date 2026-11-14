@@ -312,7 +312,7 @@
     "addonsMenu.windowDisplay": "附加包",
     "addonsMenu.authors": "作者名单：",
     "addonsMenu.noAddonsDetected.title": "未检测到任何附加包",
-    "addonsMenu.noAddonsDetected.content": "在附加包文件夹中未检测到任何附加包。请检查你是否已在附加包文件夹的 metadata 文件夹中新增了 metadata.json 文件。\n如果你认为这是一个错误，请将此问题报告到我们的 GitHub 代码库。",
+    "addonsMenu.noAddonsDetected.content": "未在附加包资料夹中侦测到任何附加包。请检查现有附加包里是否存在 metadata.json 档案。",
 
     "languageMenu.windowDisplay": "语言菜单",
     "languageMenu.title": "选择语言",

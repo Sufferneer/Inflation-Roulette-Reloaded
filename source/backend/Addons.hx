@@ -9,10 +9,17 @@ import lime.utils.Bytes;
 class Addons {
 	public static var globalAddons:Array<String> = [];
 
-	public static function pushGlobalAddons() {
+	public static function reloadAddonsList() {
 		globalAddons = [];
 		#if _ALLOW_ADDONS
-		for (addon in updateAddonList()) {
+		var list:Array<String> = [];
+		for (folder in getAddonDirectories()) {
+			if (folder.trim().length > 0 && FileSystem.exists(Paths.getPathInAddons(folder)) && FileSystem.isDirectory(Paths.getPathInAddons(folder))) {
+				list.push(folder);
+			}
+		}
+
+		for (addon in list) {
 			var pack:AddonMetadata = getAddonMetadata(addon);
 			if (pack != null)
 				globalAddons.push(addon);
@@ -54,18 +61,11 @@ class Addons {
 		return null;
 	}
 
-	private static function updateAddonList() {
+	public static function reloadAddons() {
 		#if _ALLOW_ADDONS
-		var list:Array<String> = [];
-
-		// Scan for folders
-		for (folder in getAddonDirectories()) {
-			if (folder.trim().length > 0 && FileSystem.exists(Paths.getPathInAddons(folder)) && FileSystem.isDirectory(Paths.getPathInAddons(folder))) {
-				list.push(folder);
-			}
-		}
-
-		return list;
+		reloadAddonsList();
+		Gameplay.initialize();
+		Language.initialize();
 		#end
 	}
 }

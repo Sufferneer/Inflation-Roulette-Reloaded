@@ -32,7 +32,7 @@ class Gameplay {
 
 	public static function filterCharacterList() {
 		for (char in globalCharacterList) {
-			if (!FileSystem.exists(Paths.getPath('data/characters/$char/stats.json')) && Paths.getAddonsPath('data/characters/$char/stats.json') == null) {
+			if (!Paths.fileExists(Paths.getPath('data/characters/$char/stats.json'), TEXT) && !FileSystem.exists(Paths.getAddonsPath('data/characters/$char/stats.json'))) {
 				// If the character is not in the base game or any addons, remove it from the list
 				trace('Character $char is missing stats.json, removing from list');
 				globalCharacterList.remove(char);

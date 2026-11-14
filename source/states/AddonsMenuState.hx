@@ -8,6 +8,8 @@ import ui.objects.GitHubButton;
 import ui.objects.SuffIconButton;
 import tjson.TJSON as Json;
 import ui.objects.SuffScrollBar;
+import backend.Gameplay;
+import haxe.io.Path;
 
 class AddonsMenuState extends SuffState {
 	var bg:FlxSprite;
@@ -30,9 +32,13 @@ class AddonsMenuState extends SuffState {
 
 	final scrollBarWidth:Int = 30;
 
-	override function create() {
+	var reloadAddonsButton:SuffIconButton;
+	var openAddonsFolderButton:SuffIconButton;
+
+	public override function create() {
 		super.create();
 
+		Addons.reloadAddons();
 		WindowUtil.setTitle(Language.getPhrase('addonsMenu.windowDisplay'));
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
@@ -51,6 +57,37 @@ class AddonsMenuState extends SuffState {
 		exitButton.onClick = function() {
 			backToMainMenu();
 		};
+
+		reloadAddonsButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/restart', null, 2);
+		reloadAddonsButton.x = exitButton.x - reloadAddonsButton.width - 20;
+		reloadAddonsButton.tooltipText = Language.getPhrase('addonsMenu.reloadAddons');
+		reloadAddonsButton.onClick = function() {
+			Addons.reloadAddons();
+			FlxG.resetState();
+		}
+		add(reloadAddonsButton);
+
+		#if desktop
+		openAddonsFolderButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/folder', null, 2);
+		openAddonsFolderButton.x = reloadAddonsButton.x - openAddonsFolderButton.width - 20;
+		openAddonsFolderButton.tooltipText = Language.getPhrase('addonsMenu.openAddonsFolder');
+		openAddonsFolderButton.onClick = function() {
+			#if sys
+			var winPath = './addons';
+			switch (Sys.systemName()) {
+				case "Windows":
+					Sys.command("explorer", [winPath.replace('/', '\\')]);
+				case "Mac":
+					Sys.command("open", [winPath]);
+				case "Linux":
+					Sys.command("xdg-open", [winPath]);
+			}
+			#else
+			trace("Opening system folders is not supported on this target.");
+			#end
+		}
+		add(openAddonsFolderButton);
+		#end
 
 		SuffState.playMusic('addons');
 
@@ -71,11 +108,6 @@ class AddonsMenuState extends SuffState {
 			noModsDetectedDesc.y = (FlxG.height - (noModsDetected.height + noModsDetectedDesc.height)) / 2 + noModsDetected.height;
 			add(noModsDetected);
 			add(noModsDetectedDesc);
-
-			var button:GitHubButton = new GitHubButton(0, 0, 'issues');
-			button.screenCenter(X);
-			button.y = noModsDetectedDesc.y + noModsDetectedDesc.height;
-			add(button);
 
 			bg.color = 0xFF404040;
 			add(exitButton);
