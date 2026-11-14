@@ -598,6 +598,9 @@
 	"characterCreator.exporting.generatingLangFile": "Генерация Файлов Локализации...",
 
 	"animationCreator.windowDisplay": "Редактор Анимаций",
+	"animationCreator.parameter.loop": "Зациклить?",
+	"animationCreator.parameter.bouncy": "Сплющить?",
+	"animationCreator.parameter.autoPitch": "Использовать Высоту Голоса?",
 	"animationCreator.save": "Сохранить Анимацию",
 	"animationCreator.exit": "Покинуть Редактор",
 	"animationCreator.exit.prompt": "Вы ДЕЙСТВИТЕЛЬНО хотите покинуть Редактор Анимаций?\nНесохранённый прогресс будет утерян.",

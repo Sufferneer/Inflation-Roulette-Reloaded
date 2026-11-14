@@ -287,6 +287,8 @@
 
 	"addonsMenu.windowDisplay": "附加包",
 	"addonsMenu.authors": "作者名單：",
+	"addonsMenu.openAddonsFolder": "打開附加包資料夾",
+	"addonsMenu.reloadAddons": "重載附加包",
 	"addonsMenu.noAddonsDetected.title": "未偵測到任何附加包",
 	"addonsMenu.noAddonsDetected.content": "未在附加包資料夾中偵測到任何附加包。請檢查現有附加包裡是否存在 metadata.json 檔案。",
 

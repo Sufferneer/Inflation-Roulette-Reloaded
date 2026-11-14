@@ -9,7 +9,7 @@ Minor updates are smaller updates that adds minor elements to the game without s
 
 Hotfixes are quick updates that fixes critical bugs.
 
-## v3.0.0 - Definitive Edition - 2026-05-21
+## v3.0.0 - Definitive Edition - TBA
 ### Additions
 #### Audio
 - Stages now have their unique music.
@@ -111,21 +111,17 @@ Hotfixes are quick updates that fixes critical bugs.
 - Character Editor now generates addon metadata and localization files for you.
 ### Removals
 #### Gameplay
-- Removed Modifiers
+- Modifiers
   - Since this feature is under-utilized and not expanded upon, modifiers no longer have any effect.
-- Removed gamemodes: Stand-Off and Mayhem
-- Removed gamemode parameter: `cylinderDamageChangeOnLive`
-- Removed achievement Attention Deficit
-  - This achievement has been deemed unnecessary.
+- Gamemodes: Stand-Off and Mayhem
+  - Replaced by player slider.
+- Gamemode parameter: `cylinderDamageChangeOnLive`
 - Removed Music Toast.
   - This is due to an unsolvable memory leak issue.
 ### Fixes
 - Scroll bars, Gallery Image View, Credits menu, and Options sliders snaps elements in place on touchscreens.
 - Blurry Cobalt crashes the game.
 - Asimo's gallery entry bounded in Desktop builds even when Example Addon is removed.
-- ~~Character Editor exporting Character Select Cards incorrectly.~~
-- ~~Character Editor exporting every sprite sheet incorrectly~~
-- Character Editor exporting everything incorrectly
 - Characters always score the minimum edging bonus even when inflated just once
 - _Backfire_ achievement working for CPU characters
 - Scroll bars crashes the game mid-scroll
@@ -133,6 +129,24 @@ Hotfixes are quick updates that fixes critical bugs.
 - Texts on achievement toasts not visible after changing a language that modifies the game font.
 - `cylinderInitialDamage` has no effect on first round.
 - Shib's starting animation snaps into looping animation with no anticipation
+
+## v2.2.0 - Patch of Creativity, Pitstop 2 - 2026-09-20
+### Additions
+- Several features for the Character Creator have been added.
+  - Animation Creator now allows Loop and Sound Paths to be added.
+  - Character Creator now allows results animations to be added.
+  - Character Creator now exports .lang files and metadata.json.
+### Changes
+- Significantly optimized Character spritesheets, reducing memory usage.
+- Re-enabled Donate button
+- Changed splashes
+- Updated Credits menu
+### Removals
+- The Attention Deficit Achievement
+  - Proven unnecessary and too difficult to obtain.
+### Fixes
+- Character Creator exporting addons that DO NOT FUCKING WORK
+- Camera speed is slower than usual on high framerates.
 
 ## v2.1.1 - Patch of Creativity, Pitstop 1 Hotfix 1 - 2026-04-19
 ### Changes

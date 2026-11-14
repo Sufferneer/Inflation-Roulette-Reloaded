@@ -176,7 +176,7 @@ class Language {
 		return languageFormat;
 	}
 
-	public static function getLangRawText(langID:String = 'en-us', addon:String = '', format:LanguageFormat) {
+	public static function getLangRawText(langID:String = 'en-us', addon:String = '', format:LanguageFormat = DEFAULT_JSON5) {
 		var lowercaseID = langID.toLowerCase();
 		var what = lowercaseID.split('-');
 		var uppercaseID = what[0] + '-' + what[1].toUpperCase();
@@ -249,6 +249,7 @@ class Language {
 		#if _ALLOW_ADDONS
 		for (addon in Addons.globalAddons) {
 			var langFormat = getLangFormat(langID, addon);
+			if (langFormat == null) continue;
 			var langRawText = getLangRawText(langID, addon, langFormat);
 			var langMap = parseLangRawText(langRawText, langFormat);
 			if (langMap == null) continue;

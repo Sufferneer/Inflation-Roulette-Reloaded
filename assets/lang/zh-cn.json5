@@ -311,6 +311,8 @@
 
     "addonsMenu.windowDisplay": "附加包",
     "addonsMenu.authors": "作者名单：",
+    "addonsMenu.openAddonsFolder": "打开附加包资料夹",
+    "addonsMenu.reloadAddons": "重载附加包",
     "addonsMenu.noAddonsDetected.title": "未检测到任何附加包",
     "addonsMenu.noAddonsDetected.content": "未在附加包资料夹中侦测到任何附加包。请检查现有附加包里是否存在 metadata.json 档案。",
 
