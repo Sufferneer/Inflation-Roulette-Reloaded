@@ -65,7 +65,6 @@ class AddonsMenuState extends SuffState {
 			Addons.reloadAddons();
 			FlxG.resetState();
 		}
-		add(reloadAddonsButton);
 
 		#if desktop
 		openAddonsFolderButton = new SuffIconButton(20, 20 + ScreenSafeArea.Y, 'buttons/folder', null, 2);
@@ -86,7 +85,6 @@ class AddonsMenuState extends SuffState {
 			trace("Opening system folders is not supported on this target.");
 			#end
 		}
-		add(openAddonsFolderButton);
 		#end
 
 		SuffState.playMusic('addons');
@@ -110,6 +108,8 @@ class AddonsMenuState extends SuffState {
 			add(noModsDetectedDesc);
 
 			bg.color = 0xFF404040;
+			add(openAddonsFolderButton);
+			add(reloadAddonsButton);
 			add(exitButton);
 
 			return;
@@ -176,6 +176,8 @@ class AddonsMenuState extends SuffState {
 			changeDisplayedMetadata('', null);
 		}
 
+		add(openAddonsFolderButton);
+		add(reloadAddonsButton);
 		add(exitButton);
 	}
 
