@@ -86,7 +86,7 @@ class MainMenuState extends SuffState {
 
 		#if android
 		if (!AndroidUtil.checkAllFilesPermission())
-			disabledMenuItems.push('addons')
+			disabledMenuItems.push('addons');
 		#end
 
 		var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF347277);

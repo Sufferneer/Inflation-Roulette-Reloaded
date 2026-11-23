@@ -119,8 +119,10 @@ class LanguageSelectState extends SuffState {
 			if (!Paths.fileExists(langFontPath)) {
 				langFontPath = Paths.getFont('default');
 			}
-			var btn = new SuffTextButton(0, (64 + padding) * num,
-				'${metadata.name} (${metadata.locale})', 48, langFontPath);
+			var btnName = '${metadata.name} (${metadata.locale})';
+			if (metadata.locale == null || metadata.locale == '')
+				btnName = '${metadata.name}';
+			var btn = new SuffTextButton(0, (64 + padding) * num, btnName, 48, langFontPath);
 			btn.btnTextColor = btn.btnTextColorHovered = btn.btnTextColorClicked = textColor;
 			btn.x = num % 2 == 0 ? -btn.width - 100 : FlxG.width + 100;
 			if (btn.width > maxWidth)
